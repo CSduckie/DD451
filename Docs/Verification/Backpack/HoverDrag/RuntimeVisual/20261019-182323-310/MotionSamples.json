@@ -1,0 +1,2701 @@
+{
+  "samples": [
+    {
+      "frame": 52261,
+      "held": false,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.21,
+                "g": 0.31,
+                "r": 0.37
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 0.16,
+                "b": 0.45,
+                "g": 0.64,
+                "r": 0.72
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 605.9,
+            "height": 136.0,
+            "left": 141.099976,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "",
+          "sourceActive": false,
+          "sourceAlpha": -1.0,
+          "sourceObjectId": 0,
+          "sourceRect": {
+            "bottom": 0.0,
+            "height": 0.0,
+            "left": 0.0,
+            "width": 0.0
+          },
+          "text": "Battery\n1 × 2",
+          "token": 0,
+          "visible": false
+        }
+      ],
+      "pointer": {
+        "x": 960.0,
+        "y": 540.0
+      },
+      "realtime": 531.2819
+    },
+    {
+      "frame": 52267,
+      "held": false,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.21,
+                "g": 0.31,
+                "r": 0.37
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 0.16,
+                "b": 0.45,
+                "g": 0.64,
+                "r": 0.72
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 605.9,
+            "height": 136.0,
+            "left": 141.099976,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "",
+          "sourceActive": false,
+          "sourceAlpha": -1.0,
+          "sourceObjectId": 0,
+          "sourceRect": {
+            "bottom": 0.0,
+            "height": 0.0,
+            "left": 0.0,
+            "width": 0.0
+          },
+          "text": "Battery\n1 × 2",
+          "token": 0,
+          "visible": false
+        }
+      ],
+      "pointer": {
+        "x": 84.0,
+        "y": 715.0
+      },
+      "realtime": 531.365967
+    },
+    {
+      "frame": 52269,
+      "held": false,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.21,
+                "g": 0.31,
+                "r": 0.37
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 0.16,
+                "b": 0.45,
+                "g": 0.64,
+                "r": 0.72
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 605.9,
+            "height": 136.0,
+            "left": 141.099976,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "",
+          "sourceActive": false,
+          "sourceAlpha": -1.0,
+          "sourceObjectId": 0,
+          "sourceRect": {
+            "bottom": 0.0,
+            "height": 0.0,
+            "left": 0.0,
+            "width": 0.0
+          },
+          "text": "Battery\n1 × 2",
+          "token": 0,
+          "visible": false
+        }
+      ],
+      "pointer": {
+        "x": 84.0,
+        "y": 715.0
+      },
+      "realtime": 531.423035
+    },
+    {
+      "frame": 52271,
+      "held": true,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.21,
+                "g": 0.31,
+                "r": 0.37
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 0.16,
+                "b": 0.45,
+                "g": 0.64,
+                "r": 0.72
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 605.9,
+            "height": 136.0,
+            "left": 141.099976,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "",
+          "sourceActive": false,
+          "sourceAlpha": -1.0,
+          "sourceObjectId": 0,
+          "sourceRect": {
+            "bottom": 0.0,
+            "height": 0.0,
+            "left": 0.0,
+            "width": 0.0
+          },
+          "text": "Battery\n1 × 2",
+          "token": 0,
+          "visible": false
+        }
+      ],
+      "pointer": {
+        "x": 84.0,
+        "y": 715.0
+      },
+      "realtime": 531.4365
+    },
+    {
+      "frame": 52273,
+      "held": true,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.18,
+                "g": 0.3,
+                "r": 0.42
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 1.0,
+                "g": 1.0,
+                "r": 1.0
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 604.0,
+            "height": 136.0,
+            "left": 86.0,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "BackpackUIController:874494",
+          "sourceActive": true,
+          "sourceAlpha": 0.2,
+          "sourceObjectId": -5172684,
+          "sourceRect": {
+            "bottom": 604.0,
+            "height": 136.0,
+            "left": 66.0,
+            "width": 66.0
+          },
+          "text": "电池\n1 × 2",
+          "token": 4,
+          "visible": true
+        }
+      ],
+      "pointer": {
+        "x": 104.0,
+        "y": 715.0
+      },
+      "realtime": 531.448853
+    },
+    {
+      "frame": 52275,
+      "held": true,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.18,
+                "g": 0.3,
+                "r": 0.42
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 1.0,
+                "g": 1.0,
+                "r": 1.0
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 604.0,
+            "height": 136.0,
+            "left": 91.0,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "BackpackUIController:874494",
+          "sourceActive": true,
+          "sourceAlpha": 0.2,
+          "sourceObjectId": -5172684,
+          "sourceRect": {
+            "bottom": 604.0,
+            "height": 136.0,
+            "left": 66.0,
+            "width": 66.0
+          },
+          "text": "电池\n1 × 2",
+          "token": 4,
+          "visible": true
+        }
+      ],
+      "pointer": {
+        "x": 109.0,
+        "y": 715.0
+      },
+      "realtime": 531.4626
+    },
+    {
+      "frame": 52277,
+      "held": true,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.18,
+                "g": 0.3,
+                "r": 0.42
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 1.0,
+                "g": 1.0,
+                "r": 1.0
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 604.0,
+            "height": 136.0,
+            "left": 92.0,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "BackpackUIController:874494",
+          "sourceActive": true,
+          "sourceAlpha": 0.2,
+          "sourceObjectId": -5172684,
+          "sourceRect": {
+            "bottom": 604.0,
+            "height": 136.0,
+            "left": 66.0,
+            "width": 66.0
+          },
+          "text": "电池\n1 × 2",
+          "token": 4,
+          "visible": true
+        }
+      ],
+      "pointer": {
+        "x": 110.0,
+        "y": 715.0
+      },
+      "realtime": 531.4753
+    },
+    {
+      "frame": 52279,
+      "held": true,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.18,
+                "g": 0.3,
+                "r": 0.42
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 1.0,
+                "g": 1.0,
+                "r": 1.0
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 604.0,
+            "height": 136.0,
+            "left": 95.0,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "BackpackUIController:874494",
+          "sourceActive": true,
+          "sourceAlpha": 0.2,
+          "sourceObjectId": -5172684,
+          "sourceRect": {
+            "bottom": 604.0,
+            "height": 136.0,
+            "left": 66.0,
+            "width": 66.0
+          },
+          "text": "电池\n1 × 2",
+          "token": 4,
+          "visible": true
+        }
+      ],
+      "pointer": {
+        "x": 113.0,
+        "y": 715.0
+      },
+      "realtime": 531.488647
+    },
+    {
+      "frame": 52281,
+      "held": true,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.18,
+                "g": 0.3,
+                "r": 0.42
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 1.0,
+                "g": 1.0,
+                "r": 1.0
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 429.0,
+            "height": 136.0,
+            "left": 942.0,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "BackpackUIController:874494",
+          "sourceActive": true,
+          "sourceAlpha": 0.2,
+          "sourceObjectId": -5172684,
+          "sourceRect": {
+            "bottom": 604.0,
+            "height": 136.0,
+            "left": 66.0,
+            "width": 66.0
+          },
+          "text": "电池\n1 × 2",
+          "token": 4,
+          "visible": true
+        }
+      ],
+      "pointer": {
+        "x": 960.0,
+        "y": 540.0
+      },
+      "realtime": 531.5032
+    },
+    {
+      "frame": 52283,
+      "held": true,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.18,
+                "g": 0.3,
+                "r": 0.42
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 1.0,
+                "g": 1.0,
+                "r": 1.0
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 604.0,
+            "height": 136.0,
+            "left": 116.0,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "BackpackUIController:874494",
+          "sourceActive": true,
+          "sourceAlpha": 0.2,
+          "sourceObjectId": -5172684,
+          "sourceRect": {
+            "bottom": 604.0,
+            "height": 136.0,
+            "left": 66.0,
+            "width": 66.0
+          },
+          "text": "电池\n1 × 2",
+          "token": 4,
+          "visible": true
+        }
+      ],
+      "pointer": {
+        "x": 134.0,
+        "y": 715.0
+      },
+      "realtime": 531.559
+    },
+    {
+      "frame": 52285,
+      "held": true,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.18,
+                "g": 0.3,
+                "r": 0.42
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 1.0,
+                "g": 1.0,
+                "r": 1.0
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 429.0,
+            "height": 136.0,
+            "left": 942.0,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "BackpackUIController:874494",
+          "sourceActive": true,
+          "sourceAlpha": 0.2,
+          "sourceObjectId": -5172684,
+          "sourceRect": {
+            "bottom": 604.0,
+            "height": 136.0,
+            "left": 66.0,
+            "width": 66.0
+          },
+          "text": "电池\n1 × 2",
+          "token": 4,
+          "visible": true
+        }
+      ],
+      "pointer": {
+        "x": 960.0,
+        "y": 540.0
+      },
+      "realtime": 531.612366
+    },
+    {
+      "frame": 52295,
+      "held": true,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.18,
+                "g": 0.3,
+                "r": 0.42
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 1.0,
+                "g": 1.0,
+                "r": 1.0
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 674.0,
+            "height": 66.0,
+            "left": 116.0,
+            "width": 136.0
+          },
+          "objectId": -5172588,
+          "owner": "BackpackUIController:874494",
+          "sourceActive": true,
+          "sourceAlpha": 0.2,
+          "sourceObjectId": -5172684,
+          "sourceRect": {
+            "bottom": 604.0,
+            "height": 136.0,
+            "left": 66.0,
+            "width": 66.0
+          },
+          "text": "Battery\n2 × 1",
+          "token": 4,
+          "visible": true
+        }
+      ],
+      "pointer": {
+        "x": 134.0,
+        "y": 715.0
+      },
+      "realtime": 531.7586
+    },
+    {
+      "frame": 52297,
+      "held": false,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.18,
+                "g": 0.3,
+                "r": 0.42
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 1.0,
+                "g": 1.0,
+                "r": 1.0
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 674.0,
+            "height": 66.0,
+            "left": 116.0,
+            "width": 136.0
+          },
+          "objectId": -5172588,
+          "owner": "",
+          "sourceActive": false,
+          "sourceAlpha": -1.0,
+          "sourceObjectId": 0,
+          "sourceRect": {
+            "bottom": 0.0,
+            "height": 0.0,
+            "left": 0.0,
+            "width": 0.0
+          },
+          "text": "Battery\n2 × 1",
+          "token": 0,
+          "visible": false
+        }
+      ],
+      "pointer": {
+        "x": 134.0,
+        "y": 715.0
+      },
+      "realtime": 531.771362
+    },
+    {
+      "frame": 52301,
+      "held": false,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.18,
+                "g": 0.3,
+                "r": 0.42
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 1.0,
+                "g": 1.0,
+                "r": 1.0
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 674.0,
+            "height": 66.0,
+            "left": 116.0,
+            "width": 136.0
+          },
+          "objectId": -5172588,
+          "owner": "",
+          "sourceActive": false,
+          "sourceAlpha": -1.0,
+          "sourceObjectId": 0,
+          "sourceRect": {
+            "bottom": 0.0,
+            "height": 0.0,
+            "left": 0.0,
+            "width": 0.0
+          },
+          "text": "Battery\n2 × 1",
+          "token": 0,
+          "visible": false
+        }
+      ],
+      "pointer": {
+        "x": 84.0,
+        "y": 715.0
+      },
+      "realtime": 531.841736
+    },
+    {
+      "frame": 52303,
+      "held": true,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.18,
+                "g": 0.3,
+                "r": 0.42
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 1.0,
+                "g": 1.0,
+                "r": 1.0
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 674.0,
+            "height": 66.0,
+            "left": 116.0,
+            "width": 136.0
+          },
+          "objectId": -5172588,
+          "owner": "",
+          "sourceActive": false,
+          "sourceAlpha": -1.0,
+          "sourceObjectId": 0,
+          "sourceRect": {
+            "bottom": 0.0,
+            "height": 0.0,
+            "left": 0.0,
+            "width": 0.0
+          },
+          "text": "Battery\n2 × 1",
+          "token": 0,
+          "visible": false
+        }
+      ],
+      "pointer": {
+        "x": 84.0,
+        "y": 715.0
+      },
+      "realtime": 531.8554
+    },
+    {
+      "frame": 52305,
+      "held": true,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.222,
+                "g": 0.384,
+                "r": 0.511
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 1.0,
+                "g": 1.0,
+                "r": 1.0
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 604.0,
+            "height": 136.0,
+            "left": 86.0,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "BackpackUIController:874494",
+          "sourceActive": true,
+          "sourceAlpha": 0.2,
+          "sourceObjectId": -5172684,
+          "sourceRect": {
+            "bottom": 604.0,
+            "height": 136.0,
+            "left": 66.0,
+            "width": 66.0
+          },
+          "text": "Battery\n1 × 2",
+          "token": 5,
+          "visible": true
+        }
+      ],
+      "pointer": {
+        "x": 104.0,
+        "y": 715.0
+      },
+      "realtime": 531.8696
+    },
+    {
+      "frame": 52307,
+      "held": true,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.222,
+                "g": 0.384,
+                "r": 0.511
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 1.0,
+                "g": 1.0,
+                "r": 1.0
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 429.0,
+            "height": 136.0,
+            "left": 942.0,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "BackpackUIController:874494",
+          "sourceActive": true,
+          "sourceAlpha": 0.2,
+          "sourceObjectId": -5172684,
+          "sourceRect": {
+            "bottom": 604.0,
+            "height": 136.0,
+            "left": 66.0,
+            "width": 66.0
+          },
+          "text": "Battery\n1 × 2",
+          "token": 5,
+          "visible": true
+        }
+      ],
+      "pointer": {
+        "x": 960.0,
+        "y": 540.0
+      },
+      "realtime": 531.8819
+    },
+    {
+      "frame": 52309,
+      "held": true,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.222,
+                "g": 0.384,
+                "r": 0.511
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 1.0,
+                "g": 1.0,
+                "r": 1.0
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 733.9,
+            "height": 136.0,
+            "left": 857.1,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "BackpackUIController:874494",
+          "sourceActive": true,
+          "sourceAlpha": 0.2,
+          "sourceObjectId": -5172684,
+          "sourceRect": {
+            "bottom": 604.0,
+            "height": 136.0,
+            "left": 66.0,
+            "width": 66.0
+          },
+          "text": "Battery\n1 × 2",
+          "token": 5,
+          "visible": true
+        }
+      ],
+      "pointer": {
+        "x": 875.1,
+        "y": 844.9
+      },
+      "realtime": 531.8951
+    },
+    {
+      "frame": 52311,
+      "held": false,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.222,
+                "g": 0.384,
+                "r": 0.511
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 1.0,
+                "g": 1.0,
+                "r": 1.0
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 733.9,
+            "height": 136.0,
+            "left": 857.1,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "",
+          "sourceActive": false,
+          "sourceAlpha": -1.0,
+          "sourceObjectId": 0,
+          "sourceRect": {
+            "bottom": 0.0,
+            "height": 0.0,
+            "left": 0.0,
+            "width": 0.0
+          },
+          "text": "Battery\n1 × 2",
+          "token": 0,
+          "visible": false
+        }
+      ],
+      "pointer": {
+        "x": 875.1,
+        "y": 844.9
+      },
+      "realtime": 531.947
+    },
+    {
+      "frame": 52313,
+      "held": false,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.222,
+                "g": 0.384,
+                "r": 0.511
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 1.0,
+                "g": 1.0,
+                "r": 1.0
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 733.9,
+            "height": 136.0,
+            "left": 857.1,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "",
+          "sourceActive": false,
+          "sourceAlpha": -1.0,
+          "sourceObjectId": 0,
+          "sourceRect": {
+            "bottom": 0.0,
+            "height": 0.0,
+            "left": 0.0,
+            "width": 0.0
+          },
+          "text": "Battery\n1 × 2",
+          "token": 0,
+          "visible": false
+        }
+      ],
+      "pointer": {
+        "x": 870.0,
+        "y": 843.0
+      },
+      "realtime": 531.958435
+    },
+    {
+      "frame": 52315,
+      "held": true,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.222,
+                "g": 0.384,
+                "r": 0.511
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 1.0,
+                "g": 1.0,
+                "r": 1.0
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 733.9,
+            "height": 136.0,
+            "left": 857.1,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "",
+          "sourceActive": false,
+          "sourceAlpha": -1.0,
+          "sourceObjectId": 0,
+          "sourceRect": {
+            "bottom": 0.0,
+            "height": 0.0,
+            "left": 0.0,
+            "width": 0.0
+          },
+          "text": "Battery\n1 × 2",
+          "token": 0,
+          "visible": false
+        }
+      ],
+      "pointer": {
+        "x": 870.0,
+        "y": 843.0
+      },
+      "realtime": 531.9717
+    },
+    {
+      "frame": 52317,
+      "held": true,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.3515,
+                "g": 0.5025,
+                "r": 0.555
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 1.0,
+                "g": 1.0,
+                "r": 1.0
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 732.0,
+            "height": 136.0,
+            "left": 872.0,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "WarehouseUIController:874540",
+          "sourceActive": true,
+          "sourceAlpha": 0.2,
+          "sourceObjectId": -5173190,
+          "sourceRect": {
+            "bottom": 732.0,
+            "height": 136.0,
+            "left": 852.0,
+            "width": 66.0
+          },
+          "text": "Battery\n1 × 2",
+          "token": 2,
+          "visible": true
+        }
+      ],
+      "pointer": {
+        "x": 890.0,
+        "y": 843.0
+      },
+      "realtime": 531.986267
+    },
+    {
+      "frame": 52319,
+      "held": true,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.3515,
+                "g": 0.5025,
+                "r": 0.555
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 1.0,
+                "g": 1.0,
+                "r": 1.0
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 429.0,
+            "height": 136.0,
+            "left": 942.0,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "WarehouseUIController:874540",
+          "sourceActive": true,
+          "sourceAlpha": 0.2,
+          "sourceObjectId": -5173190,
+          "sourceRect": {
+            "bottom": 732.0,
+            "height": 136.0,
+            "left": 852.0,
+            "width": 66.0
+          },
+          "text": "Battery\n1 × 2",
+          "token": 2,
+          "visible": true
+        }
+      ],
+      "pointer": {
+        "x": 960.0,
+        "y": 540.0
+      },
+      "realtime": 531.9984
+    },
+    {
+      "frame": 52321,
+      "held": true,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.3515,
+                "g": 0.5025,
+                "r": 0.555
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 1.0,
+                "g": 1.0,
+                "r": 1.0
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 605.9,
+            "height": 136.0,
+            "left": 71.0999756,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "WarehouseUIController:874540",
+          "sourceActive": true,
+          "sourceAlpha": 0.2,
+          "sourceObjectId": -5173190,
+          "sourceRect": {
+            "bottom": 732.0,
+            "height": 136.0,
+            "left": 852.0,
+            "width": 66.0
+          },
+          "text": "Battery\n1 × 2",
+          "token": 2,
+          "visible": true
+        }
+      ],
+      "pointer": {
+        "x": 89.0999756,
+        "y": 716.9
+      },
+      "realtime": 532.0083
+    },
+    {
+      "frame": 52323,
+      "held": false,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.3515,
+                "g": 0.5025,
+                "r": 0.555
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 1.0,
+                "g": 1.0,
+                "r": 1.0
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 605.9,
+            "height": 136.0,
+            "left": 71.0999756,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "",
+          "sourceActive": false,
+          "sourceAlpha": -1.0,
+          "sourceObjectId": 0,
+          "sourceRect": {
+            "bottom": 0.0,
+            "height": 0.0,
+            "left": 0.0,
+            "width": 0.0
+          },
+          "text": "Battery\n1 × 2",
+          "token": 0,
+          "visible": false
+        }
+      ],
+      "pointer": {
+        "x": 89.0999756,
+        "y": 716.9
+      },
+      "realtime": 532.060242
+    },
+    {
+      "frame": 52325,
+      "held": false,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.3515,
+                "g": 0.5025,
+                "r": 0.555
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 1.0,
+                "g": 1.0,
+                "r": 1.0
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 605.9,
+            "height": 136.0,
+            "left": 71.0999756,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "",
+          "sourceActive": false,
+          "sourceAlpha": -1.0,
+          "sourceObjectId": 0,
+          "sourceRect": {
+            "bottom": 0.0,
+            "height": 0.0,
+            "left": 0.0,
+            "width": 0.0
+          },
+          "text": "Battery\n1 × 2",
+          "token": 0,
+          "visible": false
+        }
+      ],
+      "pointer": {
+        "x": 960.0,
+        "y": 540.0
+      },
+      "realtime": 532.071655
+    },
+    {
+      "frame": 52442,
+      "held": false,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.3515,
+                "g": 0.5025,
+                "r": 0.555
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 1.0,
+                "g": 1.0,
+                "r": 1.0
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 605.9,
+            "height": 136.0,
+            "left": 71.0999756,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "",
+          "sourceActive": false,
+          "sourceAlpha": -1.0,
+          "sourceObjectId": 0,
+          "sourceRect": {
+            "bottom": 0.0,
+            "height": 0.0,
+            "left": 0.0,
+            "width": 0.0
+          },
+          "text": "Battery\n1 × 2",
+          "token": 0,
+          "visible": false
+        }
+      ],
+      "pointer": {
+        "x": 1456.0,
+        "y": 785.0
+      },
+      "realtime": 532.7585
+    },
+    {
+      "frame": 52444,
+      "held": true,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.3515,
+                "g": 0.5025,
+                "r": 0.555
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 1.0,
+                "g": 1.0,
+                "r": 1.0
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 605.9,
+            "height": 136.0,
+            "left": 71.0999756,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "",
+          "sourceActive": false,
+          "sourceAlpha": -1.0,
+          "sourceObjectId": 0,
+          "sourceRect": {
+            "bottom": 0.0,
+            "height": 0.0,
+            "left": 0.0,
+            "width": 0.0
+          },
+          "text": "Battery\n1 × 2",
+          "token": 0,
+          "visible": false
+        }
+      ],
+      "pointer": {
+        "x": 1456.0,
+        "y": 785.0
+      },
+      "realtime": 532.7699
+    },
+    {
+      "frame": 52446,
+      "held": true,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.21,
+                "g": 0.31,
+                "r": 0.37
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 0.16,
+                "b": 0.45,
+                "g": 0.64,
+                "r": 0.72
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 674.0,
+            "height": 136.0,
+            "left": 1458.0,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "BackpackUIController:874494",
+          "sourceActive": true,
+          "sourceAlpha": 0.2,
+          "sourceObjectId": -5172908,
+          "sourceRect": {
+            "bottom": 674.0,
+            "height": 136.0,
+            "left": 1438.0,
+            "width": 66.0
+          },
+          "text": "Battery\n1 × 2",
+          "token": 6,
+          "visible": true
+        }
+      ],
+      "pointer": {
+        "x": 1476.0,
+        "y": 785.0
+      },
+      "realtime": 532.7822
+    },
+    {
+      "frame": 52448,
+      "held": true,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.21,
+                "g": 0.31,
+                "r": 0.37
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 0.16,
+                "b": 0.45,
+                "g": 0.64,
+                "r": 0.72
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": true,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 605.9,
+            "height": 136.0,
+            "left": 141.099976,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "BackpackUIController:874494",
+          "sourceActive": true,
+          "sourceAlpha": 0.2,
+          "sourceObjectId": -5172908,
+          "sourceRect": {
+            "bottom": 674.0,
+            "height": 136.0,
+            "left": 1438.0,
+            "width": 66.0
+          },
+          "text": "Battery\n1 × 2",
+          "token": 6,
+          "visible": true
+        }
+      ],
+      "pointer": {
+        "x": 159.099976,
+        "y": 716.9
+      },
+      "realtime": 532.7919
+    },
+    {
+      "frame": 52454,
+      "held": false,
+      "images": [
+        {
+          "graphics": [
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.21,
+                "g": 0.31,
+                "r": 0.37
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "BackpackDragImage",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 0.16,
+                "b": 0.45,
+                "g": 0.64,
+                "r": 0.72
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Icon",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Name(Clone)",
+              "raycast": false
+            },
+            {
+              "active": false,
+              "color": {
+                "a": 1.0,
+                "b": 0.98,
+                "g": 0.95,
+                "r": 0.91
+              },
+              "culled": false,
+              "inheritedAlpha": 0.9,
+              "name": "Size(Clone)",
+              "raycast": false
+            }
+          ],
+          "imageRect": {
+            "bottom": 605.9,
+            "height": 136.0,
+            "left": 141.099976,
+            "width": 66.0
+          },
+          "objectId": -5172588,
+          "owner": "",
+          "sourceActive": false,
+          "sourceAlpha": -1.0,
+          "sourceObjectId": 0,
+          "sourceRect": {
+            "bottom": 0.0,
+            "height": 0.0,
+            "left": 0.0,
+            "width": 0.0
+          },
+          "text": "Battery\n1 × 2",
+          "token": 0,
+          "visible": false
+        }
+      ],
+      "pointer": {
+        "x": 159.099976,
+        "y": 716.9
+      },
+      "realtime": 532.8697
+    }
+  ]
+}

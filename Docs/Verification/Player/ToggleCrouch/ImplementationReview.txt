@@ -1,0 +1,53 @@
+Toggle crouch implementation staging — 2026-10-19
+
+Status: candidate source only. No Assets/ProjectSettings changes, no Unity operations, no tests run.
+All implementation base files still matched their Before snapshots when ImplementationHashes.json was written.
+QA supplied two additional narrow test compatibility patches; see TestCompatibilityReview.txt.
+
+Production changes (copy/merge only after Editor owner releases):
+1. Assets/Scripts/Player/ScriptableObject/PlayerConfigSO.cs
+   CrouchInputMode { Hold, Toggle }; readable Inspector field crouchInputMode defaults Toggle.
+2. Assets/Data/Player/PlayerConfig.asset
+   crouchInputMode: 1, explicitly ships Toggle. C remains in GameInputActions; no key hardcoding.
+3. Assets/Scripts/Player/MonoBehaviour/PlayerInputReader.cs
+   Crouch performed records one pending press; canceled permits a fresh press.
+   ConsumeCrouch returns and clears that press. CrouchHeld remains unchanged and physical.
+   ClearRequests discards pending C and marks an already-held bound button as requiring release.
+   This suppresses initial-state rechecks after reenable and presses carried through locks/resets.
+   Uses actual bound ButtonControls, so rebinding Crouch works without hardcoding C.
+4. Assets/Scripts/Player/MonoBehaviour/PlayerController.cs
+   Stores requested crouch separately from physical input/actual collision pose.
+   Toggle intent changes only on a consumed press while CanAct; Hold reads physical CrouchHeld.
+   Opening/closing a bag clears queued input but preserves original toggle intent.
+   Other ClearRequests calls reset intent: scene lock, relocation, new round, death, enable/disable.
+   Existing WantsCrouch/CanStand preserve low-ceiling behavior: requested stand completes after exit.
+   Existing FSM, capsule resizing, death recovery, and stealth querying IsCrouching remain unchanged.
+
+Test staging:
+- Assets/Tests/Player/PlayMode/PlayerIntegrationTests.cs
+  Existing cloned test config explicitly uses Hold, preserving old hold/release semantics.
+- Assets/Tests/Player/PlayMode/PlayerToggleCrouchTests.cs (new, 8 tests)
+  ShippingAndNewConfigurationsDefaultToToggle
+  TogglePressCrouchesReleaseKeepsPoseAndSecondPressStands
+  HoldOptionStillCrouchesOnlyWhileTheBoundButtonIsHeld
+  BackpackIgnoresCWithoutChangingTheIntentRestoredOnDamageClose
+  LowCeilingDefersToggleStandRequestUntilThePlayerWalksOut
+  TransitionAndReenableResetIntentWithoutReplayingAStillHeldButton
+  NewRoundAndSameRoundDeathRecoveryResetCrouchIntent
+  ToggleUsesTheReboundCrouchActionInsteadOfHardCodingC
+- QA patches: PlayerStealthVignetteTests clone explicitly Hold; one BackpackIntegrationTests scenario
+  now presses C again to stand before the pre-existing jump/gravity assertions (formal Toggle default).
+
+Unchanged copied file: Assets/Tests/Player/Editor/PlayerTestSceneBuilder.cs. It inherits the new
+PlayerConfigSO Toggle default already; do not copy it back just because a staging copy exists.
+
+Before applying: verify each production base hash. If another writer changed any base, merge the
+small diffs into the latest file. BackpackIntegrationTests can change during task004; apply its
+four added lines as a narrow hunk, never overwrite the live file with the staged snapshot.
+
+Recommended focused verification:
+PlayerToggleCrouchTests, PlayerCrouchColliderTests, PlayerMovementTests;
+PlayerStealthVignetteTests and BackpackIntegrationTests.OpenBackpackPreservesCrouchAndAllowsWorldTimeAndGravity;
+existing GameFlow death recovery tests if live flow verification is not sufficient.
+Actual 1920x1080 flow: C down/up stays crouched, another C stands, bag C ignored, grass hide/vignette
+persists after releasing C, fresh round/death return upright. Hold option remains available in Inspector.

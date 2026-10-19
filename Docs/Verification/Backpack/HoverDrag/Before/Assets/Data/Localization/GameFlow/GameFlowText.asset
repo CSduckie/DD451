@@ -1,0 +1,141 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f3cd9f8c424ac5439f636ad5435f100, type: 3}
+  m_Name: GameFlowText
+  m_EditorClassIdentifier: MyPrecious.Localization::LocalizationTableSO
+  entries:
+  - key: flow.interact.storage
+    chinese: "E  \u6574\u7406\u80CC\u5305\u4E0E\u4ED3\u5E93"
+    english: E  Open backpack and storage
+  - key: flow.interact.departure
+    chinese: "E  \u51FA\u53D1\u524D\u5F80\u5E9F\u589F"
+    english: E  Depart for the ruins
+  - key: flow.interact.extraction
+    chinese: "E  \u7ACB\u5373\u64A4\u79BB\u5E76\u8FD4\u56DE\u5E87\u62A4\u6240"
+    english: E  Extract and return to shelter
+  - key: flow.label.storage
+    chinese: "\u4ED3\u5E93"
+    english: STORAGE
+  - key: flow.label.departure
+    chinese: "\u51FA\u53D1 \u2192"
+    english: "DEPART \u2192"
+  - key: flow.label.extraction
+    chinese: "\u64A4\u79BB \u2192"
+    english: "EXTRACT \u2192"
+  - key: flow.label.loot
+    chinese: "\u641C\u7D22\u7269\u8D44"
+    english: SEARCH SUPPLIES
+  - key: flow.label.ground
+    chinese: "\u5730\u9762\u7269\u54C1"
+    english: GROUND ITEM
+  - key: flow.stage.booting
+    chinese: "\u6B63\u5728\u51C6\u5907\u5E87\u62A4\u6240"
+    english: Preparing shelter
+  - key: flow.stage.shelter
+    chinese: "\u5E87\u62A4\u6240 \xB7 \u81EA\u7531\u6574\u7406"
+    english: "Shelter \xB7 Prepare for departure"
+  - key: flow.stage.departing
+    chinese: "\u51FA\u53D1 \xB7 \u6B63\u5728\u51C6\u5907\u5E9F\u589F"
+    english: "Departing \xB7 Preparing the ruins"
+  - key: flow.stage.exploring
+    chinese: "\u5E9F\u589F \xB7 \u5411\u53F3\u641C\u522E\u5E76\u64A4\u79BB"
+    english: "Ruins \xB7 Search and extract to the right"
+  - key: flow.stage.returning
+    chinese: "\u64A4\u79BB \xB7 \u6B63\u5728\u8FD4\u56DE\u5E87\u62A4\u6240"
+    english: "Extracting \xB7 Returning to shelter"
+  - key: flow.stage.failed
+    chinese: "\u6D41\u7A0B\u6682\u65F6\u4E2D\u65AD"
+    english: The journey is interrupted
+  - key: flow.stage.deathreturning
+    chinese: "死亡 · 正在返回庇护所"
+    english: "Defeated · Returning to shelter"
+  - key: flow.deathreturning
+    chinese: "正在结算丢失物品并返回庇护所。"
+    english: Settling lost items and returning to shelter.
+  - key: flow.deathreturned
+    chinese: "已返回庇护所。背包物品已丢失，仓库物品已保留。"
+    english: Back at shelter. Backpack items were lost. Stored items are safe.
+  - key: flow.health
+    chinese: "\u751F\u547D {0}/{1}"
+    english: Health {0}/{1}
+  - key: flow.controls
+    chinese: "A/D \u79FB\u52A8  \xB7  \u7A7A\u683C \u8DF3\u8DC3  \xB7  C \u8E72\u4F0F 
+      \xB7  E \u4EA4\u4E92  \xB7  Tab \u80CC\u5305  \xB7  R \u65CB\u8F6C  \xB7  F10
+      \u4E2D\u82F1\u5207\u6362"
+    english: "A/D Move  \xB7  Space Jump  \xB7  C Crouch  \xB7  E Interact  \xB7 
+      Tab Backpack  \xB7  R Rotate  \xB7  F10 Language"
+  - key: flow.retry
+    chinese: "\u91CD\u8BD5"
+    english: Retry
+  - key: flow.loading
+    chinese: "\u6B63\u5728\u51C6\u5907\u573A\u666F\uFF0C\u8BF7\u7A0D\u5019\u3002"
+    english: Preparing the scene. Please wait.
+  - key: flow.booting
+    chinese: "\u6B63\u5728\u8FDB\u5165\u5E87\u62A4\u6240\u3002"
+    english: Entering the shelter.
+  - key: flow.departing
+    chinese: "\u6B63\u5728\u5F00\u59CB\u65B0\u4E00\u8F6E\u63A2\u7D22\u3002"
+    english: Starting a new exploration round.
+  - key: flow.returning
+    chinese: "\u6B63\u5728\u786E\u8BA4\u5E26\u56DE\u4E0E\u9057\u7559\u7269\u54C1\u3002"
+    english: Checking carried items and items left behind.
+  - key: flow.shelter
+    chinese: "\u524D\u5F80\u4ED3\u5E93\u6574\u7406\uFF0C\u6216\u5411\u53F3\u51FA\u53D1\u3002"
+    english: Visit storage or depart to the right.
+  - key: flow.exploring
+    chinese: "\u641C\u7D22\u7269\u8D44\uFF0C\u518D\u5230\u8DEF\u7EBF\u53E6\u4E00\u7AEF\u4E92\u52A8\u64A4\u79BB\u3002"
+    english: Search supplies and interact at the far end to extract.
+  - key: flow.ready
+    chinese: "\u51C6\u5907\u5C31\u7EEA\u3002"
+    english: Ready.
+  - key: flow.shelter_ready
+    chinese: "\u524D\u5F80\u4ED3\u5E93\u6574\u7406\uFF0C\u6216\u5411\u53F3\u51FA\u53D1\u3002"
+    english: Visit storage or depart to the right.
+  - key: flow.exploration_ready
+    chinese: "\u641C\u7D22\u7269\u8D44\uFF0C\u518D\u5230\u8DEF\u7EBF\u53E6\u4E00\u7AEF\u4E92\u52A8\u64A4\u79BB\u3002"
+    english: Search supplies and interact at the far end to extract.
+  - key: flow.returned
+    chinese: "\u5DF2\u5B89\u5168\u8FD4\u56DE\uFF1B\u7269\u54C1\u53EF\u7559\u5728\u80CC\u5305\u6216\u81EA\u7531\u5B58\u53D6\u3002"
+    english: Returned safely. Keep items in your backpack or move them to storage.
+  - key: flow.failed
+    chinese: "\u51C6\u5907\u672A\u5B8C\u6210\uFF0C\u5F53\u524D\u7269\u54C1\u4E0E\u8FDB\u5EA6\u5DF2\u4FDD\u7559\u3002\u4FEE\u6B63\u914D\u7F6E\u540E\u53EF\u91CD\u8BD5\u3002"
+    english: Preparation failed. Items and progress are preserved. Correct the configuration
+      and retry.
+  - key: flow.error.dependencies
+    chinese: "\u7CFB\u7EDF\u51C6\u5907\u672A\u5B8C\u6210\uFF0C\u8BF7\u91CD\u8BD5\u3002"
+    english: The game is not ready yet. Please retry.
+  - key: flow.error.scene
+    chinese: "\u76EE\u6807\u5730\u70B9\u6682\u65F6\u4E0D\u53EF\u7528\uFF0C\u8BF7\u91CD\u8BD5\u3002"
+    english: The destination is currently unavailable. Please retry.
+  - key: flow.error.sources
+    chinese: "\u7269\u8D44\u5C1A\u672A\u51C6\u5907\u597D\uFF0C\u672C\u8F6E\u8FDB\u5EA6\u5DF2\u4FDD\u7559\uFF0C\u8BF7\u91CD\u8BD5\u3002"
+    english: The supplies are not ready yet. This round's progress is preserved.
+      Please retry.
+  - key: flow.error.player
+    chinese: "\u73A9\u5BB6\u65E0\u6CD5\u7EE7\u7EED\u5F53\u524D\u884C\u7A0B\uFF0C\u8BF7\u68C0\u67E5\u5F53\u524D\u72B6\u6001\u540E\u91CD\u8BD5\u3002"
+    english: The player cannot continue this journey. Check the current state and
+      retry.
+  - key: flow.error.settlement
+    chinese: "\u7269\u54C1\u6838\u5BF9\u672A\u5B8C\u6210\uFF0C\u8FDB\u5EA6\u5DF2\u4FDD\u7559\uFF0C\u8BF7\u91CD\u8BD5\u3002"
+    english: The item check is incomplete. Your progress is preserved. Please retry.
+  - key: flow.error.unload
+    chinese: "\u4E0A\u4E00\u5730\u70B9\u5C1A\u672A\u5173\u95ED\uFF0C\u8BF7\u91CD\u8BD5\u3002"
+    english: The previous location has not closed yet. Please retry.
+  - key: flow.busy
+    chinese: "\u5F53\u524D\u64CD\u4F5C\u5C1A\u672A\u5B8C\u6210\u3002"
+    english: The current operation is still in progress.
+  - key: flow.player_unavailable
+    chinese: "\u73A9\u5BB6\u5F53\u524D\u65E0\u6CD5\u6267\u884C\u6B64\u64CD\u4F5C\u3002"
+    english: The player cannot perform this action now.
+  - key: flow.storage_unavailable
+    chinese: "\u4ED3\u5E93\u6682\u65F6\u65E0\u6CD5\u6253\u5F00\u3002"
+    english: Storage cannot be opened right now.

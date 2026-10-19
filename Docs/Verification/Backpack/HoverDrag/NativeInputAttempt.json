@@ -1,0 +1,24 @@
+{
+  "scene": "Assets/Scenes/Tests/Loot/LootTest.unity",
+  "mode": "ordinary Play, default input focus policy, native Keyboard id1 + Mouse id2 enabled only",
+  "window": {
+    "id": 266272,
+    "app": "process:E:\\6000.2.12f1\\Editor\\Unity.exe"
+  },
+  "actions": [
+    "Closed floating InputActions editor with native click; GameView focused",
+    "Native Tab: no backpack open",
+    "Native click within Game then second Tab: still no open",
+    "API TryOpen prepared backpack (not a native open pass)",
+    "Native battery drag observed screen (400,580) -> (540,580), valid empty target: no selection, no drag start, nextDragToken stayed0, battery still(0,2)"
+  ],
+  "result": {
+    "success": true,
+    "message": "Code executed successfully.",
+    "data": {
+      "result": "{\"placements\":[{\"id\":\"24df2360b23a4e5a89a7dda5add6b500\",\"definition\":\"medkit\",\"X\":0,\"Y\":0,\"Rotated\":false},{\"id\":\"0d853d11101848d1a535c8029d44f0ff\",\"definition\":\"food\",\"X\":2,\"Y\":0,\"Rotated\":false},{\"id\":\"4a5cf756021e41aa9985a328fcf83ea2\",\"definition\":\"battery\",\"X\":0,\"Y\":2,\"Rotated\":false}],\"selected\":null,\"nextToken\":0,\"image\":false,\"mouse\":\"(950.00, 617.00)\"}",
+      "compiler": "codedom"
+    }
+  },
+  "boundary": "Native OS input verification unsuccessful; queued input must not be presented as native. Root cause not determined."
+}

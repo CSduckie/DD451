@@ -1,0 +1,88 @@
+04B 悬停与跟随影像：独立源码/证据复核
+审阅时刻（UTC）：2026-10-19T18:19:27.177335+00:00
+审阅方式：只读源码、基线哈希、已保存测试 JSON；本审阅未运行 Unity、未改 Assets/ProjectSettings。
+
+结论：当前修改保持显示层与既有物品提交链分离，未发现本次范围内的阻塞性静态问题。已保存专项和正式死亡测试有详细 Passed 证据。原生输入尝试未成功，普通 Game 的视觉探针及截图验收仍需另行完成；本文件不能作为该部分通过凭据。
+
+参数入口与行为
+1. Assets/Prefabs/UI/Backpack/BackpackItem.prefab 的 BackpackItemView 组件：hoverColor 默认 RGBA(1,0.88,0.60,1)，hoverStrength 默认 0.30，可在 Inspector 调节。当前 prefab 没有新字段的显式序列化覆盖，使用脚本字段默认值。
+2. Assets/Prefabs/UI/Backpack/BackpackPanel.prefab 的 BackpackView 组件：dragSourceAlpha 默认 0.20（乘以源对象原 alpha），dragImageAlpha 默认 0.90。当前 prefab 同样使用脚本默认值。正式运行可查看对应实例上的这两个字段。
+3. 悬停与选中分别保存；PointerEnter/Exit 加 LateUpdate 按实际最上层 Raycast 重算，确认框遮挡和同源原格松手后无需再次进入也可恢复正确高亮。名称/尺寸子图形不拦截射线。
+4. 超过既有 UGUI 拖动阈值开始，不增加长按计时。按下时保存物品局部点，开始时据此计算真实抓取位置；来源内部格缝可用于抓取，目标格缝仍由原放置校验拒绝。
+5. BackpackView 缓存一份 BackpackDragImage，挂在现有 root Canvas，复用名称/尺寸及已有来源图标；不新建 Canvas/EventSystem。影像及子图形关闭 Raycast，脱离 ScrollRect/Mask；目标占格预览仍独立存在。源 CanvasGroup 只淡化，源 GameObject 保持事件资格。
+6. 旋转使用来源控制器的方向/夹紧后抓取格；影像保留格内偏移并更新尺寸。F10 刷新文字，不执行物品业务。关包/受击/禁用/销毁结束影像并恢复仍存在源对象的原 alpha；不会重新生成已丢失或消耗的物品。
+7. End/Follow 核对 owner+token。Backpack/Warehouse 开始入口保存 startedToken，首次 UpdateDrag 同步取消或重开后只能返回本次有效 token，否则返回 0；搜刮入口同样复核本次会话及 token 后才创建影像。
+
+生产文件范围：11 个 C# 文件（另有新增 BackpackDragImage.cs.meta，属于该组件的 Unity 元数据）
+1. Assets/Scripts/Backpack/MonoBehaviour/BackpackItemView.cs
+2. Assets/Scripts/Backpack/MonoBehaviour/BackpackUIController.cs
+3. Assets/Scripts/Backpack/MonoBehaviour/BackpackView.cs
+4. Assets/Scripts/Backpack/MonoBehaviour/BackpackDragImage.cs
+5. Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferUIBridge.cs
+6. Assets/Scripts/Loot/MonoBehaviour/LootItemView.cs
+7. Assets/Scripts/Loot/MonoBehaviour/LootUIController.cs
+8. Assets/Scripts/Loot/MonoBehaviour/LootView.cs
+9. Assets/Scripts/Warehouse/MonoBehaviour/WarehouseItemView.cs
+10. Assets/Scripts/Warehouse/MonoBehaviour/WarehouseUIController.cs
+11. Assets/Scripts/Warehouse/MonoBehaviour/WarehouseView.cs
+
+上述必要跨模块接入仅传递源 RectTransform、按下位置、图标、旋转/抓取格与本次 token，或负责显示清理。仓库保留自己的拖拽/R 输入及格子；搜刮仅已揭示且未取走条目能开始影像，未知项仍沿原 ScrollRect 路径。ItemTransferUIBridge 修改仅在仓库拖动/取消显示接入，不改业务提交方法。
+
+核心与事务保持
+比较基线为 Docs/Verification/Backpack/HoverDrag/AfterToggleCrouch/Hashes.json，而非把本工作区所有既存 Git 差异归入 04B。
+以下当前文件 SHA-256 与该基线完全相同：
+- Assets/Scripts/Items/MonoBehaviour/ItemManager.cs
+- Assets/Scripts/Items/RuntimeData/ItemInstance.cs
+- Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs
+- Assets/Scripts/Items/Transfers/RuntimeData/ItemTransferResult.cs
+- Assets/Scripts/Backpack/MonoBehaviour/BackpackManager.cs
+- Assets/Scripts/Backpack/Logic/BackpackGrid.cs
+- Assets/Scripts/Backpack/RuntimeData/BackpackPlacement.cs
+- Assets/Scripts/Warehouse/MonoBehaviour/WarehouseManager.cs
+- Assets/Scripts/Warehouse/Logic/WarehouseGrid.cs
+- Assets/Scripts/Warehouse/RuntimeData/WarehousePlacement.cs
+- Assets/Scripts/Loot/MonoBehaviour/LootRuntimeManager.cs
+- Assets/Scripts/Loot/RuntimeData/LootSourceState.cs
+因此本轮没有改唯一身份、归属/实例计数、使用次数、EV、找回/丢弃语义、格子规则、搜刮生成/搜索状态及协调器事务实现。生产拖动仍保留真实源摆放，合法松手沿既有 EndDrag/ItemTransferCoordinator 提交；非法目标与取消只撤销预览/显示。
+
+02D C-toggle 保留核验
+Docs/Handoffs/02D_ToggleCrouch_Handoff.txt 对应的四个生产文件 PlayerConfigSO.cs、PlayerConfig.asset、PlayerInputReader.cs、PlayerController.cs，当前哈希均与 AfterToggleCrouch/Hashes.json 相同。默认 Toggle 和 Hold 可选语义未被覆盖。
+Assets/Tests/Backpack/PlayMode/BackpackIntegrationTests.cs 的 OpenBackpackPreservesCrouchAndAllowsWorldTimeAndGravity 整段方法，与 AfterToggleCrouch/BackpackIntegrationTests.cs 完全一致；当前 483–488 行保留“Tab 关包后仍蹲伏 → 第二次 C → 站立 → 后续跳跃/重力”的窄修改。初次 Backpack 21/21 明细中该用例 Passed。
+AfterToggleCrouch 哈希清单不含 Assets/Input/GameInputActions.inputactions，因此本审阅未把该文件标作已由此清单核验；04B 的实际生产修改列表中也没有它。
+
+已保存证据与准确结论
+- BackpackPlayMode-Initial.json：job cfdf0deb71c94adab55af1f31679f094，详细 summary 为 total/passed 21/21，failed 0，skipped 0。此为初次运行，发生在最终悬停恢复/token 窄修复之前，不能单独代替最终版本验收。
+- UIPlayMode-MCP.json：job a97cfcbf761e43eda3eea77571600cfa，status=succeeded，progress completed/total=70/70，failures_so_far=[]，error=null；data.result=null。联合运行已完成且未记录失败，但域重载后结果明细未保留在该文件，无法据此确认每项 Passed 或跳过数，不能表述为“70 项详细通过、0 skip”。
+- FocusedPlayMode-Final.json：job ae952bef323c425a9c73e67f902bfc23，详细 summary total/passed=8/8，failed=0，skipped=0；八条明细均 Passed：
+  BackpackIntegrationTests.QueuedDragImageKeepsPixelGrabAcrossGapsOutsideRotationAndLanguageThenRejectsDrop
+  BackpackIntegrationTests.QueuedHoverPreservesSelectionAndDoesNotPassThroughDiscardConfirmation
+  BackpackIntegrationTests.QueuedSameFrameCtrlLeftAndRightPressCannotUseAndRightUseRecoversAfterRelease
+  LootIntegrationTests.QueuedControlUsesOnlyRotatedBackpackSpaceAndPrecisePickupKeepsBoxRotationAndGrabOffset
+  LootIntegrationTests.QueuedDamageCancelsValidBoxPickupAndLateTokenCannotAffectNextDrag
+  LootIntegrationTests.QueuedDamageCancelsValidBoxReturnAndLateTokenCannotAffectNextDrag
+  LootIntegrationTests.QueuedGridUnknownOutlinesHaveOneCenteredCountdownAndMatchBackpackPixels
+  LootIntegrationTests.QueuedPointerTransfersBothWaysAndSingleRPreserveIdentityAndEv
+- DeathPlayMode.json：job 6866d0ac584346b19fbd87a0724fa8c8，GameFlowDeathReturnTests.DeathClosesSearchAndDragSynchronouslyAndUsedMedkitKeepsItsRoundAllowance 1/1 Passed，failed/skipped=0/0。当前用例明确断言死亡同步隐藏影像、结算/转场后不重建已丢失物品，保留原使用额度/找回业务断言。
+
+覆盖解释
+专项使用合成 Keyboard/Mouse 的 QueueStateEvent，经 InputSystem→UIInputModule→UGUI 验证实际屏幕跟随、源 dim/恢复、无影像射线拦截、唯一影像复用、R/F10、包仓及包箱两方向合法移动和受击后迟到释放。已旋转 3×2 箱物品从右下格抓取的屏幕偏移已覆盖。未知轮廓开始/松手不显示影像的新增断言已纳入最终八项。
+仓库同步取消后重开探针，以及部分生命周期/正式死亡用例，以 API 辅助触发精确边界；这些不能声称为实体键鼠操作证据。
+
+待验收与证据边界（普通 Game 视觉探针运行前的审阅截点）
+NativeInputAttempt.json 记录在普通 Play、默认输入焦点策略、只启用原生 Keyboard/Mouse 下，原生 Tab 未打开背包，API 辅助打开后的原生拖动未开始（nextDragToken=0、selected=null、image=false）。这是未成功的原生输入验证，根因尚未确定，不据此归因于业务代码或工具，也不能把后续合成输入写成原生通过。
+RuntimeProbe.cs.txt 是准备好的探针源码，不是执行结果。当前审阅未使用任何运行成功 Result 或截图作为证据。仍需取得普通 Game 1920×1080 的悬停/移出、中央世界区连续跟随、旋转、两方向跨窗口及非法回原位截图并人工检查可读性、遮挡和跟随观感，区分 API 准备、合成队列输入与实体输入。
+本轮现有专项未单独证明右下格抓取后再按 R 导致抓取格夹紧的视觉边界；当前旋转箱用例是先旋转后抓取右下格。其他分辨率、Windows 构建及完整原生鼠标行为也未由本证据集确认。
+字体动态 atlas 的测试后未请求差异，以及临时测试 ProjectSettings，按主任务指示由主任务先备份再恢复/核对；本审阅未修改或清理。检查范围内已记录的非脚本/测试基线文件在当前哈希比较时一致，但这不替代未纳入基线的字体文件检查。最终 Console、普通 Play 探针清理、场景保存/释放状态仍由主任务在收尾时另存证据。
+
+生产源码审阅快照 SHA-256（用于识别本结论对应版本）
+Assets/Scripts/Backpack/MonoBehaviour/BackpackItemView.cs  DBE0C6611C802C9F7376BA975C74478762139A6235633B0A42D72FD850B6D30B
+Assets/Scripts/Backpack/MonoBehaviour/BackpackUIController.cs  377F8740D24C27BBAA76DBC094E86409DAA2ACFD96B0F7C6B22841C08CCA2776
+Assets/Scripts/Backpack/MonoBehaviour/BackpackView.cs  89365182EA8B3B3F137175FC135743C0F856F729B0A6AE019EE9D4370E321A97
+Assets/Scripts/Backpack/MonoBehaviour/BackpackDragImage.cs  7BE120E3DC87DBB500CE67AD46CF1403DCECC2CD45EE8D939900E61346549629
+Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferUIBridge.cs  4410AE39E85519596F14FA1A8F31D2A04626C693C5E1FB0F77F38060832267A4
+Assets/Scripts/Loot/MonoBehaviour/LootItemView.cs  E8C18E1431CEA1438AEBECB514A053A6F05CA2288A1C4BA04BA45A2DF4CC3B1E
+Assets/Scripts/Loot/MonoBehaviour/LootUIController.cs  93CE5BD9AF701633DE770694288BAF833A81FE82D8733880C0F8F6C3012D14AA
+Assets/Scripts/Loot/MonoBehaviour/LootView.cs  591581329DD815B61EC6DBDF2E694E1F73E1369F6D32E48D393DF29AF815284C
+Assets/Scripts/Warehouse/MonoBehaviour/WarehouseItemView.cs  26CFF05D757EC90B0F8D52DD4DE1AE72CDF25FE96BD37F1BE53768432C63D7F3
+Assets/Scripts/Warehouse/MonoBehaviour/WarehouseUIController.cs  B771D963F7104D0EE891B46D029AA12A0FA496CD54D479C449C79111ACE90C53
+Assets/Scripts/Warehouse/MonoBehaviour/WarehouseView.cs  070F5B17E37D809AF2113F3755265CBEB280DE9494527CC10FD2EBB0BADB4FE3

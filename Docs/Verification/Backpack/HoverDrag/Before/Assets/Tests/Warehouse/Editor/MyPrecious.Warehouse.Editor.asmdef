@@ -1,0 +1,7 @@
+{
+    "name": "MyPrecious.Warehouse.Editor",
+    "rootNamespace": "",
+    "references": ["MyPrecious.Warehouse", "MyPrecious.Shelter", "MyPrecious.Warehouse.TestDoubles", "MyPrecious.Items", "MyPrecious.Localization", "Unity.InputSystem", "Unity.TextMeshPro", "Unity.ugui", "Unity.RenderPipelines.Universal.Runtime"],
+    "includePlatforms": ["Editor"],
+    "autoReferenced": true
+}

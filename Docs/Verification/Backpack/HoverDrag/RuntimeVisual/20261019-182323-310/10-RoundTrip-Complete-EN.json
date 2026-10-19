@@ -1,0 +1,721 @@
+{
+  "activeScene": "Assets/Scenes/Tests/Loot/LootTest.unity",
+  "background": true,
+  "backpackOpen": true,
+  "backpackPreview": "OutOfBounds",
+  "backpackSelectedId": "4a5cf756021e41aa9985a328fcf83ea2",
+  "backpackToken": 0,
+  "dead": false,
+  "ev": 2,
+  "feedback": "transfer.Success",
+  "frame": 52325,
+  "gameTime": 362.411072,
+  "grabOffset": {
+    "x": 0,
+    "y": 0
+  },
+  "health": 2,
+  "imageFile": "10-RoundTrip-Complete-EN.png",
+  "images": [
+    {
+      "graphics": [
+        {
+          "active": false,
+          "color": {
+            "a": 1.0,
+            "b": 0.3515,
+            "g": 0.5025,
+            "r": 0.555
+          },
+          "culled": false,
+          "inheritedAlpha": 0.9,
+          "name": "BackpackDragImage",
+          "raycast": false
+        },
+        {
+          "active": false,
+          "color": {
+            "a": 1.0,
+            "b": 1.0,
+            "g": 1.0,
+            "r": 1.0
+          },
+          "culled": false,
+          "inheritedAlpha": 0.9,
+          "name": "Icon",
+          "raycast": false
+        },
+        {
+          "active": false,
+          "color": {
+            "a": 1.0,
+            "b": 0.98,
+            "g": 0.95,
+            "r": 0.91
+          },
+          "culled": false,
+          "inheritedAlpha": 0.9,
+          "name": "Name(Clone)",
+          "raycast": false
+        },
+        {
+          "active": false,
+          "color": {
+            "a": 1.0,
+            "b": 0.98,
+            "g": 0.95,
+            "r": 0.91
+          },
+          "culled": false,
+          "inheritedAlpha": 0.9,
+          "name": "Size(Clone)",
+          "raycast": false
+        }
+      ],
+      "imageRect": {
+        "bottom": 605.9,
+        "height": 136.0,
+        "left": 71.0999756,
+        "width": 66.0
+      },
+      "objectId": -5172588,
+      "owner": "",
+      "sourceActive": false,
+      "sourceAlpha": -1.0,
+      "sourceObjectId": 0,
+      "sourceRect": {
+        "bottom": 0.0,
+        "height": 0.0,
+        "left": 0.0,
+        "width": 0.0
+      },
+      "text": "Battery\n1 × 2",
+      "token": 0,
+      "visible": false
+    }
+  ],
+  "inputDevices": [
+    "1:Keyboard:False",
+    "2:Mouse:False",
+    "578:Keyboard1:True",
+    "579:Mouse1:True"
+  ],
+  "inventory": {
+    "backpack": [
+      {
+        "height": 2,
+        "instanceId": "0d853d11101848d1a535c8029d44f0ff",
+        "rotated": false,
+        "width": 2,
+        "x": 2,
+        "y": 0
+      },
+      {
+        "height": 2,
+        "instanceId": "24df2360b23a4e5a89a7dda5add6b500",
+        "rotated": false,
+        "width": 2,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "height": 2,
+        "instanceId": "4a5cf756021e41aa9985a328fcf83ea2",
+        "rotated": false,
+        "width": 1,
+        "x": 0,
+        "y": 2
+      }
+    ],
+    "distinctInstanceCount": 10,
+    "instanceCount": 10,
+    "items": [
+      {
+        "containerId": "loot-test/guaranteed",
+        "definitionHeight": 2,
+        "definitionId": "food",
+        "definitionObjectId": 47088,
+        "definitionWidth": 2,
+        "ev": 0,
+        "instanceId": "0316bfb598b445d499ca15273a939508",
+        "lastLossReason": "",
+        "originalSpawnPointId": "loot-test/guaranteed/slot-2",
+        "owner": "Container",
+        "pendingRecovery": false,
+        "recoveryRound": 0,
+        "retained": false,
+        "runtimeObjectIdentity": 875454810,
+        "sourceId": "loot-test/guaranteed",
+        "spawnClaimed": false,
+        "uniqueId": "",
+        "useRound": 1,
+        "usesThisRound": 0
+      },
+      {
+        "containerId": "player-backpack",
+        "definitionHeight": 2,
+        "definitionId": "food",
+        "definitionObjectId": 47088,
+        "definitionWidth": 2,
+        "ev": 0,
+        "instanceId": "0d853d11101848d1a535c8029d44f0ff",
+        "lastLossReason": "",
+        "originalSpawnPointId": "loot-test/test-seed/food",
+        "owner": "Backpack",
+        "pendingRecovery": false,
+        "recoveryRound": 0,
+        "retained": false,
+        "runtimeObjectIdentity": -2071507356,
+        "sourceId": "loot-test-seed",
+        "spawnClaimed": true,
+        "uniqueId": "",
+        "useRound": 1,
+        "usesThisRound": 0
+      },
+      {
+        "containerId": "player-backpack",
+        "definitionHeight": 2,
+        "definitionId": "medkit",
+        "definitionObjectId": 46932,
+        "definitionWidth": 2,
+        "ev": 2,
+        "instanceId": "24df2360b23a4e5a89a7dda5add6b500",
+        "lastLossReason": "",
+        "originalSpawnPointId": "loot-test/medical-origin/item",
+        "owner": "Backpack",
+        "pendingRecovery": false,
+        "recoveryRound": 0,
+        "retained": true,
+        "runtimeObjectIdentity": 548007196,
+        "sourceId": "loot-test-seed",
+        "spawnClaimed": true,
+        "uniqueId": "story.medkit",
+        "useRound": 1,
+        "usesThisRound": 0
+      },
+      {
+        "containerId": "player-backpack",
+        "definitionHeight": 2,
+        "definitionId": "battery",
+        "definitionObjectId": 46928,
+        "definitionWidth": 1,
+        "ev": 0,
+        "instanceId": "4a5cf756021e41aa9985a328fcf83ea2",
+        "lastLossReason": "",
+        "originalSpawnPointId": "loot-test/test-seed/battery",
+        "owner": "Backpack",
+        "pendingRecovery": false,
+        "recoveryRound": 0,
+        "retained": false,
+        "runtimeObjectIdentity": -578902346,
+        "sourceId": "loot-test-seed",
+        "spawnClaimed": true,
+        "uniqueId": "",
+        "useRound": 1,
+        "usesThisRound": 0
+      },
+      {
+        "containerId": "shelter-warehouse",
+        "definitionHeight": 2,
+        "definitionId": "food",
+        "definitionObjectId": 47088,
+        "definitionWidth": 2,
+        "ev": 0,
+        "instanceId": "6b796d70a0a94d9d9cc3012307e65ec3",
+        "lastLossReason": "",
+        "originalSpawnPointId": "loot-test/test-seed/stored-food",
+        "owner": "Storage",
+        "pendingRecovery": false,
+        "recoveryRound": 0,
+        "retained": true,
+        "runtimeObjectIdentity": -1888659622,
+        "sourceId": "loot-test-seed",
+        "spawnClaimed": true,
+        "uniqueId": "",
+        "useRound": 1,
+        "usesThisRound": 0
+      },
+      {
+        "containerId": "loot-test/unique-doll",
+        "definitionHeight": 3,
+        "definitionId": "doll",
+        "definitionObjectId": 47436,
+        "definitionWidth": 2,
+        "ev": 5,
+        "instanceId": "83818fa1d4d5466093df79f9adf00af1",
+        "lastLossReason": "",
+        "originalSpawnPointId": "loot-test/unique-doll/slot-1",
+        "owner": "Container",
+        "pendingRecovery": false,
+        "recoveryRound": 0,
+        "retained": false,
+        "runtimeObjectIdentity": 2002364352,
+        "sourceId": "loot-test/unique-doll",
+        "spawnClaimed": true,
+        "uniqueId": "story.doll",
+        "useRound": 1,
+        "usesThisRound": 0
+      },
+      {
+        "containerId": "loot-test/guaranteed",
+        "definitionHeight": 2,
+        "definitionId": "battery",
+        "definitionObjectId": 46928,
+        "definitionWidth": 1,
+        "ev": 0,
+        "instanceId": "9ca19226ea6b495581c7d36cbb8b9cf4",
+        "lastLossReason": "",
+        "originalSpawnPointId": "loot-test/guaranteed/slot-3",
+        "owner": "Container",
+        "pendingRecovery": false,
+        "recoveryRound": 0,
+        "retained": false,
+        "runtimeObjectIdentity": -1926907476,
+        "sourceId": "loot-test/guaranteed",
+        "spawnClaimed": false,
+        "uniqueId": "",
+        "useRound": 1,
+        "usesThisRound": 0
+      },
+      {
+        "containerId": "loot-test/ground-battery",
+        "definitionHeight": 2,
+        "definitionId": "battery",
+        "definitionObjectId": 46928,
+        "definitionWidth": 1,
+        "ev": 0,
+        "instanceId": "ad636dd018c648adba37b122975de3cd",
+        "lastLossReason": "",
+        "originalSpawnPointId": "loot-test/ground-battery/item",
+        "owner": "World",
+        "pendingRecovery": false,
+        "recoveryRound": 0,
+        "retained": false,
+        "runtimeObjectIdentity": -667239978,
+        "sourceId": "loot-test/ground-battery",
+        "spawnClaimed": false,
+        "uniqueId": "",
+        "useRound": 1,
+        "usesThisRound": 0
+      },
+      {
+        "containerId": "shelter-warehouse",
+        "definitionHeight": 2,
+        "definitionId": "battery",
+        "definitionObjectId": 46928,
+        "definitionWidth": 1,
+        "ev": 0,
+        "instanceId": "df58eb18bcd5495a8d12cfa3b959e0dd",
+        "lastLossReason": "",
+        "originalSpawnPointId": "loot-test/test-seed/stored-battery",
+        "owner": "Storage",
+        "pendingRecovery": false,
+        "recoveryRound": 0,
+        "retained": true,
+        "runtimeObjectIdentity": -1705811888,
+        "sourceId": "loot-test-seed",
+        "spawnClaimed": true,
+        "uniqueId": "",
+        "useRound": 1,
+        "usesThisRound": 0
+      },
+      {
+        "containerId": "loot-test/guaranteed",
+        "definitionHeight": 2,
+        "definitionId": "battery",
+        "definitionObjectId": 46928,
+        "definitionWidth": 1,
+        "ev": 0,
+        "instanceId": "ff984b4fa2234acdbbcc095b79c5b2cc",
+        "lastLossReason": "",
+        "originalSpawnPointId": "loot-test/guaranteed/slot-1",
+        "owner": "Container",
+        "pendingRecovery": false,
+        "recoveryRound": 0,
+        "retained": false,
+        "runtimeObjectIdentity": -617150200,
+        "sourceId": "loot-test/guaranteed",
+        "spawnClaimed": false,
+        "uniqueId": "",
+        "useRound": 1,
+        "usesThisRound": 0
+      }
+    ],
+    "round": 1,
+    "warehouse": [
+      {
+        "height": 2,
+        "instanceId": "6b796d70a0a94d9d9cc3012307e65ec3",
+        "rotated": false,
+        "width": 2,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "height": 2,
+        "instanceId": "df58eb18bcd5495a8d12cfa3b959e0dd",
+        "rotated": false,
+        "width": 1,
+        "x": 3,
+        "y": 0
+      }
+    ]
+  },
+  "itemViews": [
+    {
+      "active": true,
+      "color": {
+        "a": 1.0,
+        "b": 0.24,
+        "g": 0.36,
+        "r": 0.34
+      },
+      "hovered": false,
+      "id": "24df2360b23a4e5a89a7dda5add6b500",
+      "kind": "backpack",
+      "objectId": -5171954,
+      "rect": {
+        "bottom": 744.0,
+        "height": 136.0,
+        "left": 66.0,
+        "width": 136.0
+      },
+      "sourceAlpha": 1.0,
+      "text": "Medkit\n2 × 2"
+    },
+    {
+      "active": true,
+      "color": {
+        "a": 1.0,
+        "b": 0.24,
+        "g": 0.36,
+        "r": 0.34
+      },
+      "hovered": false,
+      "id": "0d853d11101848d1a535c8029d44f0ff",
+      "kind": "backpack",
+      "objectId": -5171980,
+      "rect": {
+        "bottom": 744.0,
+        "height": 136.0,
+        "left": 206.0,
+        "width": 136.0
+      },
+      "sourceAlpha": 1.0,
+      "text": "Food\n2 × 2"
+    },
+    {
+      "active": true,
+      "color": {
+        "a": 1.0,
+        "b": 0.222,
+        "g": 0.384,
+        "r": 0.511
+      },
+      "hovered": false,
+      "id": "4a5cf756021e41aa9985a328fcf83ea2",
+      "kind": "backpack",
+      "objectId": -5173224,
+      "rect": {
+        "bottom": 604.0,
+        "height": 136.0,
+        "left": 66.0,
+        "width": 66.0
+      },
+      "sourceAlpha": 1.0,
+      "text": "Battery\n1 × 2"
+    },
+    {
+      "active": true,
+      "color": {
+        "a": 1.0,
+        "b": 0.36,
+        "g": 0.38,
+        "r": 0.2
+      },
+      "hovered": false,
+      "id": "6b796d70a0a94d9d9cc3012307e65ec3",
+      "kind": "warehouse",
+      "objectId": -5172032,
+      "rect": {
+        "bottom": 732.0,
+        "height": 136.0,
+        "left": 432.0,
+        "width": 136.0
+      },
+      "sourceAlpha": 1.0,
+      "text": "Food\n2 × 2"
+    },
+    {
+      "active": true,
+      "color": {
+        "a": 1.0,
+        "b": 0.23,
+        "g": 0.3,
+        "r": 0.33
+      },
+      "hovered": false,
+      "id": "df58eb18bcd5495a8d12cfa3b959e0dd",
+      "kind": "warehouse",
+      "objectId": -5172058,
+      "rect": {
+        "bottom": 732.0,
+        "height": 136.0,
+        "left": 642.0,
+        "width": 66.0
+      },
+      "sourceAlpha": 1.0,
+      "text": "Battery\n1 × 2"
+    },
+    {
+      "active": false,
+      "color": {
+        "a": 0.0,
+        "b": 0.0,
+        "g": 0.0,
+        "r": 0.0
+      },
+      "hovered": false,
+      "id": "slot-1",
+      "kind": "loot",
+      "objectId": -5172908,
+      "rect": {
+        "bottom": 674.0,
+        "height": 136.0,
+        "left": 1438.0,
+        "width": 66.0
+      },
+      "sourceAlpha": 1.0,
+      "text": "\n\n\n"
+    },
+    {
+      "active": false,
+      "color": {
+        "a": 0.0,
+        "b": 0.0,
+        "g": 0.0,
+        "r": 0.0
+      },
+      "hovered": false,
+      "id": "slot-2",
+      "kind": "loot",
+      "objectId": -5172992,
+      "rect": {
+        "bottom": 674.0,
+        "height": 136.0,
+        "left": 1508.0,
+        "width": 136.0
+      },
+      "sourceAlpha": 1.0,
+      "text": "\n\n\n"
+    },
+    {
+      "active": false,
+      "color": {
+        "a": 0.0,
+        "b": 0.0,
+        "g": 0.0,
+        "r": 0.0
+      },
+      "hovered": false,
+      "id": "slot-3",
+      "kind": "loot",
+      "objectId": -5173076,
+      "rect": {
+        "bottom": 674.0,
+        "height": 136.0,
+        "left": 1648.0,
+        "width": 66.0
+      },
+      "sourceAlpha": 1.0,
+      "text": "\n\n\n"
+    }
+  ],
+  "language": "English",
+  "leftHeld": false,
+  "loadedScenes": [
+    "Assets/Scenes/Tests/Loot/LootTest.unity"
+  ],
+  "lootOpen": false,
+  "lootSession": 0,
+  "maxHealth": 3,
+  "playerPosition": {
+    "x": -8.0,
+    "y": 0.0,
+    "z": 0.0
+  },
+  "pointer": {
+    "x": 960.0,
+    "y": 540.0
+  },
+  "previewRotated": false,
+  "previewX": -1,
+  "previewY": -1,
+  "realtime": 532.0739,
+  "screenHeight": 1080,
+  "screenWidth": 1920,
+  "shelter": true,
+  "sources": [
+    {
+      "entries": [],
+      "generated": true,
+      "ground": false,
+      "height": 4,
+      "mapId": "loot-test",
+      "round": 1,
+      "searchElapsed": 0.0,
+      "searchEntryId": "",
+      "sourceId": "loot-test/empty",
+      "width": 6
+    },
+    {
+      "entries": [
+        {
+          "entryId": "item",
+          "hasLayout": true,
+          "height": 2,
+          "instanceId": "ad636dd018c648adba37b122975de3cd",
+          "revealed": true,
+          "rotated": false,
+          "taken": false,
+          "width": 1,
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "generated": true,
+      "ground": true,
+      "height": 0,
+      "mapId": "loot-test",
+      "round": 1,
+      "searchElapsed": 0.0,
+      "searchEntryId": "",
+      "sourceId": "loot-test/ground-battery",
+      "width": 0
+    },
+    {
+      "entries": [
+        {
+          "entryId": "slot-1",
+          "hasLayout": true,
+          "height": 2,
+          "instanceId": "ff984b4fa2234acdbbcc095b79c5b2cc",
+          "revealed": true,
+          "rotated": false,
+          "taken": false,
+          "width": 1,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "entryId": "slot-2",
+          "hasLayout": true,
+          "height": 2,
+          "instanceId": "0316bfb598b445d499ca15273a939508",
+          "revealed": false,
+          "rotated": false,
+          "taken": false,
+          "width": 2,
+          "x": 1,
+          "y": 0
+        },
+        {
+          "entryId": "slot-3",
+          "hasLayout": true,
+          "height": 2,
+          "instanceId": "9ca19226ea6b495581c7d36cbb8b9cf4",
+          "revealed": false,
+          "rotated": false,
+          "taken": false,
+          "width": 1,
+          "x": 3,
+          "y": 0
+        }
+      ],
+      "generated": true,
+      "ground": false,
+      "height": 4,
+      "mapId": "loot-test",
+      "round": 1,
+      "searchElapsed": 0.0,
+      "searchEntryId": "",
+      "sourceId": "loot-test/guaranteed",
+      "width": 6
+    },
+    {
+      "entries": [],
+      "generated": true,
+      "ground": true,
+      "height": 0,
+      "mapId": "loot-test",
+      "round": 1,
+      "searchElapsed": 0.0,
+      "searchEntryId": "",
+      "sourceId": "loot-test/medical-origin",
+      "width": 0
+    },
+    {
+      "entries": [],
+      "generated": true,
+      "ground": false,
+      "height": 4,
+      "mapId": "loot-test",
+      "round": 1,
+      "searchElapsed": 0.0,
+      "searchEntryId": "",
+      "sourceId": "loot-test/mixed",
+      "width": 6
+    },
+    {
+      "entries": [
+        {
+          "entryId": "slot-1",
+          "hasLayout": true,
+          "height": 3,
+          "instanceId": "83818fa1d4d5466093df79f9adf00af1",
+          "revealed": false,
+          "rotated": false,
+          "taken": false,
+          "width": 2,
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "generated": true,
+      "ground": false,
+      "height": 4,
+      "mapId": "loot-test",
+      "round": 1,
+      "searchElapsed": 0.0,
+      "searchEntryId": "",
+      "sourceId": "loot-test/unique-doll",
+      "width": 6
+    },
+    {
+      "entries": [],
+      "generated": true,
+      "ground": false,
+      "height": 4,
+      "mapId": "loot-test",
+      "round": 1,
+      "searchElapsed": 0.0,
+      "searchEntryId": "",
+      "sourceId": "loot-test/zero",
+      "width": 6
+    }
+  ],
+  "stage": "10-RoundTrip-Complete-EN",
+  "timeScale": 1.0,
+  "trackedSourceActive": true,
+  "trackedSourceAlpha": 1.0,
+  "trackedSourceRect": {
+    "bottom": 604.0,
+    "height": 136.0,
+    "left": 66.0,
+    "width": 66.0
+  },
+  "transfers": 2,
+  "utc": "2026-10-19T18:23:24.1528795Z",
+  "warehouseOpen": true,
+  "warehouseToken": 0
+}

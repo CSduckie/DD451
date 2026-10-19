@@ -1,0 +1,84 @@
+04B Hover/Drag 普通 Play 证据独立核对
+核对人：scene_tests 子代理；日期：2026-10-19。
+范围：仅离线读取 JSON/PNG 与 Docs 写入；未操作 Unity、运行探针或修改 Assets。
+
+有效证据基准
+最终目录：20261019-182323-310/（以下阶段文件均指此目录）。
+Summary.completed=true；error 为空；31 条 checks 均为 PASS；observedUnityErrors=[]；两次 transfer completion。
+12 张 PNG 的实际 IHDR 均为 1920×1080。LatestRun.json 指向本目录。
+Summary SHA256：FB825FA0C8B4473919F908F24339A5ED2BED2073AA5329467E841A822FD8495E
+MotionSamples SHA256：D0A532EC0AE0621574DC21021CBB53699363E3B28B257BD7682A67151DCC437A
+
+初次目录 20261019-182038-771/ 使用 JsonUtility，BeforeProbe 缺少 inventory/images/sources/itemViews 等嵌套明细，MotionSamples 实际为 {}。
+该轮截图可以说明当时画面，不能作为身份、对象或布局未变化的快照依据；尤其初版 DataSignature 不能证明完整物品数据相等。
+身份、布局、来源与连续跟随结论全部以最终 182323 目录的字段序列化数据为准，不能合并两轮计数或血量。
+
+嵌套明细完整性
+已解析 15 份独立快照：12 个截图阶段、08-AfterStorageCommit、BeforeProbe、FinalAfterCleanup。
+每份均含 10 个 items，instanceCount=distinctInstanceCount=10；共检查 150 条物品记录，均具有以下 19 个字段：
+instanceId、runtimeObjectIdentity、definitionId、definitionObjectId、definitionWidth、definitionHeight、uniqueId、owner、containerId、sourceId、originalSpawnPointId、useRound、usesThisRound、retained、pendingRecovery、recoveryRound、lastLossReason、spawnClaimed、ev。
+所有快照均含 backpack/warehouse 布局数组、7 个来源/合计 5 条来源 entries、8 个 itemViews（包含未显示的接收器）、imageRect/sourceRect、graphics、pointer 与显式 x/y grabOffset。
+共享影像的 graphics 数组每份有 4 项，含 active/color/culled/inheritedAlpha/raycast 字段；MotionSamples 有 31 个真实采样对象，images 嵌套明细不再被丢弃。
+Summary.before/after 分别与独立 BeforeProbe/FinalAfterCleanup JSON 深比较完全相等。
+
+身份、对象及布局往返
+15 份快照中每个 InstanceId 的 runtimeObjectIdentity 均与初始值一致；没有新增、丢失或替换物品记录。
+RuntimeHelpers.GetHashCode 是本轮托管对象的诊断身份值，不是跨进程持久身份，也不是一般数学意义上的无碰撞证明；本轮 10 个对象值均可区分。
+实际往返电池：InstanceId=4a5cf756021e41aa9985a328fcf83ea2，runtimeObjectIdentity=-578902346。
+其 sourceId=loot-test-seed，originalSpawnPointId=loot-test/test-seed/battery，uniqueId 为空，usesThisRound=0，retained=false。
+起点：Backpack/player-backpack，位置 (0,2)，尺寸 1×2，rotated=false。
+08 预览仍为 Backpack；08-AfterStorageCommit 为 Storage/shelter-warehouse，位置 (6,0)，尺寸/方向不变。此时背包 2 项、仓库 3 项。
+09 返回预览仍为 Storage；10 松手后回到 Backpack/(0,2)，背包恢复 3 项、仓库恢复 2 项。
+中途唯一的业务改变是实际提交的归属/容器与两处布局迁移，完成事件累计恰为 2。
+02→07（非法松手）、BeforeProbe→10（往返）、11→12（受击/迟到松手）、BeforeProbe→FinalAfterCleanup 的完整 inventory 深比较均完全相等。
+完整比较包含上述 19 字段、所有物品与两个容器的 x/y/width/height/rotated，非只比数量或身份字符串。
+EV 始终为 2；回合始终为 1。
+
+Hover、像素抓取、旋转及语言
+01→02 电池接收器 objectId=-5172684 不变；hovered false→true，底色 RGB 从 (0.42,0.30,0.18) 变为 (0.594,0.474,0.306000024)，alpha 仍为 1。
+backpackSelectedId 两帧均为 ff984b4fa2234acdbbcc095b79c5b2cc（前次探针留下的选择值），没有因 hover 改成电池 ID；因此可以证明 hover 不会隐式改写 selection。
+所有 31 个 MotionSamples 最多一个 visible image；其中 16 个样本有影像，始终复用 objectId=-5172588。
+全部可见样本满足 image.left=pointer.x−18、image.top=pointer.y+25，本次序列化数值计算的最大误差为 0px。
+1px/3px 核验：
+frame 52275：pointer=(109,715)，image.left=91，image.top=740；
+frame 52277：pointer=(110,715)，image.left=92，image.top=740；
+frame 52279：pointer=(113,715)，image.left=95，image.top=740。
+影像随 1px 和 3px 移动等量变化，未吸附格点；这是离散采样证据，不宣称记录了每个渲染帧。
+中央世界点 (960,540) 时影像 left=942/top=565；实际格缝点 (134,715) 时 left=116/top=740，影像均持续存在。
+03 为 66×136；R 后 05 为 136×66，左上角仍为 (942,565)，token=4、sourceObjectId=-5172684 均不变。
+05→06 从 Chinese 切 English，仍是同一对象/source/token 与同一旋转尺寸。
+全部可见样本的源接收器 active=true、sourceAlpha=0.2，所有 ghost Graphic 的 raycast=false；探针额外执行过真实 EventSystem.RaycastAll 并通过非拦截检查。
+07、08 提交后、10、12 均无可见影像；相应拖拽结束后 token 清零。07/10 的可见源 alpha=1；12 的关闭面板源 alpha=1、active=false。08 成功转出后旧背包接收器已不存在，trackedSourceAlpha=-1 是缺失标记，不能当成恢复透明度的取值。
+owner+token 边界分别为 BackpackUIController:874494/token4（首次拖拽）、token5（包→仓）、WarehouseUIController:874540/token2（仓→包）、BackpackUIController:874494/token6（箱→包预览）。不能把不同 owner 的 token 当作全局单调序号。
+
+来源、真实伤害和迟到松手
+来源 loot-test/guaranteed/slot-1 对应 InstanceId=ff984b4fa2234acdbbcc095b79c5b2cc、runtimeObjectIdentity=-617150200。
+11 时该项仍为 Container，源 entry.revealed=true、taken=false；显示合法外部预览但未提交。
+12 时该项仍为 Container，同一 entry.taken=false，所有物品字段与布局未变化，没有第三次完成事件。
+15 份快照里的全部来源条目 Taken 均为 false。最终整个 sources 数组与初始完全相等。
+11 的 guaranteed 搜索正在 slot-2，searchElapsed=0.6553686；关闭后清回空 searchEntryId/0，属于会话进度停止，不是物品丢失。
+本轮 slot-1 在 BeforeProbe 已是 revealed=true（来自前次自然搜索）；本轮不能另行证明首次揭示动画或等待过程。slot-2/3 始终未揭示。
+HP 在 11 为 2/3，12 为 1/3；dead=false。queued H 对真实 PlayerHealth 生效，未恢复血量。
+12 的 backpackOpen/warehouseOpen/lootOpen 全 false；背包、仓库与影像 token 全 0；鼠标已松开。截图 HUD 同样显示 HP 1/3。
+世界 gameTime 从 01 的 361.647919 增至 12 的 363.209076，timeScale=1；背包交互没有暂停世界。
+
+截图人工检查（本核对者实际通过 view_image 查看）
+01：中文背包、原始 3 件物品与空格可读，中央世界可见；未出现拖影。上一次取消反馈仍显示，为本轮开始时既存 UI 状态。
+02：电池底色明显变亮，物品尺寸与位置未变；未出现额外影像。
+07：英文电池回到原位、恢复不透明，无残留拖影。问题：反馈仍是“Outside the grid. Release to cancel.”，虽然已经松手完成取消；这是过时提示文案，不是数据或拖拽状态未清。
+08：背包源电池变淡，仓库目标处有单个带 Battery/1×2 文字的影像与合法预览；影像在仓库遮罩上可见，没有被裁掉。
+09：仓库源电池变淡，背包目标处出现单个影像与绿色合法预览；包仓方向正确。
+10：背包电池已恢复原位，仓库 (6,0) 空出；两边反馈为 Transfer complete，无悬浮副本。
+12：背包/仓库/来源面板均关闭，无残影，HUD HP 1/3，世界仍显示。
+共同可见的另一项问题：世界右下方来源说明标签互相重叠并被地面区域遮挡/裁切；不影响上述身份与拖拽数据结论，但不能把此截图集描述为完全没有视觉瑕疵。
+03/04/05/06/11 的 JSON 均已独立核对；本核对者没有额外人工打开这些 PNG，避免把父代理的视觉检查冒充本人的检查。
+
+恢复及适用边界
+Summary.originalBackground=false、finalBackground=false；FinalAfterCleanup 玩家位置恢复 (-8,0,0)，上下文/语言恢复原状态，会话关闭，未回滚任何物品或血量。
+BeforeProbe/FinalAfterCleanup 的设备数组均为 id1 Keyboard False、id2 Mouse False，这反映本轮捕获时 Editor 失焦的启用状态；不能仅凭此快照宣称原生设备已启用。
+最终恢复依据为 RuntimeVisual/FinalRuntimeCleanup.json（182323 之后、停止 Play 之前）：两个探针 running=false/completed=true/error 为空，ghosts=0，仅 id1/id2 且 enabled=true，background=false，PointersAndKeyboardsRespectGameViewFocus + ResetAndDisableNonBackgroundDevices。
+外层 HoverDrag/FinalEditorState.json（2026-10-19T18:25:09.5686584Z）再确认已停止 Play，编译/刷新均 false，原生 id1/id2 enabled=true，background=false，activeProbeAssemblies=0；活动场景为干净的 Assets/Scenes/Ruins.unity。
+ExternalSettingsRestored.json 是首轮之后的记录，不作为最终 182323 运行的恢复依据。
+此探针证据是排队 InputSystem→InputAction/EventSystem/UGUI，不是原生操作系统鼠标验收。原生事件未进入 InputSystem 的边界仍需保留。
+上下文切换、玩家 RelocateWithinRun、reach 验证后的 TryOpenSource 为明确的 API 辅助；物品拖动和提交均经排队鼠标，不使用直接 EndDrag/Transfer 冒充鼠标。
+本次是已有运行场景的截图与状态复核，不扩展为重载/死亡/未知物品泄漏/全部分辨率的全面通过结论。

@@ -1,0 +1,7 @@
+{
+    "name": "MyPrecious.Items.TestDoubles",
+    "rootNamespace": "",
+    "references": ["MyPrecious.Items", "MyPrecious.Health", "MyPrecious.Bootstrap", "MyPrecious.Localization"],
+    "autoReferenced": false,
+    "optionalUnityReferences": ["TestAssemblies"]
+}

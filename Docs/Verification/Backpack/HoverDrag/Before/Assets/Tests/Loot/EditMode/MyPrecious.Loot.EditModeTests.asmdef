@@ -1,0 +1,8 @@
+{
+    "name": "MyPrecious.Loot.EditModeTests",
+    "rootNamespace": "",
+    "references": ["MyPrecious.Loot", "MyPrecious.Loot.TestDoubles", "MyPrecious.Items", "MyPrecious.Backpack", "MyPrecious.Warehouse", "MyPrecious.Shelter", "MyPrecious.Player", "MyPrecious.Interaction", "MyPrecious.Localization", "MyPrecious.Bootstrap", "MyPrecious.Health", "Unity.InputSystem"],
+    "includePlatforms": ["Editor"],
+    "optionalUnityReferences": ["TestAssemblies"],
+    "autoReferenced": false
+}

@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f3cd9f8c424ac5439f636ad5435f100, type: 3}
+  m_Name: CommonText
+  m_EditorClassIdentifier: 
+  entries:
+  - key: common.yes
+    chinese: "是"
+    english: "Yes"
+  - key: common.no
+    chinese: "否"
+    english: "No"
+  - key: common.open
+    chinese: "打开"
+    english: "Open"
+  - key: common.closed
+    chinese: "关闭"
+    english: "Closed"
+  - key: common.left
+    chinese: "左"
+    english: "Left"
+  - key: common.right
+    chinese: "右"
+    english: "Right"
+  - key: common.language.toggle_hint
+    chinese: "F10：切换中文 / English（仅改变显示语言）"
+    english: "F10: Switch Chinese / English (display language only)"
+  - key: common.item_owner.world
+    chinese: "地图中"
+    english: "In world"
+  - key: common.item_owner.container
+    chinese: "箱子中"
+    english: "In container"
+  - key: common.item_owner.backpack
+    chinese: "背包中"
+    english: "In backpack"
+  - key: common.item_owner.storage
+    chinese: "仓库中"
+    english: "In storage"
+  - key: common.item_owner.pending_recovery
+    chinese: "待找回"
+    english: "Awaiting recovery"
+  - key: common.item_owner.consumed
+    chinese: "已消耗"
+    english: "Consumed"
+  - key: common.item_owner.lost
+    chinese: "已丢失"
+    english: "Lost"
+  - key: common.item_owner.unknown
+    chinese: "未知归属"
+    english: "Unknown owner"
+  - key: common.language.chinese
+    chinese: "中文"
+    english: "Chinese"
+  - key: common.language.english
+    chinese: "英文"
+    english: "English"

@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour, IStateMachineOwner
     private bool interactionUiBlocked;
     private bool sceneTransitionBlocked;
     private float moveInput;
-    private bool crouchHeld;
+    private bool crouchRequested;
     private bool jumpHeld;
     private bool jumpConsumedSinceGrounded;
     private double jumpExpiresAt = double.NegativeInfinity;
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour, IStateMachineOwner
     public float MoveInput { get { return CanAct ? moveInput : 0f; } }
     public bool WantsCrouch
     {
-        get { return IsBackpackOpen ? IsCrouching : CanAct && (crouchHeld || (IsCrouching && !CanStand())); }
+        get { return IsBackpackOpen ? IsCrouching : CanAct && (crouchRequested || (IsCrouching && !CanStand())); }
     }
     public bool JumpRequested { get { return jumpRequested && CanAct && Time.timeAsDouble <= jumpExpiresAt; } }
     public bool CanJump
@@ -115,7 +115,15 @@ public class PlayerController : MonoBehaviour, IStateMachineOwner
             return;
         }
         moveInput = inputReader.MoveX;
-        crouchHeld = inputReader.CrouchHeld;
+        bool pressedCrouch = inputReader.ConsumeCrouch();
+        if (CanAct)
+        {
+            if (config != null && config.crouchInputMode == CrouchInputMode.Toggle)
+            {
+                if (pressedCrouch) { crouchRequested = !crouchRequested; }
+            }
+            else { crouchRequested = inputReader.CrouchHeld; }
+        }
         jumpHeld = CanAct && inputReader.JumpHeld;
         UpdateGrounded();
         bool pressedJump = inputReader.ConsumeJump();
@@ -157,7 +165,8 @@ public class PlayerController : MonoBehaviour, IStateMachineOwner
     {
         if (IsBackpackOpen == open) { return; }
         IsBackpackOpen = open;
-        ClearRequests();
+        // 开关背包丢弃按钮输入，但保留开包前的切换意图；受击关包也走这里。
+        ClearRequests(false);
         RefreshInteraction();
     }
 
@@ -286,14 +295,14 @@ public class PlayerController : MonoBehaviour, IStateMachineOwner
         interaction.SetInputBlocked(true);
     }
 
-    private void ClearRequests()
+    private void ClearRequests(bool resetCrouch = true)
     {
         jumpRequested = false;
         jumpExpiresAt = double.NegativeInfinity;
         lastGroundedTime = double.NegativeInfinity;
         jumpConsumedSinceGrounded = false;
         moveInput = 0f;
-        crouchHeld = false;
+        if (resetCrouch) { crouchRequested = false; }
         jumpHeld = false;
         inputReader.ClearRequests();
     }

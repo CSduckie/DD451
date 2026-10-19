@@ -1,0 +1,13 @@
+{
+  "success": true,
+  "message": "Retrieved 1 log entries.",
+  "data": [
+    {
+      "type": "Warning",
+      "message": "<b><color=#cc7a00>MCP-FOR-UNITY</color></b>: [WebSocket] Unexpected receive error: WebSocket is not initialised",
+      "file": "E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Helpers/McpLog.cs",
+      "line": 45,
+      "stackTrace": null
+    }
+  ]
+}

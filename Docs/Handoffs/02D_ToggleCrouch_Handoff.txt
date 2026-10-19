@@ -1,0 +1,32 @@
+02D — C切换蹲伏默认设置（2026-10-19）
+状态：已实现并验证，默认Toggle，Hold保留。
+Inspector：Assets/Data/Player/PlayerConfig.asset → 蹲伏输入 → Crouch Input Mode。
+Toggle：按一次C蹲下，松开保持，再按一次请求站起。Hold：按住蹲下、松开站起。
+C键继续来自Assets/Input/GameInputActions.inputactions的Player/Crouch，未硬编码或修改原绑定。
+
+生产修改仅4文件：
+Assets/Scripts/Player/ScriptableObject/PlayerConfigSO.cs：小枚举与默认Toggle字段。
+Assets/Data/Player/PlayerConfig.asset：crouchInputMode:1。
+Assets/Scripts/Player/MonoBehaviour/PlayerInputReader.cs：新按下请求与旧长按释放门槛，保留CrouchHeld物理语义。
+Assets/Scripts/Player/MonoBehaviour/PlayerController.cs：切换意图、背包保留/忽略输入、生命周期清理。
+无namespace/新框架/设置菜单；保持现有状态机和碰撞体实现。
+
+兼容：
+背包开关及受击关闭保留原意图；开包期间C不排队。
+低顶下请求站起仍保持小胶囊，走出后完成站立。
+死亡、转场、新轮和禁用清意图，原已按住的键需先释放。
+旧Player物理夹具和StealthVignette测试显式Hold；BackpackIntegrationTests仅增加关包后第二次C站起窄hunk。
+新增PlayerToggleCrouchTests 8项及Unity生成meta。
+
+验证：
+25/25 PlayMode通过，0失败/跳过。FocusedPlayMode.json。
+正式Bootstrap→Shelter→Ruins，API辅助出发/定位+合成Keyboard经过正式输入：
+四阶段实际1920×1080截图与94帧记录，草丛站立→首次按下→释放后保持蹲伏/隐藏/暗角0.4→再次按下释放站立/暗角0。
+胶囊2→1.3→1.3→2，截图视觉检查通过。未声称实体键鼠或Windows构建验收。
+证据Docs/Verification/Player/ToggleCrouch/Probe-5f6da656/Result.json及PNG。
+所有探针/合成设备/临时输入设置/无人机状态已清理恢复，未修改timeScale。
+Ruins/Shelter场景、Player.prefab和InputActions的文件哈希不变。
+最终2026-10-19T18:03:37Z：Ruins clean/Edit，Play/compile/update/TestRunner/probe=false，backgroundfalse，timeScale1，唯一原生Keyboard id1 enabled。
+最终Console0错误/警告。
+
+004继续04B时须保留新的默认Toggle，勿覆盖上述Backpack测试窄hunk。

@@ -1,0 +1,6 @@
+{
+    "name": "MyPrecious.Shelter",
+    "rootNamespace": "",
+    "references": ["MyPrecious.Items", "MyPrecious.Bootstrap", "MyPrecious.Warehouse", "MyPrecious.Localization", "Unity.TextMeshPro", "Unity.ugui"],
+    "autoReferenced": true
+}

@@ -1,0 +1,1 @@
+{"probes":[{"running":false,"completed":true,"error":""},{"running":false,"completed":true,"error":""}],"bg":false,"inputPolicy":"PointersAndKeyboardsRespectGameViewFocus","backgroundPolicy":"ResetAndDisableNonBackgroundDevices","devices":[{"name":"Keyboard","id":1,"enabled":true},{"name":"Mouse","id":2,"enabled":true}],"ghosts":0}

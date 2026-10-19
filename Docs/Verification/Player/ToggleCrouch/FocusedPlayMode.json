@@ -1,0 +1,272 @@
+{
+  "result": {
+    "success": true,
+    "message": "Test job status retrieved.",
+    "error": null,
+    "data": {
+      "job_id": "d01d926662e7426ebf608df3229d93a6",
+      "status": "succeeded",
+      "mode": "PlayMode",
+      "started_unix_ms": 1792432900154,
+      "finished_unix_ms": 1792432943077,
+      "last_update_unix_ms": 1792432943077,
+      "progress": {
+        "completed": 25,
+        "total": 25,
+        "current_test_full_name": null,
+        "current_test_started_unix_ms": 1792432941711,
+        "last_finished_test_full_name": "PlayerToggleCrouchTests.TransitionAndReenableResetIntentWithoutReplayingAStillHeldButton",
+        "last_finished_unix_ms": 1792432943044,
+        "stuck_suspected": false,
+        "editor_is_focused": false,
+        "run_in_background": null,
+        "focus_nudge_attempts": null,
+        "focus_nudge_limit": null,
+        "focus_nudge_status": null,
+        "blocked_reason": null,
+        "failures_so_far": [],
+        "failures_capped": false
+      },
+      "error": null,
+      "result": {
+        "mode": "PlayMode",
+        "summary": {
+          "total": 25,
+          "passed": 25,
+          "failed": 0,
+          "skipped": 0,
+          "durationSeconds": 39.3971077,
+          "resultState": "Passed"
+        },
+        "results": [
+          {
+            "name": "OpenBackpackPreservesCrouchAndAllowsWorldTimeAndGravity",
+            "fullName": "BackpackIntegrationTests.OpenBackpackPreservesCrouchAndAllowsWorldTimeAndGravity",
+            "state": "Passed",
+            "durationSeconds": 1.7885427,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "MovingTheBoundPlayerToAnotherSceneClearsBeforeTheNextBindingRefresh",
+            "fullName": "PlayerStealthVignetteTests.MovingTheBoundPlayerToAnotherSceneClearsBeforeTheNextBindingRefresh",
+            "state": "Passed",
+            "durationSeconds": 0.6571611,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "OnlyActualCrouchingCoverFadesInAndStandingOrLeavingFadesOut",
+            "fullName": "PlayerStealthVignetteTests.OnlyActualCrouchingCoverFadesInAndStandingOrLeavingFadesOut",
+            "state": "Passed",
+            "durationSeconds": 2.1220162,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "OverlappingCoversAndBackpackDoNotInterruptAnExistingVignette",
+            "fullName": "PlayerStealthVignetteTests.OverlappingCoversAndBackpackDoNotInterruptAnExistingVignette",
+            "state": "Passed",
+            "durationSeconds": 0.8309774,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ReenableReusesOneOwnedProfileAndDestroyCleansItWithoutChangingOtherVolumes",
+            "fullName": "PlayerStealthVignetteTests.ReenableReusesOneOwnedProfileAndDestroyCleansItWithoutChangingOtherVolumes",
+            "state": "Passed",
+            "durationSeconds": 0.9052002,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "TransitionAndDeathClearImmediatelyAndANewRoundCanHideAgain",
+            "fullName": "PlayerStealthVignetteTests.TransitionAndDeathClearImmediatelyAndANewRoundCanHideAgain",
+            "state": "Passed",
+            "durationSeconds": 0.8660374,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "UnpreparedUnboundOrDisabledBindingCannotLeaveAStaleWeight",
+            "fullName": "PlayerStealthVignetteTests.UnpreparedUnboundOrDisabledBindingCannotLeaveAStaleWeight",
+            "state": "Passed",
+            "durationSeconds": 1.2688005,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "BackpackKeepsSmallCapsuleAndDamageCloseCannotForceStandingIntoCeiling",
+            "fullName": "PlayerCrouchColliderTests.BackpackKeepsSmallCapsuleAndDamageCloseCannotForceStandingIntoCeiling",
+            "state": "Passed",
+            "durationSeconds": 0.823284,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "CrouchChangesCapsuleAroundFeetAndRepeatedStandingDoesNotDrift",
+            "fullName": "PlayerCrouchColliderTests.CrouchChangesCapsuleAroundFeetAndRepeatedStandingDoesNotDrift",
+            "state": "Passed",
+            "durationSeconds": 0.4979225,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "LowPassageAllowsCrouchMovementButBlocksStandingAndJumpUntilExit",
+            "fullName": "PlayerCrouchColliderTests.LowPassageAllowsCrouchMovementButBlocksStandingAndJumpUntilExit",
+            "state": "Passed",
+            "durationSeconds": 3.5809085,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "NewRoundResetsCapsuleAtDestinationInsteadOfTestingOldCeiling",
+            "fullName": "PlayerCrouchColliderTests.NewRoundResetsCapsuleAtDestinationInsteadOfTestingOldCeiling",
+            "state": "Passed",
+            "durationSeconds": 0.6815848,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "SideWallTriggerAndExplicitlyIgnoredColliderDoNotBlockStanding",
+            "fullName": "PlayerCrouchColliderTests.SideWallTriggerAndExplicitlyIgnoredColliderDoNotBlockStanding",
+            "state": "Passed",
+            "durationSeconds": 0.3573818,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "BackpackKeepsPoseAndGravityAndDoesNotReplayLockedJump",
+            "fullName": "PlayerMovementTests.BackpackKeepsPoseAndGravityAndDoesNotReplayLockedJump",
+            "state": "Passed",
+            "durationSeconds": 3.5555559,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "CinemachineFollowsMovementAndWarpAndCanBindReplacementPlayer",
+            "fullName": "PlayerMovementTests.CinemachineFollowsMovementAndWarpAndCanBindReplacementPlayer",
+            "state": "Passed",
+            "durationSeconds": 2.4400852,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "RealKeyboardInteractFiresOnceAndDoesNotReplayThroughLocksOrReenable",
+            "fullName": "PlayerMovementTests.RealKeyboardInteractFiresOnceAndDoesNotReplayThroughLocksOrReenable",
+            "state": "Passed",
+            "durationSeconds": 1.8676317,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "RealKeyboardMovesCrouchesJumpsOnceAndRespectsWallAndPlane",
+            "fullName": "PlayerMovementTests.RealKeyboardMovesCrouchesJumpsOnceAndRespectsWallAndPlane",
+            "state": "Passed",
+            "durationSeconds": 5.026282,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ShortJumpBesidePlatformReachesTopThenWalksOffAndLands",
+            "fullName": "PlayerMovementTests.ShortJumpBesidePlatformReachesTopThenWalksOffAndLands",
+            "state": "Passed",
+            "durationSeconds": 2.233915,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "BackpackIgnoresCWithoutChangingTheIntentRestoredOnDamageClose",
+            "fullName": "PlayerToggleCrouchTests.BackpackIgnoresCWithoutChangingTheIntentRestoredOnDamageClose",
+            "state": "Passed",
+            "durationSeconds": 1.281622,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "HoldOptionStillCrouchesOnlyWhileTheBoundButtonIsHeld",
+            "fullName": "PlayerToggleCrouchTests.HoldOptionStillCrouchesOnlyWhileTheBoundButtonIsHeld",
+            "state": "Passed",
+            "durationSeconds": 0.3563548,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "LowCeilingDefersToggleStandRequestUntilThePlayerWalksOut",
+            "fullName": "PlayerToggleCrouchTests.LowCeilingDefersToggleStandRequestUntilThePlayerWalksOut",
+            "state": "Passed",
+            "durationSeconds": 3.8515094,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "NewRoundAndSameRoundDeathRecoveryResetCrouchIntent",
+            "fullName": "PlayerToggleCrouchTests.NewRoundAndSameRoundDeathRecoveryResetCrouchIntent",
+            "state": "Passed",
+            "durationSeconds": 0.9886212,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ShippingAndNewConfigurationsDefaultToToggle",
+            "fullName": "PlayerToggleCrouchTests.ShippingAndNewConfigurationsDefaultToToggle",
+            "state": "Passed",
+            "durationSeconds": 0.0751367,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "TogglePressCrouchesReleaseKeepsPoseAndSecondPressStands",
+            "fullName": "PlayerToggleCrouchTests.TogglePressCrouchesReleaseKeepsPoseAndSecondPressStands",
+            "state": "Passed",
+            "durationSeconds": 0.961053,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ToggleUsesTheReboundCrouchActionInsteadOfHardCodingC",
+            "fullName": "PlayerToggleCrouchTests.ToggleUsesTheReboundCrouchActionInsteadOfHardCodingC",
+            "state": "Passed",
+            "durationSeconds": 0.6755144,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "TransitionAndReenableResetIntentWithoutReplayingAStillHeldButton",
+            "fullName": "PlayerToggleCrouchTests.TransitionAndReenableResetIntentWithoutReplayingAStillHeldButton",
+            "state": "Passed",
+            "durationSeconds": 1.3322111,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          }
+        ]
+      }
+    },
+    "hint": null
+  }
+}

@@ -1,0 +1,70 @@
+[
+  {
+    "Path": "Assets/Scripts\\Warehouse\\MonoBehaviour\\WarehouseView.cs",
+    "SHA256": "070F5B17E37D809AF2113F3755265CBEB280DE9494527CC10FD2EBB0BADB4FE3"
+  },
+  {
+    "Path": "Assets/Scripts\\Warehouse\\MonoBehaviour\\WarehouseUIController.cs",
+    "SHA256": "B771D963F7104D0EE891B46D029AA12A0FA496CD54D479C449C79111ACE90C53"
+  },
+  {
+    "Path": "Assets/Scripts\\Warehouse\\MonoBehaviour\\WarehouseItemView.cs",
+    "SHA256": "26CFF05D757EC90B0F8D52DD4DE1AE72CDF25FE96BD37F1BE53768432C63D7F3"
+  },
+  {
+    "Path": "Assets/Tests\\Loot\\PlayMode\\LootReturnTests.cs",
+    "SHA256": "E7F3625EE74754A701A1FB1BEC079C2E3A0385F6AA11F7FAA6E0EFC6549CE81A"
+  },
+  {
+    "Path": "Assets/Tests\\Loot\\PlayMode\\LootIntegrationTests.cs",
+    "SHA256": "4F8EF0938CE056D45309E8E42516B3FC0B0A28248076174291AD1E417D6C3CFA"
+  },
+  {
+    "Path": "Assets/Tests\\Loot\\PlayMode\\LootGridSearchTests.cs",
+    "SHA256": "BB46B3207742E45FC9635BD3574C59E66B53B92192E821B9DCB837A4F1633A36"
+  },
+  {
+    "Path": "Assets/Tests\\Backpack\\PlayMode\\BackpackIntegrationTests.cs",
+    "SHA256": "1B57F9EA6B74E73C4E5EB0B9384C6580CC71E9943938BF1EAC662362819799E0"
+  },
+  {
+    "Path": "Assets/Tests\\GameFlow\\PlayMode\\GameFlowDeathReturnTests.cs",
+    "SHA256": "3A894F00DB0FBB27CB1763E736CDFD970270AD3ECA2385BD822A525E03C408A8"
+  },
+  {
+    "Path": "Assets/Scripts\\Items\\Transfers\\MonoBehaviour\\ItemTransferUIBridge.cs",
+    "SHA256": "4410AE39E85519596F14FA1A8F31D2A04626C693C5E1FB0F77F38060832267A4"
+  },
+  {
+    "Path": "Assets/Scripts\\Backpack\\MonoBehaviour\\BackpackItemView.cs",
+    "SHA256": "DBE0C6611C802C9F7376BA975C74478762139A6235633B0A42D72FD850B6D30B"
+  },
+  {
+    "Path": "Assets/Scripts\\Backpack\\MonoBehaviour\\BackpackUIController.cs",
+    "SHA256": "377F8740D24C27BBAA76DBC094E86409DAA2ACFD96B0F7C6B22841C08CCA2776"
+  },
+  {
+    "Path": "Assets/Scripts\\Backpack\\MonoBehaviour\\BackpackView.cs",
+    "SHA256": "89365182EA8B3B3F137175FC135743C0F856F729B0A6AE019EE9D4370E321A97"
+  },
+  {
+    "Path": "Assets/Scripts\\Loot\\MonoBehaviour\\LootItemView.cs",
+    "SHA256": "E8C18E1431CEA1438AEBECB514A053A6F05CA2288A1C4BA04BA45A2DF4CC3B1E"
+  },
+  {
+    "Path": "Assets/Scripts\\Loot\\MonoBehaviour\\LootView.cs",
+    "SHA256": "591581329DD815B61EC6DBDF2E694E1F73E1369F6D32E48D393DF29AF815284C"
+  },
+  {
+    "Path": "Assets/Scripts\\Loot\\MonoBehaviour\\LootUIController.cs",
+    "SHA256": "93CE5BD9AF701633DE770694288BAF833A81FE82D8733880C0F8F6C3012D14AA"
+  },
+  {
+    "Path": "Assets/Scripts/Backpack/MonoBehaviour/BackpackDragImage.cs",
+    "SHA256": "7BE120E3DC87DBB500CE67AD46CF1403DCECC2CD45EE8D939900E61346549629"
+  },
+  {
+    "Path": "Assets/Scripts/Backpack/MonoBehaviour/BackpackDragImage.cs.meta",
+    "SHA256": "9C02E4FC13430B045DFD53C5D210ADA61AF0661F78ABD68ACF3DB044E7DAF37A"
+  }
+]

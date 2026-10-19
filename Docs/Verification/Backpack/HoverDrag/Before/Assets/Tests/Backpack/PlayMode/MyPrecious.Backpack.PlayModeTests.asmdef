@@ -1,0 +1,23 @@
+{
+  "name": "MyPrecious.Backpack.PlayModeTests",
+  "rootNamespace": "",
+  "references": [
+    "MyPrecious.Backpack",
+    "MyPrecious.Backpack.TestDoubles",
+    "MyPrecious.Bootstrap",
+    "MyPrecious.Items",
+    "MyPrecious.Player",
+    "MyPrecious.Player.TestDoubles",
+    "MyPrecious.Health",
+    "MyPrecious.StateMachine.Contracts",
+    "MyPrecious.Localization",
+    "Unity.InputSystem",
+    "Unity.TextMeshPro",
+    "Unity.ugui",
+    "MyPrecious.Loot"
+  ],
+  "autoReferenced": false,
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
+}

@@ -1,8 +1,17 @@
 using UnityEngine;
 
+public enum CrouchInputMode
+{
+    Hold, Toggle
+}
+
 [CreateAssetMenu(menuName = "Player/Player Config")]
 public class PlayerConfigSO : ScriptableObject
 {
+    [Header("蹲伏输入")]
+    [Tooltip("Toggle：按一次蹲下，再按一次站起；Hold：按住蹲下，松开站起。键位仍由Input Actions配置。")]
+    public CrouchInputMode crouchInputMode = CrouchInputMode.Toggle;
+
     [Header("运动（沿用2DARPG手感）")]
     [Min(0f)] public float moveSpeed = 5f;
     [Min(0f)] public float crouchSpeed = 2f;

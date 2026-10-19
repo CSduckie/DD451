@@ -46,6 +46,11 @@ public class LootView : MonoBehaviour
     public bool IsReturnPreviewVisible { get; private set; }
     public RectTransform ReturnPreviewRect { get { return returnPreviewRect; } }
 
+    public LootItemView GetItemView(string entryId)
+    {
+        return !string.IsNullOrEmpty(entryId) && itemViews.TryGetValue(entryId, out LootItemView itemView) ? itemView : null;
+    }
+
     public void Bind(LootUIController owner, LocalizationManager language)
     {
         controller = owner;

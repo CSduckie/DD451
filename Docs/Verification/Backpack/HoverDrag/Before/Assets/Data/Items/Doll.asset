@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8552858fffd26694eb40799537746bfe, type: 3}
+  m_Name: Doll
+  m_EditorClassIdentifier: MyPrecious.Items::ItemDataSO
+  definitionId: doll
+  nameZh: "\u5E03\u5A03\u5A03"
+  nameEn: Doll
+  descriptionZh: "\u4E00\u53EA\u73CD\u8D35\u7684\u5E03\u5A03\u5A03\u3002\u552F\u4E00\u5267\u60C5\u7269\u54C1\uFF0C\u9057\u5931\u540E\u53EF\u5728\u4E0B\u4E00\u8F6E\u627E\u56DE\u3002"
+  descriptionEn: A precious doll. A unique story item that can be recovered next
+    round after it is lost.
+  nameKey: items.doll.name
+  descriptionKey: items.doll.description
+  width: 2
+  height: 3
+  canRotate: 1
+  ev: 5
+  defaultSpawnProbability: 0.35
+  searchSeconds: 2
+  isUnique: 1
+  uniqueId: story.doll
+  canUse: 0
+  consumedOnUse: 0
+  usesPerRound: 0
+  effects: []

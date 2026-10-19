@@ -1,0 +1,7 @@
+{
+    "name": "MyPrecious.Loot.Editor",
+    "rootNamespace": "",
+    "references": ["MyPrecious.Loot", "MyPrecious.Loot.TestDoubles", "MyPrecious.Items", "MyPrecious.Backpack", "MyPrecious.Warehouse", "MyPrecious.Shelter", "MyPrecious.Player", "MyPrecious.Interaction", "MyPrecious.Localization", "MyPrecious.Bootstrap", "MyPrecious.Health", "MyPrecious.Player.TestDoubles", "Unity.Cinemachine", "Unity.InputSystem", "Unity.TextMeshPro", "Unity.ugui"],
+    "includePlatforms": ["Editor"],
+    "autoReferenced": false
+}

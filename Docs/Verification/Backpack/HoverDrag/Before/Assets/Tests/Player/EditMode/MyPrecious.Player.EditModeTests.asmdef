@@ -1,0 +1,17 @@
+{
+    "name": "MyPrecious.Player.EditModeTests",
+    "rootNamespace": "",
+    "references": [
+        "MyPrecious.Player",
+        "MyPrecious.Health",
+        "MyPrecious.StateMachine",
+        "MyPrecious.StateMachine.Contracts"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "autoReferenced": false,
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ]
+}

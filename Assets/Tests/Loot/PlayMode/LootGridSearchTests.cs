@@ -76,7 +76,9 @@ public partial class LootIntegrationTests
         yield return Click(EntryPoint(source.Entries[0].EntryId));
         yield return RightPointer(EntryPoint(source.Entries[0].EntryId));
         yield return BeginPointerDrag(EntryPoint(source.Entries[0].EntryId));
+        AssertCrossDragCleared();
         yield return Pointer(BackpackPoint(1, 2), false);
+        AssertCrossDragCleared();
         Assert.That(driver.backpackUI.IsDragging, Is.False, "Unknown outlines must not start a transferable drag.");
         Assert.That(driver.backpackUI.SelectedInstanceId, Is.EqualTo(selection));
         Assert.That(TransferSnapshot(), Is.EqualTo(data));

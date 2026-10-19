@@ -6,11 +6,14 @@ using UnityEngine.UI;
 
 // 修改复用 CardGame/CardDragHandler 的开始、拖动、结束流程；具体提交由控制器负责。
 public class BackpackItemView : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerClickHandler,
-    IBeginDragHandler, IDragHandler, IEndDragHandler
+    IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Image background;
     public TMP_Text nameText;
     public TMP_Text sizeText;
+    [Header("悬停外观（不改变点击选中）")]
+    public Color hoverColor = new Color(1f, 0.88f, 0.60f, 1f);
+    [Range(0f, 1f)] public float hoverStrength = 0.30f;
 
     private BackpackUIController controller;
     private int dragToken;
@@ -20,14 +23,21 @@ public class BackpackItemView : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     private bool dragStarted;
     private int pointerId;
     private int inputSession;
+    private Vector2 pressLocalPoint;
+    private bool selected;
+    private ItemDataSO definition;
+    private PointerEventData hoverPointer;
 
     public string InstanceId { get; private set; }
+    public bool IsHovered { get; private set; }
 
     public void Bind(BackpackUIController owner, string instanceId)
     {
-        if (controller != owner || InstanceId != instanceId) { ClearPointer(); }
+        if (controller != owner || InstanceId != instanceId) { ClearPointer(); ClearHover(); }
         controller = owner;
         InstanceId = instanceId;
+        if (nameText != null) { nameText.raycastTarget = false; }
+        if (sizeText != null) { sizeText.raycastTarget = false; }
         // 相同实例的刷新不清除 token，否则语言切换后会丢失当前拖拽回调。
     }
 
@@ -54,6 +64,13 @@ public class BackpackItemView : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
     public void SetSelected(bool selected, ItemDataSO definition)
     {
+        this.selected = selected;
+        this.definition = definition;
+        RefreshAppearance();
+    }
+
+    private void RefreshAppearance()
+    {
         if (background == null || definition == null)
         {
             return;
@@ -63,9 +80,44 @@ public class BackpackItemView : MonoBehaviour, IPointerDownHandler, IPointerUpHa
             ? new Color(0.34f, 0.36f, 0.24f, 1f)
             : new Color(0.42f, 0.30f, 0.18f, 1f);
         background.color = selected ? Color.Lerp(normal, new Color(0.68f, 0.54f, 0.30f), 0.35f) : normal;
+        if (IsHovered) { background.color = Color.Lerp(background.color, hoverColor, hoverStrength); }
         Color textColor = new Color(0.97f, 0.93f, 0.80f, 1f);
         if (nameText != null) { nameText.color = textColor; }
         if (sizeText != null) { sizeText.color = textColor; }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        hoverPointer = eventData;
+        IsHovered = CanHover() && controller.view.ItemAtScreenPoint(eventData.position, eventData.enterEventCamera) == InstanceId;
+        RefreshAppearance();
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        ClearHover();
+    }
+
+    private void LateUpdate()
+    {
+        // 确认框可能在鼠标不动时打开，仍需按最上层射线撤下旧高亮。
+        if (hoverPointer == null) { return; }
+        bool hovered = CanHover()
+            && controller.view.ItemAtScreenPoint(hoverPointer.position, hoverPointer.enterEventCamera) == InstanceId;
+        if (IsHovered != hovered) { IsHovered = hovered; RefreshAppearance(); }
+    }
+
+    private bool CanHover()
+    {
+        return isActiveAndEnabled && controller != null && controller.IsOpen && !controller.IsDragging
+            && controller.view != null && (controller.CanBeginDrag == null || controller.CanBeginDrag());
+    }
+
+    public void ClearHover(bool forgetPointer = true)
+    {
+        if (forgetPointer) { hoverPointer = null; }
+        IsHovered = false;
+        RefreshAppearance();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -78,6 +130,8 @@ public class BackpackItemView : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         dragStarted = false;
         pointerId = eventData.pointerId;
         inputSession = controller.InputSession;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)transform, eventData.position,
+            eventData.pressEventCamera, out pressLocalPoint);
         Keyboard keyboard = Keyboard.current;
         // 修饰键只在按下时判断；途中按Ctrl不能把普通拖拽变成快捷转移。
         quickPress = keyboard != null && (keyboard.leftCtrlKey.isPressed || keyboard.rightCtrlKey.isPressed);
@@ -123,8 +177,9 @@ public class BackpackItemView : MonoBehaviour, IPointerDownHandler, IPointerUpHa
         dragStarted = true;
         // 超过拖拽阈值的快捷按压只取消；UGUI仍可能给同一物品发Click。
         if (quickPress) { return; }
-        // 用按下位置计算抓取格，避免快速拖动跨过阈值时把目标格误当成起点。
-        dragToken = controller.BeginItemDrag(InstanceId, eventData.pressPosition, eventData.pressEventCamera);
+        // 保留按下时的物品局部点，窗口移动也不改变真实抓取位置。
+        Vector2 pressPosition = RectTransformUtility.WorldToScreenPoint(eventData.pressEventCamera, transform.TransformPoint(pressLocalPoint));
+        dragToken = controller.BeginItemDrag(InstanceId, pressPosition, eventData.pressEventCamera);
         if (dragToken != 0)
         {
             controller.UpdateDrag(dragToken, eventData.position, eventData.pressEventCamera);
@@ -157,6 +212,7 @@ public class BackpackItemView : MonoBehaviour, IPointerDownHandler, IPointerUpHa
 
     private void OnDisable()
     {
+        ClearHover();
         ClearPointer();
     }
 

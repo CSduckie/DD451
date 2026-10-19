@@ -1,0 +1,56 @@
+{
+  "result": {
+    "success": true,
+    "message": "Test job status retrieved.",
+    "error": null,
+    "data": {
+      "job_id": "6866d0ac584346b19fbd87a0724fa8c8",
+      "status": "succeeded",
+      "mode": "PlayMode",
+      "started_unix_ms": 1792433564324,
+      "finished_unix_ms": 1792433570185,
+      "last_update_unix_ms": 1792433570185,
+      "progress": {
+        "completed": 1,
+        "total": 1,
+        "current_test_full_name": null,
+        "current_test_started_unix_ms": 1792433568184,
+        "last_finished_test_full_name": "GameFlowDeathReturnTests.DeathClosesSearchAndDragSynchronouslyAndUsedMedkitKeepsItsRoundAllowance",
+        "last_finished_unix_ms": 1792433570160,
+        "stuck_suspected": false,
+        "editor_is_focused": false,
+        "run_in_background": null,
+        "focus_nudge_attempts": null,
+        "focus_nudge_limit": null,
+        "focus_nudge_status": null,
+        "blocked_reason": null,
+        "failures_so_far": [],
+        "failures_capped": false
+      },
+      "error": null,
+      "result": {
+        "mode": "PlayMode",
+        "summary": {
+          "total": 1,
+          "passed": 1,
+          "failed": 0,
+          "skipped": 0,
+          "durationSeconds": 2.1361431,
+          "resultState": "Passed"
+        },
+        "results": [
+          {
+            "name": "DeathClosesSearchAndDragSynchronouslyAndUsedMedkitKeepsItsRoundAllowance",
+            "fullName": "GameFlowDeathReturnTests.DeathClosesSearchAndDragSynchronouslyAndUsedMedkitKeepsItsRoundAllowance",
+            "state": "Passed",
+            "durationSeconds": 1.9729645,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          }
+        ]
+      }
+    },
+    "hint": null
+  }
+}

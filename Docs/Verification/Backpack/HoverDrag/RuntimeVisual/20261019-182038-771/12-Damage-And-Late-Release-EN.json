@@ -1,0 +1,57 @@
+{
+    "stage": "12-Damage-And-Late-Release-EN",
+    "utc": "2026-10-19T18:21:14.4141452Z",
+    "imageFile": "12-Damage-And-Late-Release-EN.png",
+    "activeScene": "Assets/Scenes/Tests/Loot/LootTest.unity",
+    "language": "English",
+    "backpackSelectedId": "ff984b4fa2234acdbbcc095b79c5b2cc",
+    "backpackPreview": "Success",
+    "feedback": "backpack.cancelled",
+    "frame": 44834,
+    "screenWidth": 1920,
+    "screenHeight": 1080,
+    "health": 2,
+    "maxHealth": 3,
+    "ev": 2,
+    "backpackToken": 0,
+    "warehouseToken": 0,
+    "lootSession": 0,
+    "previewX": 1,
+    "previewY": 2,
+    "transfers": 2,
+    "realtime": 402.3367004394531,
+    "gameTime": 235.44667053222657,
+    "timeScale": 1.0,
+    "trackedSourceAlpha": 1.0,
+    "dead": false,
+    "shelter": false,
+    "backpackOpen": false,
+    "warehouseOpen": false,
+    "lootOpen": false,
+    "previewRotated": false,
+    "leftHeld": false,
+    "background": true,
+    "trackedSourceActive": false,
+    "playerPosition": {
+        "x": -8.277777671813965,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "pointer": {
+        "x": 159.0999755859375,
+        "y": 716.9000244140625
+    },
+    "grabOffset": {
+        "x": 0,
+        "y": 0
+    },
+    "loadedScenes": [
+        "Assets/Scenes/Tests/Loot/LootTest.unity"
+    ],
+    "inputDevices": [
+        "1:Keyboard:False",
+        "2:Mouse:False",
+        "576:Keyboard1:True",
+        "577:Mouse1:True"
+    ]
+}

@@ -1,0 +1,57 @@
+{
+    "stage": "10-RoundTrip-Complete-EN",
+    "utc": "2026-10-19T18:21:12.6319896Z",
+    "imageFile": "10-RoundTrip-Complete-EN.png",
+    "activeScene": "Assets/Scenes/Tests/Loot/LootTest.unity",
+    "language": "English",
+    "backpackSelectedId": "4a5cf756021e41aa9985a328fcf83ea2",
+    "backpackPreview": "OutOfBounds",
+    "feedback": "transfer.Success",
+    "frame": 44487,
+    "screenWidth": 1920,
+    "screenHeight": 1080,
+    "health": 3,
+    "maxHealth": 3,
+    "ev": 2,
+    "backpackToken": 0,
+    "warehouseToken": 0,
+    "lootSession": 0,
+    "previewX": -1,
+    "previewY": -1,
+    "transfers": 2,
+    "realtime": 400.5532531738281,
+    "gameTime": 233.6620635986328,
+    "timeScale": 1.0,
+    "trackedSourceAlpha": 1.0,
+    "dead": false,
+    "shelter": true,
+    "backpackOpen": true,
+    "warehouseOpen": true,
+    "lootOpen": false,
+    "previewRotated": false,
+    "leftHeld": false,
+    "background": true,
+    "trackedSourceActive": true,
+    "playerPosition": {
+        "x": -8.0,
+        "y": 1.1920928955078126e-7,
+        "z": 0.0
+    },
+    "pointer": {
+        "x": 960.0,
+        "y": 540.0
+    },
+    "grabOffset": {
+        "x": 0,
+        "y": 0
+    },
+    "loadedScenes": [
+        "Assets/Scenes/Tests/Loot/LootTest.unity"
+    ],
+    "inputDevices": [
+        "1:Keyboard:False",
+        "2:Mouse:False",
+        "576:Keyboard1:True",
+        "577:Mouse1:True"
+    ]
+}

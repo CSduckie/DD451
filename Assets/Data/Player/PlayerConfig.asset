@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3d37e4a4b6ba3d459779f24b3b9e418, type: 3}
   m_Name: PlayerConfig
   m_EditorClassIdentifier: MyPrecious.Player::PlayerConfigSO
+  crouchInputMode: 1
   moveSpeed: 5
   crouchSpeed: 2
   acceleration: 20

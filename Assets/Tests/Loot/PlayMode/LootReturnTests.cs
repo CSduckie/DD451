@@ -257,14 +257,26 @@ public partial class LootIntegrationTests
         string identity = ItemIdentitySnapshot(item);
         int instanceCount = driver.items.InstanceCount;
         Color viewportColor = ReturnViewportColor();
-        yield return BeginPointerDrag(BackpackPoint(0, 2));
+        RectTransform sourceRect = driver.backpackUI.view.GetItemRect(item.InstanceId);
+        Vector2 press = BackpackPoint(0, 2);
+        Vector2 grabPixels = press - CrossDragTopLeft(sourceRect);
+        Vector2 imageSize = GridScreenSize(sourceRect);
+        float sourceAlpha = CrossDragSourceAlpha(sourceRect);
+        yield return BeginPointerDrag(press);
+        BackpackDragImage image = AssertCrossDragImage(driver.backpackUI, driver.backpackUI.DragToken,
+            sourceRect, grabPixels, imageSize, sourceAlpha);
+        yield return Pointer(new Vector2(Screen.width * 0.5f, Screen.height * 0.5f), true);
+        AssertCrossDragImage(driver.backpackUI, driver.backpackUI.DragToken, sourceRect, grabPixels, imageSize, sourceAlpha);
         Vector2 target = ReturnPoint();
         yield return Pointer(target, true);
+        AssertCrossDragImage(driver.backpackUI, driver.backpackUI.DragToken, sourceRect, grabPixels, imageSize, sourceAlpha);
         AssertLocalReturnPreview(source, item, viewportColor);
         int oldToken = driver.backpackUI.DragToken;
         yield return Press(Key.R);
         Assert.That(driver.backpackUI.PreviewRotated, Is.True);
         Assert.That(driver.backpackUI.DragToken, Is.EqualTo(oldToken));
+        AssertCrossDragImage(driver.backpackUI, oldToken, sourceRect, grabPixels,
+            new Vector2(imageSize.y, imageSize.x), sourceAlpha);
         AssertLocalReturnPreview(source, item, viewportColor, 4, 2, true);
         string before = TransferSnapshot();
         string sourceBefore = SourceEntrySnapshot(source);
@@ -273,6 +285,8 @@ public partial class LootIntegrationTests
         Assert.That(driver.player.health.CurrentHealth, Is.EqualTo(health - 1));
         Assert.That(driver.player.IsDead, Is.False);
         Assert.That(driver.backpackUI.IsOpen || driver.lootUI.IsOpen || driver.backpackUI.IsDragging, Is.False);
+        AssertCrossDragCleared();
+        AssertCrossSourceRestored(sourceRect, sourceAlpha, false);
         Assert.That(driver.lootUI.view.IsReturnPreviewVisible, Is.False);
         AssertReturnPreviewCleared(viewportColor);
         Assert.That(driver.backpackUI.view.preview.gameObject.activeSelf, Is.False);
@@ -280,20 +294,26 @@ public partial class LootIntegrationTests
         Assert.That(SourceEntrySnapshot(source), Is.EqualTo(sourceBefore));
         yield return Pointer(target, false);
         driver.backpackUI.EndDrag(oldToken, target, null);
+        AssertCrossDragCleared();
         Assert.That(TransferSnapshot(), Is.EqualTo(before));
         Assert.That(SourceEntrySnapshot(source), Is.EqualTo(sourceBefore));
 
         yield return Press(Key.E);
         Assert.That(driver.lootUI.Source, Is.SameAs(source));
+        AssertCrossSourceRestored(sourceRect, sourceAlpha, true);
         yield return BeginPointerDrag(BackpackPoint(0, 2));
         int currentToken = driver.backpackUI.DragToken;
         Assert.That(currentToken, Is.Not.EqualTo(oldToken));
+        Assert.That(AssertCrossDragImage(driver.backpackUI, currentToken, sourceRect, grabPixels, imageSize, sourceAlpha), Is.SameAs(image));
         yield return Pointer(ReturnPoint(), true);
         Rect preview = AssertLocalReturnPreview(source, item, viewportColor);
         driver.backpackUI.EndDrag(oldToken, ReturnPoint(), null);
         Assert.That(driver.backpackUI.IsDragValid(currentToken), Is.True);
+        Assert.That(AssertCrossDragImage(driver.backpackUI, currentToken, sourceRect, grabPixels, imageSize, sourceAlpha), Is.SameAs(image),
+            "A late EndDrag for the cancelled token cannot hide or replace the new drag image.");
         Assert.That(TransferSnapshot(), Is.EqualTo(before));
         yield return Pointer(ReturnPoint(), false);
+        AssertCrossDragCleared();
         AssertCommittedReturnPreview(source, item, preview, viewportColor);
         Assert.That(item.Owner, Is.EqualTo(ItemOwner.Container), driver.backpackUI.FeedbackKey);
         Assert.That(item.ContainerId, Is.EqualTo(source.SourceId));
@@ -306,6 +326,7 @@ public partial class LootIntegrationTests
         Assert.That(TransferSnapshot(), Is.EqualTo(committed));
         Assert.That(SourceEntrySnapshot(source), Is.EqualTo(committedSource));
         yield return Pointer(ReturnPoint(), false);
+        AssertCrossDragCleared();
         Assert.That(TransferSnapshot(), Is.EqualTo(committed));
         Assert.That(driver.items.InstanceCount, Is.EqualTo(instanceCount));
         Assert.That(driver.items.TryGetInstance(item.InstanceId, out ItemInstance registered), Is.True);
@@ -314,6 +335,7 @@ public partial class LootIntegrationTests
         Assert.That(source.Entries.Count(value => value.InstanceId == item.InstanceId), Is.EqualTo(1));
         LootEntryState returned = source.Entries.Single(value => value.InstanceId == item.InstanceId);
         Assert.That(returned.Revealed && !returned.Taken, Is.True);
+        AssertCrossSourceRestored((RectTransform)GridItemView(returned.EntryId).transform, 1f, true);
         Assert.That(driver.backpack.GetPlacements().Count(value => value.InstanceId == item.InstanceId), Is.Zero);
         Assert.That(driver.warehouse.TryGetPlacement(item.InstanceId, out _), Is.False);
         Assert.That(driver.backpackUI.IsDragging, Is.False);
@@ -330,9 +352,19 @@ public partial class LootIntegrationTests
         Assert.That(driver.items.TryGetInstance(entry.InstanceId, out ItemInstance item), Is.True);
         string identity = ItemIdentitySnapshot(item);
         int instanceCount = driver.items.InstanceCount;
-        yield return BeginPointerDrag(EntryPoint(entry.EntryId));
+        RectTransform sourceRect = (RectTransform)GridItemView(entry.EntryId).transform;
+        Vector2 press = EntryPoint(entry.EntryId);
+        Vector2 grabPixels = press - CrossDragTopLeft(sourceRect);
+        Vector2 imageSize = GridScreenSize(sourceRect);
+        float sourceAlpha = CrossDragSourceAlpha(sourceRect);
+        yield return BeginPointerDrag(press);
+        BackpackDragImage image = AssertCrossDragImage(driver.backpackUI, driver.backpackUI.DragToken,
+            sourceRect, grabPixels, imageSize, sourceAlpha);
+        yield return Pointer(new Vector2(Screen.width * 0.5f, Screen.height * 0.5f), true);
+        AssertCrossDragImage(driver.backpackUI, driver.backpackUI.DragToken, sourceRect, grabPixels, imageSize, sourceAlpha);
         Vector2 target = BackpackPoint(1, 2);
         yield return Pointer(target, true);
+        AssertCrossDragImage(driver.backpackUI, driver.backpackUI.DragToken, sourceRect, grabPixels, imageSize, sourceAlpha);
         Assert.That(driver.backpackUI.IsExternalPreview, Is.True);
         Assert.That(driver.backpackUI.PreviewResult, Is.EqualTo(BackpackResult.Success));
         Assert.That(driver.backpackUI.view.preview.gameObject.activeSelf, Is.True);
@@ -340,6 +372,8 @@ public partial class LootIntegrationTests
         yield return Press(Key.R);
         Assert.That(driver.backpackUI.PreviewRotated, Is.True);
         Assert.That(driver.backpackUI.DragToken, Is.EqualTo(oldToken));
+        AssertCrossDragImage(driver.backpackUI, oldToken, sourceRect, grabPixels,
+            new Vector2(imageSize.y, imageSize.x), sourceAlpha);
         Assert.That(driver.backpackUI.PreviewResult, Is.EqualTo(BackpackResult.Success));
         Assert.That(driver.backpackUI.view.preview.gameObject.activeSelf, Is.True);
         string before = TransferSnapshot();
@@ -349,25 +383,35 @@ public partial class LootIntegrationTests
         Assert.That(driver.player.health.CurrentHealth, Is.EqualTo(health - 1));
         Assert.That(driver.player.IsDead, Is.False);
         Assert.That(driver.backpackUI.IsOpen || driver.lootUI.IsOpen || driver.backpackUI.IsDragging, Is.False);
+        AssertCrossDragCleared();
+        AssertCrossSourceRestored(sourceRect, sourceAlpha, false);
         Assert.That(driver.backpackUI.view.preview.gameObject.activeSelf, Is.False);
         Assert.That(TransferSnapshot(), Is.EqualTo(before));
         Assert.That(SourceEntrySnapshot(source), Is.EqualTo(sourceBefore));
         yield return Pointer(target, false);
         driver.lootUI.EndItemDrag(oldToken, target, null);
+        AssertCrossDragCleared();
         Assert.That(TransferSnapshot(), Is.EqualTo(before));
         Assert.That(SourceEntrySnapshot(source), Is.EqualTo(sourceBefore));
 
         yield return Press(Key.E);
+        AssertCrossSourceRestored(sourceRect, sourceAlpha, true);
         yield return BeginPointerDrag(EntryPoint(entry.EntryId));
         int currentToken = driver.backpackUI.DragToken;
         Assert.That(currentToken, Is.Not.EqualTo(oldToken));
+        Assert.That(AssertCrossDragImage(driver.backpackUI, currentToken, sourceRect, grabPixels, imageSize, sourceAlpha), Is.SameAs(image));
         yield return Pointer(BackpackPoint(1, 2), true);
         driver.lootUI.EndItemDrag(oldToken, BackpackPoint(1, 2), null);
         Assert.That(driver.backpackUI.IsDragValid(currentToken), Is.True);
+        Assert.That(AssertCrossDragImage(driver.backpackUI, currentToken, sourceRect, grabPixels, imageSize, sourceAlpha), Is.SameAs(image),
+            "A late EndDrag for the cancelled token cannot hide or replace the new drag image.");
         Assert.That(TransferSnapshot(), Is.EqualTo(before));
         yield return Pointer(BackpackPoint(1, 2), false);
+        AssertCrossDragCleared();
         Assert.That(item.Owner, Is.EqualTo(ItemOwner.Backpack), driver.backpackUI.FeedbackKey);
         Assert.That(entry.Taken, Is.True);
+        Assert.That(CrossDragSourceAlpha(sourceRect), Is.EqualTo(sourceAlpha).Within(0.001f));
+        AssertCrossSourceRestored(driver.backpackUI.view.GetItemRect(item.InstanceId), 1f, true);
         Assert.That(ItemIdentitySnapshot(item), Is.EqualTo(identity));
         Assert.That(driver.backpack.TryGetPlacement(item.InstanceId, out BackpackPlacement placement), Is.True);
         Assert.That(placement.X, Is.EqualTo(1));
@@ -379,6 +423,7 @@ public partial class LootIntegrationTests
         Assert.That(TransferSnapshot(), Is.EqualTo(committed));
         Assert.That(SourceEntrySnapshot(source), Is.EqualTo(committedSource));
         yield return Pointer(BackpackPoint(1, 2), false);
+        AssertCrossDragCleared();
         Assert.That(TransferSnapshot(), Is.EqualTo(committed));
         Assert.That(driver.items.InstanceCount, Is.EqualTo(instanceCount));
         Assert.That(driver.items.TryGetInstance(item.InstanceId, out ItemInstance registered), Is.True);

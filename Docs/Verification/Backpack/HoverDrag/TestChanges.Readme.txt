@@ -1,0 +1,24 @@
+04B待应用测试补丁；2026-10-19。
+
+入口：TestChanges.patch，标准unified diff，仅目标
+Assets/Tests/Backpack/PlayMode/BackpackIntegrationTests.cs。
+当前源码SHA256见TestChanges.SourceHash.txt。git apply --check已通过；这里只检查文本可应用性，没有写入Assets，也未操作Unity、编译或运行测试。
+
+改动：
+1. 修正既有mixed Ctrl左右键用例：3→1→0混合手势requests=0，无drag/ghost/消费/数据修改；保持Ctrl，下一完整left down/up严格requests=1；松Ctrl后保留原右键消费/次数/回血强断言。
+2. QueuedHoverPreservesSelectionAndDoesNotPassThroughDiscardConfirmation：真实排队鼠标hover、名称子文字命中、独立选择、移出还原、F10、真实UGUI丢弃确认/取消遮挡、关包重开后样式。
+3. QueuedDragImageKeepsPixelGrabAcrossGapsOutsideRotationAndLanguageThenRejectsDrop：真实UGUI阈值；(18,25)屏幕像素抓取；同格1/3像素连续位移、合法目标raycast、格缝/画面内中央窗口外；单份ghost和稳定owner/token/source；R变66×136到136×66、F10实际文字；非法格缝release恢复alpha/Rect、零Changed且Snapshot不变。
+
+接口假设（父端约定，读取源码时尚未存在）：
+BackpackView.DragImage返回BackpackDragImage组件；IsVisible、RectTransform、SourceRect、Owner、Token均公开只读。
+Owner仅检查同一次拖动期间引用稳定，不限定必须是controller还是item view。
+BackpackDragImage是可查询的Component；测试通过rootCanvas.GetComponentsInChildren统计可见实例，不调用其Begin/Update/End来冒充鼠标输入。
+源BackpackItemView的CanvasGroup.alpha在拖动中变小、取消后恢复；ghost位于原rootCanvas且不创建另一个Canvas/EventSystem。
+悬停测试假设本轮默认实现使用background提亮，颜色值不硬编码。如父端改成仅边框高亮，应把颜色比较换为实际边框可见性/样式比较，不能删除悬停独立性断言。
+抓取(18,25)在1×2及2×1的显示区域内均合法，故R不需要触发偏移夹紧；既有lower-cell与外部预览回归继续覆盖夹紧，避免此用例镜像生产换算。
+
+辅助文件：
+TestAdditions.cs.txt是两个新增测试和四个小helper的单独代码段。
+BackpackIntegrationTests.Proposed.cs.txt是生成补丁时的完整候选文件，只在Docs下，不会被Unity编译。不要拿它覆盖此后他人修改过的Assets文件；优先应用patch，源码漂移时逐块核对。
+
+未覆盖/不声称：跨容器真实业务仍由现有Loot夹具及父端04B增补处理；本补丁没有新的仓库/箱子业务替身，也不修改Core或场景。没有原生鼠标或截图验收，CanvasRenderer/Rect断言不代替普通Game视觉检查。未进行编译或运行验证。

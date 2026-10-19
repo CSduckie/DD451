@@ -1,0 +1,60 @@
+Toggle crouch default - read-only compatibility review (2026-10-19)
+
+Scope: inspected current source and test factories only. No Unity execution or Assets writes.
+
+The default must be Toggle both in PlayerConfigSO field initialization and the authored
+Assets/Data/Player/PlayerConfig.asset. Do not preserve Hold as the new-SO default just
+to keep existing tests passing.
+
+Required old Hold-test isolation:
+1. Assets/Tests/Player/PlayMode/PlayerIntegrationTests.cs contains PlayerPlayModeTestBase.
+   CreatePlayer uses Object.Instantiate(player.config), not CreateInstance<PlayerConfigSO>.
+   Its cloned runtime config must explicitly select Hold for the old physics contracts.
+   PlayerMovementTests.RealKeyboardMovesCrouchesJumpsOnceAndRespectsWallAndPlane and
+   BackpackKeepsPoseAndGravityAndDoesNotReplayLockedJump assume release C stands.
+   PlayerCrouchColliderTests likewise tests releasing C in open space or under a ceiling.
+   New Toggle tests must override this legacy fixture and assert the actual asset default.
+2. Assets/Tests/Enemy/PlayMode/PlayerStealthVignetteTests.cs also clones the prefab config.
+   SetCrouching queues C held/released then directly poses the controller. Explicit Hold
+   preserves this effect-isolation fixture and avoids a stale toggled intent overriding
+   the helper's requested standing pose on the next controller update.
+
+Backpack default-mode adaptation:
+Assets/Tests/Backpack/PlayMode/BackpackIntegrationTests.cs,
+OpenBackpackPreservesCrouchAndAllowsWorldTimeAndGravity loads the real scene/config.
+After closing the backpack it currently presses Space immediately, implicitly relying
+on release C having stood up. Preserve real Toggle coverage: assert still crouching,
+press C once, wait/assert standing, then continue the existing jump/gravity check.
+Task004 may be changing this same file. Apply only the narrow compatibility hunk to
+the newest file; never replace its whole file with this staged snapshot.
+
+No compatibility edits required from current inspection:
+- DroneTurningVisionTests.QueuedStandingAndCrouchingMovementEntersBothNaturalTurns
+  presses C once and holds it for the crouching variant. Each variant releases all
+  keys before the next. It never asserts standing merely from releasing C.
+- Other Enemy tests directly set posture and generally use SetBackpackOpen(true)
+  to preserve the posed fixture. They do not exercise held-C release semantics.
+- PlayerSceneTransitionTests directly poses crouch and checks death recovery restores
+  standing. Keep this test meaningful with the new default; no Hold override needed.
+- No other Key.C or CrouchHeld dependencies were found in Assets/Tests.
+
+Focused new default-Toggle checks:
+1. Fresh config and shipping prefab config both default Toggle; C binding unchanged.
+2. One C press/release crouches; a long held C does not repeatedly toggle; a second
+   distinct press stands. Capsule dimensions and feet alignment track actual posture.
+3. Hold option still crouches while held and stands on release.
+4. Backpack opening preserves the selected posture; C presses while locked do not
+   toggle immediately or replay after closing (including damage-forced close).
+5. Second C under a low ceiling clears desired crouch but keeps actual crouch/capsule;
+   leaving the obstruction then stands safely. Space remains blocked while crouched.
+6. Death recovery/new round clears toggled crouch and stale held-key presses; movement,
+   normal scene transitions, disable/enable and input rebinding do not replay old C.
+7. Cover and vignette observe IsCrouching, not raw key-held state: tapping C in cover
+   keeps the hiding effect after release, tapping again removes it when standing is safe.
+
+Suggested focused regression set after the owner releases Unity:
+- New Toggle input tests + PlayerMovementTests + PlayerCrouchColliderTests.
+- The one BackpackIntegrationTests crouch/gravity case.
+- PlayerStealthVignetteTests (existing effect suite).
+- PlayerSceneTransitionTests death recovery/transition checks if controller reset paths change.
+- DroneTurningVision natural movement case only if the input/change introduces concerns there.

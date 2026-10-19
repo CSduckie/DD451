@@ -1,0 +1,15 @@
+{
+    "name": "MyPrecious.Backpack",
+    "rootNamespace": "",
+    "references": [
+        "MyPrecious.Items",
+        "MyPrecious.Health",
+        "MyPrecious.Player",
+        "MyPrecious.Bootstrap",
+        "MyPrecious.Localization",
+        "Unity.InputSystem",
+        "Unity.TextMeshPro",
+        "Unity.ugui"
+    ],
+    "autoReferenced": true
+}

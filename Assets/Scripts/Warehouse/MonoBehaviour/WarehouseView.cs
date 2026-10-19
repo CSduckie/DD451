@@ -70,6 +70,12 @@ public class WarehouseView : MonoBehaviour
         }
     }
 
+    public RectTransform GetItemRect(string instanceId)
+    {
+        return !string.IsNullOrEmpty(instanceId) && itemViews.TryGetValue(instanceId, out WarehouseItemView itemView)
+            && itemView != null ? (RectTransform)itemView.transform : null;
+    }
+
     public void Bind(WarehouseUIController owner, WarehouseManager warehouse, LocalizationManager language)
     {
         bool bindingsChanged = controller != owner || manager != warehouse;

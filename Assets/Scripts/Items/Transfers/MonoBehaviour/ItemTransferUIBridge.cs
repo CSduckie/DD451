@@ -417,13 +417,18 @@ public class ItemTransferUIBridge : MonoBehaviour
 
     private void OnWarehouseDrag(int token, Vector2 position, Camera eventCamera)
     {
-        if (backpack == null || !backpack.IsOpen || backpack.view == null
-            || !backpack.view.TryScreenToCell(position, eventCamera, out Vector2Int cell))
+        if (backpack == null || !backpack.IsOpen || backpack.view == null) { return; }
+        if (!warehouse.IsDragValid(token) || !warehouse.manager.Items.TryGetInstance(warehouse.DragInstanceId, out ItemInstance item)) { return; }
+        // 仓库继续拥有唯一拖拽/R输入；04只提供共用的纯显示影像。
+        backpack.view.BeginDragImage(warehouse, token, item, warehouse.view.GetItemRect(item.InstanceId),
+            warehouse.DragPressPosition, eventCamera, warehouse.PreviewRotated, warehouse.DragGrabOffset,
+            warehouse.view.EffectiveCellSize, warehouse.view.gap);
+        backpack.view.UpdateDragImage(warehouse, token, position, eventCamera, warehouse.PreviewRotated, warehouse.DragGrabOffset);
+        if (!backpack.view.TryScreenToCell(position, eventCamera, out Vector2Int cell))
         {
             if (backpack != null && backpack.view != null && !backpack.IsDragging) { backpack.view.HidePreview(); }
             return;
         }
-        if (!warehouse.manager.Items.TryGetInstance(warehouse.DragInstanceId, out ItemInstance item)) { return; }
         Vector2Int target = cell - warehouse.DragGrabOffset;
         BackpackResult result = backpack.manager.CanPlaceExternal(item.InstanceId, target.x, target.y, warehouse.PreviewRotated);
         backpack.view.ShowPreview(item, target.x, target.y, warehouse.PreviewRotated, result == BackpackResult.Success);
@@ -703,6 +708,10 @@ public class ItemTransferUIBridge : MonoBehaviour
 
     private void OnWarehouseCancelled()
     {
+        BackpackView imageView = boundBackpack != null ? boundBackpack.view : null;
+        BackpackDragImage image = imageView != null ? imageView.DragImage : null;
+        if (image != null && image.Owner is WarehouseUIController owner
+            && (!owner.IsDragging || owner.DragToken != image.Token)) { imageView.EndDragImage(owner, image.Token); }
         if (backpack != null && backpack.view != null && !backpack.IsDragging) { backpack.view.HidePreview(); }
     }
 

@@ -1,0 +1,2 @@
+Prepared against source SHA256: 65C412920A96A6058758C0C28F65C6DE47A0F5F84ACB1A870E6FE30DC033F2C3
+No Assets writes or Unity operations performed.

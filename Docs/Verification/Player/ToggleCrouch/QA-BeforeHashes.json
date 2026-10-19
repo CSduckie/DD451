@@ -1,0 +1,10 @@
+[
+  {
+    "Path": "Assets/Tests/Enemy/PlayMode/PlayerStealthVignetteTests.cs",
+    "SHA256": "60C7231A999E524AF999D96185C015E8FC8BFBB008F2B8260B215E21FFF034F0"
+  },
+  {
+    "Path": "Assets/Tests/Backpack/PlayMode/BackpackIntegrationTests.cs",
+    "SHA256": "BF029F5AA50D4A45811DBB3BD1199E4CEE7D3A14F17A3297E64E912579FEB63C"
+  }
+]

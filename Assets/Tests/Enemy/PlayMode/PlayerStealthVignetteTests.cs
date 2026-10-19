@@ -306,6 +306,8 @@ public class PlayerStealthVignetteTests
         PlayerController player = Object.Instantiate(prefab, holder.transform).GetComponent<PlayerController>();
         Assert.That(player, Is.Not.Null);
         PlayerConfigSO config = Own(Object.Instantiate(player.config));
+        // 此夹具按住/松开C设置姿态，专注验证暗角；正式玩家默认切换蹲伏。
+        config.crouchInputMode = CrouchInputMode.Hold;
         config.planeZ = origin.z;
         config.groundLayers = 0;
         config.damageInvulnerabilitySeconds = 0f;

@@ -1,0 +1,7 @@
+{
+    "name": "MyPrecious.Player.PlayModeTests",
+    "rootNamespace": "",
+    "references": ["MyPrecious.Player", "MyPrecious.Interaction", "MyPrecious.StateMachine", "MyPrecious.StateMachine.Contracts", "MyPrecious.Health", "MyPrecious.Items", "MyPrecious.Bootstrap", "MyPrecious.Player.TestDoubles", "Unity.InputSystem", "Unity.Cinemachine"],
+    "autoReferenced": false,
+    "optionalUnityReferences": ["TestAssemblies"]
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "Path": "Assets/Scenes/Ruins.unity",
+    "Hash": "8E251BBC3E5B942894D1A7847510EF989E68FBEAC9635AC3F25FD829495D4A1E"
+  },
+  {
+    "Path": "Assets/Scenes/Shelter.unity",
+    "Hash": "A942B90EC8DBF256A5C6007C5D16AE07AABC33FCD5AF35E41E5444E0DA7EBAF6"
+  },
+  {
+    "Path": "Assets/Prefabs/Player/Player.prefab",
+    "Hash": "1671B7057E8EED827936CE93D97A262669FC2A756C4E8CB0A412C4591760FDD2"
+  },
+  {
+    "Path": "Assets/Input/GameInputActions.inputactions",
+    "Hash": "483A802C6FEAD9F249F70B169277EBD5729D6B14A44B40030ADC8108EBC43DCB"
+  }
+]

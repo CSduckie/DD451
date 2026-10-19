@@ -15,6 +15,7 @@ public class WarehouseItemView : MonoBehaviour, IPointerDownHandler, IPointerCli
     private int dragToken;
     private bool pointerPressed;
     private bool quickTransferGesture;
+    private Vector2 pressLocalPoint;
 
     public string InstanceId { get; private set; }
 
@@ -64,6 +65,8 @@ public class WarehouseItemView : MonoBehaviour, IPointerDownHandler, IPointerCli
     {
         if (eventData.button != PointerEventData.InputButton.Left || controller == null) { return; }
         pointerPressed = true;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)transform, eventData.position,
+            eventData.pressEventCamera, out pressLocalPoint);
         Keyboard keyboard = Keyboard.current;
         // 按下时决定本次手势；中途松开Ctrl也不会退回普通拖拽。
         quickTransferGesture = keyboard != null && (keyboard.leftCtrlKey.isPressed || keyboard.rightCtrlKey.isPressed);
@@ -91,7 +94,9 @@ public class WarehouseItemView : MonoBehaviour, IPointerDownHandler, IPointerCli
         bool canDrag = pointerPressed && !quickTransferGesture;
         CancelPointerGesture();
         if (!canDrag) { return; }
-        dragToken = controller.BeginItemDrag(InstanceId, eventData.pressPosition, eventData.pressEventCamera);
+        // ScrollRect按下后仍可能有惯性，用按下时的局部点保留像素抓取偏移。
+        Vector2 pressPosition = RectTransformUtility.WorldToScreenPoint(eventData.pressEventCamera, transform.TransformPoint(pressLocalPoint));
+        dragToken = controller.BeginItemDrag(InstanceId, pressPosition, eventData.pressEventCamera);
         if (dragToken != 0) { controller.UpdateDrag(dragToken, eventData.position, eventData.pressEventCamera); }
     }
 

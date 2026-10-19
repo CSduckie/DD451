@@ -1,0 +1,57 @@
+{
+    "stage": "11-Revealed-Box-To-Backpack-Preview-EN",
+    "utc": "2026-10-19T18:21:14.3447979Z",
+    "imageFile": "11-Revealed-Box-To-Backpack-Preview-EN.png",
+    "activeScene": "Assets/Scenes/Tests/Loot/LootTest.unity",
+    "language": "English",
+    "backpackSelectedId": "ff984b4fa2234acdbbcc095b79c5b2cc",
+    "backpackPreview": "Success",
+    "feedback": "backpack.dragging_external",
+    "frame": 44828,
+    "screenWidth": 1920,
+    "screenHeight": 1080,
+    "health": 3,
+    "maxHealth": 3,
+    "ev": 2,
+    "backpackToken": 3,
+    "warehouseToken": 0,
+    "lootSession": 1,
+    "previewX": 1,
+    "previewY": 2,
+    "transfers": 2,
+    "realtime": 402.2658996582031,
+    "gameTime": 235.37547302246095,
+    "timeScale": 1.0,
+    "trackedSourceAlpha": 0.20000000298023225,
+    "dead": false,
+    "shelter": false,
+    "backpackOpen": true,
+    "warehouseOpen": false,
+    "lootOpen": true,
+    "previewRotated": false,
+    "leftHeld": true,
+    "background": true,
+    "trackedSourceActive": true,
+    "playerPosition": {
+        "x": -8.277777671813965,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "pointer": {
+        "x": 159.0999755859375,
+        "y": 716.9000244140625
+    },
+    "grabOffset": {
+        "x": 0,
+        "y": 0
+    },
+    "loadedScenes": [
+        "Assets/Scenes/Tests/Loot/LootTest.unity"
+    ],
+    "inputDevices": [
+        "1:Keyboard:False",
+        "2:Mouse:False",
+        "576:Keyboard1:True",
+        "577:Mouse1:True"
+    ]
+}

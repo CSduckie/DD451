@@ -37,6 +37,7 @@ public class WarehouseUIController : MonoBehaviour
     public bool IsDragging { get { return dragToken != 0; } }
     public int DragToken { get { return dragToken; } }
     public Vector2Int DragGrabOffset { get { return grabOffset; } }
+    public Vector2 DragPressPosition { get; private set; }
     public bool IsAwaitingAbandonConfirmation { get { return !string.IsNullOrEmpty(PendingAbandonInstanceId); } }
     public string SelectedInstanceId { get; private set; }
     public string PendingAbandonInstanceId { get; private set; }
@@ -170,12 +171,14 @@ public class WarehouseUIController : MonoBehaviour
         originalPlacement = placement;
         PreviewRotated = placement.Rotated;
         grabOffset = view.GetGrabOffset(screenPosition, eventCamera, placement);
+        DragPressPosition = screenPosition;
         nextDragToken = nextDragToken == int.MaxValue ? 1 : nextDragToken + 1;
         dragToken = nextDragToken;
+        int startedToken = dragToken;
         // 原摆放始终保留；预览没有调用移除、改归属或写回 SO。
-        UpdateDrag(dragToken, screenPosition, eventCamera);
+        UpdateDrag(startedToken, screenPosition, eventCamera);
         RefreshText();
-        return dragToken;
+        return IsDragValid(startedToken) ? startedToken : 0;
     }
 
     public void UpdateDrag(int token, Vector2 screenPosition, Camera eventCamera)

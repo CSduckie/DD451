@@ -1,0 +1,208 @@
+    [UnityTest]
+    public IEnumerator QueuedHoverPreservesSelectionAndDoesNotPassThroughDiscardConfirmation()
+    {
+        yield return LoadScene();
+        yield return Press(Key.Tab);
+        BackpackView view = controller.view;
+        BackpackItemView battery = FindBackpackItemView(FindItem("battery").InstanceId);
+        BackpackItemView food = FindBackpackItemView(ItemAt(2, 0).InstanceId);
+        Vector2 outside = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
+        yield return SetPointer(outside, false);
+        Color normalBattery = battery.background.color;
+        Color normalFood = food.background.color;
+        string before = Snapshot();
+        string selectedBeforeHover = controller.SelectedInstanceId;
+        Vector2 batteryPoint = ScreenRect((RectTransform)battery.transform).center;
+        Vector2 foodPoint = ScreenRect((RectTransform)food.transform).center;
+
+        yield return SetPointer(batteryPoint, false);
+        Assert.That(battery.background.color, Is.Not.EqualTo(normalBattery));
+        Assert.That(controller.SelectedInstanceId, Is.EqualTo(selectedBeforeHover));
+        Color hoveredBattery = battery.background.color;
+        yield return SetPointer(ScreenRect(battery.nameText.rectTransform).center, false);
+        Assert.That(view.ItemAtScreenPoint(mouse.position.ReadValue(), null), Is.EqualTo(battery.InstanceId));
+        Assert.That(battery.background.color, Is.EqualTo(hoveredBattery), "Moving onto the item label must not interrupt hover.");
+        yield return ClickPointer(batteryPoint);
+        Assert.That(controller.SelectedInstanceId, Is.EqualTo(battery.InstanceId));
+        yield return SetPointer(outside, false);
+        Color selectedBattery = battery.background.color;
+        Assert.That(selectedBattery, Is.Not.EqualTo(normalBattery));
+        yield return SetPointer(foodPoint, false);
+        Assert.That(food.background.color, Is.Not.EqualTo(normalFood));
+        Assert.That(battery.background.color, Is.EqualTo(selectedBattery));
+        Assert.That(controller.SelectedInstanceId, Is.EqualTo(battery.InstanceId));
+        yield return Press(Key.F10);
+        Assert.That(food.nameText.text, Is.EqualTo(LocalizationManager.Instance.GetText(ItemAt(2, 0).Definition.nameKey)));
+        Assert.That(controller.SelectedInstanceId, Is.EqualTo(battery.InstanceId));
+        Assert.That(Snapshot(), Is.EqualTo(before));
+        yield return SetPointer(outside, false);
+        Assert.That(food.background.color, Is.EqualTo(normalFood));
+
+        ItemTransferUIBridge bridge = Object.FindFirstObjectByType<ItemTransferUIBridge>();
+        Assert.That(bridge, Is.Not.Null);
+        yield return ClickPointer(ScreenRect((RectTransform)bridge.dropButton.transform).center);
+        Assert.That(bridge.IsAwaitingDiscardConfirmation, Is.True);
+        yield return SetPointer(foodPoint, false);
+        Assert.That(food.background.color, Is.EqualTo(normalFood), "The confirmation overlay must not let the covered item hover.");
+        Assert.That(controller.SelectedInstanceId, Is.EqualTo(battery.InstanceId));
+        Assert.That(controller.IsDragging, Is.False);
+        Assert.That(Snapshot(), Is.EqualTo(before));
+        yield return ClickPointer(ScreenRect((RectTransform)bridge.cancelDiscardButton.transform).center);
+        Assert.That(bridge.IsAwaitingDiscardConfirmation, Is.False);
+        yield return SetPointer(foodPoint, false);
+        Assert.That(food.background.color, Is.Not.EqualTo(normalFood));
+        yield return Press(Key.Tab);
+        Assert.That(controller.IsOpen, Is.False);
+        yield return SetPointer(outside, false);
+        yield return Press(Key.Tab);
+        Assert.That(battery.background.color, Is.EqualTo(selectedBattery));
+        Assert.That(food.background.color, Is.EqualTo(normalFood));
+        Assert.That(Snapshot(), Is.EqualTo(before));
+    }
+
+    [UnityTest]
+    public IEnumerator QueuedDragImageKeepsPixelGrabAcrossGapsOutsideRotationAndLanguageThenRejectsDrop()
+    {
+        yield return LoadScene();
+        yield return Press(Key.Tab);
+        BackpackView view = controller.view;
+        ItemInstance battery = FindItem("battery");
+        BackpackItemView source = FindBackpackItemView(battery.InstanceId);
+        RectTransform sourceRect = (RectTransform)source.transform;
+        Rect originalRect = ScreenRect(sourceRect);
+        Assert.That(originalRect.width, Is.EqualTo(66f).Within(0.1f));
+        Assert.That(originalRect.height, Is.EqualTo(136f).Within(0.1f));
+        Vector2 pixelGrab = new Vector2(18f, 25f);
+        Vector2 press = new Vector2(originalRect.xMin + pixelGrab.x, originalRect.yMax - pixelGrab.y);
+        string before = Snapshot();
+        int canvasCount = Object.FindObjectsByType<Canvas>(FindObjectsInactive.Include, FindObjectsSortMode.None).Length;
+        Canvas rootCanvas = view.GetComponentInParent<Canvas>().rootCanvas;
+        CanvasGroup initialGroup = source.GetComponent<CanvasGroup>();
+        float originalAlpha = initialGroup != null ? initialGroup.alpha : 1f;
+        int changes = 0;
+        System.Action onChanged = () => changes++;
+        manager.Changed += onChanged;
+        try
+        {
+            yield return SetPointer(press, false);
+            yield return SetPointer(press, true);
+            for (int i = 0; i < 4; i++) { yield return null; }
+            Assert.That(controller.IsDragging, Is.False, "Holding without movement has no timer-based drag start.");
+            Assert.That(view.DragImage == null || !view.DragImage.IsVisible, Is.True);
+            Vector2 moved = press + Vector2.right * Mathf.Max(20f, EventSystem.current.pixelDragThreshold + 4f);
+            yield return SetPointer(moved, true);
+            Assert.That(controller.IsDragging, Is.True, "The real UGUI drag threshold must start the gesture.");
+            BackpackDragImage image = view.DragImage;
+            Assert.That(image, Is.Not.Null);
+            int token = controller.DragToken;
+            var owner = image.Owner;
+            Assert.That(owner, Is.Not.Null);
+            Assert.That(image.Token, Is.EqualTo(token));
+            Assert.That(image.SourceRect, Is.SameAs(sourceRect));
+            Assert.That(image.RectTransform, Is.Not.SameAs(view.preview.rectTransform));
+            Assert.That(image.RectTransform.GetComponentInParent<Canvas>(), Is.SameAs(rootCanvas));
+            Assert.That(source.isActiveAndEnabled, Is.True, "Keep the original event receiver active until release.");
+            CanvasGroup sourceGroup = source.GetComponent<CanvasGroup>();
+            Assert.That(sourceGroup, Is.Not.Null);
+            Assert.That(sourceGroup.alpha, Is.LessThan(originalAlpha));
+
+            Vector2 gap = RectTransformUtility.WorldToScreenPoint(null, view.gridRoot.TransformPoint(new Vector3(
+                view.gridRoot.rect.xMin + view.padding + 2f * (view.cellSize + view.gap) + view.cellSize + view.gap * 0.5f,
+                view.gridRoot.rect.yMax - view.padding - 2f * (view.cellSize + view.gap) - 25f, 0f)));
+            Vector2 outside = new Vector2(Screen.width * 0.5f, Screen.height * 0.5f);
+            Assert.That(RectTransformUtility.RectangleContainsScreenPoint(view.gridRoot, outside, null), Is.False);
+            foreach (Vector2 point in new[] { moved + Vector2.right, moved + Vector2.right * 3f, CellPoint(3, 2), gap, outside })
+            {
+                yield return SetPointer(point, true);
+                Assert.That(view.DragImage, Is.SameAs(image));
+                Assert.That(image.Owner, Is.SameAs(owner));
+                Assert.That(image.Token, Is.EqualTo(token));
+                AssertDragImageAt(image, point, pixelGrab, new Vector2(66f, 136f));
+                Assert.That(rootCanvas.GetComponentsInChildren<BackpackDragImage>(true).Count(candidate => candidate.IsVisible), Is.EqualTo(1));
+                Assert.That(source.isActiveAndEnabled, Is.True);
+                Assert.That(Snapshot(), Is.EqualTo(before));
+                List<RaycastResult> hits = new List<RaycastResult>();
+                EventSystem.current.RaycastAll(new PointerEventData(EventSystem.current) { position = point }, hits);
+                Assert.That(hits.Any(hit => hit.gameObject.transform == image.RectTransform
+                    || hit.gameObject.transform.IsChildOf(image.RectTransform)), Is.False, "Neither the ghost nor its text may intercept the target raycast.");
+                if (point == CellPoint(3, 2))
+                {
+                    Assert.That(view.TryScreenToCell(point, null, out Vector2Int cell), Is.True);
+                    Assert.That(cell, Is.EqualTo(new Vector2Int(3, 2)));
+                }
+                if (point == gap || point == outside)
+                {
+                    Assert.That(view.TryScreenToCell(point, null, out _), Is.False);
+                    Assert.That(view.preview.gameObject.activeInHierarchy, Is.False);
+                }
+            }
+            yield return Press(Key.R);
+            Assert.That(controller.PreviewRotated, Is.True);
+            Assert.That(controller.DragGrabOffset, Is.EqualTo(Vector2Int.zero));
+            AssertDragImageAt(image, outside, pixelGrab, new Vector2(136f, 66f));
+            yield return Press(Key.F10);
+            Assert.That(LocalizationManager.Instance.CurrentLanguage, Is.EqualTo(GameLanguage.English));
+            Assert.That(view.DragImage, Is.SameAs(image));
+            Assert.That(image.Token, Is.EqualTo(token));
+            AssertDragImageAt(image, outside, pixelGrab, new Vector2(136f, 66f));
+            string ghostText = string.Join("\n", image.RectTransform.GetComponentsInChildren<TMPro.TMP_Text>()
+                .Select(label => label.text));
+            Assert.That(ghostText, Does.Contain(LocalizationManager.Instance.GetText(battery.Definition.nameKey)));
+            Assert.That(Snapshot(), Is.EqualTo(before));
+            Assert.That(changes, Is.Zero);
+
+            yield return SetPointer(gap, true);
+            AssertDragImageAt(image, gap, pixelGrab, new Vector2(136f, 66f));
+            yield return SetPointer(gap, false);
+            Assert.That(controller.IsDragging, Is.False);
+            Assert.That(image.IsVisible, Is.False);
+            Assert.That(view.preview.gameObject.activeInHierarchy, Is.False);
+            Assert.That(source.isActiveAndEnabled, Is.True);
+            Assert.That(sourceGroup.alpha, Is.EqualTo(originalAlpha).Within(0.001f));
+            Assert.That(ScreenRect(sourceRect), Is.EqualTo(originalRect));
+            Assert.That(Snapshot(), Is.EqualTo(before), "An invalid release keeps the original owner, cells and rotation.");
+            Assert.That(changes, Is.Zero);
+            Assert.That(Object.FindObjectsByType<Canvas>(FindObjectsInactive.Include, FindObjectsSortMode.None).Length, Is.EqualTo(canvasCount));
+            Assert.That(Object.FindObjectsByType<EventSystem>(FindObjectsSortMode.None).Length, Is.EqualTo(1));
+        }
+        finally { manager.Changed -= onChanged; }
+    }
+
+    private BackpackItemView FindBackpackItemView(string instanceId)
+    {
+        return controller.view.itemRoot.GetComponentsInChildren<BackpackItemView>()
+            .Single(item => item.InstanceId == instanceId);
+    }
+
+    private IEnumerator ClickPointer(Vector2 point)
+    {
+        yield return SetPointer(point, false);
+        yield return SetPointer(point, true);
+        yield return SetPointer(point, false);
+    }
+
+    private static Rect ScreenRect(RectTransform rect)
+    {
+        Canvas.ForceUpdateCanvases();
+        Vector3[] corners = new Vector3[4];
+        rect.GetWorldCorners(corners);
+        Vector2 min = RectTransformUtility.WorldToScreenPoint(null, corners[0]);
+        Vector2 max = RectTransformUtility.WorldToScreenPoint(null, corners[2]);
+        return new Rect(min, max - min);
+    }
+
+    private static void AssertDragImageAt(BackpackDragImage image, Vector2 pointer, Vector2 grab, Vector2 size)
+    {
+        Assert.That(image.IsVisible, Is.True);
+        Rect actual = ScreenRect(image.RectTransform);
+        Assert.That(actual.xMin, Is.EqualTo(pointer.x - grab.x).Within(0.5f));
+        Assert.That(actual.yMax, Is.EqualTo(pointer.y + grab.y).Within(0.5f));
+        Assert.That(actual.width, Is.EqualTo(size.x).Within(0.1f));
+        Assert.That(actual.height, Is.EqualTo(size.y).Within(0.1f));
+        UnityEngine.UI.Graphic[] graphics = image.RectTransform.GetComponentsInChildren<UnityEngine.UI.Graphic>(true);
+        Assert.That(graphics, Is.Not.Empty);
+        Assert.That(graphics.All(graphic => !graphic.raycastTarget), Is.True);
+        Assert.That(graphics.Any(graphic => graphic.isActiveAndEnabled && !graphic.canvasRenderer.cull
+            && graphic.canvasRenderer.GetInheritedAlpha() > 0f), Is.True, "A visible ghost needs at least one rendered, nontransparent graphic.");
+    }
+

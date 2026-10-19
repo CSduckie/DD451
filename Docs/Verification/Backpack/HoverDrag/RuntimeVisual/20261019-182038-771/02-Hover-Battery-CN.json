@@ -1,0 +1,57 @@
+{
+    "stage": "02-Hover-Battery-CN",
+    "utc": "2026-10-19T18:21:11.9180136Z",
+    "imageFile": "02-Hover-Battery-CN.png",
+    "activeScene": "Assets/Scenes/Tests/Loot/LootTest.unity",
+    "language": "Chinese",
+    "backpackSelectedId": "",
+    "backpackPreview": "Success",
+    "feedback": "backpack.ready",
+    "frame": 44429,
+    "screenWidth": 1920,
+    "screenHeight": 1080,
+    "health": 3,
+    "maxHealth": 3,
+    "ev": 2,
+    "backpackToken": 0,
+    "warehouseToken": 0,
+    "lootSession": 0,
+    "previewX": 0,
+    "previewY": 0,
+    "transfers": 0,
+    "realtime": 399.8397216796875,
+    "gameTime": 232.9492645263672,
+    "timeScale": 1.0,
+    "trackedSourceAlpha": 1.0,
+    "dead": false,
+    "shelter": false,
+    "backpackOpen": true,
+    "warehouseOpen": false,
+    "lootOpen": false,
+    "previewRotated": false,
+    "leftHeld": false,
+    "background": true,
+    "trackedSourceActive": true,
+    "playerPosition": {
+        "x": -8.0,
+        "y": 1.1920928955078126e-7,
+        "z": 0.0
+    },
+    "pointer": {
+        "x": 84.0,
+        "y": 715.0
+    },
+    "grabOffset": {
+        "x": 0,
+        "y": 0
+    },
+    "loadedScenes": [
+        "Assets/Scenes/Tests/Loot/LootTest.unity"
+    ],
+    "inputDevices": [
+        "1:Keyboard:False",
+        "2:Mouse:False",
+        "576:Keyboard1:True",
+        "577:Mouse1:True"
+    ]
+}

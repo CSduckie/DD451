@@ -201,15 +201,14 @@ public class BackpackUIController : MonoBehaviour
         externalPreview = false;
         dragItem = item;
         PreviewRotated = placement.Rotated;
-        grabOffset = Vector2Int.zero;
-        if (view.TryScreenToCell(screenPosition, eventCamera, out Vector2Int clickedCell))
-        {
-            grabOffset = clickedCell - new Vector2Int(placement.X, placement.Y);
-        }
+        grabOffset = view.GetGrabOffset(instanceId, screenPosition, eventCamera, placement);
         dragToken = NextToken();
+        int startedToken = dragToken;
+        view.BeginDragImage(this, startedToken, item, view.GetItemRect(instanceId), screenPosition, eventCamera,
+            PreviewRotated, grabOffset, view.cellSize, view.gap);
         // 不移除真实摆放。受击/非法松手只丢弃预览，原占格始终存在。
-        UpdateDrag(dragToken, screenPosition, eventCamera);
-        return dragToken;
+        UpdateDrag(startedToken, screenPosition, eventCamera);
+        return IsDragValid(startedToken) ? startedToken : 0;
     }
 
     public bool BeginExternalPreview(string instanceId)
@@ -323,6 +322,7 @@ public class BackpackUIController : MonoBehaviour
         lastPointer = screenPosition;
         pointerCamera = eventCamera;
         if (!DragSourceIsUnchanged()) { CancelDrag(); SetFeedback("backpack.result.wrong_owner"); return; }
+        view.UpdateDragImage(this, token, screenPosition, eventCamera, PreviewRotated, grabOffset);
         pointerInside = view.TryScreenToCell(screenPosition, eventCamera, out Vector2Int cell);
         PreviewX = cell.x - grabOffset.x;
         PreviewY = cell.y - grabOffset.y;
@@ -398,6 +398,7 @@ public class BackpackUIController : MonoBehaviour
     public void CancelDrag()
     {
         bool hadDrag = IsDragging;
+        if (view != null) { view.EndDragImage(this, dragToken); }
         dragToken = 0;
         dragItem = null;
         originalPlacement = null;

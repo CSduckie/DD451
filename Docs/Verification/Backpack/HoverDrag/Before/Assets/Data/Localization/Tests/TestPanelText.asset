@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f3cd9f8c424ac5439f636ad5435f100, type: 3}
+  m_Name: TestPanelText
+  m_EditorClassIdentifier: 
+  entries:
+  - key: tests.damage_one
+    chinese: "受到1点伤害"
+    english: "Take 1 damage"
+  - key: tests.items.variant
+    chinese: "{0}{1}"
+    english: "{0} {1}"
+  - key: tests.items.use
+    chinese: "使用{0}"
+    english: "Use {0}"
+  - key: tests.items.item_usage
+    chinese: "{0}：{1}，本轮已用{2}次"
+    english: "{0}: {1}, used {2} time(s) this round"
+  - key: tests.items.food_owners
+    chinese: "{0}：{1}｜{2}：{3}"
+    english: "{0}: {1} | {2}: {3}"
+  - key: tests.player.title
+    chinese: "玩家白盒测试｜真实玩家生命与物品管理模块"
+    english: "Player whitebox test | Real player health and items"
+  - key: tests.player.controls
+    chinese: "A/D或方向键：移动｜空格：跳跃｜按住C：蹲伏｜E：交互"
+    english: "A/D or arrows: move | Space: jump | Hold C: crouch | E: interact"
+  - key: tests.player.status
+    chinese: "已出发：{0}｜生命：{1}/{2}｜轮次：{3}｜状态：{4}"
+    english: "Prepared: {0} | Health: {1}/{2} | Round: {3} | State: {4}"
+  - key: tests.player.movement
+    chinese: "背包：{0}｜着地：{1}｜朝向：{2}｜Z坐标：{3:F3}"
+    english: "Backpack: {0} | Grounded: {1} | Facing: {2} | Z: {3:F3}"
+  - key: tests.player.interaction
+    chinese: "按E：{0}"
+    english: "Press E: {0}"
+  - key: tests.player.prepare_round
+    chinese: "准备下一轮（模拟08流程调用）"
+    english: "Prepare next round (simulate module 08)"
+  - key: tests.player.toggle_backpack
+    chinese: "开关背包（测试控制限制）"
+    english: "Toggle backpack (test control restrictions)"
+  - key: tests.player.damage_lethal
+    chinese: "受到致命伤害"
+    english: "Take lethal damage"
+  - key: tests.player.placeholder_note
+    chinese: "角色使用胶囊占位；相机投影与构图为测试默认值。"
+    english: "The player uses a capsule placeholder. Camera projection and framing use test defaults."
+  - key: tests.player.scope_note
+    chinese: "尚未接入真实背包拖拽、敌人AI、游戏流程或正式界面。"
+    english: "Backpack dragging, enemy AI, game flow and final UI are not connected yet."
+  - key: tests.player.result.waiting
+    chinese: "点击“准备下一轮”开始测试；不会自动出发。"
+    english: "Click Prepare next round to begin testing. Exploration does not start automatically."
+  - key: tests.player.result.existing_items
+    chinese: "已保留现有物品；本测试需要一件{0}和两份{1}记录。"
+    english: "Existing items were preserved. This test requires one {0} and two {1} records."
+  - key: tests.player.result.backpack_closed
+    chinese: "模拟04：非致命受伤已关闭背包，尚未接入真实拖拽回滚。"
+    english: "Module 04 simulation: nonlethal damage closed the backpack. Drag rollback is not connected yet."
+  - key: tests.player.result.round_limit
+    chinese: "轮次编号已达上限，无法开始下一轮。"
+    english: "The round number limit has been reached. A new round cannot start."
+  - key: tests.player.result.round_ready
+    chinese: "第{0}轮：已使用同一轮次编号准备玩家和物品使用次数。"
+    english: "Round {0}: the player and item uses were prepared with the same round number."
+  - key: tests.player.result.prepare_failed
+    chinese: "准备失败，请检查玩家与物品模块的引用。"
+    english: "Preparation failed. Check the player and item module references."
+  - key: tests.player.result.damage_rejected
+    chinese: "伤害未生效：尚未出发、已死亡或处于短暂无敌中。"
+    english: "Damage was rejected: the player is unprepared, dead or briefly invulnerable."
+  - key: tests.player.result.lethal_damage
+    chinese: "致命伤害已生效；关闭背包不会使玩家复活。"
+    english: "Lethal damage was applied. Closing the backpack does not revive the player."
+  - key: tests.items.title
+    chinese: "物品模块测试｜仅使用测试生命对象"
+    english: "Item module test | Test health object only"
+  - key: tests.items.status
+    chinese: "生命：{0}/{1}｜轮次：{2}｜已登记物品：{3}件"
+    english: "Health: {0}/{1} | Round: {2} | Registered items: {3}"
+  - key: tests.items.use_medkit
+    chinese: "使用{0}（回满生命，每轮限用1次）"
+    english: "Use {0} (full heal, once per round)"
+  - key: tests.items.next_round
+    chinese: "开始下一轮（仅刷新物品使用次数）"
+    english: "Begin next round (reset item uses only)"
+  - key: tests.items.scope_note
+    chinese: "仅用于测试：尚未接入真实玩家、格子布局或地图。"
+    english: "Test only: the real player, grid layout and map are not connected yet."
+  - key: tests.items.result.waiting
+    chinese: "请选择测试操作。"
+    english: "Choose a test action."
+  - key: tests.items.result.damage
+    chinese: "测试伤害已施加，生命：{0}/{1}"
+    english: "Test damage applied. Health: {0}/{1}"
+  - key: tests.items.result.round_ready
+    chinese: "第{0}轮：已刷新物品使用次数。"
+    english: "Round {0}: item uses have been reset."
+  - key: tests.items.result.round_unchanged
+    chinese: "轮次未改变。"
+    english: "The round did not change."
+  - key: tests.localization.title
+    chinese: "中英双语测试"
+    english: "Chinese / English localization"
+  - key: tests.localization.instructions
+    chinese: "按 F10 切换语言。每次启动默认中文；本次运行中保留选择。"
+    english: "Press F10 to switch language. Each fresh run starts in Chinese; the choice lasts for this run."
+  - key: tests.localization.current_language
+    chinese: "当前语言：{0}"
+    english: "Current language: {0}"
+  - key: tests.localization.sample_result
+    chinese: "结果示例（仅文字）：{0}：{1}"
+    english: "Result example (text only): {0}: {1}"
+  - key: tests.localization.scope
+    chinese: "上方数字与结果为显示示例；物品名称和描述直接读取真实 ItemDataSO。真实玩家、交互及物品使用请打开 PlayerTest / ItemsTest。"
+    english: "Numbers and the result above are display samples; item text comes directly from the real ItemDataSO. Open PlayerTest / ItemsTest for player, interaction and item-use integration."

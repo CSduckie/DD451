@@ -336,6 +336,8 @@ public abstract class PlayerPlayModeTestBase
         Track(config);
         config.maxHealth = 3;
         config.damageInvulnerabilitySeconds = 0f;
+        // 原有移动/碰撞用例明确覆盖Hold；切换模式由PlayerToggleCrouchTests单独覆盖。
+        config.crouchInputMode = CrouchInputMode.Hold;
         config.jumpSpeed = 6f;
         // These integration scenarios retain their original 6m/s, ordinary-gravity contract.
         // Shipping reference-jump tuning has its own physical trajectory tests.

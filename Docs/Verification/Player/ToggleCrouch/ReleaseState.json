@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "message": "Code executed successfully.",
+  "data": {
+    "result": {
+      "utc": "2026-10-19T18:03:37.6666047Z",
+      "scene": "Assets/Scenes/Ruins.unity",
+      "dirty": false,
+      "playing": false,
+      "compiling": false,
+      "updating": false,
+      "tests": false,
+      "probe": false,
+      "configMode": "Toggle",
+      "background": false,
+      "timeScale": 1,
+      "keyboards": [
+        {
+          "name": "Keyboard",
+          "id": 1,
+          "enabled": true
+        }
+      ]
+    },
+    "compiler": "codedom"
+  }
+}

@@ -27,6 +27,7 @@ public class LootItemView : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     private bool quickHandled;
     private int pressedPointerId;
     private int pressedSession;
+    private Vector2 pressLocalPoint;
 
     public string EntryId { get { return entryId; } }
 
@@ -98,6 +99,8 @@ public class LootItemView : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         dragStarted = false;
         pressedPointerId = eventData.pointerId;
         pressedSession = controller.SessionToken;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle((RectTransform)transform, eventData.position,
+            eventData.pressEventCamera, out pressLocalPoint);
         quickHandled = false;
         Keyboard keyboard = Keyboard.current;
         quickGesture = keyboard != null && (keyboard.leftCtrlKey.isPressed || keyboard.rightCtrlKey.isPressed);
@@ -138,8 +141,9 @@ public class LootItemView : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         eventData.eligibleForClick = false;
         // 同一对象既接收按下又接收拖拽时，UGUI仍可能发Click；跨阈值的Ctrl手势只取消。
         if (quickGesture) { quickHandled = true; eventData.Use(); return; }
-        // 和04一致：抓取格使用按下位置，预览使用当前指针，快速跨格拖动也不丢偏移。
-        dragToken = controller.BeginItemDrag(entryId, eventData.position, eventData.pressEventCamera, eventData.pressPosition);
+        // 用按下时物品局部点抵消ScrollRect惯性，未知项仍走下方原滚动流程。
+        Vector2 pressPosition = RectTransformUtility.WorldToScreenPoint(eventData.pressEventCamera, transform.TransformPoint(pressLocalPoint));
+        dragToken = controller.BeginItemDrag(entryId, eventData.position, eventData.pressEventCamera, pressPosition);
         if (dragToken == 0)
         {
             draggingScroll = GetComponentInParent<ScrollRect>();

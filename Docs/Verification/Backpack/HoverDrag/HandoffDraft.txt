@@ -1,0 +1,76 @@
+04B — 背包物品悬停与跟随光标拖拽交接草案
+2026-10-19；项目 E:/DD451
+状态：源码与自动化证据已复核；普通 Game 内存探针正在运行。此文件是草案，不代表视觉验收完成或 Editor 已释放；最终交接由主任务补齐后另写。
+
+当前行为
+鼠标划入背包物品时提亮，离开恢复正确的普通/选中样式。确认框遮挡、关包或拖动时取消悬停；同源原格松手后，即使没有新的 PointerEnter，也重新判断当前是否可高亮。
+按住左键移动超过既有 UGUI 阈值开始拖动，没有新增计时门槛。真实物品与占格留在来源，只将原 UI 淡化，单份影像保留抓取偏移并跟随光标经过格缝、中央世界区及另一容器。R 更新影像尺寸和目标占格，F10 更新文字。影像不被来源 ScrollRect/Mask 裁剪，也不参与 Raycast。
+合法松手沿原拖拽提交链落在实际目标格；非法目标及取消恢复原表现，不自动找空位、不转为丢弃。Ctrl+左键仍是原快捷转移入口。背包↔仓库、背包↔已揭示搜刮容器共用该影像，仍由各来源控制器保存实际拖拽资格。
+
+11 个生产 C# 文件及职责
+1. Assets/Scripts/Backpack/MonoBehaviour/BackpackItemView.cs
+   增加独立悬停状态和 Inspector 外观参数；按最上层命中判断高亮，保留选中；保存按下时物品局部点，名称/尺寸不拦截 Raycast。
+2. Assets/Scripts/Backpack/MonoBehaviour/BackpackUIController.cs
+   使用实际物品 Rect 计算抓取格；开始/更新/取消影像；捕获 startedToken，首次 UpdateDrag 同步取消或重开后不能返回另一轮 token。
+3. Assets/Scripts/Backpack/MonoBehaviour/BackpackView.cs
+   查询源 Rect 和局部抓取格，缓存并接入一份影像；刷新语言、清高亮、关包清理；保留独立的目标占格预览。
+4. Assets/Scripts/Backpack/MonoBehaviour/BackpackDragImage.cs（新增，附同名 .meta）
+   纯显示组件，保存 owner/token、源 Rect 和原 alpha；按实际像素偏移跟随，显示名称/尺寸/已有图标；不持有业务提交权，不重建已丢失物品。
+5. Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferUIBridge.cs
+   将仓库来源接到共用影像，并在取消时只清理已经失效的对应 owner/token；跨容器业务提交方法未改。
+6. Assets/Scripts/Loot/MonoBehaviour/LootItemView.cs
+   保存按下时物品局部点，防止来源滚动后抓取偏移跳动；未知项原滚动流程继续保留。
+7. Assets/Scripts/Loot/MonoBehaviour/LootUIController.cs
+   已揭示来源开始拖动后，再复核本次会话与 token，传入真实来源 Rect、图标、旋转和抓取格生成影像。
+8. Assets/Scripts/Loot/MonoBehaviour/LootView.cs
+   增加按 entryId 读取已有物品视图的只读入口。
+9. Assets/Scripts/Warehouse/MonoBehaviour/WarehouseItemView.cs
+   保存按下时局部点，抵消 ScrollRect 惯性造成的来源位移。
+10. Assets/Scripts/Warehouse/MonoBehaviour/WarehouseUIController.cs
+    暴露 DragPressPosition 供显示使用，并增加 startedToken 精确返回校验；仓库仍拥有自身拖拽与 R 输入。
+11. Assets/Scripts/Warehouse/MonoBehaviour/WarehouseView.cs
+    增加按 instanceId 查询已有物品 Rect 的只读入口。
+
+Inspector 参数
+- Assets/Prefabs/UI/Backpack/BackpackItem.prefab → BackpackItemView：hoverColor 默认 RGBA(1, 0.88, 0.60, 1)；hoverStrength 默认 0.30。
+- Assets/Prefabs/UI/Backpack/BackpackPanel.prefab → BackpackView：dragSourceAlpha 默认 0.20，乘以来源原 alpha；dragImageAlpha 默认 0.90。
+当前 prefab 未显式序列化这些新增字段的覆盖值，使用脚本默认值；可在对应 prefab/实例 Inspector 中调节。未新增美术、语言键或设置菜单。
+
+保持的核心与兼容
+以 Docs/Verification/Backpack/HoverDrag/AfterToggleCrouch/Hashes.json 为接手基线，物品 ItemManager/ItemInstance、ItemTransferCoordinator/结果类型、BackpackManager/Grid/Placement、WarehouseManager/Grid/Placement、LootRuntimeManager/LootSourceState 的当前 SHA-256 均一致。身份、归属、实例数、EV、次数、找回/丢弃语义、搜索状态及事务实现没有本轮改动。
+开始时不移除真实摆放；成功松手仍由原 Manager/协调器提交。视觉清理只恢复仍存在的源 UI alpha，不将死亡结算后的 Lost/Consumed 实例恢复为持有状态。
+02D 默认 C-toggle 保留：PlayerConfigSO.cs、PlayerConfig.asset、PlayerInputReader.cs、PlayerController.cs 的哈希与 02D 接手基线一致。BackpackIntegrationTests.OpenBackpackPreservesCrouchAndAllowsWorldTimeAndGravity 整段方法与 AfterToggleCrouch 留档完全一致，保留关包后仍蹲伏、第二次 C 才站起的窄修改。
+
+测试与证据（均位于 Docs/Verification/Backpack/HoverDrag）
+1. BackpackPlayMode-Initial.json：21/21 Passed，0 failed，0 skipped，有逐项明细。是初次运行，不能单独代表最终悬停恢复/token 修复后的全部状态。
+2. UIPlayMode-MCP.json：联合运行 completed/total=70/70，status=succeeded，failures_so_far=[]，error=null；域重载后 data.result=null，没有逐项 summary/results。因此准确表述为“70 项联合运行已完成且未记录失败”；不能宣称已取得“70 项详细 Passed、0 skipped”。
+3. FocusedPlayMode-Final.json：最终专项 8/8 Passed，0 failed、0 skipped，详细覆盖：
+   - BackpackIntegrationTests.QueuedDragImageKeepsPixelGrabAcrossGapsOutsideRotationAndLanguageThenRejectsDrop
+   - BackpackIntegrationTests.QueuedHoverPreservesSelectionAndDoesNotPassThroughDiscardConfirmation
+   - BackpackIntegrationTests.QueuedSameFrameCtrlLeftAndRightPressCannotUseAndRightUseRecoversAfterRelease
+   - LootIntegrationTests.QueuedControlUsesOnlyRotatedBackpackSpaceAndPrecisePickupKeepsBoxRotationAndGrabOffset
+   - LootIntegrationTests.QueuedDamageCancelsValidBoxPickupAndLateTokenCannotAffectNextDrag
+   - LootIntegrationTests.QueuedDamageCancelsValidBoxReturnAndLateTokenCannotAffectNextDrag
+   - LootIntegrationTests.QueuedGridUnknownOutlinesHaveOneCenteredCountdownAndMatchBackpackPixels
+   - LootIntegrationTests.QueuedPointerTransfersBothWaysAndSingleRPreserveIdentityAndEv
+4. DeathPlayMode.json：GameFlowDeathReturnTests.DeathClosesSearchAndDragSynchronouslyAndUsedMedkitKeepsItsRoundAllowance，正式流程 1/1 Passed，0 failed、0 skipped；死亡同步隐藏影像，结算/卸场景后不恢复已丢失物品，保留使用额度断言。
+5. FinalReview.txt：独立静态复核、11 个生产文件版本哈希、核心基线及 02D 核验，供最终交接引用。
+
+自动化用例通过 QueueStateEvent 驱动合成 Keyboard/Mouse，实际经过 InputSystem→UIInputModule→UGUI；验证实际屏幕矩形、抓取偏移、旋转、中央区跟随、唯一影像、Raycast 穿透、源 active/alpha 恢复以及旧 token 不清新影像。已旋转 3×2 箱物品右下格抓取有断言。仓库同步取消重开与部分生命周期/死亡边界明确使用 API 辅助，不能称为原生鼠标完成。
+
+原生输入边界
+NativeInputAttempt.json 保存普通 Play、默认输入焦点策略、只启用原生 Keyboard/Mouse 时的尝试。原生 Tab 未打开背包；API TryOpen 准备界面后，原生拖动没有触发本次 InputSystem/UGUI 的选择/拖拽业务链：selected=null、nextDragToken=0、image=false。可称“原生输入未到达预期输入链，原生验收未成功”；记录不能独立定位究竟在哪一层阻断，根因未确定。
+API 打开窗口不是原生开包通过；后续合成队列输入也不能替代原生通过。原生输入不成功的结果保留，不省略、不包装为验收完成。
+
+待主任务补齐：普通 Game 内存探针
+[待补] 实际探针运行目录、Result.json、Running/Completed/Error 与清理结果。
+[待补] 实际分辨率与截图清单；逐张检查悬停/移出、拖动中抓取偏移、R 后尺寸、中央世界区持续可见、两方向跨窗口、非法目标回原位、文字/图标可读性。
+[待补] 明确每段行为是 API 准备、合成输入还是原生输入；普通 Game 运行与截图不自动等于原生操作通过。
+[待补] 若探针有失败或修复，保留失败记录，说明修改与相应复验；不可仅依据 RuntimeProbe.cs.txt 源码声明运行成功。
+未单独覆盖：右下格抓取后再按 R 造成抓取格夹紧的视觉边界；其他分辨率、Windows 构建及完整实体鼠标操作。
+
+待主任务补齐：收尾与释放
+[待补] 字体动态 atlas 测试后差异的备份路径、恢复结果及最终哈希。该副产物不属于请求的生产修改。
+[待补] 临时 ProjectSettings、探针/合成设备、禁用原生设备、输入设置、runInBackground、场景/语言/角色状态等已恢复的证据。
+[待补] 最终 Console 错误/警告计数、保存场景、Play/compile/update/TestRunner/probe 状态及当前场景 clean/dirty。
+[待补] Editor 唯一写者释放记录和 UTC 时间。草案不声明释放。

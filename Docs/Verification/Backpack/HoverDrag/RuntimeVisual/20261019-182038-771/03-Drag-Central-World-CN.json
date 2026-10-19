@@ -1,0 +1,57 @@
+{
+    "stage": "03-Drag-Central-World-CN",
+    "utc": "2026-10-19T18:21:12.0526487Z",
+    "imageFile": "03-Drag-Central-World-CN.png",
+    "activeScene": "Assets/Scenes/Tests/Loot/LootTest.unity",
+    "language": "Chinese",
+    "backpackSelectedId": "4a5cf756021e41aa9985a328fcf83ea2",
+    "backpackPreview": "OutOfBounds",
+    "feedback": "backpack.outside",
+    "frame": 44443,
+    "screenWidth": 1920,
+    "screenHeight": 1080,
+    "health": 3,
+    "maxHealth": 3,
+    "ev": 2,
+    "backpackToken": 1,
+    "warehouseToken": 0,
+    "lootSession": 0,
+    "previewX": -1,
+    "previewY": -1,
+    "transfers": 0,
+    "realtime": 399.97393798828127,
+    "gameTime": 233.08251953125,
+    "timeScale": 1.0,
+    "trackedSourceAlpha": 0.20000000298023225,
+    "dead": false,
+    "shelter": false,
+    "backpackOpen": true,
+    "warehouseOpen": false,
+    "lootOpen": false,
+    "previewRotated": false,
+    "leftHeld": true,
+    "background": true,
+    "trackedSourceActive": true,
+    "playerPosition": {
+        "x": -8.0,
+        "y": 1.1920928955078126e-7,
+        "z": 0.0
+    },
+    "pointer": {
+        "x": 960.0,
+        "y": 540.0
+    },
+    "grabOffset": {
+        "x": 0,
+        "y": 0
+    },
+    "loadedScenes": [
+        "Assets/Scenes/Tests/Loot/LootTest.unity"
+    ],
+    "inputDevices": [
+        "1:Keyboard:False",
+        "2:Mouse:False",
+        "576:Keyboard1:True",
+        "577:Mouse1:True"
+    ]
+}

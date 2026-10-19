@@ -205,12 +205,16 @@ public class GameFlowDeathReturnTests
         int drag = ruins.backpackUI.BeginItemDrag(medkit.InstanceId, Vector2.zero, null);
         Assert.That(drag, Is.Not.Zero);
         Assert.That(ruins.backpackUI.IsDragging, Is.True);
+        BackpackDragImage dragImage = ruins.backpackUI.view.DragImage;
+        Assert.That(dragImage, Is.Not.Null);
+        Assert.That(dragImage.IsVisible, Is.True);
         int deaths = 0;
         flow.Player.health.Died += () => deaths++;
 
         Assert.That(flow.Player.health.TakeDamage(flow.Player.health.MaxHealth), Is.True);
         Assert.That(ruins.backpackUI.IsOpen, Is.False);
         Assert.That(ruins.backpackUI.IsDragging, Is.False);
+        Assert.That(dragImage.IsVisible, Is.False, "Death removes the visual immediately, before loss settlement/scene unload.");
         Assert.That(ruins.lootUI.IsOpen, Is.False);
         Assert.That(source.SearchElapsed, Is.Zero);
         Assert.That(source.SearchEntryId, Is.Empty);
@@ -231,6 +235,7 @@ public class GameFlowDeathReturnTests
         Assert.That(medkit.UseRound, Is.EqualTo(1));
         Assert.That(medkit.UsesThisRound, Is.EqualTo(1));
         AssertDeathLoss(medkit, 2);
+        Assert.That(dragImage == null || !dragImage.IsVisible, Is.True, "Visual rollback cannot recreate a lost item.");
         Assert.That(flow.CurrentRound, Is.EqualTo(1));
         Assert.That(flow.Player.health.CurrentHealth, Is.EqualTo(flow.Player.health.MaxHealth));
         yield return Depart();

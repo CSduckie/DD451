@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f3cd9f8c424ac5439f636ad5435f100, type: 3}
+  m_Name: PlayerText
+  m_EditorClassIdentifier: 
+  entries:
+  - key: player.state.none
+    chinese: "未进入状态"
+    english: "No active state"
+  - key: player.state.idle
+    chinese: "待机"
+    english: "Idle"
+  - key: player.state.move
+    chinese: "移动"
+    english: "Moving"
+  - key: player.state.jump
+    chinese: "跳跃"
+    english: "Jumping"
+  - key: player.state.fall
+    chinese: "下落"
+    english: "Falling"
+  - key: player.state.crouch
+    chinese: "蹲伏"
+    english: "Crouching"
+  - key: player.state.die
+    chinese: "死亡"
+    english: "Dead"
+  - key: player.state.unknown
+    chinese: "未知状态"
+    english: "Unknown state"
+  - key: player.interact.test
+    chinese: "交互测试"
+    english: "Test interaction"
+  - key: player.health.value
+    chinese: "生命 {0}/{1}"
+    english: "Health {0}/{1}"

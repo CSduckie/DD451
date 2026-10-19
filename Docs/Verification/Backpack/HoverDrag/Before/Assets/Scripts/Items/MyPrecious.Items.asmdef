@@ -1,0 +1,6 @@
+{
+    "name": "MyPrecious.Items",
+    "rootNamespace": "",
+    "references": ["MyPrecious.Health"],
+    "autoReferenced": true
+}

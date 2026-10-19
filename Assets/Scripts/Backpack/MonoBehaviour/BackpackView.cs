@@ -17,6 +17,11 @@ public class BackpackView : MonoBehaviour
     [Min(1f)] public float cellSize = 66f;
     [Min(0f)] public float gap = 4f;
     [Min(0f)] public float padding = 6f;
+    [Header("跟随光标的物品影像")]
+    [Range(0f, 1f)] public float dragSourceAlpha = 0.20f;
+    [Range(0f, 1f)] public float dragImageAlpha = 0.90f;
+
+    public BackpackDragImage DragImage { get; private set; }
 
     [Header("当前语言文字")]
     public TMP_Text titleText;
@@ -67,6 +72,7 @@ public class BackpackView : MonoBehaviour
 
     private void OnDisable()
     {
+        ClearDragImage();
         UnsubscribeLanguage();
         if (controller != null && controller.IsOpen)
         {
@@ -76,6 +82,7 @@ public class BackpackView : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (DragImage != null) { Destroy(DragImage.gameObject); }
         UnsubscribeLanguage();
         if (closeButton != null)
         {
@@ -120,6 +127,8 @@ public class BackpackView : MonoBehaviour
         else
         {
             HidePreview();
+            ClearDragImage();
+            ClearHover();
         }
     }
 
@@ -225,6 +234,7 @@ public class BackpackView : MonoBehaviour
 
     public void RefreshText()
     {
+        if (DragImage != null) { DragImage.RefreshText(localization); }
         // F10只走此方法，不销毁UI物品、不重新绑定拖拽，更不执行物品业务。
         SetText(titleText, Text("backpack.title"));
         SetText(closeText, Text("backpack.close"));
@@ -301,7 +311,7 @@ public class BackpackView : MonoBehaviour
         {
             return;
         }
-        // 图标仍留在真实原格；预览只是半透明矩形，取消时无需恢复任何物品数据。
+        // 目标占格与自由跟随的影像分开；隐藏落点预览不隐藏影像。
         preview.transform.SetParent(itemRoot, false);
         int width = rotated ? item.Definition.height : item.Definition.width;
         int height = rotated ? item.Definition.width : item.Definition.height;
@@ -342,6 +352,63 @@ public class BackpackView : MonoBehaviour
         }
         cell = new Vector2Int(x, y);
         return true;
+    }
+
+    public RectTransform GetItemRect(string instanceId)
+    {
+        return !string.IsNullOrEmpty(instanceId) && itemViews.TryGetValue(instanceId, out BackpackItemView itemView)
+            && itemView != null ? (RectTransform)itemView.transform : null;
+    }
+
+    public Vector2Int GetGrabOffset(string instanceId, Vector2 position, Camera eventCamera, BackpackPlacement placement)
+    {
+        RectTransform rect = GetItemRect(instanceId);
+        if (rect == null || cellSize + gap <= 0f
+            || !RectTransformUtility.ScreenPointToLocalPointInRectangle(rect, position, eventCamera, out Vector2 local)) { return Vector2Int.zero; }
+        // 大物品内部的格缝仍属于该物品；这里只算抓取点，目标格缝仍不可放置。
+        float pitch = cellSize + gap;
+        return new Vector2Int(Mathf.Clamp(Mathf.FloorToInt((local.x - rect.rect.xMin) / pitch), 0, placement.Width - 1),
+            Mathf.Clamp(Mathf.FloorToInt((rect.rect.yMax - local.y) / pitch), 0, placement.Height - 1));
+    }
+
+    public void ClearHover(bool forgetPointer = true)
+    {
+        foreach (BackpackItemView itemView in itemViews.Values) { if (itemView != null) { itemView.ClearHover(forgetPointer); } }
+    }
+
+    public void BeginDragImage(Object owner, int token, ItemInstance item, RectTransform source,
+        Vector2 pressPosition, Camera eventCamera, bool rotated, Vector2Int grabOffset,
+        float sourceCellSize, float sourceGap, Image sourceIcon = null)
+    {
+        if (source == null || token == 0) { return; }
+        if (DragImage != null && DragImage.Matches(owner, token)) { return; }
+        Canvas canvas = GetComponentInParent<Canvas>();
+        if (canvas == null) { return; }
+        if (DragImage == null)
+        {
+            DragImage = new GameObject("BackpackDragImage", typeof(RectTransform), typeof(BackpackDragImage)).GetComponent<BackpackDragImage>();
+            DragImage.transform.SetParent(canvas.rootCanvas.transform, false);
+            DragImage.gameObject.layer = canvas.gameObject.layer;
+            DragImage.Initialize(itemPrefab);
+        }
+        ClearHover(false);
+        DragImage.Begin(owner, token, item, source, pressPosition, eventCamera, rotated, grabOffset,
+            sourceCellSize, sourceGap, dragSourceAlpha, dragImageAlpha, sourceIcon);
+    }
+
+    public void UpdateDragImage(Object owner, int token, Vector2 position, Camera eventCamera, bool rotated, Vector2Int grabOffset)
+    {
+        if (DragImage != null) { DragImage.Follow(owner, token, position, eventCamera, rotated, grabOffset); }
+    }
+
+    public void EndDragImage(Object owner, int token)
+    {
+        if (DragImage != null) { DragImage.End(owner, token); }
+    }
+
+    private void ClearDragImage()
+    {
+        if (DragImage != null) { DragImage.End(); }
     }
 
     private bool IsVisibleGridTarget(Vector2 screenPoint)

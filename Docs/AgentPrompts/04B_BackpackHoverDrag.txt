@@ -1,0 +1,44 @@
+你继续负责「任务004背包系统」，接手04B“物品悬停高亮与跟随光标拖拽”并实施。用户在主程本轮要求：“玩家鼠标划入物品的时候物品会高亮，然后长按拖拽的时候物品会一直跟着鼠标光标（类似逃离塔克夫的效果）。如果不合法位置松开鼠标物品会回到原来位置。”
+
+项目E:/DD451。保持精简、可读、能用于作品集答辩的实现；英文目录、不写namespace，沿用用户代码风格以及现有BackpackItemView已经修改复用CardGame/CardDragHandler的事件写法。先读实际最新源码及04/04A、06C、07B交接，不恢复旧版本，不搭新拖拽框架或事件总线。
+
+Editor与协作
+先读Docs/Verification/Enemy/EditorCoordination.txt，核对最新占用/释放和实际Unity状态；一次只允许一个Editor/共享Assets写入者。主程目前没有Unity操作，最近已释放暗角0.4调参任务。接手时记录占用；保留用户当前未保存修改，修改前备份最新基线，不重建Shelter/Ruins。
+本轮直接派发给你，用户未额外授权你向005/006/007等聊天发送消息；如需跨模块接入，你可在共享项目内做任务必要的小范围修改并记录文件归属，不再向其他聊天自动转派。内部只读审查可并行。完成结果写本聊天及交接，主程可读取。
+
+目标与交互规则
+1. 鼠标进入背包物品的实际UI区域时高亮，移出后恢复。高亮可用背景提亮或细边框，颜色/强度通过Inspector调节，保持物品名称/尺寸/图标可读。悬停与点击选中状态分别处理：悬停离开后恢复正确的选中/普通样式，不清掉原选中态；不穿透覆盖窗口、确认框或关闭的面板。
+2. “长按拖拽”按常规桌面交互理解：按住鼠标左键并移动，超过现有UGUI拖动阈值就开始；本次不新增长按计时门槛。单击继续原有选择行为。
+3. 拖动开始后，显示该物品自身的可识别拖拽影像（沿用现有颜色、名称/尺寸及已有图标，素材缺少时不新增美术）。该影像连续跟随鼠标，移动到格子间隙、面板外或另一容器时也持续可见；不会只显示一块吸附格子的矩形。保留开始抓取位置的偏移，避免开始就跳到光标中心、左上角或随着跨容器跳动。R旋转后显示尺寸与目标占格一致。
+4. 将“跟随鼠标的物品影像”和“目标格子合法/非法预览”分开：影像自由跟随鼠标，目标格按既有规则显示落点反馈。普通拖拽最终按鼠标目标位置提交，不自动挪到第一个空位。Ctrl+左键快速转移继续使用已有自动找位，不与本次拖拽混用。
+5. 拖动时可以暂时隐藏/淡化原物品的表现，避免视觉上像复制了两件；保留拖拽事件接收对象，不能因为禁用源GameObject而中断Pointer/Drag事件。跟随影像置于现有UI合适的顶层、不被ScrollRect/Mask裁剪，关闭自身和子元素Raycast拦截，不能挡住目标格子的命中检测。尽量复用一份简单的临时/缓存显示，不每帧创建销毁，不增加第二套Canvas/EventSystem。
+6. 合法松手：沿用现有Manager/ItemTransferCoordinator完成一次放置或转移。非法位置（重叠、越界、容器空间不足、UI外、格子间隙等）松手：取消，物品恢复原容器、原格子、原旋转；不自动整理、不掉到地面、不丢失、不复制、不改变EV/使用次数。无需新增回弹动画，可靠恢复即可。
+7. 继续采用“拖动时不提交真实物品归属/摆放，成功松手才提交”的现有思路。保留dragToken、InputSession和来源快照校验，取消后迟到的EndDrag/Click不能提交新操作。受击自动关包、Tab关闭、失去焦点、来源关闭/禁用/切场景/死亡时清理高亮与跟随影像。若死亡等业务已使物品丢失，视觉取消以实际物品状态为准，绝不能通过“回原位”复活已丢失/消耗的物品。
+8. 背包为主范围；必须接好已有背包↔仓库、背包↔已揭示搜刮容器的拖动过程，跨窗口时影像持续跟随且仅一份，成功落位/失败恢复保持一致。未知未揭示的物品不能提前显示名称/图标或被拖出；搜索倒计时和逐件揭示不被悬停/拖拽改变。背包/仓库格子规则继续独立，不借此合并核心。
+9. 保留Ctrl快捷转移、右键使用、R旋转、抓取偏移、屏幕1920×1080及三处单位格一致、中文默认/F10切换。切换语言时高亮/拖拽影像更新而不触发额外业务，避免标题文字子对象截断鼠标命中。只在确需新提示时接现有本地化表。
+
+已观察的起点（接手再核实）
+- BackpackItemView现在只有SetSelected，没有PointerEnter/Exit悬停处理。
+- BackpackView.ShowPreview目前原图留在原格，仅在itemRoot下显示半透明格子矩形；这正是此次需要补充实际跟随影像的位置。
+- BackpackUIController已有DragGrabOffset、PreviewRotated、dragToken及CancelDrag流程。
+- Items/Transfers/MonoBehaviour/ItemTransferUIBridge已有目标预览、跨容器落点与CancelAll，应复用成功/失败结果与统一取消，不绕开它另做转移。
+
+优先文件目录
+- Assets/Scripts/Backpack/MonoBehaviour/BackpackItemView.cs
+- Assets/Scripts/Backpack/MonoBehaviour/BackpackView.cs
+- Assets/Scripts/Backpack/MonoBehaviour/BackpackUIController.cs
+- 如确需小组件：Assets/Scripts/Backpack/MonoBehaviour/下英文命名、职责单一；不提前抽通用框架。
+- Assets/Prefabs/UI/Backpack/BackpackItem.prefab、BackpackPanel.prefab；保留GUID。
+- 跨容器仅必要接入：Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferUIBridge.cs，以及Assets/Scripts/Loot/MonoBehaviour/、Assets/Scripts/Warehouse/MonoBehaviour/对应显示/控制器。不更改物品、背包、仓库核心规则和事务语义。
+- 必要本地化用项目现有资源路径，先查实。
+- 有意义的回归测试放Assets/Tests/Backpack/PlayMode/，跨容器已有相关测试位于Assets/Tests/Loot/。避免只镜像实现或跑无关全量测试。
+- 证据Docs/Verification/Backpack/HoverDrag/；交接Docs/Handoffs/04B_BackpackHoverDrag_Handoff.txt。
+
+验收标准
+A. 在真实Game1920×1080悬停/移出不同尺寸物品，区分悬停与选中；没有残留高亮或穿透UI。
+B. 按住左键拖动，物品影像连续贴合鼠标抓取偏移；面板内、间隙、面板外及跨到仓库/容器均可见，不被裁剪、不遮挡落点Raycast；R旋转视觉与占格一致。
+C. 同背包合法移动，以及背包↔仓库/已揭示容器成功落位，按目标格而非自动找空位，只提交一次。非法重叠/越界/满容器/窗口外松手均回原格原旋转，物品数量、身份、归属、EV与次数不变。
+D. 拖拽中受击/关包/切场景/死亡，影像和指针状态干净；旧EndDrag/Click不产生转移。实际死亡丢物规则仍正确。
+E. Ctrl快捷转移、右键使用、R旋转、F10、容器未知轮廓及搜索流程无回退。按住拖动中的Ctrl不突然触发快速转移。
+F. 保留真实UGUI事件链/鼠标输入证据及关键截图，说明哪些是原生鼠标、合成输入或API辅助。不能只调用EndDrag方法就宣称实际鼠标跟随已验收。保存重载有效，Console无本任务新增错误。若工具无法验证原生鼠标，明确说明并先完成其余可验证项。
+完成后说明具体文件、悬停/跟随影像的实现与参数入口、实际验证结果和限制，保存并释放Editor。

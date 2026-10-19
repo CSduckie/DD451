@@ -1,0 +1,710 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using Object = UnityEngine.Object;
+
+// C#6、CodeDom内存编译用；不是MonoBehaviour，不进入Assets，不主动打开/保存场景。
+// driver.StartCoroutine(HoverDragVisualProbe.Run(driver)); 所有拖拽只发真实队列输入。
+public static class HoverDragVisualProbe
+{
+    public const string EvidenceRoot = "E:/DD451/Docs/Verification/Backpack/HoverDrag/RuntimeVisual";
+    public static bool Running;
+    public static bool Completed;
+    public static string Error;
+    public static string OutputDirectory;
+    public static bool IncludeLootDamage = false;
+    private static bool cancelRequested;
+
+    private sealed class Context
+    {
+        public LootTestDriver driver;
+        public Keyboard keyboard;
+        public Mouse mouse;
+        public InputSettings originalSettings;
+        public InputSettings temporarySettings;
+        public bool settingsCaptured;
+        public bool originalBackground;
+        public bool originalShelter;
+        public Vector3 originalPlayerPosition;
+        public GameLanguage originalLanguage;
+        public readonly List<InputDevice> disabledDevices = new List<InputDevice>();
+        public readonly List<string> captures = new List<string>();
+        public readonly List<string> checks = new List<string>();
+        public readonly List<string> logs = new List<string>();
+        public readonly List<MotionData> motion = new List<MotionData>();
+        public Action<string> onCompleted;
+        public Application.LogCallback onLog;
+        public int transfers;
+        public string startedUtc;
+        public Snapshot before;
+        public string initialData;
+        public RectTransform trackedSource;
+    }
+
+    public static void Cancel()
+    {
+        cancelRequested = true;
+    }
+
+    public static IEnumerator Run(LootTestDriver driver)
+    {
+        if (Running) { yield break; }
+        Running = true;
+        Completed = false;
+        Error = string.Empty;
+        cancelRequested = false;
+        Context context = new Context();
+        context.driver = driver;
+        context.startedUtc = UtcNow();
+        OutputDirectory = Path.Combine(EvidenceRoot, DateTime.UtcNow.ToString("yyyyMMdd-HHmmss-fff", CultureInfo.InvariantCulture));
+        Stack<IEnumerator> stack = new Stack<IEnumerator>();
+        try
+        {
+            // StartCoroutine可从Editor execute_code同步进入；先等真实Play帧再读取Screen和输入状态。
+            yield return null;
+            // 手动展开有限的子协程，任何阶段异常都回到本finally，避免Unity吞掉子协程异常而遗漏恢复。
+            stack.Push(Sequence(context));
+            while (stack.Count > 0)
+            {
+                if (cancelRequested) { Error = "Cancelled by caller."; break; }
+                object yielded = null;
+                bool advanced = false;
+                bool failed = false;
+                try
+                {
+                    advanced = stack.Peek().MoveNext();
+                    if (advanced) { yielded = stack.Peek().Current; }
+                }
+                catch (Exception exception)
+                {
+                    Error = exception.ToString();
+                    failed = true;
+                }
+                if (failed) { break; }
+                if (!advanced)
+                {
+                    IDisposable finished = stack.Pop() as IDisposable;
+                    if (finished != null) { finished.Dispose(); }
+                    continue;
+                }
+                IEnumerator nested = yielded as IEnumerator;
+                if (nested != null) { stack.Push(nested); }
+                else { yield return yielded; }
+            }
+            Completed = stack.Count == 0 && string.IsNullOrEmpty(Error);
+        }
+        finally
+        {
+            while (stack.Count > 0)
+            {
+                IDisposable unfinished = stack.Pop() as IDisposable;
+                if (unfinished == null) { continue; }
+                try { unfinished.Dispose(); }
+                catch (Exception exception) { AppendError("Enumerator cleanup", exception); }
+            }
+            Cleanup(context);
+            Running = false;
+            if (!string.IsNullOrEmpty(Error)) { Completed = false; }
+            try
+            {
+                Directory.CreateDirectory(OutputDirectory);
+                Snapshot after = context.driver != null && context.driver.IsReady ? ReadSnapshot(context, "FinalAfterCleanup") : null;
+                if (after != null) { WriteJson("FinalAfterCleanup.json", after); }
+                RunSummary summary = new RunSummary();
+                summary.startedUtc = context.startedUtc;
+                summary.finishedUtc = UtcNow();
+                summary.completed = Completed;
+                summary.error = Error;
+                summary.evidenceDirectory = OutputDirectory;
+                summary.inputEvidence = "Synthetic QueueStateEvent -> InputAction/EventSystem/UGUI; not native mouse acceptance.";
+                summary.apiAssistance = IncludeLootDamage
+                    ? "Driver context changes, RelocateWithinRun, reach-validated TryOpenSource. No direct drag Begin/Update/End, transfer, reveal or round-reset API."
+                    : "Driver context changes and initial language selection. No direct drag Begin/Update/End, transfer, reveal or round-reset API.";
+                summary.lootDamageIncluded = IncludeLootDamage;
+                summary.healthRestored = false;
+                summary.note = (IncludeLootDamage ? "Real nonlethal damage remains applied. " : "Default ten-stage sequence causes no damage. ")
+                    + "No authoritative item rollback is performed on success or failure. Sessions are closed; original context, position, language and input/background settings are restored.";
+                summary.transferCompletions = context.transfers;
+                summary.captures = context.captures.ToArray();
+                summary.checks = context.checks.ToArray();
+                summary.observedUnityErrors = context.logs.ToArray();
+                summary.before = context.before;
+                summary.after = after;
+                WriteJson("MotionSamples.json", new MotionList { samples = context.motion.ToArray() });
+                WriteJson("Summary.json", summary);
+                File.WriteAllText(Path.Combine(EvidenceRoot, "LatestRun.json"), JsonUtility.ToJson(new LatestRun
+                { directory = OutputDirectory, completed = Completed, error = Error }, true));
+            }
+            catch (Exception exception)
+            {
+                AppendError("Summary write", exception);
+                Completed = false;
+            }
+        }
+    }
+
+    private static IEnumerator Sequence(Context context)
+    {
+        LootTestDriver driver = context.driver;
+        Require(Application.isPlaying && driver != null && driver.IsReady, "Run in ordinary Play with a ready LootTestDriver.");
+        Require(driver.gameObject.scene.path == "Assets/Scenes/Tests/Loot/LootTest.unity", "Probe is restricted to the existing LootTest scene.");
+        Require(Screen.width == 1920 && Screen.height == 1080, "Actual Game resolution must be 1920x1080; the probe will not resize it.");
+        Require(Mathf.Abs(Time.timeScale - 1f) < 0.001f, "Run with the real world at timeScale 1.");
+        Require(driver.player != null && !driver.player.IsDead && driver.player.health.CurrentHealth > 1, "Need a living player with at least two HP; no health reset is performed.");
+        Require(LocalizationManager.Instance != null && EventSystem.current != null, "Real localization and EventSystem are required.");
+        Directory.CreateDirectory(OutputDirectory);
+        context.originalShelter = driver.IsShelter;
+        context.originalPlayerPosition = driver.player.Position;
+        context.originalLanguage = LocalizationManager.Instance.CurrentLanguage;
+        context.originalSettings = InputSystem.settings;
+        context.originalBackground = Application.runInBackground;
+        context.settingsCaptured = true;
+        context.before = ReadSnapshot(context, "BeforeProbe");
+        context.initialData = DataSignature(driver);
+        WriteJson("BeforeProbe.json", context.before);
+        context.onCompleted = delegate(string id) { context.transfers++; };
+        driver.coordinator.Completed += context.onCompleted;
+        context.onLog = delegate(string condition, string trace, LogType type)
+        {
+            if (type == LogType.Error || type == LogType.Assert || type == LogType.Exception)
+            { context.logs.Add(UtcNow() + " " + type + ": " + condition + "\n" + trace); }
+        };
+        Application.logMessageReceived += context.onLog;
+        context.temporarySettings = Object.Instantiate(context.originalSettings);
+        context.temporarySettings.hideFlags = HideFlags.HideAndDontSave;
+        context.temporarySettings.editorInputBehaviorInPlayMode = InputSettings.EditorInputBehaviorInPlayMode.AllDeviceInputAlwaysGoesToGameView;
+        context.temporarySettings.backgroundBehavior = InputSettings.BackgroundBehavior.IgnoreFocus;
+        InputSystem.settings = context.temporarySettings;
+        Application.runInBackground = true;
+        foreach (InputDevice device in InputSystem.devices.ToArray())
+        {
+            if (!device.enabled || (!(device is Keyboard) && !(device is UnityEngine.InputSystem.Pointer))) { continue; }
+            context.disabledDevices.Add(device);
+            InputSystem.DisableDevice(device);
+        }
+        context.keyboard = InputSystem.AddDevice<Keyboard>();
+        context.mouse = InputSystem.AddDevice<Mouse>();
+        driver.lootUI.CloseSource();
+        driver.EnterExploration();
+        LocalizationManager.Instance.SetLanguage(GameLanguage.Chinese);
+        yield return Pointer(context, new Vector2(960f, 540f), false);
+        yield return KeyPress(context, Key.Tab);
+        Check(context, driver.backpackUI.IsOpen && !driver.lootUI.IsOpen && !driver.warehouseUI.IsOpen, "Disconnected backpack opens through queued Tab.");
+        ItemInstance battery = driver.backpack.GetPlacements().Select(p => p.Item).Single(i => i.DefinitionId == "battery");
+        BackpackPlacement original;
+        Require(driver.backpack.TryGetPlacement(battery.InstanceId, out original), "Carried battery placement is required.");
+        Require(original.X == 0 && original.Y == 2 && !original.Rotated, "Use the clean authored LootTest battery at (0,2), not a modified runtime inventory.");
+        yield return Capture(context, "01-Disconnected-Backpack-CN");
+        context.trackedSource = driver.backpackUI.view.GetItemRect(battery.InstanceId);
+        Vector2 press = GrabPoint(context.trackedSource, 18f, 25f);
+        yield return Pointer(context, press, false);
+        BackpackItemView batteryView = context.trackedSource.GetComponent<BackpackItemView>();
+        Check(context, batteryView != null && batteryView.IsHovered, "Queued pointer enters the real battery item and highlights it.");
+        yield return Capture(context, "02-Hover-Battery-CN");
+        string beforeDrag = DataSignature(driver);
+        yield return StartDrag(context, press);
+        Check(context, driver.backpackUI.IsDragging, "UGUI movement threshold starts backpack drag.");
+        Vector2 center = new Vector2(960f, 540f);
+        yield return Pointer(context, press + Vector2.right * 25f, true);
+        yield return Pointer(context, press + Vector2.right * 26f, true);
+        yield return Pointer(context, press + Vector2.right * 29f, true);
+        yield return Pointer(context, center, true);
+        CheckGhost(context, center, new Vector2(18f, 25f), new Vector2(66f, 136f));
+        yield return Capture(context, "03-Drag-Central-World-CN");
+        Vector2 gap = BackpackGap(driver, 0, 2);
+        yield return Pointer(context, gap, true);
+        Vector2Int ignoredCell;
+        Check(context, !driver.backpackUI.view.TryScreenToCell(gap, null, out ignoredCell), "The actual 4px cell gap is not a valid target.");
+        CheckGhost(context, gap, new Vector2(18f, 25f), new Vector2(66f, 136f));
+        yield return Capture(context, "04-Drag-Gap-CN");
+        yield return Pointer(context, center, true);
+        yield return KeyPress(context, Key.R);
+        Check(context, driver.backpackUI.PreviewRotated, "Queued R rotates the active preview exactly once.");
+        CheckGhost(context, center, new Vector2(18f, 25f), new Vector2(136f, 66f));
+        yield return Capture(context, "05-Rotated-World-CN");
+        yield return KeyPress(context, Key.F10);
+        Check(context, LocalizationManager.Instance.CurrentLanguage == GameLanguage.English, "Queued F10 changes language during the same drag.");
+        CheckGhost(context, center, new Vector2(18f, 25f), new Vector2(136f, 66f));
+        yield return Capture(context, "06-Rotated-World-EN");
+        yield return Pointer(context, gap, true);
+        yield return Pointer(context, gap, false);
+        Check(context, !driver.backpackUI.IsDragging && !VisibleGhost(driver), "Invalid release clears drag and ghost.");
+        Check(context, DataSignature(driver) == beforeDrag, "Invalid release preserves all identity fields, ownership and placements.");
+        Check(context, SourceAlpha(context.trackedSource) == 1f, "Invalid release restores the original source alpha.");
+        yield return Capture(context, "07-Invalid-Release-EN");
+
+        driver.EnterShelter();
+        yield return null;
+        yield return null;
+        Check(context, driver.backpackUI.IsOpen && driver.warehouseUI.IsOpen, "Explicit test shelter context opens both real containers.");
+        context.trackedSource = driver.backpackUI.view.GetItemRect(battery.InstanceId);
+        press = GrabPoint(context.trackedSource, 18f, 25f);
+        Vector2 storagePoint = WarehousePoint(driver, 6, 0);
+        Check(context, driver.warehouse.CanPlaceExternal(battery.InstanceId, 6, 0, false) == WarehouseResult.Success, "Explicit warehouse cell (6,0) is valid before dragging.");
+        string beforeRoundTrip = DataSignature(driver);
+        int transfersBefore = context.transfers;
+        yield return StartDrag(context, press);
+        yield return Pointer(context, center, true);
+        CheckGhost(context, center, new Vector2(18f, 25f), new Vector2(66f, 136f));
+        yield return Pointer(context, storagePoint, true);
+        CheckGhost(context, storagePoint, new Vector2(18f, 25f), new Vector2(66f, 136f));
+        yield return Capture(context, "08-Backpack-To-Warehouse-Preview-EN");
+        yield return Pointer(context, storagePoint, false);
+        WarehousePlacement stored;
+        Check(context, battery.Owner == ItemOwner.Storage && driver.warehouse.TryGetPlacement(battery.InstanceId, out stored), "Queued release really transfers battery into storage.");
+        Require(driver.warehouse.TryGetPlacement(battery.InstanceId, out stored), "Stored placement missing.");
+        Check(context, stored.X == 6 && stored.Y == 0 && !stored.Rotated && context.transfers == transfersBefore + 1, "Storage commit uses exactly (6,0) once.");
+        Check(context, !VisibleGhost(driver), "Successful outward transfer clears its ghost.");
+        WriteJson("08-AfterStorageCommit.json", ReadSnapshot(context, "AfterStorageCommit"));
+        context.trackedSource = driver.warehouseUI.view.GetItemRect(battery.InstanceId);
+        press = GrabPoint(context.trackedSource, 18f, 25f);
+        yield return StartDrag(context, press);
+        Check(context, driver.warehouseUI.IsDragging && !driver.backpackUI.IsDragging, "UGUI drag starts from the stored item receiver.");
+        yield return Pointer(context, center, true);
+        CheckGhost(context, center, new Vector2(18f, 25f), new Vector2(66f, 136f));
+        Vector2 backpackPoint = BackpackPoint(driver, 0, 2);
+        yield return Pointer(context, backpackPoint, true);
+        CheckGhost(context, backpackPoint, new Vector2(18f, 25f), new Vector2(66f, 136f));
+        yield return Capture(context, "09-Warehouse-To-Backpack-Preview-EN");
+        yield return Pointer(context, backpackPoint, false);
+        BackpackPlacement returned;
+        Require(driver.backpack.TryGetPlacement(battery.InstanceId, out returned), "Returned battery placement missing.");
+        Check(context, battery.Owner == ItemOwner.Backpack && returned.X == 0 && returned.Y == 2 && !returned.Rotated, "Queued return uses original explicit backpack cell and orientation.");
+        Check(context, context.transfers == transfersBefore + 2 && DataSignature(driver) == beforeRoundTrip, "Both queued transfers commit once and preserve complete round-trip data.");
+        Check(context, !VisibleGhost(driver), "Return commit clears the shared ghost.");
+        context.trackedSource = driver.backpackUI.view.GetItemRect(battery.InstanceId);
+        yield return Pointer(context, center, false);
+        yield return Capture(context, "10-RoundTrip-Complete-EN");
+
+        if (!IncludeLootDamage)
+        {
+            context.checks.Add("Loot damage stage omitted by default; set IncludeLootDamage before Run to include it.");
+            Check(context, context.logs.Count == 0, "No new Unity Error/Assert/Exception observed during the probe.");
+            yield break;
+        }
+        driver.EnterExploration();
+        yield return null;
+        LootBox box = Object.FindObjectsByType<LootBox>(FindObjectsSortMode.None).Single(b => b.sourceId == "guaranteed");
+        BoxCollider trigger;
+        Require(box.TryGetInteractionTrigger(out trigger), "Authored guaranteed box must have its real TriggerBox.");
+        Vector3 destination = driver.player.Position;
+        destination.x = trigger.bounds.min.x + 0.3f;
+        Check(context, driver.player.RelocateWithinRun(destination), "API-assisted relocation enters the real source trigger without resetting the player.");
+        Physics.SyncTransforms();
+        yield return new WaitForFixedUpdate();
+        yield return new WaitForFixedUpdate();
+        Check(context, driver.player.interaction.CanReachTarget(box), "Actual player interaction reach validates the authored box trigger.");
+        Check(context, driver.lootUI.TryOpenSource(box.State, box, driver.player.interaction), "Reach-validated API opens the real box session.");
+        float searchDeadline = Time.realtimeSinceStartup + 20f;
+        while (!box.State.Entries.Any(e => e.Revealed && !e.Taken) && Time.realtimeSinceStartup < searchDeadline)
+        { yield return null; }
+        LootEntryState entry = box.State.Entries.FirstOrDefault(e => e.Revealed && !e.Taken);
+        Require(entry != null, "Natural search did not reveal an item within twenty seconds.");
+        ItemInstance lootItem;
+        Require(driver.items.TryGetInstance(entry.InstanceId, out lootItem), "Revealed source identity missing.");
+        Check(context, driver.backpack.CanPlaceExternal(lootItem.InstanceId, 1, 2, entry.LayoutRotated) == BackpackResult.Success, "The revealed sample fits the explicit backpack target (1,2).");
+        yield return new WaitForSecondsRealtime(driver.player.config.damageInvulnerabilitySeconds + 0.1f);
+        context.trackedSource = (RectTransform)driver.lootUI.view.GetItemView(entry.EntryId).transform;
+        press = GrabPoint(context.trackedSource, 18f, 25f);
+        string beforeLootDrag = DataSignature(driver);
+        yield return StartDrag(context, press);
+        Check(context, driver.backpackUI.IsExternalPreview, "Queued source-item drag starts the real external backpack preview.");
+        Vector2 lootTarget = BackpackPoint(driver, 1, 2);
+        yield return Pointer(context, lootTarget, true);
+        Check(context, driver.backpackUI.PreviewResult == BackpackResult.Success, "The real external preview is legal before damage.");
+        Check(context, VisibleGhost(driver), "Revealed source has its single recognizable ghost.");
+        yield return Capture(context, "11-Revealed-Box-To-Backpack-Preview-EN");
+        int oldHealth = driver.player.health.CurrentHealth;
+        yield return KeyPress(context, Key.H);
+        Check(context, driver.player.health.CurrentHealth == oldHealth - 1 && !driver.player.IsDead, "Queued H applies actual nonlethal player damage.");
+        Check(context, !driver.backpackUI.IsOpen && !driver.lootUI.IsOpen && !VisibleGhost(driver), "Damage closes sessions and clears the source ghost.");
+        yield return Pointer(context, lootTarget, false);
+        Check(context, !entry.Taken && lootItem.Owner == ItemOwner.Container && DataSignature(driver) == beforeLootDrag, "Late real pointer release cannot take the cancelled source item.");
+        Check(context, context.transfers == transfersBefore + 2, "Damage/late release creates no additional transfer completion.");
+        yield return Capture(context, "12-Damage-And-Late-Release-EN");
+        Check(context, context.logs.Count == 0, "No new Unity Error/Assert/Exception observed during the probe.");
+    }
+
+    private static IEnumerator Pointer(Context context, Vector2 position, bool left)
+    {
+        InputSystem.QueueStateEvent(context.mouse, new MouseState { position = position, buttons = (ushort)(left ? 1 : 0) });
+        yield return null;
+        yield return null;
+        context.motion.Add(new MotionData { frame = Time.frameCount, realtime = Time.realtimeSinceStartup,
+            pointer = position, held = left, images = ReadImages() });
+    }
+
+    private static IEnumerator KeyPress(Context context, Key key)
+    {
+        InputSystem.QueueStateEvent(context.keyboard, new KeyboardState(key));
+        yield return null;
+        yield return null;
+        InputSystem.QueueStateEvent(context.keyboard, new KeyboardState());
+        yield return null;
+        yield return null;
+    }
+
+    private static IEnumerator StartDrag(Context context, Vector2 point)
+    {
+        yield return Pointer(context, point, false);
+        yield return Pointer(context, point, true);
+        yield return Pointer(context, point + Vector2.right * Mathf.Max(20f, EventSystem.current.pixelDragThreshold + 4f), true);
+    }
+
+    private static IEnumerator Capture(Context context, string name)
+    {
+        yield return new WaitForEndOfFrame();
+        Texture2D texture = null;
+        try
+        {
+            Snapshot snapshot = ReadSnapshot(context, name);
+            snapshot.imageFile = name + ".png";
+            texture = ScreenCapture.CaptureScreenshotAsTexture();
+            Require(texture != null && texture.width == 1920 && texture.height == 1080, "Screenshot must contain the actual 1920x1080 Game frame.");
+            File.WriteAllBytes(Path.Combine(OutputDirectory, snapshot.imageFile), texture.EncodeToPNG());
+            WriteJson(name + ".json", snapshot);
+            context.captures.Add(name);
+        }
+        finally { if (texture != null) { Object.Destroy(texture); } }
+    }
+
+    private static void CheckGhost(Context context, Vector2 pointer, Vector2 grab, Vector2 size)
+    {
+        BackpackDragImage image = context.driver.backpackUI.view.DragImage;
+        Require(image != null && image.IsVisible && image.SourceRect == context.trackedSource, "Expected live shared image and original event receiver.");
+        Rect rect = ScreenRectangle(image.RectTransform);
+        Require(Mathf.Abs(rect.xMin - (pointer.x - grab.x)) < 0.6f && Mathf.Abs(rect.yMax - (pointer.y + grab.y)) < 0.6f, "Ghost pixel grab offset jumped.");
+        Require(Mathf.Abs(rect.width - size.x) < 0.2f && Mathf.Abs(rect.height - size.y) < 0.2f, "Ghost dimensions differ from the item orientation.");
+        Require(Object.FindObjectsByType<BackpackDragImage>(FindObjectsSortMode.None).Count(i => i.IsVisible) == 1, "Expected exactly one visible drag image.");
+        Require(image.GetComponentsInChildren<Graphic>(true).All(g => !g.raycastTarget), "A ghost Graphic intercepts raycasts.");
+        List<RaycastResult> hits = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(new PointerEventData(EventSystem.current) { position = pointer }, hits);
+        Require(!hits.Any(h => h.gameObject.transform == image.transform || h.gameObject.transform.IsChildOf(image.transform)), "Ghost appears in the actual UI raycast results.");
+        Require(context.trackedSource.gameObject.activeInHierarchy && SourceAlpha(context.trackedSource) < 1f, "Drag disabled or failed to dim its original event receiver.");
+    }
+
+    private static Vector2 GrabPoint(RectTransform source, float x, float y)
+    {
+        Require(source != null, "Required item RectTransform is missing.");
+        Rect rect = ScreenRectangle(source);
+        return new Vector2(rect.xMin + x, rect.yMax - y);
+    }
+
+    private static Vector2 BackpackPoint(LootTestDriver driver, int x, int y)
+    {
+        BackpackView view = driver.backpackUI.view;
+        return CellPoint(view.gridRoot, view.padding, view.cellSize, view.gap, x, y);
+    }
+
+    private static Vector2 WarehousePoint(LootTestDriver driver, int x, int y)
+    {
+        WarehouseView view = driver.warehouseUI.view;
+        return CellPoint(view.gridRoot, view.padding, view.EffectiveCellSize, view.gap, x, y);
+    }
+
+    private static Vector2 CellPoint(RectTransform root, float padding, float size, float gap, int x, int y)
+    {
+        Canvas.ForceUpdateCanvases();
+        return RectTransformUtility.WorldToScreenPoint(null, root.TransformPoint(new Vector3(
+            root.rect.xMin + padding + x * (size + gap) + size * 0.35f,
+            root.rect.yMax - padding - y * (size + gap) - size * 0.35f, 0f)));
+    }
+
+    private static Vector2 BackpackGap(LootTestDriver driver, int x, int y)
+    {
+        BackpackView view = driver.backpackUI.view;
+        return RectTransformUtility.WorldToScreenPoint(null, view.gridRoot.TransformPoint(new Vector3(
+            view.gridRoot.rect.xMin + view.padding + x * (view.cellSize + view.gap) + view.cellSize + view.gap * 0.5f,
+            view.gridRoot.rect.yMax - view.padding - y * (view.cellSize + view.gap) - 25f, 0f)));
+    }
+
+    private static bool VisibleGhost(LootTestDriver driver)
+    {
+        return driver.backpackUI.view.DragImage != null && driver.backpackUI.view.DragImage.IsVisible;
+    }
+
+    private static float SourceAlpha(RectTransform source)
+    {
+        if (source == null) { return -1f; }
+        CanvasGroup group = source.GetComponent<CanvasGroup>();
+        return group != null ? group.alpha : 1f;
+    }
+
+    private static Rect ScreenRectangle(RectTransform rect)
+    {
+        if (rect == null) { return Rect.zero; }
+        Vector3[] corners = new Vector3[4];
+        rect.GetWorldCorners(corners);
+        Canvas canvas = rect.GetComponentInParent<Canvas>();
+        Camera camera = canvas != null && canvas.rootCanvas.renderMode != RenderMode.ScreenSpaceOverlay ? canvas.rootCanvas.worldCamera : null;
+        Vector2 min = RectTransformUtility.WorldToScreenPoint(camera, corners[0]);
+        Vector2 max = RectTransformUtility.WorldToScreenPoint(camera, corners[2]);
+        return new Rect(min, max - min);
+    }
+
+    private static void Check(Context context, bool condition, string message)
+    {
+        context.checks.Add((condition ? "PASS " : "FAIL ") + message);
+        Require(condition, message);
+    }
+
+    private static void Require(bool condition, string message)
+    {
+        if (!condition) { throw new InvalidOperationException(message); }
+    }
+
+    private static void Cleanup(Context context)
+    {
+        // 每一项单独保护，某个已卸载对象失效也不能阻止恢复真实输入。
+        Attempt("Close loot", delegate { if (context.driver != null && context.driver.lootUI != null) { context.driver.lootUI.CloseSource(); } });
+        Attempt("Close backpack", delegate { if (context.driver != null && context.driver.backpackUI != null) { context.driver.backpackUI.Close(); } });
+        Attempt("Close warehouse", delegate { if (context.driver != null && context.driver.warehouseUI != null) { context.driver.warehouseUI.Close(); } });
+        if (context.settingsCaptured && context.driver != null && context.driver.IsReady)
+        {
+            Attempt("Restore driver context", delegate
+            {
+                if (context.originalShelter) { context.driver.EnterShelter(); } else { context.driver.EnterExploration(); }
+                context.driver.backpackUI.Close();
+                context.driver.warehouseUI.Close();
+                context.driver.lootUI.CloseSource();
+            });
+            Attempt("Restore player position", delegate { if (context.driver.player != null && !context.driver.player.IsDead) { context.driver.player.RelocateWithinRun(context.originalPlayerPosition); } });
+            Attempt("Restore language", delegate { if (LocalizationManager.Instance != null) { LocalizationManager.Instance.SetLanguage(context.originalLanguage); } });
+        }
+        Attempt("Remove keyboard", delegate { if (context.keyboard != null && context.keyboard.added) { InputSystem.RemoveDevice(context.keyboard); } });
+        Attempt("Remove mouse", delegate { if (context.mouse != null && context.mouse.added) { InputSystem.RemoveDevice(context.mouse); } });
+        if (context.settingsCaptured)
+        {
+            Attempt("Restore InputSettings", delegate { InputSystem.settings = context.originalSettings; });
+            Attempt("Restore background", delegate { Application.runInBackground = context.originalBackground; });
+        }
+        Attempt("Destroy temporary InputSettings", delegate { if (context.temporarySettings != null) { Object.Destroy(context.temporarySettings); } });
+        foreach (InputDevice device in context.disabledDevices)
+        {
+            InputDevice restored = device;
+            Attempt("Restore device " + restored.name, delegate { if (restored.added && !restored.enabled) { InputSystem.EnableDevice(restored); } });
+        }
+        Attempt("Unsubscribe completion", delegate { if (context.driver != null && context.driver.coordinator != null && context.onCompleted != null) { context.driver.coordinator.Completed -= context.onCompleted; } });
+        Attempt("Unsubscribe logs", delegate { if (context.onLog != null) { Application.logMessageReceived -= context.onLog; } });
+    }
+
+    private static void Attempt(string label, Action action)
+    {
+        try { action(); }
+        catch (Exception exception) { AppendError(label, exception); }
+    }
+
+    private static void AppendError(string label, Exception exception)
+    {
+        Error = (string.IsNullOrEmpty(Error) ? string.Empty : Error + "\n") + label + ": " + exception;
+    }
+
+    private static string UtcNow() { return DateTime.UtcNow.ToString("o", CultureInfo.InvariantCulture); }
+    private static void WriteJson(string name, object value) { File.WriteAllText(Path.Combine(OutputDirectory, name), JsonUtility.ToJson(value, true)); }
+    private static string DataSignature(LootTestDriver driver) { return JsonUtility.ToJson(ReadInventory(driver)); }
+
+    private static Snapshot ReadSnapshot(Context context, string stage)
+    {
+        LootTestDriver driver = context.driver;
+        Snapshot snapshot = new Snapshot();
+        snapshot.stage = stage;
+        snapshot.utc = UtcNow();
+        snapshot.frame = Time.frameCount;
+        snapshot.realtime = Time.realtimeSinceStartup;
+        snapshot.gameTime = Time.time;
+        snapshot.timeScale = Time.timeScale;
+        snapshot.screenWidth = Screen.width;
+        snapshot.screenHeight = Screen.height;
+        snapshot.activeScene = SceneManager.GetActiveScene().path;
+        snapshot.loadedScenes = Enumerable.Range(0, SceneManager.sceneCount).Select(i => SceneManager.GetSceneAt(i).path).ToArray();
+        snapshot.language = LocalizationManager.Instance != null ? LocalizationManager.Instance.CurrentLanguage.ToString() : "unavailable";
+        snapshot.health = driver.player.health.CurrentHealth;
+        snapshot.maxHealth = driver.player.health.MaxHealth;
+        snapshot.dead = driver.player.IsDead;
+        snapshot.playerPosition = driver.player.Position;
+        snapshot.shelter = driver.IsShelter;
+        snapshot.ev = driver.shelter.CurrentEv;
+        snapshot.backpackOpen = driver.backpackUI.IsOpen;
+        snapshot.warehouseOpen = driver.warehouseUI.IsOpen;
+        snapshot.lootOpen = driver.lootUI.IsOpen;
+        snapshot.backpackToken = driver.backpackUI.DragToken;
+        snapshot.warehouseToken = driver.warehouseUI.DragToken;
+        snapshot.lootSession = driver.lootUI.SessionToken;
+        snapshot.backpackSelectedId = driver.backpackUI.SelectedInstanceId;
+        snapshot.backpackPreview = driver.backpackUI.PreviewResult.ToString();
+        snapshot.previewX = driver.backpackUI.PreviewX;
+        snapshot.previewY = driver.backpackUI.PreviewY;
+        snapshot.previewRotated = driver.backpackUI.PreviewRotated;
+        snapshot.grabOffset = driver.backpackUI.DragGrabOffset;
+        snapshot.feedback = driver.backpackUI.FeedbackKey;
+        snapshot.pointer = context.mouse != null && context.mouse.added ? context.mouse.position.ReadValue() : Vector2.zero;
+        snapshot.leftHeld = context.mouse != null && context.mouse.added && context.mouse.leftButton.isPressed;
+        snapshot.transfers = context.transfers;
+        snapshot.background = Application.runInBackground;
+        snapshot.inputDevices = InputSystem.devices.Select(d => d.deviceId + ":" + d.name + ":" + d.enabled).ToArray();
+        snapshot.inventory = ReadInventory(driver);
+        snapshot.images = ReadImages();
+        snapshot.trackedSourceRect = RectData.From(ScreenRectangle(context.trackedSource));
+        snapshot.trackedSourceAlpha = SourceAlpha(context.trackedSource);
+        snapshot.trackedSourceActive = context.trackedSource != null && context.trackedSource.gameObject.activeInHierarchy;
+        snapshot.sources = ReadSources(driver);
+        snapshot.itemViews = ReadItemViews(driver);
+        return snapshot;
+    }
+
+    private static InventoryData ReadInventory(LootTestDriver driver)
+    {
+        InventoryData data = new InventoryData();
+        data.round = driver.items.CurrentRound;
+        data.instanceCount = driver.items.InstanceCount;
+        data.items = driver.items.GetInstances().OrderBy(i => i.InstanceId).Select(i => new ItemData
+        {
+            instanceId = i.InstanceId, definitionId = i.DefinitionId, uniqueId = i.UniqueId, owner = i.Owner.ToString(),
+            containerId = i.ContainerId, sourceId = i.SourceId, originalSpawnPointId = i.OriginalSpawnPointId,
+            useRound = i.UseRound, usesThisRound = i.UsesThisRound, retained = i.IsRetained,
+            pendingRecovery = i.IsPendingRecovery, recoveryRound = i.RecoveryRound,
+            lastLossReason = i.LastLossReason.HasValue ? i.LastLossReason.Value.ToString() : string.Empty,
+            spawnClaimed = i.SpawnClaimed, ev = i.Definition != null ? i.Definition.ev : -1,
+            definitionObjectId = i.Definition != null ? i.Definition.GetInstanceID() : 0,
+            definitionWidth = i.Definition != null ? i.Definition.width : 0,
+            definitionHeight = i.Definition != null ? i.Definition.height : 0
+        }).ToArray();
+        data.backpack = driver.backpack.GetPlacements().OrderBy(p => p.InstanceId).Select(p => new PlacementData
+        { instanceId = p.InstanceId, x = p.X, y = p.Y, width = p.Width, height = p.Height, rotated = p.Rotated }).ToArray();
+        data.warehouse = driver.warehouse.GetPlacements().OrderBy(p => p.InstanceId).Select(p => new PlacementData
+        { instanceId = p.InstanceId, x = p.X, y = p.Y, width = p.Width, height = p.Height, rotated = p.Rotated }).ToArray();
+        return data;
+    }
+
+    private static ImageData[] ReadImages()
+    {
+        return Object.FindObjectsByType<BackpackDragImage>(FindObjectsInactive.Include, FindObjectsSortMode.None).Select(image => new ImageData
+        {
+            objectId = image.GetInstanceID(), visible = image.IsVisible, token = image.Token,
+            owner = image.Owner != null ? image.Owner.GetType().Name + ":" + image.Owner.GetInstanceID() : string.Empty,
+            imageRect = RectData.From(ScreenRectangle(image.RectTransform)), sourceRect = RectData.From(ScreenRectangle(image.SourceRect)),
+            sourceObjectId = image.SourceRect != null ? image.SourceRect.GetInstanceID() : 0,
+            sourceActive = image.SourceRect != null && image.SourceRect.gameObject.activeInHierarchy, sourceAlpha = SourceAlpha(image.SourceRect),
+            text = string.Join("\n", image.GetComponentsInChildren<TMPro.TMP_Text>(true).Select(t => t.text).ToArray()),
+            graphics = image.GetComponentsInChildren<Graphic>(true).Select(g => new GraphicData
+            { name = g.name, active = g.isActiveAndEnabled, raycast = g.raycastTarget, culled = g.canvasRenderer.cull,
+                inheritedAlpha = g.canvasRenderer.GetInheritedAlpha(), color = g.color }).ToArray()
+        }).ToArray();
+    }
+
+    private static SourceData[] ReadSources(LootTestDriver driver)
+    {
+        Dictionary<string, LootSourceState> sources = new Dictionary<string, LootSourceState>();
+        foreach (LootBox box in Object.FindObjectsByType<LootBox>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+        { if (box.State != null) { sources[box.State.SourceId] = box.State; } }
+        foreach (GroundItem ground in Object.FindObjectsByType<GroundItem>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+        { if (ground.State != null) { sources[ground.State.SourceId] = ground.State; } }
+        if (driver.lootUI.Source != null) { sources[driver.lootUI.Source.SourceId] = driver.lootUI.Source; }
+        return sources.Values.OrderBy(s => s.SourceId).Select(s => new SourceData
+        {
+            sourceId = s.SourceId, mapId = s.MapId, round = s.Round, ground = s.IsGround, generated = s.Generated,
+            width = s.GridWidth, height = s.GridHeight, searchEntryId = s.SearchEntryId, searchElapsed = s.SearchElapsed,
+            entries = s.Entries.Select(e => new EntryData { entryId = e.EntryId, instanceId = e.InstanceId,
+                revealed = e.Revealed, taken = e.Taken, hasLayout = e.HasLayout, x = e.LayoutX, y = e.LayoutY,
+                width = e.LayoutWidth, height = e.LayoutHeight, rotated = e.LayoutRotated }).ToArray()
+        }).ToArray();
+    }
+
+    private static ItemViewData[] ReadItemViews(LootTestDriver driver)
+    {
+        List<ItemViewData> rows = new List<ItemViewData>();
+        foreach (BackpackItemView view in driver.backpackUI.view.itemRoot.GetComponentsInChildren<BackpackItemView>(true))
+        { rows.Add(ReadItemView("backpack", view.InstanceId, (RectTransform)view.transform, view.IsHovered, view.background)); }
+        foreach (WarehouseItemView view in driver.warehouseUI.view.itemRoot.GetComponentsInChildren<WarehouseItemView>(true))
+        { rows.Add(ReadItemView("warehouse", view.InstanceId, (RectTransform)view.transform, false, view.background)); }
+        foreach (LootItemView view in driver.lootUI.view.contentRoot.GetComponentsInChildren<LootItemView>(true))
+        { rows.Add(ReadItemView("loot", view.EntryId, (RectTransform)view.transform, false, view.background)); }
+        return rows.ToArray();
+    }
+
+    private static ItemViewData ReadItemView(string kind, string id, RectTransform rect, bool hovered, Image background)
+    {
+        return new ItemViewData { kind = kind, id = id, objectId = rect.GetInstanceID(), active = rect.gameObject.activeInHierarchy,
+            hovered = hovered, rect = RectData.From(ScreenRectangle(rect)), sourceAlpha = SourceAlpha(rect),
+            color = background != null ? background.color : Color.clear,
+            text = string.Join("\n", rect.GetComponentsInChildren<TMPro.TMP_Text>(true).Select(t => t.text).ToArray()) };
+    }
+
+    [Serializable] public sealed class LatestRun { public string directory; public bool completed; public string error; }
+    [Serializable] public sealed class RunSummary
+    {
+        public string startedUtc, finishedUtc, error, evidenceDirectory, inputEvidence, apiAssistance, note;
+        public bool completed, lootDamageIncluded, healthRestored;
+        public int transferCompletions;
+        public string[] captures, checks, observedUnityErrors;
+        public Snapshot before, after;
+    }
+    [Serializable] public sealed class MotionList { public MotionData[] samples; }
+    [Serializable] public sealed class MotionData { public int frame; public float realtime; public Vector2 pointer; public bool held; public ImageData[] images; }
+    [Serializable] public sealed class Snapshot
+    {
+        public string stage, utc, imageFile, activeScene, language, backpackSelectedId, backpackPreview, feedback;
+        public int frame, screenWidth, screenHeight, health, maxHealth, ev, backpackToken, warehouseToken, lootSession, previewX, previewY, transfers;
+        public float realtime, gameTime, timeScale, trackedSourceAlpha;
+        public bool dead, shelter, backpackOpen, warehouseOpen, lootOpen, previewRotated, leftHeld, background, trackedSourceActive;
+        public Vector3 playerPosition;
+        public Vector2 pointer;
+        public Vector2Int grabOffset;
+        public string[] loadedScenes, inputDevices;
+        public RectData trackedSourceRect;
+        public InventoryData inventory;
+        public ImageData[] images;
+        public SourceData[] sources;
+        public ItemViewData[] itemViews;
+    }
+    [Serializable] public sealed class InventoryData { public int round, instanceCount; public ItemData[] items; public PlacementData[] backpack, warehouse; }
+    [Serializable] public sealed class ItemData
+    {
+        public string instanceId, definitionId, uniqueId, owner, containerId, sourceId, originalSpawnPointId, lastLossReason;
+        public int useRound, usesThisRound, recoveryRound, ev, definitionObjectId, definitionWidth, definitionHeight;
+        public bool retained, pendingRecovery, spawnClaimed;
+    }
+    [Serializable] public sealed class PlacementData { public string instanceId; public int x, y, width, height; public bool rotated; }
+    [Serializable] public sealed class SourceData
+    {
+        public string sourceId, mapId, searchEntryId;
+        public int round, width, height;
+        public bool ground, generated;
+        public float searchElapsed;
+        public EntryData[] entries;
+    }
+    [Serializable] public sealed class EntryData { public string entryId, instanceId; public bool revealed, taken, hasLayout, rotated; public int x, y, width, height; }
+    [Serializable] public sealed class RectData
+    {
+        public float left, bottom, width, height;
+        public static RectData From(Rect rect) { return new RectData { left = rect.xMin, bottom = rect.yMin, width = rect.width, height = rect.height }; }
+    }
+    [Serializable] public sealed class ImageData
+    {
+        public int objectId, token, sourceObjectId;
+        public bool visible, sourceActive;
+        public string owner, text;
+        public RectData imageRect, sourceRect;
+        public float sourceAlpha;
+        public GraphicData[] graphics;
+    }
+    [Serializable] public sealed class GraphicData { public string name; public bool active, raycast, culled; public float inheritedAlpha; public Color color; }
+    [Serializable] public sealed class ItemViewData
+    {
+        public string kind, id, text;
+        public int objectId;
+        public bool active, hovered;
+        public RectData rect;
+        public float sourceAlpha;
+        public Color color;
+    }
+}

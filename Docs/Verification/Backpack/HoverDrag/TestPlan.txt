@@ -1,0 +1,139 @@
+04B 悬停与跟随拖拽：只读测试增补计划
+日期：2026-10-19；工程 E:/DD451。
+状态：方案，未编写/修改 Assets，未操作 Unity、编译、运行测试或读取实时 Editor 状态。
+本轮父端是唯一 Assets/Editor 操作者；本文件不占用或释放 Editor，不将历史测试成绩当作04B通过。
+
+一、建议实施顺序
+
+1. 先修正既有 mixed Ctrl/mouse 用例的错误期望，保留原生UGUI事件链与后续普通右键强断言。
+2. 在现有 BackpackIntegrationTests 夹具新增两个集中用例：独立悬停/遮挡；像素抓取偏移/连续跟随/旋转与F10。
+3. 将ghost清理、单份显示和射线不被拦截的断言加到既有取消、重载、死亡与跨容器测试，避免复制完整场景夹具。
+4. 用 LootIntegrationTests 的既有partial文件扩充真实双向转移、未知项和滚动；不另建测试场景、Bootstrap或EventSystem。
+5. 最后做1920×1080普通Game可见性及原生输入验收。API/排队输入/原生输入分别报告。
+
+二、现有夹具与可复用入口
+
+Backpack：Assets/Tests/Backpack/PlayMode/BackpackIntegrationTests.cs。
+LoadScene加载Assets/Scenes/Tests/Backpack/BackpackTest.unity，使用实际ItemManager/BackpackManager/Player/Localization和UGUI。
+SetPointer、Press、SetQuickTransferKeys、RightClick可复用；CellPoint使用真实RectTransform换算，现有抓取点是cellSize*0.35。
+样本：medkit(0,0)2×2，foodA(2,0)2×2，foodB(0,2)2×2，battery(2,2)1×2；外部Doll，合计5身份/背包14格。
+Snapshot已记录实例、定义/唯一身份、归属、SourceId/OriginalSpawnPointId、次数、恢复状态、SpawnClaimed、EV与背包坐标/方向，适合预览不写数据与取消比较。
+ownedObjects/ownedDefinitions提供运行时对象清理；不要修改共享SO或保存测试fixture到资产。
+当前InputSettings克隆为AllDeviceInputAlwaysGoesToGameView/IgnoreFocus，但该夹具未停用原生键鼠；桌面真实输入可能抢占Mouse.current。若实际发现抖动，按下述Loot已验证的恢复模式隔离设备，而不是新增手动InputSystem.Update轮询。
+
+Loot：Assets/Tests/Loot/PlayMode/LootIntegrationTests.cs为partial；另有LootReturnTests、LootGridSearchTests、LootUIRegressionTests。
+加载Assets/Scenes/Tests/Loot/LootTest.unity，实际Bridge/Coordinator、背包/仓库/箱子/Player已接好。
+PrepareInput会记下并停用已有键鼠/Pointer，只用本次合成设备；TearDown finally恢复设备与InputSettings。适合精确UGUI路径。
+可复用Pointer、Click、BeginPointerDrag、BackpackPoint、WarehousePoint、EntryPoint、GridCellPoint、WaitForRevealed。
+CreateGridTestBox仅创建运行时独立配置，ClearGridTestFixtures统一清理；可建立6×4空箱、长箱、受控搜索时长，不重建LootTest。
+TransferSnapshot + SourceEntrySnapshot + GridLayoutSnapshot + ItemIdentitySnapshot覆盖双侧布局/身份/EV。SourceEntrySnapshot本身不含方向，必须同时比较GridLayoutSnapshot。
+ReturnScreenRect/GridScreenSize已有屏幕Rect测量，AssertLocalReturnPreview等已有预览=提交与预览非射线断言。
+
+Warehouse：Assets/Tests/Warehouse/PlayMode/WarehouseIntegrationTests.cs。
+加载Assets/Scenes/Tests/Warehouse/WarehouseTest.unity。已有20×20/升级24行、ScrollRect滚动、每列可见、真实UGUI与抓取偏移/R/F10回归。
+SetPointer(position,left,right)、SetKeys可保留Ctrl；VisibleRotatablePlacement、FindFreeVisibleCell支持非方形可见物。
+OrdinaryDragKeepsInternalGrabOffsetRotationAndExactFarCellAfterControl已有Doll抓取(1,1)、R旋转、指定远格(12,3)、占位/边界/格缝/标题拒绝。
+跨包仓业务优先复用Loot夹具，避免在独立WarehouseTest补造转移环境。
+
+共同注意：Press在尾部发送空KeyboardState，会释放全部Ctrl；保持Ctrl时用SetQuickTransferKeys/SetKeys手动列出所有保持键。
+每次换坐标先送release/move，再down；普通drag必须实际越过EventSystem.pixelDragThreshold，无长按计时要求。
+不要只调用BeginItemDrag/EndDrag就声称真实悬停/拖拽显示通过。API可用于摆放fixture、生命/场景生命周期和失效token补充。
+
+三、已知mixed Ctrl/mouse失败的准确修正
+
+证据：Docs/Verification/QuickTransfer/Integration/BackpackFailure.txt、PlayMode-75-Initial.xml、PlayMode-BackpackFailureRetry.xml；07B交接。
+历史准确结果是Backpack18/19，唯一失败：QueuedSameFrameCtrlLeftAndRightPressCannotUseAndRightUseRecoversAfterRelease，原636行requests期望1、实际0。后续Consumed/UsesThisRound/生命恢复断言尚未执行到。
+当前源码仍在buttons=3→1→0后断言requests==1，尚未修正。
+实际包源码重新核对：Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/Plugins/UI/InputSystemUIInputModule.cs的release分支清eligibleForClick；PointerModel.CopyPressStateTo/From不按按钮保存该字段。右键先release使随后左键不再发Click。这是夹具预期问题的证据，不是已确认的业务故障。
+
+保持原buttons=3→1→0和两帧等待：
+- 全程食物不消费、生命不变、无普通drag/ghost、Snapshot不变；最终requests==0。
+- Ctrl继续保持，另送一次独立完整left down→up，不移动过阈值；严格requests==1，Snapshot仍不变（spy返回false）。
+- 释放Ctrl，再实际RightClick；严格Consumed、UsesThisRound=1、空格释放、回血；requests仍1。
+禁止把产品改为PointerUp必提交，也不要把普通Ctrl点击断言放宽为0或1，不删除历史失败XML。
+
+四、建议新增的两个Backpack用例
+
+HD01 QueuedHoverKeepsSelectionAndRespectsCoveringConfirmation
+入口：真实Tab，真实鼠标移动/单击；不直接调用PointerEnter/Exit。
+- 记录非悬停普通外观；移动到battery实际Image区域，背景/边框可观察变化，SelectedInstanceId及Snapshot不变。
+- 移到名称/尺寸子文字内部仍属于同一物品，不发生选中变化或高亮闪断；Graphic子文字不能截断命中。
+- 真实click选中battery，移到foodA；battery恢复选中样式，foodA仅悬停。移到空白后，battery仍选中，foodA恢复普通样式。
+- F10后选中ID/身份不变；悬停/选中仍正确，实际可见文字为当前语言。
+- 按既有Loot ReturnRaycastBlocker范式，在当前Canvas创建运行时顶层Image遮住物品；yield实际Canvas帧并ForceUpdateCanvases，先断言depth>=0，再确认RaycastAll首命中遮罩且底下物品不悬停。
+- 再用实际ItemTransferUIBridge.DropSelected打开丢弃确认，移动到被遮住的原物品坐标：无穿透悬停/使用/拖拽；通过实际按钮取消确认后，新的pointer move恢复悬停。
+- Close时不保留可见高亮；重开前把指针移到空白，检查原选中样式。若重开时指针正好仍在物品上，合法的新hover不能误判为残留。
+外观断言用运行前记录的普通/选中/悬停状态作比较，不把Inspector可调颜色硬编码为某RGB。若用边框，检查边框可见性/颜色，而非强制背景必须变色。
+
+HD02 QueuedGhostTracksPixelGrabThroughGapsOutsidePanelsRotationAndLanguage
+入口：真实鼠标按下并越阈值。取battery可识别的名称/尺寸/既有图标；无需新增素材。
+- 从物品左上角偏移(18,25)屏幕像素按下（非格中心），单纯按住多帧不出现drag；移动超过pixelDragThreshold后，源GameObject/事件组件仍active，token非零。
+- Ghost存在且仅一份，与目标preview不是同一对象；源可淡化，但源实例不能被禁用/销毁来模拟拿起。
+- 记录实际屏幕sourceTopLeft与pressPosition；每个鼠标点P，ghostTopLeft应等于P-(18,-25)，误差<=0.5屏幕像素。分别送同一格内1px/3px位移、4px格缝中央、中央世界区域、另一面板上方；连续位移不能吸附70px格步长。
+- 每步都检查ghost为同一实例、尺寸保持66×136屏幕像素；事件接收源保持同一实例；Snapshot不变。
+- 格缝/面板外目标preview应隐藏或非法，但ghost仍active且有可见Graphic和当前名称；不能把preview隐藏当成ghost也应消失。
+- Queue R后尺寸为136×66，PreviewRotated为true，目标占格相符。此抓取点在两种尺寸内均有效，可严格验证旋转前后像素偏移不跳。另保留现有lower-cell/已旋转物体用例，验证超出新尺寸时的DragGrabOffset夹紧。
+- Queue F10：ghost名称切换，token/方向/偏移/位置不变、Snapshot不变；ghost不是重新创建的第二份。
+- 在合法明确目标格释放，检查一次实际移动、原格不再占用、新格与preview一致、ghost隐藏、源正常显示。不要从最终格反推或调用TryFindSpace作为普通drag的期待坐标。
+若用另一个合法抓取偏移做旋转，必须先明确旋转时像素偏移的规则；不可调用产品内部同一计算函数来生成期望，从而形成镜像测试。
+
+五、给既有用例增补断言，比新造大矩阵更有价值
+
+HD03 非法松手与取消：扩充QueuedPointerDragKeyboardRotationAndF10PreservePreviewUntilRelease。
+目前已覆盖R后越界与从电池下半格抓取。增加重叠、格缝、标题/窗口外四个实际坐标；每轮开始前先确认仍存在某个合法替代位置，确保失败没有自动整理。
+每个非法点：ghost仍跟随；release后ghost/target preview隐藏，源实际Rect和原旋转恢复；Snapshot相等，Changed/转移Completed无成功通知。不要以CancelDrag回调次数代替提交次数，因为成功后也会清理拖拽。
+
+HD04 生命周期：扩充DamageCancelsBeforeLateReleaseAndDeathLeavesItemsForFlowCoordinator、QueuedCloseButtonAndSimulatedFocusLossCancelPreviewAndIgnoreLateRelease、ReloadKeepsPlacementsConsumedFoodMedkitUseAndLanguageWhileCancellingPreview。
+至少一次拖动使用真实Down→移动开始；伤害H、真实Tab/Close按钮、controller disable、场景reload后均检查ghost不可见、旧源透明度/悬停无残留、无额外Canvas/EventSystem。
+保留旧token End/Update补充探针：先取消旧drag并开始新drag，旧事件不得隐藏新ghost、移动新ghost或提交/取消新token；真正新release仍有效。
+Focus用SendMessage属于生命周期模拟；不得称原生失焦验证。
+BackpackTest无真实GameFlow死亡结算，既有死亡测试只证明04不擅自修改权威物品，不能把它改为期待Lost。
+
+HD05 包↔仓：扩充LootIntegrationTests.QueuedPointerTransfersBothWaysAndSingleRPreserveIdentityAndEv。
+目前已经实际队列双向转移和R/F10。每个方向在源窗口、中央世界、目标viewport各停一帧：同一drag全过程只有一份ghost、像素偏移不变、目标preview独立。
+跨到目标时RaycastAll首命中必须仍是目标viewport/格或物品，不是ghost/ghost子文字；所有ghost Graphic.raycastTarget=false，若有CanvasGroup则blocksRaycasts=false。
+目标明确(6,0)/返回(1,2)按现有场景有效格；检查preview坐标=提交坐标，Completed恰好1次、无新身份/EV或次数变化。
+仓库起拖时不能再让包的外部preview生成第二份ghost；对侧只负责目标占格提示。
+
+HD06 包↔已知箱项：扩充LootReturnTests.QueuedFoodReturnFollowsFarCellsAndRejectsViewportBlankWithoutAutofitting及LootIntegrationTests.QueuedControlUsesOnlyRotatedBackpackSpaceAndPrecisePickupKeepsBoxRotationAndGrabOffset。
+前者已有真正2×2食物双向、格缝、viewport下方空白、指定远格、F10；加入ghost在gap/blank仍可见但不能落位、合法提交一次且只保留新源表现。
+后者已有已旋转3×2项从右下格抓取(2,1)拾回；在原箱→中央→背包检查影像3×2像素尺寸及初始抓取点，避免04 BeginExternalPreview与06随后UpdateDrag造成首帧跳变或第二份ghost。
+回箱后再取回使用同InstanceId/EntryId；搜索下一项的SearchEntryId和进度不能因hover/ghost/F10重置，实时进度允许增加，不做逐帧完全相等断言。
+
+HD07 未知信息：扩充LootGridSearchTests.QueuedGridUnknownOutlinesHaveOneCenteredCountdownAndMatchBackpackPixels。
+现有实际hover/click/right/drag未知项已经断言空名称/描述/状态、icon inactive、布局/选择不变。
+补全任何拖拽影像不可显示；即便构建显示时能拿到真实ItemData，也不能在Revealed之前生成带名称/图标的ghost。
+F10前后只有一个搜索倒计时；未知项hover不能停止/重置搜索，揭示后才允许识别拖动。
+
+HD08 滚动/裁剪：扩充LootReturnTests.QueuedWheelScrollRevealsLastLootDragAndMovesTheRealWarehouseViewport。
+复用真实滚轮到长箱与仓库底部；从底部条目按真实屏幕内部像素抓取，离开viewport后ghost继续可见。Ghost不能是ScrollRect/RectMask2D内容子树中会被裁切的Graphic；直接检查实际父链和CanvasRenderer可见状态，再以Game截图确认。
+记录开始前Canvas/EventSystem总数，拖动不增加第二份Canvas/EventSystem；目标viewport和原透明raycast接收保留，不以移除Mask来让ghost露出。
+滚动改变grid/content坐标后落位仍按当前屏幕目标精确格，不复用滚动前绝对坐标。
+
+HD09 权威数据已失去的取消：以GameFlowDeathReturnTests.DeathClosesSearchAndDragSynchronouslyAndUsedMedkitKeepsItsRoundAllowance作为正式生命周期补充。
+其真实死亡→Shelter结算与同轮药包次数已具备，当前起拖为API辅助；可补实际ghost已出现的明确条件与死亡后无ghost的断言，但保留API辅助标签。
+权威Lost/PendingRecovery及布局移除后，视觉清理不得创建新item view/placement或恢复旧Owner。返回庇护所时无旧drag显示，旧UI晚到事件不能复活失去的物品。
+模块测试只比较未被业务改变时Snapshot；这里应比较结算后的真实状态，不能强行要求死亡前后完全相同。
+
+六、测试观察方式及容易误判之处
+
+优先通过实际显示组件/RectTransform、Image/TMP及EventSystem.RaycastAll观察，不新增测试专用业务接口或反射修改不可变身份。
+若生产新增单一ghost组件，可只读获取其RectTransform/ItemId/IsVisible；不以调用它的UpdatePosition代替UGUI输入。跨容器测试不要覆写Bridge.DragUpdated，否则会拆掉被测路径。
+Ghost的raycast检查应含所有Graphic子元素；只有根Image.raycastTarget=false不足以证明文字/icon不拦截。
+Graphic activeSelf不等于可见：检查activeInHierarchy、继承alpha、CanvasRenderer裁剪状态，且在真实Game截图验证面板外显示。屏幕外(-100,-100)当然可能不可见，不能把此坐标用作“窗口外但画面内可见”证据；使用两个面板之间的屏幕内点。
+新的遮挡Image必须经历一个Canvas渲染帧再检测，depth=-1会被UGUI忽略。空白/格缝位置应从实际RectTransform、padding/size/gap推导，不靠旧1280窗口像素。
+显示对象可临时或缓存复用，但同一拖动期间对象应稳定；不要求缓存跨场景仍存活。关闭应无可见残留，场景卸载应无旧拥有者对象。
+初始指针可能恰好在item上，测normal样式前先移到画面内非UI空白并等待；F10刷新不能被误当成一次新的hover/click。
+成功放下后源View被正常移除是允许的；只能在按住拖动期间要求源GameObject保留以承接EndDrag。
+
+七、执行与报告边界（由父端决定并执行）
+
+优先先跑修正的mixed用例和两个新Backpack用例，再跑受影响Backpack/Loot Play fixture、涉及Warehouse显示代码时跑Warehouse回归。没有核心规则修改无需把全部无关EditMode重复一遍。
+如触及真实死亡跨场景清理，跑上述现有GameFlow死亡用例；保留当前Ruins暗角0.4、PlayerFillLight、最新死亡流程和用户配置，不运行Builder重建正式场景。
+1920×1080普通Game建议最少截图：普通/选中+悬停、gap/中央世界ghost、包↔仓/箱两方向、R后宽高、未知轮廓、F10拖动文字、受击后无残留。连续移动需短采样/录制，不用一张静态截图声称跟随连续。
+原生鼠标可用时记录物理Down/移动/Up；否则明确本次只有合成QueueStateEvent和API辅助，不能复用07B原生注入未生效的旧记录作为通过。
+本文件只提出方案；未写测试、未刷新或运行，没有04B通过数量。
+
+读取依据
+Docs/AgentPrompts/04B_BackpackHoverDrag.txt全文；Docs/Handoffs/04A_BackpackQuickTransfer_Handoff.txt、06C_QuickTransferPrecisePlacement_Handoff.txt、07B_QuickTransferIntegration_Handoff.txt；Docs/Verification/QuickTransfer/Integration/Report.txt与BackpackFailure.txt；Docs/Verification/Enemy/EditorCoordination.txt最新释放/04B派发记录。
+上述Backpack/Loot/Warehouse现有测试及直接相关View/ItemView/Bridge源；本地InputSystem包release/PointerModel源码；GameFlowDeathReturnTests相关既有死亡用例。

@@ -117,7 +117,19 @@ public class LootUIController : MonoBehaviour
         if (transfers == null || !IsSessionValid(SessionToken, Source)
             || !Source.TryGetEntry(entryId, out LootEntryState entry) || !entry.Revealed || entry.Taken
             || view == null || !view.TryGetItemGrabOffset(entryId, pressPosition, eventCamera, out Vector2Int grabOffset)) { return 0; }
-        return transfers.BeginLootDrag(Source, entryId, SessionToken, position, eventCamera, grabOffset, entry.LayoutRotated);
+        LootSourceState source = Source;
+        int session = SessionToken;
+        int token = transfers.BeginLootDrag(source, entryId, session, position, eventCamera, grabOffset, entry.LayoutRotated);
+        // 首次桥回调可以同步取消或换来源；只有仍有效的本次token才能生成影像。
+        if (token == 0 || backpack == null || !backpack.IsDragValid(token) || !IsSessionValid(session, source)) { return 0; }
+        LootItemView itemView = view.GetItemView(entryId);
+        if (itemView != null && backpack.manager.Items.TryGetInstance(entry.InstanceId, out ItemInstance item))
+        {
+            backpack.view.BeginDragImage(backpack, token, item, (RectTransform)itemView.transform, pressPosition, eventCamera,
+                backpack.PreviewRotated, backpack.DragGrabOffset, view.cellSize, view.gap, itemView.icon);
+            backpack.view.UpdateDragImage(backpack, token, position, eventCamera, backpack.PreviewRotated, backpack.DragGrabOffset);
+        }
+        return token;
     }
 
     public bool TryQuickTransfer(string entryId)

@@ -1,0 +1,8 @@
+{
+  "path": "Assets/Art/Fonts/Localization/NotoSansCJKsc-Regular SDF.asset",
+  "backup": "Docs/Verification/Backpack/HoverDrag/FontDynamicCacheDuringTests.asset.txt",
+  "testCacheSHA256": "1E95D1F614555449374E0740EDB21FAB888163B3E68B766A5CC82AFD7B926E15",
+  "restoredSHA256": "02C59F5A7D07FE42FD3AA71E8F28457ACBBD7FE9CA7BCE115E72BEE2DCA36DD2",
+  "diffAfter": [],
+  "reason": "Only test-generated dynamic atlas/glyph/packing changes; font was clean at task entry. Backup preserved before restoring HEAD content."
+}

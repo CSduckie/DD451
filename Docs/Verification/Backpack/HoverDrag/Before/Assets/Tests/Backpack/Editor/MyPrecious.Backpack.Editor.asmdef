@@ -1,0 +1,23 @@
+{
+  "name": "MyPrecious.Backpack.Editor",
+  "rootNamespace": "",
+  "references": [
+    "MyPrecious.Backpack",
+    "MyPrecious.Backpack.TestDoubles",
+    "MyPrecious.Bootstrap",
+    "MyPrecious.Items",
+    "MyPrecious.Player",
+    "MyPrecious.Player.TestDoubles",
+    "MyPrecious.Localization",
+    "Unity.Cinemachine",
+    "Unity.InputSystem",
+    "Unity.TextMeshPro",
+    "Unity.ugui",
+    "MyPrecious.Loot",
+    "MyPrecious.Loot.Editor"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "autoReferenced": false
+}

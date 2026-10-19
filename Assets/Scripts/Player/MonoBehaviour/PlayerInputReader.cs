@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 [DisallowMultipleComponent]
 public class PlayerInputReader : MonoBehaviour
@@ -11,6 +12,8 @@ public class PlayerInputReader : MonoBehaviour
     private InputAction interact;
     private bool jumpPending;
     private bool interactPending;
+    private bool crouchPending;
+    private bool crouchNeedsRelease;
 
     public float MoveX { get { return move != null && move.enabled ? move.ReadValue<Vector2>().x : 0f; } }
     public bool CrouchHeld { get { return crouch != null && crouch.enabled && crouch.IsPressed(); } }
@@ -30,6 +33,8 @@ public class PlayerInputReader : MonoBehaviour
         interact = CopyAction("Interact");
         jump.performed += OnJump;
         interact.performed += OnInteract;
+        crouch.performed += OnCrouch;
+        crouch.canceled += OnCrouchReleased;
         crouch.wantsInitialStateCheck = true;
         move.Enable();
         jump.Enable();
@@ -54,6 +59,21 @@ public class PlayerInputReader : MonoBehaviour
     {
         interactPending = true;
     }
+    private void OnCrouch(InputAction.CallbackContext context)
+    {
+        if (!crouchNeedsRelease) { crouchPending = true; }
+    }
+    private void OnCrouchReleased(InputAction.CallbackContext context)
+    {
+        crouchNeedsRelease = false;
+    }
+
+    public bool ConsumeCrouch()
+    {
+        bool pending = crouchPending;
+        crouchPending = false;
+        return pending;
+    }
     public bool ConsumeJump()
     {
         bool pending = jumpPending;
@@ -72,6 +92,21 @@ public class PlayerInputReader : MonoBehaviour
     {
         jumpPending = false;
         interactPending = false;
+        crouchPending = false;
+        // 锁定、复活或重新启用时，旧的长按必须先松开，才算下一次切换。
+        // 读取动作当前绑定的按钮，不把C写死，改键后仍然有效。
+        crouchNeedsRelease = false;
+        if (crouch != null)
+        {
+            foreach (var control in crouch.controls)
+            {
+                if (control is ButtonControl button && button.isPressed)
+                {
+                    crouchNeedsRelease = true;
+                    break;
+                }
+            }
+        }
         LastJumpPressedTime = double.NegativeInfinity;
     }
 
@@ -80,6 +115,11 @@ public class PlayerInputReader : MonoBehaviour
         ClearRequests();
         if (jump != null) { jump.performed -= OnJump; }
         if (interact != null) { interact.performed -= OnInteract; }
+        if (crouch != null)
+        {
+            crouch.performed -= OnCrouch;
+            crouch.canceled -= OnCrouchReleased;
+        }
         move?.Dispose();
         jump?.Dispose();
         crouch?.Dispose();

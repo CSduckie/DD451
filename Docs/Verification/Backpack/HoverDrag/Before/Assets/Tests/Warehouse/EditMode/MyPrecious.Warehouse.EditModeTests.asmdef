@@ -1,0 +1,8 @@
+{
+    "name": "MyPrecious.Warehouse.EditModeTests",
+    "rootNamespace": "",
+    "references": ["MyPrecious.Warehouse", "MyPrecious.Shelter", "MyPrecious.Items", "MyPrecious.Items.TestDoubles", "MyPrecious.Health"],
+    "includePlatforms": ["Editor"],
+    "autoReferenced": false,
+    "optionalUnityReferences": ["TestAssemblies"]
+}

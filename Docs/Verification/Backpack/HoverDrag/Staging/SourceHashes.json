@@ -1,0 +1,34 @@
+[
+  {
+    "Path": "Assets/Scripts/Backpack/MonoBehaviour/BackpackItemView.cs",
+    "Hash": "07237A8A8033DBF49E4DDF36A53B92B14D80052FEC6E0E136F2DDE431A732A55"
+  },
+  {
+    "Path": "Assets/Scripts/Backpack/MonoBehaviour/BackpackView.cs",
+    "Hash": "78DF08DAB1D99F63CE598C170F3EAD0B33F700CE377F9CC6DE8A83DEB54C1085"
+  },
+  {
+    "Path": "Assets/Scripts/Backpack/MonoBehaviour/BackpackUIController.cs",
+    "Hash": "8978D707CDB5EAA4268A4F5DA28B2287C8432B6D01CA4FFD2CB87BB210F6E234"
+  },
+  {
+    "Path": "Assets/Scripts/Warehouse/MonoBehaviour/WarehouseView.cs",
+    "Hash": "D0CC1A5797E777E1B4A3C333B80423EDA1F87F0E1B14F40F6ED5689990657388"
+  },
+  {
+    "Path": "Assets/Scripts/Warehouse/MonoBehaviour/WarehouseUIController.cs",
+    "Hash": "164E43B452B8442E03F800A17439376776088E25E058278AB215CE353AC88CEA"
+  },
+  {
+    "Path": "Assets/Scripts/Loot/MonoBehaviour/LootView.cs",
+    "Hash": "0C1A8CD5089506AD3AAD18F8E80B3911FF6369AACD4994C9C56BC4E9AF87F4B4"
+  },
+  {
+    "Path": "Assets/Scripts/Loot/MonoBehaviour/LootUIController.cs",
+    "Hash": "6F160C9D9B2351C30F9C8E48C097A4FE8A278F424CBF1417B4655D2C83E53D6B"
+  },
+  {
+    "Path": "Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferUIBridge.cs",
+    "Hash": "32139B77CAA90173A02019B5039D6288DAB13EB07D111960F07875520CC840E1"
+  }
+]
