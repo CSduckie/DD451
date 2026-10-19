@@ -1,0 +1,248 @@
+MyPrecious P0 — 04号独立背包模块交接
+版本：2026-10-18 / Dispatch v10 / 左背包、右搜刮占位布局
+工程：E:/DD451。以下路径均相对工程根目录。
+本文件记录实际实现、双尺寸自动输入与视觉检查结果，以及原生输入、人工试玩和跨模块联验的剩余范围。
+
+一、完成范围与当前边界
+
+已实现默认4×4、宽高可配置的独立背包矩形格子；真实ItemInstance引用、左上角坐标与bool旋转；边界、重叠、重复实例、不可旋转、碎片空位及失败不变校验；真实包内移动、物品使用后的同步布局处理。
+已实现场景背包UI、左键选择与拖拽、R旋转预览、唯一Tab开关与右键使用入口；真实PlayerController开包限制、PlayerHealth有效非致命伤害与死亡取消、换绑和卸载清理、迟到拖拽回调隔离。
+已接真实03 LocalizationManager、LocalizationTableSO、ItemDataSO文本键与LanguageChanged，默认语言和唯一F10仍由03负责。新增背包表当前48条，物品名称/描述未复制到背包表，使用结果复用items.use.*。
+已配置04专用真实模块测试场景、必要Prefab与EditMode/PlayMode测试；测试驱动只模拟首次轮次准备和伤害，不进入生产程序集。
+
+按用户后续截图要求，当前UI已调整为左侧玩家背包、右侧搜刮容器占位、中间显示世界；使用暖棕框、橄榄/铜色物品块和浅色文字。选中详情、反馈、操作说明位于左侧格子下方；完整描述放在可滚动区域。
+右侧明确显示“尚未连接搜刮来源”。其中16个格子只是装饰Image，没有真实来源清单、可用容量、格子算法或转移业务。未连接06前不能声称已完成搜刮容器、地面拾取或左右互拖。
+外部预览读取现有World/Container/Storage实例；不创建身份、不调用TrySetOwner、不删除来源。取消保持来源不变。06已按用户授权补入最小回调接口；04测试场景未连接06回调，外部松手因此取消并提示未接入。接入回调时由06同步协调转移，不能把本场景预览当作拾取成功。
+
+没有实现仓库、堆叠、自动整理、交换、重量、装备、丢地、敌人、完整轮次流程、结算或磁盘存档。成功撤离和死亡损失仍待08协调，正式场景仍待09接线。
+
+二、工程基线与修改边界
+
+实际Unity版本6000.2.12f1，Input System1.14.2、Cinemachine3.1.7、UGUI2.0.0；未为本任务升级这些依赖或引入新容器/事务框架。
+任务开始时工作区已有00—03及其他未提交改动；本任务保留既有工作、.meta和GUID，不把他人变更算作04新增，不执行回滚或清理。
+03实际实现及接线文档已存在，本任务按真实签名接入，不另建语言管理器。Player、Items和Bootstrap没有为背包增加反向依赖。
+共享GameBootstrap、Player、PlayerCamera、ItemModule、LocalizationModule及GameInputActions通过04测试场景实例引用；不把04的测试接线Apply回共享Prefab，不修改旧PlayerTest场景或挂旧PlayerTestDriver。
+对本次开始时记录的104个受保护文件（00—03相关源码/共享Prefab、输入、Packages与ProjectSettings）进行过中途SHA-256核对，当时全部与基线一致；这不是最终状态。最终复查有3项差异：ProjectSettings/EditorSettings.asset、Assets/Scripts/Player/MonoBehaviour/PlayerController.cs、Assets/Scripts/Player/MonoBehaviour/PlayerHealth.cs。04未修改Player这两个文件，保留并行变更，未据旧基线回滚。
+Editor API即时恢复值为enterPlayModeOptionsEnabled=false、options=None，但磁盘EditorSettings仍见Enabled=1、options=1；测试工具/共享Editor状态可能继续变化，因此不能声称104项最终全部恢复一致。此差异已记录，未为了恢复旧基线覆盖共享设置或他人文件。
+共享Unity Editor的编译、场景和运行由单一执行者串行操作。04释放前控制台0错误，Play=false，BackpackTest.isDirty=false，已通知06/05释放Editor，06已收到并接手。本文档修订未操作Editor，不把其他模块后续改动算作04验证结果。
+用户授权并发接入后，06对BackpackUIController、BackpackItemView和BackpackView增加了必要的关闭/取消、同步拖拽回调及目标可见性检查；这些协作改动已保留。04没有引用06程序集，当前BackpackTest也没有接入真实来源或转移回调。
+
+三、准确文件清单
+
+新增生产代码与程序集：
+- Assets/Scripts/Backpack/ScriptableObject/BackpackConfigSO.cs
+- Assets/Scripts/Backpack/RuntimeData/BackpackPlacement.cs
+- Assets/Scripts/Backpack/Logic/BackpackGrid.cs
+- Assets/Scripts/Backpack/MonoBehaviour/BackpackManager.cs
+- Assets/Scripts/Backpack/MonoBehaviour/BackpackUIController.cs
+- Assets/Scripts/Backpack/MonoBehaviour/BackpackView.cs
+- Assets/Scripts/Backpack/MonoBehaviour/BackpackItemView.cs
+- Assets/Scripts/Backpack/MyPrecious.Backpack.asmdef
+
+新增配置、Prefab与测试场景：
+- Assets/Data/Backpack/BackpackConfig.asset
+- Assets/Data/Localization/Backpack/BackpackText.asset
+- Assets/Prefabs/Backpack/BackpackModule.prefab
+- Assets/Prefabs/UI/Backpack/BackpackPanel.prefab
+- Assets/Prefabs/UI/Backpack/BackpackCell.prefab
+- Assets/Prefabs/UI/Backpack/BackpackItem.prefab
+- Assets/Scenes/Tests/Backpack/BackpackTest.unity
+
+新增测试、测试驱动和Editor工具：
+- Assets/Tests/Backpack/EditMode/BackpackGridTests.cs
+- Assets/Tests/Backpack/EditMode/BackpackManagerTests.cs
+- Assets/Tests/Backpack/EditMode/MyPrecious.Backpack.EditModeTests.asmdef
+- Assets/Tests/Backpack/PlayMode/BackpackIntegrationTests.cs
+- Assets/Tests/Backpack/PlayMode/MyPrecious.Backpack.PlayModeTests.asmdef
+- Assets/Tests/Backpack/TestDoubles/BackpackTestDriver.cs
+- Assets/Tests/Backpack/TestDoubles/MyPrecious.Backpack.TestDoubles.asmdef
+- Assets/Tests/Backpack/Editor/BackpackTestSceneBuilder.cs
+- Assets/Tests/Backpack/Editor/BackpackTextEntries.cs
+- Assets/Tests/Backpack/Editor/MyPrecious.Backpack.Editor.asmdef
+
+新增说明：
+- Docs/Architecture/BackpackSetup.txt
+- Docs/Handoffs/04_Handoff.txt
+
+以上Assets文件和实际使用目录的.meta由Unity生成并保留，未逐项列出。面板后续重建保留BackpackPanel根物体、BackpackView组件fileID和Prefab GUID，仅替换04自有UI子对象。更新背包语言表时仅改本次布局需要的两条短提示、补齐新键，保留其余已有译文。
+新增项目自有C#均无namespace；各asmdef的rootNamespace为空。生产程序集实际引用MyPrecious.Items、MyPrecious.Health、MyPrecious.Player、MyPrecious.Bootstrap、MyPrecious.Localization、Unity.InputSystem、Unity.TextMeshPro、Unity.ugui；没有引用05/06。
+
+四、数据职责和操作顺序
+
+01保存ItemInstance身份、归属、ContainerId、UsesThisRound、UseRound、IsRetained及找回记录。04的BackpackPlacement仅引用同一实例并保存X、Y、Rotated；不复制次数、HP或EV。
+BackpackGrid是本模块自己的List和矩形检查，不继承仓库算法、不使用UI Transform判断占格。原点为左上角(0,0)，x向右、y向下；旋转90度交换定义宽高，不修改ItemDataSO。
+BackpackPlacement属性只读，GetPlacements返回只读快照。后续移动不会改写旧快照坐标；快照的Item仍是01的权威对象，查询Owner等属性反映其最新状态。
+
+拖拽开始保存原Placement和当前编号token。原占格始终保留；预览校验只忽略自己的旧矩形，其他物品正常参与碰撞检查。ItemView以鼠标按下位置计算抓取偏移，避免快速拖动跨过UGUI阈值后把目标当成起点。
+松手再次检查当前token、开包状态、同一实例、实际Owner/ContainerId、原摆放未被其他操作改变及目标合法，然后TryMove再次校验并提交一条记录。非法松手不执行移除、丢弃或重建实例。
+CancelDrag清除有效token和预览，有拖拽时通知DragCancelled。Close先把IsOpen设为false，并在原先打开时通知Closing让来源会话先清理，再CancelDrag、隐藏View、SetBackpackOpen(false)；closing标记防止递归关闭。旧OnEndDrag携带已失效token不能提交，也不能影响下一次预览。关闭按钮、Tab、有效伤害、死亡、控制器停用、换绑玩家、失焦/暂停共用这条清理路径。
+死亡只清背包打开标记；02的死亡限制继续有效。04不RecordLoss、不扣EV、不清携带物。实际死亡损失由08协调，06/08完成归属变化后通过明确接口清理指定布局。
+
+包内移动和使用前确认真实实例、Owner==Backpack、稳定containerId（默认player-backpack）以及合法摆放；仅有Backpack归属不足以使用。
+右键唯一业务入口是BackpackUIController的Player/UseItem克隆动作，按实际最上层EventSystem射线命中的本包ItemView查询目标。ItemView的OnPointerClick只处理左键，不调用使用。
+BackpackManager.TryUseItem把真实PlayerHealth传给01.TryUseItem。成功且Owner==Consumed时先移除该实例布局再发Changed；保留的医疗包不移除；失败不改变布局。busy覆盖使用、移动及通知期间重入，监听者读取已经一致的状态。
+医疗包每轮一次、回满、使用后保留，食物成功回复1HP后消耗，满血不扣次不消耗，都沿用01。04不开新轮次、不ResetForExploration、不修改IsRetained。
+
+五、06、08、09可直接接入的入口
+
+常驻与查询：
+- static BackpackManager Resolve()：只解析有效GameBootstrap.Instance下启用的管理器，不创建新根。
+- bool Initialize(ItemManager source)：首次初始化布局；重复同来源保留数据，不接受换另一份Items冒充重新绑定。
+- int Width、Height；string ContainerId；bool IsReady；ItemManager Items。
+- IReadOnlyList<BackpackPlacement> GetPlacements()。
+- bool TryGetPlacement(string instanceId, out BackpackPlacement placement)。
+- BackpackResult TryGetCarriedItem(string instanceId, out ItemInstance item)。
+
+包内操作：
+- BackpackResult CanMove(string instanceId, int x, int y, bool rotated)：纯查询。
+- BackpackResult TryMove(string instanceId, int x, int y, bool rotated)：成功提交后通知。
+- BackpackResult TryUseItem(string instanceId, PlayerHealth target, out ItemUseResult useResult)：先看BackpackResult，再看ItemUseResult；前者Success不等于治疗成功。
+
+给06的局部协调能力：
+- BackpackResult CanPlaceExternal(string instanceId, int x, int y, bool rotated)。
+- BackpackResult TryAddPlacement(string instanceId, int x, int y, bool rotated)。
+- BackpackResult TryRemovePlacement(string instanceId, out BackpackPlacement removed)。
+- BackpackResult TryRestorePlacement(BackpackPlacement placement)。
+- void NotifyChanged()；event Action Changed。
+
+外部检查/新增接受现存World、Container、Storage实例，或属于本containerId的Backpack实例；拒绝重复加入和Consumed/Lost/PendingRecovery等终止/待恢复状态。新增和恢复不会修改01归属，移除允许物品归属已转移/记损后清理原布局。
+TryAddPlacement、TryRemovePlacement和TryRestorePlacement都是静默布局操作。06应先校验来源和目标，再同步协调两边布局与01.TrySetOwner，失败按原Placement和来源状态恢复；全体一致后才NotifyChanged。04不提供通用事务或所有权转移许可，也不反向依赖06。
+恢复同样经过当前边界/冲突检查，不覆盖他人物品，不凭一个旧Placement复活已消耗或已损失实例。
+
+UI与场景入口：
+- ResolveBindings()解析存活常驻模块；BindPlayer(PlayerController)先关闭和清理旧玩家，再解除旧订阅并绑定新玩家。
+- SetShelterContext(bool)由08/09明确指定。探索要求有效已准备玩家；庇护所可允许未准备/无场景玩家整理，但死亡玩家仍不可开包，无有效存活且已准备的PlayerHealth不能治疗。
+- TryOpen()、Close()、CancelDrag()；BeginExternalPreview(string instanceId)提供外部预览/取消边界。
+- BeginItemDrag/UpdateDrag/EndDrag的token回调由BackpackItemView使用，不由09再实现另一套拖拽提交。
+
+06已补入的实际同步接入点：
+- Func<bool> CanBeginDrag：来源会话可阻止选择、开始拖拽与使用，未赋值时沿用04自身检查。
+- Action<int, Vector2, Camera> DragUpdated：在04完成本次预览更新后，将有效token和指针位置交给已绑定的协调者更新目标显示。
+- Func<int, Vector2, Camera, bool> ExternalDropRequested：EndDrag在token仍有效时调用唯一同步处理者；返回true表示该请求已处理，04保留反馈并取消临时预览；未接回调或返回false时继续04原有路径。外部预览无法由04本身提交真实转移。
+- event Action Closing：IsOpen清为false后、取消和解除玩家限制之前清理来源会话；监听者不要反向调用Close。
+- event Action DragCancelled：存在的拖拽已清理后通知协调者，不承担第二次物品业务。
+- int DragToken、Vector2Int DragGrabOffset、bool IsDragValid(int token)、void CancelDrag(int token)、public SetFeedback(string key)：为同步协调提供当前资格、抓取格、精确取消和本地化反馈。
+BackpackItemView.OnDisable会携带自己的token请求取消；BackpackView.TryScreenToCell同时要求面板启用且目标是实际最上层本窗口，避免穿过来源面板或确认框放入。06的回调绑定/释放与真实转移联验由06执行，本次04两尺寸复验覆盖未绑定回调时的原有行为。
+
+布局常驻在现有GameBootstrap下；UI、Player和EventSystem属于场景。场景重载后重新绑定存活入口，不补发物品、不清布局、不刷新医疗包次数。08负责成功撤离、死亡结算和下一轮准备，09复用唯一Tab/R/右键监听，F10仍归03。
+
+六、接线与复验入口
+
+完整Inspector说明见Docs/Architecture/BackpackSetup.txt。测试场景为Assets/Scenes/Tests/Backpack/BackpackTest.unity。
+GameBootstrap场景实例下接真实ItemModule、BackpackModule、LocalizationModule；BackpackManager引用BackpackConfig及同根Items。LocalizationModule实例tables加入BackpackText，保留原表和ItemLibrary；不修改03共享Prefab。
+Player与Cinemachine相机使用02真实Prefab，世界为3D地面与伤害源。没有旧PlayerTestDriver。红色触发区复用PlayerTestDamageSource，运动方块和计时器用于观察世界继续运行。
+BackpackUIController位于独立启用对象，面板隐藏后仍监听Tab。只克隆04拥有的ToggleBackpack、RotateItem、UseItem、UI/Point动作，不启停整个共享Action Map。
+Canvas使用Screen Space Overlay、CanvasScaler（1280×720参考，match=0.5）及GraphicRaycaster，场景保持一个有效EventSystem与InputSystemUIInputModule。格子和预览不拦截射线，实际物品根Image接收事件；预览矩形不成为第二份物品。
+坐标通过RectTransformUtility转换，处理padding、cellSize和gap；格子缝隙、右侧占位及中间世界都不是合法目标。当前左格配置cellSize=66、gap=4、padding=6，4×4为288×288。
+TMP沿用03的NotoSansCJKsc-Regular SDF资产及工程内源字体，没有新增字体依赖。动态文字调用真实GetText/FormatText；LanguageChanged只刷新文字，既有物品GameObject按实例ID复用，不重建拖拽对象。
+
+生成缺失资产：Tools/MyPrecious/Create Backpack Test Assets。
+重建本任务左右布局：Tools/MyPrecious/Rebuild Backpack Panel Layout。该菜单只修改04自有UI和指定背包表文案；操作前停止Play，保留当前场景改动。
+本次发现旧测试场景实例保留了居中1100×570的根RectTransform覆盖值，已仅在04场景中改为全屏伸展（anchorMin=0,0，anchorMax=1,1，anchoredPosition/sizeDelta=0）并保存。以后迁移旧场景实例也应检查这些覆盖值；只改Prefab不能自动替换场景已有覆盖。
+正式操作键：Tab开关、左键选择/拖动、R旋转预览、右键使用、F10切语言。
+测试键：H尝试1点伤害，K尝试致命伤，V外部布娃娃预览，Escape取消，T切换模拟庇护所上下文。H/K仍服从真实PlayerHealth的无敌期拒绝规则。
+
+干净运行仅创建五个真实实例：医疗包(0,0)2×2、食物A(2,0)2×2、食物B(0,2)2×2、电池(2,2)1×2放在包内共14格；布娃娃2×3留在World归属。总面积20格，不可能全部塞进16格背包。
+首次准备由BackpackTestDriver显式模拟08，仅在01零实例且04零布局时生成；有旧数据时不认领其他containerId、不补发食物。重载场景的新玩家准备不调用01.BeginRound，医疗包次数保留。
+
+七、实际验证记录与证据边界
+
+1. 编译与静态核对
+04已完成的共享Editor编译记录未出现编译错误，释放前控制台0错误，已停止Play且BackpackTest场景无未保存修改。源码与真实01/02/03接口、程序集依赖已核对；新增自有C#无namespace，rootNamespace为空。BackpackText当前48条，静态引用无缺键，物品译文仍来自ItemDataSO。最终104项保护文件复查中的3项差异见第二节，不将其写成全部一致。
+上述编译结果不等于所有运行场景或Windows构建已经通过，也不代表其他模块后续改动状态。
+
+2. EditMode
+测试作业ID：b2a5a5e905864f67853caef771f19643。
+实际结果：16/16通过，0失败、0跳过，0.0909395秒。BackpackGridTests 9项，BackpackManagerTests 7项。
+覆盖默认/非正方形尺寸、完整矩形边界及极大坐标、移动仅忽略自身、重叠失败保持两件物品、重复实例、不可旋转、碎片空位、预览查询取消不变、只读快照、非法定义尺寸、20格不能全装入16格；以及真实归属/containerId/摆放校验、外部静默布局不改来源、重复初始化不重置、满血拒用、食物只移除对应实例且通知前一致、重入Busy、医疗包保留与每轮限次、死亡不结算。
+
+3. PlayMode执行历史
+首轮7项PlayMode出现1项失败：RightClickUsesExactlyOneRealItemAndFullHealthDoesNotFreeCells中的食物未进入Consumed。随后增加了伤害生效、受击关包、Tab重新打开等诊断断言，再单独重跑该项和重跑完整7项均通过。
+这次最初失败的原因尚未证实。不能把“增加诊断后重跑通过”写成已经定位和修复明确根因；若未来复现，检查测试输入设备、焦点、帧序及断言提供的Feedback/HP/selected信息，保留真实失败记录。
+
+左右布局早期完整PlayMode作业ID：76f0978d8bba4ff2a3478a28a17adc4f，8/8通过，0失败、0跳过，4.2302963秒。
+包含06最小回调改动的最终800×600完整PlayMode作业ID：a6126bfa94f74f6a87735f7440644207，8/8通过，0失败、0跳过，3.8416878秒。
+1280×720指针拖拽、关闭按钮与右键使用三项复验作业ID：6810c7fe2bbe48fd8d30beff9480912e，3/3通过，1.9702512秒。两个最终作业均完整返回明细，输出明确记录实际Game尺寸。
+已保存工具实际structuredContent结果：Temp/BackpackVerification/EditMode.json、Temp/BackpackVerification/PlayMode_800x600.json、Temp/BackpackVerification/PlayMode_1280x720.json。这些是实际工具结果JSON，不冒称原生JUnit/NUnit XML。
+新增断言在两尺寸检查左右面板全部位于屏幕内且互不重叠，并验证从电池下半格(2,3)抓取、拖至指针格(3,3)后，提交的物品左上角正确为(3,2)，没有丢失抓取偏移。
+期间清理过05的一次孤立测试作业；04另一次MCP域重载断连后留下空作业，已放弃。这些未完整返回结果的作业不计入通过成绩，也不覆盖上述两次完整返回的最终成绩。
+当前8个测试为：
+- QueuedPointerDragKeyboardRotationAndF10PreservePreviewUntilRelease：经过EventSystem开始拖拽，R旋转，F10保持预览，非法松手不变、合法松手移动、关包重开保留语言。
+- DamageCancelsBeforeLateReleaseAndDeathLeavesItemsForFlowCoordinator：真实伤害取消、旧token不影响新预览、致命伤不恢复行动且携带物/布局完整保留。
+- RightClickUsesExactlyOneRealItemAndFullHealthDoesNotFreeCells：排队右键按住多帧仍只用一次，满血不腾格，食物精确实例消耗、医疗包留格/限次、拖拽时不使用。
+- ReloadKeepsPlacementsConsumedFoodMedkitUseAndLanguageWhileCancellingPreview：重载保留同一存活Manager、身份/布局/食物消耗/医疗包次数/语言，临时拖拽被取消。
+- ExternalPreviewAndShelterContextNeverTransferOwnershipOrLeaveOldPlayerLocked：外部预览取消不改归属，换玩家清旧限制，探索与测试庇护所上下文按规则开关。
+- DestroyingBoundExplorationPlayerClosesAndCancelsWithoutChangingItems：绑定玩家被销毁后关包取消，携带物不变。
+- QueuedCloseButtonAndSimulatedFocusLossCancelPreviewAndIgnoreLateRelease：经过UGUI点击关闭按钮，重复关闭/取消安全，模拟失焦通知取消后旧回调不能提交。
+- OpenBackpackPreservesCrouchAndAllowsWorldTimeAndGravity：蹲姿开包保留姿态、主动移动/跳跃被限制，世界时间和物体运动继续，空中开包仍有物理变化。
+
+输入证据的准确含义：测试通过InputSystem.QueueStateEvent向测试Keyboard/Mouse排队，再经过真实InputAction、InputSystemUIInputModule与UGUI事件处理。真实指针事件的开始/拖动/结束和按钮射线链有执行；部分边界测试直接调用控制器方法来构造精确token和状态。
+这不等于物理键鼠、原生操作系统输入注入或真人试玩验收。焦点测试使用SendMessage调用OnApplicationFocus(false)，只验证模拟生命周期通知，不表示已经完成真实窗口焦点切换测试。
+测试使用克隆InputSettings暂时忽略后台焦点限制，结束时移除自建输入设备并恢复设置。测试成绩不能用来推断当前Editor中残留的其他测试设备或原生Game窗口输入一定正常。
+
+4. 已执行的双尺寸视觉与指针检查
+已实际查看1280×720、800×600的中文和英文Game截图：中文未见方框；左侧真实背包、右侧未连接来源和中间世界位置正确；英文Battery和Close使用自动缩字号保持单行；详情ScrollRect顶部、底部均可完整读取。
+截图文件：
+- Temp/BackpackVerification/Backpack_Chinese_1280.png
+- Temp/BackpackVerification/Backpack_English_1280.png
+- Temp/BackpackVerification/Backpack_Chinese_800.png
+- Temp/BackpackVerification/Backpack_English_800.png
+- Temp/BackpackVerification/Backpack_English_DetailsBottom_1280.png
+这些是本机Temp下的验证图片，Temp可能被Unity清理；需要长期归档时应另行保留。
+视觉检查中修正了Scrollbar的handle.sizeDelta=Vector2.zero，防止滑块伸出轨道；反馈区域由42增为46，以容纳英文preferredHeight约43.44。最后这项仅改变显示高度的微小调整没有重跑逻辑测试，未将此前成绩表述为该高度修改后的新一次执行。
+截图中的物品选中和详情滚动位置通过API直接设置，Tab/F10使用排队键盘输入；截图证明画面与文字可读，不证明原生点击或真实滚轮手感。两尺寸的实际InputSystem→UGUI指针、关闭与右键链路证据来自上列自动测试。
+Windows原生键盘和拖动工具此前未稳定生效，因此物理键鼠/原生OS输入与真人试玩保留为未验收；真实应用失焦/恢复仍只有模拟生命周期覆盖。不能把QueueStateEvent或直接设置截图状态改称原生输入、真实滚轮或人工验收通过。
+
+八、实际参考源码与核实版本
+
+CardGame：https://github.com/CSduckie/CardGame；本机E:/Portfolio-Card-Clone。
+核实HEAD：57eabac0f946f21ef00b489e83c1c133905ea673。已读取实际文件，并通过.git/HEAD及refs/heads/main核实版本；未修改参考仓库。
+- Assets/Scripts/Cards/MonoBehaviour/CardDragHandler.cs：修改复用IBeginDragHandler、IDragHandler、IEndDragHandler的“开始—预览—结束”流程。移除Card、PlayerHandManager、GameManager、回合/技能和DOTween依赖；用RectTransform屏幕到本地转换替代固定深度ScreenToWorldPoint。结束时委托04控制器校验提交，ItemView不直接改归属或治疗。
+- Assets/Scripts/GameBoard/UIGridController.cs：参考按行列生成格子表现的循环，宽高来自BackpackManager。没有照搬固定5列、世界坐标、敌人查找、特殊格子和延迟初始化。
+- Assets/Scripts/GameBoard/SlotController.cs：参考显式表达坐标与状态的写法。原文件是一格一卡和Collider2D触发流程，不能作为矩形多格核心；本任务未迁入这些触发器，BackpackGrid的矩形算法为本次新增。
+- Assets/Scripts/Items/MonoBehaviour/ItemTemplet.cs：参考持有数据引用并在明确方法中更新TMP的形式。显示通过真实03查询nameKey/descriptionKey，未复制奖励领取业务或直接缓存一份中文物品名称。
+
+2DArpg-Portfolio：https://github.com/CSduckie/2DArpg-Portfolio；本机E:/Portfolio-Clone；核实版本c601c36f95efdd4d67327489f9edb58412aa54b4。
+LiDarProject：https://github.com/CSduckie/LiDarProject；本机E:/Portfolio-LiDar；核实版本7d691ab14ff69a85cf6be7b91cc910139205507f。
+后两仓库本轮仅核实，不新增源码复用。02已经交付的玩家状态机和Cinemachine能力是当前工程依赖，不冒充本轮04重新适配成果；没有为凑复用迁入无关代码。
+三个参考仓库都没有本任务可直接使用的完整多格背包。交付是对熟悉写法的修改复用加上新增独立格子逻辑，不宣称“修改原有完整背包即可完成”。
+
+九、待联合验收与交还事项
+
+05：真实仓库独立格子和来源布局尚未联合验收。
+06：已提供用户授权的最小回调接入改动；真实箱子来源、地面拾取/丢放、搜刮与跨来源确认转移的联合验收由06执行。04测试场景右侧仍为未连接占位，不据此断言06模块不存在或尚未实现。
+07：尚无真实敌人联测。运动物体、计时器和伤害源只证明当前测试场景世界/伤害持续，不代表敌人AI联测完成。
+08：成功撤离保留新旧物品、真实返回庇护所、死亡损失/EV、新轮次准备等完整流程尚待联合验收；测试上下文只模拟所需准备，不自行结算。
+09：正式场景、正式UI汇总、唯一输入处理者和动态玩家绑定需整合验收；复用现有04处理者，不再监听第二套Tab/R/右键，F10仍复用03。
+完整Windows构建与独立可执行文件试玩未执行；磁盘存档不在本任务范围。
+当前无需为背包重写01—03；后续如发现真实跨模块缺陷，应记录具体文件和最小修改，不在04中复制一套归属、使用次数、治疗或语言服务。
+
+答辩说明：
+“01保存这件物品是谁、属于哪里、用了几次；04保存它在背包哪几格。拖拽先显示预览，合法松手才改位置，受击只需取消预览，因此不会丢物。UI读取这些数据并显示03提供的当前语言文字。”
+
+十、2026-10-18 06接入后的独立联测补充
+
+用户明确追加搜刮容器与背包双向拖拽，包含背包放回当前箱子。06完成此扩展、05末次复验并明确释放Editor后，04独立执行本轮验证。
+本节更新上文“待跨来源联验”的状态；上文04独立场景的右侧占位描述仍属原场景事实。真实联测使用Assets/Scenes/Tests/Loot/LootTest.unity，右侧为06来源条目列表，不是仓库格子。
+仅加强Assets/Tests/Loot/PlayMode/LootReturnTests.cs两个已有受击用例：合法跨界预览中真实R后受击、旧回调不影响新拖拽、成功新token重复提交/松手只生效一次、同对象/同ID唯一和双方有效持有一致。
+04本轮结果：70/70 EditMode；1280×720及800×600各19/19 PlayMode，全部0失败、0跳过。已执行路径中未发现双向转移或受击取消造成丢失/复制；身份、次数、保有、归属与占格保持一致。
+完整证据和边界见Docs/Verification/BackpackLoot/Report.txt、EditMode.xml、PlayMode-1280x720.xml、PlayMode-800x600.xml/.json。1280的MCP丢完成回调，以新官方XML和实际已停止的TestRunner核对，不伪造成功JSON或重复运行。
+原生800点击电池可选中，但返箱拖拽（含/不含screenshotId）、1280反向拖拽、E/F10未取得成功证据；nextDragToken未递增，物品保持原侧。焦点为GameView、默认策略、仅原生Keyboard/Mouse，根因未定位。不能以排队输入成绩或两张截图替代原生验收。
+本轮未改生产源码/资源；353项保护文件与接手前哈希一致，测试临时改写的EditorSettings已精确恢复。已停止Play、无测试/编译、LootTest干净、预设7非最大化、Console0错误0警告，并明确释放Editor给05继续用户授权的原生输入验收。
+
+十一、2026-10-18 无连接容器时隐藏右侧面板
+
+按用户新要求，将Assets/Prefabs/UI/Backpack/BackpackPanel.prefab内LootContainerPreview默认设为inactive；同步BackpackTestSceneBuilder生成步骤，重建时继续隐藏。保留原对象、fileID、GUID和文字引用。
+BackpackTest没有该子对象的启用覆盖，因此继承隐藏状态；LootTest及MinimumLoop构建器原本已经隐藏旧占位。05仓库和06真实来源继续由各自权限/会话控制显示，无需修改运行生产脚本或跨容器转移逻辑。
+本次只修改04占位Prefab、04构建脚本与说明文档。导入和编译完成后Console0错误0警告，实际读取Prefab与当前BackpackTest实例的previewActiveSelf均为false；Editor停止Play，场景无未保存修改。
+这是低影响显示配置调整，没有新增测试或重复整套联测；上节70/19项成绩仍只代表此前那一轮执行。本次未启动Play、未注入桌面输入，避免影响05独立WarehouseQA程序验收。
+
+十二、2026-10-18 背包丢弃规则补充
+
+用户明确：普通物品丢弃即销毁；唯一物品本轮消失，下一轮探索在原拾取点出现，丢弃时提示。已改为选择物品→丢弃按钮→中英后果确认。无连接容器仍隐藏右侧且可丢弃。
+新增ItemLossReason.BackpackDiscard，ItemTransferCoordinator.TryDiscardFromBackpack经01.RecordLoss最终提交，先静默移格，拒绝恢复，完成后统一通知/EV。TryDropFromBackpack兼容转调新行为，旧可再捡回的地面丢放规则不再适用；原生地图地面拾取保留。
+ItemTransferUIBridge的确认token与DiscardConfirmationButton的按下token共同处理取消、受击、死亡、失焦和旧PointerUp；旧确认/取消均不能影响新目标，重复确认不会重复提交。唯一物保留同一身份及原点，通过现有轮次/恢复机制找回。
+本轮125/125 Edit；1280×720与800×600各31/31 Play，全部0失败0跳过。包含背包/箱子真实双向拖拽与受击取消回归，丢弃后的普通销毁、唯一下一轮同身份原点、重载不复活、确认中禁止使用、真实非致命/致命伤，以及旧Confirm/Cancel按下后重开提示的真实迟到松手。
+首次联合运行遇到共享Bootstrap内嵌模块与旧LootTest重复创建的初始化失败，失败记录保留；已统一场景引用/去重，并让LootBuilder复用已有模块。03同期Backpack场景/Builder和语言回归改动保留并参与成绩，未修改共享Bootstrap prefab。
+实际证据、截图、初次失败及800 MCP漏完成回调边界见Docs/Verification/BackpackDiscard/Report.txt与XML/JSON。排队InputSystem→UGUI回归不等于Windows原生鼠标；本轮未执行独立构建或完整正式GameFlow两轮验收。
+已停止Play、保存干净BackpackTest、恢复Game preset7/非最大化、Console0错误0警告；EditorSettings与本轮开工记录一致。Editor/Assets已明确交还05。前轮等待06的heartbeat保持暂停，不重复联测。

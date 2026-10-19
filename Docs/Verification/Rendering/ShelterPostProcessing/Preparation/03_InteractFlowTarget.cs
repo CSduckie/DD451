@@ -1,0 +1,55 @@
+// MCP execute_code method body. Public positioning + real PlayerInteraction, explicitly API-assisted.
+var flow = UnityEngine.Object.FindFirstObjectByType<GameFlowManager>();
+string directory = UnityEditor.SessionState.GetString("ShelterPP.Directory", "");
+string requested = UnityEditor.SessionState.GetString("ShelterPP.Target", "Departure");
+bool invoke = UnityEditor.SessionState.GetBool("ShelterPP.Invoke", true);
+if (!UnityEditor.EditorApplication.isPlaying || UnityEditor.EditorApplication.isPaused || flow == null || flow.Player == null
+    || !System.IO.Directory.Exists(directory) || UnityEditor.SessionState.GetBool("ShelterPP.CaptureRunning", false))
+    throw new System.InvalidOperationException("Need formal initialized session and no pending screenshot.");
+GameFlowInteraction kind;
+if (!System.Enum.TryParse<GameFlowInteraction>(requested, out kind)) throw new System.InvalidOperationException("Target must be Storage, Departure or Extraction.");
+var player = flow.Player;
+if (!player.CanAct || player.GetInstanceID() != UnityEditor.SessionState.GetInt("ShelterPP.PlayerId", 0))
+    throw new System.InvalidOperationException("Same formal player must be alive, prepared and unlocked; close existing sessions first.");
+var scene = player.gameObject.scene;
+var bindings = System.Array.Find(UnityEngine.Object.FindObjectsByType<GameFlowSceneBindings>(UnityEngine.FindObjectsSortMode.None), b => b.gameObject.scene == scene);
+var targets = new System.Collections.Generic.List<GameFlowInteractable>();
+foreach (var target in UnityEngine.Object.FindObjectsByType<GameFlowInteractable>(UnityEngine.FindObjectsSortMode.None))
+    if (target.gameObject.scene == scene && target.interactionType == kind) targets.Add(target);
+if (bindings == null || targets.Count != 1) throw new System.InvalidOperationException("Require exactly one current-scene target of requested kind.");
+var selected = targets[0];
+UnityEngine.BoxCollider trigger;
+if (!selected.TryGetInteractionTrigger(out trigger)) throw new System.InvalidOperationException("Target lacks real active TriggerBox.");
+var capsule = player.GetComponent<UnityEngine.CapsuleCollider>();
+if (capsule == null || !capsule.enabled) throw new System.InvalidOperationException("Player requires actual body collider.");
+var previous = player.Position;
+var destination = trigger.bounds.center - (capsule.bounds.center - player.Body.position);
+destination.z = player.config.planeZ;
+if (!player.RelocateWithinRun(destination)) throw new System.InvalidOperationException("Public player relocation rejected.");
+try
+{
+    UnityEngine.Physics.SyncTransforms();
+    player.interaction.RefreshTarget();
+    if (!player.interaction.CanReachTarget(selected) || player.interaction.CurrentTarget != selected)
+        throw new System.InvalidOperationException("Real spatial/obstruction query did not select requested target; do not bypass.");
+    string prompt = player.interaction.CurrentPromptKey;
+    if (invoke && !player.interaction.TryInteract()) throw new System.InvalidOperationException("Actual PlayerInteraction entry rejected.");
+    if (invoke && kind == GameFlowInteraction.Departure && flow.Stage != GameFlowStage.Departing && flow.Stage != GameFlowStage.Exploring)
+        throw new System.InvalidOperationException("Interaction called but formal departure did not begin: " + flow.LastError);
+    if (invoke && kind == GameFlowInteraction.Extraction && flow.Stage != GameFlowStage.Returning && flow.Stage != GameFlowStage.Shelter)
+        throw new System.InvalidOperationException("Interaction called but formal return did not begin: " + flow.LastError);
+    if (invoke && kind == GameFlowInteraction.Storage && (!bindings.backpackUI.IsOpen || bindings.warehouseUI == null || !bindings.warehouseUI.IsOpen))
+        throw new System.InvalidOperationException("Interaction called but actual storage UI did not open.");
+    var result = new { method = "API RelocateWithinRun + real Trigger/obstruction query + optional PlayerInteraction.TryInteract; not physical keyboard/mouse",
+        target = selected.name, kind = kind.ToString(), invoked = invoke, promptKey = prompt, stage = flow.Stage.ToString(), round = flow.CurrentRound,
+        playerId = player.GetInstanceID(), originalPosition = new[] { previous.x, previous.y, previous.z }, destination = new[] { destination.x, destination.y, destination.z } };
+    System.IO.File.AppendAllText(directory + "/Interactions.jsonl", Newtonsoft.Json.JsonConvert.SerializeObject(result) + "\n");
+    return result;
+}
+catch
+{
+    // Never undo a real transition's lock/location. Restore only failed stable positioning.
+    if (player != null && player.IsPrepared && !player.IsDead && !player.IsSceneTransitionBlocked && player.gameObject.scene == scene)
+        player.RelocateWithinRun(previous);
+    throw;
+}

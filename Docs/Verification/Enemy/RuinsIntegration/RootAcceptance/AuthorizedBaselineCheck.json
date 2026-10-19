@@ -1,0 +1,18 @@
+[
+  {
+    "Path": "Assets/Scenes/Ruins.unity",
+    "Unchanged": true
+  },
+  {
+    "Path": "Assets/Scenes/Ruins.unity.meta",
+    "Unchanged": true
+  },
+  {
+    "Path": "Assets/Data/Enemy/Drone/DroneConfig.asset",
+    "Unchanged": true
+  },
+  {
+    "Path": "Assets/Data/Enemy/Drone/DroneConfig.asset.meta",
+    "Unchanged": true
+  }
+]

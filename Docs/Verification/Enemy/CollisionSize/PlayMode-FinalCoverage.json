@@ -1,0 +1,232 @@
+[
+  {
+    "Name": "DroneAlertTests.ChaseCoverStopsForTwoSecondsWithoutRestartThenResumesExistingRouteIndex",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneAlertTests.CoverRediscoveryImmediatelyChasesWhenStandingOrLeavingActualCover",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-Retry2.xml"
+  },
+  {
+    "Name": "DroneAlertTests.DiscoveryPhysicalContactExplodesBeforeItsTimerCompletesOnlyOnce",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneAlertTests.DiscoverySwitchesToCoverDelayButWallAndDistanceLossUseSearch",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneAlertTests.HiddenPlayerStillExplodesOnDirectContactAndSweepBeforeAnyStateUpdate",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneAlertTests.HiddenTargetStopsBeforeFixedUpdateMovementButPhysicalContactStillExplodes",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneAlertTests.InvalidAndDestroyedTargetsCannotFinishDiscoveryOrResumeCoverAlert",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneAlertTests.RealDiscoveryHoversForConfiguredDelayThenChaseHidesOnlyRenderer",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneAlertTests.SameRoundPreservesBothTimersButNewRoundDisableAndDestroyClearThem",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneAlertTests.SearchRediscoveryUsesANewDiscoveryDelayInsteadOfCoverShortcut",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneAlertTests.TwoDronesKeepCoverAndDiscoveryTimersIndependent",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneBehaviourTests.ChaseSweepContactFinishesWithoutUsingTheUninitializedStateAgain",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneBehaviourTests.DamageObserverDisablingControllerStillFinishesExplosionCleanup",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneBehaviourTests.EmptyAndNullRoutesStaySafeAndAcceptPointsWithoutANewRound",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneBehaviourTests.EveryLiveStateExplodesOnceOnDirectOrAutomaticPhysicalContact",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneBehaviourTests.EveryLiveStateSweepExplodesOnceOnPlayerContact",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneBehaviourTests.ExplodedObjectCannotReviveOnReenableOrSameRoundButNewRoundRestoresIt",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneBehaviourTests.FlightLeansGraduallyThenLevelsAtRestWithoutBobOrPeriodicSway",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneBehaviourTests.InvalidPlayersNeverExplodeADroneEvenWhenBodyShapesOverlap",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneBehaviourTests.LostSightKeepsOnlyTheLastSeenPositionThenSearchReturnsToPatrol",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneBehaviourTests.ObstructedLastPositionSearchWaitsAtWallThenReturnsWithoutFollowingHiddenMovement",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneBehaviourTests.OpenBackpackContactAndInvulnerableContactEachExplodeOnlyOnce",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneBehaviourTests.PatrolCyclesAuthoredArrayOrderAndSkipsNullEntries",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneBehaviourTests.PatrolUpdatesMovedAndReorderedPointsWhileOtherDroneStaysIndependent",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneBehaviourTests.ReenablingLivingControllerRestoresVisionAndCanAcquireAgain",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneBehaviourTests.RotorAndVisualAnimationNeverRotateOrScaleThePhysicalRootOrVision",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneBehaviourTests.SmoothYawSharesHeadingWithVisionSurvivesRebuildAndResetsOnlyForNewRound",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneBehaviourTests.SphereSweepStopsAtSolidWallAndNeverMovesIntoAnotherDepthPlane",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneBehaviourTests.TwoDronesPatrolTheirOwnRoutesAndExplosionDoesNotStopTheOther",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneStatusLightTests.ActualPatrolAlertChaseAndSearchEachKeepBreathingInTheirOwnColor",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneStatusLightTests.DisablingEffectAfterExplosionLeavesNextRoundLightAtAuthoredStrength",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneStatusLightTests.DisablingRestoresAuthoredLightAndNeverEnablesAnOriginallyDisabledLight",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneStatusLightTests.ExplosionStaysDarkAcrossReenableAndNextRoundRestoresOriginalStrength",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneVisionAlignmentTests.DetectionUsesMovedModelOriginImmediatelyBeforeLateUpdate",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "DroneVisionAlignmentTests.VisionStaysLevelDuringModelLeanTurnAndRoundReset",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "EnemySceneIntegrationTests.DroneContactClosesRealBackpackCancelsQueuedDragAndInterruptsSearchWithoutItemChanges",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "EnemySceneIntegrationTests.QueuedF10KeepsEnemyRoundExplosionHealthAndLiveSearchSession",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "EnemySceneIntegrationTests.QueuedF10PreservesIndependentAlertTimersAndWallSearchOnTwoRealSceneDrones",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "EnemySceneIntegrationTests.RealPrefabClearsTheOldRadiusHeadGapAndOnlyBodyContactExplodesPatrolOnce",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-ContactFinal.xml"
+  },
+  {
+    "Name": "EnemySceneIntegrationTests.RealSceneDetectionHoversForDiscoveryAlertThenChasesWithOnlyTheFanHidden",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "EnemySceneIntegrationTests.SceneUsesRealModelFourRotatingPropellersCinemachineAndGeneratedVision",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "RuinsEnemyIntegrationTests.BindingFailureLeavesEnemiesUnstartedAndRetryUsesTheAllocatedRound",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "RuinsEnemyIntegrationTests.EmptyShelterOtherSceneAndDisabledEnemiesRespectStartupScopeAndRoundGuards",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "RuinsEnemyIntegrationTests.InvalidEnemyConfigurationFailsBeforeAnyStartupAndRetryKeepsOneRound",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "RuinsEnemyIntegrationTests.RebindingPreservesNaturalAlertAndExplosionUntilTheNextRealDeparture",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  },
+  {
+    "Name": "RuinsEnemyIntegrationTests.TwoFormalDeparturesStartPatrolWithTheAuthoredSpawnRouteAndSharedRound",
+    "LatestResult": "Passed",
+    "Evidence": "PlayMode-46.xml"
+  }
+]

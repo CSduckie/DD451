@@ -1,0 +1,31 @@
+任务05A：仓库Ctrl快捷转移入口与找空位；复核鼠标落位
+项目E:/DD451；Dispatch v18；用户明确授权自动下发。
+
+先读Docs/AgentPrompts/QuickTransfer_Dispatch.txt、ProjectRules A25、05_Handoff和当前代码。本任务只写自己的代码/测试/文档，不操作Unity、不启动测试、不主动刷新/重建资产；07统一运行与验收。
+
+具体可修改文件
+Assets/Scripts/Warehouse/MonoBehaviour/WarehouseItemView.cs
+Assets/Scripts/Warehouse/MonoBehaviour/WarehouseUIController.cs
+Assets/Scripts/Warehouse/MonoBehaviour/WarehouseManager.cs
+必要时Assets/Scripts/Warehouse/Logic/WarehouseGrid.cs
+只有发现实际坐标问题才最小修改Assets/Scripts/Warehouse/MonoBehaviour/WarehouseView.cs
+Assets/Tests/Warehouse/EditMode/WarehouseGridTests.cs、WarehouseShelterTests.cs
+Assets/Tests/Warehouse/PlayMode/WarehouseIntegrationTests.cs
+必要帮助文字仅Assets/Tests/Warehouse/Editor/WarehouseTextEntries.cs，07最后更新语言.asset。
+文档Docs/Architecture/WarehouseShelterSetup.txt；交接Docs/Handoffs/05A_WarehouseQuickTransfer_Handoff.txt。
+不改Backpack、Loot、Items/Transfers、庇护所升级规则、正式场景、Prefab、输入资产或共享语言.asset。
+
+开发内容
+1. 左/右Ctrl+鼠标左键点击仓库物品，只发出一次快捷到背包请求。通过现有UGUI/Input System接入，不加全局每帧搬运监听。
+2. UIController提供 public Func<string, bool> QuickTransferRequested { get; set; } 和 public bool TryQuickTransfer(string instanceId)，由06绑定。先检查仓库打开、处于可管理庇护所、实例/摆放有效、无拖拽/确认/关闭等交互冲突；复用现有交互占用规则，不反向引用06类型。
+3. 快捷手势无论成败都不能变成同一次普通拖拽或第二次操作；普通拖拽开始后Ctrl不转换命令。关闭/禁用清状态，右键/选择/R/取消与遗弃确认既有规则保持。
+4. Manager提供 public WarehouseResult TryFindSpaceForExternal(string instanceId, bool preferredRotated, out Vector2Int cell, out bool rotated)。只读合法找位，按行从左上、当前方向优先，必要且canRotate允许时另一方向；不重排现有物，不改Owner/EV/通知。保留IsManagementAllowed、实例归属和既有有效性检查。
+5. 当前背包↔仓库已经用TryScreenToCell、DragGrabOffset、PreviewRotated和明确x/y提交。不要重写正确路径；补充能验证“指定远处空格、抓取物品内部格、滚动后、R旋转、非法位置不找替代格”的用例。若根因在06桥接，只在交接写清，别跨模块改代码。
+6. 快捷动作的完整跨容器提交/失败反馈仍归06。仓库扩容后不缩格，20×20/20×24、66/4/6和当前EV/永久升级规则保持。
+
+代码与交付
+英文目录，4空格、括号另起行，不写namespace，精简且用户能在答辩解释；参考并可修改复用用户三个仓库已读源码及当前仓库实现，不引入框架。
+先列具体路径再改。测试覆盖找位无副作用、满仓、仅旋转可放、交互占用、升级尺寸后找位、Ctrl单次请求/失败消费手势；本轮不虚报运行通过。
+交接写API、返回语义、改动路径、参考来源、现有鼠标路径审查与待运行测试。
+完成后交接最后一行写“READY_FOR_INTEGRATION；05A代码及测试已就绪，未操作Unity，运行验证待07”。未完成不得写。
+随后结束本轮，不抢Editor、不自行给其它聊天发消息；主程和07读取交接。

@@ -1,0 +1,27 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"success\":true,\"message\":\"Code executed successfully.\",\"data\":{\"result\":{\"updated\":[\"Shelter\",\"Ruins\",\"BackpackTest\",\"WarehouseTest\"],\"active\":\"Assets/Scenes/Bootstrap.unity\",\"dirty\":false,\"playing\":false},\"compiler\":\"codedom\"}}"
+    }
+  ],
+  "structuredContent": {
+    "success": true,
+    "message": "Code executed successfully.",
+    "data": {
+      "result": {
+        "updated": [
+          "Shelter",
+          "Ruins",
+          "BackpackTest",
+          "WarehouseTest"
+        ],
+        "active": "Assets/Scenes/Bootstrap.unity",
+        "dirty": false,
+        "playing": false
+      },
+      "compiler": "codedom"
+    }
+  },
+  "isError": false
+}

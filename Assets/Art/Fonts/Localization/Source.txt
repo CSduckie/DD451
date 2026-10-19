@@ -1,0 +1,8 @@
+Noto Sans CJK SC Regular — unmodified source font
+Source: https://github.com/notofonts/noto-cjk/blob/main/Sans/OTF/SimplifiedChinese/NotoSansCJKsc-Regular.otf
+License: SIL Open Font License 1.1, see OFL.txt (upstream Sans/LICENSE).
+Retrieved: 2026-10-18
+SHA256: 2C76254F6FC379FDDFCE0A7E84FB5385BB135D3E399294F6EEB6680D0365B74B
+TMP SDF is generated from this bundled source; Dynamic, not DynamicOS.
+IMGUI uses this same source Font asset with Include Font Data enabled.
+TMP shaders/settings are from the already-installed UGUI 2.0.0 TMP Essential Resources.

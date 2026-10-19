@@ -1,0 +1,142 @@
+{
+  "success": true,
+  "message": "Code executed successfully.",
+  "data": {
+    "result": {
+      "materials": [
+        {
+          "path": "Assets/BrokenVector/LowPolyStoragePack/Materials/Storage_Diffuse_Blue.mat",
+          "shader": "Universal Render Pipeline/Unlit",
+          "supported": true,
+          "texture": "Assets/BrokenVector/LowPolyStoragePack/Palettes/Palette_Blue.png",
+          "metallic": 0,
+          "smoothness": 0
+        },
+        {
+          "path": "Assets/BrokenVector/LowPolyStoragePack/Materials/Storage_Diffuse_Green.mat",
+          "shader": "Universal Render Pipeline/Lit",
+          "supported": true,
+          "texture": "Assets/BrokenVector/LowPolyStoragePack/Palettes/Palette_Green.png",
+          "metallic": 0,
+          "smoothness": 0
+        },
+        {
+          "path": "Assets/BrokenVector/LowPolyStoragePack/Materials/Storage_Diffuse_Purple.mat",
+          "shader": "Universal Render Pipeline/Lit",
+          "supported": true,
+          "texture": "Assets/BrokenVector/LowPolyStoragePack/Palettes/Palette_Purple.png",
+          "metallic": 0,
+          "smoothness": 0
+        },
+        {
+          "path": "Assets/BrokenVector/LowPolyStoragePack/Materials/Storage_Diffuse_Red.mat",
+          "shader": "Universal Render Pipeline/Lit",
+          "supported": true,
+          "texture": "Assets/BrokenVector/LowPolyStoragePack/Palettes/Palette_Red.png",
+          "metallic": 0,
+          "smoothness": 0
+        },
+        {
+          "path": "Assets/BrokenVector/LowPolyStoragePack/Materials/Storage_Diffuse_Yellow.mat",
+          "shader": "Universal Render Pipeline/Lit",
+          "supported": true,
+          "texture": "Assets/BrokenVector/LowPolyStoragePack/Palettes/Palette_Yellow.png",
+          "metallic": 0,
+          "smoothness": 0
+        },
+        {
+          "path": "Assets/BrokenVector/LowPolyStoragePack/Materials/Storage_Metal_Blue.mat",
+          "shader": "Universal Render Pipeline/Lit",
+          "supported": true,
+          "texture": "Assets/BrokenVector/LowPolyStoragePack/Palettes/Palette_Blue.png",
+          "metallic": 0.388,
+          "smoothness": 0.496
+        },
+        {
+          "path": "Assets/BrokenVector/LowPolyStoragePack/Materials/Storage_Metal_Green.mat",
+          "shader": "Universal Render Pipeline/Lit",
+          "supported": true,
+          "texture": "Assets/BrokenVector/LowPolyStoragePack/Palettes/Palette_Green.png",
+          "metallic": 0.388,
+          "smoothness": 0.496
+        },
+        {
+          "path": "Assets/BrokenVector/LowPolyStoragePack/Materials/Storage_Metal_Purple.mat",
+          "shader": "Universal Render Pipeline/Lit",
+          "supported": true,
+          "texture": "Assets/BrokenVector/LowPolyStoragePack/Palettes/Palette_Purple.png",
+          "metallic": 0.388,
+          "smoothness": 0.496
+        },
+        {
+          "path": "Assets/BrokenVector/LowPolyStoragePack/Materials/Storage_Metal_Red.mat",
+          "shader": "Universal Render Pipeline/Lit",
+          "supported": true,
+          "texture": "Assets/BrokenVector/LowPolyStoragePack/Palettes/Palette_Red.png",
+          "metallic": 0.388,
+          "smoothness": 0.496
+        },
+        {
+          "path": "Assets/BrokenVector/LowPolyStoragePack/Materials/Storage_Metal_Yellow.mat",
+          "shader": "Universal Render Pipeline/Lit",
+          "supported": true,
+          "texture": "Assets/BrokenVector/LowPolyStoragePack/Palettes/Palette_Yellow.png",
+          "metallic": 0.388,
+          "smoothness": 0.496
+        },
+        {
+          "path": "Assets/BrokenVector/LowPolyStoragePack/Materials/Storage_Unlit_Blue.mat",
+          "shader": "Universal Render Pipeline/Unlit",
+          "supported": true,
+          "texture": "Assets/BrokenVector/LowPolyStoragePack/Palettes/Palette_Blue.png",
+          "metallic": 0,
+          "smoothness": 0
+        },
+        {
+          "path": "Assets/BrokenVector/LowPolyStoragePack/Materials/Storage_Unlit_Green.mat",
+          "shader": "Universal Render Pipeline/Unlit",
+          "supported": true,
+          "texture": "Assets/BrokenVector/LowPolyStoragePack/Palettes/Palette_Green.png",
+          "metallic": 0,
+          "smoothness": 0
+        },
+        {
+          "path": "Assets/BrokenVector/LowPolyStoragePack/Materials/Storage_Unlit_Purple.mat",
+          "shader": "Universal Render Pipeline/Unlit",
+          "supported": true,
+          "texture": "Assets/BrokenVector/LowPolyStoragePack/Palettes/Palette_Purple.png",
+          "metallic": 0,
+          "smoothness": 0
+        },
+        {
+          "path": "Assets/BrokenVector/LowPolyStoragePack/Materials/Storage_Unlit_Red.mat",
+          "shader": "Universal Render Pipeline/Unlit",
+          "supported": true,
+          "texture": "Assets/BrokenVector/LowPolyStoragePack/Palettes/Palette_Red.png",
+          "metallic": 0,
+          "smoothness": 0
+        },
+        {
+          "path": "Assets/BrokenVector/LowPolyStoragePack/Materials/Storage_Unlit_Yellow.mat",
+          "shader": "Universal Render Pipeline/Unlit",
+          "supported": true,
+          "texture": "Assets/BrokenVector/LowPolyStoragePack/Palettes/Palette_Yellow.png",
+          "metallic": 0,
+          "smoothness": 0
+        }
+      ],
+      "prefabs": 87,
+      "materialSlots": 93,
+      "invalidSlots": [],
+      "scenes": [
+        {
+          "path": "Assets/Scenes/Shelter.unity",
+          "dirty": true
+        }
+      ],
+      "playing": false,
+      "compiling": false
+    },
+    "compiler": "codedom"
+  }
+}

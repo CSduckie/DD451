@@ -1,0 +1,24 @@
+009 敌人AI与潜行：本次已确认设计（2026-10-18）
+
+本聊天用户两次明确回答：
+1. 无人机在XY平面飞行，固定各自出生时Z。
+2. 有效视线立即追击，不加怀疑读条；丢失视线停止读取玩家位置，去最后看见的位置，短暂搜索后回巡逻。
+普通速度、伤害、到点等待、搜索时长仅为Inspector可配置默认值，不冒充用户锁定数值。
+
+用户追加：移动时模型轻微偏移模拟飞行，四桨叶常驻旋转，搜索扇形必须在Game游玩画面显示。
+只读模型检查：Assets/Art/Model/Enemy_Patrol_Drone_A.fbx无AnimationClip。
+Propeller_FL/FR/RL/RR是独立节点且桨轴为局部Z；现有材料Universal Render Pipeline/Lit。
+不改原始FBX，用子Visual程序动画；检测和物理根不随浮动。
+
+实际参考：E:/Portfolio-Clone，.git/refs/heads/main=c601c36f95efdd4d67327489f9edb58412aa54b4。
+已读FrameWork/StateMachine/StateBase和StateMachine，Enemy/Drone/DroneController及States/DroneStateBase、Patrol、Chase、Attack。
+复用本工程02适配的公共状态机和PlayerStateBase宿主方式。只参考原Drone枚举switch/状态拆分；不复制其2D物理、NavMesh或失去视线仍实时读玩家位置的问题。
+
+开工时：无AGENTS.md，已有大量00-07未提交内容，Assets/Scripts/Enemy尚不存在。
+Unity 6000.2.12f1，URP17.2，Cinemachine3.1.7，InputSystem1.14.2。
+未发现08最终交接。07B记录209/209 EditMode、74/75 PlayMode，一项背包输入夹具仍待修复。
+这些历史成绩不是009验收。
+受击链已读实际源码：TakeDamage -> BackpackUI.Close -> Closing -> LootUI.CloseSource/InterruptSearch + Bridge.CancelAll。
+敌人不写关包、物品损失、EV或死亡返回逻辑，不使用CanAct作可攻击条件。
+
+共享Editor：用户授权009向主程发送一次排队请求，已发送。等待期间源码仅放Docs/Verification/Enemy/Staging，不触发Assets编译。

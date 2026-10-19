@@ -1,0 +1,86 @@
+MyPrecious P0 — 06C快捷转移、精确返箱与移除多余黑框
+工程E:/DD451；2026-10-18；Dispatch v18 / ProjectRules A25。
+当前READY_FOR_INTEGRATION：04A/05A最新最终交接已读取并确认READY，实际接口已接入，06源码/测试/构建步骤已就绪，运行验证待07。
+
+一、边界和状态
+
+已读06C任务、QuickTransfer_Dispatch全文、ProjectRules A25、06B交接，实际查看UserRequest.png。A25覆盖06B普通返箱自动选位/整个viewport接受规则；历史交接与证据保留。
+06本轮仅编辑归属源码、测试和文档，没有操作Unity、刷新、导入、编译、运行测试、切场景或保存Prefab/场景/语言.asset；没有新版XML或画面结果。历史105/29/6不是本版通过证明。07是依赖齐全后的唯一Editor操作者。
+按用户此前明确要求，已向主程同步06交接、实际依赖和LootTest保存差异提醒；主程已确认并安排04补重载。06没有直接向04/05/07发本轮协调消息，没有跨写其文件。
+
+二、实现行为
+
+Ctrl：背包目标必须恰好一个已打开、有效的仓库/箱子，无目标/多个目标提示拒绝。仓库、已揭示箱项和现有地面拾取UI可向背包转入；不快捷丢地。左右Ctrl按下锁定，完整点击只消费一次，失败不变普通拖拽；超过拖动阈值取消快捷点击，普通拖拽后按Ctrl不切换模式。关闭/禁用/会话变化清旧资格。
+自动找位只用于Ctrl：源取真实Placement.Rotated或entry.LayoutRotated，完整扫描当前方向的行优先空位，再在canRotate允许时试另一方向。找位不改归属/摆放/EV/次数/通知、不重排目标。随后仍由Coordinator复验明确坐标、静默调双方、最后01归属、失败恢复、成功统一通知。
+未知项、确认中、拖拽中、距离/会话失效、切场景及重入拒绝；搜索中的已知项可取，返还保持已揭示，不重搜/重抽，不动下一项搜索进度。
+普通返箱：LootView从滚动后的contentRoot换算格位，减padding、考虑gap，Bridge以cell-DragGrabOffset和PreviewRotated同时计算预览与提交。标题、关闭按钮、网格下方空白、格缝、遮挡、越界和占格冲突均无替代选位。合法绿框、网格内冲突红框、越界隐藏局部框；双侧提示一致。
+TryHitReturnViewport只供视口空白失败反馈，不授权落位；TryHitReturnTarget包装真实格命中。原token/来源session继续保护关闭、Tab、受击与迟到释放。
+旋转：LootEntryState保存LayoutRotated；SetLayout/BeginReturn/UndoReturn连同矩形、Taken、Revealed保存或恢复，EnsureLayout按定义和保存方向验证。Taken条目复用EntryId但不优先吸回旧格；回滚恢复原历史方向。箱内拾回将保存方向和真实按下格偏移交04，R仍由04唯一处理，不新增箱内任意整理模式。
+背景：viewport Image透明并保留射线；实际配置范围内Grid非射线底色保留格缝，Cell_*背景格完整。ScrollRect/RectMask2D保留；长内容可滚动。运行脚本兼容旧Prefab，生成器只提供原位升级步骤。
+
+三、实际接口及依赖
+
+Coordinator.TryBackpackToSource(LootSourceState source,string instanceId,int x,int y,bool rotated,Func<bool> requestIsValid=null)
+旧无坐标自动接口删除；protected AddToSource及RejectingItemTransferCoordinator增加x/y/rotated。ValidateRequest增加Player.IsSceneTransitionBlocked检查。普通与快捷提交都用具体坐标，不在Coordinator另找空位。
+
+LootRuntimeManager：
+ItemTransferResult CanPlaceReturnedItem(LootSourceState source,ItemInstance item,int x,int y,bool rotated)
+bool TryGetReturnedItemPosition(LootSourceState source,ItemInstance item,int x,int y,bool rotated,out RectInt position)
+bool TryFindReturnedItemPosition(LootSourceState source,ItemInstance item,bool preferredRotated,out RectInt position,out bool rotated)
+bool TryAddReturnedItem(LootSourceState source,ItemInstance item,int x,int y,bool rotated,out LootEntryState entry,out bool reusedTakenEntry)
+前两项只读验证指定格，第三项仅供Ctrl自动找位；旧CanAcceptReturnedItem/无坐标添加删除。实际提交仍复验来源、同一实例和占格，查询不是预留。
+LootView：TryHitReturnViewport、TryScreenToCell、TryGetItemGrabOffset、ShowReturnPreview(RectInt,bool valid=true)。
+LootUIController：TryQuickTransfer(string entryId)，BeginItemDrag额外收pressPosition计算抓取偏移。
+Bridge：TryQuickSourceToBackpack(LootSourceState,string,int)；BeginLootDrag(LootSourceState,string,int,Vector2,Camera,Vector2Int grabOffset,bool rotated)已接实际04重载，并要求初始方向与entry.LayoutRotated一致。
+BeginLootDrag增加普通本地lootDragRevision保护，首次预览回调或本桥UpdateDrag后复验原UI、token和来源会话；失败/异常finally只取消/清理本次，CancelDrag同步回调后再次核对revision，避免旧请求清掉同会话回调新建的来源拖拽。没有新增通用事务/令牌框架。
+
+04A已实际读取交接和代码，BackpackManager.TryFindSpaceForExternal(string,bool,out Vector2Int,out bool)返回BackpackResult，UIController.QuickTransferRequested/TryQuickTransfer已实际接入。05A完整交接及代码已读、READY已确认，WarehouseManager同签名返回WarehouseResult，UI回调已接入。Bind/Unbind只清本桥绑定；找位不抢仓库占用，原Coordinator统一申请/释放。不复制04/05格子算法，仓库普通双向鼠标坐标路径保留。
+04补充依赖已由主程协调并落盘：BeginExternalPreview(string instanceId,bool rotated,Vector2Int grabOffset)。06已实际读取并调用：原单参委托false/zero，首次UpdateDrag前验证尺寸/旋转、初始化夹紧偏移，回调取消时仅清理本次token。旧入口清零二者的问题已通过该真实重载解决，不使用偏移鼠标补丁。04A更新后的最终READY已确认，其新增来源改变/异常清理语义及接入提醒已读取。
+04A末段提到的Bridge旧false分支清理风险是它的读取快照，06已用上述lootDragRevision/finally和两次返回资格检查修复，并补真实来源重启回归；不要按该旧片段断言当前06仍无条件清理。04A/05A最终交接的哈希及READY行已记录到06C StaticReview.json。
+
+四、修改文件与备份
+
+Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferUIBridge.cs
+Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs
+Assets/Scripts/Loot/MonoBehaviour/LootRuntimeManager.cs
+Assets/Scripts/Loot/RuntimeData/LootSourceState.cs
+Assets/Scripts/Loot/MonoBehaviour/LootView.cs
+Assets/Scripts/Loot/MonoBehaviour/LootItemView.cs
+Assets/Scripts/Loot/MonoBehaviour/LootUIController.cs
+Assets/Tests/Loot/EditMode/LootGridLayoutTests.cs
+Assets/Tests/Loot/EditMode/LootSourceStateTests.cs
+Assets/Tests/Loot/TestDoubles/RejectingItemTransferCoordinator.cs
+Assets/Tests/Loot/PlayMode/LootIntegrationTests.cs
+Assets/Tests/Loot/PlayMode/LootReturnTests.cs
+Assets/Tests/Loot/PlayMode/LootGridSearchTests.cs
+Assets/Tests/Loot/PlayMode/LootUIRegressionTests.cs
+Assets/Tests/Loot/Editor/LootTestSceneBuilder.cs
+Assets/Tests/Loot/Editor/LootTextEntries.cs
+Docs/Architecture/TransfersLootSetup.txt、本交接及06C静态记录。
+
+无新增业务脚本/程序集/框架/namespace，无.meta/GUID改动；04/05/玩家/正式GameFlow/场景/Prefab/共享语言.asset未由06写入。ItemTransferTests只做过备份，本轮未修改；实际事务回滚测试放在既有LootSourceStateTests。
+基线初存Temp/06CSourceBefore，已复制到Docs/Verification/QuickTransfer/06C/Baselines避免Temp清理丢失。14份源码为真实写前复制；LootView和LootTestSceneBuilder首次patch后才收到备份约定，基线由反向还原本轮patch重建，只用于文本比较，不能称原始字节快照。完整说明见Baselines/LootUIBaselineNotes.txt；Architecture原文也保留。07保存资产前仍需自行备份当时实际内容。
+
+五、07准确后续步骤
+
+1. 04A/05A/06C更新后的交接全部READY才集成。先确认用户是否在试玩/编辑及现有dirty内容，不盲目discard/reset覆盖共享文件。
+2. 保存前实际备份LootPanel.prefab、LootItem.prefab、LootText.asset及确实会写入的其他语言/场景，记录GUID。重点复核LootTest.unity既有保存变化，按内容差异判断，禁止按旧快照整文件回退。
+3. 统一编译后，在停止Play且打开场景已妥善处理时运行Tools/MyPrecious/Upgrade Loot Grid UI（LootTestSceneBuilder.UpgradeGridUI）。原位升级两个Loot Prefab和LootText，保留GUID；本轮无需Create Loot Test Assets/Build或Upgrade Loot Test Layout，不重建正式场景。
+4. LootTextEntries新增loot.quick_no_target、loot.quick_ambiguous、loot.quick_hint并更新返箱提示。04现有backpack.controls按BackpackTextEntries.ApplySplitLayoutText更新；05现有warehouse.controls按05A说明显式更新已有表，创建缺失资产菜单不会更新现有仓库表。统一保存语言表，保留其他键/字体。
+5. 串行运行04/05/06相关EditMode/PlayMode及07正式回归，记录本版官方XML/日志。失败提供准确test/堆栈，不让各模块抢Editor。
+6. 从Bootstrap进入1920×1080正式流程，实体键鼠复核双Ctrl单件双向、当前方向优先/旋转空位/满格、指定远格/抓取偏移/R、仓库和高箱滚动、空白/格缝/未知/OOB拒绝、搜索继续、关闭/受击/旧释放、中文/F10及出发→搜刮→撤离→存取→再出发。
+7. 画面复核6×4及另一尺寸空箱，背景格完整、底部多余黑填充消失，标题/关闭/反馈可读，透明射线和裁剪/滚动有效。1920、66/4/6、固定容量、仓库升级规则不变。
+
+六、未运行测试和静态核对
+
+EditMode源码静态统计122个参数展开case：ItemTransfer28、Generation17、GridLayout34、SourceState43；本轮新增17个（Grid20→34、State40→43），其它既有保留。覆盖精确远格、未知占位/OOB/禁转、方向优先行优先、仅旋转可放、不优先Taken旧格、旋转重绑、真实Coordinator拾回及failStep2/3恢复。数量是源码统计，不是运行成绩。
+PlayMode共36个UnityTest：旧29按新规则迁移，新增7。包括双Ctrl箱子/仓库双向一次提交、搜索继续、仅旋转空位、保存方向与内部偏移拾回、精确抓取偏移/R、未知占位红框/OOB、无目标/多目标/满格/确认/拖拽拒绝、关闭/Tab/伤害/重载后旧释放。既有滚动用例增加箱子及仓库远格预览=提交；格缝和视口空白拒绝；Loot已知项Ctrl跨阈值后同tile释放零提交且下一次完整点击恢复。
+新增ReentrantLootPreviewRestartKeepsNewBridgeSourceWhenOldBeginReturnsFailure为真实UI/Bridge/Coordinator API回归：首次04更新取消旧token并重启新请求，旧入口返回0、新token保留；旧Update/End迟到不影响新预览，新来源最终提交一次到(1,2)，无复制或重复Completed。该用例是API回调夹具，不声称实体鼠标复现。
+所有测试源码未编译、未运行，最终以Unity实际发现和执行数量为准。InputSystem.QueueStateEvent经过实际InputAction/EventSystem/UGUI，仍属于排队输入，不冒充Windows实体键鼠。API夹具、排队输入与实体输入分别报告。
+独立静态审查已修复OnBackpackDrop局部变量作用域重名风险，以及Loot Ctrl跨阈值同tile迟到Click资格；其他事务/会话/通知路径暂未发现具体阻断。16份源码对基线的git diff --no-index --check仅报告LF/CRLF提示，无空白错误；16份.meta均存在，namespace声明为0。Docs/Verification/QuickTransfer/06C/StaticReview.json记录源码哈希、基线来源和未运行状态。差异/空白/调用点检查不等于编译或运行通过。
+
+七、实际参考
+
+本轮实际重读E:/Portfolio-Card-Clone/Assets/Scripts/Cards/MonoBehaviour/CardDragHandler.cs，沿用已适配UGUI生命周期；当前04/05明确回调和原Coordinator静默事务是直接基础，没有搬卡牌业务/DOTween/单例框架。CardGame历史已核实版本57eabac0f946f21ef00b489e83c1c133905ea673；本轮git读取参考版本曾被拒，不声称本轮重新核实版本。参考仓库未修改。
+
+READY_FOR_INTEGRATION；06C代码/测试/构建步骤已就绪，未操作Unity，待07统一验证

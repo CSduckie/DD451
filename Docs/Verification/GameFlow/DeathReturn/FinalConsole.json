@@ -1,0 +1,8 @@
+{
+  "phase": "after ordinary Play exited; no intervening console clear",
+  "result": {
+    "success": true,
+    "message": "Retrieved 0 log entries.",
+    "data": []
+  }
+}

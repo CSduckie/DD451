@@ -1,0 +1,35 @@
+你继续负责「Shelter 昏暗氛围与后处理」。用户在主程明确要求将本任务交给你：昏暗环境下角色本体也太暗，请给玩家自带一个随身补光灯，只照亮玩家模型，不照亮环境或其他物体。可以使用光照Layer相关配置，尽可能少写代码。请实施并验证，不只给建议。
+
+项目E:/DD451。遵守作品集/毕设的精简标准，不写namespace；本任务优先零新增产品脚本，通过现有Player Prefab、Light、Renderer和URP配置实现。不要添加补光管理器、逐帧找玩家、更新Layer或开关灯的代码。
+
+编辑器顺序
+当前Docs/Verification/Enemy/EditorCoordination.txt已有“07F DEATH RETURN IN PROGRESS”：007正在独占Assets/Unity做死亡返回。现在先只读调查并在Docs准备，不修改Assets/ProjectSettings，不触发编译或操作Unity。等待007明确释放后，fresh检查编辑态、测试、Play、dirty场景等再接手。不要从旧副本覆盖007或主程相机预览的最新改动。用户已授权本任务，无需再次确认。完成后在协调文件明确释放。
+
+具体目标
+1. 优先在Assets/Prefabs/Player/Player.prefab的玩家根下增加一个位置/颜色/强度/范围可Inspector调节的实时Light子物体（例如PlayerFillLight）。跟随正式玩家，不跟摄像机，不单独再生成玩家；先用一盏低强度Point Light调试，以实际可读性为准。用户要求角色自带，因此自然沿用同一个玩家在Shelter/Ruins中的生命周期，不新增场景识别开关脚本。
+2. 使用URP Rendering Layers控制照明接收范围。先核实当前渲染器/质量级/Shader支持，再选择一个未使用的专用位并清楚命名，例如PlayerLighting。专用Light只选该位；玩家模型相关MeshRenderer/SkinnedMeshRenderer加入该位，同时保留原Default或其他位，让原有环境灯继续正常影响玩家。避免灯和角色之外的Renderer共享专用位。
+3. 不修改GameObject普通Layer、Physics碰撞矩阵、交互/AI视野Mask、玩家Collider/Rigidbody/状态机。不要把普通Layer或Camera Culling Mask误当成本任务唯一隔离手段。补光不参与任何潜行、发现或伤害逻辑。
+4. 墙、地面、箱子、无人机、草丛、浮尘和其他场景物体不受该灯直接照明；保留整体夜间/昏暗氛围、Shelter现有Volume/Profile与灯光。不要通过提高全局曝光/环境光、Unlit替换玩家材质或增强Emissive来替代专用灯方案。
+5. 当前文件只读发现PC_RPAsset.asset的m_SupportsLightLayers=1，Player.prefab的CapsulePlaceholder与FacingMarker目前m_RenderingLayerMask=1；请以接手时的最新状态核实，不盲目重配全局管线或占用已用Layer。需要调整URP/Rendering Layer命名时只做确实必要的最小配置，并记录影响。
+6. 角色左右转身、移动、跳跃和下蹲都应稳定可见，避免灯位导致一侧完全黑暗或过曝；尽量不启用补光实时阴影，除非有明确视觉必要。未来换成3D角色模型时，应能通过Inspector给相应Renderer勾选同一Rendering Layer继续使用；交接写明操作。
+7. 保留现有中英UI、玩家物理/相机、死亡流程、仓库和敌人逻辑。保存原Prefab/GUID，不重建已有玩家。
+
+文件范围
+- 优先：Assets/Prefabs/Player/Player.prefab。
+- 仅必要配置：Assets/Settings/实际当前使用的URP资产或Rendering Layer设置；先查实际存放位置，不凭空新增通用配置文件。共享管线目前看已有Light Layers支持，优先保持。
+- 参考：Docs/Handoffs/ShelterPostProcessing_Handoff.txt、SceneCameraPreview_Handoff.txt、ShelterScreenDust_Handoff.txt，以及007完成后的07F_DeathReturn_Handoff.txt。
+- 证据：Docs/Verification/Rendering/PlayerFillLight/。
+- 交接：Docs/Handoffs/PlayerFillLight_Handoff.txt。
+- 若发现仅Inspector无法实现的真实缺口，先记录原因，最多补一个职责明确的小脚本到Assets/Scripts/Effects/MonoBehaviour/；不要为预想扩展提前写代码。
+
+验收与交付
+A. 从Bootstrap正式启动，在1920×1080的Shelter实际Game检查同位置/同灯光相位下补光开关前后：角色本体清晰、不过曝；周围地面、墙面、箱子和无人机不被补光照亮。若有其他动态灯闪烁，冻结相位作对照，验证完恢复。
+B. 记录Light和玩家Renderer的Rendering Layer Mask；用邻近普通物体检查隔离实际生效。只证明参数正确不等于视觉验收通过。
+C. 移动、左右转身、跳跃、下蹲、Shelter→Ruins→Shelter后补光继续随同一个玩家，数量不叠加，正常场景光仍能照到角色。
+D. 007死亡流程若已完成，一并验证死亡回Shelter后补光保留且没有重复灯，不改变复活/轮次/EV逻辑。
+E. 核对Console新增错误、保存重载后的引用与Layer配置。低影响配置只做相关验证，不新建大量测试框架。截图必须区分实际Game与Scene，注明API辅助或实体输入，保留真实失败记录。
+F. 报告实际改动文件、灯参数、Layer名称/位、换模型的配置方法、是否新增产品代码，以及真实验证结果。保留用户最新场景/后处理/浮尘和其他聊天实现，完成后释放Editor。
+
+不需要跨聊天回信；在本聊天交付结果并写共享交接，主程可读取。
+
+补充只读核对：当前正式玩家只有CapsulePlaceholder和其下FacingMarker两个MeshRenderer，无SkinnedMeshRenderer。灯挂Player根，避免跟随下蹲模型缩放。当前Graphics默认PC管线已支持Light Layers，不需新增RendererFeature。URP17.2灯光层应在Inspector的Universal Additional Light Data配置，让它同步底层Light字段；不要只改底层Light同名字段。

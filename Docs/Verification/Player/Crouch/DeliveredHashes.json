@@ -1,0 +1,22 @@
+[
+  {
+    "Algorithm": "SHA256",
+    "Hash": "69E2354AE224E65FA89539A5D327946BDD547377027247F7816AFD85DB1E3A5D",
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\MonoBehaviour\\PlayerController.cs"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "868FD217FECB535E2E718470C15428D59ABE6ABA7308E92065F80836C7168F77",
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\ScriptableObject\\PlayerConfigSO.cs"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "0D276B1A989BB1401DDDEB4B457F38DE5FCD6E5D38D008EB8ECAA5F181FEAED4",
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\States\\PlayerFallState.cs"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "50A380B5BA82FF1956001E9E747DB38A8246FCBBAFE47C949C6365D6625FECFD",
+    "Path": "E:\\DD451\\Assets\\Tests\\Player\\PlayMode\\PlayerCrouchColliderTests.cs"
+  }
+]

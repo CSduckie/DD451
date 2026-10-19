@@ -1,0 +1,33 @@
+正式废墟接入：主程独立验收准备（仅 Docs，尚未执行）
+
+前提
+1. 等 007 交还 Unity/Assets 所有权，核对最终正式初始化接口。03已适配当前源码的 GameFlowSceneBindings.TryBeginExplorationEnemies；若007后续修改签名再调整，不得用直接 DroneController.BeginRound 代替。
+2. root 保全当前用户场景编辑后，以 Assets/Scenes/Bootstrap.unity 正常进入 Play；等待真实 GameFlowManager 到 Shelter。不要从 EnemyTest 或直接加载 Ruins 冒充正式启动。
+3. Game 设置 1920×1080。关闭其他验收回调。禁止在这些外部回调运行时刷新程序集、切换 Play 或执行另一个探针；先执行 CancelProbe.cs，待 Running=false 再停止。
+4. 代码文件是 MCP execute_code 顶层语句，不是 Unity 脚本，绝不能复制进 Assets。
+
+顺序
+01_Depart.cs：验证真实 Bootstrap/唯一玩家/初始 Shelter/轮次0；调用正式 TryDepart。
+等待 flow.Stage==Exploring 后运行 02_ObservePatrolAndFight.cs。
+02：只将真实玩家通过 RelocateWithinRun 移到受控位置并暂时设为 kinematic；验证自动同轮初始化、真实巡逻移动、实际视野自然 Alert→Chase、真实碰撞自毁及0.3秒内不重复伤害。CSV/结果由回调输出。没有 BeginRound、ChangeState 或进度写入。
+03_RepeatFormalPreparation.cs：在本轮已爆炸实例上重复正式准备入口，0.3游戏秒内验证不复活，然后才继续。旁边txt解释此检查的边界。
+04_AcquireAndExtract.cs：真实 PlayerInteraction.RefreshTarget/TryInteract 打开箱子，真实 LootUI.Update 逐帧搜索（不快进计时），通过 TrySourceToBackpack 拾取一件实际揭示物品，然后关闭界面，真实撤离点 TryInteract，等待正式 Shelter。
+05_StoreRetrieveDepart.cs：真实 TryOpenStorage；同一实例用协调器存入仓库，再取回背包；校验身份/归属/摆放/实例数量，再实际 TryDepart。
+06_ObserveNextRound.cs：新 Ruins 实例自动轮次一致、恢复可见/碰撞、实际巡逻移动；背包中的同一物品仍保留。
+
+输出与取消
+01 返回此次 Run-xxxxxx 输出目录，后续使用 SessionState MyPrecious.RuinsAcceptance.Directory。
+回调结果读取 MyPrecious.RuinsAcceptance.Result（RUNNING/PASS/FAIL）。PASS 仅针对当前步骤，不代表全部验收结束。
+取消：执行 CancelProbe.cs，等下一编辑帧回调清理。所有回调有超时，并恢复 Time.timeScale=1、runInBackground=false、玩家原 kinematic/useGravity；不复活已爆炸无人机，不恢复真实损失的生命，不伪造物品状态。
+root 最终检查截图、CSV、两轮实例数/状态以及 Console。结束 Play 不保存运行态。
+
+验证边界
+这是正式运行链与业务/物理集成的 API 辅助验收。玩家位置由公开 API 帮助安排；不是键盘移动、E按键或原生拖拽验收。真实 PlayerInteraction.RefreshTarget/TryInteract/CanReachTarget 验证目标选择和撤离交互条件，但不声称按下过 E。
+若没有可见/可触及位置、实际地形挡路、箱子无掉落、真实接口拒绝，应记录失败/条件不足，不删Collider、不改Z/路线/配置、不创建物品、不直接修改Owner/布局。
+同轮已经爆炸保持停止；新一轮靠正式重新加载及准备恢复。新场景实例的Unity instanceID可以变化，物品业务InstanceId必须不变。
+
+2026-10-19 已保存场景的只读地形检查
+Drone出生(-3.3410168,2.3923686,-0.38293743)，球半径0.45；路线点(-12,2.5,0)、(1,2.5,0)，运行逻辑将路线Z投影为无人机出生Z。
+Environment3D 无额外缩放旋转。ContinuousGround3D顶Y=0；左右边界X约-17.69/17.5；OptionalJumpPlatform3D为X5..7、Y0..0.4。均不穿过本路线。
+CoverArea位于(-6,0,-0.5)，根BoxCollider为Trigger；CoverVisual只有Transform/MeshFilter/MeshRenderer，没有实体Collider。LootBox和ExtractionPoint的碰撞器也为Trigger。
+因此已保存文件未发现静态巡逻阻挡。尚未验证实时未保存编辑、运行期新增Collider或现场Physics查询；root须用MCP实际核对。不得因此擅自修改用户路线。

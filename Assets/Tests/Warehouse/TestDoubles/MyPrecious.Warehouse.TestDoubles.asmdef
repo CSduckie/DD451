@@ -1,0 +1,6 @@
+{
+    "name": "MyPrecious.Warehouse.TestDoubles",
+    "rootNamespace": "",
+    "references": ["MyPrecious.Warehouse", "MyPrecious.Shelter", "MyPrecious.Items", "MyPrecious.Localization"],
+    "autoReferenced": true
+}

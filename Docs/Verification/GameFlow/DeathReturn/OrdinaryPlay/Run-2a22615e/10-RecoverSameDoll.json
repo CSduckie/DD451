@@ -1,0 +1,725 @@
+{
+  "status": "PASS",
+  "reason": "All requested items naturally revealed and acquired.",
+  "method": "API positioning/body freeze; real interaction, natural search, validated item transfer; no native keyboard claim",
+  "round": 3,
+  "acquired": [
+    {
+      "id": "7550c364798b441199dfbb34a679ee48",
+      "definition": "doll",
+      "owner": "Backpack",
+      "retained": false,
+      "origin": "ruins01/supplies-box/doll"
+    }
+  ],
+  "samples": [
+    {
+      "frame": 11621,
+      "time": 261.523224,
+      "entry": "doll",
+      "elapsed": 0.333333343,
+      "health": 2
+    },
+    {
+      "frame": 11622,
+      "time": 261.536377,
+      "entry": "doll",
+      "elapsed": 0.346490651,
+      "health": 2
+    },
+    {
+      "frame": 11623,
+      "time": 261.5581,
+      "entry": "doll",
+      "elapsed": 0.368222862,
+      "health": 2
+    },
+    {
+      "frame": 11624,
+      "time": 261.574646,
+      "entry": "doll",
+      "elapsed": 0.384765148,
+      "health": 2
+    },
+    {
+      "frame": 11625,
+      "time": 261.5905,
+      "entry": "doll",
+      "elapsed": 0.400615543,
+      "health": 2
+    },
+    {
+      "frame": 11626,
+      "time": 261.6074,
+      "entry": "doll",
+      "elapsed": 0.417503834,
+      "health": 2
+    },
+    {
+      "frame": 11627,
+      "time": 261.623535,
+      "entry": "doll",
+      "elapsed": 0.433644444,
+      "health": 2
+    },
+    {
+      "frame": 11628,
+      "time": 261.641876,
+      "entry": "doll",
+      "elapsed": 0.451996446,
+      "health": 2
+    },
+    {
+      "frame": 11629,
+      "time": 261.6576,
+      "entry": "doll",
+      "elapsed": 0.467683256,
+      "health": 2
+    },
+    {
+      "frame": 11630,
+      "time": 261.675934,
+      "entry": "doll",
+      "elapsed": 0.486037076,
+      "health": 2
+    },
+    {
+      "frame": 11631,
+      "time": 261.6902,
+      "entry": "doll",
+      "elapsed": 0.5003027,
+      "health": 2
+    },
+    {
+      "frame": 11632,
+      "time": 261.706879,
+      "entry": "doll",
+      "elapsed": 0.516995668,
+      "health": 2
+    },
+    {
+      "frame": 11633,
+      "time": 261.7234,
+      "entry": "doll",
+      "elapsed": 0.5334917,
+      "health": 2
+    },
+    {
+      "frame": 11634,
+      "time": 261.7411,
+      "entry": "doll",
+      "elapsed": 0.5512004,
+      "health": 2
+    },
+    {
+      "frame": 11635,
+      "time": 261.7567,
+      "entry": "doll",
+      "elapsed": 0.5668236,
+      "health": 2
+    },
+    {
+      "frame": 11636,
+      "time": 261.7736,
+      "entry": "doll",
+      "elapsed": 0.5837038,
+      "health": 2
+    },
+    {
+      "frame": 11637,
+      "time": 261.790436,
+      "entry": "doll",
+      "elapsed": 0.6005472,
+      "health": 2
+    },
+    {
+      "frame": 11638,
+      "time": 261.807129,
+      "entry": "doll",
+      "elapsed": 0.6172394,
+      "health": 2
+    },
+    {
+      "frame": 11639,
+      "time": 261.823547,
+      "entry": "doll",
+      "elapsed": 0.6336527,
+      "health": 2
+    },
+    {
+      "frame": 11640,
+      "time": 261.840637,
+      "entry": "doll",
+      "elapsed": 0.6507335,
+      "health": 2
+    },
+    {
+      "frame": 11641,
+      "time": 261.8569,
+      "entry": "doll",
+      "elapsed": 0.667003453,
+      "health": 2
+    },
+    {
+      "frame": 11642,
+      "time": 261.87384,
+      "entry": "doll",
+      "elapsed": 0.683952,
+      "health": 2
+    },
+    {
+      "frame": 11643,
+      "time": 261.890167,
+      "entry": "doll",
+      "elapsed": 0.7002578,
+      "health": 2
+    },
+    {
+      "frame": 11644,
+      "time": 261.90744,
+      "entry": "doll",
+      "elapsed": 0.717559,
+      "health": 2
+    },
+    {
+      "frame": 11645,
+      "time": 261.9233,
+      "entry": "doll",
+      "elapsed": 0.733422458,
+      "health": 2
+    },
+    {
+      "frame": 11646,
+      "time": 261.940521,
+      "entry": "doll",
+      "elapsed": 0.7506217,
+      "health": 2
+    },
+    {
+      "frame": 11647,
+      "time": 261.9569,
+      "entry": "doll",
+      "elapsed": 0.7670291,
+      "health": 2
+    },
+    {
+      "frame": 11648,
+      "time": 261.9739,
+      "entry": "doll",
+      "elapsed": 0.7840057,
+      "health": 2
+    },
+    {
+      "frame": 11649,
+      "time": 261.990143,
+      "entry": "doll",
+      "elapsed": 0.8002553,
+      "health": 2
+    },
+    {
+      "frame": 11650,
+      "time": 262.007538,
+      "entry": "doll",
+      "elapsed": 0.8176479,
+      "health": 2
+    },
+    {
+      "frame": 11651,
+      "time": 262.02417,
+      "entry": "doll",
+      "elapsed": 0.834263265,
+      "health": 2
+    },
+    {
+      "frame": 11652,
+      "time": 262.04068,
+      "entry": "doll",
+      "elapsed": 0.8507904,
+      "health": 2
+    },
+    {
+      "frame": 11653,
+      "time": 262.056946,
+      "entry": "doll",
+      "elapsed": 0.867054164,
+      "health": 2
+    },
+    {
+      "frame": 11654,
+      "time": 262.074,
+      "entry": "doll",
+      "elapsed": 0.88410145,
+      "health": 2
+    },
+    {
+      "frame": 11655,
+      "time": 262.090027,
+      "entry": "doll",
+      "elapsed": 0.900145352,
+      "health": 2
+    },
+    {
+      "frame": 11656,
+      "time": 262.107361,
+      "entry": "doll",
+      "elapsed": 0.9174644,
+      "health": 2
+    },
+    {
+      "frame": 11657,
+      "time": 262.123627,
+      "entry": "doll",
+      "elapsed": 0.933729,
+      "health": 2
+    },
+    {
+      "frame": 11658,
+      "time": 262.140869,
+      "entry": "doll",
+      "elapsed": 0.9509801,
+      "health": 2
+    },
+    {
+      "frame": 11659,
+      "time": 262.1573,
+      "entry": "doll",
+      "elapsed": 0.967383,
+      "health": 2
+    },
+    {
+      "frame": 11660,
+      "time": 262.17392,
+      "entry": "doll",
+      "elapsed": 0.984032154,
+      "health": 2
+    },
+    {
+      "frame": 11661,
+      "time": 262.190338,
+      "entry": "doll",
+      "elapsed": 1.00044334,
+      "health": 2
+    },
+    {
+      "frame": 11662,
+      "time": 262.207581,
+      "entry": "doll",
+      "elapsed": 1.01767528,
+      "health": 2
+    },
+    {
+      "frame": 11663,
+      "time": 262.223877,
+      "entry": "doll",
+      "elapsed": 1.03397858,
+      "health": 2
+    },
+    {
+      "frame": 11664,
+      "time": 262.240784,
+      "entry": "doll",
+      "elapsed": 1.05087769,
+      "health": 2
+    },
+    {
+      "frame": 11665,
+      "time": 262.257,
+      "entry": "doll",
+      "elapsed": 1.06708515,
+      "health": 2
+    },
+    {
+      "frame": 11666,
+      "time": 262.273956,
+      "entry": "doll",
+      "elapsed": 1.08405876,
+      "health": 2
+    },
+    {
+      "frame": 11667,
+      "time": 262.290466,
+      "entry": "doll",
+      "elapsed": 1.10057771,
+      "health": 2
+    },
+    {
+      "frame": 11668,
+      "time": 262.3075,
+      "entry": "doll",
+      "elapsed": 1.11761153,
+      "health": 2
+    },
+    {
+      "frame": 11669,
+      "time": 262.3238,
+      "entry": "doll",
+      "elapsed": 1.13390422,
+      "health": 2
+    },
+    {
+      "frame": 11670,
+      "time": 262.340759,
+      "entry": "doll",
+      "elapsed": 1.15087306,
+      "health": 2
+    },
+    {
+      "frame": 11671,
+      "time": 262.357239,
+      "entry": "doll",
+      "elapsed": 1.16735721,
+      "health": 2
+    },
+    {
+      "frame": 11672,
+      "time": 262.374237,
+      "entry": "doll",
+      "elapsed": 1.184338,
+      "health": 2
+    },
+    {
+      "frame": 11673,
+      "time": 262.391,
+      "entry": "doll",
+      "elapsed": 1.201109,
+      "health": 2
+    },
+    {
+      "frame": 11674,
+      "time": 262.4078,
+      "entry": "doll",
+      "elapsed": 1.217908,
+      "health": 2
+    },
+    {
+      "frame": 11675,
+      "time": 262.423828,
+      "entry": "doll",
+      "elapsed": 1.23393631,
+      "health": 2
+    },
+    {
+      "frame": 11676,
+      "time": 262.440948,
+      "entry": "doll",
+      "elapsed": 1.25104582,
+      "health": 2
+    },
+    {
+      "frame": 11677,
+      "time": 262.457764,
+      "entry": "doll",
+      "elapsed": 1.26788378,
+      "health": 2
+    },
+    {
+      "frame": 11678,
+      "time": 262.474365,
+      "entry": "doll",
+      "elapsed": 1.28445888,
+      "health": 2
+    },
+    {
+      "frame": 11679,
+      "time": 262.49057,
+      "entry": "doll",
+      "elapsed": 1.300682,
+      "health": 2
+    },
+    {
+      "frame": 11680,
+      "time": 262.507721,
+      "entry": "doll",
+      "elapsed": 1.3178333,
+      "health": 2
+    },
+    {
+      "frame": 11681,
+      "time": 262.523926,
+      "entry": "doll",
+      "elapsed": 1.33401656,
+      "health": 2
+    },
+    {
+      "frame": 11682,
+      "time": 262.541626,
+      "entry": "doll",
+      "elapsed": 1.35172737,
+      "health": 2
+    },
+    {
+      "frame": 11683,
+      "time": 262.557129,
+      "entry": "doll",
+      "elapsed": 1.367231,
+      "health": 2
+    },
+    {
+      "frame": 11684,
+      "time": 262.574219,
+      "entry": "doll",
+      "elapsed": 1.384329,
+      "health": 2
+    },
+    {
+      "frame": 11685,
+      "time": 262.590637,
+      "entry": "doll",
+      "elapsed": 1.40073073,
+      "health": 2
+    },
+    {
+      "frame": 11686,
+      "time": 262.607666,
+      "entry": "doll",
+      "elapsed": 1.41777265,
+      "health": 2
+    },
+    {
+      "frame": 11687,
+      "time": 262.624268,
+      "entry": "doll",
+      "elapsed": 1.43437076,
+      "health": 2
+    },
+    {
+      "frame": 11688,
+      "time": 262.6417,
+      "entry": "doll",
+      "elapsed": 1.45178711,
+      "health": 2
+    },
+    {
+      "frame": 11689,
+      "time": 262.658,
+      "entry": "doll",
+      "elapsed": 1.46810937,
+      "health": 2
+    },
+    {
+      "frame": 11690,
+      "time": 262.674347,
+      "entry": "doll",
+      "elapsed": 1.48446584,
+      "health": 2
+    },
+    {
+      "frame": 11691,
+      "time": 262.691132,
+      "entry": "doll",
+      "elapsed": 1.50122988,
+      "health": 2
+    },
+    {
+      "frame": 11692,
+      "time": 262.708,
+      "entry": "doll",
+      "elapsed": 1.51811779,
+      "health": 2
+    },
+    {
+      "frame": 11693,
+      "time": 262.7244,
+      "entry": "doll",
+      "elapsed": 1.53450036,
+      "health": 2
+    },
+    {
+      "frame": 11694,
+      "time": 262.74115,
+      "entry": "doll",
+      "elapsed": 1.55126548,
+      "health": 2
+    },
+    {
+      "frame": 11695,
+      "time": 262.7575,
+      "entry": "doll",
+      "elapsed": 1.56761634,
+      "health": 2
+    },
+    {
+      "frame": 11696,
+      "time": 262.774628,
+      "entry": "doll",
+      "elapsed": 1.58471978,
+      "health": 2
+    },
+    {
+      "frame": 11697,
+      "time": 262.790833,
+      "entry": "doll",
+      "elapsed": 1.60094976,
+      "health": 2
+    },
+    {
+      "frame": 11698,
+      "time": 262.807648,
+      "entry": "doll",
+      "elapsed": 1.61776388,
+      "health": 2
+    },
+    {
+      "frame": 11699,
+      "time": 262.8246,
+      "entry": "doll",
+      "elapsed": 1.63469458,
+      "health": 2
+    },
+    {
+      "frame": 11700,
+      "time": 262.841125,
+      "entry": "doll",
+      "elapsed": 1.65122736,
+      "health": 2
+    },
+    {
+      "frame": 11701,
+      "time": 262.8574,
+      "entry": "doll",
+      "elapsed": 1.66750419,
+      "health": 2
+    },
+    {
+      "frame": 11702,
+      "time": 262.874573,
+      "entry": "doll",
+      "elapsed": 1.68466771,
+      "health": 2
+    },
+    {
+      "frame": 11703,
+      "time": 262.890869,
+      "entry": "doll",
+      "elapsed": 1.70096445,
+      "health": 2
+    },
+    {
+      "frame": 11704,
+      "time": 262.90802,
+      "entry": "doll",
+      "elapsed": 1.71811831,
+      "health": 2
+    },
+    {
+      "frame": 11705,
+      "time": 262.924133,
+      "entry": "doll",
+      "elapsed": 1.7342279,
+      "health": 2
+    },
+    {
+      "frame": 11706,
+      "time": 262.941345,
+      "entry": "doll",
+      "elapsed": 1.75145936,
+      "health": 2
+    },
+    {
+      "frame": 11707,
+      "time": 262.957581,
+      "entry": "doll",
+      "elapsed": 1.76767421,
+      "health": 2
+    },
+    {
+      "frame": 11708,
+      "time": 262.974854,
+      "entry": "doll",
+      "elapsed": 1.78495264,
+      "health": 2
+    },
+    {
+      "frame": 11709,
+      "time": 262.991,
+      "entry": "doll",
+      "elapsed": 1.801093,
+      "health": 2
+    },
+    {
+      "frame": 11710,
+      "time": 263.00827,
+      "entry": "doll",
+      "elapsed": 1.81838775,
+      "health": 2
+    },
+    {
+      "frame": 11711,
+      "time": 263.0243,
+      "entry": "doll",
+      "elapsed": 1.83438826,
+      "health": 2
+    },
+    {
+      "frame": 11712,
+      "time": 263.041748,
+      "entry": "doll",
+      "elapsed": 1.85185385,
+      "health": 2
+    },
+    {
+      "frame": 11713,
+      "time": 263.057922,
+      "entry": "doll",
+      "elapsed": 1.86802673,
+      "health": 2
+    },
+    {
+      "frame": 11714,
+      "time": 263.074646,
+      "entry": "doll",
+      "elapsed": 1.88474178,
+      "health": 2
+    },
+    {
+      "frame": 11715,
+      "time": 263.091248,
+      "entry": "doll",
+      "elapsed": 1.90134239,
+      "health": 2
+    },
+    {
+      "frame": 11716,
+      "time": 263.108063,
+      "entry": "doll",
+      "elapsed": 1.91815472,
+      "health": 2
+    },
+    {
+      "frame": 11717,
+      "time": 263.12442,
+      "entry": "doll",
+      "elapsed": 1.93453968,
+      "health": 2
+    },
+    {
+      "frame": 11718,
+      "time": 263.141663,
+      "entry": "doll",
+      "elapsed": 1.951771,
+      "health": 2
+    },
+    {
+      "frame": 11719,
+      "time": 263.15863,
+      "entry": "doll",
+      "elapsed": 1.96872,
+      "health": 2
+    },
+    {
+      "frame": 11720,
+      "time": 263.174957,
+      "entry": "doll",
+      "elapsed": 1.98504829,
+      "health": 2
+    },
+    {
+      "frame": 11721,
+      "time": 263.191376,
+      "entry": "food",
+      "elapsed": 0.0014856942,
+      "health": 2
+    }
+  ],
+  "callbacksRemoved": true
+}

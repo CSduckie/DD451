@@ -1,0 +1,424 @@
+{
+  "scope": "Read-only Ruins image/metadata audit; no Unity/Assets changes, no full hash audit.",
+  "captureMethod": "ScreenCapture.CaptureScreenshot, supersize1, ordinary Play Game framebuffer",
+  "setup": {
+    "method": "Runtime API positioning beside existing drone; natural scene frozen for isolation comparison.",
+    "stage": "Exploring",
+    "round": 1,
+    "player": -4310918,
+    "health": 2,
+    "light": -4310944,
+    "drone": -4316078,
+    "dronePosition": "(43.44, 3.00, -0.38)",
+    "lightPosition": "(41.44, 1.10, -2.00)",
+    "distance": 3.19698715,
+    "range": 4.5,
+    "droneRendererMasks": [
+      {
+        "name": "Drone_Body",
+        "mask": 1
+      },
+      {
+        "name": "Camera_Gimbal",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Camera_Lens_Barrel",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Camera_Lens_Glass",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Gimbal_Axle",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Antenna",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Arm_FL",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Arm_FR",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Arm_RL",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Arm_RR",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Battery",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Battery_Straps",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Belly_Mount_Plate",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Expansion_Rails",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Gimbal_Bracket",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Motor_Collar_FL",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Motor_Collar_FR",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Motor_Collar_RL",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Motor_Collar_RR",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Motor_FL",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Motor_FR",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Motor_RL",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Motor_RR",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Searchlight_Housing",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Searchlight_Lens",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Searchlight_Reflector",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Signal_Base",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Upper_Armor",
+        "mask": 1
+      },
+      {
+        "name": "Landing_Gear_L",
+        "mask": 1
+      },
+      {
+        "name": "Landing_Gear_R",
+        "mask": 1
+      },
+      {
+        "name": "Propeller_FL",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Propeller_Hub_FL",
+        "mask": 1
+      },
+      {
+        "name": "Propeller_FR",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Propeller_Hub_FR",
+        "mask": 1
+      },
+      {
+        "name": "Propeller_RL",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Propeller_Hub_RL",
+        "mask": 1
+      },
+      {
+        "name": "Propeller_RR",
+        "mask": 1
+      },
+      {
+        "name": "Drone_Propeller_Hub_RR",
+        "mask": 1
+      },
+      {
+        "name": "Vision",
+        "mask": 1
+      }
+    ]
+  },
+  "gameTime": 116.94809,
+  "same": {
+    "camera": true,
+    "round": true,
+    "gameTime": true,
+    "screen": true,
+    "settledRound": true,
+    "effectiveStack": true,
+    "volumes": true,
+    "environment": true,
+    "playerBounds": true,
+    "stage": true,
+    "player": true,
+    "allOtherLights": true,
+    "scene": true
+  },
+  "otherLightCount": 4,
+  "postProcessing": false,
+  "fillOff": {
+    "name": "PlayerFillLight",
+    "id": -4310944,
+    "enabled": false,
+    "intensity": 1.2,
+    "color": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "range": 4.5,
+    "position": [
+      41.4360733,
+      1.1,
+      -2.0
+    ],
+    "mask": 2,
+    "urpMask": 2,
+    "shadows": "None"
+  },
+  "fillOn": {
+    "name": "PlayerFillLight",
+    "id": -4310944,
+    "enabled": true,
+    "intensity": 1.2,
+    "color": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "range": 4.5,
+    "position": [
+      41.4360733,
+      1.1,
+      -2.0
+    ],
+    "mask": 2,
+    "urpMask": 2,
+    "shadows": "None"
+  },
+  "nonPlayerDedicatedReceivers": [],
+  "roiConvention": "PNG y=1080-WorldToScreenY; floor minima/ceil maxima;[left,top,right,bottom). Player bounds derived from16corners; exterior excludes12px padding. Drone/cone rects chosen from the viewed screenshot and include background.",
+  "regions": [
+    {
+      "region": "fullFrame",
+      "rect": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "outside": false,
+      "pixels": 2073600.0,
+      "anyChangedPixels": 12892.0,
+      "anyChangedPercent": 0.6217206790123457,
+      "over1ChangedPixels": 12778.0,
+      "over2ChangedPixels": 12607.0,
+      "over8ChangedPixels": 11561.0,
+      "maxAbsoluteChannelDelta": 52.0,
+      "meanAbsRgbDelta8Bit": 0.11704025205761318,
+      "meanEncodedLumaBefore": 41.93475997686614,
+      "meanEncodedLumaAfter": 42.06454976148841,
+      "meanEncodedLumaDelta": 0.1297897846257699,
+      "meanDecodedSrgbLuminanceBefore": 0.03372027104391682,
+      "meanDecodedSrgbLuminanceAfter": 0.03429669543245391,
+      "brightenedPixels": 12876.0,
+      "darkenedPixels": 0.0,
+      "anyChannel255Before": 967.0,
+      "anyChannel255After": 967.0,
+      "allChannelsAtLeast250Before": 0.0,
+      "allChannelsAtLeast250After": 0.0,
+      "maxChannelAfter": 255.0
+    },
+    {
+      "region": "tightPlayerBounds",
+      "rect": [
+        920,
+        586,
+        1015,
+        790
+      ],
+      "outside": false,
+      "pixels": 19380.0,
+      "anyChangedPixels": 12892.0,
+      "anyChangedPercent": 66.52218782249741,
+      "over1ChangedPixels": 12778.0,
+      "over2ChangedPixels": 12607.0,
+      "over8ChangedPixels": 11561.0,
+      "maxAbsoluteChannelDelta": 52.0,
+      "meanAbsRgbDelta8Bit": 12.522944616443068,
+      "meanEncodedLumaBefore": 92.47227821465745,
+      "meanEncodedLumaAfter": 106.35938334365508,
+      "meanEncodedLumaDelta": 13.887105128998787,
+      "meanDecodedSrgbLuminanceBefore": 0.171702351695152,
+      "meanDecodedSrgbLuminanceAfter": 0.2333779766709627,
+      "brightenedPixels": 12876.0,
+      "darkenedPixels": 0.0,
+      "anyChannel255Before": 0.0,
+      "anyChannel255After": 0.0,
+      "allChannelsAtLeast250Before": 0.0,
+      "allChannelsAtLeast250After": 0.0,
+      "maxChannelAfter": 244.0
+    },
+    {
+      "region": "outsidePaddedPlayerBounds",
+      "rect": [
+        908,
+        574,
+        1027,
+        802
+      ],
+      "outside": true,
+      "pixels": 2046468.0,
+      "anyChangedPixels": 0.0,
+      "anyChangedPercent": 0.0,
+      "over1ChangedPixels": 0.0,
+      "over2ChangedPixels": 0.0,
+      "over8ChangedPixels": 0.0,
+      "maxAbsoluteChannelDelta": 0.0,
+      "meanAbsRgbDelta8Bit": 0.0,
+      "meanEncodedLumaBefore": 41.512434757038584,
+      "meanEncodedLumaAfter": 41.512434757038584,
+      "meanEncodedLumaDelta": 0.0,
+      "meanDecodedSrgbLuminanceBefore": 0.03248658958795131,
+      "meanDecodedSrgbLuminanceAfter": 0.03248658958795131,
+      "brightenedPixels": 0.0,
+      "darkenedPixels": 0.0,
+      "anyChannel255Before": 967.0,
+      "anyChannel255After": 967.0,
+      "allChannelsAtLeast250Before": 0.0,
+      "allChannelsAtLeast250After": 0.0,
+      "maxChannelAfter": 255.0
+    },
+    {
+      "region": "capsuleInteriorProxy",
+      "rect": [
+        944,
+        637,
+        976,
+        740
+      ],
+      "outside": false,
+      "pixels": 3296.0,
+      "anyChangedPixels": 3296.0,
+      "anyChangedPercent": 100.0,
+      "over1ChangedPixels": 3296.0,
+      "over2ChangedPixels": 3296.0,
+      "over8ChangedPixels": 3296.0,
+      "maxAbsoluteChannelDelta": 52.0,
+      "meanAbsRgbDelta8Bit": 30.832220873786408,
+      "meanEncodedLumaBefore": 134.9660145024276,
+      "meanEncodedLumaAfter": 167.8050058859208,
+      "meanEncodedLumaDelta": 32.83899138349517,
+      "meanDecodedSrgbLuminanceBefore": 0.27738509090683006,
+      "meanDecodedSrgbLuminanceAfter": 0.44007534721926655,
+      "brightenedPixels": 3296.0,
+      "darkenedPixels": 0.0,
+      "anyChannel255Before": 0.0,
+      "anyChannel255After": 0.0,
+      "allChannelsAtLeast250Before": 0.0,
+      "allChannelsAtLeast250After": 0.0,
+      "maxChannelAfter": 212.0
+    },
+    {
+      "region": "droneImageBounds",
+      "rect": [
+        1100,
+        430,
+        1220,
+        515
+      ],
+      "outside": false,
+      "pixels": 10200.0,
+      "anyChangedPixels": 0.0,
+      "anyChangedPercent": 0.0,
+      "over1ChangedPixels": 0.0,
+      "over2ChangedPixels": 0.0,
+      "over8ChangedPixels": 0.0,
+      "maxAbsoluteChannelDelta": 0.0,
+      "meanAbsRgbDelta8Bit": 0.0,
+      "meanEncodedLumaBefore": 66.42704927450923,
+      "meanEncodedLumaAfter": 66.42704927450923,
+      "meanEncodedLumaDelta": 0.0,
+      "meanDecodedSrgbLuminanceBefore": 0.06196521713833678,
+      "meanDecodedSrgbLuminanceAfter": 0.06196521713833678,
+      "brightenedPixels": 0.0,
+      "darkenedPixels": 0.0,
+      "anyChannel255Before": 44.0,
+      "anyChannel255After": 44.0,
+      "allChannelsAtLeast250Before": 0.0,
+      "allChannelsAtLeast250After": 0.0,
+      "maxChannelAfter": 255.0
+    },
+    {
+      "region": "visionConeImageBounds",
+      "rect": [
+        1190,
+        125,
+        1700,
+        800
+      ],
+      "outside": false,
+      "pixels": 344250.0,
+      "anyChangedPixels": 0.0,
+      "anyChangedPercent": 0.0,
+      "over1ChangedPixels": 0.0,
+      "over2ChangedPixels": 0.0,
+      "over8ChangedPixels": 0.0,
+      "maxAbsoluteChannelDelta": 0.0,
+      "meanAbsRgbDelta8Bit": 0.0,
+      "meanEncodedLumaBefore": 63.09333279958828,
+      "meanEncodedLumaAfter": 63.09333279958828,
+      "meanEncodedLumaDelta": 0.0,
+      "meanDecodedSrgbLuminanceBefore": 0.06692136146623902,
+      "meanDecodedSrgbLuminanceAfter": 0.06692136146623902,
+      "brightenedPixels": 0.0,
+      "darkenedPixels": 0.0,
+      "anyChannel255Before": 0.0,
+      "anyChannel255After": 0.0,
+      "allChannelsAtLeast250Before": 0.0,
+      "allChannelsAtLeast250After": 0.0,
+      "maxChannelAfter": 146.0
+    }
+  ],
+  "limitations": [
+    "One frozen Ruins view; runtime API positioning rather than native keyboard movement.",
+    "Projected bounds contain some background; core is an interior proxy rather than exact segmentation.",
+    "Rec709 encoded-luma and decoded-sRGB relative luminance describe screenshots, not physical lux.",
+    "Camera postProcessing=false; defaults visible in effectiveStack are not proof those post effects rendered.",
+    "Ruins already brighter before fill; no environment correction is required or performed by this audit."
+  ]
+}

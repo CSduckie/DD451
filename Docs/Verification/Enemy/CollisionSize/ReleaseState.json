@@ -1,0 +1,37 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"success\":true,\"message\":\"Code executed successfully.\",\"data\":{\"result\":{\"utc\":\"2026-10-19T07:20:22.7628779Z\",\"scene\":\"Assets/Scenes/Bootstrap.unity\",\"dirty\":false,\"loadedSceneCount\":1,\"playing\":false,\"paused\":false,\"changing\":false,\"compiling\":false,\"updating\":false,\"prefabStage\":\"none\",\"testsActive\":false,\"timeScale\":1.0,\"background\":false,\"backgroundSetting\":false,\"enterPlayModeOptions\":\"DisableDomainReload\",\"missingSceneScripts\":0,\"missingPrefabScripts\":0,\"colliderRadius\":0.25,\"closedTestWindows\":0},\"compiler\":\"codedom\"}}"
+    }
+  ],
+  "structuredContent": {
+    "success": true,
+    "message": "Code executed successfully.",
+    "data": {
+      "result": {
+        "utc": "2026-10-19T07:20:22.7628779Z",
+        "scene": "Assets/Scenes/Bootstrap.unity",
+        "dirty": false,
+        "loadedSceneCount": 1,
+        "playing": false,
+        "paused": false,
+        "changing": false,
+        "compiling": false,
+        "updating": false,
+        "prefabStage": "none",
+        "testsActive": false,
+        "timeScale": 1,
+        "background": false,
+        "backgroundSetting": false,
+        "enterPlayModeOptions": "DisableDomainReload",
+        "missingSceneScripts": 0,
+        "missingPrefabScripts": 0,
+        "colliderRadius": 0.25,
+        "closedTestWindows": 0
+      },
+      "compiler": "codedom"
+    }
+  },
+  "isError": false
+}

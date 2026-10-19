@@ -1,0 +1,102 @@
+{
+  "job_id": "4e8380a13aa2435796e407f9f945dce3",
+  "status": "succeeded",
+  "mode": "PlayMode",
+  "started_unix_ms": 1792351086535,
+  "finished_unix_ms": 1792351093269,
+  "last_update_unix_ms": 1792351093269,
+  "progress": {
+    "completed": 7,
+    "total": 7,
+    "current_test_full_name": null,
+    "current_test_started_unix_ms": 1792351093069,
+    "last_finished_test_full_name": "WarehouseIntegrationTests.VerticalScrollingKeepsEveryColumnVisibleAndMapsPointerWithoutRebuildingCells",
+    "last_finished_unix_ms": 1792351093237,
+    "stuck_suspected": false,
+    "editor_is_focused": false,
+    "run_in_background": null,
+    "focus_nudge_attempts": null,
+    "focus_nudge_limit": null,
+    "focus_nudge_status": null,
+    "blocked_reason": null,
+    "failures_so_far": [],
+    "failures_capped": false
+  },
+  "error": null,
+  "result": {
+    "mode": "PlayMode",
+    "summary": {
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 1.2267363,
+      "resultState": "Passed"
+    },
+    "results": [
+      {
+        "name": "ConfirmationLanguageCancelStaleTargetAndRepeatedClickCannotRepeatLoss",
+        "fullName": "WarehouseIntegrationTests.ConfirmationLanguageCancelStaleTargetAndRepeatedClickCannotRepeatLoss",
+        "state": "Passed",
+        "durationSeconds": 0.375216,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "DestroyingCompleteRuntimeThenStartingFreshUsesInitialConfigAndChinese",
+        "fullName": "WarehouseIntegrationTests.DestroyingCompleteRuntimeThenStartingFreshUsesInitialConfigAndChinese",
+        "state": "Passed",
+        "durationSeconds": 0.1260896,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "DisableFocusLossContextExitAndLateReleaseCancelWithoutAccumulatingRCallbacks",
+        "fullName": "WarehouseIntegrationTests.DisableFocusLossContextExitAndLateReleaseCancelWithoutAccumulatingRCallbacks",
+        "state": "Passed",
+        "durationSeconds": 0.0878261,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "NewAdditiveShelterContextCancelsOldDragAndConfirmationWithoutRevokingNewInteraction",
+        "fullName": "WarehouseIntegrationTests.NewAdditiveShelterContextCancelsOldDragAndConfirmationWithoutRevokingNewInteraction",
+        "state": "Passed",
+        "durationSeconds": 0.0584376,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "QueuedPointerDragUsesRealEventSystemAndRAndF10OnlyChangePreview",
+        "fullName": "WarehouseIntegrationTests.QueuedPointerDragUsesRealEventSystemAndRAndF10OnlyChangePreview",
+        "state": "Passed",
+        "durationSeconds": 0.1720697,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "SceneReloadRebindsPersistentStateAndClearsPermissionUntilNewSceneGrantsIt",
+        "fullName": "WarehouseIntegrationTests.SceneReloadRebindsPersistentStateAndClearsPermissionUntilNewSceneGrantsIt",
+        "state": "Passed",
+        "durationSeconds": 0.1405908,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "VerticalScrollingKeepsEveryColumnVisibleAndMapsPointerWithoutRebuildingCells",
+        "fullName": "WarehouseIntegrationTests.VerticalScrollingKeepsEveryColumnVisibleAndMapsPointerWithoutRebuildingCells",
+        "state": "Passed",
+        "durationSeconds": 0.1681092,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      }
+    ]
+  }
+}

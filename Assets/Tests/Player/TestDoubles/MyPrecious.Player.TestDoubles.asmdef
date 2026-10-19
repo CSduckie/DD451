@@ -1,0 +1,7 @@
+{
+    "name": "MyPrecious.Player.TestDoubles",
+    "rootNamespace": "",
+    "references": ["MyPrecious.Player", "MyPrecious.Interaction", "MyPrecious.Health", "MyPrecious.Items", "MyPrecious.Bootstrap", "MyPrecious.Localization"],
+    "autoReferenced": false,
+    "optionalUnityReferences": ["TestAssemblies"]
+}

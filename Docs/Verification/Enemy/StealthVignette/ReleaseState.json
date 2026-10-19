@@ -1,0 +1,36 @@
+{
+  "utc": "2026-10-19T17:24:59.2936460Z",
+  "scenes": [
+    {
+      "path": "Assets/Scenes/Bootstrap.unity",
+      "isDirty": false,
+      "isLoaded": true
+    }
+  ],
+  "playing": false,
+  "changing": false,
+  "paused": false,
+  "compiling": false,
+  "updating": false,
+  "prefabStage": false,
+  "testRunning": false,
+  "timeScale": 1.0,
+  "background": false,
+  "playerSettingsBackground": false,
+  "capture": false,
+  "probe": false,
+  "inputSettings": "",
+  "keyboards": [
+    {
+      "name": "Keyboard",
+      "deviceId": 1,
+      "enabled": true,
+      "native": true
+    }
+  ],
+  "effects": 0,
+  "runtimeProfiles": 0,
+  "helperObjects": [],
+  "graphics": "Direct3D11",
+  "enterPlayOptions": "DisableDomainReload"
+}

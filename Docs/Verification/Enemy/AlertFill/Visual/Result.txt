@@ -1,0 +1,18 @@
+警戒视锥填充视觉：已交付，2026-10-19 UTC。
+完整说明：Docs/Handoffs/Effects_DroneAlertFill.txt。
+
+实际通过：新增填充EditMode7/7，原几何11/11，水平/转向PlayMode3/3。
+真实渲染：最终五张1920×1080截图和12.2046秒/2220帧采样。0全橙、50%内红外橙、100%全红、退25%红区缩回、退0全橙。PixelProbe.json来自实际PNG像素。
+两机进度独立，墙高内64顶点未穿墙。模型倾斜/水平视锥/转向回归由3项PlayMode验证。
+截图为原相机下的临时Play视觉布置，Controller暂停、直接调用显示API；不是完整Alert AI或原生键鼠验收。
+第一组视口截断证据保留为FirstViewport-*，最终采用无前缀五图。
+测试首次2个严格颜色相等失败已保留XML；MPB读写浮点差约2.98e-8，改断言容差1e-5后7/7通过。
+
+生产修改限DroneVision.cs、新DroneVision.shader、原DroneVision.mat；Inspector说明与专用测试另列。
+77项既有资产审计仅3个允许文件变化；Drone.prefab/meta、3场景、其它Enemy源/测试、EditorSettings字节均未变。
+原材质GUID保留，Shader编译支持且无错误；材质progress0、Cull2。
+最终05:36:50Z：Shelter唯一场景clean/Edit、无编译/刷新/PrefabStage，Console0错误/警告，临时对象与回调已清除，runInBackgroundfalse。
+退出Play后的场景是Shelter；本聊天未调用保存/覆盖/强制切回，不宣称最终还在EnemyTest。
+AI接入和全Enemy回归、主程独立验收仍由009和主程完成。
+视觉Assets和Editor已释放，009可以接入。
+

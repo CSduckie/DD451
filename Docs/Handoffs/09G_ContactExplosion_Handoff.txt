@@ -1,0 +1,34 @@
+MyPrecious009 / 09G — 缩小实体碰撞与触碰爆炸
+项目E:/DD451；2026-10-19；本轮最新用户要求覆盖09F的Chase-only和隐藏接触免伤规则。
+
+当前实现
+Drone.prefab的实体SphereCollider半径0.45→0.25，直径0.9→0.5；center/scale未改。EnemyTestSceneBuilder缺少Prefab时的生成默认值同步。视锥Collider仍为独立Trigger，进入视锥不引爆。
+真实机身接触在Patrol/Alert/Search/Chase都会爆炸，包括已经草丛隐藏的玩家。草丛继续遮蔽视线、停止追击并执行原2秒警戒，但不阻止真实实体接触引爆。原发现0.5秒、重发现立即Chase、平滑前倾/回正/yaw、四桨和原路线均保留。
+Controller的物理半径、移动SphereCast、Overlap和直接TryExplode仍共用同一个Collider。OnCollisionEnter/Stay由Unity确认接触后直接调用内部带资格与重入保护的Explode，避免在接触余量处再用Overlap否定已确认的碰撞。TryExplode手动入口仍要求实际几何接触；死/停用/未准备/切场景锁玩家无效；自爆先设置HasExploded再结算一次伤害，沿用玩家无敌时间。爆炸后关闭实体和表现，不再挡住玩家。
+
+改动7项（已有meta/GUID保留）
+Assets/Prefabs/Enemy/Drone/Drone.prefab
+Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs
+Assets/Scripts/Enemy/Drone/ScriptableObject/DroneConfigSO.cs（Inspector说明）
+Assets/Tests/Enemy/Editor/EnemyTestSceneBuilder.cs
+Assets/Tests/Enemy/PlayMode/DroneBehaviourTests.cs
+Assets/Tests/Enemy/PlayMode/DroneAlertTests.cs
+Assets/Tests/Enemy/PlayMode/EnemySceneIntegrationTests.cs
+前三类接触用例迁移旧无害断言；新增一个真实Prefab/场景用例检验头顶新旧半径间隙、真实Patrol横越、视锥Trigger无伤、Patrol刚体靠近后自动接触爆一次。保留原无接触草丛计时、重发现、伤害回调、生命周期等覆盖。
+
+最终验证
+当前编译源码EditMode DroneRound4/4通过，证据CollisionSize/EditMode-4-Final.json。PlayMode选Enemy41+RuinsEnemyIntegration5共46个不同用例，最终每项最近一次均Passed，0Skipped；这是首次44通过加失败项修正后的定向复验，不是声称首次46全通过。逐项对应PlayMode-FinalCoverage.json。
+首次官方XML44Passed/2Failed/0Skipped保留于PlayMode-46.xml。原CoverRediscovery用yield null假定一定已经过MonoBehaviour.Update，观测仍为Alert；改为0.2秒内等待真实状态更新，并断言未新增0.5秒警戒，PlayMode-Retry2.xml确认通过。
+新场景测试最初依赖Play对象PrefabUtility链接，返回空字符串；改为分别读取实际Prefab资产与场景实体半径。之后凸视锥ComputePenetration断言失败，记录PlayMode-Retry2.xml、PlayMode-Retry1-Pose.xml均保留。修正为等待自然Alert并以实际RangeCollider.ClosestPoint确认玩家身体中心在真实视锥内，同时保留CanSee、Trigger开启及多物理帧无伤断言。先前ComputePenetration失败的具体引擎原因未证实，不归因于产品缺陷。
+最终单项PlayMode-ContactFinal.xml通过：真实Prefab半径0.25；相同玩家几何下旧0.45的移动检测会阻挡、新0.25不会；实际Patrol连续飞过头顶，无实体穿透、无爆炸/扣血；随后真实刚体逐步下降接触，在Patrol自动爆一次，实体关闭，越过玩家无敌时间后仍无第二次伤害。未直接调用伤害入口或强制爆炸状态。
+MCP有两次重载后残留running0；仅在官方XML已结束、Unity实际IsRunActive=false且退出Play后清理工具孤立任务。结果取自Editor.log明确记录的Application.persistentDataPath/TestResults.xml，不把MCP0条当结果。用户在首轮测试后手动Play，明确答复“可以停止，完成核验”后继续；最终保留用户最新选择的Bootstrap。
+本轮为自动化真实场景/物理模拟与API夹具验证，没有新增原生键鼠、视频或Windows构建验收。已通过的44个PlayMode用例未重复执行；最终额外确认4项EditMode使用全部导入后的当前源码。
+
+场景保护
+本轮未保存/重建正式场景。初始Ruins出现dirty时首次Prefab写入已被保护检查拒绝；之后现场恢复clean，才完成Prefab单字段修改。用户于07:08:18Z保存Shelter、07:08:43Z保存Ruins，均早于07:11:33Z的Play测试；其最新内容继续保留，不用旧09F/初始hash还原。最新文件基线见CollisionSize/LatestExternalSceneHashes.json。
+备份、修改与meta审计、验证记录：Docs/Verification/Enemy/CollisionSize/。Integrity.json中8/8最新保护文件相同，7/7已有meta相同；ChangedHashes.json记录最终7项改动。Root源码、Prefab与测试均已收尾，没有新增Prefab或场景布局修改。
+
+最终Editor与释放
+ReleaseState.json：2026-10-19T07:20:22Z，唯一Bootstrap/clean/Edit，Play/paused/changing/compiling/updating=false，无PrefabStage，TestRunner IsRunActive=false，timeScale1，Application/PlayerSettings.runInBackground均false，原DisableDomainReload保留。场景和Drone Prefab Missing Script均0，Prefab实体半径0.25。随后只读检查确认无TestRunner窗口。
+FinalConsole.json：0错误，1条MCP WebSocket重载连接警告；不是产品脚本警告。未清除Console以掩盖诊断。
+009 Assets和Editor已释放，主程可以验收。没有待运行测试、Play、临时回调或后续Editor操作。详细结果为CollisionSize/Result.txt；本交接只取代09F的接触条款，其他现行规则沿用。

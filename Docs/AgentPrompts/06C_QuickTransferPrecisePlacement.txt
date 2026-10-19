@@ -1,0 +1,43 @@
+任务06C：快捷跨容器转移、按鼠标返箱、去掉容器多余黑框
+项目E:/DD451；Dispatch v18；用户明确授权自动下发。
+
+先读QuickTransfer_Dispatch.txt全文、ProjectRules A25、06B交接和新截图Docs/Verification/QuickTransfer/UserRequest.png。
+用户此次新需求覆盖06B普通返箱自动选位与整viewport接收：普通拖拽必须按鼠标格位，自动找位只给Ctrl快捷动作。不要用旧回归要求阻止新规则。
+
+修改范围
+独占Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferUIBridge.cs、ItemTransferCoordinator.cs。
+Assets/Scripts/Loot/MonoBehaviour/LootView.cs、LootItemView.cs、LootUIController.cs、LootRuntimeManager.cs。
+必要时Assets/Scripts/Loot/RuntimeData/LootSourceState.cs及本模块现有运行数据。
+Assets/Tests/Loot/EditMode/ItemTransferTests.cs、LootGridLayoutTests.cs、LootSourceStateTests.cs等相关既有用例；Assets/Tests/Loot/PlayMode/LootReturnTests.cs、LootUIRegressionTests.cs、LootGridSearchTests.cs、LootIntegrationTests.cs。
+Assets/Tests/Loot/Editor/LootTestSceneBuilder.cs、LootTextEntries.cs及必要Loot构建辅助。
+Assets/Prefabs/UI/Loot/LootPanel.prefab如需变更，优先通过更新生成器提供具体生成/修改步骤，由07唯一Editor操作者应用并保留GUID；不要此时操作Unity/重建Prefab。
+Docs/Architecture/TransfersLootSetup.txt；交接Docs/Handoffs/06C_QuickTransferPrecisePlacement_Handoff.txt。
+不编辑Backpack/Warehouse模块、它们的测试/Prefab、正式GameFlow场景、玩家、共享语言.asset。不要改01身份/EV规则。
+
+依赖及执行顺序
+04A/05A会按公共调度文档提供TryFindSpaceForExternal和UIController.QuickTransferRequested/TryQuickTransfer。可以先写自己的独立代码；调用新API之前核对实际签名，不在自己模块复制它们的格子算法，也不替04/05写接口。
+本轮04/05/06都只编辑各自文件；07在三个新交接齐全后统一编译、建必要资产和测试。你不得主动操作Unity、导入/刷新、切场景、跑测试。
+需要等待依赖时可read_thread/wait_threads只读查看04/05（ID在调度消息），不要自行给它们发消息或抢文件。交接未齐不标READY。
+
+实现要求
+1. 06负责快捷目标选择和完整一次提交。背包→恰好一个已打开有效仓库/箱子；仓库/箱子→背包。目标关闭/多个有效目标/满格/未知物/距离或会话失效/确认丢弃/拖拽中/切场景等拒绝，原物原位保留。
+2. Bind/Unbind接入04/05委托；各物品Ctrl手势只触发一次，成功后仅一次通知。LootItemView/UIController的Ctrl点击你负责；未揭示不能快捷搬走，失败不能转成普通拖拽。左右Ctrl均支持，Input System方式。
+3. 自动找位只读，当前方向行优先，然后允许时试旋转；不重排目标原物、不预先删源物。最终通过Coordinator再次校验后整体提交；沿用当前回滚、身份、EV、会话及取消机制，不另造框架。
+4. 给箱子补精确坐标/旋转放置路径：用contentRoot换算鼠标格位，减原抓取偏移；考虑padding/gap/滚动。局部预览与真实提交用相同x/y/rotated；不能预览跟鼠标而松手仍调用自动选位。
+5. 标题、关闭按钮、网格外下方空白、越界、重叠（含未知项占格）无效，不寻找替代空位。覆盖旧整个viewport自动返箱测试；当前有效区域明确是配置宽×高网格。
+6. 箱子运行布局当前按definition原始宽高，需连同Layout校验、展示、旋转状态、拾回、失败回滚处理；不要只改视觉。返回已知物保持已揭示，不重搜/不重抽，不变其他轮廓/倒计时位置。不是要求新增完整箱内整理模式。
+7. 背包↔仓库已有鼠标坐标路径，复核并保持正确实现。必要修复只在本桥接文件范围，不重做05核心。
+8. 去黑框：移除格子下方多余纯黑viewport背景，不删除真实背景格/格缝、标题/关闭/反馈，也不破坏透明空格射线、ScrollRect/RectMask2D；短/长内容都正确。06B的局部框保留并跟随当前鼠标格位，有效/无效提示清楚且两侧一致。
+9. 受击/Tab/关闭/过期松手/场景变更清理，保持来源数据，保存当前拖拽唯一编号；不能快捷绕过主动丢弃确认。
+10. 03双语、1920、66/4/6及固定容量不变。新增必要键放本模块LootTextEntries，其他模块文字需求交给07统一刷新语言资源，不硬编码产品文案。
+
+实现风格
+这是作品集兼毕设，普通类/方法/枚举/字段即可；英文目录、不写namespace、4空格、括号另起行。实际参考可修改复用CardGame拖拽等源码与当前实现，记录文件/版本，不改参考仓库。
+先列具体拟改文件；保持.meta/GUID。没有当前消费者的接口不新增，不造通用容器/事件总线/事务框架。
+
+测试与交接
+补公共调度文档综合矩阵中06拥有的关键回归：Ctrl单次双向、满格、旋转空位、指定远格、抓取偏移、滚动/边界、未知拒绝、搜索不中断、旧会话/关闭/伤害/取消；失败无丢物复制/错误通知。
+只写有价值的测试，已有过时行为的用例改成新期望，不把旧105/29当本版结果。
+交接列新API/数据变化、修改文件、Prefab/语言更新确切操作、04A/05A实际接入、测试待07运行、仍需关注的问题。
+确认自己的代码/测试及依赖接好后，最后一行写“READY_FOR_INTEGRATION；06C代码/测试/构建步骤已就绪，未操作Unity，待07统一验证”。未达到不能写。
+完成后结束本轮，不另开聊天、不自行发送消息到别的聊天；主程/07读取交接。

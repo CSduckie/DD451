@@ -1,0 +1,36 @@
+009 平滑前倾、回正与同步转头 — 2026-10-18 America/New_York
+
+用户最新要求取代上一版周期摇晃：取消摇晃，移动时缓慢前倾，停止时缓慢回正；转身有转头动画，Vision也跟着旋转。
+
+实际修改：
+Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs
+Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs
+Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs
+Assets/Prefabs/Enemy/Drone/Drone.prefab
+Assets/Tests/Enemy/Editor/DroneVisionEditor.cs
+Assets/Tests/Enemy/EditMode/DroneVisionGeometryTests.cs
+Assets/Tests/Enemy/PlayMode/DroneBehaviourTests.cs
+每份修改前真实内容及.meta位于Before/。所有.meta保持不变，保留GUID；现有Prefab的initialFacing=-1、collisionMask=51及模型基准、用户其他配置未覆盖。
+
+动画与配置：
+- 删除bob/sway字段和周期浮动/摇摆，Visual.localPosition保持原始位置。
+- 前倾按速度在当前机头方向上的投影决定，用SmoothDampAngle逐渐过渡；速度零时目标倾角零。tiltDegrees=10、tiltSmoothTime=.3秒，巡逻速度为追击速度一半时稳定前倾约5度。
+- Controller持有唯一FacingRotation，以turnSmoothTime=.18秒平滑绕本机Y轴转头。FacingDirection仍是移动意图，FacingRotation是当前实际朝向。
+- 模型用FacingRotation叠加局部前倾及原FBX校正；Vision用同一FacingRotation叠加独立directionDegrees。视野跟随转头，不跟着模型额外前倾。
+- 螺旋桨保留2400度/秒，各自局部Z轴持续旋转。
+- BeginRound新轮清转头速度并ResetPose；同轮不重置。Rebuild保存运行中的中间朝向。
+
+检测与显示：
+实际MeshCollider和可见Mesh在同一Vision Transform上一同旋转；Controller观察玩家前同步物理变换。整厚度BoxCast始终使用Vision当前局部平面/局部Z厚度。Box墙补12条边与厚度边界交点采样，减少转头中薄墙轮廓漏采样。物理根不转、不漂移，XY运动/自身Z约束不改。
+真正转到90度时，扇形侧对侧视相机而变窄，原来左右远处玩家可能暂离实际Collider；这是与实际转头一致的行为。没有另外画一套固定在XY的假扇形。
+
+验证：
+Unity导入编译通过、Console最终0 error/0 warning。Prefab读回turn=.18、tiltTime=.3、tilt=10、rotor=2400，4个转子齐、Vision引用齐、Missing Script=0。
+EditMode-27-Final.xml：2026-10-19 03:17:25Z，27/27 Passed，0失败/跳过。
+PlayMode-16-Final.xml：2026-10-19 03:17:45–03:17:54Z，16/16 Passed，0失败/跳过。
+合计43项，包含原39项和本次新增4项：逐步前倾/逐步回正/无周期摇晃；Y轴转头中间姿态及共享朝向、Rebuild/轮次复位；45和90度的真实范围、厚度和墙体裁剪一致性。
+Unity MCP PlayMode job在官方XML已完成且Editor停止后仍报running/0，属于状态跟踪未收尾；已用clear_stuck清理，仅清工具任务、不重跑。原状态见PlayModeToolStatusBeforeCleanup.json，测试成绩以本轮官方XML为准。
+
+编辑器保留与边界：
+本轮尝试打开EnemyTest时，工具发现Shelter有未保存修改并拒绝切换；没有保存、丢弃、重载或覆盖Shelter。测试后仍将该场景未保存状态原样保留。最新真实状态见ReleaseState.json：03:19:07Z，Shelter唯一加载，dirty=true，Play/compiling/updating=false，timeScale=1、runInBackground=false，无PrefabStage。没有任何009 Assets写入或Editor操作排队。
+未新增原生键鼠验收或实际Game动画录像；本轮新增动画验证是PlayMode帧采样，实际Prefab模型四桨/引用通过原集成测试。以前的截图、39项报告和摇晃调参报告保留为对应时刻历史，不当作最新动画证据。

@@ -1,0 +1,47 @@
+{
+  "total": "75",
+  "passed": "74",
+  "failed": "1",
+  "skipped": "0",
+  "result": "Failed(Child)",
+  "start": "2026-10-18 23:57:09Z",
+  "end": "2026-10-18 23:57:52Z",
+  "duration": "43.002535",
+  "assemblies": [
+    {
+      "name": "MyPrecious.Backpack.PlayModeTests.dll",
+      "total": "19",
+      "passed": "18",
+      "failed": "1",
+      "skipped": "0"
+    },
+    {
+      "name": "MyPrecious.GameFlow.PlayModeTests.dll",
+      "total": "8",
+      "passed": "8",
+      "failed": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "MyPrecious.Loot.PlayModeTests.dll",
+      "total": "36",
+      "passed": "36",
+      "failed": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "MyPrecious.Warehouse.PlayModeTests.dll",
+      "total": "12",
+      "passed": "12",
+      "failed": "0",
+      "skipped": "0"
+    }
+  ],
+  "failures": [
+    {
+      "name": "BackpackIntegrationTests.QueuedSameFrameCtrlLeftAndRightPressCannotUseAndRightUseRecoversAfterRelease",
+      "message": "  Expected: 1\n  But was:  0\n",
+      "stack": "at BackpackIntegrationTests+<QueuedSameFrameCtrlLeftAndRightPressCannotUseAndRightUseRecoversAfterRelease>d__26.MoveNext () [0x002e3] in E:\\DD451\\Assets\\Tests\\Backpack\\PlayMode\\BackpackIntegrationTests.cs:636\nat UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\\Library\\PackageCache\\com.unity.test-framework@d97b7cd61ded\\UnityEngine.TestRunner\\NUnitExtensions\\Attributes\\TestEnumerator.cs:44\n"
+    }
+  ]
+}

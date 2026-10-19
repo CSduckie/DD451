@@ -1,0 +1,110 @@
+{
+  "result": {
+    "success": true,
+    "message": "Test job status retrieved.",
+    "error": null,
+    "data": {
+      "job_id": "5f958f62d67b4902970625a1189d22c5",
+      "status": "succeeded",
+      "mode": "EditMode",
+      "started_unix_ms": 1792388034813,
+      "finished_unix_ms": 1792388037803,
+      "last_update_unix_ms": 1792388037803,
+      "progress": {
+        "completed": 7,
+        "total": 7,
+        "current_test_full_name": null,
+        "current_test_started_unix_ms": 1792388037768,
+        "last_finished_test_full_name": "DroneVisionAlertFillTests.WallClippedFanHasNormalizedRadialUvsAndOneSurface",
+        "last_finished_unix_ms": 1792388037771,
+        "stuck_suspected": false,
+        "editor_is_focused": false,
+        "run_in_background": null,
+        "focus_nudge_attempts": null,
+        "focus_nudge_limit": null,
+        "focus_nudge_status": null,
+        "blocked_reason": null,
+        "failures_so_far": [],
+        "failures_capped": false
+      },
+      "error": null,
+      "result": {
+        "mode": "EditMode",
+        "summary": {
+          "total": 7,
+          "passed": 7,
+          "failed": 0,
+          "skipped": 0,
+          "durationSeconds": 0.2397426,
+          "resultState": "Passed"
+        },
+        "results": [
+          {
+            "name": "ClearAndDisableReenableDoNotRetainFill",
+            "fullName": "DroneVisionAlertFillTests.ClearAndDisableReenableDoNotRetainFill",
+            "state": "Passed",
+            "durationSeconds": 0.0119305,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "OrdinaryTintClearsFillAndKeepsRequestedColor",
+            "fullName": "DroneVisionAlertFillTests.OrdinaryTintClearsFillAndKeepsRequestedColor",
+            "state": "Passed",
+            "durationSeconds": 0.003113,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ProgressClampsWithoutReplacingGeometry(-1.0f,0.0f)",
+            "fullName": "DroneVisionAlertFillTests.ProgressClampsWithoutReplacingGeometry(-1.0f,0.0f)",
+            "state": "Passed",
+            "durationSeconds": 0.0048579,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ProgressClampsWithoutReplacingGeometry(0.5f,0.5f)",
+            "fullName": "DroneVisionAlertFillTests.ProgressClampsWithoutReplacingGeometry(0.5f,0.5f)",
+            "state": "Passed",
+            "durationSeconds": 0.0008449,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ProgressClampsWithoutReplacingGeometry(2.0f,1.0f)",
+            "fullName": "DroneVisionAlertFillTests.ProgressClampsWithoutReplacingGeometry(2.0f,1.0f)",
+            "state": "Passed",
+            "durationSeconds": 0.0007585,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "SharedMaterialInstancesFillAndRetreatIndependently",
+            "fullName": "DroneVisionAlertFillTests.SharedMaterialInstancesFillAndRetreatIndependently",
+            "state": "Passed",
+            "durationSeconds": 0.0028939,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "WallClippedFanHasNormalizedRadialUvsAndOneSurface",
+            "fullName": "DroneVisionAlertFillTests.WallClippedFanHasNormalizedRadialUvsAndOneSurface",
+            "state": "Passed",
+            "durationSeconds": 0.003646,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          }
+        ]
+      }
+    },
+    "hint": null
+  }
+}

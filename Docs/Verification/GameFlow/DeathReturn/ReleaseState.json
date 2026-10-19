@@ -1,0 +1,31 @@
+{
+  "utc": "2026-10-19T08:58:19.8462521Z",
+  "isPlaying": false,
+  "isPaused": false,
+  "isChanging": false,
+  "isCompiling": false,
+  "isUpdating": false,
+  "scenes": [
+    {
+      "name": "Bootstrap",
+      "path": "Assets/Scenes/Bootstrap.unity",
+      "dirty": false,
+      "loaded": true
+    }
+  ],
+  "actualTestRunnerActive": false,
+  "prefabStage": false,
+  "timeScale": 1.0,
+  "runInBackground": false,
+  "configuredRunInBackground": false,
+  "playOptions": "DisableDomainReload",
+  "playOptionsEnabled": true,
+  "graphics": "Direct3D11",
+  "gameTargetSize": {
+    "width": 1920.0,
+    "height": 1080.0
+  },
+  "observerRunning": false,
+  "acquireRunning": false,
+  "captureRunning": false
+}

@@ -1,0 +1,4296 @@
+{
+  "utc": "2026-10-18T23:22:11.7948312Z",
+  "frame": 1891,
+  "width": 1920,
+  "height": 1080,
+  "timeScale": 1.0,
+  "stage": "Shelter",
+  "round": 0,
+  "error": "",
+  "backpacks": [
+    {
+      "scene": "Assets/Scenes/Shelter.unity",
+      "cellSize": 66.0,
+      "gap": 4.0,
+      "padding": 6.0,
+      "grid": {
+        "active": true,
+        "rect": [
+          60.0,
+          570.0,
+          288.0,
+          288.0
+        ],
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "count": 16,
+        "first": [
+          66.0,
+          786.0,
+          66.0,
+          66.0
+        ],
+        "next": [
+          136.0,
+          786.0,
+          66.0,
+          66.0
+        ],
+        "cells": [
+          {
+            "name": "Cell_0_0",
+            "rect": [
+              66.0,
+              786.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_0",
+            "rect": [
+              136.0,
+              786.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_0",
+            "rect": [
+              206.0,
+              786.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_0",
+            "rect": [
+              276.0,
+              786.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_1",
+            "rect": [
+              66.0,
+              716.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_1",
+            "rect": [
+              136.0,
+              716.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_1",
+            "rect": [
+              206.0,
+              716.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_1",
+            "rect": [
+              276.0,
+              716.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_2",
+            "rect": [
+              66.0,
+              646.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_2",
+            "rect": [
+              136.0,
+              646.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_2",
+            "rect": [
+              206.0,
+              646.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_2",
+            "rect": [
+              276.0,
+              646.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_3",
+            "rect": [
+              66.0,
+              576.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_3",
+            "rect": [
+              136.0,
+              576.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_3",
+            "rect": [
+              206.0,
+              576.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_3",
+            "rect": [
+              276.0,
+              576.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          }
+        ]
+      },
+      "preview": [
+        60.0,
+        792.0,
+        66.0,
+        66.0
+      ]
+    }
+  ],
+  "warehouses": [
+    {
+      "scene": "Assets/Scenes/Shelter.unity",
+      "cellSize": 66.0,
+      "gap": 4.0,
+      "padding": 6.0,
+      "effective": 66.0,
+      "viewport": [
+        426.0,
+        406.0,
+        1430.0,
+        440.0
+      ],
+      "grid": {
+        "active": true,
+        "rect": [
+          426.0,
+          -562.0,
+          1408.0,
+          1408.0
+        ],
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "count": 400,
+        "first": [
+          432.0,
+          774.0,
+          66.0,
+          66.0
+        ],
+        "next": [
+          502.0,
+          774.0,
+          66.0,
+          66.0
+        ],
+        "cells": [
+          {
+            "name": "Cell_0_0",
+            "rect": [
+              432.0,
+              774.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_0",
+            "rect": [
+              502.0,
+              774.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_0",
+            "rect": [
+              572.0,
+              774.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_0",
+            "rect": [
+              642.0,
+              774.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_4_0",
+            "rect": [
+              712.0,
+              774.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_5_0",
+            "rect": [
+              782.0,
+              774.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_6_0",
+            "rect": [
+              852.0,
+              774.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_7_0",
+            "rect": [
+              922.0,
+              774.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_8_0",
+            "rect": [
+              992.0,
+              774.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_9_0",
+            "rect": [
+              1062.0,
+              774.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_10_0",
+            "rect": [
+              1132.0,
+              774.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_11_0",
+            "rect": [
+              1202.0,
+              774.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_12_0",
+            "rect": [
+              1272.0,
+              774.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_13_0",
+            "rect": [
+              1342.0,
+              774.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_14_0",
+            "rect": [
+              1412.0,
+              774.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_15_0",
+            "rect": [
+              1482.0,
+              774.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_16_0",
+            "rect": [
+              1552.0,
+              774.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_17_0",
+            "rect": [
+              1622.0,
+              774.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_18_0",
+            "rect": [
+              1692.0,
+              774.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_19_0",
+            "rect": [
+              1762.0,
+              774.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_1",
+            "rect": [
+              432.0,
+              704.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_1",
+            "rect": [
+              502.0,
+              704.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_1",
+            "rect": [
+              572.0,
+              704.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_1",
+            "rect": [
+              642.0,
+              704.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_4_1",
+            "rect": [
+              712.0,
+              704.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_5_1",
+            "rect": [
+              782.0,
+              704.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_6_1",
+            "rect": [
+              852.0,
+              704.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_7_1",
+            "rect": [
+              922.0,
+              704.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_8_1",
+            "rect": [
+              992.0,
+              704.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_9_1",
+            "rect": [
+              1062.0,
+              704.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_10_1",
+            "rect": [
+              1132.0,
+              704.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_11_1",
+            "rect": [
+              1202.0,
+              704.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_12_1",
+            "rect": [
+              1272.0,
+              704.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_13_1",
+            "rect": [
+              1342.0,
+              704.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_14_1",
+            "rect": [
+              1412.0,
+              704.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_15_1",
+            "rect": [
+              1482.0,
+              704.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_16_1",
+            "rect": [
+              1552.0,
+              704.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_17_1",
+            "rect": [
+              1622.0,
+              704.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_18_1",
+            "rect": [
+              1692.0,
+              704.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_19_1",
+            "rect": [
+              1762.0,
+              704.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_2",
+            "rect": [
+              432.0,
+              634.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_2",
+            "rect": [
+              502.0,
+              634.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_2",
+            "rect": [
+              572.0,
+              634.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_2",
+            "rect": [
+              642.0,
+              634.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_4_2",
+            "rect": [
+              712.0,
+              634.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_5_2",
+            "rect": [
+              782.0,
+              634.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_6_2",
+            "rect": [
+              852.0,
+              634.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_7_2",
+            "rect": [
+              922.0,
+              634.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_8_2",
+            "rect": [
+              992.0,
+              634.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_9_2",
+            "rect": [
+              1062.0,
+              634.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_10_2",
+            "rect": [
+              1132.0,
+              634.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_11_2",
+            "rect": [
+              1202.0,
+              634.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_12_2",
+            "rect": [
+              1272.0,
+              634.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_13_2",
+            "rect": [
+              1342.0,
+              634.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_14_2",
+            "rect": [
+              1412.0,
+              634.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_15_2",
+            "rect": [
+              1482.0,
+              634.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_16_2",
+            "rect": [
+              1552.0,
+              634.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_17_2",
+            "rect": [
+              1622.0,
+              634.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_18_2",
+            "rect": [
+              1692.0,
+              634.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_19_2",
+            "rect": [
+              1762.0,
+              634.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_3",
+            "rect": [
+              432.0,
+              564.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_3",
+            "rect": [
+              502.0,
+              564.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_3",
+            "rect": [
+              572.0,
+              564.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_3",
+            "rect": [
+              642.0,
+              564.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_4_3",
+            "rect": [
+              712.0,
+              564.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_5_3",
+            "rect": [
+              782.0,
+              564.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_6_3",
+            "rect": [
+              852.0,
+              564.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_7_3",
+            "rect": [
+              922.0,
+              564.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_8_3",
+            "rect": [
+              992.0,
+              564.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_9_3",
+            "rect": [
+              1062.0,
+              564.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_10_3",
+            "rect": [
+              1132.0,
+              564.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_11_3",
+            "rect": [
+              1202.0,
+              564.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_12_3",
+            "rect": [
+              1272.0,
+              564.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_13_3",
+            "rect": [
+              1342.0,
+              564.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_14_3",
+            "rect": [
+              1412.0,
+              564.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_15_3",
+            "rect": [
+              1482.0,
+              564.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_16_3",
+            "rect": [
+              1552.0,
+              564.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_17_3",
+            "rect": [
+              1622.0,
+              564.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_18_3",
+            "rect": [
+              1692.0,
+              564.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_19_3",
+            "rect": [
+              1762.0,
+              564.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_4",
+            "rect": [
+              432.0,
+              494.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_4",
+            "rect": [
+              502.0,
+              494.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_4",
+            "rect": [
+              572.0,
+              494.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_4",
+            "rect": [
+              642.0,
+              494.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_4_4",
+            "rect": [
+              712.0,
+              494.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_5_4",
+            "rect": [
+              782.0,
+              494.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_6_4",
+            "rect": [
+              852.0,
+              494.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_7_4",
+            "rect": [
+              922.0,
+              494.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_8_4",
+            "rect": [
+              992.0,
+              494.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_9_4",
+            "rect": [
+              1062.0,
+              494.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_10_4",
+            "rect": [
+              1132.0,
+              494.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_11_4",
+            "rect": [
+              1202.0,
+              494.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_12_4",
+            "rect": [
+              1272.0,
+              494.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_13_4",
+            "rect": [
+              1342.0,
+              494.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_14_4",
+            "rect": [
+              1412.0,
+              494.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_15_4",
+            "rect": [
+              1482.0,
+              494.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_16_4",
+            "rect": [
+              1552.0,
+              494.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_17_4",
+            "rect": [
+              1622.0,
+              494.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_18_4",
+            "rect": [
+              1692.0,
+              494.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_19_4",
+            "rect": [
+              1762.0,
+              494.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_5",
+            "rect": [
+              432.0,
+              424.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_5",
+            "rect": [
+              502.0,
+              424.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_5",
+            "rect": [
+              572.0,
+              424.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_5",
+            "rect": [
+              642.0,
+              424.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_4_5",
+            "rect": [
+              712.0,
+              424.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_5_5",
+            "rect": [
+              782.0,
+              424.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_6_5",
+            "rect": [
+              852.0,
+              424.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_7_5",
+            "rect": [
+              922.0,
+              424.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_8_5",
+            "rect": [
+              992.0,
+              424.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_9_5",
+            "rect": [
+              1062.0,
+              424.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_10_5",
+            "rect": [
+              1132.0,
+              424.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_11_5",
+            "rect": [
+              1202.0,
+              424.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_12_5",
+            "rect": [
+              1272.0,
+              424.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_13_5",
+            "rect": [
+              1342.0,
+              424.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_14_5",
+            "rect": [
+              1412.0,
+              424.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_15_5",
+            "rect": [
+              1482.0,
+              424.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_16_5",
+            "rect": [
+              1552.0,
+              424.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_17_5",
+            "rect": [
+              1622.0,
+              424.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_18_5",
+            "rect": [
+              1692.0,
+              424.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_19_5",
+            "rect": [
+              1762.0,
+              424.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_6",
+            "rect": [
+              432.0,
+              354.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_6",
+            "rect": [
+              502.0,
+              354.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_6",
+            "rect": [
+              572.0,
+              354.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_6",
+            "rect": [
+              642.0,
+              354.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_4_6",
+            "rect": [
+              712.0,
+              354.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_5_6",
+            "rect": [
+              782.0,
+              354.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_6_6",
+            "rect": [
+              852.0,
+              354.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_7_6",
+            "rect": [
+              922.0,
+              354.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_8_6",
+            "rect": [
+              992.0,
+              354.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_9_6",
+            "rect": [
+              1062.0,
+              354.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_10_6",
+            "rect": [
+              1132.0,
+              354.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_11_6",
+            "rect": [
+              1202.0,
+              354.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_12_6",
+            "rect": [
+              1272.0,
+              354.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_13_6",
+            "rect": [
+              1342.0,
+              354.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_14_6",
+            "rect": [
+              1412.0,
+              354.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_15_6",
+            "rect": [
+              1482.0,
+              354.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_16_6",
+            "rect": [
+              1552.0,
+              354.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_17_6",
+            "rect": [
+              1622.0,
+              354.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_18_6",
+            "rect": [
+              1692.0,
+              354.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_19_6",
+            "rect": [
+              1762.0,
+              354.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_7",
+            "rect": [
+              432.0,
+              284.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_7",
+            "rect": [
+              502.0,
+              284.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_7",
+            "rect": [
+              572.0,
+              284.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_7",
+            "rect": [
+              642.0,
+              284.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_4_7",
+            "rect": [
+              712.0,
+              284.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_5_7",
+            "rect": [
+              782.0,
+              284.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_6_7",
+            "rect": [
+              852.0,
+              284.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_7_7",
+            "rect": [
+              922.0,
+              284.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_8_7",
+            "rect": [
+              992.0,
+              284.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_9_7",
+            "rect": [
+              1062.0,
+              284.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_10_7",
+            "rect": [
+              1132.0,
+              284.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_11_7",
+            "rect": [
+              1202.0,
+              284.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_12_7",
+            "rect": [
+              1272.0,
+              284.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_13_7",
+            "rect": [
+              1342.0,
+              284.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_14_7",
+            "rect": [
+              1412.0,
+              284.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_15_7",
+            "rect": [
+              1482.0,
+              284.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_16_7",
+            "rect": [
+              1552.0,
+              284.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_17_7",
+            "rect": [
+              1622.0,
+              284.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_18_7",
+            "rect": [
+              1692.0,
+              284.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_19_7",
+            "rect": [
+              1762.0,
+              284.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_8",
+            "rect": [
+              432.0,
+              214.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_8",
+            "rect": [
+              502.0,
+              214.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_8",
+            "rect": [
+              572.0,
+              214.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_8",
+            "rect": [
+              642.0,
+              214.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_4_8",
+            "rect": [
+              712.0,
+              214.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_5_8",
+            "rect": [
+              782.0,
+              214.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_6_8",
+            "rect": [
+              852.0,
+              214.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_7_8",
+            "rect": [
+              922.0,
+              214.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_8_8",
+            "rect": [
+              992.0,
+              214.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_9_8",
+            "rect": [
+              1062.0,
+              214.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_10_8",
+            "rect": [
+              1132.0,
+              214.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_11_8",
+            "rect": [
+              1202.0,
+              214.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_12_8",
+            "rect": [
+              1272.0,
+              214.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_13_8",
+            "rect": [
+              1342.0,
+              214.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_14_8",
+            "rect": [
+              1412.0,
+              214.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_15_8",
+            "rect": [
+              1482.0,
+              214.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_16_8",
+            "rect": [
+              1552.0,
+              214.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_17_8",
+            "rect": [
+              1622.0,
+              214.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_18_8",
+            "rect": [
+              1692.0,
+              214.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_19_8",
+            "rect": [
+              1762.0,
+              214.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_9",
+            "rect": [
+              432.0,
+              144.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_9",
+            "rect": [
+              502.0,
+              144.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_9",
+            "rect": [
+              572.0,
+              144.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_9",
+            "rect": [
+              642.0,
+              144.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_4_9",
+            "rect": [
+              712.0,
+              144.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_5_9",
+            "rect": [
+              782.0,
+              144.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_6_9",
+            "rect": [
+              852.0,
+              144.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_7_9",
+            "rect": [
+              922.0,
+              144.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_8_9",
+            "rect": [
+              992.0,
+              144.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_9_9",
+            "rect": [
+              1062.0,
+              144.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_10_9",
+            "rect": [
+              1132.0,
+              144.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_11_9",
+            "rect": [
+              1202.0,
+              144.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_12_9",
+            "rect": [
+              1272.0,
+              144.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_13_9",
+            "rect": [
+              1342.0,
+              144.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_14_9",
+            "rect": [
+              1412.0,
+              144.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_15_9",
+            "rect": [
+              1482.0,
+              144.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_16_9",
+            "rect": [
+              1552.0,
+              144.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_17_9",
+            "rect": [
+              1622.0,
+              144.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_18_9",
+            "rect": [
+              1692.0,
+              144.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_19_9",
+            "rect": [
+              1762.0,
+              144.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_10",
+            "rect": [
+              432.0,
+              74.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_10",
+            "rect": [
+              502.0,
+              74.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_10",
+            "rect": [
+              572.0,
+              74.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_10",
+            "rect": [
+              642.0,
+              74.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_4_10",
+            "rect": [
+              712.0,
+              74.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_5_10",
+            "rect": [
+              782.0,
+              74.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_6_10",
+            "rect": [
+              852.0,
+              74.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_7_10",
+            "rect": [
+              922.0,
+              74.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_8_10",
+            "rect": [
+              992.0,
+              74.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_9_10",
+            "rect": [
+              1062.0,
+              74.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_10_10",
+            "rect": [
+              1132.0,
+              74.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_11_10",
+            "rect": [
+              1202.0,
+              74.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_12_10",
+            "rect": [
+              1272.0,
+              74.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_13_10",
+            "rect": [
+              1342.0,
+              74.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_14_10",
+            "rect": [
+              1412.0,
+              74.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_15_10",
+            "rect": [
+              1482.0,
+              74.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_16_10",
+            "rect": [
+              1552.0,
+              74.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_17_10",
+            "rect": [
+              1622.0,
+              74.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_18_10",
+            "rect": [
+              1692.0,
+              74.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_19_10",
+            "rect": [
+              1762.0,
+              74.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_11",
+            "rect": [
+              432.0,
+              4.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_11",
+            "rect": [
+              502.0,
+              4.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_11",
+            "rect": [
+              572.0,
+              4.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_11",
+            "rect": [
+              642.0,
+              4.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_4_11",
+            "rect": [
+              712.0,
+              4.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_5_11",
+            "rect": [
+              782.0,
+              4.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_6_11",
+            "rect": [
+              852.0,
+              4.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_7_11",
+            "rect": [
+              922.0,
+              4.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_8_11",
+            "rect": [
+              992.0,
+              4.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_9_11",
+            "rect": [
+              1062.0,
+              4.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_10_11",
+            "rect": [
+              1132.0,
+              4.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_11_11",
+            "rect": [
+              1202.0,
+              4.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_12_11",
+            "rect": [
+              1272.0,
+              4.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_13_11",
+            "rect": [
+              1342.0,
+              4.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_14_11",
+            "rect": [
+              1412.0,
+              4.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_15_11",
+            "rect": [
+              1482.0,
+              4.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_16_11",
+            "rect": [
+              1552.0,
+              4.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_17_11",
+            "rect": [
+              1622.0,
+              4.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_18_11",
+            "rect": [
+              1692.0,
+              4.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_19_11",
+            "rect": [
+              1762.0,
+              4.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_12",
+            "rect": [
+              432.0,
+              -66.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_12",
+            "rect": [
+              502.0,
+              -66.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_12",
+            "rect": [
+              572.0,
+              -66.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_12",
+            "rect": [
+              642.0,
+              -66.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_4_12",
+            "rect": [
+              712.0,
+              -66.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_5_12",
+            "rect": [
+              782.0,
+              -66.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_6_12",
+            "rect": [
+              852.0,
+              -66.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_7_12",
+            "rect": [
+              922.0,
+              -66.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_8_12",
+            "rect": [
+              992.0,
+              -66.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_9_12",
+            "rect": [
+              1062.0,
+              -66.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_10_12",
+            "rect": [
+              1132.0,
+              -66.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_11_12",
+            "rect": [
+              1202.0,
+              -66.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_12_12",
+            "rect": [
+              1272.0,
+              -66.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_13_12",
+            "rect": [
+              1342.0,
+              -66.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_14_12",
+            "rect": [
+              1412.0,
+              -66.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_15_12",
+            "rect": [
+              1482.0,
+              -66.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_16_12",
+            "rect": [
+              1552.0,
+              -66.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_17_12",
+            "rect": [
+              1622.0,
+              -66.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_18_12",
+            "rect": [
+              1692.0,
+              -66.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_19_12",
+            "rect": [
+              1762.0,
+              -66.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_13",
+            "rect": [
+              432.0,
+              -136.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_13",
+            "rect": [
+              502.0,
+              -136.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_13",
+            "rect": [
+              572.0,
+              -136.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_13",
+            "rect": [
+              642.0,
+              -136.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_4_13",
+            "rect": [
+              712.0,
+              -136.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_5_13",
+            "rect": [
+              782.0,
+              -136.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_6_13",
+            "rect": [
+              852.0,
+              -136.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_7_13",
+            "rect": [
+              922.0,
+              -136.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_8_13",
+            "rect": [
+              992.0,
+              -136.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_9_13",
+            "rect": [
+              1062.0,
+              -136.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_10_13",
+            "rect": [
+              1132.0,
+              -136.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_11_13",
+            "rect": [
+              1202.0,
+              -136.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_12_13",
+            "rect": [
+              1272.0,
+              -136.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_13_13",
+            "rect": [
+              1342.0,
+              -136.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_14_13",
+            "rect": [
+              1412.0,
+              -136.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_15_13",
+            "rect": [
+              1482.0,
+              -136.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_16_13",
+            "rect": [
+              1552.0,
+              -136.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_17_13",
+            "rect": [
+              1622.0,
+              -136.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_18_13",
+            "rect": [
+              1692.0,
+              -136.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_19_13",
+            "rect": [
+              1762.0,
+              -136.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_14",
+            "rect": [
+              432.0,
+              -206.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_14",
+            "rect": [
+              502.0,
+              -206.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_14",
+            "rect": [
+              572.0,
+              -206.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_14",
+            "rect": [
+              642.0,
+              -206.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_4_14",
+            "rect": [
+              712.0,
+              -206.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_5_14",
+            "rect": [
+              782.0,
+              -206.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_6_14",
+            "rect": [
+              852.0,
+              -206.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_7_14",
+            "rect": [
+              922.0,
+              -206.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_8_14",
+            "rect": [
+              992.0,
+              -206.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_9_14",
+            "rect": [
+              1062.0,
+              -206.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_10_14",
+            "rect": [
+              1132.0,
+              -206.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_11_14",
+            "rect": [
+              1202.0,
+              -206.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_12_14",
+            "rect": [
+              1272.0,
+              -206.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_13_14",
+            "rect": [
+              1342.0,
+              -206.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_14_14",
+            "rect": [
+              1412.0,
+              -206.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_15_14",
+            "rect": [
+              1482.0,
+              -206.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_16_14",
+            "rect": [
+              1552.0,
+              -206.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_17_14",
+            "rect": [
+              1622.0,
+              -206.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_18_14",
+            "rect": [
+              1692.0,
+              -206.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_19_14",
+            "rect": [
+              1762.0,
+              -206.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_15",
+            "rect": [
+              432.0,
+              -276.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_15",
+            "rect": [
+              502.0,
+              -276.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_15",
+            "rect": [
+              572.0,
+              -276.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_15",
+            "rect": [
+              642.0,
+              -276.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_4_15",
+            "rect": [
+              712.0,
+              -276.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_5_15",
+            "rect": [
+              782.0,
+              -276.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_6_15",
+            "rect": [
+              852.0,
+              -276.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_7_15",
+            "rect": [
+              922.0,
+              -276.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_8_15",
+            "rect": [
+              992.0,
+              -276.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_9_15",
+            "rect": [
+              1062.0,
+              -276.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_10_15",
+            "rect": [
+              1132.0,
+              -276.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_11_15",
+            "rect": [
+              1202.0,
+              -276.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_12_15",
+            "rect": [
+              1272.0,
+              -276.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_13_15",
+            "rect": [
+              1342.0,
+              -276.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_14_15",
+            "rect": [
+              1412.0,
+              -276.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_15_15",
+            "rect": [
+              1482.0,
+              -276.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_16_15",
+            "rect": [
+              1552.0,
+              -276.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_17_15",
+            "rect": [
+              1622.0,
+              -276.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_18_15",
+            "rect": [
+              1692.0,
+              -276.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_19_15",
+            "rect": [
+              1762.0,
+              -276.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_16",
+            "rect": [
+              432.0,
+              -346.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_16",
+            "rect": [
+              502.0,
+              -346.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_16",
+            "rect": [
+              572.0,
+              -346.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_16",
+            "rect": [
+              642.0,
+              -346.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_4_16",
+            "rect": [
+              712.0,
+              -346.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_5_16",
+            "rect": [
+              782.0,
+              -346.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_6_16",
+            "rect": [
+              852.0,
+              -346.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_7_16",
+            "rect": [
+              922.0,
+              -346.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_8_16",
+            "rect": [
+              992.0,
+              -346.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_9_16",
+            "rect": [
+              1062.0,
+              -346.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_10_16",
+            "rect": [
+              1132.0,
+              -346.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_11_16",
+            "rect": [
+              1202.0,
+              -346.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_12_16",
+            "rect": [
+              1272.0,
+              -346.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_13_16",
+            "rect": [
+              1342.0,
+              -346.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_14_16",
+            "rect": [
+              1412.0,
+              -346.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_15_16",
+            "rect": [
+              1482.0,
+              -346.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_16_16",
+            "rect": [
+              1552.0,
+              -346.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_17_16",
+            "rect": [
+              1622.0,
+              -346.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_18_16",
+            "rect": [
+              1692.0,
+              -346.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_19_16",
+            "rect": [
+              1762.0,
+              -346.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_17",
+            "rect": [
+              432.0,
+              -416.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_17",
+            "rect": [
+              502.0,
+              -416.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_17",
+            "rect": [
+              572.0,
+              -416.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_17",
+            "rect": [
+              642.0,
+              -416.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_4_17",
+            "rect": [
+              712.0,
+              -416.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_5_17",
+            "rect": [
+              782.0,
+              -416.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_6_17",
+            "rect": [
+              852.0,
+              -416.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_7_17",
+            "rect": [
+              922.0,
+              -416.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_8_17",
+            "rect": [
+              992.0,
+              -416.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_9_17",
+            "rect": [
+              1062.0,
+              -416.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_10_17",
+            "rect": [
+              1132.0,
+              -416.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_11_17",
+            "rect": [
+              1202.0,
+              -416.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_12_17",
+            "rect": [
+              1272.0,
+              -416.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_13_17",
+            "rect": [
+              1342.0,
+              -416.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_14_17",
+            "rect": [
+              1412.0,
+              -416.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_15_17",
+            "rect": [
+              1482.0,
+              -416.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_16_17",
+            "rect": [
+              1552.0,
+              -416.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_17_17",
+            "rect": [
+              1622.0,
+              -416.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_18_17",
+            "rect": [
+              1692.0,
+              -416.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_19_17",
+            "rect": [
+              1762.0,
+              -416.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_18",
+            "rect": [
+              432.0,
+              -486.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_18",
+            "rect": [
+              502.0,
+              -486.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_18",
+            "rect": [
+              572.0,
+              -486.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_18",
+            "rect": [
+              642.0,
+              -486.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_4_18",
+            "rect": [
+              712.0,
+              -486.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_5_18",
+            "rect": [
+              782.0,
+              -486.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_6_18",
+            "rect": [
+              852.0,
+              -486.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_7_18",
+            "rect": [
+              922.0,
+              -486.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_8_18",
+            "rect": [
+              992.0,
+              -486.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_9_18",
+            "rect": [
+              1062.0,
+              -486.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_10_18",
+            "rect": [
+              1132.0,
+              -486.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_11_18",
+            "rect": [
+              1202.0,
+              -486.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_12_18",
+            "rect": [
+              1272.0,
+              -486.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_13_18",
+            "rect": [
+              1342.0,
+              -486.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_14_18",
+            "rect": [
+              1412.0,
+              -486.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_15_18",
+            "rect": [
+              1482.0,
+              -486.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_16_18",
+            "rect": [
+              1552.0,
+              -486.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_17_18",
+            "rect": [
+              1622.0,
+              -486.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_18_18",
+            "rect": [
+              1692.0,
+              -486.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_19_18",
+            "rect": [
+              1762.0,
+              -486.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_19",
+            "rect": [
+              432.0,
+              -556.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_19",
+            "rect": [
+              502.0,
+              -556.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_19",
+            "rect": [
+              572.0,
+              -556.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_19",
+            "rect": [
+              642.0,
+              -556.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_4_19",
+            "rect": [
+              712.0,
+              -556.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_5_19",
+            "rect": [
+              782.0,
+              -556.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_6_19",
+            "rect": [
+              852.0,
+              -556.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_7_19",
+            "rect": [
+              922.0,
+              -556.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_8_19",
+            "rect": [
+              992.0,
+              -556.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_9_19",
+            "rect": [
+              1062.0,
+              -556.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_10_19",
+            "rect": [
+              1132.0,
+              -556.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_11_19",
+            "rect": [
+              1202.0,
+              -556.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_12_19",
+            "rect": [
+              1272.0,
+              -556.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_13_19",
+            "rect": [
+              1342.0,
+              -556.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_14_19",
+            "rect": [
+              1412.0,
+              -556.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_15_19",
+            "rect": [
+              1482.0,
+              -556.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_16_19",
+            "rect": [
+              1552.0,
+              -556.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_17_19",
+            "rect": [
+              1622.0,
+              -556.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_18_19",
+            "rect": [
+              1692.0,
+              -556.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_19_19",
+            "rect": [
+              1762.0,
+              -556.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          }
+        ]
+      }
+    }
+  ],
+  "loot": [
+    {
+      "scene": "Assets/Scenes/Shelter.unity",
+      "IsOpen": false,
+      "SessionToken": 0,
+      "FeedbackKey": "loot.drag_hint",
+      "source": null,
+      "search": null,
+      "elapsed": 0.0,
+      "columns": 0,
+      "rows": 0,
+      "cellSize": 66.0,
+      "gap": 4.0,
+      "padding": 6.0,
+      "grid": {
+        "active": false,
+        "rect": [
+          1432.0,
+          232.0,
+          428.0,
+          584.0
+        ],
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "count": 0,
+        "first": null,
+        "next": null,
+        "cells": []
+      },
+      "entries": []
+    }
+  ],
+  "cameras": [
+    {
+      "name": "OutputCamera",
+      "scene": "Assets/Scenes/Shelter.unity",
+      "enabled": true
+    }
+  ]
+}

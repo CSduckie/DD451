@@ -1,0 +1,53 @@
+{
+  "status": "DELIVERED_WITH_NATIVE_ACCEPTANCE_LIMITATIONS",
+  "project": "E:/DD451",
+  "utc": "2026-10-19 02:20:14 UTC",
+  "tests": {
+    "editMode": {
+      "passed": 25,
+      "failed": 0,
+      "skipped": 0,
+      "evidence": "EditMode-25-Final.xml"
+    },
+    "playMode": {
+      "passed": 14,
+      "failed": 0,
+      "skipped": 0,
+      "evidence": "PlayMode-14-Final.xml"
+    },
+    "scope": "009 only; not full-project regression"
+  },
+  "visuals": {
+    "resolution": "1920x1080",
+    "chinese": "EnemyTest-CN-Initial.png",
+    "english": "EnemyTest-EN-GameView-Final.png",
+    "wallAndTwoDrones": "EnemyTest-Wall-API.png",
+    "verified": "Original model, visible clipped FOV, readable CN/EN UI. Rotation/bob separation verified by PlayMode tests; static images are not animation proof.",
+    "method": "English language and wall positioning API-assisted; wall capture at timeScale=0. All temporary settings restored."
+  },
+  "realScene": "RealSceneChecks.json",
+  "integrity": "ExistingAssetIntegrity.json",
+  "releaseState": "ReleaseState.json",
+  "console": "FinalConsole.json",
+  "limitations": [
+    "Native F10 and Tab were sent after verified GameView focus, with no corresponding game response. Reason undetermined.",
+    "User briefly played then confirmed finished; no itemized acceptance report. Other native movement/crouch/search/drag/button sequences not accepted from that observation.",
+    "No standalone Windows build; no complete two-round native play acceptance.",
+    "MCP screenshot helper produced recursive PlayerLoop error once; preserved in CaptureToolError.json. Replaced with Unity end-of-frame ScreenCapture; subsequent console 0 errors/warnings.",
+    "EnemyTest-EN-API.png is a camera fallback without overlay UI; EnemyTest-EN-GameView.png captured a stale Chinese frame. Neither is English UI acceptance evidence.",
+    "Cross-scene same-round persistence and complete death/loss/EV flows remain 010 integration."
+  ],
+  "preserved": {
+    "existingBaselineFiles": 309,
+    "unchanged": 309,
+    "formalScenesAndSharedPrefabs": true,
+    "sourceModel": true
+  },
+  "environment": {
+    "graphics": "Direct3D11 inherited command-line recovery from 007; project graphics configuration unchanged",
+    "finalScene": "Assets/Scenes/Tests/Enemy/EnemyTest.unity",
+    "playing": false,
+    "dirty": false,
+    "missingScripts": 0
+  }
+}

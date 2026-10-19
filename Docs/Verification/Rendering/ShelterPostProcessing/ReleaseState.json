@@ -1,0 +1,25 @@
+{
+  "utc": "2026-10-19T08:22:26.9608799Z",
+  "scenes": [
+    {
+      "path": "Assets/Scenes/Bootstrap.unity",
+      "isLoaded": true,
+      "isDirty": false
+    }
+  ],
+  "anyDirty": false,
+  "play": false,
+  "changing": false,
+  "paused": false,
+  "compiling": false,
+  "updating": false,
+  "prefabStage": false,
+  "testRunActive": false,
+  "captureRunning": false,
+  "timeScale": 1.0,
+  "background": false,
+  "playerSettingsBackground": false,
+  "enterPlayModeOptionsEnabled": true,
+  "enterPlayModeOptions": "DisableDomainReload",
+  "graphics": "Direct3D11"
+}

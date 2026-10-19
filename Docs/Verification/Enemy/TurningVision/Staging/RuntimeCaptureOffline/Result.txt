@@ -1,0 +1,1 @@
+Offline C# 6 only; no Unity Editor/runtime execution. ExitCode=0

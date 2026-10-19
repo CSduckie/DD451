@@ -1,0 +1,19 @@
+{
+  "utc": "2026-10-19T06:19:18.0684560Z",
+  "scene": "Assets/Scenes/Bootstrap.unity",
+  "dirty": false,
+  "scenes": 1,
+  "play": false,
+  "changing": false,
+  "compile": false,
+  "updating": false,
+  "prefab": false,
+  "callback": false,
+  "timeScale": 1.0,
+  "runInBackground": false,
+  "settingsBackground": false,
+  "screen": [
+    1920,
+    1080
+  ]
+}

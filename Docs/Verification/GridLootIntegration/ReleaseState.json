@@ -1,0 +1,34 @@
+{
+  "utc": "2026-10-18T23:01:39.9468189Z",
+  "play": false,
+  "changing": false,
+  "compiling": false,
+  "updating": false,
+  "scene": "Assets/Scenes/Bootstrap.unity",
+  "dirty": false,
+  "applicationRunInBackground": false,
+  "playerSettingsRunInBackground": false,
+  "enterPlayModeOptionsEnabled": false,
+  "enterPlayModeOptions": "None",
+  "devices": [
+    {
+      "name": "Keyboard",
+      "enabled": true,
+      "native": true
+    },
+    {
+      "name": "Mouse",
+      "enabled": true,
+      "native": true
+    }
+  ],
+  "console": {
+    "error": 0,
+    "warning": 0,
+    "raw": {
+      "success": true,
+      "message": "Retrieved 0 log entries.",
+      "data": []
+    }
+  }
+}

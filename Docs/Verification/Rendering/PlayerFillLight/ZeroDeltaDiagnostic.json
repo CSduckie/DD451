@@ -1,0 +1,9 @@
+{
+  "scope": "Read-only isolated math reproduction; no drone or scene mutation",
+  "firstAngle": "0",
+  "firstVelocity": "NaN",
+  "secondAngle": "0",
+  "secondVelocity": "NaN",
+  "source": "DroneController.cs lines95-96 and DroneFlightVisual.cs lines41-42 call SmoothDampAngle with Time.deltaTime even when zero",
+  "taskScriptsChanged": false
+}

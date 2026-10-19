@@ -1,0 +1,58 @@
+[
+  {
+    "Path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs",
+    "Hash": "35D5D329BBE578DD37AB8ED0EE61118C88542A3186D443BCC73CFFFC26E7E60C"
+  },
+  {
+    "Path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs",
+    "Hash": "9369031B47FD633FBBC38E9C7DB0650362A56C1592472E0CF29DF8E438200378"
+  },
+  {
+    "Path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs",
+    "Hash": "EBA65D068F20AD4AEB5AEA8B6985F4AE43A1F7D1CD092E35F6ECFABE06A5CE27"
+  },
+  {
+    "Path": "Assets/Tests/Enemy/PlayMode/DroneVisionAlignmentTests.cs",
+    "Hash": "AD94BC03F779F2F4C2532D86C9F2984AA060AEF1F012AC48C424389B2422E661"
+  },
+  {
+    "Path": "Assets/Tests/Enemy/PlayMode/DroneBehaviourTests.cs",
+    "Hash": "281793EF4FC45B0A8073C6E8C449592417E3FB0C29FA759483C7BD64486BF3A5"
+  },
+  {
+    "Path": "Assets/Tests/Enemy/PlayMode/DroneStatusLightTests.cs",
+    "Hash": "52FE478B78E98D87130BFCDB57112644BDCA2AE6EB94AEBBA3F55A156493C746"
+  },
+  {
+    "Path": "Assets/Tests/Enemy/PlayMode/EnemySceneIntegrationTests.cs",
+    "Hash": "F38B542FAEDC0A0EC9B88E0D7998FB73BC4D28D842998FBBC66E22648DEE5A86"
+  },
+  {
+    "Path": "Assets/Tests/Enemy/EditMode/DroneRoundTests.cs",
+    "Hash": "15A2A6DE0BF8BE0BC68CBD50155C17BCD8DF28287D5623D6F319163C6199CF27"
+  },
+  {
+    "Path": "Assets/Tests/Enemy/Editor/DroneVisionEditor.cs",
+    "Hash": "E755362D16FCB46D256B55636B85CC0FB4D6CD1D4613143CBAA017C54EE7147C"
+  },
+  {
+    "Path": "Assets/Prefabs/Enemy/Drone/Drone.prefab",
+    "Hash": "3DBF48088A9FC82470A4E5DFB056A8E962002B23CED19F883FB23A23891114EB"
+  },
+  {
+    "Path": "Assets/Prefabs/Enemy/Drone/Drone.prefab.meta",
+    "Hash": "7373C79FC9230FA996B140D761A8E06DE02E78D0803E5FA2FDAF064B771E4603"
+  },
+  {
+    "Path": "Assets/Scenes/Tests/Enemy/EnemyTest.unity",
+    "Hash": "AA62E8EDC69AC0C08F7F4F8FA6DE3AD0425A0DDFB7FC344B85D20C7D40242200"
+  },
+  {
+    "Path": "Assets/Scenes/Shelter.unity",
+    "Hash": "F4A36F7B10057621E7CBD4FB013C6D30EB92BE94FBF245786AC2E8C388F892B8"
+  },
+  {
+    "Path": "Assets/Scenes/Ruins.unity",
+    "Hash": "A440DBD94EBAA2C3AB4DCCCEFE3B94E8F84C2388664C7B95D2606F0E214A77E1"
+  }
+]

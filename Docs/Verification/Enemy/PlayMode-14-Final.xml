@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="14" result="Passed" total="14" passed="14" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-19 02:09:41Z" end-time="2026-10-19 02:09:46Z" duration="4.9083729">
+  <test-suite type="TestSuite" id="1579" name="DD451Demo" fullname="DD451Demo" runstate="Runnable" testcasecount="142" result="Passed" start-time="2026-10-19 02:09:41Z" end-time="2026-10-19 02:09:46Z" duration="4.908373" total="14" passed="14" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1449" name="MyPrecious.Enemy.PlayModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.Enemy.PlayModeTests.dll" runstate="Runnable" testcasecount="14" result="Passed" start-time="2026-10-19 02:09:41Z" end-time="2026-10-19 02:09:46Z" duration="4.897878" total="14" passed="14" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="85336" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1433" name="DroneBehaviourTests" fullname="DroneBehaviourTests" classname="DroneBehaviourTests" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-10-19 02:09:41Z" end-time="2026-10-19 02:09:44Z" duration="3.106111" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1441" name="DamageObserverDisablingControllerStillFinishesExplosionCleanup" fullname="DroneBehaviourTests.DamageObserverDisablingControllerStillFinishesExplosionCleanup" methodname="DamageObserverDisablingControllerStillFinishesExplosionCleanup" classname="DroneBehaviourTests" runstate="Runnable" seed="397604131" result="Passed" start-time="2026-10-19 02:09:41Z" end-time="2026-10-19 02:09:41Z" duration="0.048536" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1440" name="ExplodedObjectCannotReviveOnReenableOrSameRoundButNewRoundRestoresIt" fullname="DroneBehaviourTests.ExplodedObjectCannotReviveOnReenableOrSameRoundButNewRoundRestoresIt" methodname="ExplodedObjectCannotReviveOnReenableOrSameRoundButNewRoundRestoresIt" classname="DroneBehaviourTests" runstate="Runnable" seed="1582407249" result="Passed" start-time="2026-10-19 02:09:41Z" end-time="2026-10-19 02:09:41Z" duration="0.063047" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1443" name="InvalidPlayersNeverExplodeADroneEvenWhenBodyShapesOverlap" fullname="DroneBehaviourTests.InvalidPlayersNeverExplodeADroneEvenWhenBodyShapesOverlap" methodname="InvalidPlayersNeverExplodeADroneEvenWhenBodyShapesOverlap" classname="DroneBehaviourTests" runstate="Runnable" seed="662960617" result="Passed" start-time="2026-10-19 02:09:41Z" end-time="2026-10-19 02:09:41Z" duration="0.097722" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1436" name="LostSightKeepsOnlyTheLastSeenPositionThenSearchReturnsToPatrol" fullname="DroneBehaviourTests.LostSightKeepsOnlyTheLastSeenPositionThenSearchReturnsToPatrol" methodname="LostSightKeepsOnlyTheLastSeenPositionThenSearchReturnsToPatrol" classname="DroneBehaviourTests" runstate="Runnable" seed="55048556" result="Passed" start-time="2026-10-19 02:09:41Z" end-time="2026-10-19 02:09:42Z" duration="0.859756" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1437" name="ObstructedLastPositionSearchWaitsAtWallThenReturnsWithoutFollowingHiddenMovement" fullname="DroneBehaviourTests.ObstructedLastPositionSearchWaitsAtWallThenReturnsWithoutFollowingHiddenMovement" methodname="ObstructedLastPositionSearchWaitsAtWallThenReturnsWithoutFollowingHiddenMovement" classname="DroneBehaviourTests" runstate="Runnable" seed="519050381" result="Passed" start-time="2026-10-19 02:09:42Z" end-time="2026-10-19 02:09:42Z" duration="0.458588" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1438" name="OpenBackpackContactAndInvulnerableContactEachExplodeOnlyOnce" fullname="DroneBehaviourTests.OpenBackpackContactAndInvulnerableContactEachExplodeOnlyOnce" methodname="OpenBackpackContactAndInvulnerableContactEachExplodeOnlyOnce" classname="DroneBehaviourTests" runstate="Runnable" seed="736295243" result="Passed" start-time="2026-10-19 02:09:42Z" end-time="2026-10-19 02:09:43Z" duration="0.119956" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1439" name="PatrolSweepContactFinishesWithoutUsingTheUninitializedStateAgain" fullname="DroneBehaviourTests.PatrolSweepContactFinishesWithoutUsingTheUninitializedStateAgain" methodname="PatrolSweepContactFinishesWithoutUsingTheUninitializedStateAgain" classname="DroneBehaviourTests" runstate="Runnable" seed="1022017162" result="Passed" start-time="2026-10-19 02:09:43Z" end-time="2026-10-19 02:09:43Z" duration="0.285161" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1442" name="ReenablingLivingControllerRestoresVisionAndCanAcquireAgain" fullname="DroneBehaviourTests.ReenablingLivingControllerRestoresVisionAndCanAcquireAgain" methodname="ReenablingLivingControllerRestoresVisionAndCanAcquireAgain" classname="DroneBehaviourTests" runstate="Runnable" seed="2036627035" result="Passed" start-time="2026-10-19 02:09:43Z" end-time="2026-10-19 02:09:43Z" duration="0.024571" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1444" name="RotorAndVisualAnimationNeverRotateOrScaleThePhysicalRootOrVision" fullname="DroneBehaviourTests.RotorAndVisualAnimationNeverRotateOrScaleThePhysicalRootOrVision" methodname="RotorAndVisualAnimationNeverRotateOrScaleThePhysicalRootOrVision" classname="DroneBehaviourTests" runstate="Runnable" seed="1350488495" result="Passed" start-time="2026-10-19 02:09:43Z" end-time="2026-10-19 02:09:43Z" duration="0.112560" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1435" name="SphereSweepStopsAtSolidWallAndNeverMovesIntoAnotherDepthPlane" fullname="DroneBehaviourTests.SphereSweepStopsAtSolidWallAndNeverMovesIntoAnotherDepthPlane" methodname="SphereSweepStopsAtSolidWallAndNeverMovesIntoAnotherDepthPlane" classname="DroneBehaviourTests" runstate="Runnable" seed="625198829" result="Passed" start-time="2026-10-19 02:09:43Z" end-time="2026-10-19 02:09:44Z" duration="0.840460" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1434" name="TwoDronesPatrolTheirOwnRoutesAndExplosionDoesNotStopTheOther" fullname="DroneBehaviourTests.TwoDronesPatrolTheirOwnRoutesAndExplosionDoesNotStopTheOther" methodname="TwoDronesPatrolTheirOwnRoutesAndExplosionDoesNotStopTheOther" classname="DroneBehaviourTests" runstate="Runnable" seed="1896042907" result="Passed" start-time="2026-10-19 02:09:44Z" end-time="2026-10-19 02:09:44Z" duration="0.180224" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1445" name="EnemySceneIntegrationTests" fullname="EnemySceneIntegrationTests" classname="EnemySceneIntegrationTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-19 02:09:44Z" end-time="2026-10-19 02:09:46Z" duration="1.786308" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1446" name="DroneContactClosesRealBackpackCancelsQueuedDragAndInterruptsSearchWithoutItemChanges" fullname="EnemySceneIntegrationTests.DroneContactClosesRealBackpackCancelsQueuedDragAndInterruptsSearchWithoutItemChanges" methodname="DroneContactClosesRealBackpackCancelsQueuedDragAndInterruptsSearchWithoutItemChanges" classname="EnemySceneIntegrationTests" runstate="Runnable" seed="856583878" result="Passed" start-time="2026-10-19 02:09:44Z" end-time="2026-10-19 02:09:45Z" duration="1.439901" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1447" name="QueuedF10KeepsEnemyRoundExplosionHealthAndLiveSearchSession" fullname="EnemySceneIntegrationTests.QueuedF10KeepsEnemyRoundExplosionHealthAndLiveSearchSession" methodname="QueuedF10KeepsEnemyRoundExplosionHealthAndLiveSearchSession" classname="EnemySceneIntegrationTests" runstate="Runnable" seed="990669627" result="Passed" start-time="2026-10-19 02:09:45Z" end-time="2026-10-19 02:09:46Z" duration="0.171877" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1448" name="SceneUsesRealModelFourRotatingPropellersCinemachineAndGeneratedVision" fullname="EnemySceneIntegrationTests.SceneUsesRealModelFourRotatingPropellersCinemachineAndGeneratedVision" methodname="SceneUsesRealModelFourRotatingPropellersCinemachineAndGeneratedVision" classname="EnemySceneIntegrationTests" runstate="Runnable" seed="166031445" result="Passed" start-time="2026-10-19 02:09:46Z" end-time="2026-10-19 02:09:46Z" duration="0.168845" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/cs200/AppData/LocalLow/DefaultCompany/DD451Demo\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

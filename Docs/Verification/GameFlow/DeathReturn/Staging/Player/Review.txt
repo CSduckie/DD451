@@ -1,0 +1,40 @@
+07F Player recovery draft — 2026-10-19
+Status: staging only. No Assets files changed; no Unity calls, compilation or test execution.
+
+拟修改文件
+Assets/Scripts/Player/MonoBehaviour/PlayerHealth.cs
+Assets/Scripts/Player/MonoBehaviour/PlayerController.cs
+对应完整草稿与读取时SHA256见本目录*.cs.txt和SourceHashes.json。实施时先重读最新文件，只插入两个方法、TakeDamage场景锁防护和调整“三个入口”的旧注释；不要用草稿整文件覆盖后来修改。
+
+最小接口
+PlayerController.RecoverAfterDeathInShelter(Vector3 spawnPosition)
+- 仅在sceneTransitionBlocked为true、有效配置/活动玩家/有限坐标时允许。
+- 委托Health内部同名入口；要求IsPrepared、IsDead、CurrentRound>0、非通知期间。
+- PrepareHealth恢复满血、IsDead=false、伤害无敌计时初值；不写CurrentRound，不触及Items或物品使用次数。
+- 清背包与交互UI标志，再复用RelocatePlayer(spawn,true)，最后NotifyPrepared。
+- 保持独立场景锁和Kinematic状态；只有GameFlow完成所有准备后才SetSceneTransitionBlocked(false)。
+- 原RelocateWithinRun不变，普通成功撤离仍保持伤势和轮次；同轮ResetForExploration仍拒绝。
+- 严格死亡入口重复调用返回false，不会给活着的受伤玩家补血，也不会重复瞬移/通知。
+
+02C保护
+最新PlayerController包含真实胶囊蹲伏和CanStand。复用RelocatePlayer会先移到新出生点、Physics.SyncTransforms，再SetCrouching(false)，所以旧低顶不会阻止庇护所恢复；若新出生点确实被低顶堵住，则保留安全蹲姿，不强行恢复站立胶囊。没有绕过CanStand，也不重写碰撞体/模型缩放逻辑。
+
+通知顺序与重入
+1. TakeDamage先设置IsDead并HandleDeath进入Die、阻断交互，然后HealthChanged，再Died，finally结束isNotifying。
+2. Died处理器中可以立即锁玩家、关闭会话并记录待返回，但不能直接恢复。StartCoroutine会同步运行到首个yield；死亡协程应先yield return null，或至少确保恢复步骤发生在本次Died通知栈退出之后。仅指望StartCoroutine异步是不正确的。
+3. 新Health入口保留isNotifying拒绝，Died/HealthChanged监听中直接尝试恢复必须false，后续监听仍看到同一死亡快照。NotifyPrepared也沿用受保护的HealthChanged通知，不发第二次Died/NonLethalDamaged。
+4. 追加采用既有场景锁作为PlayerHealth.TakeDamage的拒绝条件：TryExtract先受理并同步持锁后伤害false；真实死亡先成立则TryExtract因IsDead拒绝。只检查IsSceneTransitionBlocked，不能把开包/普通输入锁变成免伤；当前无人机本已检查同一锁，不修改其伤害规则。流程恢复保持锁直到准备/卸载结束。具体竞态与失败边界见../TransitionRaceReview.txt。
+5. RelocatePlayer既有Teleported调用未隔离监听异常。新入口不额外改变其语义；若瞬移监听抛出，Health可能已恢复但方法未返回。GameFlow死亡专用重试路径应观察玩家实际IsDead：仍死则恢复；已恢复则仅RelocateWithinRun到目标出生点。不能再次调用ResetForExploration，否则会推进轮次/重置使用次数。不要把普通成功撤离路径混用此分支。
+6. 游戏流程使用自己的死亡结算/返回步骤记录，已成功恢复后加载/卸载后续失败Retry不可将此严格入口返回false当作再次清算理由。Health入口不承担经济或来源去重。
+
+建议重点测试（由07F独立GameFlow/Player测试承载）
+- 死亡回调内恢复false，通知末尾仍HP0/Die/同轮；回调后锁定恢复true，HealthChanged观察到满血/新位置/非Die且仍锁定。
+- 恢复前无场景锁、未准备、活着、初始Shelter第0轮、非法坐标均拒绝且不移动不补血。
+- 同一轮重复恢复false，第一次成功后受伤再次调用不回血；health.CurrentRound完全不变，同轮ResetForExploration继续false。
+- 死前低顶蹲伏，恢复至开阔出生点站立胶囊/脚底正确；若目标也有低顶则保持蹲姿，解除锁后能安全移动。
+- 恢复期间Body为Kinematic，旧输入与速度清空；解除锁后新移动输入有效。
+- 普通撤离RelocateWithinRun继续保留伤势；Items次数在死亡返回时不重置，实际下一轮才重置。
+
+此草稿未验证编译/运行，最终以主程接续最新源文件、真实场景测试结果为准。
+
+补充测试草稿：../Tests/PlayerSceneTransitionTests.cs.txt。保留原两个测试意图，旧持锁伤害断言改为拒绝后解锁真实死亡；新增两项恢复专项覆盖通知重入/次帧同轮恢复与未准备、未死、无锁、非法坐标、重复恢复拒绝。物品使用次数由主GameFlow死亡流程专项覆盖，本Player夹具不伪造Items验证。

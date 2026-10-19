@@ -1,0 +1,13 @@
+{
+  "source": "Existing Unity TestRunner GUI per-test cache; latest per-test records may span runs and contain no run timestamps/job id",
+  "qualification": "Correlate with original MCP job's completed=53 and failure list. Do not label this cache export official NUnit XML or original-run exact timestamp proof.",
+  "recoveredUtc": "2026-10-19T06:43:59.7901010Z",
+  "actual": 0,
+  "passed": 0,
+  "nonPassed": 0,
+  "outdated": 0,
+  "fortyCurrentPassedRows": false,
+  "latestDiagnostics": [],
+  "officialXmlPath": null,
+  "results": []
+}

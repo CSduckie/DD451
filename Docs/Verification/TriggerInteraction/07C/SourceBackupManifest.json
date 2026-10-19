@@ -1,0 +1,37 @@
+[
+  {
+    "path": "Assets/Tests/GameFlow/Editor/MinimumLoopSceneBuilder.cs",
+    "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Tests\\GameFlow\\Editor\\MinimumLoopSceneBuilder.cs",
+    "sha256": "50BBE520634A1DCD4EA3A99A8E2E05DE957C2E171C35FD02201C885F3FAADFF2"
+  },
+  {
+    "path": "Assets/Tests/GameFlow/Editor/MinimumLoopSceneBuilder.cs.meta",
+    "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Tests\\GameFlow\\Editor\\MinimumLoopSceneBuilder.cs.meta",
+    "sha256": "7E71CB6AD8C3D687066784A87B3A7730862B40FB9D428127EDD00202FEBD615D"
+  },
+  {
+    "path": "Assets/Tests/GameFlow/Editor/MyPrecious.GameFlow.Editor.asmdef",
+    "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Tests\\GameFlow\\Editor\\MyPrecious.GameFlow.Editor.asmdef",
+    "sha256": "21FEAE601D7EBDB86D06E563B35AD8611D905A193B85B468D7597631EC6DB25A"
+  },
+  {
+    "path": "Assets/Tests/GameFlow/Editor/MyPrecious.GameFlow.Editor.asmdef.meta",
+    "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Tests\\GameFlow\\Editor\\MyPrecious.GameFlow.Editor.asmdef.meta",
+    "sha256": "6BEA4798862507666BFDE1BAA64DF3AD079C03B9E64A3CE97F90B64B9F3E0C85"
+  },
+  {
+    "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowSceneBindings.cs",
+    "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Scripts\\GameFlow\\MonoBehaviour\\GameFlowSceneBindings.cs",
+    "sha256": "E772B51A90E094DD4D47058F86C7ECD781B346F608331F8BD4A6CD173C60C253"
+  },
+  {
+    "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowSceneBindings.cs.meta",
+    "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Scripts\\GameFlow\\MonoBehaviour\\GameFlowSceneBindings.cs.meta",
+    "sha256": "C32B9975E96E68B2D4384B8998FB1ED59280DBBCD71A2477AEF343A02CD9998B"
+  },
+  {
+    "path": "Docs/Architecture/MinimumLoopSetup.txt",
+    "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Docs\\Architecture\\MinimumLoopSetup.txt",
+    "sha256": "41D5B37189DC118348588620C3AF1C66B9725D2317E75F7D50C872C899CCFAFE"
+  }
+]

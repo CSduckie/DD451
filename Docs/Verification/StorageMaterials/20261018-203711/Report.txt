@@ -1,0 +1,37 @@
+LowPolyStoragePack URP material repair
+Date: 2026-10-18 local
+Project: E:/DD451
+Unity: 6000.2.12f1
+Active pipeline: Assets/Settings/PC_RPAsset.asset (UniversalRenderPipelineAsset)
+
+Cause
+The 15 materials referenced LowPolyShaders/LowPolyPBRShader or LowPolyShaders/LowPolyUnlitShader.
+Both original shader sources use Built-in surface shader programs. Palette textures resolve correctly.
+The live shader isSupported flag alone did not establish URP compatibility.
+
+Change
+Converted these 15 existing .mat assets in place under Assets/BrokenVector/LowPolyStoragePack/Materials/.
+Old PBR -> Universal Render Pipeline/Lit (9).
+Old Unlit -> Universal Render Pipeline/Unlit (6).
+Preserved actual existing shader intent: Storage_Diffuse_Blue was already Unlit before repair.
+Copied _MainTex to _BaseMap, including scale/offset, and _Color to _BaseColor.
+Copied PBR _Glossiness to _Smoothness and retained _Metallic (metal group: 0.388 / 0.496).
+No material GUID or prefab reference replacement. No runtime or Editor source scripts added.
+Only the target materials were saved, using SaveAssetIfDirty per asset.
+
+Verification
+15/15 materials resolve to URP shaders and their original five palette textures.
+87 prefabs / 93 renderer material slots checked: no missing or non-URP material slots.
+All 15 materials rendered on the pack's Box_02 mesh in the active URP preview.
+Accepted visual evidence: All15-MeshPreview.png.
+Rows: Diffuse / Metal / Unlit. Columns: Blue / Green / Purple / Red / Yellow.
+The earlier All15-After.png is an empty prefab-preview attempt; it is NOT acceptance evidence.
+Console final read: 0 errors. A diagnostic search produced one MCP warning about package path normalization; search fell back to the entire project.
+276 protected files hash checked with zero changes (pack non-material assets including .meta, GraphicsSettings, QualitySettings, Shelter scene file).
+Shelter was already dirty before work and remains open and dirty. It was not saved, reloaded or switched.
+Editor remains out of Play, not compiling.
+
+Backup
+Before/ contains original content of all 15 materials and their 15 .meta files.
+ProtectedFiles.json contains before hashes. Audit.json contains live post-repair readings.
+

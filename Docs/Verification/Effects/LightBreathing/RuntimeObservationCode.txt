@@ -1,0 +1,107 @@
+if (!UnityEditor.EditorApplication.isPlaying) return "Not playing; observation not started.";
+var effects = UnityEngine.Object.FindObjectsByType<LightFlicker>(UnityEngine.FindObjectsInactive.Include, UnityEngine.FindObjectsSortMode.None);
+System.Array.Sort(effects, (a, b) => string.CompareOrdinal(a.name, b.name));
+if (effects.Length != 2) return "Expected exactly two existing lamp effects.";
+var flags = System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic;
+var darkField = typeof(LightFlicker).GetField("isDark", flags);
+var originalField = typeof(LightFlicker).GetField("originalIntensity", flags);
+var phaseField = typeof(LightFlicker).GetField("breathingPhase", flags);
+var coroutineField = typeof(LightFlicker).GetField("flickerCoroutine", flags);
+var folder = "E:/DD451/Docs/Verification/Effects/LightBreathing";
+var culture = System.Globalization.CultureInfo.InvariantCulture;
+var rows = new System.Text.StringBuilder("seconds\tframe\tlamp\tphase\tintensity\tisDark\tactive\tenabled\toriginalIntensity\tbreathingPhase\n");
+var checks = new System.Collections.Generic.List<string>();
+var disabled = new bool[2];
+var reenabled = new bool[2];
+var resumeAt = new double[2];
+var oldBreathing = new bool[] { effects[0].enableBreathing, effects[1].enableBreathing };
+var oldDark = new float[] { effects[0].darkIntensityMultiplier, effects[1].darkIntensityMultiplier };
+var captures = new bool[3];
+bool variants = false;
+bool oldBackground = UnityEngine.Application.runInBackground;
+UnityEngine.Application.runInBackground = true;
+double start = UnityEditor.EditorApplication.timeSinceStartup;
+int lastFrame = -1;
+int samples = 0;
+UnityEditor.EditorApplication.CallbackFunction observe = null;
+observe = () =>
+{
+    double elapsed = UnityEditor.EditorApplication.timeSinceStartup - start;
+    if (!UnityEditor.EditorApplication.isPlaying || elapsed >= 34)
+    {
+        UnityEditor.EditorApplication.update -= observe;
+        for (int i = 0; i < effects.Length; i++)
+        {
+            if (effects[i] == null) continue;
+            effects[i].enableBreathing = oldBreathing[i];
+            effects[i].darkIntensityMultiplier = oldDark[i];
+            if (disabled[i] && !reenabled[i])
+            {
+                if (i == 0) effects[i].enabled = true;
+                else effects[i].gameObject.SetActive(true);
+            }
+        }
+        UnityEngine.Application.runInBackground = oldBackground;
+        System.IO.File.WriteAllText(folder + "/RuntimeSamples.tsv", rows.ToString());
+        checks.Add("Completed=" + (elapsed >= 34));
+        checks.Add("DurationSeconds=" + elapsed.ToString("F3", culture));
+        checks.Add("SampleFrames=" + samples);
+        checks.Add("GameResolution=" + UnityEngine.Screen.width + "x" + UnityEngine.Screen.height);
+        checks.Add("VariantsStarted=" + variants);
+        checks.Add("Captures(high,low,dark)=" + string.Join(",", System.Array.ConvertAll(captures, x => x.ToString())));
+        System.IO.File.WriteAllLines(folder + "/RuntimeChecks.txt", checks.ToArray());
+        return;
+    }
+    if (UnityEngine.Time.frameCount == lastFrame) return;
+    lastFrame = UnityEngine.Time.frameCount;
+    samples++;
+    for (int i = 0; i < effects.Length; i++)
+    {
+        var effect = effects[i];
+        if (effect == null || effect.targetLight == null) continue;
+        bool dark = (bool)darkField.GetValue(effect);
+        float intensity = effect.targetLight.intensity;
+        float original = (float)originalField.GetValue(effect);
+        float breathPhase = (float)phaseField.GetValue(effect);
+        rows.Append(elapsed.ToString("F4", culture)).Append('\t').Append(lastFrame).Append('\t').Append(effect.name).Append('\t')
+            .Append(variants ? (i == 0 ? "fractionalDark" : "breathingOff") : "defaults").Append('\t')
+            .Append(intensity.ToString("F6", culture)).Append('\t').Append(dark).Append('\t').Append(effect.gameObject.activeInHierarchy)
+            .Append('\t').Append(effect.enabled).Append('\t').Append(original.ToString("F6", culture)).Append('\t')
+            .Append(breathPhase.ToString("F6", culture)).Append('\n');
+        if (i == 0 && !variants && elapsed < 10)
+        {
+            int capture = dark && intensity == 0 ? 2 : (!dark && intensity > 49.5f ? 0 : (!dark && intensity < 33f ? 1 : -1));
+            if (capture >= 0 && !captures[capture])
+            {
+                captures[capture] = true;
+                var names = new string[] { "Game-High.png", "Game-Low.png", "Game-Dark.png" };
+                UnityEngine.ScreenCapture.CaptureScreenshot(folder + "/" + names[capture]);
+                checks.Add("CaptureRequest=" + names[capture] + ";seconds=" + elapsed.ToString("F4", culture) + ";intensity=" + intensity.ToString("F6", culture));
+            }
+        }
+        if (elapsed >= 10 && !disabled[i] && dark && intensity <= 0.001f)
+        {
+            if (i == 0) effect.enabled = false;
+            else effect.gameObject.SetActive(false);
+            disabled[i] = true;
+            resumeAt[i] = elapsed + 0.3;
+            checks.Add(effect.name + ":DisableDuringDark;restore50=" + (Mathf.Abs(effect.targetLight.intensity - 50f) < 0.001f) + ";coroutineCleared=" + (coroutineField.GetValue(effect) == null));
+        }
+        else if (disabled[i] && !reenabled[i] && elapsed >= resumeAt[i])
+        {
+            if (i == 0) effect.enabled = true;
+            else effect.gameObject.SetActive(true);
+            reenabled[i] = true;
+            checks.Add(effect.name + ":Reenabled;baseline50=" + (Mathf.Abs((float)originalField.GetValue(effect) - 50f) < 0.001f) + ";coroutinePresent=" + (coroutineField.GetValue(effect) != null));
+        }
+    }
+    if (elapsed >= 23 && !variants && reenabled[0] && reenabled[1])
+    {
+        effects[0].darkIntensityMultiplier = 0.5f;
+        effects[1].enableBreathing = false;
+        variants = true;
+        checks.Add("VariantsStartedAt=" + elapsed.ToString("F4", culture));
+    }
+};
+UnityEditor.EditorApplication.update += observe;
+return "Started 34-second live observation; existing lamps only; temporary variants after 23 seconds; settings restored on completion.";

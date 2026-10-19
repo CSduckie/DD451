@@ -1,0 +1,21 @@
+{
+  "id": "996c9601a9664add845299c14985494e",
+  "owner": "Backpack",
+  "sameIdentity": true,
+  "entriesWithSameId": 1,
+  "taken": true,
+  "bagCount": 2,
+  "dragging": false,
+  "preview": false,
+  "backpackFeedback": "backpack.cancelled",
+  "lootFeedback": "loot.return_hint",
+  "rect": [
+    1578.0,
+    674.0,
+    136.0,
+    136.0
+  ],
+  "matchesPreview": true,
+  "width": 1920,
+  "height": 1080
+}

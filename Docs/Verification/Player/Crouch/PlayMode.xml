@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="18" result="Passed" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-19 07:22:24Z" end-time="2026-10-19 07:22:55Z" duration="31.597527">
+  <test-suite type="TestSuite" id="1215" name="DD451Demo" fullname="DD451Demo" runstate="Runnable" testcasecount="179" result="Passed" start-time="2026-10-19 07:22:24Z" end-time="2026-10-19 07:22:55Z" duration="31.597527" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1197" name="MyPrecious.Player.PlayModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.Player.PlayModeTests.dll" runstate="Runnable" testcasecount="45" result="Passed" start-time="2026-10-19 07:22:24Z" end-time="2026-10-19 07:22:55Z" duration="31.579491" total="18" passed="18" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="85336" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1152" name="PlayerCrouchColliderTests" fullname="PlayerCrouchColliderTests" classname="PlayerCrouchColliderTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-19 07:22:24Z" end-time="2026-10-19 07:22:29Z" duration="4.741531" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1155" name="BackpackKeepsSmallCapsuleAndDamageCloseCannotForceStandingIntoCeiling" fullname="PlayerCrouchColliderTests.BackpackKeepsSmallCapsuleAndDamageCloseCannotForceStandingIntoCeiling" methodname="BackpackKeepsSmallCapsuleAndDamageCloseCannotForceStandingIntoCeiling" classname="PlayerCrouchColliderTests" runstate="Runnable" seed="957043420" result="Passed" start-time="2026-10-19 07:22:24Z" end-time="2026-10-19 07:22:24Z" duration="0.575197" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1153" name="CrouchChangesCapsuleAroundFeetAndRepeatedStandingDoesNotDrift" fullname="PlayerCrouchColliderTests.CrouchChangesCapsuleAroundFeetAndRepeatedStandingDoesNotDrift" methodname="CrouchChangesCapsuleAroundFeetAndRepeatedStandingDoesNotDrift" classname="PlayerCrouchColliderTests" runstate="Runnable" seed="1450277771" result="Passed" start-time="2026-10-19 07:22:24Z" end-time="2026-10-19 07:22:25Z" duration="0.146903" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1154" name="LowPassageAllowsCrouchMovementButBlocksStandingAndJumpUntilExit" fullname="PlayerCrouchColliderTests.LowPassageAllowsCrouchMovementButBlocksStandingAndJumpUntilExit" methodname="LowPassageAllowsCrouchMovementButBlocksStandingAndJumpUntilExit" classname="PlayerCrouchColliderTests" runstate="Runnable" seed="917240907" result="Passed" start-time="2026-10-19 07:22:25Z" end-time="2026-10-19 07:22:28Z" duration="3.394852" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1156" name="NewRoundResetsCapsuleAtDestinationInsteadOfTestingOldCeiling" fullname="PlayerCrouchColliderTests.NewRoundResetsCapsuleAtDestinationInsteadOfTestingOldCeiling" methodname="NewRoundResetsCapsuleAtDestinationInsteadOfTestingOldCeiling" classname="PlayerCrouchColliderTests" runstate="Runnable" seed="698391784" result="Passed" start-time="2026-10-19 07:22:28Z" end-time="2026-10-19 07:22:28Z" duration="0.459949" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1157" name="SideWallTriggerAndExplicitlyIgnoredColliderDoNotBlockStanding" fullname="PlayerCrouchColliderTests.SideWallTriggerAndExplicitlyIgnoredColliderDoNotBlockStanding" methodname="SideWallTriggerAndExplicitlyIgnoredColliderDoNotBlockStanding" classname="PlayerCrouchColliderTests" runstate="Runnable" seed="157937207" result="Passed" start-time="2026-10-19 07:22:28Z" end-time="2026-10-19 07:22:29Z" duration="0.146741" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1170" name="PlayerJumpGraceTests" fullname="PlayerJumpGraceTests" classname="PlayerJumpGraceTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-19 07:22:29Z" end-time="2026-10-19 07:22:38Z" duration="9.060860" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1175" name="BackpackDeathDisableAndRoundResetDiscardPendingLandingJump" fullname="PlayerJumpGraceTests.BackpackDeathDisableAndRoundResetDiscardPendingLandingJump" methodname="BackpackDeathDisableAndRoundResetDiscardPendingLandingJump" classname="PlayerJumpGraceTests" runstate="Runnable" seed="1642664393" result="Passed" start-time="2026-10-19 07:22:29Z" end-time="2026-10-19 07:22:32Z" duration="3.293708" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1171" name="ReleasedTapBeforeLandingIsBufferedAndLaunchesOnlyOnce" fullname="PlayerJumpGraceTests.ReleasedTapBeforeLandingIsBufferedAndLaunchesOnlyOnce" methodname="ReleasedTapBeforeLandingIsBufferedAndLaunchesOnlyOnce" classname="PlayerJumpGraceTests" runstate="Runnable" seed="1631969297" result="Passed" start-time="2026-10-19 07:22:32Z" end-time="2026-10-19 07:22:34Z" duration="2.032280" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1172" name="TapTooFarBeforeLandingExpiresWithoutLaunching" fullname="PlayerJumpGraceTests.TapTooFarBeforeLandingExpiresWithoutLaunching" methodname="TapTooFarBeforeLandingExpiresWithoutLaunching" classname="PlayerJumpGraceTests" runstate="Runnable" seed="1073316356" result="Passed" start-time="2026-10-19 07:22:34Z" end-time="2026-10-19 07:22:36Z" duration="2.050833" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1173" name="WalkingOffEdgeAllowsOneCoyoteJumpButNeverAnAirborneSecondJump" fullname="PlayerJumpGraceTests.WalkingOffEdgeAllowsOneCoyoteJumpButNeverAnAirborneSecondJump" methodname="WalkingOffEdgeAllowsOneCoyoteJumpButNeverAnAirborneSecondJump" classname="PlayerJumpGraceTests" runstate="Runnable" seed="1322829441" result="Passed" start-time="2026-10-19 07:22:36Z" end-time="2026-10-19 07:22:37Z" duration="0.708749" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1174" name="WalkingOffEdgePastCoyoteWindowDoesNotAllowJump" fullname="PlayerJumpGraceTests.WalkingOffEdgePastCoyoteWindowDoesNotAllowJump" methodname="WalkingOffEdgePastCoyoteWindowDoesNotAllowJump" classname="PlayerJumpGraceTests" runstate="Runnable" seed="411169831" result="Passed" start-time="2026-10-19 07:22:37Z" end-time="2026-10-19 07:22:38Z" duration="0.969951" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1176" name="PlayerMovementTests" fullname="PlayerMovementTests" classname="PlayerMovementTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-19 07:22:38Z" end-time="2026-10-19 07:22:51Z" duration="13.351394" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1179" name="BackpackKeepsPoseAndGravityAndDoesNotReplayLockedJump" fullname="PlayerMovementTests.BackpackKeepsPoseAndGravityAndDoesNotReplayLockedJump" methodname="BackpackKeepsPoseAndGravityAndDoesNotReplayLockedJump" classname="PlayerMovementTests" runstate="Runnable" seed="459173727" result="Passed" start-time="2026-10-19 07:22:38Z" end-time="2026-10-19 07:22:41Z" duration="3.161023" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1181" name="CinemachineFollowsMovementAndWarpAndCanBindReplacementPlayer" fullname="PlayerMovementTests.CinemachineFollowsMovementAndWarpAndCanBindReplacementPlayer" methodname="CinemachineFollowsMovementAndWarpAndCanBindReplacementPlayer" classname="PlayerMovementTests" runstate="Runnable" seed="419888228" result="Passed" start-time="2026-10-19 07:22:41Z" end-time="2026-10-19 07:22:43Z" duration="2.022792" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1180" name="RealKeyboardInteractFiresOnceAndDoesNotReplayThroughLocksOrReenable" fullname="PlayerMovementTests.RealKeyboardInteractFiresOnceAndDoesNotReplayThroughLocksOrReenable" methodname="RealKeyboardInteractFiresOnceAndDoesNotReplayThroughLocksOrReenable" classname="PlayerMovementTests" runstate="Runnable" seed="1381049007" result="Passed" start-time="2026-10-19 07:22:43Z" end-time="2026-10-19 07:22:44Z" duration="1.468004" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1177" name="RealKeyboardMovesCrouchesJumpsOnceAndRespectsWallAndPlane" fullname="PlayerMovementTests.RealKeyboardMovesCrouchesJumpsOnceAndRespectsWallAndPlane" methodname="RealKeyboardMovesCrouchesJumpsOnceAndRespectsWallAndPlane" classname="PlayerMovementTests" runstate="Runnable" seed="1075655683" result="Passed" start-time="2026-10-19 07:22:44Z" end-time="2026-10-19 07:22:49Z" duration="4.654310" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1178" name="ShortJumpBesidePlatformReachesTopThenWalksOffAndLands" fullname="PlayerMovementTests.ShortJumpBesidePlatformReachesTopThenWalksOffAndLands" methodname="ShortJumpBesidePlatformReachesTopThenWalksOffAndLands" classname="PlayerMovementTests" runstate="Runnable" seed="1466646735" result="Passed" start-time="2026-10-19 07:22:49Z" end-time="2026-10-19 07:22:51Z" duration="2.039389" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1182" name="PlayerReferenceMovementTests" fullname="PlayerReferenceMovementTests" classname="PlayerReferenceMovementTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-19 07:22:51Z" end-time="2026-10-19 07:22:55Z" duration="4.420518" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1185" name="RealFreeFallReachesButDoesNotExceedConfiguredTerminalSpeed" fullname="PlayerReferenceMovementTests.RealFreeFallReachesButDoesNotExceedConfiguredTerminalSpeed" methodname="RealFreeFallReachesButDoesNotExceedConfiguredTerminalSpeed" classname="PlayerReferenceMovementTests" runstate="Runnable" seed="1112377054" result="Passed" start-time="2026-10-19 07:22:51Z" end-time="2026-10-19 07:22:52Z" duration="1.233219" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1184" name="ReferenceGravityAndJumpSpeedMakeReleasedJumpLowerThanHeldJump" fullname="PlayerReferenceMovementTests.ReferenceGravityAndJumpSpeedMakeReleasedJumpLowerThanHeldJump" methodname="ReferenceGravityAndJumpSpeedMakeReleasedJumpLowerThanHeldJump" classname="PlayerReferenceMovementTests" runstate="Runnable" seed="908358047" result="Passed" start-time="2026-10-19 07:22:52Z" end-time="2026-10-19 07:22:54Z" duration="1.623792" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1183" name="VelocityEasesTowardInputSlowsAfterReleaseAndCanReverseInAir" fullname="PlayerReferenceMovementTests.VelocityEasesTowardInputSlowsAfterReleaseAndCanReverseInAir" methodname="VelocityEasesTowardInputSlowsAfterReleaseAndCanReverseInAir" classname="PlayerReferenceMovementTests" runstate="Runnable" seed="1340147693" result="Passed" start-time="2026-10-19 07:22:54Z" end-time="2026-10-19 07:22:55Z" duration="1.558352" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/cs200/AppData/LocalLow/DefaultCompany/DD451Demo\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

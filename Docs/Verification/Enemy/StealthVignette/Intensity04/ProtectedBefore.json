@@ -1,0 +1,37 @@
+[
+  {
+    "Algorithm": "SHA256",
+    "Hash": "A942B90EC8DBF256A5C6007C5D16AE07AABC33FCD5AF35E41E5444E0DA7EBAF6",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Shelter.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "C5E5CBACB10DA5B087420D64CA42761C2822627EFF5C160ADECE1E04DE4C9DED",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Bootstrap.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "1671B7057E8EED827936CE93D97A262669FC2A756C4E8CB0A412C4591760FDD2",
+    "Path": "E:\\DD451\\Assets\\Prefabs\\Player\\Player.prefab"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "7456EE6888DE03CFFC87AA52AA31B800867507EAF82C05A91FF850C993F0FD64",
+    "Path": "E:\\DD451\\Assets\\Prefabs\\Player\\PlayerCamera.prefab"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "92BD722219978A1A68056ECBB2D200A3B706312197C160AD1C757710B14FB1DD",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Shelter\\Global Volume Profile.asset"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "4A16B36CE474675ABD29E5976174DE61BD8D24A8DF4611DDB0F975E383D36D28",
+    "Path": "E:\\DD451\\Assets\\Settings\\Effects\\RuinsPostProcessingProfile.asset"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "D852F71AF7F38936C364E175BE3A30756B262C699EB7C532B3DEDCB015AFC381",
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Stealth\\MonoBehaviour\\PlayerStealthVignette.cs"
+  }
+]

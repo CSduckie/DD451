@@ -1,0 +1,155 @@
+MyPrecious P0 — 07无敌人最小循环交接
+后续更新（2026-10-19）：死亡返回现已由07F接入并完成专项验收，详见 Docs/Handoffs/07F_DeathReturn_Handoff.txt；225项相关测试通过，普通1920 API辅助三轮验证完成，Editor已退出Play。以下原07记录保留其历史时点和原生键鼠限制，不作为当前死亡功能仍缺失的结论。
+版本：2026-10-18；原任务Dispatch v14，当前显示范围遵循ProjectRules Dispatch v16/A23。
+工程：E:/DD451。以下路径相对工程根。1920排队输入扩展复验和最终普通Play画面检查已完成，Editor已停止Play；两轮原生键鼠已尝试但未完成，详见FinalUIReport.json。
+
+一、当前交付与最新验收范围
+
+正式Bootstrap、Shelter、Ruins三张场景与7项07资源已生成并接线，接真实00—06模块、同一玩家、实际搜刮来源、背包和仓库。正式场景Missing Script与测试Driver检查为0。
+项目当前有12个007自有C#、4个asmdef、19个不同测试。旧版整合已成功执行21次：11 EditMode+7原PlayMode+同一排队输入用例在三尺寸各1次；之后扩展用例在800通过1次、最终1920通过1次。这些分属不同源码时点，不作为全部测试在最终版本重新执行的总括结论。
+原生两轮试玩仍未完成：D/Tab尝试没有RawInput事件，原生跨容器拖拽未提交；滚轮与关闭按钮的已通过路径单独记录，不扩大为完整原生闭环。
+
+用户最新明确默认16:9、1920×1080，暂不要求其他分辨率/宽高比。ProjectRules.txt Dispatch v16/A23已覆盖旧“双尺寸/800与1280验收”目标；旧记录保留，不再补做多分辨率支持或将1280中断列为交付阻塞。
+PlayerSettings已通过Unity API设置并回读：defaultScreenWidth=1920、defaultScreenHeight=1080、defaultIsNativeResolution=false；FullScreenWindow模式保持不变。修改前为1024×768、native=true。这不表示Windows已经打包。
+1920扩展验证曾发现医疗包缩略名换行裁切（preferredHeight 33.31 > 可用31.75）。007显示层已修复，最终扩展用例1/1通过、5.7065322秒；最终5张1920截图均已打开检查，固定标签溢出扫描均为空。自动测试与画面检查不代表原生两轮完成。
+最终状态：Play/changing/compiling/updating均false，唯一打开场景为干净的Assets/Scenes/Bootstrap.unity，GameIndex=7；runInBackground恢复false，PlayerSettings保持1920×1080/native=false，Console最终0错误、0警告。证据见Docs/Verification/MinimumLoop/FinalUIReport.json。
+
+二、具体文件与资源
+
+新增生产源码：
+- Assets/Scripts/GameFlow/RuntimeData/GameFlowStage.cs。
+- Assets/Scripts/GameFlow/MonoBehaviour/GameFlowManager.cs。
+- Assets/Scripts/GameFlow/MonoBehaviour/GameFlowSceneBindings.cs。
+- Assets/Scripts/GameFlow/MonoBehaviour/GameFlowInteractable.cs。
+- Assets/Scripts/GameFlow/MonoBehaviour/GameFlowHUD.cs。
+- Assets/Scripts/GameFlow/MonoBehaviour/GameFlowResponsiveLayout.cs。
+- Assets/Scripts/GameFlow/MyPrecious.GameFlow.asmdef。
+
+三张正式场景：
+- Assets/Scenes/Bootstrap.unity。
+- Assets/Scenes/Shelter.unity。
+- Assets/Scenes/Ruins.unity。
+
+七项07正式资源：
+- Assets/Prefabs/GameFlow/GameFlowModule.prefab。
+- Assets/Prefabs/GameFlow/ShelterStoragePoint.prefab。
+- Assets/Prefabs/GameFlow/DeparturePoint.prefab。
+- Assets/Prefabs/GameFlow/ExtractionPoint.prefab。
+- Assets/Prefabs/UI/GameFlow/GameFlowHUD.prefab。
+- Assets/Data/Localization/GameFlow/GameFlowText.asset。
+- Assets/Data/LootTables/MinimumLoopLoot.asset。
+
+搭建器与测试：
+- Assets/Tests/GameFlow/Editor/MinimumLoopSceneBuilder.cs及MyPrecious.GameFlow.Editor.asmdef。
+- Assets/Tests/GameFlow/EditMode/PlayerFlowEntryTests.cs、GameFlowSettlementTests.cs及MyPrecious.GameFlow.EditModeTests.asmdef。
+- Assets/Tests/GameFlow/PlayMode/PlayerSceneTransitionTests.cs、MinimumLoopSceneTests.cs、MinimumLoopPointerTests.cs及MyPrecious.GameFlow.PlayModeTests.asmdef。
+项目自有C#不写namespace，asmdef的rootNamespace为空；对应.meta和已有GUID保留。
+
+必要小范围修改：
+- Assets/Scripts/Player/MonoBehaviour/PlayerController.cs：首次庇护所准备、保生命定位、独立场景锁和冻结期间物理保护。
+- Assets/Scripts/Player/MonoBehaviour/PlayerHealth.cs：首次0轮及新探索轮准备，定位不复活或回血。
+- Assets/Scripts/Loot/MonoBehaviour/LootRuntimeManager.cs：此前与06协调提供公开ValidateDropPrefab(out string)包装，复用其真实地面Prefab校验。
+- ProjectSettings/EditorBuildSettings.asset：正式Bootstrap入口及Shelter/Ruins启用，保留其他场景条目和原启用标记。
+- ProjectSettings/ProjectSettings.asset：按本次用户最新默认1920×1080要求设置PlayerSettings。
+文档为Docs/Architecture/MinimumLoopSetup.txt、本交接及Docs/Verification/MinimumLoop/证据。
+
+三、流程实现与职责
+
+Bootstrap复用00 GameBootstrap.prefab中已有ItemModule和LocalizationModule，缺少才补建，避免重复身份账本/F10监听。其他常驻模块全部引用同一ItemManager。
+语言表在初始化前接齐。全新运行中文、空背包、空仓库、EV0、探索轮次0，正式白盒不挂发物或结算TestDriver。
+首次Shelter使用PrepareInitialShelter；真正出发才推进ItemManager.BeginRound(nextRound)，先LootRuntimeManager.PrepareRound再加载Ruins。
+目标先Additive加载与校验，再移动同一玩家根、接相机/UI，最后卸载旧场景并解锁；玩家属于当前真实地图，不长期留在DDOL场景。
+失败保留已分配轮次和已加载目标；修复后重试同一操作，不再次BeginRound、重复生成地图或重复Reset回血。已加载目标后路径改动会被拒绝，需修复并恢复原路径后重试。
+撤离先加载并校验Shelter，再核对真实背包/01身份及06遗留快照；完整预校验后标保有和记损，最后统一通知、刷新EV。
+retainedCount、lostCount和settledRound保存提交进度；重试不重复结算。返回只RelocateWithinRun，不刷新生命、使用次数、布局或升级。
+旧UI先关闭来源、拖拽与确认并停用，其OnDisable结束后才绑定新UI；Closing只关闭另一侧并用guard避免递归。真实仓库Scene权限和探索上下文在业务UI开启前设置。
+E仍归02、Tab/使用归04、R归当前活动拖拽、F10只归03。07不建立第二套物品/格子/生命/语言、全局GameManager或事务框架。
+完整层级、稳定原点、公开入口与Inspector说明见MinimumLoopSetup.txt。
+
+四、04/05/06新规则与显示适配
+
+背包丢弃遵循用户在04追加的“后果提示确认后销毁/下轮找回”规则。TryDiscardFromBackpack最终调用01.RecordLoss(id,BackpackDiscard)：普通物品Lost，唯一物品PendingRecovery，下轮由06在OriginalSpawnPointId恢复同一InstanceId。
+不生成本轮可再拾取的GroundItem，旧“丢地再捡回”要求已被覆盖；地图原生GroundItem拾取与背包返存当前箱子仍保留。
+丢弃当时清保有并刷新EV，撤离排除Lost/PendingRecovery，不再次记损。庇护所背包丢弃不可用，仓库确认遗弃仍由05负责。
+BackpackDiscardUIBuilder.Attach接入同一Bridge及DiscardConfirmationButton，隔离旧按下的迟到松手；关闭、受击和失效token取消确认，F10只刷新文字。
+仓库20×20→20×24，EV≥7手动免费只向下增4行，20列不变；同viewport下原格子不缩小，EV下降不撤容。
+共享两容器Prefab的cellSize=36、gap=3、padding=8由用户在另一聊天统一，007保留并使用，不算作本次共享Prefab修改。目标1920同屏两容器单格/间距/同占格物品必须等大。
+
+07原宽屏实例修正为背包360×680、三行18号提示；仓库984×720，底部提示18号/反馈16号并保留原viewport/grid；HUD提示底部居中。
+此前范围下新增GameFlowResponsiveLayout：挂Shelter/Ruins绑定对象，GameFlowModule的BootstrapHUD只接hud备用。Builder新增Update Minimum Loop Responsive Layout菜单，更新现有正式资产而不重建场景。
+既有800兼容布局为左背包216×512、右上仓库556×350、右下Shelter556×152；仓库viewport514×154仅竖滚，正文12—14px。比例514/(20×36+19×3+2×8)使两容器单格约23.3341732px，格缝及多格外框同比例。
+已修ConfigureDetails误把自身viewport移回左上的问题、英文Close source按钮过窄及HUD行高不足。宽屏使用保存的原布局并应用必要文字修正，不再扩展小屏框架。
+最终1920修复限定007显示层：医疗包/旋转为一格高物品使用单行省略缩略名，按实际外框分配名称与尺寸文字区，完整名称保留在详情；英文丢弃确认按当前正文preferredHeight动态增高并下移按钮；仓库遗弃/取消按钮文字区及Shelter标题高度补足。未为通过而改弱测试断言，失败记录保留。
+
+五、已执行自动测试及证据口径
+
+早期正式整合：19个不同测试，21次成功执行，结果均0失败/0跳过：
+1. EditMode 11/11，1.6136秒，作业21e5d7c781f0455c953bd9239e16997f。
+   EditModeSummary.json按已返回get_test_job原响应复录，明确标注来源；后续状态轮询不再返回已消费结果，Summary不冒称Unity官方XML。
+2. 原PlayMode 7/7，94.7100753秒，作业a88f857edceb49d29a11bb05e2c76970；PlayModeResults.json保存实际结果。
+3. 同一MinimumLoopPointerTests用例三次：800×600 1/1、5.080453秒（Pointer800Results.json）；1280×720 1/1、4.6759205秒（Pointer1280Results.json）；1920×1080 1/1、5.1619349秒（Pointer1920Results.json）。
+19个不同用例=11+7+1；21次执行=11+7+同一pointer用例3尺寸。重复尺寸不当作新的不同用例。
+
+EditMode覆盖第0轮准备、保生命/轮次/无敌状态定位、死亡限制、独立场景锁、结算完整通知与不重复提交、唯一原点同身份恢复、普通刷新、归属错误/孤儿实例拒绝和轮次溢出。
+原PlayMode覆盖正式空初始状态及两轮同一玩家、目标接线失败同轮重试、返回加载失败只结算一次、医疗包和生命跨返回/UI重开保持、满仓仍返回/再次出发，以及锁期间物理和残留输入。
+测试注入的伤害、满仓样本和配置故障仅作用于测试运行，不保存在正式白盒。
+
+Pointer用例使用InputSystem.QueueStateEvent，经真实InputAction和UGUI完成搜索取物、双向拖拽和R旋转，检查身份/原点/布局、撤离前EV0/后EV7、第二轮唯一物不重复与唯一EventSystem。
+真实LootUI.Update推进逐件搜索；未强制揭示。出发、定位、开来源和撤离由公开API驱动，每次两轮。因此该成绩不是原生移动/E操作或两轮OS键鼠试玩。
+
+响应式后续结果：
+- 扩展用例800×600：1/1通过，0失败/跳过，5.6848193秒；作业22880b09884741cdb688527f90a4685d，ResponsivePointer800Results.json。它是同一用例另一次执行，不增加distinct数。
+- 1280启动在域重载/焦点恢复阶段中断，执行0项、无断言结果；ResponsivePointer1280Interrupted.json。既不算失败也不算通过，且用户已改范围，不再重跑1280。
+- 新1920扩展断言曾发现医疗包名称preferredHeight=33.31>31.75，随后也发现英文确认文字高度问题；ResponsivePointer1920BeforeFix.json、ResponsivePointer1920DialogBeforeFix.json保留修复前失败。
+- 修复后1920×1080扩展用例：1/1通过，0失败/跳过，5.7065322秒；作业5b712cbb867b4651b49c9c98f1c463b3，ResponsivePointer1920Results.json。结果明确标注not native OS input；测试源码未因显示层修复削弱断言。
+累计记录23次成功执行（历史21+后续800一次+最终1920一次），仍只有19个不同用例；中间失败和1280零项中断单独保留，不从累计口径删除。该累计不表示所有用例均在最终代码重新运行。
+
+六、原生输入、截图与当前缺口
+
+历史ResponsiveNativeAttempts.json记录800时GameView焦点为true、Player.CanAct为true；Keyboard(RawInput).lastUpdateTime在D/Tab前后都为37.14864680000028，位置未动且背包未打开。800丢弃取消原生点击也未生效；先前F10期间有外部用户输入，结果无法可靠归因。
+最终1920原生尝试见FinalUIReport.json的native1920：GameView已聚焦、键盘enabled、CanAct=true，但Tab和D前后RawInput lastUpdateTime始终13.731399199998123；Tab未开包、D未移动，位置保持(-8,0,0)。这是已实际尝试后的未完成结果，并非尚未尝试。
+从仓库医疗包(0,0)拖向背包(2,0)的原生鼠标操作没有提交；医疗包仍在仓库(0,0)，布娃娃仍在背包(0,0)，结束后无活动拖拽。
+最终1920原生滚轮通过：仓库纵滚normalizedPosition从1改为0且horizontal=false；关闭按钮通过：背包/仓库均关闭、CanAct恢复true。仅此两条路径写为原生通过。
+两轮原生键鼠闭环未完成，仍需要可正常送达的原生输入路径。不能用API或QueueStateEvent替代，也不声称已查清RawInput未送达根因。
+
+最终普通Play从正式Bootstrap启动，API准备出发/拾取/撤离/仓库/升级会话，使用Unity异步ScreenCapture取得并逐张打开检查以下1920×1080图像：
+- Final1920-Chinese-Shelter-API.png。
+- Final1920-Chinese-Loot-API.png。
+- Final1920-English-Discard-API.png。
+- Final1920-English-Storage-API.png。
+- Final1920-Chinese-Storage-API.png。
+以上文件位于Docs/Verification/MinimumLoop/；文件名API/Final不代表过程全部来自原生输入。四个固定标签扫描（中文搜刮、英文丢弃、英文仓库、中文仓库）均为[]；扫描范围为活动TMP固定标签，排除可滚动详情内容，并检查缩略文本的纵向高度。
+1920同屏实测背包/仓库cell均40.18605px、gap均3.34883738px；仓库升级后20列24行，horizontalScroll=false。图像与几何检查已完成，不能扩大为原生两轮通过。
+历史1280图像和Responsive800小屏修复证据继续保留，旧尺寸不再是当前必做项。MCP composited截图曾在ScreenshotUtility.cs:197报告PlayerLoop递归，原错误保留；最终采集避开该入口，最后Console读取0错误/警告。
+
+七、静态快照与历史编译
+
+FinalStaticAudit.json属于新增响应组件前的11个C#快照；响应式修复前快照保存在ResponsiveStaticAudit.Before1920Fix.json。ResponsiveStaticAudit.json已在最终1920通过、源码冻结后重新扫描，旧快照原文件/hash保留。
+最新快照记录12个C#、4个asmdef、19个测试属性，namespace声明0、4个asmdef可解析且rootNamespace为空，正式3场景+7资源及meta存在，并保存冻结源码/资产SHA-256。收尾再次核对以上26个文件及26个meta，共52项hash全部匹配；FinalUIReport的布局组件和pointer测试hash也匹配当前文件。静态检查不等于原生试玩通过。
+StaticAudit.json的“10个C#、16测试”及06资源缺失是开工历史，不能继续描述当前状态。
+源码阶段曾用Unity 6000.2.12f1自带dotnet/csc执行CompileSources.ps1，40/40自有程序集离线编译通过，退出码0、无错误警告；见OfflineCompilationResults.json和当时输出。
+历史40/40不是本次最终Unity运行验收。中间DLL/RSP仅写Temp/Task007OfflineCompile；本次正式资源和测试已实际在Unity导入执行，最终Console及退出状态已记录在FinalUIReport.json。
+
+八、参考来源与核实版本
+
+本机真实源码已只读检查，参考仓库未修改。
+- LiDarProject https://github.com/CSduckie/LiDarProject，E:/Portfolio-LiDar，HEAD 7d691ab14ff69a85cf6be7b91cc910139205507f。
+  Assets/Script/Managers/SceneLoader.cs：参考SceneManager与等待加载完成的协程；不迁入固定等1秒及菜单逻辑。
+- CardGame https://github.com/CSduckie/CardGame，E:/Portfolio-Card-Clone，HEAD 57eabac0f946f21ef00b489e83c1c133905ea673。
+  Assets/Scripts/Managers/SceneLoadManager.cs：参考分步加载/活动场景/卸载，改为先准备目标，不迁入Addressables、房间业务或事件总线。
+  Assets/Scripts/Managers/GameManager.cs及UI：参考序列化直接引用、刷新和按钮状态，不迁入卡牌业务或第二全局GameManager。
+- 2DArpg-Portfolio https://github.com/CSduckie/2DArpg-Portfolio，E:/Portfolio-Clone，HEAD c601c36f95efdd4d67327489f9edb58412aa54b4。
+  直接复用02已完成的Player与状态机改编，不另复制ARPG运动或动画状态机。
+三个版本通过.git/HEAD和refs/heads/main只读核实；git -C访问受限后使用这些只读文件，没有修改参考仓库或申请额外权限。
+工程版本Unity 6000.2.12f1、Input System 1.14.2、Cinemachine 3.1.7、UGUI 2.0.0、URP 17.2.0、Test Framework 1.6.0；未升级Packages。
+
+九、接续事项
+
+2026-10-18主程后续：用户亲手操作并确认原生F10/Tab/E/A/D与背包↔仓库双向拖拽成功，后台真实设备、动作、身份与坐标记录一致；证据Docs/Verification/NativeInputFollowup/。原工具键盘无设备事件，工具drag源按下与目标移动合并在一次输入更新，未触发BeginDrag；本次不为工具行为修改业务逻辑。
+随后用户要求恢复原背包格子大小。两边最新66/4/6，正式Canvas1920×1080、仓库viewport1430、20列完整、庇护所信息移至底部，扩容仍不缩格。放大后现有正式指针用例1/1通过，中文/英文/升级截图通过；见Docs/Verification/GridSizingLarge/。此前36/3/8均保留为历史，后续不要回退。完整原生多轮闭环、Windows构建等原未验收项仍不因此完成。
+
+1920×1080扩展排队输入复验、最终普通Play画面检查、原生尝试及退出记录已完成；不继续扩展800/1280兼容任务。
+仍需从正式Bootstrap开始连续两轮真实键鼠闭环，包含移动/E、搜索中断重开、地面拾取、符合新规则的丢弃确认、撤离和双向转仓。
+EV7升级、EV降低不撤容、唯一返箱遗留/仓库遗弃后的原点同身份找回、F10跨场景和迟到请求，应按已有自动覆盖与实际原生覆盖分别报告，不能合并为全通过。
+08继续从同一正式入口独立复核并做Windows构建；09接敌人，10另加明确死亡返回与01记损/背包布局清理。
+Editor现已停止Play并回到干净Bootstrap，最终设置和Console见第一节及FinalUIReport.json。Windows构建、敌人、完整死亡返回、完整P0和两轮原生闭环均无本文件的完成声明。

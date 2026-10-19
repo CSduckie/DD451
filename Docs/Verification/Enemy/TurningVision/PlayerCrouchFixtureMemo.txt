@@ -1,0 +1,49 @@
+09H 转身视野：02C 玩家与现有夹具只读备忘
+2026-10-19。仅文件检查；没有运行 Unity、写入 Assets 或修改测试。以下是夹具建议，不是漏检根因或测试通过结论。
+
+1. 当前真实契约
+Docs/Handoffs/02C_CrouchCollider_Handoff.txt 已记录正式玩家 18/18 回归。
+Assets/Prefabs/Player/Player.prefab: Capsule height=2、center=(0,1,0)、radius=.4，根缩放=(1,1,1)。
+PlayerController.SetCrouching (Assets/Scripts/Player/MonoBehaviour/PlayerController.cs:311) 从初始化缓存的 standingHeight/standingCenter 计算：默认蹲伏 height=1.3、center.y=.65，脚底不变；反复蹲起不累加偏移。不能手工覆盖这些字段来让视野通过。
+CanStand 检查头顶扩展区域实体，排除自身/Trigger/明确忽略碰撞的对象。顶棚下松开 C 仍保持蹲伏，不能把松键立即当作站立完成。
+PlayerController.Update 每帧读取 InputReader；地面状态经 PlayerStateBase.ChangeGroundState -> GroundState -> PlayerCrouchState.Enter 自然调用 SetCrouching。PlayerFallState 在非开包且允许起身时恢复站立。
+DroneVision.CanSeePrepared 当前读取 capsule.bounds.center；正式玩家蹲伏后此点下降 .35 m。同一根坐标并不代表相同的视野采样点。
+
+2. 可控真实 Prefab / 自然输入布置
+复用模式：Assets/Tests/Player/PlayMode/PlayerCrouchColliderTests.cs 的 PreparePlayer、SetKeys、IsSettled，以及 Assets/Tests/Player/PlayMode/PlayerIntegrationTests.cs:229 的 PlayerPlayModeTestBase.CreatePlayer。
+在 inactive 的临时 holder 下实例化正式 Player.prefab；只克隆运行时 PlayerConfigSO/InputActionAsset，保留 .65 蹲伏比例和正式胶囊，不改共享资源。赋好运行时配置后激活，ResetForExploration(唯一正轮次, 出生点)。
+创建真实 BoxCollider 地板，groundLayers 必须包含地板；保留动态刚体与正常重力。等待 IsGrounded 且竖直速度接近零。不要沿用旧敌人几何夹具的 groundLayers=0/kinematic 然后只按 C：那样没有自然地面 Crouch 状态转换。
+InputSystem.AddDevice<Keyboard> + QueueStateEvent(keyboard, new KeyboardState(...))：空按键=站立静止，C=蹲伏静止，A/D=站立移动，C+A/C+D=蹲行。等待实际 IsCrouching、CurrentState、Body 位移/速度；不要调用 InputSystem.Update、SendMessage(Update)、ChangeState(Alert/Chase) 或写入目标替代自然流程。
+站立/蹲伏的观测条件包含实际 capsule.height、center、bounds.min.y，移动条件包含实际 x 位移。释放键后等待减速稳定，再把对象当作静止目标。
+旧 SetCrouching + SetBackpackOpen(true) 是合法的专项姿态冻结方法，但会令 CanAct=false、主动速度归零，不适合“玩家走入转动视锥”的主验收。
+输入设置可采用现有 EnemySceneIntegrationTests 或 PlayerPlayModeTestBase 的瞬态 InputSettings 克隆，保存/恢复 settings、runInBackground，删除测试键盘及克隆。Enemy 测试程序集已有 Unity.InputSystem 引用，但没有 Player PlayMode 测试程序集引用；不要为了复用基类改程序集依赖，复用短小 fixture 模式即可。
+
+3. 转身与接触隔离
+实例化正式 Drone.prefab，只克隆运行时 DroneConfigSO；实体 SphereCollider 半径保持 .25。只用运行时巡逻点让 FixedUpdate 的 MoveTowards 改变 FacingDirection，再由正常 Update 的 SmoothDampAngle 转头；用足够长的路段避免到点，左右两方向各一组。需要放慢采样时可以明确记录仅运行时 turnSmoothTime/速度调整，不能覆盖 prefab 或场景配置。
+可令运行时 chaseSpeed=0 留出自然 .5 秒 Alert -> Chase 的观察时间。巡逻保留小的非零速度以触发真实转身。静止玩家用空按键并真实落地；移动玩家用 A/D 或 C+A/C+D 进入。
+每次采样计算机身世界球心（含 center/scale）与 capsule.ClosestPoint 的距离，要求 > 世界半径 + .1 m，并断言 HasExploded=false、生命不变；若运动会缩小余量，重新选择运行时路线/初始站位。不要关闭实体 Collider、改半径、把玩家置为无效或依靠 Hidden 免伤。
+通常 2–3 m 分离适合开始/结束附近，但不能把它作为所有中段的固定布置：正式视野 radius=5、angle=90、thickness=2，是有限厚度的真实 3D 扇形。yaw 约 90° 时，处于同一 XY 玩法平面的远处玩家可能根本不在此刻 Collider 内。
+中段/边缘用当前 capsule.bounds.center 与 RangeCollider.ClosestPoint 的误差、实际形状重叠证明“确实入锥”，同时保留上述 .1 m 实体间隙。不可用站立时缓存的中心、根坐标或仅外接 bounds 替代，也不可通过扩大厚度/角度把不在锥内的目标算作漏检。
+夹具布置完成后 SyncTransforms 一次是合理的；接受行为必须等待自然 Update/FixedUpdate，不在每帧观察器额外调用 CanSee/FindVisiblePlayer/SetHeading/Rebuild 来修正生产状态。记录被动几何数据及 CurrentState/Target/FacingRotation；首次发现样本需同时证明仍在转身且进入正常 Alert。
+若发现后继续转头使真实中心离锥，应按既有丢失规则判断，而不是要求永远锁定；完整 .5 秒 Alert -> Chase 另用能持续留在实际视野内的布置。
+
+4. Cover 隐藏对照
+Assets/Scripts/Enemy/Stealth/MonoBehaviour/CoverArea.cs:54 的 IsHidden 查询当前所有有效非 Trigger 玩家 Collider 与启用 BoxCollider 的 Physics.ComputePenetration，没有 Trigger 计数缓存，也不依赖 CanAct。02C 缩短胶囊会直接参与这一查询，生产 CoverArea 无需改动。
+给玩家脚边建立足够覆盖站立/蹲伏实际胶囊的真实 Trigger Box（例如脚底上方 1 m 为中心、高 3 m）；站立入草应 Hidden=false，C 蹲伏且仍重叠应 true，C 蹲行离开后应 false。各对照保持同一视锥内和同一非接触条件，避免把“中心离开锥”误记为草丛隐藏。
+墙后对照用真实非 Trigger BoxCollider 放在视野起点到当前胶囊中心之间、覆盖两种高度和必要深度；不能让墙同时变成玩家头顶障碍，干扰站起判断。不要改遮挡 mask。
+Chase -> 蹲伏入草后自然 2 秒 Alert 应停止移动；站起/离草在倒计时内自然再发现直接 Chase。若身体实际接触，无论隐藏与否仍依 09G 爆炸，这不属于视觉隐藏失效。
+
+5. 现有 Enemy PlayMode 用例应留意的地方
+- DroneAlertTests 的 HiddenPlayerStillExplodesOnDirectContactAndSweepBeforeAnyStateUpdate (317) 与 HiddenTargetStopsBeforeFixedUpdateMovementButPhysicalContactStillExplodes (358)：先 MovePlayerCenter 再蹲伏，中心随后降低 .35 m。旧临时 Capsule 初始 center=0、radius=.5，蹲伏成为 center.y=-.35、height=1.3；不能当作正式 prefab 的 .65/.4。现有接触断言应继续读 ClosestPoint/真实半径，不以原 root/center 重合推定接触。这里只标记复核点，未确认失败。
+- DroneAlertTests 的 cover/再发现组（ChaseCoverStopsForTwoSecondsWithoutRestartThenResumesExistingRouteIndex、CoverRediscoveryImmediatelyChasesWhenStandingOrLeavingActualCover、DiscoverySwitchesToCoverDelayButWallAndDistanceLossUseSearch、TwoDronesKeepCoverAndDiscoveryTimersIndependent、SameRoundPreservesBothTimersButNewRoundDisableAndDestroyClearThem）：Cover 高度 3 m 可容纳当前较矮胶囊，SetCrouchHeld 还打开背包使姿态保留；这些夹具不是自然键盘移动验收。站起后重新读取中心，并等待真实 Update，保留此前修正的等待方式。
+- DroneStatusLightTests.ActualPatrolAlertChaseAndSearchEachKeepBreathingInTheirOwnColor (32)：同样用临时 capsule + API 蹲伏/开包，不能把它当正式尺寸覆盖。站起后等真实视野更新，不新增“同一协程立即 Chase”断言。
+- DroneVisionAlignmentTests.CreatePlayer/PlacePlayerCenter (160/176) 已使用当前 capsule.center 补偿，站立几何专项仍合理；如果新增蹲伏，必须在蹲伏完成后重读偏移。其两个现有用例没有自然 C 输入，也没有真实 prefab 蹲伏覆盖。
+- EnemySceneIntegrationTests.PlaceAlertPlayer (638) 按当前 bounds.center 偏移定位，但随后设 kinematic；适合静态检测，不适合自然移动/地面蹲伏。RealPrefabClearsTheOldRadiusHeadGapAndOnlyBodyContactExplodesPatrolOnce (359) 的 flightY 由 capsule.bounds.max.y 计算，本身适应高度；若新增蹲姿阶段，应在姿态完成后重新计算，并保留刚修复的 WaitForDiscoveryAlert/自然更新同步。
+- DroneBehaviourTests 无蹲伏调用，当前主行为矩阵的 standing-only 约定不因 02C 必然需要迁移。不要为新测试覆盖整份旧源或恢复之前的暂存版本。
+额外静态提醒（非 PlayMode）：CoverAreaTests.RotatedVolumeUsesItsBoxShapeAndDepthInsteadOfAnAxisAlignedBoundsCheck (109) 先手改 height=.2/radius=.1 再 SetCrouching；02C 会按初始化缓存 height=2 重算为1.3，小球假设已失效。未运行，不能据此报告实际失败；新视野任务不要照搬该布置。
+
+02C 当前保护哈希（只读快照）
+PlayerController.cs SHA256 69E2354AE224E65FA89539A5D327946BDD547377027247F7816AFD85DB1E3A5D
+PlayerFallState.cs SHA256 0D276B1A989BB1401DDDEB4B457F38DE5FCD6E5D38D008EB8ECAA5F181FEAED4
+PlayerConfigSO.cs SHA256 868FD217FECB535E2E718470C15428D59ABE6ABA7308E92065F80836C7168F77
+Player.prefab SHA256 4AED52ADAA549D2B20E85B4815A170D32B8E902B83C8A983494ED83B57AC249F

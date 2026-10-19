@@ -1,0 +1,9 @@
+09F source integration complete — 2026-10-19
+Authoritative handoff: Docs/Handoffs/09F_TimedAlert_Handoff.txt.
+Fixed natural discovery Alert0.5s, Chase renderer-only hiding, actual crouched-cover Alert2s, immediate real rediscovery, same-patrol timeout and hidden-before-contact protection implemented. Existing flight/heading, shared rounds and authored routes retained.
+Evidence: EditMode-Full.json 45/45 with per-test results; PlayMode-Full.json completed53 with10 GameFlow failures and no Enemy failure entries (result=null; no independent Enemy40 official XML/skip-count claim); final PlayMode-GameFlow-Final.xml13/13 passed after explicitly authorized scene/loot fixes.
+FinalTestAndMetaAudit.txt verifies15 deployed files and15 preserved metas/GUIDs. FinalSceneAndLootAudit.txt verifies6 current authorized hashes,8 other protected files, and only2 authorized Ruins property changes; original unique Doll/Medkit stay in original box, new box Food50% only.
+OrdinaryPlay/Run-16ed070b preserves initial edge-loss/Search FAIL; Run-a8f4c7af natural sequence PASS, drift0,6 screenshots. API player positioning/temporary body and queued C only; no native input or independent main-programmer acceptance claim. See OrdinaryPlay/Review.txt for screenshot/CSV review and limitations.
+Main programmer requested takeover while last probe was near completion.009 immediately cancelled/stopped; run finished naturally before cancellation took effect. All callback/input cleanup completed; no further probe adjustment or repeat suite.
+Final06:50:37Z Ruins clean/Edit, no Play/compile/update/PrefabStage, no test job/probe/refresh lock, timeScale1/backgroundfalse, native input devices only. Console0errors/0warnings; scene/prefab missing scripts0;4rotors2400deg/s.
+Explicit release appended to EditorCoordination.txt: 009 Assets和Editor已释放，主程可以验收. After release only Docs work; no Unity operations.

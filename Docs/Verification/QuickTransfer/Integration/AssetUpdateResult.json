@@ -1,0 +1,17 @@
+[
+  {
+    "table": "BackpackText",
+    "count": 48,
+    "guid": "b19760d0b3bcc99469d958f20bb84d2b"
+  },
+  {
+    "table": "WarehouseText",
+    "count": 36,
+    "guid": "ae6400dfb8ba13a46bfbfb6038e51d88"
+  },
+  {
+    "table": "LootText",
+    "count": 71,
+    "guid": "57228fefe9de4004eba58974706c05af"
+  }
+]

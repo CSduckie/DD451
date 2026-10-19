@@ -1,0 +1,35 @@
+{
+  "result": {
+    "success": true,
+    "message": "Test job status retrieved.",
+    "error": null,
+    "data": {
+      "job_id": "7bd6ddccd62e4861b281338f64996ab6",
+      "status": "running",
+      "mode": "PlayMode",
+      "started_unix_ms": 1792379858576,
+      "finished_unix_ms": null,
+      "last_update_unix_ms": 1792379858576,
+      "progress": {
+        "completed": 0,
+        "total": null,
+        "current_test_full_name": null,
+        "current_test_started_unix_ms": null,
+        "last_finished_test_full_name": null,
+        "last_finished_unix_ms": null,
+        "stuck_suspected": false,
+        "editor_is_focused": true,
+        "run_in_background": null,
+        "focus_nudge_attempts": 0,
+        "focus_nudge_limit": 3,
+        "focus_nudge_status": null,
+        "blocked_reason": null,
+        "failures_so_far": [],
+        "failures_capped": false
+      },
+      "error": null,
+      "result": null
+    },
+    "hint": null
+  }
+}

@@ -1,0 +1,44 @@
+任务07B：快捷转移/精确拖放/去黑框的正式场景接入与验收
+项目E:/DD451；Dispatch v18；用户明确授权自动下发各负责模块。
+
+先读QuickTransfer_Dispatch.txt、ProjectRules A25、新截图及现有07A/06B交接。
+你是本轮唯一Unity操作者，但必须先等04A/05A/06C的新交接都明确READY_FOR_INTEGRATION，不能在半成品期间编译/Play/跑测试/保存场景。
+
+依赖聊天（只读监控，不另行发消息）
+04：任务004背包系统，01a15037-49ef-7001-b980-51ca45397f36，host local。
+05：任务005仓库系统，01a1503d-1e5c-7ee1-a5e6-5cf539308823，host local。
+06：任务006物品拾取与移动，01a15049-cb4a-77a2-9b33-662461f28a02，host local。
+用wait_threads带cursor、合理等待；独立等待期间先审接线和准备验收，不操作Editor，不忙轮询、不伪造依赖就绪。
+读取Docs/Handoffs/04A_BackpackQuickTransfer_Handoff.txt、05A_WarehouseQuickTransfer_Handoff.txt、06C_QuickTransferPrecisePlacement_Handoff.txt。
+
+可修改范围
+Assets/Scripts/GameFlow/MonoBehaviour/GameFlowSceneBindings.cs、GameFlowResponsiveLayout.cs等当前确有接线需要的文件，不改核心流程/物品结算无关逻辑。
+Assets/Tests/GameFlow/Editor/MinimumLoopSceneBuilder.cs。
+Assets/Tests/GameFlow/PlayMode/MinimumLoopPointerTests.cs、MinimumLoopSceneTests.cs等必要正式回归。
+Assets/Scenes/Bootstrap.unity、Shelter.unity、Ruins.unity及当前正式GameFlow预制体：仅必要接线/布局且先留实际内容备份，保持GUID。
+依06C确切交接通过生成器应用Assets/Prefabs/UI/Loot/LootPanel.prefab或测试资产/语言表；不自行覆盖模块业务代码，不无故重建所有场景。
+Docs/Architecture/MinimumLoopSetup.txt；交接Docs/Handoffs/07B_QuickTransferIntegration_Handoff.txt；证据Docs/Verification/QuickTransfer/Integration/。
+不要修改Backpack/Warehouse/Items/Transfers/Loot业务文件；发现缺陷写出具体复现/文件点，交主程协调对应模块，先完成无依赖检查。
+
+整合要求
+1. 用实际04A/05A/06C代码，确认现有Bind入口能接上新的快捷委托，不能让测试场景有而正式场景无。
+2. 核查正式生成器、场景或Prefab overrides不再写回黑色多余背景、不恢复整viewport返箱逻辑；仅网格合法格位接收普通拖拽。
+3. 三类格子继续实际66×66/间距4/padding6，1920×1080唯一基准；不做多分辨率框架。
+4. 依模块TextEntries生成源统一更新现有03语言表，保留GUID和既有键；新帮助文字展示Ctrl+左键，F10仍唯一处理。
+5. 作品集精简形式，4空格、括号另起行、自有C#不写namespace；参考并复用用户代码，不引入新框架，不改玩家/Cinemachine。
+
+验证
+完整执行QuickTransfer_Dispatch.txt综合矩阵：左右Ctrl单次双向自动找位、目标满/关闭/未揭示失败、只旋转可容纳、既有物品不重排。
+普通拖拽2×2到远离已有物的明确格位，放下仍在鼠标预览处；1×2/2×3抓取偏移、R旋转、仓库和高箱滚动、边界重叠/网格外空白拒绝。
+6×4/另一尺寸/空箱/长箱截图，去掉下方多余黑框但保留背景格、滚动和命中；中英文1920画面。
+搜索时可快捷拿已知物，未知不可拿；当前计时、其他轮廓、身份/EV/次数、满格失败和取消/旧会话不回归。
+Bootstrap→庇护所→废墟搜刮→快捷/精确返箱→撤离→仓库双向→再次出发的正式链路。
+按实际变化串行运行04/05/06相关回归和正式指针/流程回归。官方XML与失败详情保留；MCP job停滞不能冒称成功，核对实际结果。
+区分API夹具、排队输入、实体键鼠；不拿旧结果当本版通过，没做实体输入就明确标记。
+
+Editor纪律与交付
+需要实际操作前读Unity skill和editor/state。当前主程只读状态为非Play Bootstrap，但依赖完成时须重新确认，不能沿用旧状态。
+首次保存/测试前，给将触碰的scene/prefab实际文件做可恢复备份，不只算哈希；保存任何已有dirty变化前核对来源，不盲目丢弃用户文件。
+如准备流程缺失，先把可复核变更说明清楚，别覆盖已有资产。结束清理临时回调/合成设备，停止Play、恢复后台设置、回干净Bootstrap，明确释放Unity。
+交接写完成/失败/未验、实际官方测试数量、画面证据、文件清单和风险。任务没完成不能只写“已下发/已接入”当验收通过。
+不自行给其他聊天发消息；该授权用于执行本任务与只读等待，主程负责进一步下发修复。

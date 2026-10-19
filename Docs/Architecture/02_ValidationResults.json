@@ -1,0 +1,105 @@
+{
+  "date": "2026-10-18",
+  "project": "E:/DD451",
+  "unity": "6000.2.12f1",
+  "inputSystem": "1.14.2",
+  "cinemachine": "3.1.7",
+  "source": {
+    "repository": "https://github.com/CSduckie/2DArpg-Portfolio",
+    "local": "E:/Portfolio-Clone",
+    "head": "c601c36f95efdd4d67327489f9edb58412aa54b4",
+    "verifiedSourceFilesAgainstHead": 12
+  },
+  "editMode": {
+    "job": "a21d0900e1d04dafa5a17beedcbe614c",
+    "total": 55,
+    "passed": 55,
+    "failed": 0,
+    "skipped": 0,
+    "durationSeconds": 0.5087791,
+    "player": 12,
+    "itemsRegression": 43,
+    "evidence": "MCP get_test_job returned Passed summary during this run; native XML was subsequently replaced by PlayMode runner."
+  },
+  "playMode": {
+    "job": "c59a822b225e49168ca3a0e12285fbe9",
+    "total": 18,
+    "passed": 18,
+    "failed": 0,
+    "skipped": 0,
+    "durationSeconds": 15.8245019,
+    "player": 15,
+    "itemsRegression": 3,
+    "evidence": "Docs/Architecture/02_PlayModeResults.xml"
+  },
+  "sceneInitial": {
+    "prepared": false,
+    "hp": 0,
+    "round": 0,
+    "driverReady": true,
+    "itemRound": 0,
+    "bootstrapCount": 1,
+    "itemCount": 1,
+    "cameraCount": 1,
+    "listenerCount": 1,
+    "brainActiveCamera": "SideFollow"
+  },
+  "sceneMotionAfterFrictionFix": "phase=0 t=0.33 position=(1.000, 0.000, 0.000) velocity=(0.000, 0.000, 0.000) state=Idle grounded=True camera=(1.000, 0.100, -12.000)\nphase=1 t=0.44 position=(1.000, 0.000, 0.000) velocity=(0.000, 0.000, 0.000) state=Jump grounded=True camera=(1.000, 0.100, -12.000)\nphase=2 t=0.86 position=(2.250, 2.269, 0.000) velocity=(5.000, 4.011, 0.000) state=Jump grounded=False camera=(2.142, 2.304, -12.000)\nphase=3 t=1.81 position=(2.813, 1.654, 0.000) velocity=(0.000, -5.407, 0.000) state=Fall grounded=False camera=(2.813, 1.831, -12.000)\nphase=4 t=2.34 position=(4.882, 1.267, 0.000) velocity=(5.000, -0.761, 0.000) state=Fall grounded=False camera=(4.769, 1.374, -12.000)\nphase=5 t=2.45 position=(5.413, 1.127, 0.000) velocity=(0.000, -1.939, 0.000) state=Fall grounded=False camera=(5.296, 1.250, -12.000)\nphase=6 t=3.29 position=(5.413, 0.000, 0.000) velocity=(0.000, 0.000, 0.000) state=Idle grounded=True camera=(5.413, 0.100, -12.000)",
+  "sceneItems": {
+    "secondMedkit": "Medkit: RoundLimitReached",
+    "foodA": "Food A: Success",
+    "hp": 3,
+    "instances": 3
+  },
+  "assetAudit": {
+    "scene": "Assets/Scenes/Tests/Player/PlayerTest.unity",
+    "dirty": false,
+    "missingScripts": 0,
+    "playerGuid": "4a37e015a99af1948851c34d90ec57de",
+    "cameraGuid": "3cf4a390a92e98447ada0654fb991c91",
+    "physicalColliders": 1,
+    "rbConstraints": "120",
+    "frictionMaterial": "PlayerFrictionless",
+    "inputGuid": "052faaac586de48259a63d0c4782560b",
+    "config": "Assets/Data/Player/PlayerConfig.asset",
+    "maxHealth": 3,
+    "speed": 5,
+    "jump": 7,
+    "animatorAssigned": false,
+    "cameras": 1,
+    "listeners": 1,
+    "cameraDistance": 12,
+    "brainUpdate": "LateUpdate"
+  },
+  "packageChanges": {
+    "manifestAdded": {
+      "com.unity.cinemachine": "3.1.7"
+    },
+    "lockAdded": {
+      "com.unity.cinemachine": "3.1.7",
+      "com.unity.splines": "2.8.2",
+      "com.unity.settings-manager": "2.1.0"
+    },
+    "existingDependencyEntriesChanged": []
+  },
+  "fileAudit": {
+    "protectedFileCount": 101,
+    "protectedFilesChangedAfterRestoration": 0,
+    "missingMeta": 0,
+    "duplicateGuids": 0,
+    "assetsGuidCount": 142,
+    "finalFormatting": "Only whitespace changed after final PlayMode run; non-whitespace source equality checked for method brace formatting."
+  },
+  "restoration": {
+    "originalScene": "Assets/Scenes/Tests/Items/ItemsTest.unity",
+    "sceneDirty": false,
+    "playing": false,
+    "remainingProbeCallbacks": 0,
+    "enterPlayModeOptions": "None"
+  },
+  "notExecuted": [
+    "Formal model/Animator/Clip integration: no real assets supplied",
+    "Real backpack drag rollback, enemy vision/contact damage, flow scene transitions/item loss, official HUD/F10 localization: modules not connected",
+    "Human playtesting and complete Windows build"
+  ]
+}

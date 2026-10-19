@@ -1,0 +1,21 @@
+public enum ItemTransferResult
+{
+    Success,
+    NotReady,
+    Busy,
+    StaleRequest,
+    SourceInvalid,
+    SourceHidden,
+    NotAllowed,
+    Unreachable,
+    OutOfBounds,
+    Occupied,
+    InvalidRotation,
+    InvalidConfiguration,
+    TargetRejected,
+    SourceRemovalFailed,
+    OwnerRejected,
+    RollbackFailed,
+    NoGroundPosition,
+    PresentationFailed
+}

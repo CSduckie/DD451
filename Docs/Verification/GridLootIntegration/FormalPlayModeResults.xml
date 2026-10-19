@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="6" result="Passed" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-18 22:53:34Z" end-time="2026-10-18 22:53:44Z" duration="9.6932072">
+  <test-suite type="TestSuite" id="1113" name="DD451Demo" fullname="DD451Demo" runstate="Runnable" testcasecount="87" result="Passed" start-time="2026-10-18 22:53:34Z" end-time="2026-10-18 22:53:44Z" duration="9.693207" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1029" name="MyPrecious.GameFlow.PlayModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.GameFlow.PlayModeTests.dll" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-18 22:53:34Z" end-time="2026-10-18 22:53:44Z" duration="9.496734" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="48276" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1018" name="MinimumLoopPointerTests" fullname="MinimumLoopPointerTests" classname="MinimumLoopPointerTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-18 22:53:34Z" end-time="2026-10-18 22:53:42Z" duration="7.881853" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1019" name="FormalSearchPickupExtractionAndBidirectionalStorageUseQueuedPointers" fullname="MinimumLoopPointerTests.FormalSearchPickupExtractionAndBidirectionalStorageUseQueuedPointers" methodname="FormalSearchPickupExtractionAndBidirectionalStorageUseQueuedPointers" classname="MinimumLoopPointerTests" runstate="Runnable" seed="48088203" result="Passed" start-time="2026-10-18 22:53:34Z" end-time="2026-10-18 22:53:42Z" duration="7.773498" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[Formal queued-pointer integration at 1920x1080; not native OS input.
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1020" name="MinimumLoopSceneTests" fullname="MinimumLoopSceneTests" classname="MinimumLoopSceneTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-18 22:53:42Z" end-time="2026-10-18 22:53:44Z" duration="1.609583" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1021" name="BootstrapStartsEmptyAtRoundZeroAndTwoTransitionsKeepOnePlayer" fullname="MinimumLoopSceneTests.BootstrapStartsEmptyAtRoundZeroAndTwoTransitionsKeepOnePlayer" methodname="BootstrapStartsEmptyAtRoundZeroAndTwoTransitionsKeepOnePlayer" classname="MinimumLoopSceneTests" runstate="Runnable" seed="924092820" result="Passed" start-time="2026-10-18 22:53:42Z" end-time="2026-10-18 22:53:42Z" duration="0.238270" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1025" name="FullWarehouseAllowsReturnAndAnotherDepartureWithoutMovingCarriedLoot" fullname="MinimumLoopSceneTests.FullWarehouseAllowsReturnAndAnotherDepartureWithoutMovingCarriedLoot" methodname="FullWarehouseAllowsReturnAndAnotherDepartureWithoutMovingCarriedLoot" classname="MinimumLoopSceneTests" runstate="Runnable" seed="248841735" result="Passed" start-time="2026-10-18 22:53:42Z" end-time="2026-10-18 22:53:43Z" duration="0.307114" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1022" name="LoadedTargetBindingFailureRetriesTheSameSceneAndAllocatedRound" fullname="MinimumLoopSceneTests.LoadedTargetBindingFailureRetriesTheSameSceneAndAllocatedRound" methodname="LoadedTargetBindingFailureRetriesTheSameSceneAndAllocatedRound" classname="MinimumLoopSceneTests" runstate="Runnable" seed="14350032" result="Passed" start-time="2026-10-18 22:53:43Z" end-time="2026-10-18 22:53:43Z" duration="0.128682" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[GameFlow: 场景接线不完整：Assets/Scenes/Ruins.unity
+]]></output>
+        </test-case>
+        <test-case id="1023" name="ReturnLoadFailurePreservesWorldItemsAndRetrySettlesOnlyOnce" fullname="MinimumLoopSceneTests.ReturnLoadFailurePreservesWorldItemsAndRetrySettlesOnlyOnce" methodname="ReturnLoadFailurePreservesWorldItemsAndRetrySettlesOnlyOnce" classname="MinimumLoopSceneTests" runstate="Runnable" seed="538728052" result="Passed" start-time="2026-10-18 22:53:43Z" end-time="2026-10-18 22:53:43Z" duration="0.166978" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[GameFlow: 目标场景未配置、与另一地图重复或未加入Build Settings：Assets/Scenes/Missing-MinimumLoop-Test.unity
+]]></output>
+        </test-case>
+        <test-case id="1024" name="UsedMedkitAndHealthSurviveReturnAndUiReopenUntilTheNextDeparture" fullname="MinimumLoopSceneTests.UsedMedkitAndHealthSurviveReturnAndUiReopenUntilTheNextDeparture" methodname="UsedMedkitAndHealthSurviveReturnAndUiReopenUntilTheNextDeparture" classname="MinimumLoopSceneTests" runstate="Runnable" seed="956103840" result="Passed" start-time="2026-10-18 22:53:43Z" end-time="2026-10-18 22:53:44Z" duration="0.760272" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/cs200/AppData/LocalLow/DefaultCompany/DD451Demo\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

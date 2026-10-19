@@ -1,0 +1,62 @@
+{
+  "utc": "2026-10-19T05:44:44.4304618Z",
+  "play": false,
+  "changing": false,
+  "paused": false,
+  "compiling": false,
+  "updating": false,
+  "scene": "Assets/Scenes/Tests/Enemy/EnemyTest.unity",
+  "dirty": false,
+  "count": 1,
+  "prefab": false,
+  "time": 1.0,
+  "bg": false,
+  "playerSettingsBg": false,
+  "width": 1920,
+  "height": 1080,
+  "runningMonitor": false,
+  "routes": [
+    {
+      "name": "Drone_B",
+      "points": [
+        {
+          "name": "Point_A",
+          "path": "Drone_B_PatrolPoints/Point_A",
+          "x": 6.0,
+          "y": 2.4,
+          "z": 0.0
+        },
+        {
+          "name": "Point_B",
+          "path": "Drone_B_PatrolPoints/Point_B",
+          "x": 12.0,
+          "y": 2.4,
+          "z": 0.0
+        }
+      ],
+      "fill": 2.0,
+      "decay": 2.0
+    },
+    {
+      "name": "Drone_A",
+      "points": [
+        {
+          "name": "Point_A",
+          "path": "Drone_A_PatrolPoints/Point_A",
+          "x": -6.0,
+          "y": 2.4,
+          "z": 0.0
+        },
+        {
+          "name": "Point_B",
+          "path": "Drone_A_PatrolPoints/Point_B",
+          "x": -1.0,
+          "y": 2.4,
+          "z": 0.0
+        }
+      ],
+      "fill": 2.0,
+      "decay": 2.0
+    }
+  ]
+}

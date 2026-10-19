@@ -1,0 +1,27 @@
+009 / 09G CollisionSize follow-up completed — 2026-10-19
+
+User-visible result
+Drone body SphereCollider radius 0.45 -> 0.25 (diameter 0.9 -> 0.5). Missing-prefab EnemyTest builder default matches. Existing shared physical radius governs sweep, overlap and direct geometric contact. Actual player/body contact explodes a living drone once in Patrol, Alert, Search or Chase, including a hidden player. Trigger-only vision overlap does not explode. Explosion disables the physical collider so the destroyed drone no longer blocks the player. The player health/invulnerability and same-round/no-respawn guards remain.
+The user's newest direct-contact instruction supersedes historical Chase-only and hidden-contact immunity. Existing detection/cover timers, vision, smooth lean/yaw, rotors, routes and scene layouts are retained. Seven changed files are recorded in ChangedHashes.json; originals are under Before/Assets.
+
+Verification and retained failures
+EditMode-4-Final.json: current fully imported source, four DroneRound tests passed, zero skipped; thin-wall proximity, distant direct API/reentry, same-round lifecycle and round monotonicity covered. Initial EditMode-4.json retained separately.
+PlayMode-46.xml: first selection Enemy41 + RuinsEnemyIntegration5, 44 passed / 2 failed / 0 skipped. The previously passing 44 were not repeated.
+PlayMode-Retry2.xml: CoverRediscovery passed after replacing a coroutine scheduling assumption with a bounded wait for the real Update transition. The new real-prefab integration test reached a later geometry assertion after correcting the unavailable runtime PrefabUtility link.
+PlayMode-Retry1-Pose.xml: new test still failed the vision ComputePenetration assertion despite waiting for natural Alert. Root cause of that separate query was not proved. Replaced it with exact enabled RangeCollider body-center containment via ClosestPoint, retaining natural Alert, CanSee, trigger presence and several physics frames without damage.
+PlayMode-ContactFinal.xml: the single remaining integration test passed. It checks actual saved and instantiated radius, vision-only no-damage, old-radius-versus-new-radius clearance against the same player geometry, real Patrol motion over the player's head, and actual rigidbody approach causing an automatic one-time Patrol contact explosion. Collider disabled and no second damage after invulnerability expires.
+PlayMode-FinalCoverage.json maps all 46 distinct cases to their latest official result: 46 Passed, 0 Failed, 0 Skipped. This is cumulative focused verification, not a fabricated single clean 46-test run.
+All-state direct/automatic contact and movement sweep matrices, actual hidden contact, non-contact cover timing, discovery, invalid players, wall checks, flight/heading visuals, original scene integration and formal Ruins round tests are included in those 46 cases.
+These are automated Unity tests with controlled runtime/API fixtures and real scene/physics updates. No new native keyboard/mouse, video or Windows build acceptance is claimed.
+
+Result recovery and user coordination
+For two orphaned MCP job statuses, official Unity XML was recovered from C:/Users/cs200/AppData/LocalLow/DefaultCompany/DD451Demo/TestResults.xml, as reported by Editor.log. Stuck metadata was cleared only after official completion, Play ended and TestRunnerApi.IsRunActive returned false. Raw failure XML remains in this folder.
+The user manually started Play after the first test run. Continued after their explicit reply: 可以停止，完成核验. Their latest selected Bootstrap was preserved.
+
+File and editor preservation
+Integrity.json: 8/8 protected files match their correct latest baseline. For Ruins and Shelter, LatestExternalSceneHashes.json preserves user saves at 07:08:43Z and 07:08:18Z, before tests; older hashes were not restored. Other scene, vision, flight visual and config assets match the initial protected baseline. No production scene was saved or rebuilt by this follow-up. Seven existing meta files match backups; FinalFileAudit.txt records independent read-only review.
+ReleaseState.json at 07:20:22Z: one clean Bootstrap scene, Edit mode, not paused/changing/compiling/updating, no PrefabStage or active tests, timeScale1, backgroundfalse, original DisableDomainReload option, missing scripts0 in scene and drone prefab. A subsequent read-only window inventory confirmed no TestRunner window.
+FinalConsole.json: zero errors, one MCP transport WebSocket-not-initialised warning; no product compile error. Console was not cleared to hide it.
+
+009 Assets和Editor已释放，主程可以验收。
+All Assets writes and Unity operations are complete. No queued tests, Play, temporary callbacks or further Editor work remain. Main handoff: Docs/Handoffs/09G_ContactExplosion_Handoff.txt, indexed by 09_Handoff.txt section18.

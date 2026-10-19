@@ -1,0 +1,35 @@
+{
+  "hover": {
+    "token": 1,
+    "id": "5b43b2cd18664716b4b97694b6e14651",
+    "owner": "Backpack",
+    "visible": true,
+    "rect": [
+      1578.0,
+      674.0,
+      136.0,
+      136.0
+    ],
+    "backpackFeedback": "loot.return_ready",
+    "lootFeedback": "loot.return_ready",
+    "viewportColorUnchanged": true,
+    "bagCount": 1,
+    "width": 1920,
+    "height": 1080,
+    "target": [
+      1646.0,
+      262.0
+    ]
+  },
+  "ownerAfter": "Container",
+  "takenAfter": false,
+  "bagCountAfter": 0,
+  "draggingAfter": false,
+  "previewAfter": false,
+  "feedbackAfter": "transfer.Success",
+  "lootFeedbackAfter": "transfer.Success",
+  "LayoutX": 2,
+  "LayoutY": 0,
+  "LayoutWidth": 2,
+  "LayoutHeight": 2
+}

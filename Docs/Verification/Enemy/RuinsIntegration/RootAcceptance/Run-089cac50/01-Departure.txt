@@ -1,0 +1,1 @@
+Formal Bootstrap reached Shelter at round0. Public flow.TryDepart is the sole departure trigger.

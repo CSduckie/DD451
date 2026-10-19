@@ -1,0 +1,66 @@
+Scene camera constraint dispatch — 02B / 07D
+Project: E:/DD451
+User request (2026-10-18): 在玩家移动中补全需求，每个场景配置一个Cinemachine camera constraint.
+This is an assignment, not an implementation/acceptance claim.
+
+Verified current setup
+Cinemachine 3.1.7. Assets/Prefabs/Player/PlayerCamera.prefab contains OutputCamera + Brain, SideFollow CinemachineCamera + CinemachinePositionComposer.
+Current asset uses perspective FOV50, CameraDistance12, camera Z near -12 for player Z0; older PlayerTestSceneBuilder has different orthographic defaults and must NOT be rerun to overwrite current authored camera.
+Assets/Scripts/Player/MonoBehaviour/PlayerCameraTargetBinder.cs binds Follow, subscribes Teleported, calls OnTargetObjectWarped and resets PreviousStateIsValid.
+GameFlowSceneBindings owns a per-scene cameraBinder and calls Bind(player)/Bind(null); formal scenes already have distinct presentation roots/cameras.
+Installed Runtime/Behaviours/CinemachineConfiner3D.cs has BoundingVolume (Collider), SlowingDistance; it confines CAMERA POSITION, not the full screen rectangle.
+
+Implementation interpretation
+Add independently authorable scene camera movement bounds using the installed CinemachineConfiner3D, without changing camera projection, FOV, offsets or player movement rules.
+Use each gameplay scene's own CameraBounds GameObject with enabled BoxCollider, isTrigger=true, no renderer. Set its center/size in Inspector; do not parent it under the moving player/follow target.
+Place volume around allowable CAMERA positions, including the existing camera Z offset (-12 in current setup); do not use a thin box around player Z0 or shrink camera distance unexpectedly.
+Do not reuse interaction TriggerBox for camera bounds or add Interactable; camera bounds must not block movement, rays, ground tests or source/drop validation.
+Use current native Cinemachine confining, no hand-coded LateUpdate clamp or new camera manager/framework.
+Preserve current lens settings. Confiner3D controls position center; for 1920x1080 compose/tune the allowable center rectangle with view margins. Do not claim mathematically guaranteed full-screen edge confinement for arbitrary geometry/projections. If user later requests that behavior, make it explicit rather than silently switch to 2D physics or change lens.
+Per-scene Inspector reference is authoritative, no global Find selecting another additive scene's bounds.
+CameraBounds is a scene instance reference, not a cross-scene reference baked into the shared prefab.
+No visible-player scenes/cameras need a dummy follow camera just to satisfy this request: Bootstrap remains the system/loading entry. All playable maps and actual player/camera module scenes need an independently configurable boundary. Future scene setup instructions must include this.
+
+02B owner — 任务002玩家移动
+Continue 02A; this is additional work, not replacement.
+Allowed code:
+Assets/Scripts/Player/MonoBehaviour/PlayerCameraTargetBinder.cs
+A small PlayerCameraBounds.cs under the same folder ONLY if a separate component is actually necessary.
+Assets/Tests/Player/PlayMode/PlayerCameraBoundsTests.cs (focused behavior tests if useful)
+Assets/Tests/Player/Editor/PlayerTestSceneBuilder.cs or a minimal safe upgrade helper.
+Define a minimal real API/serialized reference arrangement for CinemachineConfiner3D and scene bounds; prefer extending existing binder or directly serialized native references. Avoid duplicated editable bounds references.
+Provide precise prefab and scene upgrade steps for 07D: shared Assets/Prefabs/Player/PlayerCamera.prefab adds the native extension to SideFollow, scene instance assigns its own volume. Do not recreate or overwrite camera prefab or other scenes.
+Binding / teleport / unbinding must invalidate old damping state appropriately, preserve OnTargetObjectWarped and PreviousStateIsValid handling, and remove old target/boundary subscriptions or runtime references where applicable.
+Do not introduce Cinemachine2 API names such as m_BoundingVolume into 3.1.7 code.
+Do not operate Unity scenes/Play/tests while 07 is the integration owner. Prepare source/tests and exact upgrade plan; asset execution is sequential at 07.
+Write Docs/Handoffs/02B_CameraBounds_Handoff.txt with READY_FOR_INTEGRATION, exact fields/methods, source paths, inspector instructions, tested/untested status.
+
+07D owner — 任务007串联游戏流程
+Continue 07C world-interaction integration, do not replace it. Gate shared Editor validation on ALL 02A, 02B, 06D handoffs ready and source writers released.
+Own Assets/Scripts/GameFlow/MonoBehaviour/GameFlowSceneBindings.cs and related flow glue only as required.
+Own Assets/Tests/GameFlow/Editor/MinimumLoopSceneBuilder.cs safe future setup instructions.
+Create independent CameraBounds in Shelter and Ruins and wire each scene's SideFollow confiner. Use existing environment/layout to choose meaningful camera-position bounds; don't invent identical limits for both maps.
+Preserve user-authored room models, props, camera lens/pose, latest trigger migration, storage/grid/quick-transfer work, and recently fixed StoragePack materials.
+Re-check dirty scenes before actions. No rebuild, implicit saving or discarding user edits. Back up real content for every edited serialized asset.
+Coordinate all player/camera module test-scene consumers of PlayerCamera.prefab so no broken references or persistent null warnings; scenes without a follow camera need no new one.
+Apply boundaries BEFORE a newly activated camera renders its first following frame. Validate references in a lifecycle-aware manner: inactive presentation/environment roots during additive load are normal; do not reject valid references simply because their owner will only be activated later.
+During Shelter -> Ruins -> Shelter, use only the target scene's volume. On failed activation / rollback keep or restore the correct previous camera and volume, without changing gameplay round, health or items.
+No duplicate Camera/Brain/AudioListener. Bootstrap remains the existing entry.
+
+Acceptance at 1920x1080
+1. Inspector visibly exposes each map's own CameraBounds and Confiner3D reference, center/size and slowing distance.
+2. Small shelter and long ruins have independent limits; modifying one doesn't modify the other or shared prefab geometry.
+3. Walking left/right and jumping reaches bounds smoothly without oscillation; the camera no longer follows outside its authored allowed center range.
+4. Center bounds include current camera Z; perspective/FOV/follow distance remain authored values, player Z unchanged.
+5. Real Cinemachine/Brain output is verified, not only component presence or a direct test clamp.
+6. Departure, extraction, second departure and within-run teleport switch/reset correctly, without old bounds pull-back or a first-frame jump to the other scene.
+7. Null/disabled/wrong-scene volume is handled with clear diagnostics and no stale cross-scene reference; lifecycle activation does not false-fail.
+8. No solid collisions/raycast interference from CameraBounds; E TriggerBox, source sessions and item movement still work.
+9. Test reports separate actual scene/visual verification from API or synthetic input; prior 07B unresolved issues remain recorded.
+
+Delivery:
+Docs/Handoffs/07D_CameraBoundsIntegration_Handoff.txt
+Docs/Verification/CameraBounds/
+Coordinate editor release in Docs/Verification/Enemy/EditorCoordination.txt. 009 is preparing only staging outside Assets and may start Assets/Editor work after 07 explicitly releases; it can then reuse the delivered camera bounds in EnemyTest without modifying shared camera prefab.
+All self-authored C# stays simple, no namespace, existing English folder conventions.
+

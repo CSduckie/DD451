@@ -1,0 +1,14 @@
+Formal Bootstrap->Shelter->TryDepart->Ruins at1920x1080/timeScale1.
+Public player RelocateWithinRun plus queued C on a probe-owned InputSystem Keyboard; not native keyboard input.
+No AI ChangeState/BeginRound/timer writes; no route, cover, config, camera or scene edits.
+Selected drone=Drone#-2994250; cover=CoverArea#-2995382
+PASS shared formal round and actual route motion; player now stands in the existing cover.
+PASS synchronous formal rebind preserves Alert, cover=False, remaining=0.347629845
+PASS first discovery0.5s hover, orange fan, then natural Chase with renderer hidden and detection active.
+PASS synchronous formal rebind preserves Alert, cover=True, remaining=1.79870164
+PASS real cover hides via queued crouch, countdown decreases, formal retry preserves timer, actual rediscovery immediately chases.
+PASS second continuous Hidden lasts2s without restarting, preserves route target, then actual patrol motion resumes.
+PASS: Timed discovery, hidden renderer with real detection, real cover stop/timeout, immediate rediscovery and formal same-round timer preservation.
+Discovery max hover drift=0; cover max drift=0
+Callback removed, probe keyboard removed, player position/body flags and background setting restored. No native input claim.
+Not covered here: ordinary wall Search, same-physics-step hidden contact, natural explosion/next formal round. Retain automated acceptance for these.

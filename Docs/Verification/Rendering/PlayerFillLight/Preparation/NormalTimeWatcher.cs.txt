@@ -1,0 +1,70 @@
+if (EditorApplication.isPlaying || EditorApplication.isCompiling || SessionState.GetBool("PlayerFill.NormalWatchRunning", false)) throw new InvalidOperationException("Need clean Edit and no watcher.");
+string directory = "E:/DD451/Docs/Verification/Rendering/PlayerFillLight";
+bool previousBackground = Application.runInBackground;
+bool previousPlayerSettingsBackground = PlayerSettings.runInBackground;
+SessionState.SetBool("PlayerFill.NormalWatchRunning", true);
+SessionState.SetBool("PlayerFill.NormalWatchStop", false);
+SessionState.SetString("PlayerFill.NormalWatchResult", "RUNNING");
+var logs = new System.Collections.Generic.List<object>();
+var samples = new System.Collections.Generic.List<object>();
+var startedUtc = DateTime.UtcNow;
+double start = EditorApplication.timeSinceStartup, lastSample = -1;
+int playFrames = 0, ruinsSamples = 0, invalidSamples = 0, scaleViolations = 0;
+int originalPlayer = 0, originalLight = 0;
+bool hadPlay = false, sawShelter = false, sawRuins = false, sawReturn = false;
+Application.LogCallback logCallback = null;
+EditorApplication.CallbackFunction tick = null;
+logCallback = (message, stack, type) => {
+    if (type == LogType.Error || type == LogType.Assert || type == LogType.Exception || type == LogType.Warning)
+        logs.Add(new { utc=DateTime.UtcNow.ToString("o"), type=type.ToString(), message, stack });
+};
+tick = () => {
+    bool stop = SessionState.GetBool("PlayerFill.NormalWatchStop", false);
+    bool timedOut = EditorApplication.timeSinceStartup - start > 120;
+    if (EditorApplication.isPlaying) {
+        Application.runInBackground = true;
+        hadPlay = true;
+        playFrames++;
+        if (Time.timeScale != 1f) scaleViolations++;
+        if (EditorApplication.timeSinceStartup-lastSample >= 0.5) {
+            lastSample = EditorApplication.timeSinceStartup;
+            var f = UnityEngine.Object.FindFirstObjectByType<GameFlowManager>();
+            var p = f != null ? f.Player : null;
+            if (f != null && p != null) {
+                if (f.Stage == GameFlowStage.Shelter) { sawShelter=true; if(sawRuins) sawReturn=true; }
+                if (f.Stage == GameFlowStage.Exploring) { sawRuins=true; ruinsSamples++; }
+                var lights = p.GetComponentsInChildren<Light>(true).Where(l=>l.name=="PlayerFillLight").ToArray();
+                if (originalPlayer==0) originalPlayer=p.GetInstanceID();
+                if (originalLight==0 && lights.Length==1) originalLight=lights[0].GetInstanceID();
+                var drones = UnityEngine.Object.FindObjectsByType<DroneController>(FindObjectsSortMode.None);
+                var flags = System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic;
+                var droneValues = drones.Select(d=>new {
+                    name=d.name,id=d.GetInstanceID(),active=d.IsRunning,state=d.CurrentState.ToString(),
+                    yaw=(float)typeof(DroneController).GetField("facingYaw",flags).GetValue(d),
+                    velocity=(float)typeof(DroneController).GetField("turnVelocity",flags).GetValue(d),
+                    tilt=d.flightVisual==null?0f:(float)typeof(DroneFlightVisual).GetField("currentTilt",flags).GetValue(d.flightVisual),
+                    tiltVelocity=d.flightVisual==null?0f:(float)typeof(DroneFlightVisual).GetField("tiltVelocity",flags).GetValue(d.flightVisual),
+                    visual=d.visual==null?new float[0]:new[]{d.visual.localRotation.x,d.visual.localRotation.y,d.visual.localRotation.z,d.visual.localRotation.w}
+                }).ToArray();
+                bool finite = droneValues.All(d=>!float.IsNaN(d.yaw)&&!float.IsInfinity(d.yaw)&&!float.IsNaN(d.velocity)&&!float.IsInfinity(d.velocity)&&!float.IsNaN(d.tilt)&&!float.IsInfinity(d.tilt)&&!float.IsNaN(d.tiltVelocity)&&!float.IsInfinity(d.tiltVelocity)&&d.visual.All(v=>!float.IsNaN(v)&&!float.IsInfinity(v)));
+                bool lightValid=lights.Length==1 && lights[0].GetInstanceID()==originalLight && lights[0].transform.parent==p.transform && lights[0].renderingLayerMask==2 && lights[0].enabled && Mathf.Approximately(lights[0].intensity,1.2f);
+                if(!finite || !lightValid || p.GetInstanceID()!=originalPlayer) invalidSamples++;
+                samples.Add(new {utc=DateTime.UtcNow.ToString("o"),frame=Time.frameCount,time=Time.time,scale=Time.timeScale,stage=f.Stage.ToString(),round=f.CurrentRound,settled=f.SettledRound,playerId=p.GetInstanceID(),lightId=lights.Length==1?lights[0].GetInstanceID():0,lightCount=lights.Length,lightValid,finiteDrones=finite,drones=droneValues});
+            }
+        }
+    }
+    if(stop || timedOut || (hadPlay && !EditorApplication.isPlaying)) {
+        Application.logMessageReceived -= logCallback;
+        EditorApplication.update -= tick;
+        Application.runInBackground = previousBackground;
+        PlayerSettings.runInBackground = previousPlayerSettingsBackground;
+        bool passed=sawShelter&&sawRuins&&sawReturn&&ruinsSamples>=3&&invalidSamples==0&&scaleViolations==0&&logs.Count==0;
+        var report = new { startedUtc=startedUtc.ToString("o"),endedUtc=DateTime.UtcNow.ToString("o"),passed,timedOut,method="Ordinary Bootstrap Play; public relocation + actual Trigger/PlayerInteraction; no timeScale freeze in this session. Temporary log observer and background setting removed/restored.",sawShelter,sawRuins,sawReturn,playFrames,ruinsSamples,invalidSamples,scaleViolations,originalPlayer,originalLight,logCount=logs.Count,logs,samples};
+        System.IO.File.WriteAllText(directory+"/NormalTimeRuntimeCheck.json",Newtonsoft.Json.JsonConvert.SerializeObject(report,Newtonsoft.Json.Formatting.Indented));
+        SessionState.SetBool("PlayerFill.NormalWatchRunning",false);
+        SessionState.SetString("PlayerFill.NormalWatchResult",passed?"PASS":"FAIL: inspect NormalTimeRuntimeCheck.json");
+    }
+};
+Application.logMessageReceived += logCallback;
+EditorApplication.update += tick;
+return new {watcher="armed",startedUtc=startedUtc.ToString("o"),timeoutSeconds=120,previousBackground};

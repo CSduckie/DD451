@@ -1,0 +1,6 @@
+{
+    "name": "MyPrecious.Enemy",
+    "rootNamespace": "",
+    "references": ["MyPrecious.Player", "MyPrecious.Health", "MyPrecious.StateMachine", "MyPrecious.StateMachine.Contracts", "Unity.RenderPipelines.Core.Runtime", "Unity.RenderPipelines.Universal.Runtime"],
+    "autoReferenced": true
+}

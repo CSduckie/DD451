@@ -1,0 +1,40 @@
+你负责这次07E“正式Ruins无人机接入”。用户已明确要求：把已完成的009无人机接入从庇护所出发的正式探索流程，沿用当前探索轮次，保证同轮不重复复活、下一轮正常刷新，并保留用户配置的巡逻点。完成后主程会独立从Bootstrap→Shelter→Ruins验收。本任务要实际实现、验证并交接，不只给建议。
+
+项目E:/DD451。先读当前源码和Docs/Handoffs/09_Handoff.txt第16节、Docs/AgentPrompts/ProjectRules.txt以及你自己的07C/07D交接。保留最新用户内容，不从旧快照覆盖工程。这是作品集/毕设：简单直接、无namespace、复用现有方法/状态机，不增加通用接口框架或新Manager，不在Animator连线。当前只需接上正式场景生命周期，不做完整010死亡返回/物品损失系统，不修改009的警戒/伤害规则。
+
+已查明问题：
+- DroneController.IsRunning要求CurrentRound>0，首次必须显式BeginRound(roundId)。
+- 正式GameFlowManager当前只初始化items/loot/player，没有调用无人机。
+- EnemyTestDriver调用了BeginRound，所以独立场景正常，Ruins不动。
+- GameFlow asmdef尚未引用MyPrecious.Enemy。
+- 用户Ruins中Drone位于场景根节点（不在Environment3D下），引用“巡逻1”(-12,2.5,0)、“巡逻2”(1,2.5,0)，原Drone位置(-3.34101677,2.39236856,-0.382937431)。这些数值和引用都由用户配置，必须保留，不能为了测试把Z/路线/模型/灯光/相机改掉。
+- Root已备份当前Ruins文件/meta并记录InitialScene、BeforeHashes，位置Docs/Verification/Enemy/RuinsIntegration/。开始前再fresh确认，用户可能继续改场景；以实际最新内容为准。
+
+归属和文件：
+主要修改Assets/Scripts/GameFlow/MonoBehaviour/GameFlowManager.cs、必要的GameFlowSceneBindings.cs、Assets/Scripts/GameFlow/MyPrecious.GameFlow.asmdef。
+必要测试在Assets/Tests/GameFlow/PlayMode/下（可新增RuinsEnemyIntegrationTests.cs）及对应asmdef；复用已有真实场景测试。
+优先零场景修改、零Prefab修改，通过当前目标Scene根节点下找实际DroneController（含用户放在Environment3D外的根节点），不能查全工程后误启动别的场景/TestScene的机。
+如发现必须改Enemy生产代码，先写出具体问题与最小改法在交接记录，主程只读检查后协调，不擅自覆盖009文件。
+交接Docs/Handoffs/07E_RuinsEnemyIntegration_Handoff.txt；验证Docs/Verification/Enemy/RuinsIntegration/Integration/。保留所有已有.meta/GUID，不重新生成正式场景/Prefab。
+
+行为要求：
+1. 正式Shelter出发→Ruins加载、玩家已准备、场景准备成功后，进入可探索阶段时让目标场景设计为启用的无人机获得GameFlow当前同一个探索轮次。不能自行++轮次、写固定1、由每机Start偷偷开启一轮或每帧初始化。
+2. 正常第一次到Ruins无需再手动挂测试Driver、填敌人清单或挪动用户层级；保留用户现有巡逻点，进入后实际巡逻。
+3. 同轮重试/重复场景接线/重复初始化，已在本轮的无人机保持当前状态、位置、警戒余量及自毁状态；BeginRound返回false的“同轮不变”不能被当错误后强行重新激活。尤其不可通过SetActive(true)/重建实例让本轮已自毁无人机复活。
+4. 撤离卸载Ruins后，下一次真实出发的新轮正常载入/刷新无人机，CurrentRound与玩家生命/物品轮次一致，原路线与出生配置仍生效；无需额外持久化敌人ID框架。
+5. 启动范围只属于目标探索场景，庇护所不自动开敌人轮次。尊重策划关闭的对象/组件；没有无人机的关卡仍正常运行。失败/切场景等待期间不让未准备玩家受到敌人攻击或混入错误地图。避免绕过现有重试/卸载/玩家锁顺序。
+6. 维持原轮次拒绝逻辑、Alert→Chase门禁、同轮自毁不刷新和下一轮刷新。Rigidbody是Kinematic是设计，不要通过取消Kinematic伪装修复。
+7. 控制新增代码规模，中文注释解释真正需要的顺序，错误信息若面向玩家接入现有双语；不添加不需要的接口。
+
+验证至少包含：
+- 真实Bootstrap→Shelter→出发Ruins，用户已有Drone自动进入Patrol并实际沿原路线移动，所有轮次一致。
+- 同轮初始化/重试不清正在运行的状态；本轮自毁后重复接入也不复活；重复调用不重复伤害。
+- 撤离→Shelter→再次出发Ruins，新轮无人机正常刷新/移动，路线和原场景配置仍完整。
+- 同时保留基本搜刮/撤离/仓库存放流程。旧GameFlow测试会因正式场景新增敌人受到影响时须用明确隔离夹具维护原测试意图，不能篡改用户场景/删除原断言。
+- 空敌人场景、目标Scene隔离、正常失败后同轮Retry等相关边界。
+- 1920×1080运行证据，不拿强制ChangeState或直接调用每机BeginRound冒充正式GameFlow接入。可用API定位玩家/触发实际交互范围，必须如实标注不是原生键鼠。
+- 修改前后比对当前Ruins、Shelter、Bootstrap、DronePrefab/meta和用户巡逻点；除必要的审核变更外保持原样。
+
+Editor协调：
+主程现在将唯一Assets/Editor修改时段交给你，009和视觉聊天均已idle并释放。主程内部子agent只读/Docs准备，不会并行操作Editor。fresh核对场景是否dirty/Play；若有dirty先saveAsCopy备份到Docs，不得擅自丢弃或保存覆盖用户场景；TestRunner可能重载dirty内容，应保留后再验证。当前最后观察Ruins/Edit/clean。
+请先列拟修改文件，再实现→编译→适当回归→实际流程验证。完成后明确在上述07E交接和Docs/Verification/Enemy/EditorCoordination.txt写“007 Assets和Editor已释放，主程可以验收”，说明最后scene/dirty/Play/console和仍未验证事项。释放时必须无继续Assets写入、测试或截图回调。不要擅自给其他聊天发消息；通过共享交接文件协作。主程会等待完成再独立验收。

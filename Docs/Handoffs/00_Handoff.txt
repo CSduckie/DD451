@@ -1,0 +1,90 @@
+MyPrecious P0 — 00号任务交接
+版本：2026-10-18 / Dispatch v5 / Lean 00
+根目录：E:/DD451。本报告替代旧00交接及其测试结论。
+
+一、本次实际重做
+旧00提前建立了30份业务公共声明、统一结果/事务协议、BootstrapRuntime/IBootstrapModule注册生命周期和配套测试。
+已扫描源码、程序集引用及相关资产GUID：没有真实业务消费者，只有旧00内部和配套测试引用；无需其他业务模块配合迁移。
+本次删除这些无当前用途的抽象，GameBootstrap改为普通小组件，没有另建兼容框架，也没有保留生产假实现。
+现在00仅提供工程约定、现有输入、最小常驻入口、基础场景和必要验证。
+
+二、文件处理
+修改并保留原.meta/GUID：
+- Assets/Scripts/Bootstrap/MonoBehaviour/GameBootstrap.cs：仅入口唯一性、跨场景存续和静态引用清理。
+- Assets/Scripts/Bootstrap/MyPrecious.Bootstrap.asmdef：删除旧Contracts依赖。
+- Assets/Tests/Base/PlayMode/GameBootstrapTests.cs：改为3个入口生命周期测试。
+- Assets/Tests/Base/PlayMode/MyPrecious.Base.PlayModeTests.asmdef：仅引用Bootstrap。
+- Assets/Prefabs/Bootstrap/GameBootstrap.prefab：移除废弃moduleComponents字段，继续引用原GameBootstrap脚本。
+原样沿用：
+- Assets/Input/GameInputActions.inputactions及.meta：现有动作符合要求，无需改动。
+- Assets/Scenes/Tests/Base/BaseTest.unity及.meta：继续使用原入口Prefab、相机和灯光，无角色或正式UI。
+移除：
+- Assets/Scripts/Utilities/Contracts/旧30份声明、MyPrecious.Contracts.asmdef及对应.meta。
+- Assets/Scripts/Bootstrap/Logic/BootstrapRuntime.cs、IBootstrapModule.cs及.meta。
+- Assets/Tests/Base/EditMode/旧运行框架、结果和输入镜像测试，以及该测试asmdef和.meta。
+- Assets/Tests/Base/TestDoubles/旧替身、asmdef及.meta。
+逐个文件删除后清理已空旧目录及目录.meta；没有递归清空Assets，没有删除其他模块代码。
+准确逐文件清单见Docs/Architecture/00_FilePlan.txt。
+
+文档：
+- 新增Docs/Architecture/BaseSetup.txt，作为现在的简短接入说明。
+- Contracts.txt、ModuleOwnership.txt、IntegrationChecklist.txt改为简短v5取代说明，不再列出旧API或注册要求。
+- 00_FilePlan.txt、00_ValidationResults.json及本报告均更新为本轮结果，旧测试成绩不再作为当前证明。
+- 未修改Docs/AgentPrompts；其ProjectRules已是Dispatch v5，A12/A13与3D技术约定已读取。
+
+三、需要理解的入口逻辑
+GameBootstrap.Instance记录当前唯一入口。
+Awake发现另一个入口时先禁用自己，再Destroy并立即返回；真正入口调用DontDestroyOnLoad，普通场景卸载时仍保留。
+OnDestroy只有在Instance指向自己时才清空，避免销毁重复对象误伤真正入口。
+SubsystemRegistration在开始运行时清除旧静态引用；没有场景订阅，因此也没有需要保留或退订的场景服务。
+没有Runtime属性、Initialize方法、注册器、依赖注入、公共事件或业务模块列表。
+两个asmdef只让Unity测试能够直接引用入口组件，rootNamespace都为空；不是业务框架。
+当前自有生产/测试代码均无namespace，均位于指定目录。
+本阶段未建立业务公共接口。Contracts目录已无实际用途而移除；以后确需共享类型时仍使用该指定位置。
+
+四、输入与3D约定
+输入资源：Assets/Input/GameInputActions.inputactions；动作表Player，P0只使用Windows键盘鼠标。
+Move=A/D或左右箭头，当前Vector2仅取X分量作横移；Jump=Space；Crouch=C；Interact=E；ToggleBackpack=Tab；RotateItem=R；UseItem=鼠标右键；ToggleLanguage=F10。
+五个操作型动作使用Press(behavior=0)，按下即触发；UI导航与原模板绑定保留。
+W/S、上下箭头不能被解释为玩家沿Z轴前后移动。F10只准备动作，正式整合时仅有一个业务处理者；入口本身不监听。
+项目使用3D场景/模型；玩家逻辑根X左右、Y跳跃/重力、Z固定。后续移动、碰撞、受击、重生及实际击退/Root Motion都必须维持固定Z。
+世界交互、触发和遮挡用Collider/Physics，若用刚体则为Rigidbody；不使用2D物理实现世界玩法。
+场景可有纵深，输入/UI/格子仍可使用二维数据；玩家限制不自动限定敌人运动。
+基础相机只是临时验证配置，正式正交/透视和倾角未定。
+固定Z目前是开发约束，没有角色控制器，不宣称已实现或已通过运动验证。
+
+五、本次重新验证
+工程：Unity 6000.2.12f1；Input System 1.14.2、UGUI 2.0.0、URP 17.2.0、Test Framework 1.6.0；未升级包或切换渲染管线。
+编译：清理后实际刷新Unity并编译，Console零错误/零警告。Prefab包含1个GameBootstrap、缺失脚本0；BaseTest场景缺失脚本0。
+自动测试：MyPrecious.Base.PlayModeTests，本轮3/3通过、0失败、0跳过。
+job_id：d5168bbe96094734bde4f486364f1449；Unity报告时长0.1790989秒。
+用例：DuplicateEntryKeepsOriginalInstance；DestroyedEntryClearsReferenceAndCanBeRecreated；BaseSceneCanReloadWithoutReplacingPersistentEntry。
+场景运行检查（通过Editor/MCP执行，非真人试玩）：按当前enterPlayModeOptions=0连续进行Play→Stop→Play→Stop。两次Play均只有1个入口，Instance指向它，位于DontDestroyOnLoad；停止后静态引用为空。
+自动测试另实际加载/卸载BaseTest两次，入口持续存在且未被重复入口替换。
+输入实际检查：资源可加载，8个所需动作及绑定存在，UI/Navigate存在，项目设置仍引用同一输入资源。
+静态检查：无旧框架类型/程序集/字段残留引用，保留的asmdef无旧依赖；无namespace；git diff --check通过。
+完整机器记录见Docs/Architecture/00_ValidationResults.json，均为本轮结果。
+EditMode测试未执行：配套旧框架已删除，输入低风险配置改为实际资产核对，不保留镜像测试凑数量。
+
+六、资产和已有改动保护
+GameBootstrap脚本GUID：f23dcbb4592d5014b98255e2505384b5。
+Prefab GUID：b1d79f76c0f03204398e51553fdc09ce。
+BaseTest GUID：4c4b27528e49e824b8bab9101c1d75b9。
+Input GUID：052faaac586de48259a63d0c4782560b。
+输入文件及.meta哈希与本轮开始相同；有效项目设置引用仍能解析。
+SampleScene、manifest、packages-lock、EditorSettings、EditorBuildSettings及ProjectSettings与本轮开始哈希核对；不回滚原有用户改动。
+Unity测试工具临时改动的Play Mode选项已恢复，EditorSettings文件哈希与本轮开始完全相同。
+旧Assets/InputSystem_Actions.inputactions的迁移发生于上一轮，本轮没有重复迁移或新建输入资源。
+最后退出Play并恢复原SampleScene；不改正式Build Settings，不把测试场景加入正式构建。
+
+七、打开和后续接入
+打开Assets/Scenes/Tests/Base/BaseTest.unity即可检查常驻入口。Test Runner的PlayMode中可重新执行上述3个测试。
+后续继续沿用入口Prefab和输入资源；真实功能需要初始化时再增加明确引用与直接调用，不必实现旧接口或注册到框架。
+物品身份/使用/归属仍归物品模块，背包与仓库格子各自实现，阶段顺序由流程模块协调。
+正式场景与输入整合由09集中处理；实际双方需要共享类型时再共同确定。
+
+八、尚未实现与限制
+未实现或验证角色跑跳、固定Z、物品/背包/仓库及转移、敌人、生命、撤离和中英业务联测；对应模块尚未开始。
+未执行Windows完整试玩构建或真人试玩；不是00范围。
+没有遍历其他Domain Reload/Scene Reload组合；按当前项目设置完成重复Play验证。
+本次基础范围未发现剩余阻塞问题。后续从BaseSetup.txt和实际小组件开始，无需学习旧全量接口与生命周期框架。

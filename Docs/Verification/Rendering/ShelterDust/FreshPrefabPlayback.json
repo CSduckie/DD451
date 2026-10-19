@@ -1,0 +1,27 @@
+{
+  "utc": "2026-10-19T08:38:16.3316980Z",
+  "freshUnmodifiedPrefab": true,
+  "manualSimulation": false,
+  "parent": "OutputCamera",
+  "localPosition": "(0.00, 0.00, 4.00)",
+  "systems": [
+    {
+      "name": "FineDust",
+      "playing": true,
+      "count": 161,
+      "prewarm": true,
+      "loop": true,
+      "autoSeed": true
+    },
+    {
+      "name": "ForegroundMotes",
+      "playing": true,
+      "count": 27,
+      "prewarm": true,
+      "loop": true,
+      "autoSeed": true
+    }
+  ],
+  "captureRunning": false,
+  "motionRunning": false
+}

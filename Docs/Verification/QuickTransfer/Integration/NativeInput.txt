@@ -1,0 +1,8 @@
+07B native Windows input check — 2026-10-18/19 UTC integration session
+Tool: computer-use @oai/sky; actual Unity DX12 window, GameView visible and clicked.
+Observed baseline: Screen 1920x1080; stage Shelter; Chinese; backpack closed; Keyboard/Mouse RawInput enabled; no synthetic devices.
+Sent F10 through sky.press_key after clicking Game. Readback remained Chinese.
+Sent Tab through sky.press_key after fresh observation. Readback backpack remained closed.
+UnityEditor.GameView was focused, Application.isFocused=true.
+Conclusion: these native injected keys did not produce the expected game actions in this environment. This does not establish a physical-keyboard defect. Two rounds of real keyboard/mouse play remain UNVERIFIED; API fixtures and InputSystem queued tests are separate evidence.
+No user manual intervention was available in the earlier request. No polling/repeated input or alternate OS injection workaround performed.

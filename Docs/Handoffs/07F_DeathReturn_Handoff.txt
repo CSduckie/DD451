@@ -1,0 +1,53 @@
+MyPrecious P0 — 07F 死亡返回交接
+日期：2026-10-19。工程：E:/DD451。范围：Docs/AgentPrompts/07F_DeathReturn_Dispatch.txt。
+
+一、交付行为
+正式探索中 PlayerHealth.Died 现在自动进入 DeathReturning：立即关闭背包、搜索和拖拽，锁住场景输入；下一帧先完成死亡损失和来源关闭，再加载 Shelter。同一玩家在原出生点恢复满血和操作能力，当前探索轮次不变。只有再次真实出发才加一轮。
+背包旧物和本轮新物全部丢失；已有保有价值相应扣除。仓库实例、摆放、旋转和已激活扩容保留。唯一物品通过原 ItemManager.RecordLoss 的 PendingRecovery/来源规则，下轮原点找回同一 InstanceId。正常成功撤离仍保留伤势。
+死亡与撤离以先接受的场景锁决定顺序；过渡锁内不再接受伤害。死亡先发生则后续撤离被拒绝，撤离先接受则后续致命伤害被拒绝。背包/UI 自身锁不作为免伤条件。
+
+二、根因与实现
+原 GameFlowManager 未订阅 Died，现有 TryExtract 和 RelocateWithinRun 又明确拒绝死者，直接加载 Shelter 会漏掉背包/世界损失。新增专用死亡路径，未把死亡伪装成成功撤离。
+清算按成功步骤保存进度：ItemManager.RecordLoss 和背包布局删除分别计数，避免前者已成功而后者失败时 Retry 重复扣账；失败后可继续剩余步骤。等待一帧避开健康通知和物品转移的同步忙状态。
+LootRuntimeManager 新增当前轮来源关闭入口；清算后关闭搜索、撤销未提交临时掉落并阻止旧场景加载回调再次生成本轮来源。下轮 PrepareRound 才恢复生成。正常撤离也调用该关闭入口。
+复活接口要求已准备、死亡、场景锁和有效位置；不调用新探索准备，不增加当前轮次，不刷新本轮使用次数。复活成功后的 Retry 仅定位，不重复恢复生命。保留 02C 下蹲碰撞体和安全站立规则。
+
+三、修改文件
+生产脚本（5）：
+- Assets/Scripts/GameFlow/MonoBehaviour/GameFlowManager.cs
+- Assets/Scripts/GameFlow/RuntimeData/GameFlowStage.cs（枚举追加在末尾，旧值不变）
+- Assets/Scripts/Player/MonoBehaviour/PlayerHealth.cs
+- Assets/Scripts/Player/MonoBehaviour/PlayerController.cs
+- Assets/Scripts/Loot/MonoBehaviour/LootRuntimeManager.cs
+本地化：Assets/Data/Localization/GameFlow/GameFlowText.asset，沿现有 03 表增加 3 个中英文键。
+Builder：Assets/Tests/GameFlow/Editor/MinimumLoopSceneBuilder.cs，仅同步 3 个本地化条目；没有运行重建。
+测试：修改 PlayerSceneTransitionTests.cs，新增 GameFlowDeathReturnTests.cs 及 meta，均在 Assets/Tests/GameFlow/PlayMode/。
+未修改 GameFlowSceneBindings、场景、Prefab、敌人生产代码、Items/Backpack/Warehouse/Shelter 模块或用户布局/光照/后处理/路线。保留最新编辑态相机预览和 09G/09H 行为；当前 Ruins 是 4 架无人机、3 个箱子。
+
+四、最终源码的实际测试
+证据根目录：Docs/Verification/GameFlow/DeathReturn/。
+- PlayMode-DeathAndPlayer-10.xml：6 项死亡流程 + 4 项玩家过渡，10/10。
+- PlayMode-Regression-54.xml：LootIntegration 37、MinimumLoopPointer 1、MinimumLoopScene 6、PlayerCrouchCollider 5、RuinsEnemyIntegration 5，54/54。
+- EditMode-Regression-161.xml：GameFlow.EditMode、Loot.EditMode、Player.EditMode 相关程序集，161/161。
+合计 64 项 PlayMode + 161 项 EditMode = 225 项通过，0 失败、0 跳过。不是整个项目所有程序集的全量结论。
+覆盖旧/新物损失、仓库扩容、唯一身份、使用次数、拖拽/搜索关闭、损失提交后的布局失败重试、Shelter 路径失败重试、复活后观察者异常重试、死亡/撤离竞争及成功撤离保伤。
+测试夹具在测试场景运行时隔离敌人、克隆必出食物以稳定断言；未保存配置。下面普通 Play 使用正式来源概率和敌人，不以测试夹具代替普通运行。
+
+五、普通 Game 1920×1080 验证
+证据：OrdinaryPlay/Run-2a22615e/。同一玩家实例 -4276422 连续三轮：
+1. 第 1 轮自然搜索取得布娃娃和医疗包，遭无人机接触后成功撤离；生命 2/3 保留，EV=7。仓库升级 20×24，医疗包存于 (3,4)、旋转=true，布娃娃留背包。
+2. 第 2 轮真实出发，再自然取得食物。背包开启时调用真实 PlayerHealth.TakeDamage(MaxHealth)，立即死亡锁定/关闭 UI；重复伤害和撤离均拒绝。自动回 Shelter：仍为第 2 轮，同一玩家生命 3/3、CanAct=true，背包空、EV 7→2，仓库医疗包及扩容保留。
+3. 再次出发才进入第 3 轮。解锁时满血，4 架无人机全部新实例、Patrol、当前轮 3、未爆炸且运行中。原箱子自然搜索到同一布娃娃 ID 7550c364798b441199dfbb34a679ee48，唯一实例数 1；再次取得并成功撤离，EV 2→7，生命 2/3 保留，仓库仍保留。
+关键断言文件：04-ActualDeath、05-DeathReturnVerification、08-NextDepartureAtUnlock、09-UniqueRecovery、12-RecoveredExtraction.json。Interactions.jsonl 记录正式交互入口。
+Observer-20261019T084904154Z/Samples.json 有 9985 帧、10 次背包快照、0 观察错误；死亡帧 7975，清算/关闭来源帧 7976，首次观察到 Shelter 加载帧 7978，解锁帧 7979。证明损失完成先于已加载的 Shelter。
+普通 Play 使用 API 定位、搜索期间临时冻结玩家刚体、真实 Trigger/遮挡/PlayerInteraction、自然逐帧搜索、实际转移 API 和真实 TakeDamage；临时状态均恢复。没有禁用普通运行敌人或修改来源配置。明确不是原生键鼠闭环；本轮未做 Windows 构建。
+
+六、视觉与保护检查
+实际 Game framebuffer 截图 supersize=1；4 张 PNG 和逐帧相机元数据均为 1920×1080。根 agent 已逐张打开检查，见 VisualReview.txt：死亡返回中英文字清晰、没有新提示遮挡或裁切；空背包、仓库保留和 EV/生命显示一致。语言通过现有切换 API 验证，不宣称物理 F10。
+遵循当前 ProjectRules A23，仅验收 1920×1080；历史 800/1280 与原生输入尝试保留在原 07 交接中，不混入本轮完成声明。
+独立 IntegrityAudit.json/.txt：707 项既定基线 = 699 不变 + 8 项预期修改，0 缺失/意外变更，另新增测试和 meta 两项。全部 12 场景、31 项目 Prefab、25 ProjectSettings 及其他记录的 Data 配置保持。基线只含 3 项 Art 文件，不对未纳入的 3886 项美术文件作历史哈希断言。
+
+七、失败记录与最终释放
+CompileAndRunHistory.txt 保留首次新测试访问 internal API 的编译错误、因该错误启动的测试作业取消、域重载连接中断，以及临时验证脚本的参数/截图标签/状态序列化错误。修正后正式 XML 全部通过；不把取消或未启动算通过。最终普通 Play 结束前及退出后 Console 均为 0 错误/0 警告。
+ReleaseState.json（2026-10-19T08:58:19Z）：唯一 Bootstrap，clean/Edit；Play/paused/changing/compiling/updating=false，无 PrefabStage，真实 TestRunner 活动=false，observer/acquire/capture=false。timeScale=1、runInBackground=false、原 DisableDomainReload 和 Direct3D11 保留，Game=1920×1080。
+已退出 Play，没有剩余 Assets 写入、测试、截图、观察回调或排队 Unity 操作。Docs/Verification/Enemy/EditorCoordination.txt 的 07F 明确释放记录为接管依据；后续操作者仍须 fresh 检查，不得恢复旧场景基线。

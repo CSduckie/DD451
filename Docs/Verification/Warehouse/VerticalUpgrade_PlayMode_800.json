@@ -1,0 +1,119 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"success\":true,\"message\":\"Test job status retrieved.\",\"error\":null,\"data\":{\"job_id\":\"e741629343c84a9bb364bcc69b57a31d\",\"status\":\"succeeded\",\"mode\":\"PlayMode\",\"started_unix_ms\":1792353987953,\"finished_unix_ms\":1792353993589,\"last_update_unix_ms\":1792353993589,\"progress\":{\"completed\":7,\"total\":7,\"current_test_full_name\":null,\"current_test_started_unix_ms\":1792353993213,\"last_finished_test_full_name\":\"WarehouseIntegrationTests.VerticalScrollingKeepsEveryColumnVisibleAndMapsPointerWithoutRebuildingCells\",\"last_finished_unix_ms\":1792353993578,\"stuck_suspected\":false,\"editor_is_focused\":false,\"run_in_background\":null,\"focus_nudge_attempts\":null,\"focus_nudge_limit\":null,\"focus_nudge_status\":null,\"blocked_reason\":null,\"failures_so_far\":[],\"failures_capped\":false},\"error\":null,\"result\":{\"mode\":\"PlayMode\",\"summary\":{\"total\":7,\"passed\":7,\"failed\":0,\"skipped\":0,\"durationSeconds\":1.6890644,\"resultState\":\"Passed\"},\"results\":[{\"name\":\"ConfirmationLanguageCancelStaleTargetAndRepeatedClickCannotRepeatLoss\",\"fullName\":\"WarehouseIntegrationTests.ConfirmationLanguageCancelStaleTargetAndRepeatedClickCannotRepeatLoss\",\"state\":\"Passed\",\"durationSeconds\":0.2984218,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"DestroyingCompleteRuntimeThenStartingFreshUsesInitialConfigAndChinese\",\"fullName\":\"WarehouseIntegrationTests.DestroyingCompleteRuntimeThenStartingFreshUsesInitialConfigAndChinese\",\"state\":\"Passed\",\"durationSeconds\":0.224337,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"DisableFocusLossContextExitAndLateReleaseCancelWithoutAccumulatingRCallbacks\",\"fullName\":\"WarehouseIntegrationTests.DisableFocusLossContextExitAndLateReleaseCancelWithoutAccumulatingRCallbacks\",\"state\":\"Passed\",\"durationSeconds\":0.1534891,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"NewAdditiveShelterContextCancelsOldDragAndConfirmationWithoutRevokingNewInteraction\",\"fullName\":\"WarehouseIntegrationTests.NewAdditiveShelterContextCancelsOldDragAndConfirmationWithoutRevokingNewInteraction\",\"state\":\"Passed\",\"durationSeconds\":0.1046808,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"QueuedPointerDragUsesRealEventSystemAndRAndF10OnlyChangePreview\",\"fullName\":\"WarehouseIntegrationTests.QueuedPointerDragUsesRealEventSystemAndRAndF10OnlyChangePreview\",\"state\":\"Passed\",\"durationSeconds\":0.3270735,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"SceneReloadRebindsPersistentStateAndClearsPermissionUntilNewSceneGrantsIt\",\"fullName\":\"WarehouseIntegrationTests.SceneReloadRebindsPersistentStateAndClearsPermissionUntilNewSceneGrantsIt\",\"state\":\"Passed\",\"durationSeconds\":0.2016384,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"VerticalScrollingKeepsEveryColumnVisibleAndMapsPointerWithoutRebuildingCells\",\"fullName\":\"WarehouseIntegrationTests.VerticalScrollingKeepsEveryColumnVisibleAndMapsPointerWithoutRebuildingCells\",\"state\":\"Passed\",\"durationSeconds\":0.3647704,\"message\":null,\"stackTrace\":null,\"output\":\"\"}]}},\"hint\":null}"
+    }
+  ],
+  "structuredContent": {
+    "result": {
+      "success": true,
+      "message": "Test job status retrieved.",
+      "error": null,
+      "data": {
+        "job_id": "e741629343c84a9bb364bcc69b57a31d",
+        "status": "succeeded",
+        "mode": "PlayMode",
+        "started_unix_ms": 1792353987953,
+        "finished_unix_ms": 1792353993589,
+        "last_update_unix_ms": 1792353993589,
+        "progress": {
+          "completed": 7,
+          "total": 7,
+          "current_test_full_name": null,
+          "current_test_started_unix_ms": 1792353993213,
+          "last_finished_test_full_name": "WarehouseIntegrationTests.VerticalScrollingKeepsEveryColumnVisibleAndMapsPointerWithoutRebuildingCells",
+          "last_finished_unix_ms": 1792353993578,
+          "stuck_suspected": false,
+          "editor_is_focused": false,
+          "run_in_background": null,
+          "focus_nudge_attempts": null,
+          "focus_nudge_limit": null,
+          "focus_nudge_status": null,
+          "blocked_reason": null,
+          "failures_so_far": [],
+          "failures_capped": false
+        },
+        "error": null,
+        "result": {
+          "mode": "PlayMode",
+          "summary": {
+            "total": 7,
+            "passed": 7,
+            "failed": 0,
+            "skipped": 0,
+            "durationSeconds": 1.6890644,
+            "resultState": "Passed"
+          },
+          "results": [
+            {
+              "name": "ConfirmationLanguageCancelStaleTargetAndRepeatedClickCannotRepeatLoss",
+              "fullName": "WarehouseIntegrationTests.ConfirmationLanguageCancelStaleTargetAndRepeatedClickCannotRepeatLoss",
+              "state": "Passed",
+              "durationSeconds": 0.2984218,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "DestroyingCompleteRuntimeThenStartingFreshUsesInitialConfigAndChinese",
+              "fullName": "WarehouseIntegrationTests.DestroyingCompleteRuntimeThenStartingFreshUsesInitialConfigAndChinese",
+              "state": "Passed",
+              "durationSeconds": 0.224337,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "DisableFocusLossContextExitAndLateReleaseCancelWithoutAccumulatingRCallbacks",
+              "fullName": "WarehouseIntegrationTests.DisableFocusLossContextExitAndLateReleaseCancelWithoutAccumulatingRCallbacks",
+              "state": "Passed",
+              "durationSeconds": 0.1534891,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "NewAdditiveShelterContextCancelsOldDragAndConfirmationWithoutRevokingNewInteraction",
+              "fullName": "WarehouseIntegrationTests.NewAdditiveShelterContextCancelsOldDragAndConfirmationWithoutRevokingNewInteraction",
+              "state": "Passed",
+              "durationSeconds": 0.1046808,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "QueuedPointerDragUsesRealEventSystemAndRAndF10OnlyChangePreview",
+              "fullName": "WarehouseIntegrationTests.QueuedPointerDragUsesRealEventSystemAndRAndF10OnlyChangePreview",
+              "state": "Passed",
+              "durationSeconds": 0.3270735,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "SceneReloadRebindsPersistentStateAndClearsPermissionUntilNewSceneGrantsIt",
+              "fullName": "WarehouseIntegrationTests.SceneReloadRebindsPersistentStateAndClearsPermissionUntilNewSceneGrantsIt",
+              "state": "Passed",
+              "durationSeconds": 0.2016384,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "VerticalScrollingKeepsEveryColumnVisibleAndMapsPointerWithoutRebuildingCells",
+              "fullName": "WarehouseIntegrationTests.VerticalScrollingKeepsEveryColumnVisibleAndMapsPointerWithoutRebuildingCells",
+              "state": "Passed",
+              "durationSeconds": 0.3647704,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            }
+          ]
+        }
+      },
+      "hint": null
+    }
+  },
+  "isError": false
+}

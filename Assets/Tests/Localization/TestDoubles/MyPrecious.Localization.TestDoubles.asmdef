@@ -1,0 +1,6 @@
+{
+    "name": "MyPrecious.Localization.TestDoubles",
+    "rootNamespace": "",
+    "references": ["MyPrecious.Localization", "MyPrecious.Items", "Unity.TextMeshPro"],
+    "autoReferenced": false
+}

@@ -1,0 +1,40 @@
+ D Assets/InputSystem_Actions.inputactions
+ D Assets/InputSystem_Actions.inputactions.meta
+ M Assets/Scenes/SampleScene.unity
+ M Assets/Settings/PC_RPAsset.asset
+ M Assets/Settings/UniversalRenderPipelineGlobalSettings.asset
+ M Packages/manifest.json
+ M Packages/packages-lock.json
+ M ProjectSettings/EditorBuildSettings.asset
+ M ProjectSettings/EditorSettings.asset
+ M ProjectSettings/GraphicsSettings.asset
+ M ProjectSettings/ProjectSettings.asset
+ M ProjectSettings/UnityConnectSettings.asset
+?? Assets/Art.meta
+?? Assets/Art/
+?? Assets/BrokenVector.meta
+?? Assets/BrokenVector/
+?? Assets/Data.meta
+?? Assets/Data/
+?? Assets/Input.meta
+?? Assets/Input/
+?? Assets/Prefabs.meta
+?? Assets/Prefabs/
+?? "Assets/Rainy VFX.meta"
+?? "Assets/Rainy VFX/"
+?? Assets/Scenes/Bootstrap.unity
+?? Assets/Scenes/Bootstrap.unity.meta
+?? Assets/Scenes/Ruins.unity
+?? Assets/Scenes/Ruins.unity.meta
+?? Assets/Scenes/Shelter.unity
+?? Assets/Scenes/Shelter.unity.meta
+?? Assets/Scenes/Tests.meta
+?? Assets/Scenes/Tests/
+?? Assets/Scripts.meta
+?? Assets/Scripts/
+?? Assets/Tests.meta
+?? Assets/Tests/
+?? "Assets/TextMesh Pro.meta"
+?? "Assets/TextMesh Pro/"
+?? Docs/
+?? ProjectSettings/SceneTemplateSettings.json

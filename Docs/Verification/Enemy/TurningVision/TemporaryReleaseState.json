@@ -1,0 +1,29 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"success\":true,\"message\":\"Code executed successfully.\",\"data\":{\"result\":{\"utc\":\"2026-10-19T07:55:03.2995329Z\",\"scene\":\"Assets/Scenes/Shelter.unity\",\"dirty\":false,\"playing\":false,\"paused\":false,\"changing\":false,\"compiling\":false,\"updating\":false,\"testsActive\":false,\"timeScale\":1.0,\"background\":false},\"compiler\":\"codedom\"}}"
+    }
+  ],
+  "structuredContent": {
+    "success": true,
+    "message": "Code executed successfully.",
+    "data": {
+      "result": {
+        "utc": "2026-10-19T07:55:03.2995329Z",
+        "scene": "Assets/Scenes/Shelter.unity",
+        "dirty": false,
+        "playing": false,
+        "paused": false,
+        "changing": false,
+        "compiling": false,
+        "updating": false,
+        "testsActive": false,
+        "timeScale": 1,
+        "background": false
+      },
+      "compiler": "codedom"
+    }
+  },
+  "isError": false
+}

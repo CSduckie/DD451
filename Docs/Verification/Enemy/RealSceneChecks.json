@@ -1,0 +1,46 @@
+{
+  "wall": {
+    "success": true,
+    "message": "Code executed successfully.",
+    "data": {
+      "result": {
+        "method": "API-assisted real scene, frozen simulation",
+        "withWall": false,
+        "withoutWall": true,
+        "wallRestored": true,
+        "player": "(4.00, 0.05, 0.00)",
+        "drone": "(0.00, 2.40, 0.00)"
+      },
+      "compiler": "codedom"
+    }
+  },
+  "cover": {
+    "success": true,
+    "message": "Code executed successfully.",
+    "data": {
+      "result": {
+        "method": "API-assisted immediate queries in real saved EnemyTest",
+        "standingInCover": false,
+        "crouchingInCover": true,
+        "crouchingOutside": false,
+        "bothCovers": true,
+        "oneDisabled": true,
+        "bothDisabled": false,
+        "restored": true
+      },
+      "compiler": "codedom"
+    }
+  },
+  "nativeInput": {
+    "success": true,
+    "message": "Code executed successfully.",
+    "data": {
+      "result": {
+        "language": "Chinese",
+        "backpack": false,
+        "focus": "UnityEditor.GameView"
+      },
+      "compiler": "codedom"
+    }
+  }
+}

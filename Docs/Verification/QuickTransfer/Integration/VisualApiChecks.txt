@@ -1,0 +1,14 @@
+07B ordinary Play visual/API checks, 1920x1080, 2026-10-18/19 UTC.
+These are API fixtures, separate from the official queued InputSystem/UGUI tests and native-key check.
+
+Started normal Play from unchanged Bootstrap. Loaded Shelter, then TryDepart -> real Ruins, round 1. RelocateWithinRun to supplies-box and TryOpenSource; real LootUI.Update revealed entries naturally, no AdvanceSearch call or direct reveal mutation.
+Formal 6x4 box: 24 background cells; grid 428x288; viewport 428x584; alpha=0, raycast=true, RectMask2D present, ScrollRect vertical=true/horizontal=false. No clipping found for visible non-scroll text. CN and EN screenshots 01/02.
+API quick medkit take/return/take: all true; same instance 68f71fe5d745467b92e31536f73a42c0; ItemManager count 3 before/after; EV0 before extraction.
+
+Created runtime-only empty LootBox qt-empty4x3 under current EnvironmentRoot, with temporary empty LootTableSO. BindBox/TryOpenSource true; 0 entries, 12 cells, grid288x218; same viewport alpha/mask/raycast/66 geometry. CN/EN screenshots03/04. No asset or scene saved.
+Created runtime-only empty LootBox qt-tall6x14 similarly: 84cells, grid428x988; viewport428x584. Screenshot05 at scroll top.
+Initial direct Coordinator call without request validator returned StaleRequest with no mutation; this was incorrect fixture invocation, not a product failure. Retried with actual captured LootUI.SessionToken/Source validity predicate, returned Success at explicit medkit(4,12),2x2,rotated=false. No auto placement used. Screenshot06 at scroll bottom.
+Bottom point(1811,281) maps to cell(5,13); hidden top point rejected. UGUI RaycastAll first hit LootItem(Clone). API TryQuickTransfer of returned medkit true, same ID, background remains84cells. Chinese screenshot07 after take. Scrolling was set through ScrollRect API, not native wheel.
+Temporary fixture tables and GameObjects destroyed before returning to Shelter. Original box reopened, doll taken through LootUI.TryQuickTransfer, then real TryExtract to Shelter. Further warehouse checks are recorded in VisualSnapshots.json/Report.txt.
+
+Official formal queued test independently verifies two rounds, exact medkit far-cell return, non-square offset/R rotation, blank viewport rejection, left/rightCtrl bidirectional single submissions, stable ID/EV/uses, warehouse scrolling and confirmation cancellation.

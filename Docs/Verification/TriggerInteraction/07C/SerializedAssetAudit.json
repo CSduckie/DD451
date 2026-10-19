@@ -1,0 +1,845 @@
+{
+  "observedUtc": "2026-10-19T01:17:07.1182794Z",
+  "scope": "Read-only serialized asset audit; report files only were written. No Unity calls, scene saves, import, compile, or play testing.",
+  "baselineManifest": "Docs/Verification/TriggerInteraction/07C/AssetBackupManifest.json",
+  "baselineManifestSha256": "44B9B4A37787DC2E1844D9E76EB94452E4883F97A9028C3F0CE70B4BCD6DBCC1",
+  "backupFiles": 56,
+  "invalidBackups": 0,
+  "changedFiles": 11,
+  "metadataFiles": 27,
+  "changedMetadataFiles": 0,
+  "materialFiles": 15,
+  "changedMaterialFiles": 0,
+  "unexpectedChangedPaths": [],
+  "expectedButUnchangedPaths": [],
+  "unexpectedSemanticDifferences": [],
+  "protectedOldColliderRendererMeshBlocks": 96,
+  "alteredProtectedOldColliderRendererMeshBlocks": 0,
+  "protectedOldPrefabOverrideEntries": 849,
+  "alteredProtectedOldPrefabOverrideEntries": 0,
+  "playerTestBackgroundDecoration": {
+    "afterScale": [
+      1,
+      2,
+      1
+    ],
+    "beforeScale": [
+      1,
+      2,
+      1
+    ],
+    "afterPosition": [
+      -2,
+      1,
+      0.02
+    ],
+    "beforePosition": [
+      -2,
+      1,
+      0.02
+    ],
+    "name": "BackgroundDecoration_NotInPlane",
+    "note": "Actual user value Z=0.02 preserved. Old written Z=4 description was not treated as a restoration instruction."
+  },
+  "camera": {
+    "lensComposerBrainAndListenerBlocksUnchanged": 8,
+    "newSharedConfinerBoundingVolume": "null",
+    "z": -12,
+    "sceneOverrides": "Each existing camera instance retains all old overrides and adds only BoundingVolume -> local BoxCollider 1820440272.",
+    "composerDistance": 12,
+    "perspectivePreserved": true,
+    "newSharedConfinerSlowingDistance": 0.5,
+    "fov": 50
+  },
+  "bounds": [
+    {
+      "scene": "Shelter",
+      "parent": "Environment3D",
+      "size": [
+        15.6,
+        1,
+        2
+      ],
+      "position": [
+        0,
+        3,
+        -12
+      ]
+    },
+    {
+      "scene": "Ruins",
+      "parent": "Environment3D",
+      "size": [
+        14.6,
+        3,
+        2
+      ],
+      "position": [
+        0,
+        4,
+        -12
+      ]
+    },
+    {
+      "scene": "PlayerTest",
+      "parent": "scene root",
+      "size": [
+        16.1,
+        3,
+        2
+      ],
+      "position": [
+        0,
+        4,
+        -12
+      ]
+    },
+    {
+      "scene": "BackpackTest",
+      "parent": "scene root",
+      "size": [
+        8.1,
+        3,
+        2
+      ],
+      "position": [
+        0,
+        4,
+        -12
+      ]
+    },
+    {
+      "scene": "LootTest",
+      "parent": "scene root",
+      "size": [
+        24.1,
+        3,
+        2
+      ],
+      "position": [
+        0,
+        4,
+        -12
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": "Assets/Prefabs/Player/PlayerCamera.prefab",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Prefabs\\Player\\PlayerCamera.prefab",
+      "manifestSha256": "DA4E345C170AA4B9A918607D10D5B509AF3143344EACE728BBB91516140BC2F0",
+      "backupSha256": "DA4E345C170AA4B9A918607D10D5B509AF3143344EACE728BBB91516140BC2F0",
+      "currentSha256": "B7E1D6CC901CA38E6F8761527878A5223A11957436960A0932E4074DC049C04A",
+      "backupValid": true,
+      "changed": true,
+      "beforeBlockCount": 13,
+      "afterBlockCount": 14,
+      "unchangedOldBlockCount": 11,
+      "modifiedOldBlockIds": [
+        "2286677222629688346",
+        "5429866153127628978"
+      ],
+      "removedOldBlockIds": [],
+      "addedBlockIds": [
+        "9039472127334938751"
+      ],
+      "oldColliderRendererMeshBlockCount": 0,
+      "alteredOrMissingColliderRendererMeshBlockCount": 0,
+      "oldPrefabOverrideEntryCount": 0,
+      "alteredOrMissingOldPrefabOverrideEntryCount": 0
+    },
+    {
+      "path": "Assets/Prefabs/Player/PlayerCamera.prefab.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Prefabs\\Player\\PlayerCamera.prefab.meta",
+      "manifestSha256": "00EF61A4E3B2C53252818DAA239D0DA2BFE0B00C06AF9DACB14824B4AD80B5ED",
+      "backupSha256": "00EF61A4E3B2C53252818DAA239D0DA2BFE0B00C06AF9DACB14824B4AD80B5ED",
+      "currentSha256": "00EF61A4E3B2C53252818DAA239D0DA2BFE0B00C06AF9DACB14824B4AD80B5ED",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/Prefabs/GameFlow/ShelterStoragePoint.prefab",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Prefabs\\GameFlow\\ShelterStoragePoint.prefab",
+      "manifestSha256": "B4684DBFD8D73922DDA1E4A8CC2A5545E42A743BFED135B629F997A6AEF2C27C",
+      "backupSha256": "B4684DBFD8D73922DDA1E4A8CC2A5545E42A743BFED135B629F997A6AEF2C27C",
+      "currentSha256": "BA3CDDBE44BFCF8BB9A619B8438B0F41EBF4584A71423A7BFFA9C8D3A9C90AEF",
+      "backupValid": true,
+      "changed": true,
+      "beforeBlockCount": 11,
+      "afterBlockCount": 14,
+      "unchangedOldBlockCount": 9,
+      "modifiedOldBlockIds": [
+        "1502635299862995348",
+        "8198006485246711803"
+      ],
+      "removedOldBlockIds": [],
+      "addedBlockIds": [
+        "2662000693092295973",
+        "575042833835708094",
+        "6747930568781589931"
+      ],
+      "oldColliderRendererMeshBlockCount": 4,
+      "alteredOrMissingColliderRendererMeshBlockCount": 0,
+      "oldPrefabOverrideEntryCount": 0,
+      "alteredOrMissingOldPrefabOverrideEntryCount": 0
+    },
+    {
+      "path": "Assets/Prefabs/GameFlow/ShelterStoragePoint.prefab.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Prefabs\\GameFlow\\ShelterStoragePoint.prefab.meta",
+      "manifestSha256": "30998742C1B296DEF9FED2689732BAF7129E329231B4A99CA1E8EBFB9BD83D01",
+      "backupSha256": "30998742C1B296DEF9FED2689732BAF7129E329231B4A99CA1E8EBFB9BD83D01",
+      "currentSha256": "30998742C1B296DEF9FED2689732BAF7129E329231B4A99CA1E8EBFB9BD83D01",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/Prefabs/GameFlow/DeparturePoint.prefab",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Prefabs\\GameFlow\\DeparturePoint.prefab",
+      "manifestSha256": "692A875763EE93D8574E615655A3CA565B3F81171F947846D80D391833193FAB",
+      "backupSha256": "692A875763EE93D8574E615655A3CA565B3F81171F947846D80D391833193FAB",
+      "currentSha256": "FF8F050C024C2FB85EF690DD047CE3A7369553539A14415D967C57A6A5534D07",
+      "backupValid": true,
+      "changed": true,
+      "beforeBlockCount": 11,
+      "afterBlockCount": 14,
+      "unchangedOldBlockCount": 9,
+      "modifiedOldBlockIds": [
+        "1519692354214522352",
+        "4281139158703012082"
+      ],
+      "removedOldBlockIds": [],
+      "addedBlockIds": [
+        "4704028509207406952",
+        "5537966016731844471",
+        "6663816547120605280"
+      ],
+      "oldColliderRendererMeshBlockCount": 4,
+      "alteredOrMissingColliderRendererMeshBlockCount": 0,
+      "oldPrefabOverrideEntryCount": 0,
+      "alteredOrMissingOldPrefabOverrideEntryCount": 0
+    },
+    {
+      "path": "Assets/Prefabs/GameFlow/DeparturePoint.prefab.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Prefabs\\GameFlow\\DeparturePoint.prefab.meta",
+      "manifestSha256": "C492E3286D58DA5277DC0B25E13623777387322BA9709CE24C42B20B30E97379",
+      "backupSha256": "C492E3286D58DA5277DC0B25E13623777387322BA9709CE24C42B20B30E97379",
+      "currentSha256": "C492E3286D58DA5277DC0B25E13623777387322BA9709CE24C42B20B30E97379",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/Prefabs/GameFlow/ExtractionPoint.prefab",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Prefabs\\GameFlow\\ExtractionPoint.prefab",
+      "manifestSha256": "FDCB5BDA5E6D1DC2421C70EBA348630C64BACA0EC5AAD989A1A255C341A56E7C",
+      "backupSha256": "FDCB5BDA5E6D1DC2421C70EBA348630C64BACA0EC5AAD989A1A255C341A56E7C",
+      "currentSha256": "8EC0C4E4B7BC8354399EC701AD5557F79CE881B4B1D608CF284D4E0B003A2168",
+      "backupValid": true,
+      "changed": true,
+      "beforeBlockCount": 11,
+      "afterBlockCount": 14,
+      "unchangedOldBlockCount": 9,
+      "modifiedOldBlockIds": [
+        "462880574126095190",
+        "4752377410073698935"
+      ],
+      "removedOldBlockIds": [],
+      "addedBlockIds": [
+        "5620267562257885507",
+        "5742371837087481881",
+        "7508653658733452409"
+      ],
+      "oldColliderRendererMeshBlockCount": 4,
+      "alteredOrMissingColliderRendererMeshBlockCount": 0,
+      "oldPrefabOverrideEntryCount": 0,
+      "alteredOrMissingOldPrefabOverrideEntryCount": 0
+    },
+    {
+      "path": "Assets/Prefabs/GameFlow/ExtractionPoint.prefab.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Prefabs\\GameFlow\\ExtractionPoint.prefab.meta",
+      "manifestSha256": "573AAE6467FFB5678AC61B557BBC711F80417E1A018A4665CAD9970589109B9F",
+      "backupSha256": "573AAE6467FFB5678AC61B557BBC711F80417E1A018A4665CAD9970589109B9F",
+      "currentSha256": "573AAE6467FFB5678AC61B557BBC711F80417E1A018A4665CAD9970589109B9F",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/Prefabs/Loot/LootBox.prefab",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Prefabs\\Loot\\LootBox.prefab",
+      "manifestSha256": "B08506461082B629FD8FA2CE6D16DFA265A409C29DAA56FC6CDFB104D3E93EE8",
+      "backupSha256": "B08506461082B629FD8FA2CE6D16DFA265A409C29DAA56FC6CDFB104D3E93EE8",
+      "currentSha256": "23881E1A80A78B4611F6B0E31CDF092282D2A9C847A721D255A212CBC73B1207",
+      "backupValid": true,
+      "changed": true,
+      "beforeBlockCount": 6,
+      "afterBlockCount": 9,
+      "unchangedOldBlockCount": 4,
+      "modifiedOldBlockIds": [
+        "68752601063914555",
+        "8191544371416794437"
+      ],
+      "removedOldBlockIds": [],
+      "addedBlockIds": [
+        "1718981939145479534",
+        "5923030398769501321",
+        "7251887505522413375"
+      ],
+      "oldColliderRendererMeshBlockCount": 3,
+      "alteredOrMissingColliderRendererMeshBlockCount": 0,
+      "oldPrefabOverrideEntryCount": 0,
+      "alteredOrMissingOldPrefabOverrideEntryCount": 0
+    },
+    {
+      "path": "Assets/Prefabs/Loot/LootBox.prefab.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Prefabs\\Loot\\LootBox.prefab.meta",
+      "manifestSha256": "EFB9036D5152C2106CABE3EC546C3FD6D929C2C93E1BD53BFB92EAAE961B587E",
+      "backupSha256": "EFB9036D5152C2106CABE3EC546C3FD6D929C2C93E1BD53BFB92EAAE961B587E",
+      "currentSha256": "EFB9036D5152C2106CABE3EC546C3FD6D929C2C93E1BD53BFB92EAAE961B587E",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/Prefabs/Loot/GroundItem.prefab",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Prefabs\\Loot\\GroundItem.prefab",
+      "manifestSha256": "7F431C4F42286ABD0F391DB35B8BB3DBB6DA9AF5A3F54D6D8568B0EC756E65CC",
+      "backupSha256": "7F431C4F42286ABD0F391DB35B8BB3DBB6DA9AF5A3F54D6D8568B0EC756E65CC",
+      "currentSha256": "0E1070ED28A779E5227A551DFA2571675B5582AAB838A4C8F2E850952207DF19",
+      "backupValid": true,
+      "changed": true,
+      "beforeBlockCount": 8,
+      "afterBlockCount": 11,
+      "unchangedOldBlockCount": 6,
+      "modifiedOldBlockIds": [
+        "3354536644452038912",
+        "7728315257386899862"
+      ],
+      "removedOldBlockIds": [],
+      "addedBlockIds": [
+        "3880052505632089800",
+        "3969792445132738190",
+        "5135766454458859769"
+      ],
+      "oldColliderRendererMeshBlockCount": 3,
+      "alteredOrMissingColliderRendererMeshBlockCount": 0,
+      "oldPrefabOverrideEntryCount": 0,
+      "alteredOrMissingOldPrefabOverrideEntryCount": 0
+    },
+    {
+      "path": "Assets/Prefabs/Loot/GroundItem.prefab.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Prefabs\\Loot\\GroundItem.prefab.meta",
+      "manifestSha256": "BA35A9EC779F24057C7B608303DE67DDBE4424E992211DBFB767A1DFE6AC4984",
+      "backupSha256": "BA35A9EC779F24057C7B608303DE67DDBE4424E992211DBFB767A1DFE6AC4984",
+      "currentSha256": "BA35A9EC779F24057C7B608303DE67DDBE4424E992211DBFB767A1DFE6AC4984",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/Scenes/Bootstrap.unity",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Scenes\\Bootstrap.unity",
+      "manifestSha256": "9063DB1C2FD9EFBB83A120531BCA35644BE835D203A68EC49FBB1B8306526500",
+      "backupSha256": "9063DB1C2FD9EFBB83A120531BCA35644BE835D203A68EC49FBB1B8306526500",
+      "currentSha256": "9063DB1C2FD9EFBB83A120531BCA35644BE835D203A68EC49FBB1B8306526500",
+      "backupValid": true,
+      "changed": false,
+      "beforeBlockCount": 23,
+      "afterBlockCount": 23,
+      "unchangedOldBlockCount": 23,
+      "modifiedOldBlockIds": [],
+      "removedOldBlockIds": [],
+      "addedBlockIds": [],
+      "oldColliderRendererMeshBlockCount": 0,
+      "alteredOrMissingColliderRendererMeshBlockCount": 0,
+      "oldPrefabOverrideEntryCount": 88,
+      "alteredOrMissingOldPrefabOverrideEntryCount": 0
+    },
+    {
+      "path": "Assets/Scenes/Bootstrap.unity.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Scenes\\Bootstrap.unity.meta",
+      "manifestSha256": "7949600BE4F1DD1DCA13B37C142445FE5EB3F62518153EA2BA1B725AD567F1D3",
+      "backupSha256": "7949600BE4F1DD1DCA13B37C142445FE5EB3F62518153EA2BA1B725AD567F1D3",
+      "currentSha256": "7949600BE4F1DD1DCA13B37C142445FE5EB3F62518153EA2BA1B725AD567F1D3",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/Scenes/Shelter.unity",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Scenes\\Shelter.unity",
+      "manifestSha256": "9F6001B2422D8B6B62E1FCF110259D42548BB4A865E55A82D2634F37BB3EBA6A",
+      "backupSha256": "9F6001B2422D8B6B62E1FCF110259D42548BB4A865E55A82D2634F37BB3EBA6A",
+      "currentSha256": "73FE1B3985DE656D820AF3F9C8900E16FB83002ED309862DE70E081F5F8878F5",
+      "backupValid": true,
+      "changed": true,
+      "beforeBlockCount": 150,
+      "afterBlockCount": 153,
+      "unchangedOldBlockCount": 146,
+      "modifiedOldBlockIds": [
+        "1144893707",
+        "1182541572",
+        "191843159",
+        "2097100613"
+      ],
+      "removedOldBlockIds": [],
+      "addedBlockIds": [
+        "1820440271",
+        "1820440272",
+        "1820440273"
+      ],
+      "oldColliderRendererMeshBlockCount": 18,
+      "alteredOrMissingColliderRendererMeshBlockCount": 0,
+      "oldPrefabOverrideEntryCount": 181,
+      "alteredOrMissingOldPrefabOverrideEntryCount": 0
+    },
+    {
+      "path": "Assets/Scenes/Shelter.unity.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Scenes\\Shelter.unity.meta",
+      "manifestSha256": "E32C6E5FFC8F10D2BB611941967203616E52F76353A7722CF717703EDD4D2889",
+      "backupSha256": "E32C6E5FFC8F10D2BB611941967203616E52F76353A7722CF717703EDD4D2889",
+      "currentSha256": "E32C6E5FFC8F10D2BB611941967203616E52F76353A7722CF717703EDD4D2889",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/Scenes/Ruins.unity",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Scenes\\Ruins.unity",
+      "manifestSha256": "90625D2C3D4BB14144F0E2618A8509CD7EC418DB54406798E30070AF020A1D19",
+      "backupSha256": "90625D2C3D4BB14144F0E2618A8509CD7EC418DB54406798E30070AF020A1D19",
+      "currentSha256": "190D57AE7D9FB84F159CF490B59A3ACE4F23A976E3DF088D4A306EAA1316BB28",
+      "backupValid": true,
+      "changed": true,
+      "beforeBlockCount": 142,
+      "afterBlockCount": 145,
+      "unchangedOldBlockCount": 139,
+      "modifiedOldBlockIds": [
+        "1182541572",
+        "568664030",
+        "955271487"
+      ],
+      "removedOldBlockIds": [],
+      "addedBlockIds": [
+        "1820440271",
+        "1820440272",
+        "1820440273"
+      ],
+      "oldColliderRendererMeshBlockCount": 14,
+      "alteredOrMissingColliderRendererMeshBlockCount": 0,
+      "oldPrefabOverrideEntryCount": 127,
+      "alteredOrMissingOldPrefabOverrideEntryCount": 0
+    },
+    {
+      "path": "Assets/Scenes/Ruins.unity.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Scenes\\Ruins.unity.meta",
+      "manifestSha256": "71BD0E68CE9B34EF682661D60BCD36605007FE6FFE66D8FD09D1A56542A66594",
+      "backupSha256": "71BD0E68CE9B34EF682661D60BCD36605007FE6FFE66D8FD09D1A56542A66594",
+      "currentSha256": "71BD0E68CE9B34EF682661D60BCD36605007FE6FFE66D8FD09D1A56542A66594",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Player/PlayerTest.unity",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Scenes\\Tests\\Player\\PlayerTest.unity",
+      "manifestSha256": "D967536A30A0A86A6B59B4814BBAD2753DEA08695C3D17BCDA9B725E2A1B7D49",
+      "backupSha256": "D967536A30A0A86A6B59B4814BBAD2753DEA08695C3D17BCDA9B725E2A1B7D49",
+      "currentSha256": "0E2D2BCA4F2084D39EE295DD7E505119B66F75443E83A5709895B5A6C6EF6775",
+      "backupValid": true,
+      "changed": true,
+      "beforeBlockCount": 60,
+      "afterBlockCount": 72,
+      "unchangedOldBlockCount": 52,
+      "modifiedOldBlockIds": [
+        "1263921350",
+        "1848876852",
+        "1848876856",
+        "2002938821",
+        "2002938825",
+        "328580663",
+        "328580667",
+        "9223372036854775807"
+      ],
+      "removedOldBlockIds": [],
+      "addedBlockIds": [
+        "1820440271",
+        "1820440272",
+        "1820440273",
+        "211172011",
+        "211172012",
+        "211172013",
+        "699905914",
+        "699905915",
+        "699905916",
+        "886345623",
+        "886345624",
+        "886345625"
+      ],
+      "oldColliderRendererMeshBlockCount": 22,
+      "alteredOrMissingColliderRendererMeshBlockCount": 0,
+      "oldPrefabOverrideEntryCount": 35,
+      "alteredOrMissingOldPrefabOverrideEntryCount": 0
+    },
+    {
+      "path": "Assets/Scenes/Tests/Player/PlayerTest.unity.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Scenes\\Tests\\Player\\PlayerTest.unity.meta",
+      "manifestSha256": "D0C8D130B39642FC141319782AC1010FF15048B0CA60BDC2B3C62413B5B94214",
+      "backupSha256": "D0C8D130B39642FC141319782AC1010FF15048B0CA60BDC2B3C62413B5B94214",
+      "currentSha256": "D0C8D130B39642FC141319782AC1010FF15048B0CA60BDC2B3C62413B5B94214",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Backpack/BackpackTest.unity",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Scenes\\Tests\\Backpack\\BackpackTest.unity",
+      "manifestSha256": "D898114AD90760B7FF01E4DDBE5702218712F1FDF5BA1CA84E2FC3A1FB9E3730",
+      "backupSha256": "D898114AD90760B7FF01E4DDBE5702218712F1FDF5BA1CA84E2FC3A1FB9E3730",
+      "currentSha256": "B7DCFBCA2D59276C1308242824B49CACD323572F1944644857BDA0DE9962015E",
+      "backupValid": true,
+      "changed": true,
+      "beforeBlockCount": 137,
+      "afterBlockCount": 140,
+      "unchangedOldBlockCount": 135,
+      "modifiedOldBlockIds": [
+        "683775538",
+        "9223372036854775807"
+      ],
+      "removedOldBlockIds": [],
+      "addedBlockIds": [
+        "1820440271",
+        "1820440272",
+        "1820440273"
+      ],
+      "oldColliderRendererMeshBlockCount": 8,
+      "alteredOrMissingColliderRendererMeshBlockCount": 0,
+      "oldPrefabOverrideEntryCount": 82,
+      "alteredOrMissingOldPrefabOverrideEntryCount": 0
+    },
+    {
+      "path": "Assets/Scenes/Tests/Backpack/BackpackTest.unity.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Scenes\\Tests\\Backpack\\BackpackTest.unity.meta",
+      "manifestSha256": "A463B4A292ED09D1C93D2F191DC7F7E68E22C3D73AF6F6933970B814A99B0A1C",
+      "backupSha256": "A463B4A292ED09D1C93D2F191DC7F7E68E22C3D73AF6F6933970B814A99B0A1C",
+      "currentSha256": "A463B4A292ED09D1C93D2F191DC7F7E68E22C3D73AF6F6933970B814A99B0A1C",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Loot/LootTest.unity",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Scenes\\Tests\\Loot\\LootTest.unity",
+      "manifestSha256": "5138DE1660AB2F068CBC58FADE1A6BCA739BB6BD958AFF5449FF7555CBF870C4",
+      "backupSha256": "5138DE1660AB2F068CBC58FADE1A6BCA739BB6BD958AFF5449FF7555CBF870C4",
+      "currentSha256": "00D2F271D9BEFA5F60558324821D66632C67FF7AE71A67949F2F6C53671B107B",
+      "backupValid": true,
+      "changed": true,
+      "beforeBlockCount": 235,
+      "afterBlockCount": 238,
+      "unchangedOldBlockCount": 233,
+      "modifiedOldBlockIds": [
+        "517821031",
+        "9223372036854775807"
+      ],
+      "removedOldBlockIds": [],
+      "addedBlockIds": [
+        "1820440271",
+        "1820440272",
+        "1820440273"
+      ],
+      "oldColliderRendererMeshBlockCount": 16,
+      "alteredOrMissingColliderRendererMeshBlockCount": 0,
+      "oldPrefabOverrideEntryCount": 336,
+      "alteredOrMissingOldPrefabOverrideEntryCount": 0
+    },
+    {
+      "path": "Assets/Scenes/Tests/Loot/LootTest.unity.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\Scenes\\Tests\\Loot\\LootTest.unity.meta",
+      "manifestSha256": "5E5BC4F24F5B7ADC037649C6F371C629B9DDEDBFEAFE8A8748A54C4DB026E088",
+      "backupSha256": "5E5BC4F24F5B7ADC037649C6F371C629B9DDEDBFEAFE8A8748A54C4DB026E088",
+      "currentSha256": "5E5BC4F24F5B7ADC037649C6F371C629B9DDEDBFEAFE8A8748A54C4DB026E088",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "ProjectSettings/EditorSettings.asset",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\ProjectSettings\\EditorSettings.asset",
+      "manifestSha256": "D31BE15C85A31D85372564BF5EE30188A9454274C6DF8FE7A3372375A0DB98BC",
+      "backupSha256": "D31BE15C85A31D85372564BF5EE30188A9454274C6DF8FE7A3372375A0DB98BC",
+      "currentSha256": "D31BE15C85A31D85372564BF5EE30188A9454274C6DF8FE7A3372375A0DB98BC",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "ProjectSettings/ProjectSettings.asset",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\ProjectSettings\\ProjectSettings.asset",
+      "manifestSha256": "7E8D7317565EE7C2DC4832BE2E3DBB806F616CCAA34BE60E4211996413A3D19D",
+      "backupSha256": "7E8D7317565EE7C2DC4832BE2E3DBB806F616CCAA34BE60E4211996413A3D19D",
+      "currentSha256": "7E8D7317565EE7C2DC4832BE2E3DBB806F616CCAA34BE60E4211996413A3D19D",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Unlit_Yellow.mat",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Unlit_Yellow.mat",
+      "manifestSha256": "9C4046ED3936F9F992A56CAC9A444E4993037DCB01B1C3C630157B68AA32F899",
+      "backupSha256": "9C4046ED3936F9F992A56CAC9A444E4993037DCB01B1C3C630157B68AA32F899",
+      "currentSha256": "9C4046ED3936F9F992A56CAC9A444E4993037DCB01B1C3C630157B68AA32F899",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Unlit_Yellow.mat.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Unlit_Yellow.mat.meta",
+      "manifestSha256": "409B1516264C79B0DC491281B075D1EC07813B34B5C4541A4BFA588E4E8D17F0",
+      "backupSha256": "409B1516264C79B0DC491281B075D1EC07813B34B5C4541A4BFA588E4E8D17F0",
+      "currentSha256": "409B1516264C79B0DC491281B075D1EC07813B34B5C4541A4BFA588E4E8D17F0",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Unlit_Red.mat",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Unlit_Red.mat",
+      "manifestSha256": "B2BE986C34534343A9031CDA7FB98386ECDB9CE5BC1CAF2D7CB9D642C8434274",
+      "backupSha256": "B2BE986C34534343A9031CDA7FB98386ECDB9CE5BC1CAF2D7CB9D642C8434274",
+      "currentSha256": "B2BE986C34534343A9031CDA7FB98386ECDB9CE5BC1CAF2D7CB9D642C8434274",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Unlit_Red.mat.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Unlit_Red.mat.meta",
+      "manifestSha256": "85FAA08C90CAD6455AAD7AF968E9596D1D44CE5887F26DA5EC92B9CB6D406284",
+      "backupSha256": "85FAA08C90CAD6455AAD7AF968E9596D1D44CE5887F26DA5EC92B9CB6D406284",
+      "currentSha256": "85FAA08C90CAD6455AAD7AF968E9596D1D44CE5887F26DA5EC92B9CB6D406284",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Unlit_Purple.mat",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Unlit_Purple.mat",
+      "manifestSha256": "85CC3E352BEAD5847C7C682E96D3F388340986430D121CBACE7D217101E469F7",
+      "backupSha256": "85CC3E352BEAD5847C7C682E96D3F388340986430D121CBACE7D217101E469F7",
+      "currentSha256": "85CC3E352BEAD5847C7C682E96D3F388340986430D121CBACE7D217101E469F7",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Unlit_Purple.mat.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Unlit_Purple.mat.meta",
+      "manifestSha256": "7A20C1154BBBFAA096E62BC1553C738F416DFB07FFEEDEC7E3E348FA76B5CA44",
+      "backupSha256": "7A20C1154BBBFAA096E62BC1553C738F416DFB07FFEEDEC7E3E348FA76B5CA44",
+      "currentSha256": "7A20C1154BBBFAA096E62BC1553C738F416DFB07FFEEDEC7E3E348FA76B5CA44",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Unlit_Green.mat",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Unlit_Green.mat",
+      "manifestSha256": "50AF5608DC6836536242BC7D20962DDD99BE45472C88B6636E185AEDB649D1C3",
+      "backupSha256": "50AF5608DC6836536242BC7D20962DDD99BE45472C88B6636E185AEDB649D1C3",
+      "currentSha256": "50AF5608DC6836536242BC7D20962DDD99BE45472C88B6636E185AEDB649D1C3",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Unlit_Green.mat.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Unlit_Green.mat.meta",
+      "manifestSha256": "8BA9A5CD1D179B7206E3775B408F9F41658E7036DF257AD8C45930B6E0130B27",
+      "backupSha256": "8BA9A5CD1D179B7206E3775B408F9F41658E7036DF257AD8C45930B6E0130B27",
+      "currentSha256": "8BA9A5CD1D179B7206E3775B408F9F41658E7036DF257AD8C45930B6E0130B27",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Unlit_Blue.mat",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Unlit_Blue.mat",
+      "manifestSha256": "71C1AC869E615F48FC82D2EA7A16ED40C3A32BBA7C28BF7CDFE52FE176FC0066",
+      "backupSha256": "71C1AC869E615F48FC82D2EA7A16ED40C3A32BBA7C28BF7CDFE52FE176FC0066",
+      "currentSha256": "71C1AC869E615F48FC82D2EA7A16ED40C3A32BBA7C28BF7CDFE52FE176FC0066",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Unlit_Blue.mat.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Unlit_Blue.mat.meta",
+      "manifestSha256": "AD188C80E3B3DD51839D3ACDC5F4B37364ECBEEFE7B30660045F1DC804EC43F7",
+      "backupSha256": "AD188C80E3B3DD51839D3ACDC5F4B37364ECBEEFE7B30660045F1DC804EC43F7",
+      "currentSha256": "AD188C80E3B3DD51839D3ACDC5F4B37364ECBEEFE7B30660045F1DC804EC43F7",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Metal_Yellow.mat",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Metal_Yellow.mat",
+      "manifestSha256": "26C6B3A1D9F58F904D0D3923038B981B46BC24650E530E4FF8A938ABF5E4D1BE",
+      "backupSha256": "26C6B3A1D9F58F904D0D3923038B981B46BC24650E530E4FF8A938ABF5E4D1BE",
+      "currentSha256": "26C6B3A1D9F58F904D0D3923038B981B46BC24650E530E4FF8A938ABF5E4D1BE",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Metal_Yellow.mat.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Metal_Yellow.mat.meta",
+      "manifestSha256": "1DFF0B0C4858A35834158A4A48912FF93380EF2F8F82C070DE7F58C0AF55130A",
+      "backupSha256": "1DFF0B0C4858A35834158A4A48912FF93380EF2F8F82C070DE7F58C0AF55130A",
+      "currentSha256": "1DFF0B0C4858A35834158A4A48912FF93380EF2F8F82C070DE7F58C0AF55130A",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Metal_Red.mat",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Metal_Red.mat",
+      "manifestSha256": "4F56F4284B814435409F90FDE96552B12544B7461A822C1C95227F4D01CDB955",
+      "backupSha256": "4F56F4284B814435409F90FDE96552B12544B7461A822C1C95227F4D01CDB955",
+      "currentSha256": "4F56F4284B814435409F90FDE96552B12544B7461A822C1C95227F4D01CDB955",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Metal_Red.mat.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Metal_Red.mat.meta",
+      "manifestSha256": "DFB37F022D8F91BF1524F38076B37150F2AA4344F6E474AF3A6073702B88F899",
+      "backupSha256": "DFB37F022D8F91BF1524F38076B37150F2AA4344F6E474AF3A6073702B88F899",
+      "currentSha256": "DFB37F022D8F91BF1524F38076B37150F2AA4344F6E474AF3A6073702B88F899",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Metal_Purple.mat",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Metal_Purple.mat",
+      "manifestSha256": "26A6CBE5EF9CF2F4D74A7EAE2208B3F48B13B1996118C78AE5BF97B7940E120D",
+      "backupSha256": "26A6CBE5EF9CF2F4D74A7EAE2208B3F48B13B1996118C78AE5BF97B7940E120D",
+      "currentSha256": "26A6CBE5EF9CF2F4D74A7EAE2208B3F48B13B1996118C78AE5BF97B7940E120D",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Metal_Purple.mat.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Metal_Purple.mat.meta",
+      "manifestSha256": "D6C6462A4DCBC939CE5C966F4869AACA407A4D448DDF1FB14686996784DCA725",
+      "backupSha256": "D6C6462A4DCBC939CE5C966F4869AACA407A4D448DDF1FB14686996784DCA725",
+      "currentSha256": "D6C6462A4DCBC939CE5C966F4869AACA407A4D448DDF1FB14686996784DCA725",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Metal_Green.mat",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Metal_Green.mat",
+      "manifestSha256": "52C6C9F9E54835F4764F77067F91D828ABE8B7DF6016331EFC795547D1BC11DF",
+      "backupSha256": "52C6C9F9E54835F4764F77067F91D828ABE8B7DF6016331EFC795547D1BC11DF",
+      "currentSha256": "52C6C9F9E54835F4764F77067F91D828ABE8B7DF6016331EFC795547D1BC11DF",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Metal_Green.mat.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Metal_Green.mat.meta",
+      "manifestSha256": "E8F7A4FCFE158DAD153FD84D3F52D518FC25DF1C8D211C267FC22DC79CD16DE6",
+      "backupSha256": "E8F7A4FCFE158DAD153FD84D3F52D518FC25DF1C8D211C267FC22DC79CD16DE6",
+      "currentSha256": "E8F7A4FCFE158DAD153FD84D3F52D518FC25DF1C8D211C267FC22DC79CD16DE6",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Metal_Blue.mat",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Metal_Blue.mat",
+      "manifestSha256": "5761BF2ACF0693CAF50CF15A81C4ADC3E114DC5E78AFE12E44DC6DDB350D9327",
+      "backupSha256": "5761BF2ACF0693CAF50CF15A81C4ADC3E114DC5E78AFE12E44DC6DDB350D9327",
+      "currentSha256": "5761BF2ACF0693CAF50CF15A81C4ADC3E114DC5E78AFE12E44DC6DDB350D9327",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Metal_Blue.mat.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Metal_Blue.mat.meta",
+      "manifestSha256": "748EFA287772EADB1DD42D922B29D40D1017C8B30EA2C28EE49A0F1CCE1A2C9A",
+      "backupSha256": "748EFA287772EADB1DD42D922B29D40D1017C8B30EA2C28EE49A0F1CCE1A2C9A",
+      "currentSha256": "748EFA287772EADB1DD42D922B29D40D1017C8B30EA2C28EE49A0F1CCE1A2C9A",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Diffuse_Yellow.mat",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Diffuse_Yellow.mat",
+      "manifestSha256": "12BC2941B37636D6A416BFE6CE68A1CF049363EB6152CE5B400060D990AEA4D0",
+      "backupSha256": "12BC2941B37636D6A416BFE6CE68A1CF049363EB6152CE5B400060D990AEA4D0",
+      "currentSha256": "12BC2941B37636D6A416BFE6CE68A1CF049363EB6152CE5B400060D990AEA4D0",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Diffuse_Yellow.mat.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Diffuse_Yellow.mat.meta",
+      "manifestSha256": "57EAF823345D00B1FABF26116B15995D344C94005615D9606AD2DBFCD3099BF1",
+      "backupSha256": "57EAF823345D00B1FABF26116B15995D344C94005615D9606AD2DBFCD3099BF1",
+      "currentSha256": "57EAF823345D00B1FABF26116B15995D344C94005615D9606AD2DBFCD3099BF1",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Diffuse_Red.mat",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Diffuse_Red.mat",
+      "manifestSha256": "C61B0EC74E30F7041978314945AC8B9596753CA1BB5DDBB9CBF7F46600FFC008",
+      "backupSha256": "C61B0EC74E30F7041978314945AC8B9596753CA1BB5DDBB9CBF7F46600FFC008",
+      "currentSha256": "C61B0EC74E30F7041978314945AC8B9596753CA1BB5DDBB9CBF7F46600FFC008",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Diffuse_Red.mat.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Diffuse_Red.mat.meta",
+      "manifestSha256": "9F99D36831799A4DF022E9F5130FC833F16583A26B3FDEBD4C3582C9FAFC5832",
+      "backupSha256": "9F99D36831799A4DF022E9F5130FC833F16583A26B3FDEBD4C3582C9FAFC5832",
+      "currentSha256": "9F99D36831799A4DF022E9F5130FC833F16583A26B3FDEBD4C3582C9FAFC5832",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Diffuse_Purple.mat",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Diffuse_Purple.mat",
+      "manifestSha256": "024F7EB5DB1AC1ADC5B9CCA727A1192C0B3BF5D1FA1EE52F65E027CED6ADEC96",
+      "backupSha256": "024F7EB5DB1AC1ADC5B9CCA727A1192C0B3BF5D1FA1EE52F65E027CED6ADEC96",
+      "currentSha256": "024F7EB5DB1AC1ADC5B9CCA727A1192C0B3BF5D1FA1EE52F65E027CED6ADEC96",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Diffuse_Purple.mat.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Diffuse_Purple.mat.meta",
+      "manifestSha256": "2FE8E6A811364F73C62DED62C0F9A53F9322E759DA3A00B94B96254C0D0883C1",
+      "backupSha256": "2FE8E6A811364F73C62DED62C0F9A53F9322E759DA3A00B94B96254C0D0883C1",
+      "currentSha256": "2FE8E6A811364F73C62DED62C0F9A53F9322E759DA3A00B94B96254C0D0883C1",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Diffuse_Green.mat",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Diffuse_Green.mat",
+      "manifestSha256": "C1B78B0F70814018B39272EEE82113FA2B3918C9FF5B69F70F7593F72E806F6A",
+      "backupSha256": "C1B78B0F70814018B39272EEE82113FA2B3918C9FF5B69F70F7593F72E806F6A",
+      "currentSha256": "C1B78B0F70814018B39272EEE82113FA2B3918C9FF5B69F70F7593F72E806F6A",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Diffuse_Green.mat.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Diffuse_Green.mat.meta",
+      "manifestSha256": "46B9E2D1EFAFCF7D498243D71073FA8AEC4816B121C14450554C3027881043EF",
+      "backupSha256": "46B9E2D1EFAFCF7D498243D71073FA8AEC4816B121C14450554C3027881043EF",
+      "currentSha256": "46B9E2D1EFAFCF7D498243D71073FA8AEC4816B121C14450554C3027881043EF",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Diffuse_Blue.mat",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Diffuse_Blue.mat",
+      "manifestSha256": "83E46CF200205CD31AEF2682FEB57035347EE21338889F2674CC7FE9EB829715",
+      "backupSha256": "83E46CF200205CD31AEF2682FEB57035347EE21338889F2674CC7FE9EB829715",
+      "currentSha256": "83E46CF200205CD31AEF2682FEB57035347EE21338889F2674CC7FE9EB829715",
+      "backupValid": true,
+      "changed": false
+    },
+    {
+      "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Diffuse_Blue.mat.meta",
+      "backup": "Docs\\Verification\\TriggerInteraction\\07C\\Before\\Assets\\BrokenVector\\LowPolyStoragePack\\Materials\\Storage_Diffuse_Blue.mat.meta",
+      "manifestSha256": "B2822C28426342E0A6C2F2CA54C952BD63557BD9E796B13C42E1962FE5E3C0C9",
+      "backupSha256": "B2822C28426342E0A6C2F2CA54C952BD63557BD9E796B13C42E1962FE5E3C0C9",
+      "currentSha256": "B2822C28426342E0A6C2F2CA54C952BD63557BD9E796B13C42E1962FE5E3C0C9",
+      "backupValid": true,
+      "changed": false
+    }
+  ]
+}

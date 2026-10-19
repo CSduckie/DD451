@@ -1,0 +1,62 @@
+MyPrecious P0 / Dispatch v5 / Lean 00 文件清理记录
+本文件替代旧v3文件计划；当前接入说明见BaseSetup.txt。
+引用审计：未发现真实业务消费者。旧Contracts仅被自身、旧Bootstrap和配套基础测试引用。
+保留并简化：
+Assets/Scripts/Bootstrap/MonoBehaviour/GameBootstrap.cs — 唯一常驻入口，无注册/场景服务框架。
+Assets/Scripts/Bootstrap/MyPrecious.Bootstrap.asmdef — 仅供测试引用该入口，无业务依赖。
+Assets/Tests/Base/PlayMode/GameBootstrapTests.cs — 3个入口生命周期测试。
+Assets/Tests/Base/PlayMode/MyPrecious.Base.PlayModeTests.asmdef — 仅引用Bootstrap。
+Assets/Prefabs/Bootstrap/GameBootstrap.prefab — 沿用原Prefab，删除废弃moduleComponents字段。
+原样沿用：
+Assets/Input/GameInputActions.inputactions — 绑定符合v5，不改资源/GUID/项目设置引用。
+Assets/Scenes/Tests/Base/BaseTest.unity — 原入口Prefab实例和临时验证相机/灯光。
+上述保留文件的.meta保持原样。
+新增/更新文档：
+Docs/Architecture/BaseSetup.txt — 简短接入与3D横版约定。
+Docs/Handoffs/00_Handoff.txt — v5真实结果，替代旧交接。
+Docs/Architecture/Contracts.txt、ModuleOwnership.txt、IntegrationChecklist.txt — 旧版已取代说明，停止提供废弃API。
+Docs/Architecture/00_FilePlan.txt — 本次逐文件清理记录。
+Docs/Architecture/00_ValidationResults.json — 本次重新验证证据，不沿用v3成绩。
+移除以下旧00文件（每项同时删除对应.meta）：
+Assets/Scripts/Utilities/Contracts/Common/FailureReason.cs
+Assets/Scripts/Utilities/Contracts/Common/OperationResult.cs
+Assets/Scripts/Utilities/Contracts/Common/GridPosition.cs
+Assets/Scripts/Utilities/Contracts/Common/GridSize.cs
+Assets/Scripts/Utilities/Contracts/Common/ItemOrientation.cs
+Assets/Scripts/Utilities/Contracts/Items/ItemLocation.cs
+Assets/Scripts/Utilities/Contracts/Items/ItemDefinitionSnapshot.cs
+Assets/Scripts/Utilities/Contracts/Items/ItemSnapshot.cs
+Assets/Scripts/Utilities/Contracts/Items/ItemRegistration.cs
+Assets/Scripts/Utilities/Contracts/Items/ItemStateChange.cs
+Assets/Scripts/Utilities/Contracts/Items/IItemAuthority.cs
+Assets/Scripts/Utilities/Contracts/Items/IItemUseService.cs
+Assets/Scripts/Utilities/Contracts/Items/ItemTransferRequest.cs
+Assets/Scripts/Utilities/Contracts/Items/IItemTransferService.cs
+Assets/Scripts/Utilities/Contracts/Containers/ItemPlacement.cs
+Assets/Scripts/Utilities/Contracts/Containers/ContainerLayoutChange.cs
+Assets/Scripts/Utilities/Contracts/Containers/IBackpack.cs
+Assets/Scripts/Utilities/Contracts/Containers/IWarehouse.cs
+Assets/Scripts/Utilities/Contracts/Player/IPlayerHealth.cs
+Assets/Scripts/Utilities/Contracts/Player/IPlayerPosture.cs
+Assets/Scripts/Utilities/Contracts/Player/IPlayerControlLocks.cs
+Assets/Scripts/Utilities/Contracts/Interaction/IInteractionTarget.cs
+Assets/Scripts/Utilities/Contracts/Interaction/IInteractionService.cs
+Assets/Scripts/Utilities/Contracts/Loot/ILootSearch.cs
+Assets/Scripts/Utilities/Contracts/Loot/ISpawnPoint.cs
+Assets/Scripts/Utilities/Contracts/Enemy/IHiddenState.cs
+Assets/Scripts/Utilities/Contracts/Enemy/IEnemyLifecycle.cs
+Assets/Scripts/Utilities/Contracts/GameFlow/IGameFlow.cs
+Assets/Scripts/Utilities/Contracts/GameFlow/ISceneServices.cs
+Assets/Scripts/Utilities/Contracts/Localization/ILocalizationService.cs
+Assets/Scripts/Utilities/Contracts/MyPrecious.Contracts.asmdef
+Assets/Scripts/Bootstrap/Logic/BootstrapRuntime.cs
+Assets/Scripts/Bootstrap/Logic/IBootstrapModule.cs
+Assets/Tests/Base/EditMode/BootstrapRuntimeTests.cs
+Assets/Tests/Base/EditMode/BaseInputActionsTests.cs
+Assets/Tests/Base/EditMode/OperationResultTests.cs
+Assets/Tests/Base/EditMode/MyPrecious.Base.EditModeTests.asmdef
+Assets/Tests/Base/TestDoubles/RecordingBootstrapModule.cs
+Assets/Tests/Base/TestDoubles/TestSceneServices.cs
+Assets/Tests/Base/TestDoubles/MyPrecious.Base.TestDoubles.asmdef
+原因：无真实消费者的预设公共接口/事务/注册框架，以及只为这些内容服务的旧测试和测试程序集。输入镜像EditMode测试改为实际资产核对。
+

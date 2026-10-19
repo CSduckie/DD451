@@ -1,0 +1,482 @@
+任务包02：玩家代码状态机、3D横版运动、生命与交互
+项目：MyPrecious P0
+版本：2026-10-18 / Dispatch v8 / Lean 02
+
+你是本项目02号开发agent。完成本任务范围内的实现、资源配置、验证和交接，不只返回方案。
+项目根目录：E:/DD451。独立工作树使用实际根目录及相同相对路径。
+
+这是用户的作品集兼毕业设计。代码应让用户能读懂、修改，并在答辩时解释。
+继续采用精简实现，但不能省掉必要的状态正确性、引用清理和实际验证。
+本提示词替换旧02中依赖全量公共契约和旧框架的要求。
+
+
+一、先检查现状
+
+先读取AGENTS.md（如有）、git状态、现有玩家代码，以及：
+- Docs/AgentPrompts/ProjectRules.txt
+- Docs/Architecture/BaseSetup.txt
+- Docs/Handoffs/00_Handoff.txt
+- Docs/Architecture/ItemsSetup.txt
+- Docs/Handoffs/01_Handoff.txt
+- Assets/Scripts/Utilities/Contracts/Player/IHealthTarget.cs
+
+目前00已交付最小GameBootstrap和输入资源，01已交付真实物品与治疗效果。
+开发时再次核对实际代码，不依据旧提示词假设某个接口存在。
+
+沿用当前Unity及其他Packages，不升级无关版本或安装新的角色、状态机、动画框架。
+摄像机必须使用Cinemachine。若当前未安装，用户本次要求已授权02添加与当前Unity兼容的正式Cinemachine包，优先使用3.x；只修改该依赖所需的manifest.json、packages-lock.json和必要程序集引用，不升级其他包。
+此前核实版本为Unity 6000.2.12f1、Input System 1.14.2。
+
+先列出准备复用的源码、保留和修改的内容、拟新增/修改文件，然后继续实施。
+保留用户与其他聊天的改动、有效.meta和GUID；已有同职责代码先增量修改。
+不要另建第二个玩家控制器体系、物品管理器或全局入口。
+
+
+二、必须修改复用用户的ARPG状态机
+
+主要来源：
+https://github.com/CSduckie/2DArpg-Portfolio
+本机参考：E:/Portfolio-Clone
+此前核实提交：c601c36f95efdd4d67327489f9edb58412aa54b4
+
+开始时读取真实源码，核对本机版本。路径不可用时读取已授权仓库或可用副本，不凭记忆编造。
+只把适合本项目的代码修改后放入当前工程，不修改参考仓库本身。
+
+重点读取：
+- Assets/Scripts/FrameWork/StateMachine/StateBase.cs
+- Assets/Scripts/FrameWork/StateMachine/StateMachine.cs
+- Assets/Scripts/FrameWork/Mono/MonoManager.cs
+- Assets/Scripts/Player/PlayerController.cs
+- Assets/Scripts/Player/States/PlayerStateBase.cs
+- 同目录的PlayerIdleState、PlayerMoveState、PlayerJumpState、PlayerFallState、PlayerDieState
+- Assets/Scripts/Player/CharacterStats.cs
+- Assets/Scripts/Player/PlayerStats.cs
+
+保留用户熟悉的方式：
+1. StateBase定义Init、Enter、Update、FixedUpdate、Exit等状态方法。
+2. StateMachine保存当前状态及已创建状态。
+3. Controller通过枚举switch调用ChangeState<具体状态>()。
+4. 具体状态判断切换条件并执行自己的行为。
+5. 状态进入时调用Controller的PlayAnimation，代码驱动Animator播放。
+
+保留原有小型泛型切换和Dictionary状态缓存，它们是明确要求复用的内容。
+不另写行为树、可视化状态机、通用状态图或另一套陌生框架。
+不整包迁入FrameWork、Singleton、MonoManager、技能、战斗或NavMeshPlus。
+
+本次明确采用的精简适配：
+- 删除StateMachine中对MonoManager的更新注册和注销。
+- 每个角色Controller持有自己的StateMachine实例。
+- Controller在自己的Update、FixedUpdate中，各转发一次当前状态对应方法。
+- LateUpdate确有用途时同样转发；不增加Tick接口层。
+- 玩家和后续敌人共用状态机代码，各自拥有独立的运行实例和状态缓存。
+
+必须修正原代码中不适合直接照搬的部分：
+- ChangeState实际切换成功返回true；同状态且不重入时返回false。
+- 切换顺序保持：旧状态Exit → 取得/创建目标状态 → 设置当前状态 → 新状态Enter。
+- 同一状态默认不反复进入；只有明确需要时才重入。
+- 状态调用ChangeState后立即return，避免旧状态继续写速度或重复切换。
+- 不在同一次回调中手动补调新状态Update。
+- P0不在Enter/Exit中递归发起状态切换，不为此建设复杂切换队列。
+- Stop支持未进入状态、重复调用和停用后销毁，Exit/UnInit不重复执行。
+- 缓存状态每次Enter重新设置本次所需的计时和标记，不能沿用上次残留状态。
+
+原Controller里“不能接收输入就整个Update直接return”的方式不能照搬。
+打开背包只屏蔽主动操作，落地、伤害、死亡和必要计时仍须继续更新。
+
+
+三、代码风格
+
+- 所有新增项目自有C#不写namespace，包括状态、接口、测试和Editor脚本。
+- 保留正常using；如果需要asmdef，rootNamespace为空。
+- 默认4空格缩进，类与方法大括号另起行。
+- 类型/方法用PascalCase，字段/局部变量用camelCase，修改已有代码遵循相邻一致写法。
+- 使用熟悉的public字段或[SerializeField] private，SO沿用CreateAssetMenu。
+- 关键流程写简短中文注释，说明原因，避免给每行代码重复翻译。
+- 优先简单组件、类、枚举和明确方法；C#事件用于变化通知。
+- 不提前做通用控制锁令牌、服务定位器、自动注册、输入框架、复杂事件总线或多层接口。
+- 必要新概念在交接中解释，不为了显得“学生写的”故意保留错误。
+
+
+四、实际范围
+
+本任务完成：
+1. 修改复用的代码状态机，后续07敌人可以复用。
+2. 3D横版玩家：左右移动、单次地面跳跃、下落、蹲伏和死亡状态。
+3. 可用胶囊体占位的3D角色表现、代码动画播放入口，以及实际接线的Cinemachine侧向跟随相机。
+4. 唯一真实玩家生命、伤害、治疗和新轮次初始化入口。
+5. 背包打开时的玩家控制限制及受击协作入口。
+6. E键交互目标检测和一次执行的最小公共能力。
+7. 玩家预制体、自有白盒场景、与真实01的治疗联测和交接。
+
+不实现：
+- 敌人AI、视野扇形、掩体隐藏判定。
+- 背包/仓库格子、拖拽回滚、物品转移或掉落生成。
+- 撤离结算、死亡物品损失、场景流程或EV计算。
+- 正式HUD、物品详情UI、语言管理器或F10监听。
+- 攻击、防御、冲刺、二段跳、墙跳、攀爬、技能、复杂平台机制。
+- 正式角色美术制作、复杂动画系统、磁盘存档或手柄支持。
+
+
+五、文件目录
+
+以下路径相对项目根目录。已有同职责文件先沿用，必要改名需在交接说明。
+只创建有实际用途的文件，不预建空目录。
+
+1. 修改复用的状态机
+Assets/Scripts/Utilities/StateMachine/StateBase.cs
+Assets/Scripts/Utilities/StateMachine/StateMachine.cs
+
+原IStateMachineOwner确实用于宿主约束，保留为小型接口：
+Assets/Scripts/Utilities/Contracts/StateMachine/IStateMachineOwner.cs
+
+该接口从原状态机源码拆出，避免重复声明；不扩充成模块生命周期接口。
+状态机由02首次适配，07复用，不各自复制一套。
+
+2. 玩家配置
+Assets/Scripts/Player/ScriptableObject/PlayerConfigSO.cs
+Assets/Data/Player/PlayerConfig.asset
+
+3. 玩家组件
+Assets/Scripts/Player/MonoBehaviour/PlayerController.cs
+Assets/Scripts/Player/MonoBehaviour/PlayerInputReader.cs
+Assets/Scripts/Player/MonoBehaviour/PlayerHealth.cs
+
+Controller负责状态协调、运动和动画入口；InputReader只读取本任务输入；
+Health负责HP。相机跟随由Cinemachine组件完成，不再要求PlayerCameraFollow.cs。
+只有实际需要动态绑定目标或处理瞬移时，才在本目录增加小型PlayerCameraTargetBinder.cs；静态Inspector接线足够就不创建。
+不再为这些组件各包一层接口和服务，也不并行保留手写跟随脚本控制相机Transform。
+
+4. 玩家状态
+Assets/Scripts/Player/States/PlayerStateBase.cs
+Assets/Scripts/Player/States/PlayerIdleState.cs
+Assets/Scripts/Player/States/PlayerMoveState.cs
+Assets/Scripts/Player/States/PlayerJumpState.cs
+Assets/Scripts/Player/States/PlayerFallState.cs
+Assets/Scripts/Player/States/PlayerCrouchState.cs
+Assets/Scripts/Player/States/PlayerDieState.cs
+
+PlayerState枚举可与Controller放在同文件，或放：
+Assets/Scripts/Player/RuntimeData/PlayerState.cs
+
+蹲伏静止/移动可在一个蹲伏状态内处理；不为了枚举数量拆很多脚本。
+受击不自动扩展为带硬直的战斗状态。
+
+5. 最小交互能力
+Assets/Scripts/Interaction/MonoBehaviour/PlayerInteraction.cs
+Assets/Scripts/Interaction/MonoBehaviour/Interactable.cs
+
+Interactable可采用一个简单抽象组件，表达“能否交互、提示、执行”。
+它已有玩家检测和测试目标作为真实消费者，不需要额外接口、注册表或事件通道。
+若现有同职责入口已交付，则复用实际入口。
+
+6. 玩家与相机预制体
+Assets/Prefabs/Player/Player.prefab
+Assets/Prefabs/Player/PlayerCamera.prefab
+PlayerCamera预制体包含实际输出Camera、CinemachineBrain及Cinemachine跟随相机的必要组合；只有一套有效输出相机和AudioListener。
+
+需要独立可替换的模型组合时：
+Assets/Prefabs/Player/PlayerVisual.prefab
+
+7. 模型与动画资源
+Assets/Art/Models/Player/
+Assets/Art/Materials/Player/
+Assets/Animation/Player/Player.controller
+Assets/Animation/Player/Clips/
+
+当前明确允许使用可视胶囊体替代角色模型，本轮不要求正式模型、骨骼或演示Clip。可视占位放在表现子对象，物理根保留Rigidbody和CapsuleCollider，避免创建重复实体碰撞体。
+上述模型/动画目录只在有真实资源时创建，不制作空资源凑目录。已有可用资源可以接入，但不迁入整个ARPG美术库。
+保留简单PlayAnimation入口；无Animator/Clip时安全跳过，不报空引用、不逐帧刷警告，角色状态和玩法照常运行。
+占位资源在交接标明；之后替换为正式3D模型与动画时沿用现有状态机及代码播放方式，不重写运动/生命逻辑。
+
+8. 已有治疗接口：只消费，不另建
+Assets/Scripts/Utilities/Contracts/Player/IHealthTarget.cs
+已有程序集：MyPrecious.Health
+
+9. 本模块游戏提示文本
+Assets/Data/Localization/Player/
+
+03已有格式则使用；尚未交付时提供稳定文本键及中英文示例到PlayerSetup.txt，暂不另建语言系统或重复文案库。
+测试调试信息可用中文，正式游戏提示不能只硬编码中文。
+
+10. 验证与交接
+Assets/Tests/Player/EditMode/
+Assets/Tests/Player/PlayMode/
+Assets/Tests/Player/TestDoubles/
+Assets/Scenes/Tests/Player/PlayerTest.unity
+Docs/Architecture/PlayerSetup.txt
+Docs/Handoffs/02_Handoff.txt
+
+测试驱动、测试伤害源和测试交互目标只放Tests/Player中。
+基础测试仍在Assets/Tests/Base/，02不移动或重写。
+
+必要asmdef随所属目录维护，只添加实际编译/测试引用所需的程序集。
+保持.meta/GUID，不修改01物品脚本、共享输入资产、GameBootstrap、正式场景或无关ProjectSettings。
+Packages仅允许本任务安装Cinemachine所必需的manifest.json及packages-lock.json改动，交接记录准确版本和差异；其余依赖保持原状。
+若真实接入需要跨边界修改，列清具体差异交主程协调，不另造替代API。
+
+
+六、3D横版运动与输入
+
+玩家逻辑根节点：
+- X轴左右移动。
+- Y轴跳跃、下落与重力。
+- Z轴固定在配置的玩法平面。
+- 场景可以有纵深，不能允许玩家沿Z轴前后移动。
+
+采用一个Rigidbody加CapsuleCollider的简单3D运动方案。
+不同时用CharacterController、Transform位移和另一套刚体控制器争夺运动。
+世界检测用Physics/Collider/Rigidbody，不使用Physics2D、Collider2D或Rigidbody2D。
+
+固定Z至少由刚体约束保证；出生、复位等主动写入位置也必须使用约定Z。
+锁定物理根不需要的旋转，模型朝向在表现子对象上调整。
+横移修改X速度时保留正确的Y速度，不把重力或跳跃清零。
+物理速度和跳跃执行集中在FixedUpdate；Update读取输入并进行必要状态判断。
+一次跳跃按下只消费一次，不因多个物理帧反复起跳，也不因短按漏掉。
+
+地面检测使用简单3D查询，排除自身和无关Trigger，避免侧墙被判成地面。
+从平台边缘走出进入下落；落地后回到与当前输入/姿态相符的状态。
+P0只做基本地面碰撞与短跳，不增加复杂平台能力。
+
+继续使用：
+Assets/Input/GameInputActions.inputactions
+
+读取现有Player动作：
+- Move：A/D或左右箭头，Vector2只取X。
+- Jump：Space。
+- Crouch：C。
+- Interact：E。
+
+不照搬旧Input.GetAxisRaw/GetKeyDown，不创建第二份输入资源。
+W/S或其他模板绑定不代表增加纵深移动或攀爬。
+02不处理正式Tab背包、R旋转、右键物品使用或F10切语言。
+InputReader只管理自己使用的动作，不停用整张共享动作表导致其他功能失效。
+订阅要解除；停用、重新启用后不能出现一次按键触发多次。
+
+可配置：移动速度、蹲伏速度、跳跃速度、玩法平面Z、地面检测参数、最大生命及受伤无敌时间。
+SO保存静态配置，当前速度、HP、状态、输入和计时不写回SO。
+
+尚未正式锁定的操作细节采用明确测试默认：
+- 先按住C蹲伏，松开恢复站立；蹲伏时允许较慢横移。
+- 先只做地面姿态切换；蹲伏跳跃、空中切蹲等扩展不加入。
+- 需要跳跃时先恢复站立。
+上述是可调整的白盒默认，不声称用户已最终确认，也不为此同时开发两套输入模式。
+若缩短蹲伏碰撞体，起身前必须检查空间，不能穿过头顶障碍；不因此扩展低矮通道玩法。
+
+
+七、动画与相机
+
+当前可使用胶囊体且暂不挂Animator，下面的代码播放入口须保留并兼容动画资源缺失；正式动画接入不是胶囊阶段完成运动和相机验收的前提。
+
+沿用用户的明确调用方式：
+Controller.ChangeState(PlayerState)
+→ StateMachine.ChangeState<具体状态>()
+→ 状态Enter()
+→ Controller.PlayAnimation(...)
+→ Animator.CrossFadeInFixedTime(...)
+
+Animator中需要状态节点和动画Clip，但玩法切换不依赖手工Transition连线。
+不要求用户配置AnyState网络、Trigger条件或一堆参数才能跑起来。
+有动画资源时，新建Player.controller不配置状态之间的Transition；保留正常默认入口即可。胶囊阶段不为满足形式强制制作Controller和动画Clip。
+
+可以使用Idle、Run、Jump、Fall、CrouchIdle、CrouchMove、Die等清晰动画名。
+进入状态时播放，蹲伏内静止/移动变化时再切换；不要每帧CrossFade使动画一直从头开始。
+配置与实际状态名一致，缺失动画给出清楚提示，不能让玩法卡死。
+动画资源名、模型朝向偏移和过渡时间保持易于修改。
+
+玩家根节点负责物理和位置，表现子节点负责胶囊占位或3D模型、朝向及可选Animator。
+默认关闭Root Motion，位移由脚本负责，避免两套运动来源冲突。
+蹲伏模型变化不能缩放整个物理根或破坏检测位置。
+不照搬SpriteRenderer翻转、2D骨骼或原ARPG技能动画事件。
+
+摄像机必须使用Cinemachine，不能用手写跟随脚本替代，也不能只安装包而未让其实际驱动输出相机。
+按实际安装版本配置组件；采用3.x时，用输出Camera上的CinemachineBrain、CinemachineCamera及适合侧向跟随的Position Composer等必要组件。参数优先直接在Inspector配置，不再写一套相机框架。
+跟随玩家逻辑根或其专用CameraTarget子对象；CameraTarget不能放在会转身、缩放或播放动画的表现模型下。固定侧向观察方向，模型转身不让相机绕到玩家背面。
+验证左右移动和跳跃时的构图、阻尼与跟随稳定性；结合实际Rigidbody更新/插值选择相机更新设置。新轮次出生或瞬移后及时更新目标位置，避免从旧位置长距离拖镜头；使用当前版本对应的Cinemachine处理方式，不增加通用相机管理器。
+目标销毁或场景卸载后不得访问失效对象；后续生成新玩家时能明确重新绑定目标。
+正交/透视、倾角与最终构图尚未确认：测试场景可选择一个方便验证的配置，并明确标记为测试默认。
+当前只实现所需Cinemachine跟随，不扩展相机状态机、复杂镜头切换或震屏功能。
+3.x组件参考：https://docs.unity3d.com/Packages/com.unity.cinemachine@3.1/manual/CinemachinePositionComposer.html
+
+
+八、真实生命与01治疗接入
+
+PlayerHealth是玩家HP的唯一维护者。
+参考用户CharacterStats/PlayerStats中的查询、封顶治疗和C#变化通知，移除技能、能量、失衡和战斗属性依赖。
+
+直接实现现有IHealthTarget，精确签名：
+int CurrentHealth { get; }
+int MaxHealth { get; }
+void Heal(int amount);
+
+不要修改01接口迁就02，不另建IPlayerHealth或第二份HP。
+当前01会在执行效果后读取真实HP，确认治疗生效，再记录次数/消耗。
+
+Heal必须：
+- 同步完成。
+- 不超过MaxHealth。
+- 非正数或无效治疗不降低HP。
+- 满血不变。
+- 死亡后不复活。
+- 不负责医疗包次数、背包归属或食物消耗。
+
+提供明确的伤害入口、生命变化通知、非致命受伤通知和死亡通知。
+HP限制在0到上限；先落实生命与死亡状态，再发送对应通知。
+死亡只通知一次；死亡后普通伤害/治疗不能重复触发死亡或复活。
+生命通知只供更新显示和协作，不让回调重新执行业务或改变本次物品效果。
+有效Heal不能被显示回调异常中断成“已回血但未记次数”；如保护通知异常，使用局部清楚的处理并记录错误，不建立通用事件框架。
+
+GDD的玩家初始3HP作为可配置试玩默认；受伤短暂无敌时间同样可调。
+无敌只阻止重复有效伤害，不阻止合法治疗。
+不顺带加入受击硬直、击退或战斗技能；非致命受伤可以有简单可见反馈。
+
+真实联测使用01已交付的ItemManager、ItemModule、Medkit、Food和效果资源：
+- 受伤后使用医疗包回满，物品保留，本轮第二次被01拒绝。
+- 食物恢复1HP，封顶且只消耗指定实例。
+- 满血、未携带、死亡目标等失败情况不错误消耗。
+- 测试两份食物相互独立。
+这里不使用测试生命替身冒充02玩家，不复制一套“测试物品管理器”。
+
+
+九、背包控制限制与新轮次入口
+
+提供简单、幂等的背包打开状态入口，例如SetBackpackOpen(bool)。
+不需要通用控制锁管理器。
+
+背包打开时：
+- 清除主动横移和跳跃请求。
+- 停止角色主动横向速度，保留Y轴重力和下落，不冻结物理。
+- 保持打开时的站立或蹲伏姿态。
+- 禁止新的主动移动、跳跃和姿态切换。
+- 重力、落地、状态更新、受伤和死亡继续。
+- 不设置Time.timeScale=0，不把刚体整体冻结或禁用状态机。
+- 空中打开时仍正常下落，不能悬空。
+
+关闭后：
+- 恢复当前有效控制。
+- 不补放锁定期间积累的跳跃/交互输入。
+- 不因为关闭背包而解除死亡限制。
+
+非致命受伤时，02更新生命并发出明确通知；04据此关闭背包和取消拖拽，再通过入口解除背包限制。
+02不操作格子或物品归属，也不通过重置整个Controller来模拟关包。
+04尚未实现时，用测试驱动模拟上述调用链，只验证玩家侧，不能宣布真实拖拽回滚通过。
+
+提供一个明确的新轮次准备入口，例如：
+ResetForExploration(int roundId, Vector3 spawnPosition)
+
+它负责玩家本轮准备：
+- 新轮次恢复满血。
+- 清理旧输入、背包打开标记、死亡标记和伤害计时。
+- 设置合法出生位置与固定Z，清理旧速度。
+- 进入合适的初始状态。
+- 同一或旧轮次重复调用不得再次回满、复活或重复重置。
+
+轮次由08提供，02不自行递增轮次，也不调用01的BeginRound刷新医疗包。
+不把OnEnable、重开界面、场景加载或返回庇护所当成新轮次。
+02不加载庇护所、不自动复活、不清空物品、不新增跨场景玩家单例。
+测试场景可以用明确按钮模拟08发出新轮次调用，交接必须说明。
+该测试按钮将同一轮次编号明确传给01的BeginRound和玩家准备入口；调用者是测试驱动，不是PlayerController自行推进流程。
+
+首次创建只准备引用、状态机和输入订阅；收到明确的首轮准备调用后才建立生命和可操作状态。
+未准备时不处理主动操作，也不因为初始HP尚未建立就发送死亡通知。
+测试驱动不得在OnEnable或场景重载时自动递增轮次或复活；测试场景启动后通过明确的准备按钮进入可操作状态。
+
+停用/销毁时清理输入、状态机及本模块订阅。
+重新启用时依据真实生命恢复状态，不能无条件Idle并满血；死亡对象仍保持死亡。
+初始化组件引用、状态机和输入的顺序要明确，避免OnEnable早于初始化导致空引用。
+
+
+十、E键交互与其他模块边界
+
+PlayerInteraction检测附近合法Interactable，一次E只调用一个目标一次。
+InputReader收集E输入，由玩家侧转交；目标不能再独立监听E造成双重执行。
+
+使用3D范围/距离和必要遮挡判断：
+- 无目标不执行。
+- 目标离开范围、停用或销毁后不能继续执行旧引用。
+- 同一个目标多个Collider不造成重复调用。
+- 前后景装饰不因屏幕重叠就变成交互目标。
+- 有实体墙阻隔时不能穿墙交互。
+- 多个目标采用简单明确的选择规则，例如有效目标中距离最近；交接说明。
+
+交互触发时再次验证当前目标。
+背包或其他当前UI占用交互时不能同时触发世界交互；提供简单开关即可，不做全局焦点框架。
+死亡时禁止交互。
+
+只提供可交互提示数据、当前目标和明确执行入口。
+箱子搜索/拾取由06实现，撤离由08实现，正式提示UI由09接入。
+不要在02中用测试箱子修改真实背包或用测试门加载庇护所。
+
+向07提供实际位置、朝向和蹲伏状态。
+蹲伏不等于隐藏；在掩体范围内蹲伏和墙体遮挡的具体判断归07。
+
+
+十一、测试场景与验收标准
+
+创建PlayerTest.unity，至少包括：
+- 真实Player预制体（允许胶囊体占位）与实际由Cinemachine驱动的Camera预制体。
+- 3D地面、墙和可跳落的小平台。
+- 一个前后景装饰，验证纵深不误交互。
+- 测试交互目标、伤害源和简短测试面板。
+- 按00/01现有方式接入一份真实GameBootstrap与ItemModule，不修改它们的共享资源。
+- 按钮模拟背包开关、新轮次和物品使用；测试逻辑仅在测试目录。
+
+当前胶囊体占位是合格交付方式，不要求额外制作演示动画；明确标记正式模型/动画待接入。
+
+必须实际检查：
+
+1. 状态机确实由用户源码修改复用；初次Enter、切换Exit/Enter次数正确，同状态不反复进入，Stop重复调用安全。
+2. 每个角色有独立状态机；没有MonoManager残留注册或双重更新。
+3. 键鼠左右移动、一次地面跳跃、下落、落地、蹲伏正常；一次按键不会多次执行。
+4. 运动、撞墙、受伤、出生复位后Z不漂移；世界碰撞/查询全部使用3D体系。
+5. 胶囊占位与物理根职责清楚，无重复实体碰撞体；逻辑朝向正确。已有正式模型时，转身/动画不能改变玩家物理根的约定位置或旋转。
+6. 无Animator/Clip的胶囊阶段状态机及玩法仍正常，无空引用或逐帧警告；有动画资源时，验证无状态间Transition仍能代码切换动画且不逐帧重播。缺资源时将真实动画联验标待接入，不虚报通过。
+7. 开包禁止主动运动并保持姿态，空中开包继续下落；关包不补放旧输入。
+8. 非致命伤能够通过模拟04的协作关闭背包并恢复控制；致命伤后关包不能恢复移动或交互。
+9. HP上下限、伤害无敌时间、死亡只通知一次、不被普通治疗复活，均符合要求。
+10. 真实ItemManager加真实PlayerHealth通过医疗包/食物有效使用与失败场景；物品侧次数/消耗仍归01。
+11. 新轮次回满并清理旧状态；同轮重复调用、OnEnable和普通UI操作不重新回满。
+12. E只执行一个合法目标一次；离开、销毁、重复Collider、墙体与前后景情况不会误触发。
+13. 停用/启用、销毁、测试场景重载后无重复输入订阅、遗留状态更新或自动复活。
+14. 参数可在Inspector调整，运行不污染SO；代码无namespace、目录正确，Unity编译通过。
+15. Cinemachine实际驱动相机：横移/跳跃跟随稳定，模型转身不造成绕行，出生复位不长距离拖镜头；没有手写脚本同时写输出相机Transform，目标失效和重新绑定处理正确。
+
+用少量有价值的自动测试覆盖状态切换、生命、轮次和输入锁边界。
+运动手感、真实碰撞、胶囊/现有模型和Cinemachine相机必须运行场景验证，不能只靠数据测试；真实动画在资源接入后另行运行验证。
+执行与本次改动相关的01治疗回归；不直接引用01旧测试成绩作为02验证结果。
+没有实际执行的检查写“未执行”及原因，不虚报真人试玩或Windows完整构建。
+
+当前未接入的项目单独列为待联合验证：
+真实背包拖拽回滚、敌人视野/接触伤害、流程场景切换/物品损失、正式UI/F10。
+测试驱动通过不等于这些模块已经完成。
+
+使用Unity MCP前读取相应技能，确认目标Editor实例。
+共享Editor的切场景、编译和运行测试串行；结束恢复原场景与测试工具临时改动，不覆盖他人资产。
+
+
+十二、交付与答辩说明
+
+更新：
+Docs/Architecture/PlayerSetup.txt
+Docs/Handoffs/02_Handoff.txt
+
+报告必须包含：
+1. 实际完成范围、准确文件路径、未接入项目。
+2. 原仓库/文件/核实版本，哪些代码保留、修改和删除，以及原因。
+3. 玩家预制体结构，Inspector参数、输入引用、动画名称及Cinemachine版本、Brain/跟随组件、目标绑定与参数设置方法；说明是否仍用胶囊占位。
+4. 真实公开入口及事件，特别是IHealthTarget、背包状态、新轮次、伤害和交互入口。
+5. 运行PlayerTest的步骤、实际测试证据、未执行项目与占位资源清单。
+6. 04/06/07/08/09后续接入需要的最小信息。
+7. 共用状态机的使用方式：07应复用同一份代码，各敌人创建自己的实例。
+
+用简短中文解释这些答辩要点：
+- Controller、StateMachine、具体State分别负责什么。
+- 为什么保留用户的泛型状态切换，却移除了MonoManager全局更新。
+- 为什么不用Animator Transition也能切动画，以及仍需哪些动画资源。
+- 胶囊阶段如何独立验证玩法，后续模型/Animator如何替换接入；Cinemachine怎样跟随目标以及调节构图与阻尼。
+- 为什么3D场景可以只沿XY运动，物理根与模型表现为什么分开。
+- Update收集输入、FixedUpdate处理物理的作用。
+- 为什么关背包不能解除死亡限制。
+- 为什么玩家维护HP，而物品维护使用次数和消耗。
+
+解释应能对应具体代码，避免只列设计模式名称。
+交付可操作、可验证的玩家模块，并让用户知道如何亲自修改速度、跳跃、生命、动画和状态切换。

@@ -1,0 +1,36 @@
+09F 无人机固定警戒与草丛脱战（当前用户规则覆盖旧填条规则）
+项目 E:/DD451；主责聊天“任务009 Ai潜行”。继续精简、无namespace、沿用2DArpg式公共StateMachine，不用Animator连线。不要新增通用AI框架或Manager。
+
+已确认规则
+1. 首次发现玩家原地警戒0.5秒，橙色呼吸灯；随后直接红色呼吸灯追击。取消旧的红色逐步填充和进度消退玩法，警戒视锥保持纯橙色。
+2. 追击时隐藏视锥画面；只隐藏Renderer，真实Collider/CanSee检测继续工作，不能通过关闭Vision物体/组件实现。
+3. 玩家在草丛/现有CoverArea内蹲伏达到隐藏条件时，无人机立即停止追击，在当前位置橙色警戒2秒，再恢复原巡逻路线和索引。该警戒恢复橙色视锥，不能继续移动到隐藏玩家的位置或因持续Hidden每帧重置2秒计时。
+4. 用户明确确认：上述2秒内玩家离开草丛且再次被实际视野发现，立即恢复追击，不额外等待0.5秒；恢复红灯并隐藏视锥。
+5. 维持既有隐藏条件（掩体内蹲伏）。普通墙遮挡/超距离丢失仍沿用现有Search最后看见位置搜索流程，不擅自改成隔墙追踪。首次0.5秒内进入草丛也转2秒草丛警戒；其它失去视野按既有Search处理，不能计时完盲追隐藏/无效目标。普通Search重新发现仍走首次0.5秒Alert，只有已确认的草丛2秒警戒分支重新发现立即Chase。
+6. 灯光继续呼吸。仅Chase状态才允许接触自毁/伤害；草丛隐藏当帧必须在CheckContacts前得到有效保护，避免FixedUpdate早于Update仍自毁。其它既有目标死亡、禁用、切场景锁规则保留。
+7. 0.5秒/2秒保留Inspector配置口，默认与正式DroneConfig资产均设为此次值。选简单清楚字段名；旧alertFill/alertDecay和AlertProgress依赖要审查迁移，必要的表现API可保留但不得成为旧玩法残留。不要堆出多个兼容模式。DroneState已有序号不重排。
+8. 保留07E正式Bootstrap→Shelter→Ruins接入、共享轮次、同轮不复活/不重置、下一轮刷新；保留用户全部巡逻点、原出生位置/Z、转向和模型倾斜解耦、灯光原始颜色/强度、草丛/场景布局。
+
+范围与目录
+主要修改现有Assets/Scripts/Enemy/Drone/States/，MonoBehaviour/DroneController.cs和DroneVision.cs，ScriptableObject/DroneConfigSO.cs，Assets/Data/Enemy/Drone/DroneConfig.asset。
+DroneStatusLight若颜色已满足只更新必要说明，避免无关重写。CoverArea只读复用。
+测试在Assets/Tests/Enemy/EditMode和PlayMode；适配Assets/Tests/GameFlow/PlayMode/RuinsEnemyIntegrationTests.cs中旧填条断言，保留共享轮次、同轮和下一轮的真实覆盖。其他模块不改。
+使用明确方法或小的状态上下文表达两种警戒，不用复制大状态机、服务层或事件总线。具体字段实现按当前代码判断，不提前建不用的接口。
+
+Editor协调与用户修改
+你是本次唯一Assets实施者；主程和内部agents只读/Docs。视觉聊天不并发改文件，不需要它另开改动。
+用户已明确授权向009发送本次派单，并授权保存当前Ruins改动后交给本次任务验收。主程已保存未保存状态副本Docs/Verification/Enemy/TimedAlert/Before/CurrentUnsaved-Ruins.unity，并会在派单前保存最新副本和原场景、记录授权后基线。你接手必须fresh检查现场；若与基线不同且再次dirty，保留新增工作并报告。主程派单时明确完成保存与释放后，你可独占Editor完成编译、测试和普通Play验收。
+保全最新场景，不用07E或旧Before还原。若检测用户切Play/编辑并发先协调。
+
+验收
+自然发现→Alert橙灯且不移动→约0.5秒后Chase红灯，视锥MeshRenderer隐藏但实际检测仍有效。
+Chase进入真实CoverArea蹲伏→原地橙色警戒，2秒计时不被重复Hidden重置；结束恢复原路线；站立入草不自动隐藏。
+2秒内实际再发现立即Chase，持续隐藏不能被追踪；草丛和墙遮挡分支分别验证。
+草丛/警戒重叠不自毁，真正Chase实体接触才一次伤害；首次0.5秒丢失/玩家死亡/切场景锁不会盲追。
+同轮重复正式初始化保持当前计时/状态，爆炸后不复活；次轮正式出发正常刷新。
+更新原测试而非简单删除旧断言，记录哪些旧规则被新需求替换。跑必要Enemy与GameFlow相关回归；通过后不反复重跑。
+普通Play从Bootstrap/Shelter到Ruins在1920×1080验证；只读观察/真实交互/公开API辅助定位可以，但不得强制AI状态/计时来冒充自然流程。保留证据与边界，不宣称原生键鼠。
+
+交接
+证据Docs/Verification/Enemy/TimedAlert/Integration/，交接Docs/Handoffs/09F_TimedAlert_Handoff.txt。列修改文件、实际测试结果、失败原因/修正、1920截图、配置位置、用户场景保护。
+完成后停止普通Play/所有测试和回调，保留用户现场，写Docs/Verification/Enemy/EditorCoordination.txt并明确“009 Assets和Editor已释放，主程可以验收”；不在释放后继续Unity操作。

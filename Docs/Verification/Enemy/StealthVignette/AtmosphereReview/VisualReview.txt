@@ -1,0 +1,42 @@
+09I 潜行暗角——氛围协作视觉复核
+结论：本次URP/Volume兼容与实际画面审查通过，建议保留intensity.22、smoothness.45、transitionSeconds.2、黑色、中心(.5,.5)、rounded=false。
+范围：本聊天与子agent仅只读磁盘/包源码、查看009取得的实际Game图片与记录；只写本AtmosphereReview目录，没有操作Unity、修改Assets或自行实现第二套暗角。009仍负责最终测试、保存重载、完整文件审计及Editor明确释放。
+
+1. 正常画面
+已直接打开OrdinaryPlay-20261019T171129/01-Normal-PPoff-1920x1080.png、02-Normal-PPon-Neutral-1920x1080.png。
+肉眼未见明显整体改色、额外Bloom、常驻暗角或高亮形体损失。玩家青绿色与曲面高光、草丛、箱子、天空/地面和HUD观感保留。
+同相机/机位/玩家/已记录两灯/环境；实际gameTime相差10.7057924秒，timeScale1，009记录运行时临时禁用drones与LightFlicker保持对照，不是同一时间冻结，也不声明自然AI动态通过。
+当前有效stack曝光/对比/白平衡0、白滤镜、ToneNone/Bloom0/Vignette0，base weight1、stealth weight0。这验证了Ruins中性基底覆盖quality默认Profile的实际结果。
+全图有88.683063%像素发生变化，但每个通道最大差仅2/255、平均绝对RGB差.60806793/255、P99像素最大差1。存在轻微暗向数值偏差，不能写成原PP关闭与开启的像素完全一致；可接受为此视角下无明显视觉改色。与LUT/输出量化差异相符，但两帧不能独立证明每个差异的精确来源。
+详见NormalPpPixelAudit.txt/json。
+
+2. 隐藏、退出与背包实际画面
+已逐张打开OrdinaryPlay/Probe-ebaa8dc9下全部四张1920x1080：
+00-InsideStanding-Normal、01-InsideCrouching-Stealth、02-InsideStanding-Exited、03-InsideCrouching-Backpack。
+潜行时四周天空与下缘渐暗、没有硬黑框；中心草丛/箱体及玩家露出的头顶仍清楚。蹲伏时玩家身体被原有不透明绿色草丛占位体遮住，不是暗角造成，不能描述为全身可见。
+背包标题、说明、快捷键及格线均清晰；正常HUD文字可读。暗角对世界起作用，没有把整个画面和UI一起盖黑。
+正常00与退出02全图2,073,600个RGB像素完全一致，PNG哈希也相同，证明此机位退出恢复无残留。
+静态ROI的编码亮度降幅：中心天空.33075%，中侧约5.31–5.40%，上侧边缘约18.63–19.21%，左下角25.75%。这是PNG中的ROI统计，不是统一屏幕百分比或shader线性乘数。
+潜行01与背包03在面板外1,820,416像素完全一致；变化仅来自新出现的背包面板范围。顶端923个主色字形内部代理像素保持一致；不把它扩大为所有半透明UI区域逐像素不变。
+详见StealthPixelTraceAudit.txt/json。
+
+3. 状态/渐变证据
+Result.json记录API定位、InputSystem合成C以及真实背包API，不是实体键鼠。1307个连续render-frame样本跨10阶段，全部timeScale1；有效暗角=weight*.22，曝光/Bloom/Tone保持0/0/None。
+草外蹲伏132样本和草内站立130样本均hiddenfalse、weight0。
+5次进/退权重单调，31–40个中间权重采样；旧状态末样本至首次端点约.200653–.204616秒。离开草丛仍保持蹲伏时也正常渐退。
+重叠掩体替换、背包打开、背包关闭共384采样，hidden/crouching始终true、weight始终1，无采样到的回落或反转。
+这是逐渲染帧数值记录与真实静态端点图，支持渐变行为；本聊天没有观看视频，因此不宣称完整视频运动审查或任意帧率均已验证。
+
+4. 场景生命周期与Shelter兼容
+已直接查看OrdinaryPlay-20261019T171129/03-DeathReturn-Shelter-1920x1080.png及metadata/Lifecycle.jsonl。
+死亡前hidden true、weight1、stackVignette.22，实际PlayerHealth.TakeDamage(MaxHealth)走原07F死亡流程。TakeDamage同步返回的weight仍1，组件在后续LateUpdate或禁用处理清理，不声明伤害API调用内同步清零。
+死亡返回Shelter后同player=-4572394，health3、相机1/玩家灯1，潜行组件0/私有Profile0，Vignette0。实际图像保留当前昏暗Shelter、灯光、浮尘和玩家补光。
+返回后的有效Shelter栈保留曝光-.2/对比8/灰滤镜RGB.7578583/Bloom.1/threshold1/ToneNone，仅原Global Volume，没有按旧交接回滚白色滤镜。
+后续Lifecycle记录：round2再次Ruins时一组件/一运行时Profile、weight0/Vignette0；重新隐藏达到weight1/.22；正常撤离Shelter round2/settled2时组件/Profile0且Vignette0；round3再出发又只有一组件/Profile、weight0。始终同一玩家、一补光灯、一相机。此部分按009落盘状态记录复核；只有上述死亡返回帧由本聊天直接审图。
+ProtectedAtmosphereAudit.json复核接手快照范围内Shelter场景/Profile、共享PlayerCamera、Player、PC资产/Renderer/global默认、dust Prefab/material及GameFlowSceneBindings均未改；Ruins是预期变化。不是全工程最终审计。
+
+5. 实现评估与交付边界
+PlayerStealthVignette只有一个简单组件，用既有cameraBinder.player与CoverArea.IsHidden，运行时私有Vignette，不写共享Profile；没有发现需为本次用途再扩展框架的问题。
+中性base恒weight1、高priority潜行层只渐变Vignette的方案正确，避免退出时露回quality默认ToneNeutral/Bloom.25/Vignette.2。
+本视觉复核通过不等于最终全部测试通过或Editor释放。自动化测试、最终Console、保存重载、完整新增/变更文件清单与交接由009在Docs/Handoffs/09I_StealthVignette_Handoff.txt中统一记录。本聊天没有待执行Unity/Assets操作；审计子agent均已完成。
+

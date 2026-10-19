@@ -1,0 +1,17 @@
+[
+  {
+    "Algorithm": "SHA256",
+    "Hash": "BB84D4E4925389305AAC1F3078D0A6815BF434336C22753369F224BD0A29FE73",
+    "Path": "E:\\DD451\\Assets\\Scripts\\Effects\\MonoBehaviour\\LightFlicker.cs"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "378232948DA06C3DD4CD1EB01ED519310770284E0536D9131ABBC9B43AA1C468",
+    "Path": "E:\\DD451\\Assets\\Prefabs\\灯光.prefab"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "665C2EAD270E534B54CEB83565C06694C3F048252A5EFFD38E81C183B215E909",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Shelter.unity"
+  }
+]

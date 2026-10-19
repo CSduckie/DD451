@@ -1,0 +1,485 @@
+{
+  "schemaVersion": 2,
+  "task": "007 MinimumLoop responsive-layout follow-up",
+  "generatedAtUtc": "2026-10-18T21:01:29.297429Z",
+  "snapshotPhase": "Responsive layout; pointer-test source snapshot while 800/1280 reruns are pending",
+  "previousSnapshot": {
+    "path": "Docs/Verification/MinimumLoop/FinalStaticAudit.json",
+    "sha256": "04F65FE422E817025A04ADF9333787F78B45387471BC6C36A4384C5D5BE0B95D",
+    "preservedUnmodified": true
+  },
+  "scope": {
+    "sourceRoots": [
+      "Assets/Scripts/GameFlow",
+      "Assets/Tests/GameFlow"
+    ],
+    "method": "Read-only filesystem inventory; SHA-256; JSON parsing; anchored C# declaration/test attribute scan.",
+    "limitations": [
+      "No Unity Editor operation, compilation, or test execution performed by this audit.",
+      "This snapshot records current files; earlier FinalStaticAudit.json remains historical evidence.",
+      "Test attribute counts are source annotations, not executed test results or runtime case expansion.",
+      "Namespace checks inspect line-start declarations and are not a C# parser.",
+      "Observed asset existence and serialized binding markers do not prove all runtime references or visual/input acceptance."
+    ]
+  },
+  "summary": {
+    "csharpFileCount": 12,
+    "namespaceDeclarationCount": 0,
+    "assemblyDefinitionCount": 4,
+    "assemblyDefinitionsParsed": 4,
+    "assemblyDefinitionsEmptyRootNamespace": 4,
+    "testAttributeCount": 19,
+    "testAttributesByType": {
+      "Test": 11,
+      "UnityTest": 8,
+      "TestCase": 0
+    },
+    "formalAssetCount": 10,
+    "formalAssetsExisting": 10,
+    "formalAssetMetasExisting": 10
+  },
+  "responsiveLayout": {
+    "script": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowResponsiveLayout.cs",
+    "serializedMarker": "MyPrecious.GameFlow::GameFlowResponsiveLayout",
+    "shelterMarkerPresent": true,
+    "ruinsMarkerPresent": true,
+    "bootstrapFallbackMarkerPresent": true,
+    "updateMenuPresent": true,
+    "compactThresholdWidth": 1000,
+    "referenceResolution": [
+      800,
+      600
+    ],
+    "compactWarehouseViewport": [
+      514,
+      154
+    ],
+    "derivedGridScale": 0.648171500630517,
+    "derivedCellPixelsAt800": 23.334174022698612,
+    "derivedValueNote": "Arithmetic from current source and serialized shared-prefab geometry; not a runtime measurement."
+  },
+  "csharpFiles": [
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowHUD.cs",
+      "sha256": "E430481D146E43846C767C18207638A6F5876CD13797062BB599FAD5E6DB3D54",
+      "bytes": 3705,
+      "namespaceDeclarations": [],
+      "testAttributeCount": 0,
+      "testAttributes": [],
+      "metaExists": true,
+      "metaSha256": "A18D743BD728AEC91B9173803931DA868D7BBF2D75F9E7F53E9B3DB5DD6AF07A"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowInteractable.cs",
+      "sha256": "4C8299AF84C7B66CC616888C8591ECEE7067F19745E7F7A23EA3DF3B1C24E252",
+      "bytes": 1635,
+      "namespaceDeclarations": [],
+      "testAttributeCount": 0,
+      "testAttributes": [],
+      "metaExists": true,
+      "metaSha256": "2E80D49A7094FF09990AA028765AF705294A02D186ADD74D2BF2C60C1C1D1BA9"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowManager.cs",
+      "sha256": "B0D2EC22A4BFE7CADAE2D46199A622254B593DD4EE103781487EBC8BC344434C",
+      "bytes": 23824,
+      "namespaceDeclarations": [],
+      "testAttributeCount": 0,
+      "testAttributes": [],
+      "metaExists": true,
+      "metaSha256": "21A1565C8D783501970235437F5E1008A56DBDA0CBF2A732CD583349D83028C1"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowResponsiveLayout.cs",
+      "sha256": "375BD1887F0A3014D1A141456468178207B86B5F0CC1A7EAF460388F02BD09CC",
+      "bytes": 18056,
+      "namespaceDeclarations": [],
+      "testAttributeCount": 0,
+      "testAttributes": [],
+      "metaExists": true,
+      "metaSha256": "5743EA9E789266047BDD9DD66F826826D04D93F7E626692358AA6B8CA6BBBAF1"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowSceneBindings.cs",
+      "sha256": "E772B51A90E094DD4D47058F86C7ECD781B346F608331F8BD4A6CD173C60C253",
+      "bytes": 7871,
+      "namespaceDeclarations": [],
+      "testAttributeCount": 0,
+      "testAttributes": [],
+      "metaExists": true,
+      "metaSha256": "C32B9975E96E68B2D4384B8998FB1ED59280DBBCD71A2477AEF343A02CD9998B"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/RuntimeData/GameFlowStage.cs",
+      "sha256": "C83264E09897C06F54208B5553AE7D345950D449C5CD9936B12056021989E638",
+      "bytes": 112,
+      "namespaceDeclarations": [],
+      "testAttributeCount": 0,
+      "testAttributes": [],
+      "metaExists": true,
+      "metaSha256": "49C0E63941304D5336BF15338E56EDD78622DD2572CB02E5EEFCDE863E2C6DDC"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/EditMode/GameFlowSettlementTests.cs",
+      "sha256": "DCB4EF6D73476EA30ED33B1B94F05F7744BE3F5F9E7B6C3C1E5C9FBD0FF10343",
+      "bytes": 15713,
+      "namespaceDeclarations": [],
+      "testAttributeCount": 6,
+      "testAttributes": [
+        {
+          "line": 91,
+          "attribute": "Test"
+        },
+        {
+          "line": 152,
+          "attribute": "Test"
+        },
+        {
+          "line": 186,
+          "attribute": "Test"
+        },
+        {
+          "line": 211,
+          "attribute": "Test"
+        },
+        {
+          "line": 234,
+          "attribute": "Test"
+        },
+        {
+          "line": 249,
+          "attribute": "Test"
+        }
+      ],
+      "metaExists": true,
+      "metaSha256": "3DC9B7E0A2DF1D5F07B8EBF56DFDD1B76ED2A89B3A37C7583319D595603156CA"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/EditMode/PlayerFlowEntryTests.cs",
+      "sha256": "A50FB589B9635E29A15A6A712A3958969EAA2EEBEBA431883703615164EB8E37",
+      "bytes": 6027,
+      "namespaceDeclarations": [],
+      "testAttributeCount": 5,
+      "testAttributes": [
+        {
+          "line": 32,
+          "attribute": "Test"
+        },
+        {
+          "line": 60,
+          "attribute": "Test"
+        },
+        {
+          "line": 84,
+          "attribute": "Test"
+        },
+        {
+          "line": 106,
+          "attribute": "Test"
+        },
+        {
+          "line": 131,
+          "attribute": "Test"
+        }
+      ],
+      "metaExists": true,
+      "metaSha256": "BC3EDC47E7EFBBBFF34D020EA5BA64CC205E05254DAD472643083F4E0E8CB9A6"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/Editor/MinimumLoopSceneBuilder.cs",
+      "sha256": "E10715DDF7B8C8FFDFA7E2CF3305DD0E72FDCCA6A3103A0CBA2C199F3B21BC1A",
+      "bytes": 34565,
+      "namespaceDeclarations": [],
+      "testAttributeCount": 0,
+      "testAttributes": [],
+      "metaExists": true,
+      "metaSha256": "7E71CB6AD8C3D687066784A87B3A7730862B40FB9D428127EDD00202FEBD615D"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/MinimumLoopPointerTests.cs",
+      "sha256": "8887CE6E8654D39372038C716DDFD1A7DF5733BA9A805579FD185493BF29832B",
+      "bytes": 26832,
+      "namespaceDeclarations": [],
+      "testAttributeCount": 1,
+      "testAttributes": [
+        {
+          "line": 105,
+          "attribute": "UnityTest"
+        }
+      ],
+      "metaExists": true,
+      "metaSha256": "02C1BF78211F827FB820D7CC44C1C9D475F6BB4D3C343B4B7AF4CE718DFC7E8E"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/MinimumLoopSceneTests.cs",
+      "sha256": "A912BB36342091D5616020FC0D02EE0430461F6C60CBEADE5106CE4E23BFA1DF",
+      "bytes": 21362,
+      "namespaceDeclarations": [],
+      "testAttributeCount": 5,
+      "testAttributes": [
+        {
+          "line": 56,
+          "attribute": "UnityTest"
+        },
+        {
+          "line": 98,
+          "attribute": "UnityTest"
+        },
+        {
+          "line": 139,
+          "attribute": "UnityTest"
+        },
+        {
+          "line": 183,
+          "attribute": "UnityTest"
+        },
+        {
+          "line": 250,
+          "attribute": "UnityTest"
+        }
+      ],
+      "metaExists": true,
+      "metaSha256": "1449BA777F82101A78D0938304C4A061B3AED94E45A16DA693577399E820A625"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/PlayerSceneTransitionTests.cs",
+      "sha256": "8D112EB6F70AC46E2C98B75BBEB953CCB4922291B2F7ECAD0BA681A8B1F50981",
+      "bytes": 6140,
+      "namespaceDeclarations": [],
+      "testAttributeCount": 2,
+      "testAttributes": [
+        {
+          "line": 69,
+          "attribute": "UnityTest"
+        },
+        {
+          "line": 107,
+          "attribute": "UnityTest"
+        }
+      ],
+      "metaExists": true,
+      "metaSha256": "00743DA567CF0FD83791E00838E17FF8EFC91E0764DA9973566D9FDD38E11856"
+    }
+  ],
+  "assemblyDefinitions": [
+    {
+      "path": "Assets/Scripts/GameFlow/MyPrecious.GameFlow.asmdef",
+      "sha256": "BFD7BE2FDB143123634E593C1406BF76B5EFCDDF537C7FB2D879963991D26C99",
+      "jsonParsed": true,
+      "parseError": null,
+      "name": "MyPrecious.GameFlow",
+      "rootNamespace": "",
+      "references": [
+        "MyPrecious.Bootstrap",
+        "MyPrecious.Items",
+        "MyPrecious.Backpack",
+        "MyPrecious.Warehouse",
+        "MyPrecious.Shelter",
+        "MyPrecious.Loot",
+        "MyPrecious.Player",
+        "MyPrecious.Interaction",
+        "MyPrecious.Health",
+        "MyPrecious.StateMachine.Contracts",
+        "MyPrecious.Localization",
+        "Unity.Cinemachine",
+        "Unity.InputSystem",
+        "Unity.TextMeshPro",
+        "Unity.ugui"
+      ],
+      "includePlatforms": [
+        null
+      ],
+      "metaExists": true,
+      "metaSha256": "82A43613D9838D5E6B82EBE99F7C3ACE59EF4A1DBC12E90014DE8170814EF6A9"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/EditMode/MyPrecious.GameFlow.EditModeTests.asmdef",
+      "sha256": "B0F4F7112F2700AD2DC591D9EA90048D1D0824DF8BA74C67BEDF88B094A43AB5",
+      "jsonParsed": true,
+      "parseError": null,
+      "name": "MyPrecious.GameFlow.EditModeTests",
+      "rootNamespace": "",
+      "references": [
+        "MyPrecious.GameFlow",
+        "MyPrecious.Bootstrap",
+        "MyPrecious.Items",
+        "MyPrecious.Backpack",
+        "MyPrecious.Warehouse",
+        "MyPrecious.Shelter",
+        "MyPrecious.Loot",
+        "MyPrecious.Player",
+        "MyPrecious.Interaction",
+        "MyPrecious.Health",
+        "MyPrecious.StateMachine.Contracts",
+        "MyPrecious.Localization",
+        "Unity.Cinemachine",
+        "Unity.InputSystem",
+        "Unity.TextMeshPro",
+        "Unity.ugui"
+      ],
+      "includePlatforms": [
+        "Editor"
+      ],
+      "metaExists": true,
+      "metaSha256": "C8A1E2DAF7E41DEB436CCC848F700920BCDADF87CEC81A972A08E22957153852"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/Editor/MyPrecious.GameFlow.Editor.asmdef",
+      "sha256": "21FEAE601D7EBDB86D06E563B35AD8611D905A193B85B468D7597631EC6DB25A",
+      "jsonParsed": true,
+      "parseError": null,
+      "name": "MyPrecious.GameFlow.Editor",
+      "rootNamespace": "",
+      "references": [
+        "MyPrecious.GameFlow",
+        "MyPrecious.Bootstrap",
+        "MyPrecious.Items",
+        "MyPrecious.Player",
+        "MyPrecious.Interaction",
+        "MyPrecious.Backpack",
+        "MyPrecious.Warehouse",
+        "MyPrecious.Shelter",
+        "MyPrecious.Localization",
+        "MyPrecious.Loot",
+        "MyPrecious.Health",
+        "MyPrecious.StateMachine.Contracts",
+        "Unity.Cinemachine",
+        "Unity.InputSystem",
+        "Unity.TextMeshPro",
+        "Unity.ugui",
+        "Unity.RenderPipelines.Universal.Runtime",
+        "MyPrecious.Loot.Editor"
+      ],
+      "includePlatforms": [
+        "Editor"
+      ],
+      "metaExists": true,
+      "metaSha256": "6BEA4798862507666BFDE1BAA64DF3AD079C03B9E64A3CE97F90B64B9F3E0C85"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/MyPrecious.GameFlow.PlayModeTests.asmdef",
+      "sha256": "8BA01DBF29FDEFBEA30CDB530E626960B364B52803B4949A2C8B5984BF226BC0",
+      "jsonParsed": true,
+      "parseError": null,
+      "name": "MyPrecious.GameFlow.PlayModeTests",
+      "rootNamespace": "",
+      "references": [
+        "MyPrecious.GameFlow",
+        "MyPrecious.Bootstrap",
+        "MyPrecious.Items",
+        "MyPrecious.Backpack",
+        "MyPrecious.Warehouse",
+        "MyPrecious.Shelter",
+        "MyPrecious.Loot",
+        "MyPrecious.Player",
+        "MyPrecious.Interaction",
+        "MyPrecious.Health",
+        "MyPrecious.StateMachine.Contracts",
+        "MyPrecious.Localization",
+        "Unity.Cinemachine",
+        "Unity.InputSystem",
+        "Unity.TextMeshPro",
+        "Unity.ugui"
+      ],
+      "includePlatforms": [
+        null
+      ],
+      "metaExists": true,
+      "metaSha256": "826DF15D6AF0E99619717CF3BBEC4991E7DE06A5D00CC904A43A93E26FA2CE3C"
+    }
+  ],
+  "formalAssets": [
+    {
+      "path": "Assets/Scenes/Bootstrap.unity",
+      "exists": true,
+      "sha256": "9063DB1C2FD9EFBB83A120531BCA35644BE835D203A68EC49FBB1B8306526500",
+      "metaExists": true,
+      "metaSha256": "7949600BE4F1DD1DCA13B37C142445FE5EB3F62518153EA2BA1B725AD567F1D3"
+    },
+    {
+      "path": "Assets/Scenes/Shelter.unity",
+      "exists": true,
+      "sha256": "F45E326DDE15DB96146B30394AF9050AA118EE12F90051BB3857732B5F152D0E",
+      "metaExists": true,
+      "metaSha256": "E32C6E5FFC8F10D2BB611941967203616E52F76353A7722CF717703EDD4D2889"
+    },
+    {
+      "path": "Assets/Scenes/Ruins.unity",
+      "exists": true,
+      "sha256": "0D4DBC0719C641FD558605D43AD2154E57CC83DEC142A5F64D2D3D82E3DEC867",
+      "metaExists": true,
+      "metaSha256": "71BD0E68CE9B34EF682661D60BCD36605007FE6FFE66D8FD09D1A56542A66594"
+    },
+    {
+      "path": "Assets/Prefabs/GameFlow/GameFlowModule.prefab",
+      "exists": true,
+      "sha256": "534B5DFB7B11C7D852D1EEB86673EEA276938D48AD8BD6CE5C06951EE193506D",
+      "metaExists": true,
+      "metaSha256": "8EC05C35DBCA535F8DDC636B1BCAB6AFC1F4770F56ECA7035E4B925A79A7257F"
+    },
+    {
+      "path": "Assets/Prefabs/GameFlow/ShelterStoragePoint.prefab",
+      "exists": true,
+      "sha256": "B4684DBFD8D73922DDA1E4A8CC2A5545E42A743BFED135B629F997A6AEF2C27C",
+      "metaExists": true,
+      "metaSha256": "30998742C1B296DEF9FED2689732BAF7129E329231B4A99CA1E8EBFB9BD83D01"
+    },
+    {
+      "path": "Assets/Prefabs/GameFlow/DeparturePoint.prefab",
+      "exists": true,
+      "sha256": "692A875763EE93D8574E615655A3CA565B3F81171F947846D80D391833193FAB",
+      "metaExists": true,
+      "metaSha256": "C492E3286D58DA5277DC0B25E13623777387322BA9709CE24C42B20B30E97379"
+    },
+    {
+      "path": "Assets/Prefabs/GameFlow/ExtractionPoint.prefab",
+      "exists": true,
+      "sha256": "FDCB5BDA5E6D1DC2421C70EBA348630C64BACA0EC5AAD989A1A255C341A56E7C",
+      "metaExists": true,
+      "metaSha256": "573AAE6467FFB5678AC61B557BBC711F80417E1A018A4665CAD9970589109B9F"
+    },
+    {
+      "path": "Assets/Prefabs/UI/GameFlow/GameFlowHUD.prefab",
+      "exists": true,
+      "sha256": "B6C42D626CDABFDC9BAEB65B4FC188841E29FB63DA2368AB650C3067DD4CBC43",
+      "metaExists": true,
+      "metaSha256": "63BE11031187E1072D0BC149649D2977C4FDE041FDF2EC092285C021D2C5EE8D"
+    },
+    {
+      "path": "Assets/Data/Localization/GameFlow/GameFlowText.asset",
+      "exists": true,
+      "sha256": "17891C485FA119187271A720ECE9CDE1C52B71536FA04CFCE104519EEE03898F",
+      "metaExists": true,
+      "metaSha256": "2844A9C6762537FBC37A19B5077F0EA8F5209F439178979A7B53B2ED25C49F75"
+    },
+    {
+      "path": "Assets/Data/LootTables/MinimumLoopLoot.asset",
+      "exists": true,
+      "sha256": "E0321CE611653F75DFF9058F7ED7C581D25D3DF81F7AE27EB3FF29942604FCBE",
+      "metaExists": true,
+      "metaSha256": "E58998A095FC75856FD77E5FF1F833C89E317E8C8E9822D10CD42DCEA0B3F18F"
+    }
+  ],
+  "sharedGeometryObserved": [
+    {
+      "path": "Assets/Prefabs/UI/Backpack/BackpackPanel.prefab",
+      "sha256": "210C8FDC20DBF305581FCF73E7A4634589886575411CDC4E05B0704D33D4B2BA",
+      "cellSize": 36.0,
+      "gap": 3.0,
+      "padding": 8.0,
+      "attribution": "User-coordinated change from another chat, observed and preserved; not authored by this audit."
+    },
+    {
+      "path": "Assets/Prefabs/UI/Warehouse/WarehousePanel.prefab",
+      "sha256": "A896AF2B3DB59E85EEC5326C7EF35E21C9A475F6CC85739FC95DE2548DD93F74",
+      "cellSize": 36.0,
+      "gap": 3.0,
+      "padding": 8.0,
+      "attribution": "User-coordinated change from another chat, observed and preserved; not authored by this audit."
+    }
+  ],
+  "relatedNativeEvidence": {
+    "path": "Docs/Verification/MinimumLoop/ResponsiveNativeAttempts.json",
+    "sha256": "04E0B4FDC77DD06F9660FF6D4E0E62695B56A3EAA8ABC53280C865F02E0EE62F"
+  }
+}

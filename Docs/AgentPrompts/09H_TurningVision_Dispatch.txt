@@ -1,0 +1,38 @@
+你继续负责 MyPrecious / 任务009 Ai潜行。用户最新明确要求：修复“无人机转身时，玩家进入视锥会被跳过检查”的问题。现在开始定位、最小修复和验证。
+
+项目：E:/DD451。先阅读当前源码与最新交接，复现后确认根因，不把推测写成已证实结论。本任务编号09H，范围是转身期间的视野检测连续性及显示/检测一致性。
+
+需要达到的行为
+1. 无人机向左或向右平滑转身期间，视野检测持续执行。玩家进入当时有效的视锥、满足现有可见条件时，应正常发现，不能等转身结束、再次离开重进，或下一次巡逻才能发现。
+2. 同时覆盖“玩家走进正在转动的视锥”和“玩家静止，视锥转动扫过玩家”。验证转身开始、中段、结束附近。
+3. 可见视锥与实际检测使用一致的朝向和位置。视锥随水平转向，不随模型飞行前倾。不要通过扩大为360度探测、取消遮挡、强制瞬间转身或单独画一套假视野掩盖问题。
+4. 进入Alert后应保持正常的原地0.5秒橙色警戒，随后红色Chase并隐藏视锥显示；不能由于转身相关状态更新覆盖已发现目标或无故清空目标。保留现有真实丢失目标规则，不新添“发现后永久锁定”。
+5. 保留真实墙体遮挡、草丛内蹲伏隐藏和2秒警戒后恢复巡逻；草丛警戒中重新发现立即追击。切场景/死亡/未准备玩家仍不可成为目标。
+
+优先检查的现有文件
+- Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs
+- Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs
+- Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs（仅在确有必要时修改）
+- Assets/Scripts/Enemy/Drone/States/DronePatrolState.cs
+- Assets/Scripts/Enemy/Drone/States/DroneAlertState.cs
+- Assets/Scripts/Enemy/Drone/States/DroneSearchState.cs
+按实际根因只改必需文件，测试放 Assets/Tests/Enemy/PlayMode/，优先扩充现有视野/行为测试，确需新文件再创建 DroneTurningVisionTests.cs。证据保存 Docs/Verification/Enemy/TurningVision/，交接写 Docs/Handoffs/09H_TurningVision_Handoff.txt，并在09_Handoff标注最新修复。
+
+初步只读核查提示（不是确定根因）
+当前Controller.Update已经先SmoothDampAngle、UpdatePose、SetHeading，再执行状态Update；DroneVision.RefreshPose已有Physics.SyncTransforms；Patrol/Search每Update调用ObservePlayer。因此不要仅凭猜测增加SyncTransforms或直接认定转身时早退。重点实测中间yaw角、Collider实际几何与Renderer、候选Overlap、ClosestPoint与遮挡判断，以及发现后继续转向是否造成目标丢失/状态覆盖。需要证明修复前为什么漏检、修复后在哪个自然更新步骤发现。
+
+必须保留的最新变更
+- 09G_ContactExplosion_Handoff.txt：无人机机身半径0.25。所有存活状态真实接触玩家均爆炸，包括草丛隐藏；只爆炸/结算一次，视锥Trigger本身不引爆。此条已覆盖旧的“只有Chase接触才爆炸”，不要倒退。
+- 02C_CrouchCollider_Handoff.txt：玩家下蹲真实Capsule高度/中心同步，默认2/1变为1.3/0.65，顶棚下保持蹲伏。此修改刚完成18项回归，不能覆盖，也不能在视野测试中假定蹲伏碰撞体仍是站立尺寸。
+- 保留用户Ruins中全部无人机、出生位置、巡逻点和场景布局；保留共享探索轮次、同轮不复活和下一轮刷新。
+- 保留用户配置的视野Collider和现有模型、旋翼、灯光呼吸。需要改动配置时先证明必要性，勿为过测改掉用户场景。
+
+验证与交付
+- 用实际Drone prefab/现有正式流程或等效真实物理测试，复现左右两个方向转身漏检。
+- 自然运行Update/FixedUpdate驱动转身与发现，不以直接调用ChangeState(Alert/Chase)或手工指定目标冒充通过。
+- 验证静止玩家被转动视锥扫入、移动玩家进入、边缘进入、正常站立与有效蹲伏尺寸；加入墙后和隐藏玩家不得误发现的对照。
+- 检查正常0.5秒Alert→Chase、追击视锥显示隐藏、模型前倾不带歪视锥、09G触碰爆炸和同轮不复活不被破坏。只运行相关回归，不无理由反复全量测试。
+- 1920×1080运行检查可见视锥与发现时刻一致，记录状态、朝向和必要证据。明确区分自动化/API辅助与原生键鼠验收，Console无新增产品错误。
+- 保持作品集/毕设精简风格，复用现有2DArpg式状态机，不写namespace，不增加复杂框架或多余接口。
+- 主程已于07:23 UTC释放Editor，当前已知Bootstrap clean/Edit，所有主程Assets/测试操作结束。接管前重新检查 Docs/Verification/Enemy/EditorCoordination.txt 和现场状态；若现场变化，以最新用户编辑为准，先保留修改再切场景，不回滚旧基线。
+- 完成后说明根因、改动文件、测试结果及证据、剩余限制，并明确释放Editor；不要在报告完成后继续后台操作编辑器。

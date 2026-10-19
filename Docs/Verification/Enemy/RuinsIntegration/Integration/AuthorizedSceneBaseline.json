@@ -1,0 +1,22 @@
+{
+  "utc": "2026-10-19T06:09:17.5366337Z",
+  "authorization": "User explicitly allowed saving current Ruins before tests; copy AuthorizedLatest-Ruins.unity preserves exact pre-save content.",
+  "files": [
+    {
+      "path": "Assets/Scenes/Ruins.unity",
+      "hash": "A1E839BD3E3C028AF05C47C7AFFB05586E5CA5CAF9BCDD1744DD24CEEAAA0EB1"
+    },
+    {
+      "path": "Assets/Scenes/Ruins.unity.meta",
+      "hash": "71BD0E68CE9B34EF682661D60BCD36605007FE6FFE66D8FD09D1A56542A66594"
+    },
+    {
+      "path": "Assets/Data/Enemy/Drone/DroneConfig.asset",
+      "hash": "9AC93E385E708E3576C47DDB63FAD851190C96C26705051577F29F81F647BBEC"
+    },
+    {
+      "path": "Assets/Data/Enemy/Drone/DroneConfig.asset.meta",
+      "hash": "654217017F81C7135E3FD1BB0CC247733B40C3A52145F6A415441AE19876A493"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs",
+    "changed": true
+  },
+  {
+    "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs.meta",
+    "changed": false
+  },
+  {
+    "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs",
+    "changed": true
+  },
+  {
+    "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs.meta",
+    "changed": false
+  },
+  {
+    "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs",
+    "changed": true
+  },
+  {
+    "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs.meta",
+    "changed": false
+  },
+  {
+    "path": "Assets/Prefabs/Enemy/Drone/Drone.prefab",
+    "changed": true
+  },
+  {
+    "path": "Assets/Prefabs/Enemy/Drone/Drone.prefab.meta",
+    "changed": false
+  },
+  {
+    "path": "Assets/Tests/Enemy/PlayMode/DroneBehaviourTests.cs",
+    "changed": true
+  },
+  {
+    "path": "Assets/Tests/Enemy/PlayMode/DroneBehaviourTests.cs.meta",
+    "changed": false
+  },
+  {
+    "path": "Assets/Tests/Enemy/EditMode/DroneVisionGeometryTests.cs",
+    "changed": true
+  },
+  {
+    "path": "Assets/Tests/Enemy/EditMode/DroneVisionGeometryTests.cs.meta",
+    "changed": false
+  }
+]

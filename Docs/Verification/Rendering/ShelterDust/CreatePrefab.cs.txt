@@ -1,0 +1,76 @@
+if (EditorApplication.isPlaying || EditorApplication.isCompiling || EditorApplication.isUpdating) throw new InvalidOperationException("Require clean Edit state.");
+for (int i=0;i<UnityEngine.SceneManagement.SceneManager.sceneCount;i++) if(UnityEngine.SceneManagement.SceneManager.GetSceneAt(i).isDirty) throw new InvalidOperationException("Scene is dirty.");
+string prefabPath="Assets/Prefabs/Shelter/ShelterScreenDust.prefab";
+string materialPath="Assets/Art/Materials/Environment/ShelterScreenDust.mat";
+if(AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath)!=null || AssetDatabase.LoadAssetAtPath<Material>(materialPath)!=null) throw new InvalidOperationException("Target already exists.");
+var template=AssetDatabase.LoadAssetAtPath<Material>("Packages/com.unity.render-pipelines.universal/Runtime/Materials/ParticlesUnlit.mat");
+if(template==null || template.mainTexture==null || !template.shader.isSupported) throw new InvalidOperationException("Missing supported template.");
+var material=new Material(template);
+material.name="ShelterScreenDust";
+material.SetColor("_BaseColor",Color.white);
+material.SetFloat("_Cull",0);
+AssetDatabase.CreateAsset(material,materialPath);
+var preview=UnityEditor.SceneManagement.EditorSceneManager.NewPreviewScene();
+GameObject root=null;
+try {
+ root=new GameObject("ShelterScreenDust");
+ UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(root,preview);
+ root.transform.localPosition=new Vector3(0,0,4);
+ for(int i=0;i<2;i++){
+  bool fine=i==0;
+  var child=new GameObject(fine?"FineDust":"ForegroundMotes");
+  child.transform.SetParent(root.transform,false);
+  child.transform.localPosition=new Vector3(0,0,fine?0:-1);
+  var ps=child.AddComponent<ParticleSystem>();
+  ps.Stop(true,ParticleSystemStopBehavior.StopEmittingAndClear);
+  var main=ps.main;
+  main.duration=20;
+  main.loop=true;main.prewarm=true;main.playOnAwake=true;
+  main.simulationSpace=ParticleSystemSimulationSpace.Local;
+  main.scalingMode=ParticleSystemScalingMode.Hierarchy;
+  main.startLifetime=new ParticleSystem.MinMaxCurve(fine?12:10,fine?20:16);
+  main.startSpeed=0;
+  main.startSize=new ParticleSystem.MinMaxCurve(fine?.012f:.024f,fine?.026f:.040f);
+  main.startColor=new ParticleSystem.MinMaxGradient(new Color(.60f,.58f,.53f,fine?.30f:.15f),new Color(.84f,.81f,.73f,fine?.48f:.26f));
+  main.maxParticles=fine?220:64;main.gravityModifier=0;
+  main.cullingMode=ParticleSystemCullingMode.AlwaysSimulate;
+  var emission=ps.emission;emission.enabled=true;emission.rateOverTime=fine?10:2.2f;
+  var shape=ps.shape;shape.enabled=true;shape.shapeType=ParticleSystemShapeType.Box;
+  shape.scale=fine?new Vector3(7.6f,4.5f,.6f):new Vector3(5.9f,3.5f,.5f);
+  var velocity=ps.velocityOverLifetime;velocity.enabled=true;velocity.space=ParticleSystemSimulationSpace.Local;
+  velocity.x=new ParticleSystem.MinMaxCurve(-.022f,.028f);
+  velocity.y=new ParticleSystem.MinMaxCurve(-.012f,.020f);
+  velocity.z=new ParticleSystem.MinMaxCurve(0,0);
+  var noise=ps.noise;noise.enabled=true;noise.separateAxes=true;
+  noise.strengthX=fine?.045f:.035f;noise.strengthY=fine?.035f:.025f;noise.strengthZ=0;
+  noise.frequency=.18f;noise.scrollSpeed=.035f;noise.damping=true;noise.octaveCount=1;
+  noise.quality=ParticleSystemNoiseQuality.Low;
+  var fade=new Gradient();
+  fade.SetKeys(new[]{new GradientColorKey(Color.white,0),new GradientColorKey(Color.white,1)},
+   new[]{new GradientAlphaKey(0,0),new GradientAlphaKey(1,.18f),new GradientAlphaKey(1,.75f),new GradientAlphaKey(0,1)});
+  var color=ps.colorOverLifetime;color.enabled=true;color.color=fade;
+  var size=ps.sizeOverLifetime;size.enabled=true;
+  size.size=new ParticleSystem.MinMaxCurve(1,new AnimationCurve(new Keyframe(0,.2f),new Keyframe(.2f,1),new Keyframe(.75f,.85f),new Keyframe(1,.2f)));
+  var collision=ps.collision;collision.enabled=false;
+  var trails=ps.trails;trails.enabled=false;
+  var lights=ps.lights;lights.enabled=false;
+  var renderer=child.GetComponent<ParticleSystemRenderer>();
+  renderer.sharedMaterial=material;renderer.renderMode=ParticleSystemRenderMode.Billboard;
+  renderer.alignment=ParticleSystemRenderSpace.View;
+  renderer.sortMode=ParticleSystemSortMode.Distance;
+  renderer.minParticleSize=0;renderer.maxParticleSize=.03f;
+  renderer.shadowCastingMode=UnityEngine.Rendering.ShadowCastingMode.Off;
+  renderer.receiveShadows=false;
+  renderer.lightProbeUsage=UnityEngine.Rendering.LightProbeUsage.Off;
+  renderer.reflectionProbeUsage=UnityEngine.Rendering.ReflectionProbeUsage.Off;
+  renderer.motionVectorGenerationMode=MotionVectorGenerationMode.ForceNoMotion;
+ }
+ bool saved;
+ var prefab=PrefabUtility.SaveAsPrefabAsset(root,prefabPath,out saved);
+ if(!saved || prefab==null)throw new InvalidOperationException("Prefab save failed.");
+ AssetDatabase.SaveAssetIfDirty(material);
+ return new {prefab=prefabPath,prefabGuid=AssetDatabase.AssetPathToGUID(prefabPath),material=materialPath,materialGuid=AssetDatabase.AssetPathToGUID(materialPath),systems=2,particleBudget=284};
+} finally {
+ if(root!=null)UnityEngine.Object.DestroyImmediate(root);
+ UnityEditor.SceneManagement.EditorSceneManager.ClosePreviewScene(preview);
+}

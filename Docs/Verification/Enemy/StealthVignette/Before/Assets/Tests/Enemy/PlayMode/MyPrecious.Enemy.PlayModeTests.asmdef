@@ -1,0 +1,8 @@
+{
+    "name": "MyPrecious.Enemy.PlayModeTests",
+    "rootNamespace": "",
+    "references": ["MyPrecious.Enemy", "MyPrecious.Enemy.TestSupport", "MyPrecious.Player", "MyPrecious.StateMachine.Contracts", "MyPrecious.Health", "MyPrecious.Interaction", "MyPrecious.Bootstrap", "MyPrecious.Items", "MyPrecious.Backpack", "MyPrecious.Loot", "MyPrecious.Localization", "MyPrecious.Warehouse", "Unity.InputSystem", "Unity.TextMeshPro", "Unity.ugui", "Unity.Cinemachine"],
+    "optionalUnityReferences": ["TestAssemblies"],
+    "autoReferenced": false
+}
+

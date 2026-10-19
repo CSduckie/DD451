@@ -1,0 +1,11 @@
+{
+  "scene": "Assets/Scenes/Ruins.unity",
+  "dirty": false,
+  "intensity": 0.4,
+  "smoothness": 0.45,
+  "transitionSeconds": 0.2,
+  "play": false,
+  "probeRunning": false,
+  "timeScale": 1.0,
+  "background": false
+}

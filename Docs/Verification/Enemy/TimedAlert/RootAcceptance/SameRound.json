@@ -1,0 +1,14 @@
+{
+  "utc": "2026-10-19T06:54:41.3004792Z",
+  "ok": true,
+  "error": null,
+  "round": 1,
+  "droneRound": 1,
+  "exploded": true,
+  "state": "Explode",
+  "health": 2,
+  "sameInstance": true,
+  "collider": false,
+  "fan": false,
+  "isolatedOthers": "Drone#-3032260,Drone#-3033352"
+}

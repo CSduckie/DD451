@@ -1,0 +1,1164 @@
+{
+  "job_id": "d59909a004344ced9165c4064d443ad3",
+  "status": "succeeded",
+  "mode": "EditMode",
+  "started_unix_ms": 1792353148094,
+  "finished_unix_ms": 1792353152048,
+  "last_update_unix_ms": 1792353152048,
+  "progress": {
+    "completed": 125,
+    "total": 125,
+    "current_test_full_name": null,
+    "current_test_started_unix_ms": 1792353151888,
+    "last_finished_test_full_name": "LootSourceStateTests.UniqueReturnedToAnotherBoxRecoversAtItsOriginalBoxNextRound",
+    "last_finished_unix_ms": 1792353151890,
+    "stuck_suspected": false,
+    "editor_is_focused": false,
+    "run_in_background": null,
+    "focus_nudge_attempts": null,
+    "focus_nudge_limit": null,
+    "focus_nudge_status": null,
+    "blocked_reason": null,
+    "failures_so_far": [],
+    "failures_capped": false
+  },
+  "error": null,
+  "result": {
+    "mode": "EditMode",
+    "summary": {
+      "total": 125,
+      "passed": 125,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 0.891852,
+      "resultState": "Passed"
+    },
+    "results": [
+      {
+        "name": "EditingRegisteredIdentityCannotCreateAnotherInstanceOrUseTheWrongIdentity(\"definition-id\")",
+        "fullName": "ItemsEditModeTests.EditingRegisteredIdentityCannotCreateAnotherInstanceOrUseTheWrongIdentity(\"definition-id\")",
+        "state": "Passed",
+        "durationSeconds": 0.130562,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "EditingRegisteredIdentityCannotCreateAnotherInstanceOrUseTheWrongIdentity(\"unique-id\")",
+        "fullName": "ItemsEditModeTests.EditingRegisteredIdentityCannotCreateAnotherInstanceOrUseTheWrongIdentity(\"unique-id\")",
+        "state": "Passed",
+        "durationSeconds": 0.0003226,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "EditingRegisteredIdentityCannotCreateAnotherInstanceOrUseTheWrongIdentity(\"unique-flag\")",
+        "fullName": "ItemsEditModeTests.EditingRegisteredIdentityCannotCreateAnotherInstanceOrUseTheWrongIdentity(\"unique-flag\")",
+        "state": "Passed",
+        "durationSeconds": 0.0002171,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "FixedHealingClampsBeforeCallingTheHealthTarget",
+        "fullName": "ItemsEditModeTests.FixedHealingClampsBeforeCallingTheHealthTarget",
+        "state": "Passed",
+        "durationSeconds": 0.000548,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "FullHealthRejectsFoodAndMedkitWithoutConsumingOrSpendingQuota(False)",
+        "fullName": "ItemsEditModeTests.FullHealthRejectsFoodAndMedkitWithoutConsumingOrSpendingQuota(False)",
+        "state": "Passed",
+        "durationSeconds": 0.001424,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "FullHealthRejectsFoodAndMedkitWithoutConsumingOrSpendingQuota(True)",
+        "fullName": "ItemsEditModeTests.FullHealthRejectsFoodAndMedkitWithoutConsumingOrSpendingQuota(True)",
+        "state": "Passed",
+        "durationSeconds": 0.000167,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "HealingRequiresBackpackAndFailedOwnerCheckDoesNotSpendQuota(World)",
+        "fullName": "ItemsEditModeTests.HealingRequiresBackpackAndFailedOwnerCheckDoesNotSpendQuota(World)",
+        "state": "Passed",
+        "durationSeconds": 0.0007777,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "HealingRequiresBackpackAndFailedOwnerCheckDoesNotSpendQuota(Container)",
+        "fullName": "ItemsEditModeTests.HealingRequiresBackpackAndFailedOwnerCheckDoesNotSpendQuota(Container)",
+        "state": "Passed",
+        "durationSeconds": 0.0001747,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "HealingRequiresBackpackAndFailedOwnerCheckDoesNotSpendQuota(Storage)",
+        "fullName": "ItemsEditModeTests.HealingRequiresBackpackAndFailedOwnerCheckDoesNotSpendQuota(Storage)",
+        "state": "Passed",
+        "durationSeconds": 0.0000982,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "HealthTargetThatAppliesNoHealingDoesNotConsumeOrSpendQuota(False)",
+        "fullName": "ItemsEditModeTests.HealthTargetThatAppliesNoHealingDoesNotConsumeOrSpendQuota(False)",
+        "state": "Passed",
+        "durationSeconds": 0.0005874,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "HealthTargetThatAppliesNoHealingDoesNotConsumeOrSpendQuota(True)",
+        "fullName": "ItemsEditModeTests.HealthTargetThatAppliesNoHealingDoesNotConsumeOrSpendQuota(True)",
+        "state": "Passed",
+        "durationSeconds": 0.0001829,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InitialUniqueMapSpawnHasOnePermitAndQueriesDoNotGrantAnother(World)",
+        "fullName": "ItemsEditModeTests.InitialUniqueMapSpawnHasOnePermitAndQueriesDoNotGrantAnother(World)",
+        "state": "Passed",
+        "durationSeconds": 0.0009358,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InitialUniqueMapSpawnHasOnePermitAndQueriesDoNotGrantAnother(Container)",
+        "fullName": "ItemsEditModeTests.InitialUniqueMapSpawnHasOnePermitAndQueriesDoNotGrantAnother(Container)",
+        "state": "Passed",
+        "durationSeconds": 0.0001433,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidHealthTargetsNeverMutateOrConsumeTheItem",
+        "fullName": "ItemsEditModeTests.InvalidHealthTargetsNeverMutateOrConsumeTheItem",
+        "state": "Passed",
+        "durationSeconds": 0.0005272,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"width\")",
+        "fullName": "ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"width\")",
+        "state": "Passed",
+        "durationSeconds": 0.0024567,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"height\")",
+        "fullName": "ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"height\")",
+        "state": "Passed",
+        "durationSeconds": 0.0001831,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"search\")",
+        "fullName": "ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"search\")",
+        "state": "Passed",
+        "durationSeconds": 0.0000935,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"probability-low\")",
+        "fullName": "ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"probability-low\")",
+        "state": "Passed",
+        "durationSeconds": 0.000086,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"probability-high\")",
+        "fullName": "ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"probability-high\")",
+        "state": "Passed",
+        "durationSeconds": 0.0000791,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"probability-nan\")",
+        "fullName": "ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"probability-nan\")",
+        "state": "Passed",
+        "durationSeconds": 0.000089,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"definition-id\")",
+        "fullName": "ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"definition-id\")",
+        "state": "Passed",
+        "durationSeconds": 0.0001321,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"unique-id\")",
+        "fullName": "ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"unique-id\")",
+        "state": "Passed",
+        "durationSeconds": 0.0000884,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"negative-limit\")",
+        "fullName": "ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"negative-limit\")",
+        "state": "Passed",
+        "durationSeconds": 0.0000875,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"missing-text-key\")",
+        "fullName": "ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"missing-text-key\")",
+        "state": "Passed",
+        "durationSeconds": 0.0000878,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidLaterEffectIsRejectedBeforeAnyEarlierHealingRuns(\"unsupported\")",
+        "fullName": "ItemsEditModeTests.InvalidLaterEffectIsRejectedBeforeAnyEarlierHealingRuns(\"unsupported\")",
+        "state": "Passed",
+        "durationSeconds": 0.0011533,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidLaterEffectIsRejectedBeforeAnyEarlierHealingRuns(\"null\")",
+        "fullName": "ItemsEditModeTests.InvalidLaterEffectIsRejectedBeforeAnyEarlierHealingRuns(\"null\")",
+        "state": "Passed",
+        "durationSeconds": 0.0001691,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidLaterEffectIsRejectedBeforeAnyEarlierHealingRuns(\"invalid-heal\")",
+        "fullName": "ItemsEditModeTests.InvalidLaterEffectIsRejectedBeforeAnyEarlierHealingRuns(\"invalid-heal\")",
+        "state": "Passed",
+        "durationSeconds": 0.0001038,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "LibraryRejectsDuplicateDefinitionOrUniqueIdentifiers(False)",
+        "fullName": "ItemsEditModeTests.LibraryRejectsDuplicateDefinitionOrUniqueIdentifiers(False)",
+        "state": "Passed",
+        "durationSeconds": 0.0014878,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "LibraryRejectsDuplicateDefinitionOrUniqueIdentifiers(True)",
+        "fullName": "ItemsEditModeTests.LibraryRejectsDuplicateDefinitionOrUniqueIdentifiers(True)",
+        "state": "Passed",
+        "durationSeconds": 0.0001539,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "MedkitHealsToFullKeepsIdentityAndRetentionAndRejectsSecondUse",
+        "fullName": "ItemsEditModeTests.MedkitHealsToFullKeepsIdentityAndRetentionAndRejectsSecondUse",
+        "state": "Passed",
+        "durationSeconds": 0.0005239,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "MissingUnusableAndNotStartedRequestsReturnSpecificFailuresWithoutHealing",
+        "fullName": "ItemsEditModeTests.MissingUnusableAndNotStartedRequestsReturnSpecificFailuresWithoutHealing",
+        "state": "Passed",
+        "durationSeconds": 0.0004017,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "MultipleSupportedHealEffectsCountAsOneUseEvenWhenAnEarlierEffectFillsHealth(True)",
+        "fullName": "ItemsEditModeTests.MultipleSupportedHealEffectsCountAsOneUseEvenWhenAnEarlierEffectFillsHealth(True)",
+        "state": "Passed",
+        "durationSeconds": 0.0006528,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "MultipleSupportedHealEffectsCountAsOneUseEvenWhenAnEarlierEffectFillsHealth(False)",
+        "fullName": "ItemsEditModeTests.MultipleSupportedHealEffectsCountAsOneUseEvenWhenAnEarlierEffectFillsHealth(False)",
+        "state": "Passed",
+        "durationSeconds": 0.0001281,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "QueriesTransfersAndDisplaySelectionKeepQuotaAndOnlyNewRoundRefreshesIt",
+        "fullName": "ItemsEditModeTests.QueriesTransfersAndDisplaySelectionKeepQuotaAndOnlyNewRoundRefreshesIt",
+        "state": "Passed",
+        "durationSeconds": 0.0011995,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "TwoFoodInstancesRemainIndependentAndNeverWriteRuntimeStateIntoDefinitions",
+        "fullName": "ItemsEditModeTests.TwoFoodInstancesRemainIndependentAndNeverWriteRuntimeStateIntoDefinitions",
+        "state": "Passed",
+        "durationSeconds": 0.0010436,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "UniqueLossRecoversTheSameIdentityAtOriginalPointOnceNextRound(ExplorationDeath)",
+        "fullName": "ItemsEditModeTests.UniqueLossRecoversTheSameIdentityAtOriginalPointOnceNextRound(ExplorationDeath)",
+        "state": "Passed",
+        "durationSeconds": 0.0027476,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "UniqueLossRecoversTheSameIdentityAtOriginalPointOnceNextRound(ShelterAbandonment)",
+        "fullName": "ItemsEditModeTests.UniqueLossRecoversTheSameIdentityAtOriginalPointOnceNextRound(ShelterAbandonment)",
+        "state": "Passed",
+        "durationSeconds": 0.0002006,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "UniqueLossRecoversTheSameIdentityAtOriginalPointOnceNextRound(LeftBehindOnExtraction)",
+        "fullName": "ItemsEditModeTests.UniqueLossRecoversTheSameIdentityAtOriginalPointOnceNextRound(LeftBehindOnExtraction)",
+        "state": "Passed",
+        "durationSeconds": 0.000364,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "UniqueLossRecoversTheSameIdentityAtOriginalPointOnceNextRound(BackpackDiscard)",
+        "fullName": "ItemsEditModeTests.UniqueLossRecoversTheSameIdentityAtOriginalPointOnceNextRound(BackpackDiscard)",
+        "state": "Passed",
+        "durationSeconds": 0.0002535,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "UniqueRegistrationRejectsDuplicatesInEveryActiveOwner(World)",
+        "fullName": "ItemsEditModeTests.UniqueRegistrationRejectsDuplicatesInEveryActiveOwner(World)",
+        "state": "Passed",
+        "durationSeconds": 0.0006915,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "UniqueRegistrationRejectsDuplicatesInEveryActiveOwner(Container)",
+        "fullName": "ItemsEditModeTests.UniqueRegistrationRejectsDuplicatesInEveryActiveOwner(Container)",
+        "state": "Passed",
+        "durationSeconds": 0.0001444,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "UniqueRegistrationRejectsDuplicatesInEveryActiveOwner(Backpack)",
+        "fullName": "ItemsEditModeTests.UniqueRegistrationRejectsDuplicatesInEveryActiveOwner(Backpack)",
+        "state": "Passed",
+        "durationSeconds": 0.0000907,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "UniqueRegistrationRejectsDuplicatesInEveryActiveOwner(Storage)",
+        "fullName": "ItemsEditModeTests.UniqueRegistrationRejectsDuplicatesInEveryActiveOwner(Storage)",
+        "state": "Passed",
+        "durationSeconds": 0.0000794,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "WorldOwnershipTransferRemainsPickableButOrdinaryDiscardNeverGetsUniqueRecovery",
+        "fullName": "ItemsEditModeTests.WorldOwnershipTransferRemainsPickableButOrdinaryDiscardNeverGetsUniqueRecovery",
+        "state": "Passed",
+        "durationSeconds": 0.0006836,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "BidirectionalTransferPreservesIdentityRetainedUsesAndEv",
+        "fullName": "ItemTransferTests.BidirectionalTransferPreservesIdentityRetainedUsesAndEv",
+        "state": "Passed",
+        "durationSeconds": 0.0828656,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "BoundsOverlapAndFragmentedFreeAreaKeepSource",
+        "fullName": "ItemTransferTests.BoundsOverlapAndFragmentedFreeAreaKeepSource",
+        "state": "Passed",
+        "durationSeconds": 0.0014826,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "DeadOrClosedPlayerCannotUseAnOldRequest",
+        "fullName": "ItemTransferTests.DeadOrClosedPlayerCannotUseAnOldRequest",
+        "state": "Passed",
+        "durationSeconds": 0.0011156,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "DiscardWithoutLootRuntimePublishesCompleteStateAndRejectsReentry(False)",
+        "fullName": "ItemTransferTests.DiscardWithoutLootRuntimePublishesCompleteStateAndRejectsReentry(False)",
+        "state": "Passed",
+        "durationSeconds": 0.0028799,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "DiscardWithoutLootRuntimePublishesCompleteStateAndRejectsReentry(True)",
+        "fullName": "ItemTransferTests.DiscardWithoutLootRuntimePublishesCompleteStateAndRejectsReentry(True)",
+        "state": "Passed",
+        "durationSeconds": 0.000665,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "ExistingWarehouseDragClaimCanComplete",
+        "fullName": "ItemTransferTests.ExistingWarehouseDragClaimCanComplete",
+        "state": "Passed",
+        "durationSeconds": 0.0008232,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "FailedDisplayListenerDoesNotReportCompletedTransferAsFailure",
+        "fullName": "ItemTransferTests.FailedDisplayListenerDoesNotReportCompletedTransferAsFailure",
+        "state": "Passed",
+        "durationSeconds": 0.0072218,
+        "message": null,
+        "stackTrace": null,
+        "output": "InvalidOperationException: 06 expected display failure\r\nItemTransferTests+<>c.<FailedDisplayListenerDoesNotReportCompletedTransferAsFailure>b__14_0 (System.String id) (at Assets/Tests/Loot/EditMode/ItemTransferTests.cs:170)\nItemTransferCoordinator+<>c__DisplayClass23_1.<NotifyCompleted>b__2 () (at Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs:322)\nItemTransferCoordinator.SafeNotify (System.Action callback) (at Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs:328)\nUnityEngine.Debug:LogException(Exception, Object)\nItemTransferCoordinator:SafeNotify(Action) (at Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs:329)\nItemTransferCoordinator:NotifyCompleted(String, Boolean, Boolean, String) (at Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs:322)\nItemTransferCoordinator:TransferContainers(Boolean, String, Int32, Int32, Boolean, Object, Func`1) (at Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs:134)\nItemTransferCoordinator:TryBackpackToWarehouse(String, Int32, Int32, Boolean, Object, Func`1) (at Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs:39)\nItemTransferTests:Move(Boolean, String, Int32, Int32, Boolean) (at Assets/Tests/Loot/EditMode/ItemTransferTests.cs:410)\nItemTransferTests:FailedDisplayListenerDoesNotReportCompletedTransferAsFailure() (at Assets/Tests/Loot/EditMode/ItemTransferTests.cs:172)\nSystem.Reflection.MethodBase:Invoke(Object, Object[])\nNUnit.Framework.Internal.Reflect:InvokeMethod(MethodInfo, Object, Object[])\nNUnit.Framework.Internal.MethodWrapper:Invoke(Object, Object[])\nNUnit.Framework.Internal.Commands.TestMethodCommand:RunNonAsyncTestMethod(ITestExecutionContext)\nNUnit.Framework.Internal.Commands.TestMethodCommand:RunTestMethod(ITestExecutionContext)\nNUnit.Framework.Internal.Commands.TestMethodCommand:Execute(ITestExecutionContext)\nUnityEditor.EditorApplication:Internal_CallUpdateFunctions()\n\r\n"
+      },
+      {
+        "name": "FailureAtEachCommitStepRestoresRealLayouts(True,1,Busy)",
+        "fullName": "ItemTransferTests.FailureAtEachCommitStepRestoresRealLayouts(True,1,Busy)",
+        "state": "Passed",
+        "durationSeconds": 0.0024011,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "FailureAtEachCommitStepRestoresRealLayouts(True,2,SourceRemovalFailed)",
+        "fullName": "ItemTransferTests.FailureAtEachCommitStepRestoresRealLayouts(True,2,SourceRemovalFailed)",
+        "state": "Passed",
+        "durationSeconds": 0.0006977,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "FailureAtEachCommitStepRestoresRealLayouts(True,3,OwnerRejected)",
+        "fullName": "ItemTransferTests.FailureAtEachCommitStepRestoresRealLayouts(True,3,OwnerRejected)",
+        "state": "Passed",
+        "durationSeconds": 0.0005876,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "FailureAtEachCommitStepRestoresRealLayouts(False,1,Busy)",
+        "fullName": "ItemTransferTests.FailureAtEachCommitStepRestoresRealLayouts(False,1,Busy)",
+        "state": "Passed",
+        "durationSeconds": 0.0006509,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "FailureAtEachCommitStepRestoresRealLayouts(False,2,SourceRemovalFailed)",
+        "fullName": "ItemTransferTests.FailureAtEachCommitStepRestoresRealLayouts(False,2,SourceRemovalFailed)",
+        "state": "Passed",
+        "durationSeconds": 0.0005966,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "FailureAtEachCommitStepRestoresRealLayouts(False,3,OwnerRejected)",
+        "fullName": "ItemTransferTests.FailureAtEachCommitStepRestoresRealLayouts(False,3,OwnerRejected)",
+        "state": "Passed",
+        "durationSeconds": 0.0005194,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InteractionClaimNotificationCannotCommitCancelledRequest(False)",
+        "fullName": "ItemTransferTests.InteractionClaimNotificationCannotCommitCancelledRequest(False)",
+        "state": "Passed",
+        "durationSeconds": 0.0011875,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InteractionClaimNotificationCannotCommitCancelledRequest(True)",
+        "fullName": "ItemTransferTests.InteractionClaimNotificationCannotCommitCancelledRequest(True)",
+        "state": "Passed",
+        "durationSeconds": 0.0004218,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidDiscardRequestCannotRemovePlacement(\"missing-request\",StaleRequest)",
+        "fullName": "ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(\"missing-request\",StaleRequest)",
+        "state": "Passed",
+        "durationSeconds": 0.0018267,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidDiscardRequestCannotRemovePlacement(\"stale-request\",StaleRequest)",
+        "fullName": "ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(\"stale-request\",StaleRequest)",
+        "state": "Passed",
+        "durationSeconds": 0.0006472,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidDiscardRequestCannotRemovePlacement(\"closed-player\",NotAllowed)",
+        "fullName": "ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(\"closed-player\",NotAllowed)",
+        "state": "Passed",
+        "durationSeconds": 0.0006148,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidDiscardRequestCannotRemovePlacement(\"dead-player\",NotAllowed)",
+        "fullName": "ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(\"dead-player\",NotAllowed)",
+        "state": "Passed",
+        "durationSeconds": 0.0009087,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidDiscardRequestCannotRemovePlacement(\"shelter\",NotAllowed)",
+        "fullName": "ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(\"shelter\",NotAllowed)",
+        "state": "Passed",
+        "durationSeconds": 0.0007416,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidDiscardRequestCannotRemovePlacement(\"inactive-exploration\",NotAllowed)",
+        "fullName": "ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(\"inactive-exploration\",NotAllowed)",
+        "state": "Passed",
+        "durationSeconds": 0.0006988,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidDiscardRequestCannotRemovePlacement(\"disabled-runtime\",NotReady)",
+        "fullName": "ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(\"disabled-runtime\",NotReady)",
+        "state": "Passed",
+        "durationSeconds": 0.00046,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "NotificationsOnlyReadCompleteStateAndReentryIsBusy",
+        "fullName": "ItemTransferTests.NotificationsOnlyReadCompleteStateAndReentryIsBusy",
+        "state": "Passed",
+        "durationSeconds": 0.000835,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "RealItemManagerBusyRejectsDiscardAndRestoresPlacement",
+        "fullName": "ItemTransferTests.RealItemManagerBusyRejectsDiscardAndRestoresPlacement",
+        "state": "Passed",
+        "durationSeconds": 0.0012193,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "RealItemManagerBusyRejectsOwnerAfterBothLayoutChangesAndRestoresThem",
+        "fullName": "ItemTransferTests.RealItemManagerBusyRejectsOwnerAfterBothLayoutChangesAndRestoresThem",
+        "state": "Passed",
+        "durationSeconds": 0.0006836,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "ShelterAllowsUnpreparedOrAbsentPlayerWithoutGrantingExploration(False)",
+        "fullName": "ItemTransferTests.ShelterAllowsUnpreparedOrAbsentPlayerWithoutGrantingExploration(False)",
+        "state": "Passed",
+        "durationSeconds": 0.0013923,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "ShelterAllowsUnpreparedOrAbsentPlayerWithoutGrantingExploration(True)",
+        "fullName": "ItemTransferTests.ShelterAllowsUnpreparedOrAbsentPlayerWithoutGrantingExploration(True)",
+        "state": "Passed",
+        "durationSeconds": 0.000362,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "StalePermissionAndOtherConfirmationCannotCommit",
+        "fullName": "ItemTransferTests.StalePermissionAndOtherConfirmationCannotCommit",
+        "state": "Passed",
+        "durationSeconds": 0.0006602,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "BoundariesAreExplicit(0.0f,0.0f,False)",
+        "fullName": "LootGenerationTests.BoundariesAreExplicit(0.0f,0.0f,False)",
+        "state": "Passed",
+        "durationSeconds": 0.001129,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "BoundariesAreExplicit(0.0f,1.0f,False)",
+        "fullName": "LootGenerationTests.BoundariesAreExplicit(0.0f,1.0f,False)",
+        "state": "Passed",
+        "durationSeconds": 0.0001319,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "BoundariesAreExplicit(1.0f,0.0f,True)",
+        "fullName": "LootGenerationTests.BoundariesAreExplicit(1.0f,0.0f,True)",
+        "state": "Passed",
+        "durationSeconds": 0.000069,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "BoundariesAreExplicit(1.0f,1.0f,True)",
+        "fullName": "LootGenerationTests.BoundariesAreExplicit(1.0f,1.0f,True)",
+        "state": "Passed",
+        "durationSeconds": 0.0000637,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "BoundariesAreExplicit(0.5f,0.499f,True)",
+        "fullName": "LootGenerationTests.BoundariesAreExplicit(0.5f,0.499f,True)",
+        "state": "Passed",
+        "durationSeconds": 0.0000644,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "BoundariesAreExplicit(0.5f,0.5f,False)",
+        "fullName": "LootGenerationTests.BoundariesAreExplicit(0.5f,0.5f,False)",
+        "state": "Passed",
+        "durationSeconds": 0.0000579,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "ConflictingUniqueOriginIsAnErrorEvenWhenChanceIsZero",
+        "fullName": "LootGenerationTests.ConflictingUniqueOriginIsAnErrorEvenWhenChanceIsZero",
+        "state": "Passed",
+        "durationSeconds": 0.0041725,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "DuplicateEntryIdAndNonFiniteProbabilityAreRejected",
+        "fullName": "LootGenerationTests.DuplicateEntryIdAndNonFiniteProbabilityAreRejected",
+        "state": "Passed",
+        "durationSeconds": 0.00061,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "EligibleRecoveryBypassesZeroProbabilityAndKeepsTheRegisteredIdentity",
+        "fullName": "LootGenerationTests.EligibleRecoveryBypassesZeroProbabilityAndKeepsTheRegisteredIdentity",
+        "state": "Passed",
+        "durationSeconds": 0.0006448,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "EveryIntermediateCandidateGetsAnIndependentSampleInConfiguredOrder",
+        "fullName": "LootGenerationTests.EveryIntermediateCandidateGetsAnIndependentSampleInConfiguredOrder",
+        "state": "Passed",
+        "durationSeconds": 0.0020344,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "ExistingUniqueAtItsSourceRemainsEligibleForRebinding(World)",
+        "fullName": "LootGenerationTests.ExistingUniqueAtItsSourceRemainsEligibleForRebinding(World)",
+        "state": "Passed",
+        "durationSeconds": 0.0011387,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "ExistingUniqueAtItsSourceRemainsEligibleForRebinding(Container)",
+        "fullName": "LootGenerationTests.ExistingUniqueAtItsSourceRemainsEligibleForRebinding(Container)",
+        "state": "Passed",
+        "durationSeconds": 0.0003377,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidLaterCandidateRejectsWholeTableBeforeTakingSamples",
+        "fullName": "LootGenerationTests.InvalidLaterCandidateRejectsWholeTableBeforeTakingSamples",
+        "state": "Passed",
+        "durationSeconds": 0.000727,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "OverrideReplacesDefaultInsteadOfMultiplyingIt",
+        "fullName": "LootGenerationTests.OverrideReplacesDefaultInsteadOfMultiplyingIt",
+        "state": "Passed",
+        "durationSeconds": 0.0005691,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "UniqueAlreadyCarriedOrStoredIsNotSelectedEvenAtOneHundredPercent(Backpack)",
+        "fullName": "LootGenerationTests.UniqueAlreadyCarriedOrStoredIsNotSelectedEvenAtOneHundredPercent(Backpack)",
+        "state": "Passed",
+        "durationSeconds": 0.0006291,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "UniqueAlreadyCarriedOrStoredIsNotSelectedEvenAtOneHundredPercent(Storage)",
+        "fullName": "LootGenerationTests.UniqueAlreadyCarriedOrStoredIsNotSelectedEvenAtOneHundredPercent(Storage)",
+        "state": "Passed",
+        "durationSeconds": 0.0001609,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "ZeroOneAndEmptyTablesDoNotNeedRandomSamples",
+        "fullName": "LootGenerationTests.ZeroOneAndEmptyTablesDoNotNeedRandomSamples",
+        "state": "Passed",
+        "durationSeconds": 0.0005202,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "BusyUniqueClaimKeepsRecordUnavailableUntilSameRoundRetrySucceeds",
+        "fullName": "LootSourceStateTests.BusyUniqueClaimKeepsRecordUnavailableUntilSameRoundRetrySucceeds",
+        "state": "Passed",
+        "durationSeconds": 0.0088947,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "CommittedDropCanRebuildMissingPresentationWithoutAnotherIdentityOrClaim",
+        "fullName": "LootSourceStateTests.CommittedDropCanRebuildMissingPresentationWithoutAnotherIdentityOrClaim",
+        "state": "Passed",
+        "durationSeconds": 0.0097771,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "DisabledRuntimeMakesExistingSourceUnavailableWithoutErasingIt",
+        "fullName": "LootSourceStateTests.DisabledRuntimeMakesExistingSourceUnavailableWithoutErasingIt",
+        "state": "Passed",
+        "durationSeconds": 0.0008505,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "DiscardedUniqueWaitsUntilNextRoundAndRecoversSameIdentityAtOriginalBox",
+        "fullName": "LootSourceStateTests.DiscardedUniqueWaitsUntilNextRoundAndRecoversSameIdentityAtOriginalBox",
+        "state": "Passed",
+        "durationSeconds": 0.0077188,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "DiscardFailureRestoresRealBackpackWithoutCreatingWorldRecord(2,SourceRemovalFailed)",
+        "fullName": "LootSourceStateTests.DiscardFailureRestoresRealBackpackWithoutCreatingWorldRecord(2,SourceRemovalFailed)",
+        "state": "Passed",
+        "durationSeconds": 0.0026704,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "DiscardFailureRestoresRealBackpackWithoutCreatingWorldRecord(3,OwnerRejected)",
+        "fullName": "LootSourceStateTests.DiscardFailureRestoresRealBackpackWithoutCreatingWorldRecord(3,OwnerRejected)",
+        "state": "Passed",
+        "durationSeconds": 0.0009083,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "GroundSourceCannotReceiveBackpackReturnsThroughEitherPublicEntry",
+        "fullName": "LootSourceStateTests.GroundSourceCannotReceiveBackpackReturnsThroughEitherPublicEntry",
+        "state": "Passed",
+        "durationSeconds": 0.0043039,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "GroundTriggersOccupyDropSpaceButNormalRangeTriggersDoNot",
+        "fullName": "LootSourceStateTests.GroundTriggersOccupyDropSpaceButNormalRangeTriggersDoNot",
+        "state": "Passed",
+        "durationSeconds": 0.0017216,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "HiddenEntriesCannotBeMarkedTakenAndFailedTransferCanRestoreRevealedEntry",
+        "fullName": "LootSourceStateTests.HiddenEntriesCannotBeMarkedTakenAndFailedTransferCanRestoreRevealedEntry",
+        "state": "Passed",
+        "durationSeconds": 0.0009796,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InactiveGroundPreparationKeepsCarriedOwnershipUntilCommitAndCanBeCancelled",
+        "fullName": "LootSourceStateTests.InactiveGroundPreparationKeepsCarriedOwnershipUntilCommitAndCanBeCancelled",
+        "state": "Passed",
+        "durationSeconds": 0.001175,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\"request\",StaleRequest)",
+        "fullName": "LootSourceStateTests.InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\"request\",StaleRequest)",
+        "state": "Passed",
+        "durationSeconds": 0.0023615,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\"distance\",Unreachable)",
+        "fullName": "LootSourceStateTests.InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\"distance\",Unreachable)",
+        "state": "Passed",
+        "durationSeconds": 0.0010678,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\"obstruction\",Unreachable)",
+        "fullName": "LootSourceStateTests.InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\"obstruction\",Unreachable)",
+        "state": "Passed",
+        "durationSeconds": 0.0008494,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\"map\",Unreachable)",
+        "fullName": "LootSourceStateTests.InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\"map\",Unreachable)",
+        "state": "Passed",
+        "durationSeconds": 0.0007574,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\"stale-source\",SourceInvalid)",
+        "fullName": "LootSourceStateTests.InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\"stale-source\",SourceInvalid)",
+        "state": "Passed",
+        "durationSeconds": 0.0007281,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "NewRoundCannotEraseUnsettledWorldItems",
+        "fullName": "LootSourceStateTests.NewRoundCannotEraseUnsettledWorldItems",
+        "state": "Passed",
+        "durationSeconds": 0.0013685,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(float.NaN,0.03f)",
+        "fullName": "LootSourceStateTests.NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(float.NaN,0.03f)",
+        "state": "Passed",
+        "durationSeconds": 0.0012707,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(float.PositiveInfinity,0.03f)",
+        "fullName": "LootSourceStateTests.NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(float.PositiveInfinity,0.03f)",
+        "state": "Passed",
+        "durationSeconds": 0.0005963,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(0.18f,float.NaN)",
+        "fullName": "LootSourceStateTests.NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(0.18f,float.NaN)",
+        "state": "Passed",
+        "durationSeconds": 0.0006371,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(0.18f,-1.0f)",
+        "fullName": "LootSourceStateTests.NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(0.18f,-1.0f)",
+        "state": "Passed",
+        "durationSeconds": 0.0006534,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "PreparedDropRechecksConfigurationBeforeOwnerCommit",
+        "fullName": "LootSourceStateTests.PreparedDropRechecksConfigurationBeforeOwnerCommit",
+        "state": "Passed",
+        "durationSeconds": 0.0014577,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(True,1,TargetRejected)",
+        "fullName": "LootSourceStateTests.ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(True,1,TargetRejected)",
+        "state": "Passed",
+        "durationSeconds": 0.00236,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(True,2,SourceRemovalFailed)",
+        "fullName": "LootSourceStateTests.ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(True,2,SourceRemovalFailed)",
+        "state": "Passed",
+        "durationSeconds": 0.0012653,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(True,3,OwnerRejected)",
+        "fullName": "LootSourceStateTests.ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(True,3,OwnerRejected)",
+        "state": "Passed",
+        "durationSeconds": 0.0010227,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(False,1,TargetRejected)",
+        "fullName": "LootSourceStateTests.ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(False,1,TargetRejected)",
+        "state": "Passed",
+        "durationSeconds": 0.0015017,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(False,2,SourceRemovalFailed)",
+        "fullName": "LootSourceStateTests.ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(False,2,SourceRemovalFailed)",
+        "state": "Passed",
+        "durationSeconds": 0.0014001,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(False,3,OwnerRejected)",
+        "fullName": "LootSourceStateTests.ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(False,3,OwnerRejected)",
+        "state": "Passed",
+        "durationSeconds": 0.0011898,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "ReturningToBoxReusesOrAppendsOneRevealedEntryWithoutChangingSearch(True)",
+        "fullName": "LootSourceStateTests.ReturningToBoxReusesOrAppendsOneRevealedEntryWithoutChangingSearch(True)",
+        "state": "Passed",
+        "durationSeconds": 0.0023225,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "ReturningToBoxReusesOrAppendsOneRevealedEntryWithoutChangingSearch(False)",
+        "fullName": "LootSourceStateTests.ReturningToBoxReusesOrAppendsOneRevealedEntryWithoutChangingSearch(False)",
+        "state": "Passed",
+        "durationSeconds": 0.0016092,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "RevealedPickupDoesNotResetTheNextSearchAndInterruptOnlyResetsUnfinishedProgress",
+        "fullName": "LootSourceStateTests.RevealedPickupDoesNotResetTheNextSearchAndInterruptOnlyResetsUnfinishedProgress",
+        "state": "Passed",
+        "durationSeconds": 0.0016958,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "SameRoundPreparationAndRebindingKeepEvenAnEmptyRoll",
+        "fullName": "LootSourceStateTests.SameRoundPreparationAndRebindingKeepEvenAnEmptyRoll",
+        "state": "Passed",
+        "durationSeconds": 0.0012557,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "SourceBindingBetweenItemRoundAndLootPreparationDoesNotGenerateUnderOldRound",
+        "fullName": "LootSourceStateTests.SourceBindingBetweenItemRoundAndLootPreparationDoesNotGenerateUnderOldRound",
+        "state": "Passed",
+        "durationSeconds": 0.0010546,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "SourcePickupOwnerFailureRestoresTakenSearchAndRealBackpackLayout",
+        "fullName": "LootSourceStateTests.SourcePickupOwnerFailureRestoresTakenSearchAndRealBackpackLayout",
+        "state": "Passed",
+        "durationSeconds": 0.0016757,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "UniqueConflictIsFoundBeforeAnySourceCreatesAnInstance",
+        "fullName": "LootSourceStateTests.UniqueConflictIsFoundBeforeAnySourceCreatesAnInstance",
+        "state": "Passed",
+        "durationSeconds": 0.0005731,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "UniqueRecoveryReturnsToContainerWithSameIdentityDespiteZeroProbability",
+        "fullName": "LootSourceStateTests.UniqueRecoveryReturnsToContainerWithSameIdentityDespiteZeroProbability",
+        "state": "Passed",
+        "durationSeconds": 0.0009051,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "UniqueReturnedToAnotherBoxRecoversAtItsOriginalBoxNextRound",
+        "fullName": "LootSourceStateTests.UniqueReturnedToAnotherBoxRecoversAtItsOriginalBoxNextRound",
+        "state": "Passed",
+        "durationSeconds": 0.0022424,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      }
+    ]
+  }
+}

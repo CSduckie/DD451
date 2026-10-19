@@ -1,0 +1,17 @@
+PolygonTown material repair
+
+Scope: Assets/Art/Model/Synty/PolygonTown/Materials (including Alts and Misc).
+Root cause: all 25 materials referenced missing Shader GUID 0730dae39bc73f34796280af9875ce14. Unity resolved them to Hidden/InternalErrorShader.
+Repair: changed the existing material assets to Universal Render Pipeline/Lit and used the installed URP material validator for render states and keywords.
+
+Preserved: material GUIDs; base color and alpha; metallic and smoothness; face culling; texture references, tiling and offsets. Mapped _Albedo_Map to _BaseMap, _Normal_Map to _BumpMap, _Normal_Amount to _BumpScale, _Emission_Map to _EmissionMap and _Alpha_Clip_Threshold to _Cutoff.
+18 opaque alpha-clipped materials use queue 2450. Seven glass/water materials retain transparency, queue 3000 and ZWrite off. The material named Window_Glass_01_Opaque deliberately retains its original transparent configuration.
+Only PolygonTown_01_A_Emissive enables emission. Ordinary PolygonTown_01_A keeps its unused emission map but emission remains disabled; the original source color is retained in _Emission_Color.
+Ground_01 preserves disabled specular highlights and maps disabled _GlossyReflections to _EnvironmentReflections=0.
+
+Verification: all 25 shaders supported; all 25 rendered through the active URP in isolated material previews. Checked 483 prefabs, 613 renderers and 695 material slots: zero missing/unsupported/error shaders. Final console query returned zero errors or warnings.
+All 3502 protected non-material files in PolygonTown, including material metadata, models, prefabs and textures, have unchanged SHA256 hashes.
+
+Before/ contains byte-for-byte backups of 25 original .mat files and their .meta files. FinalAudit.json is the final authoritative audit; RepairAudit.json records the initial migration before the Ground_01 reflection follow-up.
+All25-MaterialPreview.png shows shader/texture close-up previews in the order listed by PreviewOrder.txt.
+No gameplay scripts, scene files, lighting or pipeline settings were modified or saved. The user switched from dirty Shelter/Edit mode to EnemyTest/Play during read-only verification; this task did not switch scenes or Play mode.

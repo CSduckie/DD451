@@ -1,0 +1,68 @@
+MyPrecious P0 — 07B快捷转移与精确拖放接入交接
+工程E:/DD451；本地日期2026-10-18（证据跨UTC 10-18/19）；Dispatch v18 / ProjectRules A25。
+状态：部分验证完成，WAITING_FOR_04_TEST_CORRECTION。新版EditMode 209/209，组合PlayMode 74/75；唯一失败独立重跑仍失败。不能标记全部通过；原生完整两轮未验收。普通Play画面/API检查已收尾，Unity已释放。
+
+一、现行操作与范围
+
+本轮在04A、05A、06C均READY_FOR_INTEGRATION后统一接入与运行，READY只表示当时源码就绪。本交接和Integration目录才记录07实际执行结果；不将旧06的105/29或07A的6/6移作新版成绩。
+正式入口仍为Assets/Scenes/Bootstrap.unity，Game窗口1920×1080；Play进入庇护所后点击Game画面获得焦点。A/D移动、交互范围E开仓/出发/搜刮/撤离，Tab开关背包，F10切中英文，普通有效拖拽R旋转。Shelter/Ruins沿用既有Cinemachine/流程接线，不单独加相机或Bootstrap。
+新增左右Ctrl+左键：只转当前一件已揭示物，仓库/箱子→背包，背包→恰好一个当前已打开、有效的对侧界面。自动找空位，保持目标其他物品不动；当前方向按行从左上找，全部无位且允许旋转时才试另一方向。这是本轮实现默认，不表述成用户逐项确认的搜索算法。
+普通拖拽严格按鼠标格位减抓取偏移，并保留当前旋转；绿色预览与实际提交坐标相同。重叠、越界、格子外下方空白、标题/按钮拒绝，不跳到其他空位。A25已覆盖06B/07A“整个viewport可返箱、原位优先、自动吸附、返箱强制原始方向”等旧普通拖拽说明；这些历史文件不回写为新版本。
+没有目标/双目标、未知项、满格、过期会话、拖拽中、确认丢弃中和切场景均应拒绝。快捷失败不转普通拖拽或使用，不等于丢弃；既有确认丢弃、唯一身份、EV、使用次数和搜索规则保留。没有新增箱内任意整理模式。
+只去掉网格外多余黑色填充：viewport Image透明但保留射线、ScrollRect和RectMask2D，真实背景格保留且不挡射线。三种容器仍66/4/6、1920×1080；仓库只增行不缩格。每箱容量仍配置LootBox.gridWidth/gridHeight，搜索时长仍在ItemDataSO.searchSeconds。
+
+二、07本轮实际写入与保护
+
+07接入改动为：
+- Assets/Prefabs/UI/Loot/LootPanel.prefab：依06C原位升级背景与引用，保留GUID。
+- Assets/Data/Localization/Backpack/BackpackText.asset。
+- Assets/Data/Localization/Warehouse/WarehouseText.asset。
+- Assets/Data/Localization/Loot/LootText.asset。
+- Assets/Tests/GameFlow/PlayMode/MinimumLoopPointerTests.cs。
+- Assets/Tests/GameFlow/PlayMode/MinimumLoopSceneTests.cs。
+三个语言表依据各模块TextEntries更新，保留既有键和GUID，正式帮助显示Ctrl+左键；F10仍由03唯一处理。正式测试补真实排队Ctrl、精确返箱与旋转、透明viewport、第二轮新场景委托绑定检查，没有删除原身份/结算/失败重试断言。
+Bootstrap/Shelter/Ruins正式场景与GameFlow业务未改。04A/05A/06C业务源码由各模块准备，本轮07没有跨写；尤其没有代04改失败用例或产品逻辑。
+首次写入/运行前保存51份真实内容副本于Docs/Verification/QuickTransfer/Integration/Before/，索引BackupManifest.json；不是仅留旧哈希。SourceBaseline.json包含测试前已冻结的153项源码/meta基线，当前只读比对无漂移。已有.meta/GUID不变；资产写入范围与源代码保护基线分别核对，不将二者混为“所有文件零变化”。
+
+三、新版官方测试
+
+证据根：Docs/Verification/QuickTransfer/Integration/。
+EditMode-209.xml：209/209通过，0失败/0跳过，2026-10-18 23:54:29Z—23:54:32Z，3.2764418秒；背包38、仓库49、Loot/Transfers122。摘要EditModeSummary.json。
+PlayMode-75-Initial.xml：74/75通过、1失败、0跳过，23:57:09Z—23:57:52Z，43.002535秒；背包18/19、仓库12/12、Loot36/36、GameFlow8/8。GameFlow8含正式Pointer/Scene两文件6项，以及PlayerSceneTransitionTests的2项适配回归，不能把8项全叫正式场景用例。摘要PlayModeInitialSummary.json。
+PlayMode-BackpackFailureRetry.xml：同一失败单项独立重跑0/1，23:58:17Z—23:58:18Z；不是第二个不同失败，也不掩盖初次组合结果。
+正式Pointer仍用InputSystem.QueueStateEvent经过真实InputAction/EventSystem/UGUI；流程出发/定位/撤离有API辅助。04/05入口用例有委托spy计数，06和正式测试才验证真实跨容器提交。API、排队输入与原生输入分别报告。
+综合矩阵与精确用例映射见Integration/Report.txt；上述官方结果不代表全部验收已完成。
+
+四、唯一已知失败与后续要求
+
+BackpackIntegrationTests.QueuedSameFrameCtrlLeftAndRightPressCannotUseAndRightUseRecoversAfterRelease，BackpackIntegrationTests.cs:636，requests期望1、实际0。后面的Consumed、UsesThisRound=1、回血和右键恢复断言没有执行到，不能描述成它们失败。
+最小序列：RightCtrl保持，食物同一点MouseState buttons=3→1→0，每步两帧。当前InputSystem 1.14.2的UIInputModule共用PointerEventData，先松右键清eligibleForClick；每按钮状态不保存该字段，稍后松左键没有OnPointerClick，快捷回调不发生。静态包源码与两次相同结果吻合；没有据此确认背包业务缺陷。
+建议由04修正夹具预期：混合手势要求安全取消/0请求/不使用/物品不变；另做一次完整Ctrl+左键严格要求1次，再松Ctrl并保留普通右键Consumed/次数/生命断言。继续真实排队UGUI，不直接调用事件，不改为每次松手都提交。A25未要求混合左右键必须成功快捷转移。
+详细因果及包源码行号在BackpackFailure.txt。主程协调04修正后，再由07对当前修改运行必要回归；当前保留失败XML，不把修正建议记作已实施或通过。
+
+五、普通Play画面与API检查
+
+普通Play从未改动的Bootstrap进入Shelter，再真实TryDepart到Ruins。原箱由LootUI.Update自然揭示，没有AdvanceSearch或直接揭示。以下截图已由主执行者保存查看，全部1920×1080；详情见VisualApiChecks.txt：
+- 01-Box6x4-CN.png、02-Box6x4-EN.png：正式6×4，24格，grid428×288，viewport428×584；透明alpha0、raycast=true、RectMask2D存在；可见固定文本未发现裁切。
+- 03-Empty4x3-CN.png、04-Empty4x3-EN.png：临时空4×3，12格，grid288×218，实际66格及同样透明命中/裁剪。
+- 05-Tall6x14-Top-EN.png、06-Tall6x14-Bottom-EN.png、07-Tall6x14-Bottom-CN.png：临时6×14，84格，grid428×988。顶部、底部指定格医疗包及取回后的中英文画面；滚动通过ScrollRect API，不称原生滚轮。
+- 08-Warehouse-CN.png、09-Warehouse-EN.png：20×20仓库中英文，400格，grid1408×1408，固定文本无裁切。
+- 10-Warehouse20x24-Bottom-EN.png：免费升级后20×24的480格，grid1408×1688，仍实际66、仅纵滚，底部英文无裁切。
+医疗包68f71fe5d745467b92e31536f73a42c0在原箱API快捷取/还/再取均成功，同一实例，ItemManager数量3不变，撤离前EV0。高箱显式放入(4,12)、2×2、rotated=false成功；底部点(1811,281)映射(5,13)，隐藏顶部点拒绝，UGUI首射线命中LootItem；快捷取回保持同ID与84背景格。
+一次Coordinator直调未传有效会话验证器，正确返回StaleRequest且零修改；改用捕获的真实LootUI SessionToken/Source验证后成功。这是夹具调用修正，不作为产品失败或悄悄删去。
+临时空箱/长箱及表均为运行时API夹具，退出前清除、未保存资产。之后原箱取布娃娃、TryExtract返回Shelter；医疗包和布娃娃各通过包→仓→包→仓的API请求，全部true，EV7、仓库2件。升级API返回Success，同ID、坐标和旋转均不变，EV仍7。VisualSnapshots.json保存5份阶段读数，均clips=[]；10张截图已经查看，不把API操作写成实体拖拽。
+随后TryDepart再次进入真实Exploring，SecondRoundApi.json在2026-10-19T00:02:41.3968624Z读回round2、EV7、仓库2件、20×24、生命3/3，fixtureCount=0、syntheticDevices=0。这证明普通API路线再次出发，不冒称普通Play第二轮已再次撤离；两轮完整自动路线另见正式Pointer测试。
+
+六、原生输入与最终状态边界
+
+NativeInput.txt记录本次真实sky注入F10/Tab重试：GameView已点击聚焦、Application.isFocused=true，1920×1080，原生RawInput键鼠启用、无合成设备；F10后仍中文，Tab后背包仍关闭，未得到预期动作。这不建立实体键盘产品故障，也不能记作按键通过。
+本版两轮实体键鼠流程未验收，旧NativeInputFollowup的用户手动成绩不能迁用。没有使用其他OS注入方案或API掩盖此缺口。
+ReleaseState.json最终快照2026-10-19T00:03:35.373962Z：Play=false、compile=false，唯一场景Assets/Scenes/Bootstrap.unity且dirty=false；Application/PlayerSettings.runInBackground=false，仅原RawInput Keyboard/Mouse均enabled，tempObjects=0、tempTables=0。主执行者末次Console读取0 error / 0 warning；Unity已释放。
+MCP测试临时改变Enter Play Mode选项后，主执行者按真实Before磁盘备份，仅通过Unity API将enterPlayModeOptionsEnabled恢复true、enterPlayModeOptions恢复DisableDomainReload；未覆盖整份设置资产。最终ProjectSettings.asset与EditorSettings.asset磁盘hash均和Before相同，ReleaseState记录这两字段已恢复后的值。
+Windows独立构建、敌人、完整死亡流程不在本轮完成范围。当前可交付事实是源码接入和部分测试/画面验证；整轮验收仍等待04夹具修正与对应复验，不能写“全部通过”。
+
+七、参考与历史
+
+实际复读本地E:/Portfolio-Card-Clone/Assets/Scripts/Cards/MonoBehaviour/CardDragHandler.cs，并可复读Items/MonoBehaviour/ItemTemplet.cs、GameBoard/UIGridController.cs；本地HEAD/main已核实57eabac0f946f21ef00b489e83c1c133905ea673。
+沿用现有已适配UGUI生命周期、直接委托、行列循环，不迁入旧Input.mousePosition固定深度、卡牌业务、DOTween或事件框架；参考仓库未修改。当前源码检查不写namespace，保留模块和GUID边界。
+07A、06B与GridLootAcceptance保留各自版本的历史事实。A25普通精确落位与快捷找位的区别以本交接、ProjectRules和06C当前接口为准。

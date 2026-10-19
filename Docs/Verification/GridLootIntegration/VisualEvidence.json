@@ -1,0 +1,527 @@
+{
+  "kind": "07A ordinary Play API observations; not native input",
+  "snapshots": [
+    {
+      "name": "ShelterChinese-API",
+      "snapshot": {
+        "utc": "2026-10-18T22:55:03.0024483Z",
+        "stage": "Shelter",
+        "round": 0,
+        "screen": [
+          1920,
+          1080
+        ],
+        "language": "Chinese",
+        "grids": [
+          {
+            "owner": "PlayerInventory",
+            "name": "Grid",
+            "count": 16,
+            "width": 288,
+            "height": 288,
+            "scale": "(1.00, 1.00, 1.00)",
+            "firstCell": {
+              "width": 66,
+              "height": 66,
+              "raycast": false
+            }
+          },
+          {
+            "owner": "Viewport",
+            "name": "Content",
+            "count": 400,
+            "width": 1408,
+            "height": 1408,
+            "scale": "(1.00, 1.00, 1.00)",
+            "firstCell": {
+              "width": 66,
+              "height": 66,
+              "raycast": false
+            }
+          }
+        ],
+        "cameras": [
+          {
+            "name": "OutputCamera",
+            "scene": "Shelter",
+            "brain": true
+          }
+        ],
+        "listeners": 1,
+        "events": 1,
+        "cameraFollowsPlayer": true,
+        "clips": [],
+        "sourceEntries": [],
+        "backpack": 0,
+        "warehouse": 0,
+        "ev": 0
+      }
+    },
+    {
+      "name": "ShelterEnglish-API",
+      "snapshot": {
+        "utc": "2026-10-18T22:55:09.7000977Z",
+        "stage": "Shelter",
+        "round": 0,
+        "screen": [
+          1920,
+          1080
+        ],
+        "language": "English",
+        "grids": [
+          {
+            "owner": "PlayerInventory",
+            "name": "Grid",
+            "count": 16,
+            "width": 288,
+            "height": 288,
+            "scale": "(1.00, 1.00, 1.00)",
+            "firstCell": {
+              "width": 66,
+              "height": 66,
+              "raycast": false
+            }
+          },
+          {
+            "owner": "Viewport",
+            "name": "Content",
+            "count": 400,
+            "width": 1408,
+            "height": 1408,
+            "scale": "(1.00, 1.00, 1.00)",
+            "firstCell": {
+              "width": 66,
+              "height": 66,
+              "raycast": false
+            }
+          }
+        ],
+        "cameras": [
+          {
+            "name": "OutputCamera",
+            "scene": "Shelter",
+            "brain": true
+          }
+        ],
+        "listeners": 1,
+        "events": 1,
+        "cameraFollowsPlayer": true,
+        "clips": [],
+        "sourceEntries": [],
+        "backpack": 0,
+        "warehouse": 0,
+        "ev": 0
+      }
+    },
+    {
+      "name": "RuinsChineseUnknown-API",
+      "snapshot": {
+        "utc": "2026-10-18T22:55:23.2803049Z",
+        "stage": "Exploring",
+        "round": 1,
+        "screen": [
+          1920,
+          1080
+        ],
+        "language": "Chinese",
+        "grids": [
+          {
+            "owner": "PlayerInventory",
+            "name": "Grid",
+            "count": 16,
+            "width": 288,
+            "height": 288,
+            "scale": "(1.00, 1.00, 1.00)",
+            "firstCell": {
+              "width": 66,
+              "height": 66,
+              "raycast": false
+            }
+          },
+          {
+            "owner": "Content",
+            "name": "Grid",
+            "count": 24,
+            "width": 428,
+            "height": 288,
+            "scale": "(1.00, 1.00, 1.00)",
+            "firstCell": {
+              "width": 66,
+              "height": 66,
+              "raycast": false
+            }
+          }
+        ],
+        "cameras": [
+          {
+            "name": "OutputCamera",
+            "scene": "Ruins",
+            "brain": true
+          }
+        ],
+        "listeners": 1,
+        "events": 1,
+        "cameraFollowsPlayer": true,
+        "clips": [],
+        "sourceEntries": [
+          {
+            "EntryId": "doll",
+            "InstanceId": "e6d00bfe87be4e5b9ca2b3802a93b8d1",
+            "Revealed": false,
+            "Taken": false,
+            "LayoutX": 0,
+            "LayoutY": 0,
+            "LayoutWidth": 2,
+            "LayoutHeight": 3
+          },
+          {
+            "EntryId": "medkit",
+            "InstanceId": "622f2a5f63714d989785fe39a07418ea",
+            "Revealed": false,
+            "Taken": false,
+            "LayoutX": 2,
+            "LayoutY": 0,
+            "LayoutWidth": 2,
+            "LayoutHeight": 2
+          }
+        ],
+        "backpack": 0,
+        "warehouse": 0,
+        "ev": 0
+      }
+    },
+    {
+      "name": "RuinsEnglishComplete-API",
+      "snapshot": {
+        "utc": "2026-10-18T22:55:39.2068696Z",
+        "stage": "Exploring",
+        "round": 1,
+        "screen": [
+          1920,
+          1080
+        ],
+        "language": "English",
+        "grids": [
+          {
+            "owner": "PlayerInventory",
+            "name": "Grid",
+            "count": 16,
+            "width": 288,
+            "height": 288,
+            "scale": "(1.00, 1.00, 1.00)",
+            "firstCell": {
+              "width": 66,
+              "height": 66,
+              "raycast": false
+            }
+          },
+          {
+            "owner": "Content",
+            "name": "Grid",
+            "count": 24,
+            "width": 428,
+            "height": 288,
+            "scale": "(1.00, 1.00, 1.00)",
+            "firstCell": {
+              "width": 66,
+              "height": 66,
+              "raycast": false
+            }
+          }
+        ],
+        "cameras": [
+          {
+            "name": "OutputCamera",
+            "scene": "Ruins",
+            "brain": true
+          }
+        ],
+        "listeners": 1,
+        "events": 1,
+        "cameraFollowsPlayer": true,
+        "clips": [],
+        "sourceEntries": [
+          {
+            "EntryId": "doll",
+            "InstanceId": "e6d00bfe87be4e5b9ca2b3802a93b8d1",
+            "Revealed": true,
+            "Taken": false,
+            "LayoutX": 0,
+            "LayoutY": 0,
+            "LayoutWidth": 2,
+            "LayoutHeight": 3
+          },
+          {
+            "EntryId": "medkit",
+            "InstanceId": "622f2a5f63714d989785fe39a07418ea",
+            "Revealed": true,
+            "Taken": false,
+            "LayoutX": 2,
+            "LayoutY": 0,
+            "LayoutWidth": 2,
+            "LayoutHeight": 2
+          }
+        ],
+        "backpack": 0,
+        "warehouse": 0,
+        "ev": 0
+      }
+    },
+    {
+      "name": "RuinsReturnToBoxEnglish-API",
+      "snapshot": {
+        "utc": "2026-10-18T22:56:08.6486511Z",
+        "stage": "Exploring",
+        "round": 1,
+        "screen": [
+          1920,
+          1080
+        ],
+        "language": "English",
+        "grids": [
+          {
+            "owner": "PlayerInventory",
+            "name": "Grid",
+            "count": 16,
+            "width": 288,
+            "height": 288,
+            "scale": "(1.00, 1.00, 1.00)",
+            "firstCell": {
+              "width": 66,
+              "height": 66,
+              "raycast": false
+            }
+          },
+          {
+            "owner": "Content",
+            "name": "Grid",
+            "count": 24,
+            "width": 428,
+            "height": 288,
+            "scale": "(1.00, 1.00, 1.00)",
+            "firstCell": {
+              "width": 66,
+              "height": 66,
+              "raycast": false
+            }
+          }
+        ],
+        "cameras": [
+          {
+            "name": "OutputCamera",
+            "scene": "Ruins",
+            "brain": true
+          }
+        ],
+        "listeners": 1,
+        "events": 1,
+        "cameraFollowsPlayer": true,
+        "clips": [],
+        "sourceEntries": [
+          {
+            "EntryId": "doll",
+            "InstanceId": "e6d00bfe87be4e5b9ca2b3802a93b8d1",
+            "Revealed": true,
+            "Taken": false,
+            "LayoutX": 0,
+            "LayoutY": 0,
+            "LayoutWidth": 2,
+            "LayoutHeight": 3
+          },
+          {
+            "EntryId": "medkit",
+            "InstanceId": "622f2a5f63714d989785fe39a07418ea",
+            "Revealed": true,
+            "Taken": true,
+            "LayoutX": 2,
+            "LayoutY": 0,
+            "LayoutWidth": 2,
+            "LayoutHeight": 2
+          }
+        ],
+        "backpack": 1,
+        "warehouse": 0,
+        "ev": 0
+      }
+    },
+    {
+      "name": "ShelterUpgradeEnglish-API",
+      "snapshot": {
+        "utc": "2026-10-18T22:57:51.2945907Z",
+        "stage": "Shelter",
+        "round": 1,
+        "screen": [
+          1920,
+          1080
+        ],
+        "language": "English",
+        "grids": [
+          {
+            "owner": "PlayerInventory",
+            "name": "Grid",
+            "count": 16,
+            "width": 288,
+            "height": 288,
+            "scale": "(1.00, 1.00, 1.00)",
+            "firstCell": {
+              "width": 66,
+              "height": 66,
+              "raycast": false
+            }
+          },
+          {
+            "owner": "Viewport",
+            "name": "Content",
+            "count": 480,
+            "width": 1408,
+            "height": 1688,
+            "scale": "(1.00, 1.00, 1.00)",
+            "firstCell": {
+              "width": 66,
+              "height": 66,
+              "raycast": false
+            }
+          }
+        ],
+        "cameras": [
+          {
+            "name": "OutputCamera",
+            "scene": "Shelter",
+            "brain": true
+          }
+        ],
+        "listeners": 1,
+        "events": 1,
+        "cameraFollowsPlayer": true,
+        "clips": [],
+        "sourceEntries": [],
+        "backpack": 1,
+        "warehouse": 1,
+        "ev": 7
+      }
+    },
+    {
+      "name": "RuinsRoundTwoEnglish-API",
+      "snapshot": {
+        "utc": "2026-10-18T22:58:15.3292108Z",
+        "stage": "Exploring",
+        "round": 2,
+        "screen": [
+          1920,
+          1080
+        ],
+        "language": "English",
+        "grids": [
+          {
+            "owner": "PlayerInventory",
+            "name": "Grid",
+            "count": 16,
+            "width": 288,
+            "height": 288,
+            "scale": "(1.00, 1.00, 1.00)",
+            "firstCell": {
+              "width": 66,
+              "height": 66,
+              "raycast": false
+            }
+          },
+          {
+            "owner": "Content",
+            "name": "Grid",
+            "count": 24,
+            "width": 428,
+            "height": 288,
+            "scale": "(1.00, 1.00, 1.00)",
+            "firstCell": {
+              "width": 66,
+              "height": 66,
+              "raycast": false
+            }
+          }
+        ],
+        "cameras": [
+          {
+            "name": "OutputCamera",
+            "scene": "Ruins",
+            "brain": true
+          }
+        ],
+        "listeners": 1,
+        "events": 1,
+        "cameraFollowsPlayer": true,
+        "clips": [],
+        "sourceEntries": [
+          {
+            "EntryId": "food",
+            "InstanceId": "60c4f64e2af846d69b1d25042fffd79d",
+            "Revealed": true,
+            "Taken": false,
+            "LayoutX": 4,
+            "LayoutY": 0,
+            "LayoutWidth": 2,
+            "LayoutHeight": 2
+          }
+        ],
+        "backpack": 1,
+        "warehouse": 1,
+        "ev": 7
+      }
+    },
+    {
+      "name": "RuinsEmpty4x3English-API",
+      "snapshot": {
+        "utc": "2026-10-18T22:58:24.9163098Z",
+        "stage": "Exploring",
+        "round": 2,
+        "screen": [
+          1920,
+          1080
+        ],
+        "language": "English",
+        "grids": [
+          {
+            "owner": "PlayerInventory",
+            "name": "Grid",
+            "count": 16,
+            "width": 288,
+            "height": 288,
+            "scale": "(1.00, 1.00, 1.00)",
+            "firstCell": {
+              "width": 66,
+              "height": 66,
+              "raycast": false
+            }
+          },
+          {
+            "owner": "Content",
+            "name": "Grid",
+            "count": 12,
+            "width": 288,
+            "height": 218,
+            "scale": "(1.00, 1.00, 1.00)",
+            "firstCell": {
+              "width": 66,
+              "height": 66,
+              "raycast": false
+            }
+          }
+        ],
+        "cameras": [
+          {
+            "name": "OutputCamera",
+            "scene": "Ruins",
+            "brain": true
+          }
+        ],
+        "listeners": 1,
+        "events": 1,
+        "cameraFollowsPlayer": true,
+        "clips": [],
+        "sourceEntries": [],
+        "backpack": 1,
+        "warehouse": 1,
+        "ev": 7
+      }
+    }
+  ]
+}

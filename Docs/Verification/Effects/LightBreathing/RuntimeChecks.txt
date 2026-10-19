@@ -1,0 +1,14 @@
+CaptureRequest=Game-High.png;seconds=0.0081;intensity=49.502970
+CaptureRequest=Game-Low.png;seconds=1.5754;intensity=32.990790
+CaptureRequest=Game-Dark.png;seconds=1.7855;intensity=0.000000
+灯光:DisableDuringDark;restore50=True;coroutineCleared=True
+灯光:Reenabled;baseline50=True;coroutinePresent=True
+灯光 (1):DisableDuringDark;restore50=True;coroutineCleared=True
+灯光 (1):Reenabled;baseline50=True;coroutinePresent=True
+VariantsStartedAt=23.0005
+Completed=True
+DurationSeconds=34.004
+SampleFrames=7492
+GameResolution=1920x1080
+VariantsStarted=True
+Captures(high,low,dark)=True,True,True

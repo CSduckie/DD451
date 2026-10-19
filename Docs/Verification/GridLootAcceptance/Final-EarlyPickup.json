@@ -1,0 +1,10 @@
+{
+  "result": "Success",
+  "sameSearch": true,
+  "before": 12.2118874,
+  "after": 12.2118874,
+  "revealed": true,
+  "taken": true,
+  "bagCount": 1,
+  "note": "Earlier probe omitted required session callback and was correctly rejected as StaleRequest; this call uses the live session."
+}

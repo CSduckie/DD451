@@ -1,0 +1,18 @@
+09H TurningVision — 最终结果（2026-10-19）
+09H_CODE_AND_ACCEPTANCE_COMPLETE / EDITOR_RETAINED_FOR_FOLLOWUP
+
+已修复实证的“自然转身发现后继续旧巡逻yaw，玩家被转出视野而立即Search”。Alert进入时清turnVelocity，Alert期间保持发现yaw；真实观察、离开/墙/掩体处理继续执行。其余状态平滑转向与新轮复位不变。
+生产改动：Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs。
+新增：Assets/Tests/Enemy/PlayMode/DroneTurningVisionTests.cs及Unity生成meta，9个UnityTest。
+
+自动化：44个不同PlayMode用例最近一次均Passed，来自AfterFix-9-First.xml的8通过+Related-36.xml的36通过，fullname无重复。原始45次执行包含首批1项夹具隔离失败：前轮墙残留影响下一轮发现。每轮声明GameObject blocker=null并于轮末对其SetActive(false)后，同名复验通过；不是单轮44/44。逐项和失败覆盖关系见PlayMode-FinalCoverage.json。EditMode-4.json：4/4通过、0失败/0跳过。
+新增自然左右转身、真实范围扫入中段/结束、Alert yaw保持、同目标自然Chase、真实离开/墙/掩体以及InputSystem站/蹲×左右4变体；4变体计1个用例。相关35个既有Play回归保持通过。
+
+原参数实景：GameCapture-20261019T080740712/Attempt-1的01/02/03三张PNG均1920×1080，主程已逐张目视巡逻蓝视野→自然橙警戒→追击隐藏视野/UI追击，无视觉破损。使用原EnemyTest、Cinemachine、配置、.18转向及路线。Trace264行，Patrol168/Alert91/Chase5，无Search；Alert yaw恒195.0166、rangeDistance0、Target有效，游戏时间约.501268秒。
+API定位玩家、截图短暂timeScale0保帧；没有强制状态/目标。捕捉callback注销，玩家/body/timeScale/background恢复，随后退出Play使临时停用的另一机恢复；相机未改。原始GameCapture目录Result.txt保持原文，本文件记录后续目视结论。
+
+保护：FinalProtectionAudit.json/.txt记录19/19旧meta不变、17/19清单文件一致。预期Controller修改及Shelter后续保存为两项差异；纳入最新Shelter副本后，其他18项匹配。Shelter在约08:06clean后一次误进出Play，停止dirty，08:07:21保存副本及原文件；dirty根因未确定，不归因外部编辑。最新D1DD18A...与Before/LatestPreserved-20261019T080721120.unity一致，保留不回滚。初次审计快照与历史结果均保留。
+
+原生键鼠/完整两轮交互/Windows构建本轮未验收；InputSystem排队与API实景不冒充原生操作。有限厚度3D视野的侧面投影仍按原几何解释，没有扩大视野。
+09H测试与捕捉已结束。Editor由主程继续处理“相机发灰、全场景新建默认黑夜”，本文件不作全局释放，亦不声称对后续渲染或场景修改完成回归。
+交接：Docs/Handoffs/09H_TurningVision_Handoff.txt；主记录Docs/Handoffs/09_Handoff.txt第十九节。

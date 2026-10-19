@@ -1,0 +1,19 @@
+{
+  "utc": "2026-10-19T08:16:32.6034785Z",
+  "scenes": [
+    {
+      "path": "Assets/Scenes/Shelter.unity",
+      "isLoaded": true,
+      "isDirty": false
+    }
+  ],
+  "play": true,
+  "compiling": false,
+  "updating": false,
+  "screen": [
+    1920,
+    1080
+  ],
+  "background": false,
+  "flow": "Shelter"
+}

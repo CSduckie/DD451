@@ -1,0 +1,22 @@
+[
+  {
+    "Algorithm": "SHA256",
+    "Hash": "4AED52ADAA549D2B20E85B4815A170D32B8E902B83C8A983494ED83B57AC249F",
+    "Path": "E:\\DD451\\Assets\\Prefabs\\Player\\Player.prefab"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "76CEAD0B70F2542216DAA7660D7C5548E4A95E5DBB9E2F11C844FC1104D4983D",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Shelter.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "1F18544DBDB1C8C3A9D70D5D74A9EFA3BC5503812F60C7BC59EAF7CA764E206D",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Ruins.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "9063DB1C2FD9EFBB83A120531BCA35644BE835D203A68EC49FBB1B8306526500",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Bootstrap.unity"
+  }
+]

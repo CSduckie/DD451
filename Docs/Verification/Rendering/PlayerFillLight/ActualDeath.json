@@ -1,0 +1,13 @@
+{
+  "method": "Actual PlayerHealth.TakeDamage(MaxHealth), API-assisted",
+  "accepted": true,
+  "stage": "DeathReturning",
+  "round": 2,
+  "ev": 0,
+  "beforeHealth": 2,
+  "health": 0,
+  "isDead": true,
+  "player": -4310918,
+  "light": -4310944,
+  "lightCount": 1
+}

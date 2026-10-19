@@ -1,0 +1,2 @@
+{"label":"SuccessfulReturn","stage":"Shelter","round":1,"settled":1,"player":-4310918,"health":2,"maxHealth":3,"scene":"Assets/Scenes/Shelter.unity","ev":0,"lightCount":1,"light":-4310944,"localPosition":"(0.00, 1.10, -2.00)","mask":2,"active":true}
+{"label":"DeathReturn","stage":"Shelter","round":2,"settled":2,"player":-4310918,"health":3,"maxHealth":3,"scene":"Assets/Scenes/Shelter.unity","ev":0,"lightCount":1,"light":-4310944,"localPosition":"(0.00, 1.10, -2.00)","mask":2,"active":true}

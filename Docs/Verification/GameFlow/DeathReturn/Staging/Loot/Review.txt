@@ -1,0 +1,33 @@
+07F LootRuntimeManager 最小关闭本轮草稿
+日期：2026-10-19（America/New_York）
+状态：仅 Staging 草稿；未写 Assets、未操作 Unity、未编译、未声称运行测试通过。
+
+文件：LootRuntimeManager.cs.txt（当前生产源码完整副本 + 仅本次关闭入口改动）
+基线源码：Assets/Scripts/Loot/MonoBehaviour/LootRuntimeManager.cs
+基线 SHA256：CE117E98A24316C53F59C82A53AB4D7B32B068E67247031AD9880ECD50129C33
+基线 .meta SHA256：A46CC2E0A176A9C0688E93758AC5201BA018B7FCCDF2CC823BFEA08475867562
+草稿 SHA256：3381021C8A2CD6265458DE8C09CD84659E64B32CB0D0C294AEAD93F5686432BE
+草稿形成后复读生产源码，Hash 与基线一致。
+
+变更与理由
+1. 新增只读 ClosedRound 和内部 IsRoundClosed 判断。ClosedRound 记录最近关闭的轮次，不改 PreparedRound、ItemManager.CurrentRound 或唯一身份。
+2. TryCompleteRound(round,out error)：严格要求启用的模块、无通知重入、当前 01/06 轮次一致；同轮已关闭返回 true。通过现有 CancelPreparedDrop 处理未提交准备物，再要求 GetRemainingWorldItems 为空；随后记录 ClosedRound，关闭探索权限，中断搜索并隐藏地面表现。不清 sources/uniqueOrigins。
+3. SetExplorationContext 即使收到 active=true，也不能重新打开刚关闭的一轮。
+4. 同轮 PrepareRound 在轮次校验后直接返回 true，不再验证/生成/认领来源。下一轮必须先由 ItemManager.BeginRound 推进，随后原 PrepareRound 清 sources 并修改 PreparedRound；因为它已不同于 ClosedRound，guard 自然解除，不需额外重置字段。
+5. IsSourceReady 对关闭轮次一律 false；RebuildSceneRepresentations 现有 IsSourceReady 检查因此不会再建表现。
+6. BindBox/BindGround 仍可验证并登记目标引用，但关闭轮次不再 GenerateSource；新对象 OnEnable/Start 不能绕过。
+7. OnSceneLoaded 在关闭轮次不执行 BindSceneSources，避免返回 Shelter 时重认领旧 Ruins 已 PendingRecovery 的唯一物品。
+
+数据安全边界
+- 入口必须在 GameFlow 对 carried/left 完成 RecordLoss 后调用；也建议成功撤离在所有 retained/lost 完成后调用。
+- CancelPreparedDrop 会把已完成 World 归属、但尚未设置 Committed 的准备物转为正式来源，不会销毁它的权威记录；后面的 remaining 检查将拒绝关闭，要求流程先记损。
+- 上述失败可能取消未提交的视觉预备操作，但不会改变背包物品归属，也不会关闭本轮；这是允许的清理，不是清算成功。
+- 正常转移同步完成；GameFlow 死亡协程应在 Died 栈退出后执行。若人工制造“快照外已提交 World 准备物”故障，本入口拒绝关闭并保留物品，不替流程猜测或静默清空。
+- 不修改物品 IsRetained/Owner/UseRound/UsesThisRound，不发重复通知，不改变 RNG、掉落、搜索、容器布局和唯一原点规则。
+- 关闭后 sources 历史保留，但不能通过 IsSourceReady 操作。它们仅在真实下一轮被 PrepareRound 清理。
+
+静态复核
+- git diff --no-index 已检查：只新增关闭入口和所列 guard；旧生成/归属/恢复算法未改。
+- 生产源码和 meta Hash 未变；无 namespace、无新类/Manager/interface。
+- 尚需合并后的真实测试：错误轮次拒绝、仍有遗留拒绝、重复关闭幂等、同轮 Prepare/重绑不生成、sceneLoaded 不误认领、下一轮唯一同 ID 恢复、普通成功撤离回归。
+- 主程合并前必须 fresh 比对生产 Hash；若已变更，请按 diff 手动合并，不覆盖较新文件。

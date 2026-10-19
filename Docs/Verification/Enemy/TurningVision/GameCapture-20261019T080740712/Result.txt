@@ -1,0 +1,11 @@
+09H actual EnemyTest; original Cinemachine/config/.18 turn/route. API player positioning, not native input.
+FREEZE 01-Turn-Initial gameTime=1.04462326; phase=0
+PNG E:\DD451\Docs/Verification/Enemy/TurningVision/GameCapture-20261019T080740712/Attempt-1/01-Turn-Initial-1920.png; pausedWallSeconds=0.062
+Player API entry at yaw=191.502228; turn=11.5022326
+FREEZE 02-Turn-Discovered-Alert gameTime=1.23495483; phase=3
+PNG E:\DD451\Docs/Verification/Enemy/TurningVision/GameCapture-20261019T080740712/Attempt-1/02-Turn-Discovered-Alert-1920.png; pausedWallSeconds=0.063
+Natural Alert game seconds=0.501268148; firstRemaining=0.5
+FREEZE 03-Turn-Chase gameTime=1.58290648; phase=4
+PNG E:\DD451\Docs/Verification/Enemy/TurningVision/GameCapture-20261019T080740712/Attempt-1/03-Turn-Chase-1920.png; pausedWallSeconds=0.058
+CAPTURED: Same natural discovery reached Chase; three PNGs need visual inspection. Selected Attempt-1
+Callback removed; player/body/timeScale/background restored. Drone1 remains runtime-disabled until exiting Play (no scene save). Camera untouched.

@@ -1,0 +1,92 @@
+{
+  "action": "Crouch",
+  "reached": true,
+  "reason": "Requested action naturally reached; timeScale0, virtual key intentionally retained until Cleanup.",
+  "method": "Synthetic InputSystem KeyboardState; natural PlayerInputReader and state-machine Update/FixedUpdate; not native keyboard/mouse",
+  "observerRemoved": true,
+  "inputHeldForScreenshot": true,
+  "before": {
+    "frame": 6530,
+    "time": 55.9027252,
+    "timeScale": 1.0,
+    "scene": "Assets/Scenes/Shelter.unity",
+    "playerId": -4310918,
+    "position": [
+      -13.1963787,
+      0.0,
+      0.0
+    ],
+    "state": "Idle",
+    "facing": 1,
+    "grounded": true,
+    "crouching": false,
+    "input": {
+      "move": 0.0,
+      "jump": false,
+      "crouch": false
+    },
+    "lightCount": 1,
+    "lights": [
+      {
+        "id": -4310944,
+        "name": "PlayerFillLight",
+        "active": true,
+        "parent": "Player",
+        "parentId": -4310906,
+        "directlyUnderPlayer": true,
+        "localPosition": [
+          0.0,
+          1.1,
+          -2.0
+        ],
+        "worldPosition": [
+          -13.1963787,
+          1.1,
+          -2.0
+        ]
+      }
+    ]
+  },
+  "after": {
+    "frame": 6531,
+    "time": 56.23606,
+    "timeScale": 0.0,
+    "scene": "Assets/Scenes/Shelter.unity",
+    "playerId": -4310918,
+    "position": [
+      -13.1963787,
+      0.0,
+      0.0
+    ],
+    "state": "Crouch",
+    "facing": 1,
+    "grounded": true,
+    "crouching": true,
+    "input": {
+      "move": 0.0,
+      "jump": false,
+      "crouch": true
+    },
+    "lightCount": 1,
+    "lights": [
+      {
+        "id": -4310944,
+        "name": "PlayerFillLight",
+        "active": true,
+        "parent": "Player",
+        "parentId": -4310906,
+        "directlyUnderPlayer": true,
+        "localPosition": [
+          0.0,
+          1.1,
+          -2.0
+        ],
+        "worldPosition": [
+          -13.1963787,
+          1.1,
+          -2.0
+        ]
+      }
+    ]
+  }
+}

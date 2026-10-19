@@ -1,0 +1,9 @@
+{
+  "scope": "Isolated scalar calculation; no scene/drone values written",
+  "zeroDeltaAngle": "0",
+  "zeroDeltaVelocity": "NaN",
+  "resumedAngle": "NaN",
+  "resumedVelocity": "NaN",
+  "positiveDeltaControlAngle": "2.485487",
+  "positiveDeltaControlVelocity": "297.7183"
+}

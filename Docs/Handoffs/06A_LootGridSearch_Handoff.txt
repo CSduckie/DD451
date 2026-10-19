@@ -1,0 +1,90 @@
+06A 箱格背景、每容器固定容量与逐件搜索交接（最终版）
+项目：E:/DD451
+日期：2026-10-18 / ProjectRules Dispatch v17
+释放核对：22:47:55 UTC / 18:47:55 America/New_York
+本版覆盖此前18:33的“全局6列、自动增长、Taken永久预留格”交接；旧测试和画面保留为历史证据。
+
+一、完成与释放
+用户追加的背景单元格、每容器宽×高、固定容量已完成。
+最新 EditMode 105/105、PlayMode 27/27，均0失败/0跳过；六张1920×1080中英文普通Play画面已实际检查。
+Play已停止；Assets/Scenes/Bootstrap.unity干净，非编译；Console 0 error / 0 warning；runInBackground=false；原生Keyboard/Mouse已启用，无测试设备残留。Unity已释放，007可接管。
+上述是逻辑、排队输入和画面验证；新版箱格实体键鼠、正式场景接入、Windows独立构建仍未验收。
+
+二、配置入口与实际规则
+每个场景箱子或Prefab上的 LootBox.gridWidth / gridHeight 是Inspector的列/行配置口。
+文件：Assets/Scripts/Loot/MonoBehaviour/LootBox.cs；Assets/Prefabs/Loot/LootBox.prefab实际默认6×4，即24格。可以逐个箱子覆盖；共享LootTableSO只管候选，不把尺寸绑到共享表或全局LootView。
+LootRuntimeManager创建本轮来源时把尺寸存入LootSourceState.GridWidth/GridHeight；同轮重绑保持该快照和现存位置，新轮才重新读配置。
+LootView不再有全局columns。背景画满全部宽×高，空箱和已取走格同样可见；单格66、间距4、内边距6，与背包背景模板同色同实际尺寸。
+容量不自动扩行/扩列，不缩格；配置较大的容器可在既有viewport内横/纵滚动。大于箱子本身的物品属于配置失败或放回拒绝。
+
+生成：
+先用所有概率>0候选（加上必须找回的0%唯一物）按表顺序预排，放不下就带SourceKey/entryId和尺寸原因报错，发生在独立概率抽取、实例创建、唯一认领之前。
+独立概率规则保持。命中项沿用完整候选的预排坐标；未命中项不生成、不保存占用记录，对应空格可再用。
+修复了全候选能放下、子集重新first-fit反而放不下的3×3反例；不能在抽取后重新紧排。生成/认领遇到其它失败仍保留本轮已选结果，重试不重抽。
+创建前复验已选条目及保存矩形；配置尺寸被改坏不会利用旧小矩形绕过检查。未改01的唯一身份/归属、损失或找回语义。
+
+放回：
+取走后Taken条目保留历史位置，但不再预约格子，外来物可以复用。
+原物返箱优先历史位置；已被占则找其它合法格；无格则拒绝，背包原物原位置保留。当前仍在箱内的条目不重排，不影响后续搜索。
+Coordinator在实际提交路径调用CanAcceptReturnedItem；TryAddReturnedItem内部再次检查，不依赖UI预览。容量失败返回Occupied，不修改身份、条目、背包布局或发送成功通知。
+来源移除/归属提交失败会恢复Taken、历史位置与背包原摆放；新追加条目撤销。仍使用原同步提交/busy/token防护。
+背景格不截获射线。放回是在当前箱子的有效viewport内松手后自动选合法格；viewport大于背景时，背景下方的视口空白仍可接收自动归位。标题、关闭按钮、遮挡窗口及过期会话不接收；这不是手动指定箱内落点。
+
+搜索：
+未知物仅有真实尺寸中性轮廓，不泄漏名称、图标、描述或使用信息，不能取走/使用。只有SearchEntryId对应的整件轮廓中心显示剩余秒数。
+仍用原LootUIController.Update→LootSourceState.AdvanceSearch，自动逐件揭示，不自动拾取。关闭/有效受击/会话失效保留已揭示，当前未完成件重计时。
+F10仍为03唯一入口，换语言不改生成结果、身份、坐标或进度。原生地面来源按实际物品尺寸展示，拾取规则保留。
+
+三、实际修改文件
+代码：
+Assets/Scripts/Loot/RuntimeData/LootSourceState.cs
+Assets/Scripts/Loot/MonoBehaviour/LootBox.cs
+Assets/Scripts/Loot/MonoBehaviour/LootRuntimeManager.cs
+Assets/Scripts/Loot/MonoBehaviour/LootView.cs
+Assets/Scripts/Loot/MonoBehaviour/LootItemView.cs
+Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs
+Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferUIBridge.cs
+Assets/Tests/Loot/Editor/LootTestSceneBuilder.cs
+Assets/Tests/Loot/Editor/LootTextEntries.cs
+Assets/Tests/Loot/EditMode/LootGridLayoutTests.cs（新增及.meta）
+Assets/Tests/Loot/EditMode/LootSourceStateTests.cs
+Assets/Tests/Loot/PlayMode/LootGridSearchTests.cs（新增及.meta）
+Assets/Tests/Loot/PlayMode/LootIntegrationTests.cs
+Assets/Tests/Loot/PlayMode/LootReturnTests.cs
+资产：
+Assets/Prefabs/Loot/LootBox.prefab
+Assets/Prefabs/UI/Loot/LootPanel.prefab
+Assets/Prefabs/UI/Loot/LootItem.prefab
+Assets/Data/Localization/Loot/LootText.asset
+Assets/Scenes/Tests/Loot/LootTest.unity
+文档：本交接、Docs/Architecture/TransfersLootSetup.txt、Docs/Verification/LootGridSearch/（新增本版FixedCapacity子目录）。
+共19个代码/资产主体文件，另两份新增测试.meta。未修改LootUIController、正式Bootstrap/Shelter/Ruins、GameFlowResponsiveLayout、MinimumLoopSceneBuilder、玩家/背包/仓库核心或共享格子参数；92个受保护文件与本追加开工快照一致。
+
+四、007接入
+仍复用原LootPanel、LootItem、LootBox资产，不重建GUID。LootPanel新增gridRoot/cellPrefab引用：Content下Grid第一子节点在物品下方；CellTemplate独立隐藏，运行时复制完整格子背景，所有单格raycast=false。
+LootItemView沿用四边outline与countdownText；物品根保留拖拽入口，其余图形/文字不拦射线。
+根面板484×808，右上锚点(-24,-132)；viewport(20,132)428×584；反馈框(20,744)444×56；66/4/6不变。默认6×4内容实际428×288，较大容器可滚动。
+MinimumLoopSceneBuilder.cs仍有SetRect(lootView.transform,660,160,420,580)。007必须更新/移除旧根覆盖，并检查正式场景保存的同类覆盖、新Grid/CellTemplate/Scrollbar/Countdown引用。
+Tools/MyPrecious/Upgrade Loot Grid UI与Upgrade Loot Test Layout已执行，只升级06资产和LootTest；不能据此认为正式场景已接入。1920下不走旧compact LayoutLoot，本次未改小屏适配。
+对正式地图中每个LootBox明确检查gridWidth/gridHeight与候选布局能否容纳，不以Prefab默认值代替策划配置。
+语言表新增loot.countdown、loot.layout_invalid、loot.return_full，loot.wide_hint更新为宽容器说明；容量悬停用return_full、松手失败用transfer.Occupied，沿用03刷新。
+架构细节：Docs/Architecture/TransfersLootSetup.txt。
+
+五、最新证据与未验项
+仅以 Docs/Verification/LootGridSearch/FixedCapacity/ 的最新证据为本版完成依据：
+EditModeResults.xml/json：105/105，22:44:45Z—22:44:46Z；含20项布局case和4项新增真实容量提交/回滚case。
+PlayModeResults.xml/json：27/27，22:45:13Z—22:45:33Z。两份XML均原样复制Unity官方TestResults.xml，最终MCP均succeeded。
+Play包括真实InputSystem.QueueStateEvent→EventSystem→UGUI：4×3/3×4独立空箱、背景全格/未知无泄漏/F10、容量拒绝与零通知、Taken空格复用及原物另位返还、滚动后拖拽、关闭/受击/迟到松手/地面等回归。
+测试夹具临时隔离原键鼠并使用合成设备，finally恢复；没有修改正式输入，也没有把排队输入说成实体输入。
+六张截图：ChineseUnknown6x4、ChinesePartial6x4、EnglishPartial6x4、EnglishComplete6x4、ChineseEmpty4x3、EnglishEmpty3x4（均带-API.png）。
+画面使用临时运行样本与TryOpenSource、AdvanceSearch(30/1000f)、SetLanguage API；证明画面而非实体输入或完整自然等待。实际TMP检查无溢出。
+StaticAudit.json和ReleaseHashCheck.json：19主体文件测试后无漂移，92保护文件未改，namespace=0、meta齐全。ReleaseState.json记录干净场景和Console。
+旧89/24和修复反例前104项Edit证据仅为历史，容量反例修复后最终为105/27。完整经过见FixedCapacity/Report.txt。
+未验收：新版箱格Windows实体键鼠；007正式场景接入与完整最小循环；Windows独立构建。旧NativeInputFollowup人工确认只作改动前基线。
+
+六、参考
+实际阅读E:/Portfolio-Card-Clone的Assets/Scripts/Cards/MonoBehaviour/CardDragHandler.cs、Assets/Scripts/Items/MonoBehaviour/ItemTemplet.cs，本次另读Assets/Scripts/GameBoard/UIGridController.cs；参考仓库核对提交57eabac0f946f21ef00b489e83c1c133905ea673。
+沿用已经适配的UGUI Begin/Drag/End、配置引用与明确TMP刷新；背景按现有BackpackView纯表现行列循环实现。没有迁入卡牌战斗、DOTween、事件总线或通用容器框架，参考仓库未修改。
+
+06A实现与验证完成，已释放Unity。
+

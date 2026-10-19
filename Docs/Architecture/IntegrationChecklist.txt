@@ -1,0 +1,7 @@
+MyPrecious P0 — 旧00接入清单已被替代
+版本：2026-10-18 / Dispatch v5 / Lean 00
+不要再依据旧版接口清单、模块注册顺序或事务阶段接入代码。
+当前场景、单一常驻入口、输入绑定和3D横版约定见Docs/Architecture/BaseSetup.txt。
+本次验证结果见Docs/Handoffs/00_Handoff.txt及Docs/Architecture/00_ValidationResults.json；旧测试成绩不代表精简版通过。
+后续功能沿用现有Prefab和Input资源，实际需要时增加明确引用与直接调用。
+没有预注册业务服务；不要为接入而恢复已取消的空接口或通用框架。

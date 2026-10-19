@@ -1,0 +1,84 @@
+{
+  "files": [
+    {
+      "Path": "E:\\DD451\\Assets\\Scripts\\Loot\\RuntimeData\\LootSourceState.cs",
+      "Hash": "C2C5270E991DCB5D6E2BCA34A6156B0584F1EE2C8FE2649A9C9EB2B3FF63C69F"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Scripts\\Loot\\MonoBehaviour\\LootView.cs",
+      "Hash": "1F41C22CFC39926A65C94764A1D74C4CCB7D0C5A9FD93F1CF81805B859759B64"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Scripts\\Loot\\MonoBehaviour\\LootItemView.cs",
+      "Hash": "B615273E53BE3CD8FC73C1020BB929F098258FA2E368412E98BDD1D6408D7F75"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Tests\\Loot\\Editor\\LootTestSceneBuilder.cs",
+      "Hash": "D34A8B268AB7580BFFFE804D4F684BB5BF8874F67C69F0335D098662ACA7C4D4"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Tests\\Loot\\Editor\\LootTextEntries.cs",
+      "Hash": "9B9CFF1A49EE3F031A0377014F26E71F09E86E34B5D1B5313EABDCA9BA2A73B9"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Tests\\Loot\\EditMode\\LootGridLayoutTests.cs",
+      "Hash": "29B0E4C92FF2075C7CE0A51EBF1CCD388BBADDD9801E07A90300A11353A31CE5"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Tests\\Loot\\PlayMode\\LootGridSearchTests.cs",
+      "Hash": "95A7195C56F09B821C06644815976DDD98E6409DE6EFEEA29B0CEED8FC18BFB0"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Tests\\Loot\\PlayMode\\LootIntegrationTests.cs",
+      "Hash": "F95C89712BA383E7BAA29CAA90CEE039589069A2679E18DF696848025452DF98"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Tests\\Loot\\PlayMode\\LootReturnTests.cs",
+      "Hash": "D862B9D13EC7B598BA2CD0480CF923857633D4DAF465F1AF4622241B14D07D46"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Prefabs\\UI\\Loot\\LootPanel.prefab",
+      "Hash": "E70322430D6D3A95EE0288EAD70605A68AC4F39E5F239D7D9B495BE21660EFDF"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Prefabs\\UI\\Loot\\LootItem.prefab",
+      "Hash": "9C5492F163AB7A6887D536A736E160C93D7CFC19EEFAA22398702AABA9B6B96D"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Data\\Localization\\Loot\\LootText.asset",
+      "Hash": "6C6459ACFBCA6F7CF6D29928802D1BFD631DCDD5D0CAA2505A230B9B6DBE49C6"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Scenes\\Tests\\Loot\\LootTest.unity",
+      "Hash": "8F2B9278A0951D13B42E7E63EA05B2A0640F5F887730E45F937AD469A320E547"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Scripts\\Loot\\MonoBehaviour\\LootBox.cs",
+      "Hash": "DDA90A45F23C28B4EE0C17B1A3A01C842D642B5D2775D2C17829A054E6A70D47"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Scripts\\Loot\\MonoBehaviour\\LootRuntimeManager.cs",
+      "Hash": "1CA82738C9444BEF99A991EED59EC0EF00ABBBEEABB777F4E5D24FD83E764EA3"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Scripts\\Items\\Transfers\\MonoBehaviour\\ItemTransferCoordinator.cs",
+      "Hash": "50BFF07C9EEF9BBC7A9E71CADD16B5B152A1144DD40080A18DB040CD14E552C1"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Scripts\\Items\\Transfers\\MonoBehaviour\\ItemTransferUIBridge.cs",
+      "Hash": "804400BF3AAFD0476418A6FC4DB6EC1602CEF4FFC94A22C98207FEFF6197B7A7"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Tests\\Loot\\EditMode\\LootSourceStateTests.cs",
+      "Hash": "08217B523BD1DDD31ADB63A3AE9761CC6A069A27375256CC8553E9831C3182AF"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Prefabs\\Loot\\LootBox.prefab",
+      "Hash": "B08506461082B629FD8FA2CE6D16DFA265A409C29DAA56FC6CDFB104D3E93EE8"
+    }
+  ],
+  "protectedCount": 92,
+  "protectedChanged": [],
+  "missingMeta": [],
+  "namespaceCount": 0
+}

@@ -1,0 +1,22 @@
+2026-10-18 / 03 localization warning follow-up
+
+Confirmed cause: BackpackText contains all 10 reported keys and both translations. The shared Bootstrap prefab now embeds Items and Localization, while the old BackpackTest also added separate copies. Runtime resolution selected the inherited base-table language manager; the scene-specific Backpack table belonged to the other manager. Duplicate ItemManagers also split serialized and runtime references.
+
+03 changes:
+- BackpackTest: remove added duplicate modules, point the existing ItemManager scene handle to the inherited component, move Backpack table overrides to inherited LocalizationManager.
+- BackpackTestSceneBuilder: reuse existing Items/Localization, instantiate only when absent, deduplicate added tables.
+- BackpackIntegrationTests: add SharedModulesResolveBackpackTextAndF10RefreshesUiWithoutChangingItems.
+- LocalizationSetup / 03_Handoff: document wiring and evidence.
+No localization runtime framework or suppression of warnings was introduced. Shared prefab and translation assets were preserved.
+
+Validation:
+- Static review: 85 scene anchors at the repair snapshot, no duplicate anchors or dangling local fileID references; removed IDs absent; all direct Item references now resolve to inherited module.
+- Unity native serialization of PlayerTest independently confirmed inherited ItemManager component ID. Scene subsequently imported and was re-saved by the concurrent Backpack task while adding its authorized discard UI.
+- Offline compilation: 40/40 project assemblies succeeded. This is a compilation check, not 40 tests.
+- Unity recovered after several ping timeouts. Read-only inspection confirmed active BackpackTest clean, not playing, one ItemManager, one LocalizationManager with six tables (04 added LootText alongside the five existing tables), console query zero warnings/errors at that point.
+- Concurrent 04 PlayMode run, 19:53:19 to 19:53:33 UTC: all 10 BackpackIntegrationTests passed, including the new 03 regression, real queued F10, drag preview preservation, and reload language/item persistence.
+- Entire combined Backpack + Loot run: 29 total, 10 passed, 19 failed. Loot failures start with module initialization failure; the same duplicate module configuration remains in LootTest. Full XML retained, not filtered into a false all-pass result.
+
+Coordination:
+User explicitly authorized notifying tasks 04 and 05. Both received exact cause and fix guidance. 04 retains its Editor turn for LootTest; 05 retains the following Warehouse turn. No further Editor mutation or test settings restoration was performed by 03. Other tasks' newer scene/UI changes remain intact.
+ItemsTest / LocalizationTest duplicates and unconditional module creation in some other builders were recorded as remaining integration risks, not marked fixed by this follow-up.

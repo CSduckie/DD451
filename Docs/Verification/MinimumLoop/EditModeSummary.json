@@ -1,0 +1,58 @@
+{
+  "mode": "EditMode",
+  "summary": {
+    "total": 11,
+    "passed": 11,
+    "failed": 0,
+    "skipped": 0,
+    "durationSeconds": 1.6136,
+    "resultState": "Passed"
+  },
+  "evidenceSource": "get_test_job response for 21e5d7c781f0455c953bd9239e16997f, returned on 2026-10-18; the later status-only poll omitted consumed results.",
+  "tests": [
+    {
+      "fullName": "GameFlowSettlementTests.CarriedUniqueIsNotDuplicatedWhenNextRoundRebindsTheOriginalSource",
+      "state": "Passed"
+    },
+    {
+      "fullName": "GameFlowSettlementTests.ExtractionRetainsLayoutIdentityAndUsageAndPublishesOnlyCompleteState",
+      "state": "Passed"
+    },
+    {
+      "fullName": "GameFlowSettlementTests.InvalidLaterPlacementRejectsAllChangesAndCanRetryAfterRepair",
+      "state": "Passed"
+    },
+    {
+      "fullName": "GameFlowSettlementTests.LeftUniqueRecoversTheSameIdentityNextRoundWhileOrdinaryGetsNewIdentity",
+      "state": "Passed"
+    },
+    {
+      "fullName": "GameFlowSettlementTests.OrphanBackpackOwnerCannotSilentlyBypassSettlementValidation",
+      "state": "Passed"
+    },
+    {
+      "fullName": "GameFlowSettlementTests.RoundOverflowIsRejectedBeforeAnyRetainedOrLossMutation",
+      "state": "Passed"
+    },
+    {
+      "fullName": "PlayerFlowEntryTests.DeadPlayerCanRelocateButUnlockAndFirstShelterEntryCannotReviveIt",
+      "state": "Passed"
+    },
+    {
+      "fullName": "PlayerFlowEntryTests.FirstShelterPreparationKeepsRoundZeroAndCannotRefillExistingPlayer",
+      "state": "Passed"
+    },
+    {
+      "fullName": "PlayerFlowEntryTests.InvalidPositionAndUnpreparedRelocationDoNotChangePreparationOrRound",
+      "state": "Passed"
+    },
+    {
+      "fullName": "PlayerFlowEntryTests.RelocationPreservesHealthRoundAndInvulnerabilityWithoutHealthNotification",
+      "state": "Passed"
+    },
+    {
+      "fullName": "PlayerFlowEntryTests.SceneLockSurvivesFirstPreparationBackpackClosingAndNewRoundReset",
+      "state": "Passed"
+    }
+  ]
+}

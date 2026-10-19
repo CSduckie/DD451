@@ -1,0 +1,336 @@
+{
+  "status": "PASS",
+  "reason": "Complete PNG1920x1080 with target-camera stack snapshot; visual review still required.",
+  "captureMethod": "ScreenCapture.CaptureScreenshot, supersize1, ordinary Play Game framebuffer",
+  "png": "E:/DD451/Docs/Verification/Rendering/PlayerFillLight\\06-SavedMovingRight-1920x1080.png",
+  "requestedFrame": 2886,
+  "utc": "2026-10-19T09:05:32.8201062Z",
+  "callbacksRemoved": true,
+  "restoredRunInBackground": true,
+  "sample": {
+    "samplePoint": "Target formal camera endCameraRendering, after URP UpdateVolumeFramework; read-only stack",
+    "frame": 2886,
+    "stage": "Shelter",
+    "round": 0,
+    "settledRound": 0,
+    "scene": "Assets/Scenes/Shelter.unity",
+    "screen": [
+      1920,
+      1080
+    ],
+    "player": {
+      "id": -4310918,
+      "scene": "Assets/Scenes/Shelter.unity",
+      "position": [
+        -13.4425621,
+        0.0,
+        0.0
+      ],
+      "health": 3
+    },
+    "camera": {
+      "id": -4310596,
+      "name": "OutputCamera",
+      "scene": "Assets/Scenes/Shelter.unity",
+      "pixelWidth": 1920,
+      "pixelHeight": 1080,
+      "position": [
+        -8.4,
+        2.5,
+        -12.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "fov": 50.0,
+      "orthographic": false,
+      "orthographicSize": 6.0,
+      "clearFlags": "Skybox",
+      "postProcessing": true,
+      "volumeMask": 1,
+      "volumeUpdate": "UsePipelineSettings",
+      "perFrameVolumeUpdate": true,
+      "cameraVolumeStackIsNull": true,
+      "binderError": null
+    },
+    "environment": {
+      "skybox": "Assets/Art/Materials/Environment/ShelterNightSkybox.mat",
+      "skyboxGuid": "8ea61fa5552419d4fbbc16241b881895",
+      "fog": false,
+      "ambientIntensity": 1.0,
+      "reflectionIntensity": 1.0
+    },
+    "effectiveStack": {
+      "color": {
+        "active": true,
+        "exposure": -0.2,
+        "contrast": 8.0,
+        "saturation": 0.0,
+        "hue": 0.0,
+        "filter": [
+          0.7578583,
+          0.7578583,
+          0.7578583,
+          1.0
+        ]
+      },
+      "bloom": {
+        "active": true,
+        "intensity": 0.1,
+        "threshold": 1.0
+      },
+      "tone": {
+        "active": false,
+        "mode": "None"
+      },
+      "vignette": {
+        "active": false,
+        "intensity": 0.0
+      },
+      "whiteBalance": {
+        "active": false,
+        "temperature": 0.0,
+        "tint": 0.0
+      }
+    },
+    "volumes": [
+      {
+        "name": "Global Volume",
+        "scene": "Assets/Scenes/Shelter.unity",
+        "enabled": true,
+        "global": true,
+        "weight": 1.0,
+        "priority": 0.0,
+        "layer": 0,
+        "inCameraMask": true,
+        "profile": "Assets/Scenes/Shelter/Global Volume Profile.asset",
+        "profileGuid": "76ef7695bb051d746bed768237e73e75"
+      }
+    ],
+    "fillValidation": {
+      "gameTime": 22.3520145,
+      "playerBounds": [
+        {
+          "name": "CapsulePlaceholder",
+          "id": -4310926,
+          "mask": 3,
+          "screenCorners": [
+            [
+              416.666443,
+              290.423828,
+              11.6
+            ],
+            [
+              496.530762,
+              290.423828,
+              11.6
+            ],
+            [
+              416.666443,
+              490.084778,
+              11.6
+            ],
+            [
+              496.530762,
+              490.084778,
+              11.6
+            ],
+            [
+              451.720154,
+              306.525482,
+              12.4
+            ],
+            [
+              526.4319,
+              306.525482,
+              12.4
+            ],
+            [
+              451.720154,
+              493.3051,
+              12.4
+            ],
+            [
+              526.4319,
+              493.3051,
+              12.4
+            ]
+          ]
+        },
+        {
+          "name": "FacingMarker",
+          "id": -4310934,
+          "mask": 3,
+          "screenCorners": [
+            [
+              491.8578,
+              422.052155,
+              11.88
+            ],
+            [
+              523.0506,
+              422.052155,
+              11.88
+            ],
+            [
+              491.8578,
+              433.749451,
+              11.88
+            ],
+            [
+              523.0506,
+              433.749451,
+              11.88
+            ],
+            [
+              501.12796,
+              424.387726,
+              12.12
+            ],
+            [
+              531.703064,
+              424.387726,
+              12.12
+            ],
+            [
+              501.12796,
+              435.8534,
+              12.12
+            ],
+            [
+              531.703064,
+              435.8534,
+              12.12
+            ]
+          ]
+        }
+      ],
+      "lights": [
+        {
+          "name": "光照",
+          "id": -4310654,
+          "enabled": true,
+          "intensity": 34.2510834,
+          "color": [
+            0.9622642,
+            0.845724642,
+            0.0771627054
+          ],
+          "range": 11.0,
+          "position": [
+            4.5,
+            6.826,
+            0.0
+          ],
+          "mask": 1,
+          "urpMask": 1,
+          "shadows": "Soft"
+        },
+        {
+          "name": "全局光",
+          "id": 727344,
+          "enabled": true,
+          "intensity": 7.29,
+          "color": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "range": 10.0,
+          "position": [
+            -0.448254436,
+            1.06066012,
+            0.961284637
+          ],
+          "mask": 1,
+          "urpMask": 1,
+          "shadows": "None"
+        },
+        {
+          "name": "光照",
+          "id": -4310676,
+          "enabled": true,
+          "intensity": 48.3724251,
+          "color": [
+            0.9622642,
+            0.845724642,
+            0.0771627054
+          ],
+          "range": 11.0,
+          "position": [
+            -13.634,
+            6.826,
+            0.0
+          ],
+          "mask": 1,
+          "urpMask": 1,
+          "shadows": "Soft"
+        },
+        {
+          "name": "光照",
+          "id": -4310280,
+          "enabled": true,
+          "intensity": 31.0020924,
+          "color": [
+            0.9622642,
+            0.845724642,
+            0.0771627054
+          ],
+          "range": 11.0,
+          "position": [
+            -4.5,
+            6.826,
+            0.0
+          ],
+          "mask": 1,
+          "urpMask": 1,
+          "shadows": "Soft"
+        },
+        {
+          "name": "光照",
+          "id": -4310632,
+          "enabled": true,
+          "intensity": 0.0,
+          "color": [
+            0.9622642,
+            0.845724642,
+            0.0771627054
+          ],
+          "range": 11.0,
+          "position": [
+            13.5,
+            6.826,
+            0.0
+          ],
+          "mask": 1,
+          "urpMask": 1,
+          "shadows": "Soft"
+        },
+        {
+          "name": "PlayerFillLight",
+          "id": -4310944,
+          "enabled": true,
+          "intensity": 1.2,
+          "color": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "range": 4.5,
+          "position": [
+            -13.4425621,
+            1.1,
+            -2.0
+          ],
+          "mask": 2,
+          "urpMask": 2,
+          "shadows": "None"
+        }
+      ],
+      "nonPlayerDedicatedReceivers": []
+    }
+  }
+}

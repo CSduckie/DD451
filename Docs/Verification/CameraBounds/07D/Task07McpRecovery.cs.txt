@@ -1,0 +1,45 @@
+using System;
+using System.Linq;
+using System.Reflection;
+using System.Threading.Tasks;
+using UnityEditor;
+using UnityEngine;
+
+[InitializeOnLoad]
+internal static class Task07McpRecovery
+{
+    static Task07McpRecovery()
+    {
+        EditorApplication.delayCall += Recover;
+    }
+
+    private static async void Recover()
+    {
+        if (SessionState.GetBool("Task07McpRecovery.Started", false)) return;
+        SessionState.SetBool("Task07McpRecovery.Started", true);
+        try
+        {
+            var locator = AppDomain.CurrentDomain.GetAssemblies()
+                .Select(a => a.GetType("MCPForUnity.Editor.Services.MCPServiceLocator"))
+                .FirstOrDefault(t => t != null);
+            if (locator == null) throw new InvalidOperationException("MCP locator unavailable");
+            var server = locator.GetProperty("Server").GetValue(null);
+            var reachable = server.GetType().GetMethod("IsLocalHttpServerReachable");
+            if (!(bool)reachable.Invoke(server, null))
+                server.GetType().GetMethod("StartLocalHttpServer").Invoke(server, new object[] { true });
+            for (var i = 0; i < 60; i++)
+            {
+                if ((bool)reachable.Invoke(server, null))
+                {
+                    var bridge = locator.GetProperty("Bridge").GetValue(null);
+                    var started = await (Task<bool>)bridge.GetType().GetMethod("StartAsync", Type.EmptyTypes).Invoke(bridge, null);
+                    Debug.Log("[Task07McpRecovery] Bridge started=" + started);
+                    return;
+                }
+                await Task.Delay(500);
+            }
+            Debug.LogError("[Task07McpRecovery] Local MCP server did not become reachable");
+        }
+        catch (Exception ex) { Debug.LogException(ex); }
+    }
+}

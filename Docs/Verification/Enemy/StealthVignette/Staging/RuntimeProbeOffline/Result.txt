@@ -1,0 +1,2 @@
+Offline C# 6 compilation only; no Unity execution. ExitCode=0
+warning CS1701: 假定“Newtonsoft.Json”使用的程序集引用“netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51”与“netstandard”的标识“netstandard, Version=2.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51”匹配，您可能需要提供运行时策略

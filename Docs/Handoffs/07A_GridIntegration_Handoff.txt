@@ -1,0 +1,85 @@
+MyPrecious P0 — 07A统一格子与正式箱格接入交接
+工程：E:/DD451；日期：2026-10-18；规则：ProjectRules Dispatch v17，A23/A24。
+本文路径相对工程根。正式接入、6项PlayMode回归、两轮普通Play API流程、两种箱容量显示及演示场景显示复核已完成，007已释放Unity。本次没有新增原生键鼠验收。
+
+一、本次接入与范围
+
+06A最终交接明确实现完成并释放Unity后，07A接手正式场景。06A自身最新EditMode 105/105、PlayMode 27/27仅作为依赖验收，不计为07A重新执行；见Docs/Handoffs/06A_LootGridSearch_Handoff.txt及Docs/Verification/LootGridSearch/FixedCapacity/。
+本次沿用06A原LootPanel/LootItem/LootBox及GUID，接入背景格、固定容量、未知轮廓和中心倒计时；没有重写06搜索、候选排布、容量校验或转移核心。
+正式Ruins旧LootPanel覆盖420×580已改为位置(1412,132)、484×808，保持新版内部viewport、Grid/CellTemplate、倒计时和滚动引用。正式Canvas参考1920×1080。
+GameFlowResponsiveLayout与MinimumLoopSceneBuilder同步正式布局，避免更新布局或新建场景时回到旧列表覆盖。BackpackTest/WarehouseTest显示生成器和已保存场景同步66/4/6、1920参考、scale=1，并在普通Play复核；演示入口不混同正式入口。
+SceneUpdate.json记录Shelter、Ruins、BackpackTest、WarehouseTest已保存更新，当时返回干净Bootstrap；这不是最终释放状态记录。
+本轮显示/接线修改集中在Assets/Scripts/GameFlow/MonoBehaviour/GameFlowResponsiveLayout.cs、Assets/Tests/GameFlow/Editor/MinimumLoopSceneBuilder.cs、Assets/Tests/Backpack/Editor/BackpackTestSceneBuilder.cs、Assets/Tests/Warehouse/Editor/WarehouseTestSceneBuilder.cs及上述4张场景。97个保护文件与开工hash全部相同，见ProtectedBefore.json、ProtectedAfter.json；06核心未改。
+只按1920×1080验收，不扩展800/1280或分辨率框架。玩家状态机、两套独立容器算法、身份账本、EV、丢弃及结算规则沿用现有模块。
+
+二、正确启动方式与相机
+
+打开Assets/Scenes/Bootstrap.unity，Game窗口选择1920×1080，点击Play，再单击Game画面使它获得键盘焦点。
+Bootstrap先初始化真实00—06模块，再进入Shelter。不要单独运行Shelter或Ruins，也不要给它们额外补一套Bootstrap或相机来绕过初始化。
+Shelter/Ruins已有ScenePresentation/PlayerCamera：OutputCamera含真实Camera与CinemachineBrain；SideFollow为CinemachineCamera。ScenePresentation保存时停用，由GameFlowSceneBindings.Activate在地图接线后启用，并绑定本局唯一玩家。
+本次普通Play已读回活动输出相机、AudioListener、EventSystem各1，Cinemachine跟随当前玩家。旧场景的相机/UI关闭后再启用目标场景，未新增自动注入相机框架。
+
+操作路线：
+1. 庇护所按A/D左右移动；走近仓库交互点按E，打开背包与仓库。全新运行开始为空包、空仓、EV0。
+2. 关闭整理界面，向右到出发点，按E进入Ruins。开包时世界继续运行，但主动移动/跳跃受背包控制锁限制。
+3. 在箱子旁按E开始搜索。未知物只显示真实占格轮廓，当前一件的中心显示剩余秒数；完成后原位揭示并自动搜索下一件。已揭示物可鼠标拖入左侧背包，搜索完成不会自动拾取。
+4. Tab开关背包；关闭来源再重开时，已揭示保留，当前未完成件重新计时。F10切中英文，不重抽、不重置进度。有效拖拽期间按R旋转背包/仓库物品；不提供箱内手动整理或旋转。
+5. 原生地面物品仍可在交互范围按E打开并拾取。向地图另一端移动，在撤离点按E即时返回；撤离即结算，物品可继续留背包。
+6. 返回后在仓库点按E自由双向存取。EV达到7可点免费升级，20×20变20×24；只向下增4行，不缩格、不移动旧物、不消耗EV。关闭窗口后可以再次向右出发。
+以上为使用路线；本次原生键鼠是否实际走完须看验收记录，不能把文字路线当作试玩通过。
+
+三、Inspector调参入口
+
+三种View的cellSize/gap/padding当前均为66/4/6：
+- Assets/Prefabs/UI/Backpack/BackpackPanel.prefab上的BackpackView。
+- Assets/Prefabs/UI/Warehouse/WarehousePanel.prefab上的WarehouseView。
+- Assets/Prefabs/UI/Loot/LootPanel.prefab上的LootView。
+同时检查场景实例覆盖、Canvas参考1920×1080及grid/item根scale=1。只改其中一个Prefab字段可能破坏同屏实际等大；WarehouseView.EffectiveCellSize受viewport宽度约束，当前正式运行viewport宽1430，20列内容宽1408，因此实际单格仍66。Shelter序列化旧viewport sizeDelta=926由现有GameFlowResponsiveLayout运行时调整为1430；不能把停Play的sizeDelta当成实际屏幕宽度。仓库仅纵滚，升级不改变横向显示几何。
+本次普通Play读回背包16背景格、仓库400→480格、正式箱24格；三种容器实际cell=66、gap=4、padding=6、scale=1。正式指针用例另检查步长70、padding6、1×2/2×2/2×3物品、拖拽预览及旋转后3×2外框，见本次官方XML对应测试与Report.txt。
+
+每个箱子的固定容量在该场景箱子或Prefab的LootBox.gridWidth/gridHeight配置，不在LootView配置全局列数，也不绑到共享掉落表。Assets/Prefabs/Loot/LootBox.prefab默认6×4；正式Ruins箱本次读回6×4、24格。每个箱子可以独立覆盖，同轮运行保存来源尺寸快照，下轮才重新读取配置。
+背景绘制完整宽×高，包括空格；较大箱子在现有viewport滚动，不自动扩行/扩列、不缩格。概率大于0的所有候选及必须找回的唯一物在生成/认领前做固定容量校验，无效配置明确报错。独立概率仍按原规则执行。
+拿走后空格可再用；返还原箱优先历史位置，已占则找其他合法空位，满箱拒绝并保留背包原物原位置。返箱在当前有效viewport内松手后自动归位，不按鼠标位置手动指定箱内格。容量和回滚属于06A已验收实现，本次正式集成的实际复核项单独记录。
+
+搜索时长在真实ItemDataSO资源的searchSeconds字段配置：Assets/Data/Items/Doll.asset、Medkit.asset、Food.asset、Battery.asset。不在UI上另设计时器；搜索由LootUIController.Update推进真实LootSourceState。
+候选和独立概率在箱子的LootTableSO引用配置；正式示例Assets/Data/LootTables/MinimumLoopLoot.asset。改时长或箱宽高后停止当前Play、重新开始/新轮验证，不把旧运行快照当成新配置已生效。
+背包确认丢弃仍是普通Lost、唯一PendingRecovery并在下轮原点恢复同一身份，不恢复旧主动丢地再捡规则；本次没有改此语义。
+
+四、本次已完成验证
+
+证据目录：Docs/Verification/GridLootIntegration/。
+FormalPlayModeResults.xml为Unity官方结果，6/6通过、0失败/0跳过，2026-10-18 22:53:34Z—22:53:44Z，9.6932072秒；FormalPlayModeSummary.json为对应摘要。
+6项包括正式排队指针整合、空初始状态及同一玩家两次切换、满仓返回再出发、目标接线失败同轮重试、返回加载失败只结算一次、医疗包/生命跨返回与UI重开保持。
+正式指针用例仍经过InputSystem.QueueStateEvent→InputAction/EventSystem/UGUI，验证搜索取物、旋转、双向转仓及循环状态；API辅助流程部分仍存在。未把它写成OS原生键鼠，也未用旧06成绩代替本轮正式回归。
+MCP任务da529551cf8146c19745c80c5cb0df41仍报running的滞后状态与实际已停止Editor分开保存在FormalMcpStaleStatus.json；本次通过判据为完整官方XML，主执行者已清理滞后状态，不称MCP返回succeeded。
+
+普通Play从正式Bootstrap启动，API驱动流程和准备会话。以下1920×1080截图均已由主执行者保存并打开检查，未发现文字裁切：
+- ShelterChinese-API.png、ShelterEnglish-API.png。
+- RuinsChineseUnknown-API.png：真实Update自然倒计时，未用AdvanceSearch强制揭示该画面。
+- RuinsEnglishComplete-API.png。
+- RuinsReturnToBoxEnglish-API.png。
+- ShelterUpgradeEnglish-API.png。
+- RuinsRoundTwoEnglish-API.png。
+- RuinsEmpty4x3English-API.png。
+普通Play已使用真实公开API完成箱子→背包→箱子、背包↔仓库及免费升级20×24，身份与布局由真实模块提交；不是画面临时移动，也不是实体鼠标操作。
+第二次出发已到round=2，背包1件、仓库1件、EV7；正式箱仅生成food，已保有的唯一物不重复。随后TryExtract返回Shelter，仍为round=2、背包1件/仓库1件/EV7，见IntegrationEvidence.json的secondReturn与VisualEvidence.json。
+本次正式搜索由真实Update自然推进，没有使用AdvanceSearch。画面只采初始未知与完成状态，未把它们冒称完整逐帧搜索记录；自动下一件、中断/F10等细节分别由本次队列回归与06A测试证据支持，仍需主程独立接手验证。
+第二种容量使用正式Ruins内临时4×3空箱API夹具，未改正式资产；真实LootView显示12个背景格，内容288×218、单格66、scale=1。它与正式6×4/24格共同证明两种配置可显示；本轮未重新执行06A全部无效配置、满箱拒绝和回滚用例，不能将依赖结果计为07A重跑。
+
+五、演示入口、证据边界与最终释放
+
+BackpackTest与WarehouseTest普通Play均实际读回1920×1080、cell66/gap4/padding6、scale=1；Warehouse viewport1430、horizontal=false、vertical=true。IntegrationEvidence早期演示测量中的Warehouse count=401是400个背景Image加Item根节点的childCount，不是401格。
+LootTest仅复核已有66/4/6、Canvas1920及背包实际单格66，未重跑业务；06A最新105/27仍是其业务依赖依据。
+演示复核发现BackpackTest丢弃按钮上浮，本次只修该演示builder与scene：面板360×680，Discard位于(20,522)、320×34，提示位于(20,564)、320×96、18号字；新建路径在BackpackDiscardUIBuilder.Attach后再ApplyScenePresentation，避免按钮初始定位覆盖。编译无错误，BackpackTestFinal.json记录clips=[]，BackpackTestFixed-API.png已查看无裁切；WarehouseTest-API.png为仓库演示画面，BackpackTest-API.png保留修复前历史。
+上述BackpackTest几何修正发生在正式6/6之后；正式逻辑未变化，本次没有扩大重跑模块，也不声称6/6重新覆盖这一演示排版。最终普通Play与编译检查负责该显示修正的验证。
+本次没有新增原生键鼠验收。Docs/Verification/NativeInputFollowup/是06A新版格子之前用户亲手完成的F10/Tab/E/A/D及双向拖拽基线，不能迁作本次箱格或完整多轮原生通过。
+06A的105/27、此前007的19 distinct/21与23次历史累计、GridSizingLarge指针1/1均各有版本与范围，不合并为07A全部重跑。
+最终核对时间2026-10-18T23:01:39.9468189Z：Play=false、changing=false、compiling=false、updating=false；当前Assets/Scenes/Bootstrap.unity、dirty=false；Application.runInBackground与PlayerSettings.runInBackground均false；enterPlayModeOptionsEnabled=false、选项None；原生Keyboard/Mouse均enabled=true；Console 0 error / 0 warning。最终状态见ReleaseState.json，007已释放Unity。
+本次简要结果与证据索引见Report.txt、IntegrationEvidence.json、VisualEvidence.json。临时4×3箱与API样本没有保存到正式场景，当前正式容量仍为Ruins supplies-box 6×4。
+Windows独立构建、敌人、完整死亡流程和完整原生多轮闭环不在本交接的完成声明中。
+
+六、参考与历史保留
+
+07A沿用现有GameFlow、独立04/05格子和06A真实来源/搜索实现，不新建通用容器、事务或相机框架；用户代码形式和来源版本继续见07_Handoff.txt、06A_LootGridSearch_Handoff.txt。
+06A实际参考CardGame的CardDragHandler、ItemTemplet和UIGridController，核实版本57eabac0f946f21ef00b489e83c1c133905ea673；本次接线不代表重新迁入参考仓库。
+MinimumLoopSetup顶部本次说明覆盖旧420×580、1720参考Canvas、36/3/8和旧列表尺寸作为当前值的用法；旧报告与07_Handoff历史内容保留，不整体回写覆盖主程的66/1920/NativeInputFollowup后续记录。

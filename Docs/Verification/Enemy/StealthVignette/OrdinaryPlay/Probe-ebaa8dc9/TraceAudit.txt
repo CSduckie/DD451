@@ -1,0 +1,23 @@
+09I ordinary Play trace audit (offline)
+Generated UTC: 2026-10-19T17:15:06.3836792Z
+Source: E:\DD451\Docs\Verification\Enemy\StealthVignette\OrdinaryPlay\Probe-ebaa8dc9\Result.json
+Source SHA256: E2AFBAC7C002B80F5946A50E4763439C81DDDAEA0C30A3CB9E94A4F9B08BAB45
+Executed body SHA256 (unchanged): C81CCFD827056484A36C606C3BF513B538A93E3CEE30EA137557E5A013485CDA
+Recorded status PASS, cleanupErrors=[], callbacks removed; 1307 rendered samples all timeScale=1, same player/camera, Exploring.
+First entry / stand-up exit / leave-cover exit have 33 / 31 / 39 strictly intermediate weight samples. All five observed ramps are monotonic and remain within 0..1.
+Rendered last-endpoint -> first-complete durations:
+  Phase 2 First natural C entry: 0.202195s; 33 intermediate samples; monotonic violations=0
+  Phase 3 Stand-up exit: 0.200653s; 31 intermediate samples; monotonic violations=0
+  Phase 4 Second C entry before leaving: 0.204616s; 33 intermediate samples; monotonic violations=0
+  Phase 5 Leave cover while C remains held: 0.202987s; 39 intermediate samples; monotonic violations=0
+  Phase 6 Re-enter cover while C remains held: 0.2043s; 40 intermediate samples; monotonic violations=0
+These are rendered-sample timing intervals, not exact input-event timestamps; first changed samples already include that frame deltaTime.
+Overlap phase7: 119 rendered samples with first Cover disabled, temporary second Cover present, hidden=true and weight=1 throughout.
+Backpack phase8 open: 128 samples hidden=true/weight=1; phase9 closed: 137 samples hidden=true/weight=1. No transient hidden=false or weight dip in these phases.
+Outside crouch phase0 and inside standing phase1: all 132 and 130 samples respectively hidden=false/weight=0.
+All four completed PNGs independently validate at 1920x1080; exact same Camera ID/position/rotation. Player displacement from normal is <=1.1920929e-7 world units.
+Screenshot effective Vignette intensity: normal0, stealth.22, exited0, backpack.22; all sampled exposure0, Bloom0, ToneNone.
+Across all samples max abs(effectiveVignette - .22*weight)=1.30000000209129E-08.
+This script recorded disabledDroneCount=0; do not claim it disabled enemies in this run (root may already have isolated them). originalRunInBackground=true was restored as captured. One native keyboard was restored.
+No Unity calls or re-execution in this audit. RuntimeProbe.cs is frozen at the executed version. Existing images and Result.json were not modified.
+Limits: API relocation + synthetic InputSystem C + real Backpack API, not native input. Time continues; no frozen pixel-equality claim. Death/return/new-departure and unbind/disable need their separate evidence.

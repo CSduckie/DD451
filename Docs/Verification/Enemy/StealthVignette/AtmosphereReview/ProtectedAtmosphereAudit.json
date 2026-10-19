@@ -1,0 +1,91 @@
+{
+  "utc": "2026-10-19T17:15:55.8058915Z",
+  "scope": "Protected atmosphere file check during009 validation; owner still holds Editor. Not final full-project integrity/release.",
+  "files": [
+    {
+      "path": "Assets/Settings/DefaultVolumeProfile.asset",
+      "before": "3A6F825E8D07FE8B9F3B52E7D4E2DFA0E22C555B22335ADB19F0ECC66DFA38DD",
+      "after": "3A6F825E8D07FE8B9F3B52E7D4E2DFA0E22C555B22335ADB19F0ECC66DFA38DD",
+      "unchanged": true,
+      "expectedMutable": false
+    },
+    {
+      "path": "Assets/Scenes/Shelter/Global Volume Profile.asset",
+      "before": "92BD722219978A1A68056ECBB2D200A3B706312197C160AD1C757710B14FB1DD",
+      "after": "92BD722219978A1A68056ECBB2D200A3B706312197C160AD1C757710B14FB1DD",
+      "unchanged": true,
+      "expectedMutable": false
+    },
+    {
+      "path": "Assets/Settings/UniversalRenderPipelineGlobalSettings.asset",
+      "before": "67958644BADB14C610D6EBB26689EA980E32A0F1A140B7DCE3A0E515B1A878B9",
+      "after": "67958644BADB14C610D6EBB26689EA980E32A0F1A140B7DCE3A0E515B1A878B9",
+      "unchanged": true,
+      "expectedMutable": false
+    },
+    {
+      "path": "Assets/Settings/PC_RPAsset.asset",
+      "before": "F29BDA2174AB75CA4EEBE64B4C2153AF6E09965408548E5E2586DE101E876D32",
+      "after": "F29BDA2174AB75CA4EEBE64B4C2153AF6E09965408548E5E2586DE101E876D32",
+      "unchanged": true,
+      "expectedMutable": false
+    },
+    {
+      "path": "Assets/Settings/PC_Renderer.asset",
+      "before": "3D0B01D8DED3327263B6690BE128A3DE58D17C514943AE42FE743A3E084A9C79",
+      "after": "3D0B01D8DED3327263B6690BE128A3DE58D17C514943AE42FE743A3E084A9C79",
+      "unchanged": true,
+      "expectedMutable": false
+    },
+    {
+      "path": "Assets/Prefabs/Player/PlayerCamera.prefab",
+      "before": "7456EE6888DE03CFFC87AA52AA31B800867507EAF82C05A91FF850C993F0FD64",
+      "after": "7456EE6888DE03CFFC87AA52AA31B800867507EAF82C05A91FF850C993F0FD64",
+      "unchanged": true,
+      "expectedMutable": false
+    },
+    {
+      "path": "Assets/Prefabs/Player/Player.prefab",
+      "before": "1671B7057E8EED827936CE93D97A262669FC2A756C4E8CB0A412C4591760FDD2",
+      "after": "1671B7057E8EED827936CE93D97A262669FC2A756C4E8CB0A412C4591760FDD2",
+      "unchanged": true,
+      "expectedMutable": false
+    },
+    {
+      "path": "Assets/Prefabs/Shelter/ShelterScreenDust.prefab",
+      "before": "4A3B1133DAA83AF2499E5C865B92CC4C928FF9879CC7025ADAF9997E041611B8",
+      "after": "4A3B1133DAA83AF2499E5C865B92CC4C928FF9879CC7025ADAF9997E041611B8",
+      "unchanged": true,
+      "expectedMutable": false
+    },
+    {
+      "path": "Assets/Art/Materials/Environment/ShelterScreenDust.mat",
+      "before": "A49FE189BDF88FF2CB91F4A8AF37B62614AA4EFDFB4DBE86872285B97EB0B5C5",
+      "after": "A49FE189BDF88FF2CB91F4A8AF37B62614AA4EFDFB4DBE86872285B97EB0B5C5",
+      "unchanged": true,
+      "expectedMutable": false
+    },
+    {
+      "path": "Assets/Scenes/Shelter.unity",
+      "before": "9285B6B8C9DC76CA43F42FB68AB1EBDD6AC3FF49DC00485CA9C0AD85C50D7A81",
+      "after": "9285B6B8C9DC76CA43F42FB68AB1EBDD6AC3FF49DC00485CA9C0AD85C50D7A81",
+      "unchanged": true,
+      "expectedMutable": false
+    },
+    {
+      "path": "Assets/Scenes/Ruins.unity",
+      "before": "A227EAA4EDB308BFC891FBD9C0D02B5901D1C1E53F762B589481ABD612638511",
+      "after": "BF42734F9A9536B1BF0F314379C009D45453C9981124403D42AB1E942533BFEC",
+      "unchanged": false,
+      "expectedMutable": true
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowSceneBindings.cs",
+      "before": "7F498E295BB468789D74A00EF94674422BBDA9D73A71546FDEB0D558AF291CC3",
+      "after": "7F498E295BB468789D74A00EF94674422BBDA9D73A71546FDEB0D558AF291CC3",
+      "unchanged": true,
+      "expectedMutable": false
+    }
+  ],
+  "unexpectedChanged": []
+}

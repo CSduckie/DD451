@@ -1,0 +1,37 @@
+[
+  {
+    "Algorithm": "SHA256",
+    "Hash": "016CE442E758223004A406B7FBD546585A1A71E6678BDE3276B8DAC6D69B1262",
+    "Path": "E:\\DD451\\Assets\\Prefabs\\Enemy\\Drone\\Drone.prefab"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "6D2059DCB028F66EF4128114DFA95B79C0C256384F9A6D280AEAD458585FBAF2",
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\MonoBehaviour\\DroneController.cs"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "B557556359825650B9A9EA1046165E3EE3D1A98CDF794FB2A3BA4E1AD64B6CED",
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\ScriptableObject\\DroneConfigSO.cs"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "74D2B40E409E535CFC7485AE378D22DFEE49F1AD3CEAD81D38E0D1E78A27D2E7",
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\Editor\\EnemyTestSceneBuilder.cs"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "9C229925C4ECBFA0547E7A643133BC700AA88DEC3D548327AEE0C9DB09DCA9F7",
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\PlayMode\\DroneBehaviourTests.cs"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "23C97D6B34E74A0D4B5E1C647AB2CDD00571C26C2B29A571AE63ED26D1613930",
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\PlayMode\\DroneAlertTests.cs"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "2848DF273A6757C72EE57A15DD20F2043AFD52BF8176FAB04B037E2E56A998FB",
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\PlayMode\\EnemySceneIntegrationTests.cs"
+  }
+]

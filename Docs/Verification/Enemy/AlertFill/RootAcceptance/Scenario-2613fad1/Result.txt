@@ -1,0 +1,24 @@
+ROOT API-ASSISTED SCENE ACCEPTANCE
+Resolution1920x1080; timings2s fill/2s decay; real EnemyTest Drone_B/player.
+Limit: API positioning/frozen player and a temporary wall isolate conditions. No AI state/progress changes or asset saves. Native keyboard movement is not tested. Screenshots still require root visual review.
+PASS: Actual patrol is travelling toward the second configured waypoint.
+PASS: Actual ObservePlayer entered Alert without a forced state.
+PASS: Visible Alert accumulated to half while the body stayed still.
+SCREENSHOT: E:/DD451/Docs/Verification/Enemy/AlertFill/RootAcceptance/Scenario-2613fad1\01-AlertHalf.png
+PASS: Actual wall occlusion reduced half-fill to about25% without moving the drone.
+SCREENSHOT: E:/DD451/Docs/Verification/Enemy/AlertFill/RootAcceptance/Scenario-2613fad1\02-OccludedQuarter.png
+PASS: Reacquisition resumed from the remaining quarter and reached half again.
+SCREENSHOT: E:/DD451/Docs/Verification/Enemy/AlertFill/RootAcceptance/Scenario-2613fad1\03-ResumedHalf.png
+PASS: Decay to zero returned to Patrol with the same second-waypoint target.
+PASS: Moving the current waypoint at runtime changed both the public target and actual travel.
+PASS: Changing waypoint array order changed the current target and actual movement.
+PASS: Real body overlap ran for at least0.12 game seconds in Alert without damage or explosion.
+PASS: A second continuous real Alert reached natural Chase at the authored timing; no forced ChangeState.
+SCREENSHOT: E:/DD451/Docs/Verification/Enemy/AlertFill/RootAcceptance/Scenario-2613fad1\04-NaturalChase.png
+PASS: Natural Chase moved for at least0.15 game seconds before contact.
+PASS: Actual physics contact in Chase caused one explosion and one health loss.
+PASS: Another0.3 game seconds produced no duplicate damage; model, fan and light stayed hidden.
+SCREENSHOT: E:/DD451/Docs/Verification/Enemy/AlertFill/RootAcceptance/Scenario-2613fad1\05-ExplosionCleanup.png
+PASS: All requested API-assisted runtime checkpoints passed. Root must still inspect saved screenshots.
+Maximum measured Alert body drift=0
+Ended in Play for root review; Time.timeScale=1, runInBackground=false, observer removed, temporary wall/waypoint/player-body changes restored. The tested drone's real explosion and player's one health loss are intentionally not reset.

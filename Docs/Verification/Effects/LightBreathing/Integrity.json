@@ -1,0 +1,14 @@
+[
+  {
+    "Path": "Assets/Scenes/Shelter.unity",
+    "Unchanged": true
+  },
+  {
+    "Path": "Assets/Prefabs/灯光.prefab.meta",
+    "Unchanged": true
+  },
+  {
+    "Path": "Assets/Scripts/Effects/MonoBehaviour/LightFlicker.cs.meta",
+    "Unchanged": true
+  }
+]

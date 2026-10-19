@@ -1,0 +1,27 @@
+09I Stealth Vignette file integrity audit
+Capture UTC: 2026-10-19T17:24:46.7714219Z through 2026-10-19T17:24:50.1765395Z
+Read-only Assets inspection; no Unity, no tests, no rollback. Only Docs outputs.
+Baseline files=4639; unchanged=4635; expected modified=3; missing=0; unexpected changed=1.
+Existing meta unchanged=2405/2405. Expected new files=7; other unlisted files=0; TextMesh Pro files absent from baseline=81.
+Expected existing changes: Ruins.unity and the Enemy / Enemy.PlayModeTests asmdefs. Both asmdefs add only Core.Runtime and Universal.Runtime references; all other text retained.
+Ruins whole-text reconstruction=True; reconstructed UTF8 hash matches baseline=True.
+Ruins additions: exactly seven YAML blocks for two new GameObjects, their two Transforms, two Volumes and one PlayerStealthVignette; two children added under existing ScenePresentation; one four-line PP=true override on existing OutputCamera. Reversing only those additions exactly recovers the baseline file.
+Therefore existing object positions/layout, all Lights, patrol routes, loot boxes, colliders, RenderSettings, camera properties other than declared PP and all other serialized fields retain baseline bytes. No scene objects were deleted.
+New neutral Profile has only three enabled overrides: ToneNone/Bloom0/Vignette0. Ruins low Volume uses its GUID; high Volume starts weight0/priority10 and binds the existing cameraBinder. Runtime script uses a private Vignette Profile. New asset GUIDs and references are recorded in JSON.
+Current scenes=12. Other 11 scene files match baseline. Shared Player, Shelter/latest profile, PC/default/quality profiles, existing Enemy behavior code, 07F code, dust, ProjectSettings and package declarations match their baseline entries. See explicit Drone.prefab exception below; do not claim all prefabs are unchanged.
+81 TextMesh Pro files are present but unlisted in the baseline, with stored mtimes in 2023-2025. They are not declared 09I additions and no rollback or historical-hash claim is made.
+Protected groups:
+  Player scripts and shared prefabs: 33/33 unchanged
+  Shelter scene and local profile: 5/5 unchanged
+  Shared rendering settings/profiles: 14/14 unchanged
+  Enemy production existing files excluding intended asmdef: 31/31 unchanged
+  07F GameFlow and Loot code: 40/40 unchanged
+  Existing effects and dust: 7/7 unchanged
+  ProjectSettings: 25/25 unchanged
+  All existing prefabs including art: 607/608 unchanged
+  Project prefabs: 30/31 unchanged
+ATTENTION: additional entries are listed below; this audit does not attribute or revert concurrent work.
+  CHANGED Assets\Prefabs\Enemy\Drone\Drone.prefab
+Drone.prefab differs only in a Transform localRotation and localEulerAnglesHint (0,0,0)->(0,-181.2,0), plus DroneVision.directionDegrees 0->-24. Current SHA256 C19091C6F6F2855ED825ECBF867A23D7AF8249ABD236967F5A26F13DA004A477; mtime 2026-10-19T17:08:58.0796644Z. Comparison source matches the 09I baseline hash. Root confirms these are not 09I writes; specific author/cause remains unknown. Current file preserved, no rollback.
+TEST SOURCE FINAL: SHA256 60C7231A999E524AF999D96185C015E8FC8BFBB008F2B8260B215E21FFF034F0; observed hash matches=True. Final fixture disables Rigidbody interpolation on the kinematic test player.
+Saved official PlayMode-6-Final.xml: one final six-case run, 6 passed / 0 failed / 0 skipped, 2026-10-19 17:23:49Z to 17:23:54Z; direct XML verification=True. Individual case names/times and source XML hash are in Integrity.json. This audit did not execute Unity or tests. Earlier failed runs remain separate historical evidence.

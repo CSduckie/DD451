@@ -1,0 +1,34 @@
+[
+  {
+    "Path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs",
+    "Hash": "6D46529EC12FD1875702C8E57CC05175278EF25FF5DDF2385BF7C7C684A91F42"
+  },
+  {
+    "Path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs",
+    "Hash": "63EB309B2A25DA977B429CD94EF2DDAABBA330282883FE40D60B2E4250D418D0"
+  },
+  {
+    "Path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs",
+    "Hash": "CE69C68768D7E7367E35ACB6F5BC03F87596A905C499C67E78FCAE4BC4C5C75B"
+  },
+  {
+    "Path": "Assets/Prefabs/Enemy/Drone/Drone.prefab",
+    "Hash": "846AFDD672B2E2836E566E13EEF0CFD987287C89DF91C67741A0DE8D88261FFC"
+  },
+  {
+    "Path": "Assets/Prefabs/Enemy/Drone/Drone.prefab.meta",
+    "Hash": "7373C79FC9230FA996B140D761A8E06DE02E78D0803E5FA2FDAF064B771E4603"
+  },
+  {
+    "Path": "Assets/Scenes/Tests/Enemy/EnemyTest.unity",
+    "Hash": "AA62E8EDC69AC0C08F7F4F8FA6DE3AD0425A0DDFB7FC344B85D20C7D40242200"
+  },
+  {
+    "Path": "Assets/Scenes/Shelter.unity",
+    "Hash": "2C5CDA0B00B9A5C0AA8C5FDE3B2D949DB94247F14F048AA242FE716D1DD7EBCD"
+  },
+  {
+    "Path": "Assets/Scenes/Ruins.unity",
+    "Hash": "A440DBD94EBAA2C3AB4DCCCEFE3B94E8F84C2388664C7B95D2606F0E214A77E1"
+  }
+]

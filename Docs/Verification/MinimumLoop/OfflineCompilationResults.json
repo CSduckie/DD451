@@ -1,0 +1,292 @@
+{
+  "Check": "Offline C# compilation only; Unity import, tests and gameplay are not executed.",
+  "StartedUtc": "2026-10-18T18:52:55.6002308Z",
+  "FinishedUtc": "2026-10-18T18:53:19.4169128Z",
+  "ProjectRoot": "E:\\DD451",
+  "OutputDirectory": "E:\\DD451\\Temp\\Task007OfflineCompile",
+  "ExpectedAssemblyCount": 40,
+  "CompiledAssemblyCount": 40,
+  "Passed": true,
+  "Assemblies": [
+    {
+      "Assembly": "MyPrecious.Health",
+      "SourceCount": 1,
+      "TemplateAssembly": "MyPrecious.Health",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Items",
+      "SourceCount": 6,
+      "TemplateAssembly": "MyPrecious.Items",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.StateMachine.Contracts",
+      "SourceCount": 1,
+      "TemplateAssembly": "MyPrecious.StateMachine.Contracts",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.StateMachine",
+      "SourceCount": 2,
+      "TemplateAssembly": "MyPrecious.StateMachine",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Interaction",
+      "SourceCount": 2,
+      "TemplateAssembly": "MyPrecious.Interaction",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Player",
+      "SourceCount": 12,
+      "TemplateAssembly": "MyPrecious.Player",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Bootstrap",
+      "SourceCount": 1,
+      "TemplateAssembly": "MyPrecious.Bootstrap",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Localization",
+      "SourceCount": 4,
+      "TemplateAssembly": "MyPrecious.Localization",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Backpack",
+      "SourceCount": 7,
+      "TemplateAssembly": "MyPrecious.Backpack",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Backpack.EditModeTests",
+      "SourceCount": 2,
+      "TemplateAssembly": "MyPrecious.Backpack.EditModeTests",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Backpack.TestDoubles",
+      "SourceCount": 1,
+      "TemplateAssembly": "MyPrecious.Backpack.TestDoubles",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Player.TestDoubles",
+      "SourceCount": 3,
+      "TemplateAssembly": "MyPrecious.Player.TestDoubles",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Backpack.Editor",
+      "SourceCount": 2,
+      "TemplateAssembly": "MyPrecious.Backpack.Editor",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Backpack.PlayModeTests",
+      "SourceCount": 1,
+      "TemplateAssembly": "MyPrecious.Backpack.PlayModeTests",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Base.PlayModeTests",
+      "SourceCount": 1,
+      "TemplateAssembly": "MyPrecious.Base.PlayModeTests",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Warehouse",
+      "SourceCount": 7,
+      "TemplateAssembly": "MyPrecious.Warehouse",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Shelter",
+      "SourceCount": 3,
+      "TemplateAssembly": "MyPrecious.Shelter",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Loot",
+      "SourceCount": 12,
+      "TemplateAssembly": "MyPrecious.Loot",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.GameFlow",
+      "SourceCount": 5,
+      "TemplateAssembly": "MyPrecious.GameFlow",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.GameFlow.EditModeTests",
+      "SourceCount": 2,
+      "TemplateAssembly": "MyPrecious.GameFlow.EditModeTests",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.GameFlow.Editor",
+      "SourceCount": 1,
+      "TemplateAssembly": "MyPrecious.GameFlow.Editor",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.GameFlow.PlayModeTests",
+      "SourceCount": 2,
+      "TemplateAssembly": "MyPrecious.GameFlow.PlayModeTests",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Items.EditModeTests",
+      "SourceCount": 2,
+      "TemplateAssembly": "MyPrecious.Items.EditModeTests",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Items.TestDoubles",
+      "SourceCount": 2,
+      "TemplateAssembly": "MyPrecious.Items.TestDoubles",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Items.PlayModeTests",
+      "SourceCount": 1,
+      "TemplateAssembly": "MyPrecious.Items.PlayModeTests",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Localization.EditModeTests",
+      "SourceCount": 1,
+      "TemplateAssembly": "MyPrecious.Localization.EditModeTests",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Localization.TestDoubles",
+      "SourceCount": 1,
+      "TemplateAssembly": "MyPrecious.Localization.TestDoubles",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Localization.Editor",
+      "SourceCount": 1,
+      "TemplateAssembly": "MyPrecious.Localization.Editor",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Localization.PlayModeTests",
+      "SourceCount": 1,
+      "TemplateAssembly": "MyPrecious.Localization.PlayModeTests",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Loot.TestDoubles",
+      "SourceCount": 2,
+      "TemplateAssembly": "MyPrecious.Loot.TestDoubles",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Loot.EditModeTests",
+      "SourceCount": 3,
+      "TemplateAssembly": "MyPrecious.Loot.EditModeTests",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Loot.Editor",
+      "SourceCount": 2,
+      "TemplateAssembly": "MyPrecious.Loot.Editor",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Loot.PlayModeTests",
+      "SourceCount": 2,
+      "TemplateAssembly": "MyPrecious.Loot.PlayModeTests",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Player.EditModeTests",
+      "SourceCount": 2,
+      "TemplateAssembly": "MyPrecious.Player.EditModeTests",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Player.EditorTests",
+      "SourceCount": 1,
+      "TemplateAssembly": "MyPrecious.Player.EditorTests",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Player.PlayModeTests",
+      "SourceCount": 5,
+      "TemplateAssembly": "MyPrecious.Player.PlayModeTests",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Warehouse.EditModeTests",
+      "SourceCount": 2,
+      "TemplateAssembly": "MyPrecious.Warehouse.EditModeTests",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Warehouse.TestDoubles",
+      "SourceCount": 1,
+      "TemplateAssembly": "MyPrecious.Warehouse.TestDoubles",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Warehouse.Editor",
+      "SourceCount": 2,
+      "TemplateAssembly": "MyPrecious.Warehouse.Editor",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    },
+    {
+      "Assembly": "MyPrecious.Warehouse.PlayModeTests",
+      "SourceCount": 1,
+      "TemplateAssembly": "MyPrecious.Warehouse.PlayModeTests",
+      "ExitCode": 0,
+      "Log": "E:\\DD451\\Docs\\Verification\\MinimumLoop\\OfflineCompilation.log"
+    }
+  ]
+}

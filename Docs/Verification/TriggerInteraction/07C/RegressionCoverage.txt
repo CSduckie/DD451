@@ -1,0 +1,159 @@
+07C / 07D PlayMode回归覆盖审计
+审计对象：Docs/Verification/TriggerInteraction/07C/PlayMode-85-Initial.xml
+该文件是初次85项运行的保留副本；审计开始时名称为PlayMode-85-Final.xml，主程为后续复跑替换Final前复制为Initial，SHA256相同。
+第1—5节保留该初始运行事实；第6—7节记录Binder修复、DX12实际失败和另一独立中断；第8节为DX11完整自动回归，第9节为保存后微调回归、视觉和最终退出。不能将各次成绩合并成一次运行。
+当前状态：IMPLEMENTED_AUTOMATED_VALIDATED / NATIVE_ACCEPTANCE_PENDING。EditMode149/149；微调前DX11 PlayMode85/85，正常模块加载相机warning0、预期故障相机诊断6；保存后GameFlow8/8与正式1920视觉已核验，root已于02:06 UTC明确释放Unity。Windows原生两轮未完成，旧04混合按键失败保持未关闭。
+审计方式：只读XML、对应测试源码和场景序列化引用；未操作Unity，未编辑Assets。
+审计日期：2026-10-18（本机时区）；本次测试UTC时间为2026-10-19。
+
+1. 官方结果与计数
+
+XML test-run result=Passed，total=85，passed=85，failed=0，skipped=0，inconclusive=0。
+开始：2026-10-19 01:20:07Z；结束：01:21:12Z；duration=65.2295333秒。
+对实际test-case叶节点重新计数为85，全部Passed，与三个程序集汇总一致。
+XML SHA256：AAC20506A8849D8907674986A9D6F72F92A0FD899791E14CA0B1E2164C8CB26B。
+
+程序集                                      通过/执行  fixture明细
+MyPrecious.GameFlow.PlayModeTests.dll        8/8       MinimumLoopPointerTests 1；MinimumLoopSceneTests 5；PlayerSceneTransitionTests 2
+MyPrecious.Loot.PlayModeTests.dll            37/37     LootIntegrationTests 37
+MyPrecious.Player.PlayModeTests.dll          40/40     PlayerCameraBoundsTests 7；PlayerIntegrationTests 4；PlayerInteractionTests 6；PlayerJumpGraceTests 5；PlayerMovementTests 5；PlayerReferenceMovementTests 3；PlayerTriggerInteractionTests 10
+
+GameFlow的“正式场景六项”仍是1+5；程序集另含两项PlayerSceneTransitionTests，所以总数为8，不能写成正式流程新增了两项。
+外层DD451Demo的testcasecount=128是发现集元数据，本次实际执行total=85；不能据此宣称128项通过。
+XML asserts=0属于本导出结果的计数形式，不代表源码未执行断言；本审计通过对应源码核对覆盖。
+主程报告MCP曾返回初始化超时；该工具状态不在XML内。这里确认的是完整官方XML已有结束时间和85个通过叶节点，不把MCP超时解释为测试失败。
+
+2. 07C正式流程证据
+
+MinimumLoopPointerTests.FormalSearchPickupExtractionAndBidirectionalStorageUseQueuedPointers：Passed。
+XML明确输出“Formal queued-pointer integration at 1920x1080; not native OS input.”，源码同时断言1920×1080。
+实际调用正式Bootstrap/Shelter/Ruins场景，完成两轮出发、撤离、返家和再次绑定。
+仓库、出发、撤离、正式箱与地面来源使用QueueStateEvent的E，经Player/InputAction入口执行。
+进入配置Trigger前后检查CurrentTarget、PromptKey、当前语言HUD提示以及流程轮次/UI未自动变化；范围外E不打开仓库或改变阶段。
+玩家定位仍使用RelocateWithinRun测试夹具，并以真实Capsule/Trigger ComputePenetration及CanReachTarget核验；不是用物理键盘一路走到目标。
+搜索用真实LootUI.Update推进：确认未揭示项已有SearchElapsed>0后出范围，计时归零；已揭示项拖拽时出范围取消，迟到松鼠标不提交，重进后保留已揭示、同一Entry/物品身份与原格位。
+UI锁清掉CurrentTarget后，空间CanReachTarget和来源Session仍有效。
+保留07B普通精确返箱、旋转/抓取偏移、网格外空白拒绝、左右Ctrl单击四向单次提交、第二轮UI重绑、迟到动作、物品身份/来源、EV=7和唯一物不重复生成断言。
+保留66/4/6实际背景/多格/预览、固定箱宽高、仓库升级新增底行实际命中、双向存取，以及F10中英状态跨场景保留等已有验证。
+
+MinimumLoopSceneTests五项：全部Passed。
+- BootstrapStartsEmptyAtRoundZeroAndTwoTransitionsKeepOnePlayer：初始空包/空仓/轮次0、两轮同一个玩家、场景归属、唯一运行系统。
+- LoadedTargetBindingFailureRetriesTheSameSceneAndAllocatedRound：临时移除目标spawnPoint，失败后沿用已加载场景与已分配轮次重试，不重复生成。
+- ReturnLoadFailurePreservesWorldItemsAndRetrySettlesOnlyOnce：使用不存在的返家场景路径，失败不提前结算，恢复后恰好结算一次。
+- UsedMedkitAndHealthSurviveReturnAndUiReopenUntilTheNextDeparture：医疗包使用次数/受伤生命与背包布局在返回和重开UI时保留，下一轮才重置。
+- FullWarehouseAllowsReturnAndAnotherDepartureWithoutMovingCarriedLoot：满仓不阻止撤离或再出发，携带物身份/位置保留。
+这些场景测试通过公开业务API安排流程和物品初态；它们不是键鼠输入测试。其全场景Interactable审计包含inactive对象，验证显式Trigger归属，并区分合法禁用与接线错误。
+
+PlayerTriggerInteractionTests十项：全部Passed。
+覆盖旧球范围内但Trigger外拒绝、大Trigger允许模型留缝且不自动交互、center/depth与偏Z模型、真实墙到锚点遮挡、旋转Box的真实形状、多身体Collider、传送/禁用/销毁、稳定目标选择、UI/业务锁独立空间检查、缺失/非Trigger/错误归属诊断与恢复。
+PlayerInteractionTests六项和PlayerMovementTests的RealKeyboardInteractFiresOnceAndDoesNotReplayThroughLocksOrReenable也通过；方法名RealKeyboard指Input System测试设备，不是Windows实体键盘证明。
+
+LootIntegrationTests关键07C用例：全部Passed。
+- QueuedEOpensSearchDespiteClearedCurrentTargetAndHiddenEntryCannotTransfer。
+- LeavingExplicitTriggerAndRealWallInterruptSearchWhileUiLockDoesNot。
+- TriggerExitAndDisableCancelSearchDragButKeepRevealsAndIdentityOnReentry。
+- RevealedEntryPointerPickupContinuesNextSearchAndDamageCancelsLateRelease。
+- ClosingEndsSourceAndPreviewBeforeReleasingBackpackControl。
+其余37项中的既有快捷转移、普通精确落位、丢弃确认/语言/失效会话、伤害与重载取消、搜索/格位/身份等回归也为Passed。模块场景和专用fixture的结果不能替代正式场景原生试玩。
+
+3. 07D相机证据
+
+正式两轮用例与五项SceneTests复用MinimumLoopSceneTests.AssertSceneCamera。
+在阶段到达后yield一帧、以及正式交互定位后，读取真实Brain输出；没有ManualUpdate、测试自定义相机clamp或修改边界制造通过。
+断言当前scene的Binder/player/Follow/BoundingVolume归属、原生Confiner3D唯一且有效、实际输出Camera中心位于BoxCollider内、唯一启用Camera/Brain/AudioListener、透视FOV50、CameraDistance12及相机Z=playerPlaneZ-12。
+Shelter与Ruins使用不同尺寸的独立边界；切换后当前引用不可指向旧场景。
+这是指定采样帧的运行断言，不等同于逐渲染帧录像、所有视角画面四边限制或人工边缘平滑度验收。
+
+PlayerCameraBoundsTests七项：全部Passed。
+- InactiveAncestorsValidateAndDeferFollowingUntilBoundsAreActive。
+- MissingDisabledAndSolidBoundsRejectFollowWithDiagnostics。
+- WrongSceneAndDestroyedVolumesCannotKeepAStaleBinding。
+- NativeBrainConfinesWarpAndReplacementVolumeWithoutChangingLens。
+- RebindingAndUnbindingRemoveOldPlayerWarpSubscriptions。
+- ReplacingFollowCameraClearsThePreviouslyBoundCamera。
+- BoundsUnderOutputCameraAreRejectedAsMovingGeometry。
+NativeBrain用例使用真实CinemachineBrain/Confiner3D，但专用fixture把Brain设为ManualUpdate并主动调用；“Native”在此表示Unity原生相机扩展，不表示原生OS键鼠。
+另有既存Cinemachine跟随/瞬移/换玩家用例通过。两项PlayerSceneTransitionTests验证切换锁、物理冻结、输入清理及死亡状态保留。
+
+4. 警告和异常审计：不能写成“零警告”或“全部预期”
+
+明确的故障注入输出：
+- GameFlow两条场景错误分别属于上文故意缺spawnPoint、使用Missing-MinimumLoop-Test路径；是预期失败重试分支。
+- PlayerCameraBoundsTests有6条[PlayerCameraBounds]警告：非法移动边界1、缺引用/销毁共2、禁用或非Trigger共2、外场景引用1；对应源码LogAssert.Expect。
+- PlayerTriggerInteractionTests.MissingNonTriggerAndForeignOwnedRangesAreDiagnosedOnceUntilRepaired产生5条“交互配置错误 [interactionTrigger]”，源码逐次期待并检查诊断去重/恢复。
+- PlayerIntegrationTests.ObserverExceptionCannotInterruptRealItemAccounting中的InvalidOperationException: observer failed是人为抛出的监听者异常，源码LogAssert.Expect(LogType.Exception, ...)明确接收。
+- MCP TestRunnerNoThrottle恢复Interaction Mode及Saving results to是工具收尾信息，不是游戏错误。
+
+非故障注入的正常模块加载警告：
+同一“[PlayerCameraBounds] CameraBounds必须属于当前相机场景，不能引用其他Additive场景的边界。”共出现42次。
+其中1次是上文WrongScene故障测试；其余41次是正常模块加载：LootIntegrationTests共39次（37项均加载，2项又重载一次），PlayerIntegrationTests.RealSceneRequiresExplicitPreparationAndReloadPreservesConsumedItems一个用例加载/重载共2次。
+这些41次没有LogAssert.Expect，不能归类为预期诊断，也不能因为所有case Passed就忽略。
+正式GameFlow六项的XML中没有此类相机边界警告。
+
+静态根因推断（尚无该时刻scene状态/调用栈的运行采样）：
+PlayerCameraTargetBinder.OnEnable立即Bind→RefreshBinding→ValidateBounds；ValidateBounds把!gameObject.scene.isLoaded和真正外场景BoundingVolume放在同一错误分支。
+模块测试直接Additive加载已active、序列化player非null的相机；正常加载时OnEnable可能早于scene.isLoaded=true。
+LootTest/PlayerTest资产的BoundingVolume均为各自场景文件内的CameraBounds引用，未发现错误的跨场景资产引用。警告次数与加载/重载次数吻合，因此高度支持加载暂态假阳性，而非持久错误接线。
+最小建议已交主程：RefreshBinding发现自身scene有效但尚未isLoaded时，Unbind并暂缓，等待后续Update正常验证；保留公开ValidateBounds的严格校验、真正无效配置警告和外场景引用清理。不要只在测试中忽略日志。
+初始XML审计时尚未证明这41次警告已修复；后续修复及实际复跑闭环见第6—7节，不改写本节历史日志。
+
+5. 证据边界与剩余验收
+
+已证实：这份官方PlayMode XML的85项全部通过；正式1920×1080两轮queued E/鼠标、API场景流程、原生Cinemachine输出及相关模块回归按上述范围通过。
+排队事件由InputSystem.QueueStateEvent驱动真实Player/InputAction/UIInputModule/UGUI；测试期间隔离实体输入并finally恢复设备/settings。其定位、伤害、故障注入或部分初态仍由API安排，不能描述为纯原生端到端键鼠试玩。
+未由本XML证明：Windows实体/原生自动化键鼠的两轮试玩、真实画面左右边缘移动与跳跃时的相机平滑度、截图视觉验收、编辑器最终退出Play/保存状态，以及正常模块启动零假阳性警告。
+本次未包含Backpack/Warehouse PlayMode程序集，也不是EditMode报告；不能借此关闭历史07B其它程序集单项失败、EditMode结果或先前原生输入限制。各自以独立证据为准。
+当前显示基准按ProjectRules A23为1920×1080；本报告不宣称新增800×600/1280×720双尺寸验收。
+
+6. 后续源码修复与实际验证（不改写上面的初始XML事实）
+
+主程退出Play并备份后，已最小修改PlayerCameraTargetBinder.RefreshBinding：自身scene有效但尚未isLoaded时Unbind并返回，后续Update继续正常绑定；ValidateBounds严格条件及真正无效配置诊断保持。
+PlayerIntegrationTests既有RealSceneRequiresExplicitPreparationAndReloadPreservesConsumedItems内增加Application.logMessageReceived监听，捕获全部[PlayerCameraBounds]日志，分别在初次加载和重载后要求无诊断且唯一相机Binder已经完成Follow/本场景边界绑定；finally解除监听。原有业务断言与用例数量保持。
+这次只编辑上述两个源文件；原文件及.meta已由主程备份在Docs/Verification/CameraBounds/07D/Before的对应路径，编辑前核对源码哈希一致。
+上述源码已经进入下文DX12实际复跑。既有PlayerIntegrationTests.RealSceneRequiresExplicitPreparationAndReloadPreservesConsumedItems为Passed；新增首次加载、卸载后重载的boundsLogs为空、唯一启用Binder、本场景有效Bounds、LastBoundsError为空、Confiner.IsValid和实际Follow目标一致断言均在当前测试源码中。原有物品/轮次/死亡/消耗身份断言保留，因此不是仅静默取消绑定以消除日志。
+逐test-case读取DX12 XML的output：LootIntegrationTests和PlayerIntegrationTests的[PlayerCameraBounds]输出均为0，初始39+2次正常加载暂态警告在该复跑中已消除。全文件仍有6条相机配置故障测试的预期诊断，分别来自移动边界拒绝1、缺失/禁用/非Trigger3、外场景/销毁2；对应测试全部Passed。真正无效配置的诊断并未被屏蔽。
+因此本轮已实测关闭“正常加载/重载的41次暂态警告”这一缺陷；不能把这项修复结论扩展成DX12整个组合已通过或所有平台最终验收完成。
+FinalSourceAudit.json（07D目录，01:35:14.628Z）检查318项冻结源码/meta范围，仅三项post-freeze集成修复变化：PlayerInteraction身体缓存、PlayerCameraTargetBinder加载暂缓、PlayerIntegrationTests既有加载/重载回归断言。对应最后两项真实Before及meta均保留；本报告只读复核diff，没有改Assets。
+
+7. DX12复跑、另一轮中断与临时DX11重启
+
+官方结果：Docs/Verification/CameraBounds/07D/PlayMode-85-DX12.xml。
+SHA256：4482FC081A415830FB5F17FB26577D20C2562DA20111CEA3BC323C5FB39BF855。
+开始2026-10-19 01:35:46Z；结束01:38:26Z；duration=160.869664秒。
+test-run result=Failed(Child)，85个叶节点：84 Passed、1 Failed、0 skipped/inconclusive。
+GameFlow 8/8；Player 40/40（含CameraBounds 7/7、PlayerIntegration 4/4）；LootIntegration 36/37。
+唯一失败：LootIntegrationTests.QueuedWheelScrollRevealsLastLootDragAndMovesTheRealWarehouseViewport。
+failure.message为：Unhandled log message: '[Assert] d3d12: failed to wait for fence (258).'. Use UnityEngine.TestTools.LogAssert.Expect。
+这是该XML记录的Unity图形后端Assert日志失败，不是报告中出现了某个业务坐标断言差值；也不能因此当作该滚轮用例已经通过或推断其剩余断言全部完成。保留84/85失败事实，未添加LogAssert.Expect来忽略此图形故障。
+正式两轮queued Pointer、五项正式Scene测试、两项场景转换和全部Player测试在DX12轮仍Passed；正常加载相机warning修复已按第6节验证。该时刻DX11组合尚未运行；新的完整结果见第8节，不能借新85/85覆盖本节DX12的84/85历史。
+
+另一次复跑的中断证据：Docs/Verification/CameraBounds/07D/InterruptedRerun-EditorLog.txt。
+该片段记录脚本编译请求、Reloading assemblies/Begin MonoManager ReloadAssembly、MCP恢复domain reload后，以及Unity TestRunner PlayModeRunTask.cs:52的NullReferenceException、An unexpected error happened while running tests和ExitPlayModeTask错误。它证明另一次运行经历了异常域重载/Runner中断，不是上述DX12完整XML的唯一失败原因，也不产生一组可用的完整case通过成绩。
+片段有Assetdatabase observed changes文案，但没有足够证据确定具体是谁修改了哪份文件，不能归因窗口焦点、用户切换窗口或某聊天写文件；末段refresh的Asset File Changes=0也不能反向证明整段没有更早事件。本报告不作操作者或焦点归因。
+
+安全重启过程：BeforeDX11Restart.json于01:39:06.488Z记录Bootstrap、Play=false、dirty=false、当时graphics=Direct3D12及计划临时参数-force-d3d11。root现场核实仅Bootstrap、PrefabStage=null，恢复Application.runInBackground与PlayerSettings.runInBackground为false。第一次EditorApplication.OpenProject同工程尝试没有重启，原PID48276/Direct3D12仍在；deferred exit也未执行。RestartRetry.txt记录01:41:04.937Z重新确认clean后调用graceful EditorApplication.Exit，再由正常Unity CLI以同工程及-force-d3d11启动新PID85336。主程确认DX11后才进行第8节复跑。没有修改Project graphics API配置；没有把首次未生效尝试写成成功重启。重启前clean状态不构成最终Unity释放。
+
+8. DX11最终自动回归（已完成；视觉/原生/release分开）
+
+真实结果原件：Docs/Verification/CameraBounds/07D/PlayMode-85-DX11.xml。
+07C/PlayMode-85-Final.xml为该文件的真实副本；两份均70863字节，SHA256相同：
+AE8098A71233DD4619B493E2C7611F42BBFA34A899E3A35EA73AA16D73CF5C1D。
+开始2026-10-19 01:49:19Z；结束01:50:25Z；duration=65.5338157秒。
+test-run result=Passed；85个唯一test-case叶节点，85 Passed、0 Failed、0 Skipped/Inconclusive；fixture与程序集计数一致。
+GameFlow8/8（Pointer1、Scene5、PlayerSceneTransition2），LootIntegration37/37，Player40/40（CameraBounds7、Integration4、Interaction6、JumpGrace5、Movement5、ReferenceMovement3、TriggerInteraction10）。
+此前DX12日志失败的QueuedWheelScrollRevealsLastLootDragAndMovesTheRealWarehouseViewport此次Passed；新Player初次加载/重载无诊断且实际Follow校验的RealSceneRequiresExplicitPreparationAndReloadPreservesConsumedItems此次Passed、output为空。
+逐test-case output核对：正常LootIntegration/PlayerIntegration的[PlayerCameraBounds]日志0；全XML仅6条相机配置故障测试预期诊断（1+3+2），均对应第4/6节的故意非法配置且case Passed。没有D3D12/fence故障记录。不能把“正常加载零误报”写成整个故障注入测试没有任何warning。
+原始85/85含41误报、DX12的84/85及另一次domain-reload中断证据均保留；不删除或掩盖不同阶段结果。
+主程本次复跑后检查报告：Bootstrap为唯一clean场景、非Play/非compile，Application与PlayerSettings.runInBackground=false，仅原生Keyboard/Mouse两个原设备。该快照供继续视觉准备，不等于最终release；本审计未操作Unity，也没有独立取得该时刻实时状态。
+自动回归已按本节范围通过；保存后微调、1920画面和最终退出证据见第9节。旧07B 04混合按键失败不在本85项范围内，保持未解决；原生两轮仍未完成。
+
+9. 保存后微调8项、普通Play视觉/API与最终退出
+
+Shelter/Ruins CameraBounds宽度分别由15.6/14.6变为16.8/15.8，MinimumLoopSceneBuilder同一行同步默认值；三文件真实Before/meta和微调前movement另存BeforeVisualTune。完整85项XML保留为微调前成绩，保存后仅复跑受影响GameFlow8项。
+官方GameFlow-8-VisualTune-Final.xml：2026-10-19 01:59:15Z—01:59:25Z，duration10.6402704秒，8/8 Passed、0失败/跳过；SHA256 DBCA93267C74F0A9F48B329808B2B72C50C4392B71075C1C0F12A6F81CC6736B。无CameraBounds warning或D3D12故障；输出保留queued输入声明、两项故意注入的接线/缺失场景诊断与TestRunner收尾。MCP因reload作业状态陈旧，root核对官方XML及实际非Play后clear_stuck；不是业务失败或缺失的测试结果。
+保存后普通Play的Shelter-Movement.json/Ruins-Movement.json分别含2118/2198个唯一完成渲染采样，全为1920×1080、error=null，左右/跳跃顶点均captured。实际相机X到达±8.4/约±7.9；maxOutside为0/4.76837158e-7，后者是浮点量级。跳跃上升2.32227564/2.32130456。采样经queued keyboard、真实Player/物理与Brain；序列内不传送玩家、不手动推进物理或相机，仍不能称Windows原生输入。详细统计在MovementAnalysis.json/.txt。
+root已逐张查看六张最终左右/顶点1920图，墙端玩家完整、顶点可见、HUD可读；中英文UI及正式Inspector核看记录在VisualReport.txt，VisualSamples.jsonl提供场景/镜头/Bounds/UI状态。旧黑底Shelter-Storage-Range-CN-1920.png无效，Final替代图有效；Preview图明确属于普通Play预保存阶段，最终宽度保存未改UI。这些画面不证明每次跨场景转换的每个首帧，也不声称三个module场景的全行程构图验收。
+OrdinaryLoop-API.jsonl记录真实Loot会话有效性检查后doll/medkit拾取Success，返家两次入仓Success，bag0/warehouse2；第二轮出发/返回settled2与同ID保留。初次漏传有效性回调的调用正确返回StaleRequest且无修改，补齐回调后成功。此为普通API流转证据，不是鼠标拖拽或原生第二轮；正式queued pointer两轮已由官方用例覆盖。
+NativeInput-DX11.json于01:51:50Z记录普通Play中原生点击GameView后Tab/F10没有触发背包/语言动作，GameView及Application焦点正常、仅启用原生RawInput键鼠。Windows原生完整两轮和原生平滑度仍NOT COMPLETED；没有Windows独立构建完成声明。旧07B/04混合按键失败未复验，不因本轮85/8通过关闭。
+ReleaseState.json于02:04:07.7235491Z记录清理状态，finalObservedUtc=02:06:20.4809702Z再次确认：唯一Bootstrap clean，Play/changing/paused/compiling/updating=false，PrefabStage=null；Application/PlayerSettings.runInBackground=false，EnterPlayMode enabled/DisableDomainReload；原启用RawInput Keyboard/Mouse两个设备，无恢复脚本、TestRunner场景残留及非当前隐藏InputSettings。当前默认InputSettings id=-884/HideAndDontSave合法保留。root末次Console0 errors/0 warnings；该现场结果与历史故障测试诊断分开。
+FinalVerification.json于02:05:30.2264946Z核验56资产/318源码相对FinalAssetHashAudit/FinalSourceAudit新增漂移均0。root在EditorCoordination追加007 EXPLICIT EDITOR RELEASE（02:06 UTC），009可复核现场后接手；Unity临时-force-d3d11保持，不以恢复DX12作为清理，也不声称其图形故障已根治。

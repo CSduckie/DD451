@@ -1,0 +1,24 @@
+Ruins player fill light: visual isolation audit
+Inputs:09-RuinsFillOff and10-RuinsFillOn,actual1920x1080 ordinary Play Game framebuffer PNGs; RuinsIsolationSetup.json.
+Read-only files/images. No Unity operation, Assets edit or original-image modification. No full hash audit.
+
+Controlled metadata:
+Both gameTime=116.94809; complete recorded camera/player/environment/effectiveStack/volumes/screen/stage/round/settledRound/scene/playerBounds match.
+All properties recorded for the other4lights match. The fill light differs only in enabled=false/true; mask2,urpMask2,intensity1.2,range4.5,white,no shadows and position(41.4360733,1.1,-2) are identical.
+Setup method:Runtime API positioning beside existing drone; natural scene frozen for isolation comparison.
+Existing drone is3.19698715units from the light,inside range4.5;39/39recorded drone renderers,including Vision,use mask1. nonPlayerDedicatedReceivers is empty.
+
+Image isolation:
+PNG coordinates use y=1080-WorldToScreenY. All16corners are in front of camera. Tight player bounds[920,586,1015,790),19380pixels; exterior excludes12px padding[908,574,1027,802).
+All12892changed pixels are inside the tight player bounds; exterior2046468pixels are RGB byte-identical with maximum channel difference0.
+Drone image ROI[1100,430,1220,515),10200pixels:0changed. Vision-cone image ROI[1190,125,1700,800),344250pixels:0changed. These screenshot-observed ROIs include background, and sit entirely outside the player ROI.
+Player tight-bounds mean encoded luma92.472278 -> 106.359383/255.
+Player central proxy[944,637,976,740),3296pixels:mean encoded luma134.966015 -> 167.805006/255;1.243x. All3296pixels brighten;none darken.
+Within all19380player-bounds pixels,any RGB channel==255 count before/after=0/0;all channels>=250 count=0/0;maximum final channel=244. No screenshot channel clipping or white flattening detected on the player.
+
+Visual review and scope:
+Both original images inspected:player remains teal with curved shading and clear facing marker;the nearby drone,blue vision cone,chest,platform,floor,sky and HUD remain visually unchanged.
+Ruins is already brighter than Shelter before fill. Camera postProcessing=false in both captures. Values present in the default effectiveStack do not mean those effects rendered. Environment was not adjusted for this comparison.
+Runtime API positioning beside an existing drone and frozen-time capture are not native keyboard play. This verifies the supplied view and configuration,not all enemy positions/materials or dynamic motion.
+The projected bounds include some background;central ROI is an interior proxy,not exact object segmentation. Luma uses Rec709 weights on encoded PNG RGB;decoded-sRGB values in JSON are relative screenshot luminance,not physical scene lux.
+No Assets or original PNGs were modified. Detailed checks,setup and region data are in RuinsIsolationAudit.json.

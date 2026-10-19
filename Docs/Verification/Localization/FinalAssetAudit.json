@@ -1,0 +1,63 @@
+{
+  "assets": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"success\":true,\"message\":\"Code executed successfully.\",\"data\":{\"result\":{\"tables\":4,\"keyCount\":85,\"validUniqueKeys\":true,\"missingFontCharacters\":\"\",\"fontMode\":\"Dynamic\",\"sourceFontBundled\":true,\"toggleAction\":\"Player/ToggleLanguage\",\"scenes\":[{\"path\":\"Assets/Scenes/Tests/Player/PlayerTest.unity\",\"missingScripts\":0,\"modules\":1},{\"path\":\"Assets/Scenes/Tests/Items/ItemsTest.unity\",\"missingScripts\":0,\"modules\":1},{\"path\":\"Assets/Scenes/Tests/Localization/LocalizationTest.unity\",\"missingScripts\":0,\"modules\":1}],\"activeScene\":\"Assets/Scenes/Tests/Player/PlayerTest.unity\",\"dirty\":false,\"playing\":false,\"options\":\"None\",\"optionsEnabled\":false},\"compiler\":\"codedom\"}}"
+      }
+    ],
+    "structuredContent": {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "tables": 4,
+          "keyCount": 85,
+          "validUniqueKeys": true,
+          "missingFontCharacters": "",
+          "fontMode": "Dynamic",
+          "sourceFontBundled": true,
+          "toggleAction": "Player/ToggleLanguage",
+          "scenes": [
+            {
+              "path": "Assets/Scenes/Tests/Player/PlayerTest.unity",
+              "missingScripts": 0,
+              "modules": 1
+            },
+            {
+              "path": "Assets/Scenes/Tests/Items/ItemsTest.unity",
+              "missingScripts": 0,
+              "modules": 1
+            },
+            {
+              "path": "Assets/Scenes/Tests/Localization/LocalizationTest.unity",
+              "missingScripts": 0,
+              "modules": 1
+            }
+          ],
+          "activeScene": "Assets/Scenes/Tests/Player/PlayerTest.unity",
+          "dirty": false,
+          "playing": false,
+          "options": "None",
+          "optionsEnabled": false
+        },
+        "compiler": "codedom"
+      }
+    },
+    "isError": false
+  },
+  "console": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"success\":true,\"message\":\"Retrieved 0 log entries.\",\"data\":[]}"
+      }
+    ],
+    "structuredContent": {
+      "success": true,
+      "message": "Retrieved 0 log entries.",
+      "data": []
+    },
+    "isError": false
+  }
+}

@@ -1,0 +1,414 @@
+// Unity MCP execute_code METHOD BODY. Prepared only; do not add this file to Assets.
+// Run once in a disposable EnemyTest Play session after Driver.IsReady, with GameView
+// rendering at 1920x1080 and Editor not paused. Stop Play after reviewing the output.
+// This controlled fixture uses the saved scene's real Player, Drone, vision, light,
+// renderer and Camera. It changes runtime placement, camera framing and movement speeds.
+// It DOES NOT set AlertProgress, call SetAlertProgress/SetTint, or force an AI state.
+// A fresh enemy round is intentional and cannot be rolled back through the public API.
+// Restore below returns configuration/pose/settings, not the previous AI state/route index.
+// Read the actual scene first and adjust only these framing constants if necessary.
+var playerCenter = new UnityEngine.Vector3(-2f, 1.2f, 0f);
+var dronePosition = new UnityEngine.Vector3(-5f, 1.2f, 0f);
+var cameraPosition = new UnityEngine.Vector3(-2.2f, 2.5f, -12f);
+const float cameraSize = 4.4f;
+const string runningKey = "MyPrecious.ActualAlertProbe.Running";
+
+if (!UnityEditor.EditorApplication.isPlaying || UnityEditor.EditorApplication.isPaused)
+{
+    throw new System.InvalidOperationException("Use a running, unpaused EnemyTest Play session.");
+}
+if (UnityEditor.SessionState.GetBool(runningKey, false))
+{
+    throw new System.InvalidOperationException("An ActualAlertProbe is already scheduled; wait for its result or stop Play.");
+}
+if (UnityEngine.Screen.width != 1920 || UnityEngine.Screen.height != 1080)
+{
+    throw new System.InvalidOperationException("Set the active GameView to 1920x1080 before running the probe.");
+}
+var driver = UnityEngine.Object.FindFirstObjectByType<EnemyTestDriver>();
+if (driver == null || !driver.IsReady || driver.gameObject.scene.name != "EnemyTest"
+    || driver.drones == null || driver.drones.Length == 0)
+{
+    throw new System.InvalidOperationException("The real EnemyTest driver is not ready.");
+}
+var player = driver.player;
+var drone = driver.drones[0];
+var camera = UnityEngine.Camera.main;
+if (!DroneController.CanTarget(player) || player.IsBackpackOpen || player.IsCrouching
+    || drone == null || !drone.IsRunning || drone.HasExploded || drone.vision == null
+    || camera == null || !camera.isActiveAndEnabled)
+{
+    throw new System.InvalidOperationException("Use an alive, standing player with closed UI, a running first drone and the real main Camera.");
+}
+var vision = drone.vision;
+var renderer = vision.GetComponent<UnityEngine.MeshRenderer>();
+var capsule = player.GetComponent<UnityEngine.CapsuleCollider>();
+var statusLight = drone.GetComponentInChildren<DroneStatusLight>(true);
+var light = statusLight != null ? statusLight.targetLight : null;
+var brain = camera.GetComponent<Unity.Cinemachine.CinemachineBrain>();
+if (renderer == null || renderer.sharedMaterial == null || renderer.sharedMaterial.shader == null
+    || renderer.sharedMaterial.shader.name != "MyPrecious/DroneVision" || capsule == null || light == null)
+{
+    throw new System.InvalidOperationException("The real shader, player capsule or configured status light is missing.");
+}
+if (UnityEngine.Mathf.Abs(drone.config.alertFillSeconds - 2f) > 0.0001f
+    || UnityEngine.Mathf.Abs(drone.config.alertDecaySeconds - 2f) > 0.0001f)
+{
+    throw new System.InvalidOperationException("Acceptance expects the saved two-second fill and decay defaults.");
+}
+int wallLayer = -1;
+for (int i = 0; i < 32; i++)
+{
+    if ((vision.obstructionMask.value & (1 << i)) != 0) { wallLayer = i; break; }
+}
+if (wallLayer < 0) { throw new System.InvalidOperationException("Vision obstructionMask contains no wall layer."); }
+
+string output = System.IO.Path.Combine(UnityEngine.Application.dataPath, "../Docs/Verification/Enemy/AlertFill/Integration",
+    "ActualAlert-" + System.DateTime.UtcNow.ToString("yyyyMMddTHHmmssfffZ"));
+output = System.IO.Path.GetFullPath(output);
+System.IO.Directory.CreateDirectory(output);
+string reportPath = System.IO.Path.Combine(output, "SamplesAndResult.json");
+float originalTimeScale = UnityEngine.Time.timeScale;
+bool originalBackground = UnityEngine.Application.runInBackground;
+var originalConfig = drone.config;
+var originalRoute = drone.patrolPoints;
+int originalFacing = drone.initialFacing;
+int originalRound = drone.CurrentRound;
+bool originalDroneEnabled = drone.enabled;
+var originalDronePosition = drone.Body.position;
+var originalDroneRotation = drone.Body.rotation;
+var originalPlayerPosition = player.Position;
+bool originalPlayerKinematic = player.Body.isKinematic;
+bool originalPlayerGravity = player.Body.useGravity;
+bool originalInputEnabled = player.inputReader.enabled;
+var originalCameraPosition = camera.transform.position;
+var originalCameraRotation = camera.transform.rotation;
+bool originalOrthographic = camera.orthographic;
+float originalSize = camera.orthographicSize;
+float originalFov = camera.fieldOfView;
+bool originalBrainEnabled = brain != null && brain.enabled;
+int originalHealth = player.health.CurrentHealth;
+var otherDrones = new System.Collections.Generic.List<DroneController>();
+var otherEnabled = new System.Collections.Generic.List<bool>();
+foreach (var other in driver.drones)
+{
+    if (other == null || other == drone) { continue; }
+    otherDrones.Add(other);
+    otherEnabled.Add(other.enabled);
+}
+
+DroneConfigSO runtimeConfig = null;
+UnityEngine.GameObject wall = null;
+var block = new UnityEngine.MaterialPropertyBlock();
+var samples = new System.Collections.Generic.List<object>();
+var captures = new System.Collections.Generic.List<object>();
+var cleanupErrors = new System.Collections.Generic.List<string>();
+double started = UnityEditor.EditorApplication.timeSinceStartup;
+bool finished = false;
+int phase = 0;
+int lastSampleFrame = -1;
+bool capturePending = false;
+int frozenFrame = 0;
+int requestedFrame = -1;
+double captureStarted = 0d;
+string captureLabel = null;
+string capturePath = null;
+UnityEditor.EditorApplication.CallbackFunction tick = null;
+UnityEditor.AssemblyReloadEvents.AssemblyReloadCallback beforeReload = null;
+System.Action<UnityEditor.PlayModeStateChange> playChanged = null;
+System.Action<string> finish = null;
+System.Func<UnityEngine.Vector3, float[]> vector = v => new float[] { v.x, v.y, v.z };
+System.Func<UnityEngine.Color, float[]> color = c => new float[] { c.r, c.g, c.b, c.a };
+System.Func<string, object> snapshot = label =>
+{
+    renderer.GetPropertyBlock(block);
+    var baseColor = block.GetColor("_BaseColor");
+    var fillColor = renderer.sharedMaterial.GetColor("_FillColor");
+    var direction = vision.transform.right;
+    return new
+    {
+        label,
+        elapsedRealSeconds = UnityEditor.EditorApplication.timeSinceStartup - started,
+        scaledTime = UnityEngine.Time.time,
+        frame = UnityEngine.Time.frameCount,
+        renderedFrame = UnityEngine.Time.renderedFrameCount,
+        timeScale = UnityEngine.Time.timeScale,
+        state = drone.CurrentState.ToString(),
+        round = drone.CurrentRound,
+        alertProgress = drone.AlertProgress,
+        mpbFillProgress = block.GetFloat("_FillProgress"),
+        baseColor = color(baseColor),
+        fillColor = color(fillColor),
+        shader = renderer.sharedMaterial.shader.name,
+        playerVisible = vision.CanSee(player),
+        wallActive = wall != null && wall.activeSelf,
+        dronePosition = vector(drone.Body.position),
+        droneVelocity = vector(drone.FlightVelocity),
+        playerPosition = vector(player.Position),
+        playerCenter = vector(capsule.bounds.center),
+        health = player.health.CurrentHealth,
+        visionOrigin = vector(vision.transform.position),
+        visionDirection = vector(direction),
+        headingDegrees = drone.FacingRotation.eulerAngles.y,
+        visualRotation = drone.visual != null ? vector(drone.visual.eulerAngles) : null,
+        lightEnabled = light.enabled,
+        lightColor = color(light.color),
+        lightIntensity = light.intensity,
+        lightRange = light.range,
+        lightPosition = vector(light.transform.position),
+        cameraPosition = vector(camera.transform.position),
+        cameraOrthographic = camera.orthographic,
+        cameraSize = camera.orthographicSize,
+        droneViewport = vector(camera.WorldToViewportPoint(drone.Body.position)),
+        playerViewport = vector(camera.WorldToViewportPoint(capsule.bounds.center)),
+        coneTipViewport = vector(camera.WorldToViewportPoint(vision.transform.position + direction * vision.radius)),
+        width = UnityEngine.Screen.width,
+        height = UnityEngine.Screen.height
+    };
+};
+finish = result =>
+{
+    if (finished) { return; }
+    finished = true;
+    UnityEditor.EditorApplication.update -= tick;
+    UnityEditor.AssemblyReloadEvents.beforeAssemblyReload -= beforeReload;
+    UnityEditor.EditorApplication.playModeStateChanged -= playChanged;
+    UnityEditor.SessionState.SetBool(runningKey, false);
+    try
+    {
+        // Restore while frozen. Stopping Play itself also discards every runtime mutation.
+        UnityEngine.Time.timeScale = 0f;
+        if (wall != null) { wall.SetActive(false); UnityEngine.Object.Destroy(wall); }
+        if (drone != null)
+        {
+            drone.enabled = false;
+            drone.config = originalConfig;
+            drone.patrolPoints = originalRoute;
+            drone.initialFacing = originalFacing;
+            drone.Body.position = originalDronePosition;
+            drone.Body.rotation = originalDroneRotation;
+            drone.transform.SetPositionAndRotation(originalDronePosition, originalDroneRotation);
+            drone.enabled = originalDroneEnabled;
+        }
+        if (player != null && UnityEngine.Application.isPlaying)
+        {
+            player.RelocateWithinRun(originalPlayerPosition);
+            player.Body.isKinematic = originalPlayerKinematic;
+            player.Body.useGravity = originalPlayerGravity;
+            player.inputReader.enabled = originalInputEnabled;
+        }
+        for (int i = 0; i < otherDrones.Count; i++)
+        {
+            if (otherDrones[i] != null) { otherDrones[i].enabled = otherEnabled[i]; }
+        }
+        if (runtimeConfig != null) { UnityEngine.Object.Destroy(runtimeConfig); }
+    }
+    catch (System.Exception exception) { cleanupErrors.Add(exception.ToString()); }
+    finally
+    {
+        // These restorations remain independent of a destroyed player/drone during Play exit.
+        try
+        {
+            if (camera != null)
+            {
+                camera.transform.SetPositionAndRotation(originalCameraPosition, originalCameraRotation);
+                camera.orthographic = originalOrthographic;
+                camera.orthographicSize = originalSize;
+                camera.fieldOfView = originalFov;
+            }
+            if (brain != null) { brain.enabled = originalBrainEnabled; }
+        }
+        catch (System.Exception exception) { cleanupErrors.Add(exception.ToString()); }
+        UnityEngine.Time.timeScale = originalTimeScale;
+        UnityEngine.Application.runInBackground = originalBackground;
+    }
+    var report = new
+    {
+        result,
+        capturedAtUtc = System.DateTime.UtcNow.ToString("O"),
+        fixture = "Real EnemyTest objects; runtime placement and zero movement config; real camera with CinemachineBrain temporarily disabled; natural AI detection; temporary physical wall.",
+        interpretation = "Chase is full red through its normal SetTint; its AlertProgress and MPB fill reset to zero on state change. PNGs require visual review; numeric samples alone do not certify visual quality.",
+        roundBefore = originalRound,
+        roundAfter = drone != null ? drone.CurrentRound : -1,
+        restoration = "Runtime configuration, poses, input, camera, timeScale and runInBackground restored where objects survive. Previous AI state/route index/round are not restored; stop this disposable Play session.",
+        restoredTimeScale = UnityEngine.Time.timeScale,
+        restoredRunInBackground = UnityEngine.Application.runInBackground,
+        captures,
+        samples,
+        cleanupErrors
+    };
+    System.IO.File.WriteAllText(reportPath, Newtonsoft.Json.JsonConvert.SerializeObject(report, Newtonsoft.Json.Formatting.Indented));
+    UnityEngine.Debug.Log("ActualAlertProbe: " + result + "; evidence: " + reportPath);
+};
+System.Action<string> freezeForCapture = label =>
+{
+    UnityEngine.Time.timeScale = 0f;
+    capturePending = true;
+    frozenFrame = UnityEngine.Time.renderedFrameCount;
+    requestedFrame = -1;
+    captureStarted = UnityEditor.EditorApplication.timeSinceStartup;
+    captureLabel = label;
+    capturePath = System.IO.Path.Combine(output, label + ".png");
+    samples.Add(snapshot(label + "-freeze"));
+};
+beforeReload = () => finish("ABORTED_ASSEMBLY_RELOAD");
+playChanged = state =>
+{
+    if (state == UnityEditor.PlayModeStateChange.ExitingPlayMode || state == UnityEditor.PlayModeStateChange.EnteredEditMode)
+    {
+        finish("ABORTED_PLAY_EXIT");
+    }
+};
+tick = () =>
+{
+    try
+    {
+        if (!UnityEditor.EditorApplication.isPlaying) { finish("ABORTED_PLAY_EXIT"); return; }
+        if (UnityEditor.EditorApplication.timeSinceStartup - started > 90d)
+        {
+            throw new System.TimeoutException("No completion within 90 seconds. Keep the GameView rendering; inspect framing and real visibility.");
+        }
+        if (drone == null || player == null || !drone.IsRunning || !DroneController.CanTarget(player))
+        {
+            throw new System.InvalidOperationException("The real player/drone became invalid during capture.");
+        }
+        if (player.health.CurrentHealth != originalHealth || drone.HasExploded
+            || UnityEngine.Vector3.Distance(drone.Body.position, dronePosition) > 0.02f)
+        {
+            throw new System.InvalidOperationException("Unexpected damage, explosion or movement in the stationary visual fixture.");
+        }
+        if (UnityEngine.Time.renderedFrameCount != lastSampleFrame)
+        {
+            lastSampleFrame = UnityEngine.Time.renderedFrameCount;
+            samples.Add(snapshot("frame"));
+        }
+        if (capturePending)
+        {
+            if (UnityEditor.EditorApplication.timeSinceStartup - captureStarted > 15d)
+            {
+                throw new System.TimeoutException("Screenshot did not finish: " + captureLabel);
+            }
+            if (requestedFrame < 0 && UnityEngine.Time.renderedFrameCount - frozenFrame >= 3)
+            {
+                // Async only. Never call Camera.Render, a screenshot helper, a blocking loop,
+                // EditorApplication.Step, or a nested PlayerLoop from this callback.
+                UnityEngine.ScreenCapture.CaptureScreenshot(capturePath, 1);
+                requestedFrame = UnityEngine.Time.renderedFrameCount;
+                samples.Add(snapshot(captureLabel + "-request"));
+                return;
+            }
+            if (requestedFrame < 0 || UnityEngine.Time.renderedFrameCount - requestedFrame < 2
+                || !System.IO.File.Exists(capturePath)) { return; }
+            var png = System.IO.File.ReadAllBytes(capturePath);
+            if (png.Length < 32) { return; }
+            // Wait for the PNG end chunk as well; file existence alone can precede completion.
+            int end = png.Length - 8;
+            if (png[end] != 73 || png[end + 1] != 69 || png[end + 2] != 78 || png[end + 3] != 68) { return; }
+            int width = (png[16] << 24) | (png[17] << 16) | (png[18] << 8) | png[19];
+            int height = (png[20] << 24) | (png[21] << 16) | (png[22] << 8) | png[23];
+            if (width != 1920 || height != 1080) { throw new System.InvalidOperationException("Captured PNG is not 1920x1080."); }
+            captures.Add(new { label = captureLabel, path = capturePath, width, height, sample = snapshot(captureLabel + "-saved") });
+            capturePending = false;
+            if (phase == 0) { phase = 1; }
+            else if (phase == 1)
+            {
+                wall.SetActive(true);
+                UnityEngine.Physics.SyncTransforms();
+                if (vision.CanSee(player)) { throw new System.InvalidOperationException("The real wall does not block the player; adjust the fixture."); }
+                phase = 2;
+            }
+            else if (phase == 2)
+            {
+                wall.SetActive(false);
+                UnityEngine.Physics.SyncTransforms();
+                if (!vision.CanSee(player)) { throw new System.InvalidOperationException("Removing the wall did not restore real visibility."); }
+                phase = 3;
+            }
+            else { finish("CAPTURED_PENDING_VISUAL_REVIEW"); return; }
+            UnityEngine.Time.timeScale = 1f;
+            return;
+        }
+        if ((phase == 1 || phase == 2) && drone.CurrentState != DroneState.Alert)
+        {
+            throw new System.InvalidOperationException("The partial-fill/decay stage left Alert before its screenshot; retry the probe.");
+        }
+        if (phase == 0 && drone.CurrentState == DroneState.Alert)
+        {
+            if (drone.AlertProgress > 0.0001f) { throw new System.InvalidOperationException("Initial Alert did not remain at zero while time was frozen."); }
+            freezeForCapture("01-Alert-000-Orange");
+        }
+        else if (phase == 1 && drone.AlertProgress >= 0.5f && drone.CurrentState == DroneState.Alert)
+        {
+            if (drone.AlertProgress > 0.65f) { throw new System.InvalidOperationException("The half-fill capture was missed; retry with a rendering GameView."); }
+            freezeForCapture("02-Alert-About050-RedOrange");
+        }
+        else if (phase == 2 && drone.AlertProgress <= 0.25f && drone.CurrentState == DroneState.Alert)
+        {
+            if (drone.AlertProgress < 0.1f) { throw new System.InvalidOperationException("The decay capture was missed; retry with a rendering GameView."); }
+            freezeForCapture("03-Alert-Decay-About025-Wall");
+        }
+        else if (phase == 3 && drone.CurrentState == DroneState.Chase)
+        {
+            freezeForCapture("04-Chase-FullRed");
+        }
+    }
+    catch (System.Exception exception) { finish("FAILED: " + exception); }
+};
+
+try
+{
+    UnityEditor.SessionState.SetBool(runningKey, true);
+    UnityEngine.Application.runInBackground = true;
+    UnityEngine.Time.timeScale = 0f;
+    foreach (var other in otherDrones) { other.enabled = false; }
+    player.inputReader.enabled = false;
+    runtimeConfig = UnityEngine.Object.Instantiate(originalConfig);
+    runtimeConfig.name = "ActualAlertProbe_RuntimeOnly";
+    runtimeConfig.hideFlags = UnityEngine.HideFlags.DontSave;
+    runtimeConfig.patrolSpeed = 0f;
+    runtimeConfig.chaseSpeed = 0f;
+    drone.config = runtimeConfig;
+    drone.initialFacing = 1;
+    drone.patrolPoints = new UnityEngine.Transform[] { drone.transform };
+    if (!drone.BeginRound(originalRound + 1)) { throw new System.InvalidOperationException("A fresh probe round was rejected."); }
+    drone.Body.position = dronePosition;
+    drone.transform.position = dronePosition;
+    UnityEngine.Physics.SyncTransforms();
+    var capsuleOffset = capsule.bounds.center - player.Position;
+    if (!player.RelocateWithinRun(playerCenter - capsuleOffset)) { throw new System.InvalidOperationException("Player relocation failed."); }
+    player.Body.isKinematic = true;
+    player.Body.useGravity = false;
+    if (brain != null) { brain.enabled = false; }
+    camera.transform.SetPositionAndRotation(cameraPosition, UnityEngine.Quaternion.identity);
+    camera.orthographic = true;
+    camera.orthographicSize = cameraSize;
+
+    // Runtime primitive uses a normal solid BoxCollider in the real vision obstruction mask.
+    // It is initially inactive, so the first Alert is caused by the naturally visible player.
+    wall = UnityEngine.GameObject.CreatePrimitive(UnityEngine.PrimitiveType.Cube);
+    wall.name = "ActualAlertProbe_RuntimeOccluder";
+    wall.hideFlags = UnityEngine.HideFlags.DontSave;
+    wall.layer = wallLayer;
+    wall.transform.position = (dronePosition + playerCenter) * 0.5f;
+    wall.transform.localScale = new UnityEngine.Vector3(0.18f, 4f, 4f);
+    wall.SetActive(false);
+    UnityEngine.Physics.SyncTransforms();
+    if (!vision.CanSee(player)) { throw new System.InvalidOperationException("The real cone cannot see the positioned player; inspect the scene before adjusting constants."); }
+    var droneViewport = camera.WorldToViewportPoint(dronePosition);
+    var playerViewport = camera.WorldToViewportPoint(capsule.bounds.center);
+    if (droneViewport.z <= 0f || playerViewport.z <= 0f || droneViewport.x < 0.05f || playerViewport.x > 0.95f
+        || droneViewport.y < 0.1f || playerViewport.y < 0.1f || droneViewport.y > 0.8f || playerViewport.y > 0.8f)
+    {
+        throw new System.InvalidOperationException("Probe bodies are outside the intended camera framing.");
+    }
+    samples.Add(snapshot("setup-before-natural-detection"));
+    UnityEditor.AssemblyReloadEvents.beforeAssemblyReload += beforeReload;
+    UnityEditor.EditorApplication.playModeStateChanged += playChanged;
+    UnityEditor.EditorApplication.update += tick;
+}
+catch (System.Exception exception)
+{
+    finish("SETUP_FAILED: " + exception);
+    throw;
+}
+return "ActualAlertProbe scheduled asynchronously. Keep GameView rendering; inspect four PNGs and " + reportPath;

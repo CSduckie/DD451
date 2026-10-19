@@ -1,0 +1,28 @@
+02C 玩家下蹲同步碰撞体
+2026-10-19 07:23 UTC，主程序完成。用户本轮直接要求下蹲时同步缩放碰撞体。
+
+行为
+- 复用 PlayerConfigSO.crouchVisualHeight；默认0.65。现有Prefab站立胶囊height=2、center.y=1，蹲伏变为1.3、0.65，radius仍为0.4，脚底和根节点缩放不变。
+- 高度和中心从初始化时缓存的站立值计算，连续蹲起不会累计偏移；高度最低为胶囊直径，模型使用实际生效高度比例。
+- 起身只检查头顶扩展区域的3D实体碰撞，排除自身、Trigger和明确忽略碰撞的对象，不把脚下地面当顶棚。顶棚阻挡时保持Crouch和蹲行速度，不能跳；离开后自动站起。
+- 保留开包时的蹲姿和碰撞高度。受击关包后仍需通过头顶检测。Fall状态在空间允许时恢复站立。
+- 新轮先定位，再复位姿态，旧位置的顶棚不影响新出生点。没有新增框架、接口或namespace。
+
+实际修改
+Assets/Scripts/Player/MonoBehaviour/PlayerController.cs
+Assets/Scripts/Player/ScriptableObject/PlayerConfigSO.cs（仅增加参数说明，不改字段名或资源值）
+Assets/Scripts/Player/States/PlayerFallState.cs
+Assets/Tests/Player/PlayMode/PlayerCrouchColliderTests.cs 与Unity生成meta
+
+验收
+Unity PlayMode 18/18通过，0失败、0跳过；07:22:24至07:22:55 UTC。
+5项新增专项：尺寸/脚底/连续蹲起；实际1.5米通道通行与顶棚起身限制；开包与受击关闭通知；旧顶棚到新轮空地复位；相邻墙/Trigger/忽略碰撞。
+13项原有移动、跳跃容错、重力、背包姿态及Cinemachine相关回归通过。
+证据：Docs/Verification/Player/Crouch/PlayMode.xml。
+测试使用正式玩家Prefab和InputSystem测试键盘事件，非原生实体键盘验收。受击关包专项模拟04的既有关闭通知边界，未声称重验完整背包UI。
+当前实现遵循既有Y轴胶囊、根节点单位缩放的角色约定，不扩展多轴或任意根缩放控制器。
+
+保护与交付
+Player.prefab、Shelter、Ruins、Bootstrap哈希与本轮检查前一致；没有编辑场景、无人机或其巡逻点。
+07:23:15 UTC：Bootstrap clean/Edit，Play/paused/compiling/updating均false，timeScale=1，runInBackground=false，Console错误和警告均0。
+测试和编辑器操作已结束，没有临时回调、输入设备或后续编辑器工作。

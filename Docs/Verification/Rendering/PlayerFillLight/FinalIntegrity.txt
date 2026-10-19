@@ -1,0 +1,9 @@
+PlayerFillLight 最终磁盘完整性审计
+结果：PASS_WITH_SERIALIZATION_NOTE；UTC：2026-10-19T09:19:42.0145701Z
+基线743项：未变741，仅2文件变化，意外文件漂移0，新增文件0；432份meta均SHA-256一致。
+三份真实Before原件与manifest哈希一致；Player.prefab GUID保留4a37e015a99af1948851c34d90ec57de。完整逐文件前后hash见FinalIntegrity.json.files。
+Prefab反向去除4个新增YAML块、root新增children引用，并把两个MeshRenderer mask3还原1后，与真实Before逐字节相同。所有原GameObject普通Layer、组件、物理/碰撞、角色/输入/交互、材质/模型/相机目标字段均保持。
+新增块仅PlayerFillLight GameObject、Transform、Light、UniversalAdditionalLightData；根下local(0,1.1,-2)，identity rotation，scale1，GameObject Layer0，白色Point、intensity1.2、range4.5、m_Lightmapping4(Realtime)、shadows None、bounce0；Light mask2及URP当前m_RenderingLayersMask.bits2。普通cullingMask仍all。两个Renderer 1→3因此保留Default位并增加PlayerLighting位。
+URP组件脚本GUID与本机包meta核对一致；版本4读取当前m_RenderingLayersMask，保留的旧m_LightLayerMask/m_RenderingLayers=1不代表当前effective mask。
+TagManager注意：除RenderingLayer index1 Light Layer1→PlayerLighting外，还保存了serializedVersion2→3，并省略原index8–31的24个空RenderingLayer名称。故不能称为“只有一个字符串改动”。原8个有效RenderingLayer索引/位保持，index0及2–7名称保留；普通layers、tags、sorting完整前缀一致（除记录的version）。root已明确保留官方API保存产生的格式归一化；新增Light mask2与修改Renderer mask3均未使用这些空槽，所有其它组件由逐字节审计证明不变。
+边界：本报告只读磁盘，无Unity调用，无Assets/ProjectSettings写入，只写本任务Docs。动作/流程/渲染隔离/原生输入与Editor释放由root单独验证，不在本报告声称完成。

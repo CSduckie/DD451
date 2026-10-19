@@ -1,0 +1,75 @@
+MyPrecious 009 警戒积累与视锥填充任务分工 — 2026-10-19
+项目：E:/DD451。用户明确要求将任务下发给对应子聊天。本文件是当前任务安排，不是已实现或已验收证明。
+
+已确认规则（优先于旧“发现立刻Chase”与旧“警戒等同Search”）：
+1. 发现玩家后先进入独立 Alert 警戒状态，停止位置移动；视锥以橙色为底，由红色逐渐填充；填满才进入 Chase。
+2. 警戒中玩家离开视野、被墙遮挡或进入有效蹲伏掩体时，停止增长并逐渐消退；重新发现从剩余进度继续积累。
+3. 进度退到0：结束警戒，恢复原巡逻路线，保留当前路线索引，不回出生点。
+4. 现有水平视锥/平滑左右转向保持；模型可以前倾但视锥不能跟着倾斜。Alert停住后模型可按原有方式缓慢回正。
+5. 仅Chase允许接触自毁。Patrol、Alert、Search均不自毁、不造成接触伤害，但保留实体阻挡；灯的RGB不能反向决定逻辑。
+6. 现有三种灯光呼吸保留：Patrol原蓝色、Search橙色、Chase红色；新Alert橙色呼吸，红色填充完成后切Chase红灯。
+
+主程采用的可调整实现默认值（不冒充用户指定数值）：
+- alertFillSeconds=2、alertDecaySeconds=2，直接在现有DroneConfigSO/DroneConfig.asset Inspector编辑，最小合法时长防除零。
+- 每次从Patrol或Search重新发现玩家都先Alert；同一次Alert内丢失视线时保留余量；退到0回Patrol后再次发现从0开始。
+- 红色从机头朝当前可见外缘推进，消退时退回机头；不是把整个扇形一起做Color.Lerp。墙前裁剪区域到100%才全红。
+- Alert悬停不凭空持续追踪不可见玩家；沿用现有平滑水平朝向，无额外自动穿墙跟踪。
+
+当前基线：
+主程已经完成视野锚点、三色呼吸、视锥水平及Chase专属接触自毁。必须先读当前源码和Docs/Handoffs/09_Handoff.txt第15节；不要用旧聊天里的文件或备份覆盖新代码。
+上一轮Enemy EditMode27/27、PlayMode24/24通过；见Docs/Verification/Enemy/LevelVisionChaseOnly/Result.txt。这不是本轮验收结果。
+最新只读Editor为EnemyTest/Edit/clean；再次检查实时状态。主程和本聊天树的审查agent没有对此次Alert写任何Assets。
+
+共同代码要求：
+作品集/毕设精简标准；无namespace；英文目录；4空格、括号另行；沿用用户2DArpg泛型状态机与普通方法，新增Alert不需要Animator连线。可从E:/Portfolio-Clone修改复用实际用到的代码。不要新造消息总线、配置框架、Service、接口层、通用AI平台。
+Windows/1920x1080；中英文界面，默认中文、F10切换不重置进度。3D物理，视锥真实MeshCollider与显示仍同源。保留现有材质/Prefab GUID、用户灯光位置/范围及Scene实例覆盖。
+
+分工与最小接入约定：
+视觉聊天独占：
+- Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs
+- Assets/Art/Shaders/Enemy/DroneVision.shader（新增，shader名MyPrecious/DroneVision）
+- Assets/Art/Materials/Enemy/DroneVision.mat（保留GUID，MCP改shader）
+- Assets/Tests/Enemy/EditMode/DroneVisionAlertFillTests.cs（新增）
+- Assets/Tests/Enemy/Editor/DroneVisionEditor.cs（必要说明）
+- Docs/Handoffs/Effects_DroneAlertFill.txt、Docs/Verification/Enemy/AlertFill/Visual/
+009独占：
+- Assets/Scripts/Enemy/Drone/States/DroneAlertState.cs（新增）
+- DronePatrolState.cs、DroneSearchState.cs及必要DroneChaseState.cs
+- Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs、DroneStatusLight.cs
+- Assets/Scripts/Enemy/Drone/ScriptableObject/DroneConfigSO.cs
+- Assets/Data/Enemy/Drone/DroneConfig.asset
+- Assets/Data/Localization/Enemy/EnemyText.asset
+- Assets/Tests/Enemy/PlayMode/Runtime/EnemyTestDriver.cs（如需要）
+- Assets/Tests/Enemy/Editor/EnemyTestSceneBuilder.cs
+- 其余受影响Enemy测试及新增DroneAlertTests.cs
+- Docs/Handoffs/09_Handoff.txt、Docs/Verification/Enemy/AlertFill/Integration/
+009不得同时修改视觉聊天所拥有的文件；整合发现问题先记录明确需求，由主程转交，或等视觉明确移交后再接手。
+
+直接方法约定（不是新接口框架）：
+- 保留DroneVision.SetTint(Color)：普通状态换色并清空填充。
+- 新增DroneVision.SetAlertProgress(float progress)：Clamp01后只更新本实例MaterialPropertyBlock的_FillProgress，不创建Collider、不重新替换网格。
+- 视觉shader保留_BaseColor，新增_FillColor（红色）、_FillProgress，保留_Cull=2，透明Unlit适配本项目URP。
+- 009在进入Alert时设置橙色SetTint，再按唯一逻辑进度调用SetAlertProgress；退出时通过SetTint恢复对应状态。Controller提供只读AlertProgress便于测试和显示，不能由shader自行计时。
+- 视觉实现建议在现有墙裁剪后的单层Mesh添加径向UV，中心x=0、当前可见外缘x=1；进度0全橙，0.5有清楚红橙区域，1全红。不能用双层同面网格造成Z-fighting，不能填到墙后。每架MPB互不串色。
+
+串行执行安排：
+1. 视觉聊天先获得Assets/Editor修改时段，完成视觉方法、shader、材质、针对性验证；不能改009所有文件。
+2. 009可同时只读分析并在Docs/Verification/Enemy/AlertFill/AIStaging/准备非Assets修改，暂不写Assets/触发刷新/进入Play/运行测试。
+3. 视觉完成后在Docs/Handoffs/Effects_DroneAlertFill.txt明确写入“视觉Assets和Editor已释放，009可以接入”、方法签名、已验证范围及当前场景/dirty/Play状态，并追加Docs/Verification/Enemy/EditorCoordination.txt释放记录。
+4. 009读取真实释放记录后，先确认没有其他作者仍写Assets，接入状态机并统一编译、MCP验收、最终发布记录。不要把准备文件当已交付，不能仅因等待就擅自并行修改Editor。
+5. 不默认授权不同聊天互相发消息；协作通过上述共同文件。必要的跨聊天消息由已获用户授权的主程发送。
+
+验收：
+- 玩家真实进入视野后出现Alert，物理位置停止，填充从0增长；没满前不追击、不接触自爆。
+- 遮挡/离开/有效掩体会逐渐退条；中途重新出现延续余量，退0回原路线。
+- 满值只切一次Chase，点灯红色持续呼吸，才允许一次接触自爆。搜索重获目标走新的Alert流程。
+- 非有效玩家不积累；Controller原有“Target无效直接Patrol”不得在Alert中绕过正常退条规则。
+- 停用/销毁/新轮次清理进度和填充；同轮BeginRound被拒绝时不意外重置。
+- 多架无人机进度独立，F10不中断；真实墙遮挡、水平视锥、模型前倾、固定Z、原伤害/背包受击中断均不回退。
+- 实际1920x1080检查0/50/100%画面和消退，而不只断言Shader uniform；保留截图/必要采样。正式Enemy回归不能删掉旧断言或用强制Chase掩盖真实发现流程，旧专项伤害夹具可明确置Chase以保持原测试意图。
+- 保留用户未保存场景，先备份；TestRunner可能重载dirty场景，不能假设自动保留。只使用Unity MCP负责Editor，不抢占其他聊天的操作。
+
+
+用户追加（2026-10-19，本轮任务继续）：巡逻点必须能由策划配置。
+由009负责：复用现有DroneController.patrolPoints，通过每架无人机的Inspector数组引用场景Transform并配置顺序，移动点位调整X/Y路线，Z仍受出生平面约束。保留现有巡逻速度/停留配置；中文说明及简单选中Gizmos点线/顺序可辅助编辑，不引入巡逻框架/寻路/新编辑窗口。
+验收包括真实改点/顺序生效、每机独立、空点安全处理，以及Alert退0继续原路线索引。交接必须写清策划操作路径。本追加已通过消息发给009；不扩大视觉聊天文件范围。

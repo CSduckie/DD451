@@ -1,0 +1,704 @@
+{
+  "utc": "2026-10-19T06:16:07.1719132Z",
+  "files": [
+    {
+      "path": "Assets/Prefabs/Enemy/Drone.meta",
+      "scope": "protected",
+      "before": "8F08231C9DDFDADDEEB6E669C5AE96AC53993BF3CD6F6626E4DBDB5AFEC3B68C",
+      "after": "8F08231C9DDFDADDEEB6E669C5AE96AC53993BF3CD6F6626E4DBDB5AFEC3B68C",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Prefabs/Enemy/Drone/Drone.prefab",
+      "scope": "protected",
+      "before": "3DBF48088A9FC82470A4E5DFB056A8E962002B23CED19F883FB23A23891114EB",
+      "after": "3DBF48088A9FC82470A4E5DFB056A8E962002B23CED19F883FB23A23891114EB",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Prefabs/Enemy/Drone/Drone.prefab.meta",
+      "scope": "protected",
+      "before": "7373C79FC9230FA996B140D761A8E06DE02E78D0803E5FA2FDAF064B771E4603",
+      "after": "7373C79FC9230FA996B140D761A8E06DE02E78D0803E5FA2FDAF064B771E4603",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Prefabs/Enemy/Stealth.meta",
+      "scope": "protected",
+      "before": "F56B48828F1691CEAC02CC4270DA607C309A1EA291B745804D193413BCF02251",
+      "after": "F56B48828F1691CEAC02CC4270DA607C309A1EA291B745804D193413BCF02251",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Prefabs/Enemy/Stealth/CoverArea.prefab",
+      "scope": "protected",
+      "before": "5D8C238BF9C48520EB8350C5714120CD9920B4FEB963325B6B9123D24AA8B233",
+      "after": "5D8C238BF9C48520EB8350C5714120CD9920B4FEB963325B6B9123D24AA8B233",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Prefabs/Enemy/Stealth/CoverArea.prefab.meta",
+      "scope": "protected",
+      "before": "F88D986910C3B8F5F21D0DBCE4352032B46569BFBC1D6D295BC5598E3916FF3B",
+      "after": "F88D986910C3B8F5F21D0DBCE4352032B46569BFBC1D6D295BC5598E3916FF3B",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Bootstrap.unity",
+      "scope": "protected",
+      "before": "9063DB1C2FD9EFBB83A120531BCA35644BE835D203A68EC49FBB1B8306526500",
+      "after": "9063DB1C2FD9EFBB83A120531BCA35644BE835D203A68EC49FBB1B8306526500",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Bootstrap.unity.meta",
+      "scope": "protected",
+      "before": "7949600BE4F1DD1DCA13B37C142445FE5EB3F62518153EA2BA1B725AD567F1D3",
+      "after": "7949600BE4F1DD1DCA13B37C142445FE5EB3F62518153EA2BA1B725AD567F1D3",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Ruins.unity",
+      "scope": "protected",
+      "before": "978E767934D66CF96821BF00D59DD7DF3386A75B99AA82DC0BE811CEDE4FBB3A",
+      "after": "A1E839BD3E3C028AF05C47C7AFFB05586E5CA5CAF9BCDD1744DD24CEEAAA0EB1",
+      "changed": true,
+      "authorizedLatestMatches": true
+    },
+    {
+      "path": "Assets/Scenes/Ruins.unity.meta",
+      "scope": "protected",
+      "before": "71BD0E68CE9B34EF682661D60BCD36605007FE6FFE66D8FD09D1A56542A66594",
+      "after": "71BD0E68CE9B34EF682661D60BCD36605007FE6FFE66D8FD09D1A56542A66594",
+      "changed": false,
+      "authorizedLatestMatches": true
+    },
+    {
+      "path": "Assets/Scenes/SampleScene.unity",
+      "scope": "protected",
+      "before": "AA55BCC6DD3B5E6DCFA46BD3CB0B0CF606E22B81B2ED8D9FA34D7005944201CA",
+      "after": "AA55BCC6DD3B5E6DCFA46BD3CB0B0CF606E22B81B2ED8D9FA34D7005944201CA",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/SampleScene.unity.meta",
+      "scope": "protected",
+      "before": "B5815A6B12AFAF810577BC89041C4CE46516C7CD6609693F8DB616F8E5584D80",
+      "after": "B5815A6B12AFAF810577BC89041C4CE46516C7CD6609693F8DB616F8E5584D80",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Shelter.meta",
+      "scope": "protected",
+      "before": "166118BE3DDEE09B33DC192F5723E75FD1B579F1B61DA33CB69336EE07419566",
+      "after": "166118BE3DDEE09B33DC192F5723E75FD1B579F1B61DA33CB69336EE07419566",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Shelter.unity",
+      "scope": "protected",
+      "before": "F4A36F7B10057621E7CBD4FB013C6D30EB92BE94FBF245786AC2E8C388F892B8",
+      "after": "F4A36F7B10057621E7CBD4FB013C6D30EB92BE94FBF245786AC2E8C388F892B8",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Shelter.unity.meta",
+      "scope": "protected",
+      "before": "E32C6E5FFC8F10D2BB611941967203616E52F76353A7722CF717703EDD4D2889",
+      "after": "E32C6E5FFC8F10D2BB611941967203616E52F76353A7722CF717703EDD4D2889",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Shelter/Global Volume Profile.asset",
+      "scope": "protected",
+      "before": "7E05824EACAE75395279FAD27F31445ACE9DAFA4F730C25A88BC7498D2442A0C",
+      "after": "7E05824EACAE75395279FAD27F31445ACE9DAFA4F730C25A88BC7498D2442A0C",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Shelter/Global Volume Profile.asset.meta",
+      "scope": "protected",
+      "before": "F90FCD52F6D97601CAF89BFAE74BE3E6826E9D8B837AC394F305BE23999FE07E",
+      "after": "F90FCD52F6D97601CAF89BFAE74BE3E6826E9D8B837AC394F305BE23999FE07E",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Tests.meta",
+      "scope": "protected",
+      "before": "6E0C9AC4C451EC4BC3AD05F32FDB2BC1340517A3144C20B31B96677D499853A1",
+      "after": "6E0C9AC4C451EC4BC3AD05F32FDB2BC1340517A3144C20B31B96677D499853A1",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Backpack.meta",
+      "scope": "protected",
+      "before": "0ABDD7FCA8D0A3797A99915E59C17548F9861A800E7B4CF6D1E37FFB0B824143",
+      "after": "0ABDD7FCA8D0A3797A99915E59C17548F9861A800E7B4CF6D1E37FFB0B824143",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Backpack/BackpackTest.unity",
+      "scope": "protected",
+      "before": "B7DCFBCA2D59276C1308242824B49CACD323572F1944644857BDA0DE9962015E",
+      "after": "B7DCFBCA2D59276C1308242824B49CACD323572F1944644857BDA0DE9962015E",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Backpack/BackpackTest.unity.meta",
+      "scope": "protected",
+      "before": "A463B4A292ED09D1C93D2F191DC7F7E68E22C3D73AF6F6933970B814A99B0A1C",
+      "after": "A463B4A292ED09D1C93D2F191DC7F7E68E22C3D73AF6F6933970B814A99B0A1C",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Base.meta",
+      "scope": "protected",
+      "before": "2BBA6F0208D3935395AC01F971D8B6EFFC76DB08B098F8BBC260CCDF6A9B062E",
+      "after": "2BBA6F0208D3935395AC01F971D8B6EFFC76DB08B098F8BBC260CCDF6A9B062E",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Base/BaseTest.unity",
+      "scope": "protected",
+      "before": "E8AE99910E12706D13BEE7716520C2AFDE6A9F436A55E414E123CE25E442E144",
+      "after": "E8AE99910E12706D13BEE7716520C2AFDE6A9F436A55E414E123CE25E442E144",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Base/BaseTest.unity.meta",
+      "scope": "protected",
+      "before": "DECA6E6DAE4D7947BEAD518AC73E42E3212955AB678366AEA75E18655A4877CC",
+      "after": "DECA6E6DAE4D7947BEAD518AC73E42E3212955AB678366AEA75E18655A4877CC",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Enemy.meta",
+      "scope": "protected",
+      "before": "76F2249999CA78FE5CBE0DD3E64F3B528CC28F8D6A48C09A71F71F1CF07B9A2F",
+      "after": "76F2249999CA78FE5CBE0DD3E64F3B528CC28F8D6A48C09A71F71F1CF07B9A2F",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Enemy/EnemyTest.unity",
+      "scope": "protected",
+      "before": "AA62E8EDC69AC0C08F7F4F8FA6DE3AD0425A0DDFB7FC344B85D20C7D40242200",
+      "after": "AA62E8EDC69AC0C08F7F4F8FA6DE3AD0425A0DDFB7FC344B85D20C7D40242200",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Enemy/EnemyTest.unity.meta",
+      "scope": "protected",
+      "before": "C0A9DAB23896CA347B2C9EA4E221023A532CBF25F6279A51A02480E474543ACD",
+      "after": "C0A9DAB23896CA347B2C9EA4E221023A532CBF25F6279A51A02480E474543ACD",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Items.meta",
+      "scope": "protected",
+      "before": "2B7E58589D1694D1AC0B4655F7EF0CC48E35DF82E0EDA3B47519A94A0DCF3816",
+      "after": "2B7E58589D1694D1AC0B4655F7EF0CC48E35DF82E0EDA3B47519A94A0DCF3816",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Items/ItemsTest.unity",
+      "scope": "protected",
+      "before": "2AFE8D2E3A5C641B8F675A7C3F3A070849E7B743CCC16E0280B21C28B11F7001",
+      "after": "2AFE8D2E3A5C641B8F675A7C3F3A070849E7B743CCC16E0280B21C28B11F7001",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Items/ItemsTest.unity.meta",
+      "scope": "protected",
+      "before": "6D25FF21E24AC19D834188B163CAEEE1821631E88305DE137CAFC972E47B8BBF",
+      "after": "6D25FF21E24AC19D834188B163CAEEE1821631E88305DE137CAFC972E47B8BBF",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Localization.meta",
+      "scope": "protected",
+      "before": "67F743104B1F7CA3993454431152DFE450979D75F8409273ACB986531D39DD59",
+      "after": "67F743104B1F7CA3993454431152DFE450979D75F8409273ACB986531D39DD59",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Localization/LocalizationTest.unity",
+      "scope": "protected",
+      "before": "5C6DE36F4330D5EBA0A5A0B3126B0A82A7FD3B6E08A04D9C22F0B0A65E25693A",
+      "after": "5C6DE36F4330D5EBA0A5A0B3126B0A82A7FD3B6E08A04D9C22F0B0A65E25693A",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Localization/LocalizationTest.unity.meta",
+      "scope": "protected",
+      "before": "3F457135A5551F76BDF1167777F2388A2028BEA90829EE37AA20740391716848",
+      "after": "3F457135A5551F76BDF1167777F2388A2028BEA90829EE37AA20740391716848",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Loot.meta",
+      "scope": "protected",
+      "before": "6FA755528185A669CA5E3BE4E774539CF613B1884F37764DA8044ECD38CEDB52",
+      "after": "6FA755528185A669CA5E3BE4E774539CF613B1884F37764DA8044ECD38CEDB52",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Loot/LootTest.unity",
+      "scope": "protected",
+      "before": "00D2F271D9BEFA5F60558324821D66632C67FF7AE71A67949F2F6C53671B107B",
+      "after": "00D2F271D9BEFA5F60558324821D66632C67FF7AE71A67949F2F6C53671B107B",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Loot/LootTest.unity.meta",
+      "scope": "protected",
+      "before": "5E5BC4F24F5B7ADC037649C6F371C629B9DDEDBFEAFE8A8748A54C4DB026E088",
+      "after": "5E5BC4F24F5B7ADC037649C6F371C629B9DDEDBFEAFE8A8748A54C4DB026E088",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Player.meta",
+      "scope": "protected",
+      "before": "435C621C5159C9D0E20D86AB98BD6EB2519AB84F070C64715FBC5B98591BD204",
+      "after": "435C621C5159C9D0E20D86AB98BD6EB2519AB84F070C64715FBC5B98591BD204",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Player/PlayerTest.unity",
+      "scope": "protected",
+      "before": "0E2D2BCA4F2084D39EE295DD7E505119B66F75443E83A5709895B5A6C6EF6775",
+      "after": "0E2D2BCA4F2084D39EE295DD7E505119B66F75443E83A5709895B5A6C6EF6775",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Player/PlayerTest.unity.meta",
+      "scope": "protected",
+      "before": "D0C8D130B39642FC141319782AC1010FF15048B0CA60BDC2B3C62413B5B94214",
+      "after": "D0C8D130B39642FC141319782AC1010FF15048B0CA60BDC2B3C62413B5B94214",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Warehouse.meta",
+      "scope": "protected",
+      "before": "9DC96E4BD22FB0979E434FEFB75C1D2A3813A43D7D9D6145B53BD5C5D918ACA2",
+      "after": "9DC96E4BD22FB0979E434FEFB75C1D2A3813A43D7D9D6145B53BD5C5D918ACA2",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Warehouse/WarehouseTest.unity",
+      "scope": "protected",
+      "before": "B661B3E4139570A2527C6D22A84282149772959A16A952DA55979BBB8F932D87",
+      "after": "B661B3E4139570A2527C6D22A84282149772959A16A952DA55979BBB8F932D87",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scenes/Tests/Warehouse/WarehouseTest.unity.meta",
+      "scope": "protected",
+      "before": "3C0706359D0390E5A253C5FD702D42E49DA5B66AC0638821C9495A623E3B79D3",
+      "after": "3C0706359D0390E5A253C5FD702D42E49DA5B66AC0638821C9495A623E3B79D3",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone.meta",
+      "scope": "protected",
+      "before": "E87D66F471DAC34A978943C4154BFADE436DF661A39779559521D788C9F1E533",
+      "after": "E87D66F471DAC34A978943C4154BFADE436DF661A39779559521D788C9F1E533",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour.meta",
+      "scope": "protected",
+      "before": "F45D9AE96F04155BB82BF8C2E57E5EE90AFE6B3139DD835B4BE0031B763F2CE4",
+      "after": "F45D9AE96F04155BB82BF8C2E57E5EE90AFE6B3139DD835B4BE0031B763F2CE4",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs",
+      "scope": "protected",
+      "before": "5205854792E2C6794F006E772F199516C4DDDBA9BCD4D0375D84753D74175B43",
+      "after": "5205854792E2C6794F006E772F199516C4DDDBA9BCD4D0375D84753D74175B43",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs.meta",
+      "scope": "protected",
+      "before": "E20128ABB1EAD818FC20A49DD9120C7C5B97A4ADB7D028FFA7A251E45E32AEEB",
+      "after": "E20128ABB1EAD818FC20A49DD9120C7C5B97A4ADB7D028FFA7A251E45E32AEEB",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs",
+      "scope": "protected",
+      "before": "EBA65D068F20AD4AEB5AEA8B6985F4AE43A1F7D1CD092E35F6ECFABE06A5CE27",
+      "after": "EBA65D068F20AD4AEB5AEA8B6985F4AE43A1F7D1CD092E35F6ECFABE06A5CE27",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs.meta",
+      "scope": "protected",
+      "before": "B0F129DCC8127D55CBD574D65A8A3BB8BA5100184661184FF46C3CA076905C43",
+      "after": "B0F129DCC8127D55CBD574D65A8A3BB8BA5100184661184FF46C3CA076905C43",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneStatusLight.cs",
+      "scope": "protected",
+      "before": "9E1A018A6FEB940D3837A8F20AD370A28C4E0A11A8C17FD3B906800333FE1AEF",
+      "after": "9E1A018A6FEB940D3837A8F20AD370A28C4E0A11A8C17FD3B906800333FE1AEF",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneStatusLight.cs.meta",
+      "scope": "protected",
+      "before": "6DA0307653A5DFA41782EF957F131A54E042D35054D7CF3D1A5E8AC426A9CD6A",
+      "after": "6DA0307653A5DFA41782EF957F131A54E042D35054D7CF3D1A5E8AC426A9CD6A",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs",
+      "scope": "protected",
+      "before": "8D4BBB81367A23874EEBD18BE93B0E050CA421B3880A3DA97CD26F3B81072784",
+      "after": "8D4BBB81367A23874EEBD18BE93B0E050CA421B3880A3DA97CD26F3B81072784",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs.meta",
+      "scope": "protected",
+      "before": "8C684DB24C4693A940C4525A27CD10F27CB7BF7836BC05C9BE30488F7684873C",
+      "after": "8C684DB24C4693A940C4525A27CD10F27CB7BF7836BC05C9BE30488F7684873C",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/ScriptableObject.meta",
+      "scope": "protected",
+      "before": "3EF2C70E4596C28653B353647FEB0B8E6E0FA3A4FBA192780CD21837C4CE9448",
+      "after": "3EF2C70E4596C28653B353647FEB0B8E6E0FA3A4FBA192780CD21837C4CE9448",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/ScriptableObject/DroneConfigSO.cs",
+      "scope": "protected",
+      "before": "61129071D75F26C7356999471880875149D0E07A1C38BA060EA54A1FEDE270BE",
+      "after": "61129071D75F26C7356999471880875149D0E07A1C38BA060EA54A1FEDE270BE",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/ScriptableObject/DroneConfigSO.cs.meta",
+      "scope": "protected",
+      "before": "D344F2B071910590BEB40D6C7DC28045D99FC79939DE5BABF34FBABF680598B7",
+      "after": "D344F2B071910590BEB40D6C7DC28045D99FC79939DE5BABF34FBABF680598B7",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States.meta",
+      "scope": "protected",
+      "before": "D474F3DC9F81A46965728FB1A2649BB2207E9A248AE6732320C38708726EF2D9",
+      "after": "D474F3DC9F81A46965728FB1A2649BB2207E9A248AE6732320C38708726EF2D9",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneAlertState.cs",
+      "scope": "protected",
+      "before": "07773CB2513A5627696F23E09942471678DA3FDF766379193D4FAB1322F16EFD",
+      "after": "07773CB2513A5627696F23E09942471678DA3FDF766379193D4FAB1322F16EFD",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneAlertState.cs.meta",
+      "scope": "protected",
+      "before": "E913406808DF569D43CCDD331B10A1E63B9BCCD459B483C4097A7FCE26B504DA",
+      "after": "E913406808DF569D43CCDD331B10A1E63B9BCCD459B483C4097A7FCE26B504DA",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneChaseState.cs",
+      "scope": "protected",
+      "before": "EC3E2FC014CD9C9E0191B1CE80F74A77E4DB482F7159FB7A04E4C0CEDB9FDC82",
+      "after": "EC3E2FC014CD9C9E0191B1CE80F74A77E4DB482F7159FB7A04E4C0CEDB9FDC82",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneChaseState.cs.meta",
+      "scope": "protected",
+      "before": "AA9BDD96D8C7FB3966C5B98AA9BAECC69D314150A9B76EF08D2909955EDB0409",
+      "after": "AA9BDD96D8C7FB3966C5B98AA9BAECC69D314150A9B76EF08D2909955EDB0409",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneExplodeState.cs",
+      "scope": "protected",
+      "before": "11CBBE19B35D6F0AB8DC169A86B721A8941F28038A492E9A2E72755CFB4E7410",
+      "after": "11CBBE19B35D6F0AB8DC169A86B721A8941F28038A492E9A2E72755CFB4E7410",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneExplodeState.cs.meta",
+      "scope": "protected",
+      "before": "94CFD1B0FF284571C70C5FA5D7C3C210BA705DD268BCB34CBB47FB0CA52CD7EC",
+      "after": "94CFD1B0FF284571C70C5FA5D7C3C210BA705DD268BCB34CBB47FB0CA52CD7EC",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DronePatrolState.cs",
+      "scope": "protected",
+      "before": "880DDF2B727D755FD628DBFFC34BFD5CF2875FB88C49464B19C92AE8CE460D7A",
+      "after": "880DDF2B727D755FD628DBFFC34BFD5CF2875FB88C49464B19C92AE8CE460D7A",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DronePatrolState.cs.meta",
+      "scope": "protected",
+      "before": "B1E7871D7E926424B915D6077224ADA5CF86496EE475EECA3C45522C0C418686",
+      "after": "B1E7871D7E926424B915D6077224ADA5CF86496EE475EECA3C45522C0C418686",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneSearchState.cs",
+      "scope": "protected",
+      "before": "C62A431EBB14DB0E5148E335FF10328B944C5E0B58FEE032ED59E68D0F66F6B9",
+      "after": "C62A431EBB14DB0E5148E335FF10328B944C5E0B58FEE032ED59E68D0F66F6B9",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneSearchState.cs.meta",
+      "scope": "protected",
+      "before": "913E19270631C4094335932887BAAFE6812A8B539F132B9198E4D4A926D17C41",
+      "after": "913E19270631C4094335932887BAAFE6812A8B539F132B9198E4D4A926D17C41",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneStateBase.cs",
+      "scope": "protected",
+      "before": "FCD19A78094570856E71189BF3EA3192F119067CEA4D9919F7E15E320B68311D",
+      "after": "FCD19A78094570856E71189BF3EA3192F119067CEA4D9919F7E15E320B68311D",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneStateBase.cs.meta",
+      "scope": "protected",
+      "before": "1B8C8DE8934FBEC34F8A59EF401A558F50836D9693B75072C9D04BD4B522AF97",
+      "after": "1B8C8DE8934FBEC34F8A59EF401A558F50836D9693B75072C9D04BD4B522AF97",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/MyPrecious.Enemy.asmdef",
+      "scope": "protected",
+      "before": "C8E0969EA0402FE2EC920B3CF4E0ACB80697C2BB81BFE78174B35DE735AFC630",
+      "after": "C8E0969EA0402FE2EC920B3CF4E0ACB80697C2BB81BFE78174B35DE735AFC630",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/MyPrecious.Enemy.asmdef.meta",
+      "scope": "protected",
+      "before": "C9AB429708B4FECAB9DC1E9B09C9699A49AC8C11C6BEB040A377BC971A3B3E41",
+      "after": "C9AB429708B4FECAB9DC1E9B09C9699A49AC8C11C6BEB040A377BC971A3B3E41",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Stealth.meta",
+      "scope": "protected",
+      "before": "90E6EE8E91E926D83358501FC47C2D7551CCF0F10BEFE2B3E7D3D6DBCB9DC728",
+      "after": "90E6EE8E91E926D83358501FC47C2D7551CCF0F10BEFE2B3E7D3D6DBCB9DC728",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Stealth/MonoBehaviour.meta",
+      "scope": "protected",
+      "before": "0292B3EC04203BBD3D1775D6DC82B8591526C3E47E4606A902C25BB1D97F120C",
+      "after": "0292B3EC04203BBD3D1775D6DC82B8591526C3E47E4606A902C25BB1D97F120C",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Stealth/MonoBehaviour/CoverArea.cs",
+      "scope": "protected",
+      "before": "F70D62D4DEFA7AFE38F9F66B43A2CDA08C4740E641F9FD7274D08388E148C17C",
+      "after": "F70D62D4DEFA7AFE38F9F66B43A2CDA08C4740E641F9FD7274D08388E148C17C",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Stealth/MonoBehaviour/CoverArea.cs.meta",
+      "scope": "protected",
+      "before": "7AF0750B4D6A3EE51C77557F289268E2B43E66C8627C43131D312D2A4DAD71E5",
+      "after": "7AF0750B4D6A3EE51C77557F289268E2B43E66C8627C43131D312D2A4DAD71E5",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowManager.cs",
+      "scope": "editable",
+      "before": "B0D2EC22A4BFE7CADAE2D46199A622254B593DD4EE103781487EBC8BC344434C",
+      "after": "48EAF2E09EE8611F5E08027E741875C1EB037B2561D744C5A804D56FFD2F6ED7",
+      "changed": true,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowManager.cs.meta",
+      "scope": "metadata",
+      "before": "21A1565C8D783501970235437F5E1008A56DBDA0CBF2A732CD583349D83028C1",
+      "after": "21A1565C8D783501970235437F5E1008A56DBDA0CBF2A732CD583349D83028C1",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowSceneBindings.cs",
+      "scope": "editable",
+      "before": "CC916A5CC714E494EA8B1868E36DD2A5C6BCD3D4B26E1C61769BE41098A03D15",
+      "after": "A51A40081FFBD449D6B1208C64C3B6EFB7CCDC7A6055CCB4B32C2EBAD49010D3",
+      "changed": true,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowSceneBindings.cs.meta",
+      "scope": "metadata",
+      "before": "C32B9975E96E68B2D4384B8998FB1ED59280DBBCD71A2477AEF343A02CD9998B",
+      "after": "C32B9975E96E68B2D4384B8998FB1ED59280DBBCD71A2477AEF343A02CD9998B",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MyPrecious.GameFlow.asmdef",
+      "scope": "editable",
+      "before": "BFD7BE2FDB143123634E593C1406BF76B5EFCDDF537C7FB2D879963991D26C99",
+      "after": "4E8289B1297C0C67A4B14C84A4E6FAFC59EFC31F287DAC518724C525F3F0743B",
+      "changed": true,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MyPrecious.GameFlow.asmdef.meta",
+      "scope": "metadata",
+      "before": "82A43613D9838D5E6B82EBE99F7C3ACE59EF4A1DBC12E90014DE8170814EF6A9",
+      "after": "82A43613D9838D5E6B82EBE99F7C3ACE59EF4A1DBC12E90014DE8170814EF6A9",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/MinimumLoopPointerTests.cs",
+      "scope": "editable",
+      "before": "ABB88AC7F066C90D6522B9B070F392DBD02EFE3947B51D1EF5C1BB0D596CD505",
+      "after": "8F0ABE5F72C646A8D6C0C6DCBD3E36867803027E170BA10B96880B3B5222B3FA",
+      "changed": true,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/MinimumLoopPointerTests.cs.meta",
+      "scope": "metadata",
+      "before": "02C1BF78211F827FB820D7CC44C1C9D475F6BB4D3C343B4B7AF4CE718DFC7E8E",
+      "after": "02C1BF78211F827FB820D7CC44C1C9D475F6BB4D3C343B4B7AF4CE718DFC7E8E",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/MinimumLoopSceneTests.cs",
+      "scope": "editable",
+      "before": "292D1DBB6573589A29D7F75A3F37268292241687865A41590507C890F4182F88",
+      "after": "28B23380E3DCB12F2D7CBC47E3DDE68AED2BCEE4ED2CBE5AB7AA53B738D6DF5E",
+      "changed": true,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/MinimumLoopSceneTests.cs.meta",
+      "scope": "metadata",
+      "before": "1449BA777F82101A78D0938304C4A061B3AED94E45A16DA693577399E820A625",
+      "after": "1449BA777F82101A78D0938304C4A061B3AED94E45A16DA693577399E820A625",
+      "changed": false,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/MyPrecious.GameFlow.PlayModeTests.asmdef",
+      "scope": "editable",
+      "before": "8BA01DBF29FDEFBEA30CDB530E626960B364B52803B4949A2C8B5984BF226BC0",
+      "after": "CCFC2A022BF2F73DA3BF9B01C449AA00699AAFCE0F256CBD7AE43A08C7758E85",
+      "changed": true,
+      "authorizedLatestMatches": false
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/MyPrecious.GameFlow.PlayModeTests.asmdef.meta",
+      "scope": "metadata",
+      "before": "826DF15D6AF0E99619717CF3BBEC4991E7DE06A5D00CC904A43A93E26FA2CE3C",
+      "after": "826DF15D6AF0E99619717CF3BBEC4991E7DE06A5D00CC904A43A93E26FA2CE3C",
+      "changed": false,
+      "authorizedLatestMatches": false
+    }
+  ],
+  "added": [
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/RuinsEnemyIntegrationTests.cs",
+      "hash": "6D95E230E9847DD83A254126795427D5AA927CCE0631EE576984283DCD9C0B3D"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/RuinsEnemyIntegrationTests.cs.meta",
+      "hash": "FFA8BB80A31983712545CF2D0D9C6BD55EA0870B6F0FB1BC1D634582964120FE"
+    }
+  ],
+  "unexpectedProtectedChanges": []
+}

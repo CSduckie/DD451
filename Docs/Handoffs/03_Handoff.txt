@@ -1,0 +1,120 @@
+MyPrecious P0 — 03号中英双语模块交接
+版本：2026-10-18 / Dispatch v9 / Lean 03
+项目根目录：E:/DD451。所有路径均相对项目根目录。
+本文记录本轮实现、实际运行证据及未执行范围，不替代后续正式界面和完整游戏验收。
+
+一、本轮范围与工程基线
+
+本轮已实现中文/英文SO文本表、Dictionary查询、C#语言刷新通知、TMP绑定与唯一F10输入入口，并接入现有PlayerTest和ItemsTest两个IMGUI面板。
+全新运行默认中文；同次运行重开界面和切场景保留语言；不做磁盘偏好。语言只影响显示，不执行物品使用、恢复生命、准备轮次或其他玩法操作。
+任务开始时工程HEAD为5446ca8ac475d85adf8cbf385d3cd90bc5032cd3，已有大量未提交00/01/02及用户改动；本轮不回滚这些改动，不把它们冒充03新增。
+实施期间另有并行需求文档更新到Dispatch v10：README、ProjectRules、04_Backpack、05_Warehouse_Shelter、06_Transfers_Loot、08_GameFlow、09_Scenes_UI_Integration。03未编辑这些文件，也不按任务开始快照回滚。已核对新增A18属于04实际接入职责，原A17语言要求未变；本轮仍按当前03范围交付。
+实际Unity版本6000.2.12f1。现有Input System1.14.2、Cinemachine3.1.7、UGUI2.0.0；不为双语安装Localization、Addressables或其他新依赖。
+保留3D固定XY平面、已有ARPG代码状态机与Cinemachine相机；03不改玩家运动、生命、状态机、相机或输入资源。
+
+二、文件清单
+
+核心代码：
+- Assets/Scripts/Localization/RuntimeData/GameLanguage.cs。
+- Assets/Scripts/Localization/ScriptableObject/LocalizationTableSO.cs。
+- Assets/Scripts/Localization/MonoBehaviour/LocalizationManager.cs。
+- Assets/Scripts/Localization/MonoBehaviour/LocalizedText.cs。
+- Assets/Scripts/Localization/MyPrecious.Localization.asmdef。
+
+文本和预制体：
+- Assets/Data/Localization/Common/CommonText.asset。
+- Assets/Data/Localization/Player/PlayerText.asset。
+- Assets/Data/Localization/Items/ItemMessages.asset。
+- Assets/Data/Localization/Tests/TestPanelText.asset。
+- Assets/Prefabs/Localization/LocalizationModule.prefab。
+- Assets/Prefabs/UI/Localization/LocalizedText.prefab。
+- Assets/Art/Fonts/Localization/NotoSansCJKsc-Regular.otf、NotoSansCJKsc-Regular SDF.asset、OFL.txt、Source.txt。
+- Assets/TextMesh Pro：从已安装UGUI2.0.0附带的TMP Essential Resources导入的设置、shader、默认字体/材质等配套资源，未增加包依赖。
+
+测试与有限接入修改：
+- Assets/Tests/Localization/EditMode/LocalizationQueryTests.cs、MyPrecious.Localization.EditModeTests.asmdef。
+- Assets/Tests/Localization/TestDoubles/LocalizationTestDriver.cs、MyPrecious.Localization.TestDoubles.asmdef。
+- Assets/Tests/Localization/Editor/LocalizationTestSceneBuilder.cs、MyPrecious.Localization.Editor.asmdef。
+- Assets/Tests/Localization/PlayMode/LocalizationIntegrationTests.cs、MyPrecious.Localization.PlayModeTests.asmdef。
+- Assets/Scenes/Tests/Localization/LocalizationTest.unity。
+- Assets/Tests/Player/TestDoubles/PlayerTestDriver.cs、MyPrecious.Player.TestDoubles.asmdef。
+- Assets/Tests/Items/TestDoubles/ItemsTestDriver.cs、MyPrecious.Items.TestDoubles.asmdef。
+- Assets/Scenes/Tests/Player/PlayerTest.unity与Assets/Scenes/Tests/Items/ItemsTest.unity的语言模块/字体/面板接线。
+- Assets/Tests/Player/Editor/PlayerTestSceneBuilder.cs：重建场景时引用同一LocalizationModule与panelFont；直接按资源路径加载，不新增语言Editor依赖到玩家生产程序集。
+- Docs/Architecture/LocalizationSetup.txt和本文件。
+- Docs/Architecture/PlayerSetup.txt：仅将player.health.value旧命名占位符示例改为“生命 {0}/{1} / Health {0}/{1}”，与实际string.Format编号占位符一致。
+四份表当前共77条：Common17、Player10、ItemMessages13、TestPanel37；物品名称/描述8条来自原4个ItemDataSO，不复制到这77条表中。
+以上现有文件保留.meta/GUID；新资源已导入，最终.meta和引用审计见验证栏。
+03新增逐文件清单（含导入的TMP原生资源与.meta）：Docs/Verification/Localization/NewFiles.txt；原有修改文件已在上面单独列明，不把其他聊天的新文件计入03交付。
+
+三、源码参考与核实版本
+
+CardGame：https://github.com/CSduckie/CardGame；本机E:/Portfolio-Card-Clone；HEAD 57eabac0f946f21ef00b489e83c1c133905ea673。
+- Assets/Scripts/Items/MonoBehaviour/ItemTemplet.cs：实际读取持有ItemDataSO引用、InitItem明确给TextMeshProUGUI.text赋值的写法。本次使用稳定key查询当前语言后赋值；不搬奖励房间、点击选奖励或其他业务。
+- Assets/Scripts/Events/MonoBehaviour/BaseEventListener.cs：实际读取OnEnable +=与OnDisable -=的配对方式。本次使用明确C#语言事件，不搬BaseEventSO<T>、UnityEvent泛型框架或通用事件总线。
+
+2DArpg-Portfolio：https://github.com/CSduckie/2DArpg-Portfolio；本机E:/Portfolio-Clone；HEAD c601c36f95efdd4d67327489f9edb58412aa54b4。
+- Assets/Scripts/UI/PlayerUI/PlayerUI.cs：实际读取数据变化时刷新UI的明确方法。本次语言变化只调用文字刷新；不执行任何业务按钮。原文件OnEnable订阅Health/Cooling/Energy三项，OnDisable只解除Health，适配时不沿用这个漏取消订阅问题。
+- Assets/Scripts/Dialogue/Dialogue.cs：实际读取Serializable小数据类、List及TextArea字段组织；只借用文本字段组织，不搬打字机、剧情推进、PlayerController恢复输入或对话流程。
+
+四份上述参考源码均在2026-10-18按统一换行与对应HEAD内容比对一致。未改动参考仓库。它们没有完整双语系统，本轮只复用适合的赋值、数据组织和订阅方式。
+LiDarProject：https://github.com/CSduckie/LiDarProject；本机E:/Portfolio-LiDar；HEAD 7d691ab14ff69a85cf6be7b91cc910139205507f。本轮只核对目录与字体资源，没有适合本任务新增的生产代码复用，不为凑复用迁入无关内容。
+
+四、已核实的现有接入边界
+
+GameBootstrap实际用SubsystemRegistration清静态引用，Awake禁用重复组件并帧末Destroy重复根，第一份入口DontDestroyOnLoad。03不修改这套生命周期；语言组件需只接受GameBootstrap.Instance下的有效模块。
+PlayerInputReader实际只Clone Move/Jump/Crouch/Interact，逐条Enable和Dispose，不监听ToggleLanguage。语言模块独立Clone既有Player/ToggleLanguage，不能启停整个Player Action Map。
+物品名称/描述只存在原ItemDataSO双语字段；Manager经现有ItemLibrarySO只读建立key查询。无物品创建、无第二份可编辑物品译文表，Items不反向引用Localization。
+两个测试面板保留原按钮与业务方法。上一条结果保存稳定含义和必要数字快照，再按当前语言重绘；不保存永久中文结果，也不在语言事件中再次调用TryUseItem。
+已落盘的面板实现新增public Font panelFont；LastResult公开getter按lastResultKey、ItemUseResult、definitionId与A/B稳定后缀查询当前译文。Player保存结果轮次快照，Items保存结果轮次和HP/MaxHP快照。Text/Format每次取得LocalizationManager.Instance，不订阅语言事件，避免IMGUI无必要的重复订阅。
+PlayerTest新增显示真实player.interaction.CurrentPromptKey，有值时翻译并显示，无值时隐藏；不修改交互检测或执行。布局使用wordWrap、响应尺寸ScrollView及窄屏纵排按钮，保留原有业务按钮。
+PlayerTest使用真实PlayerHealth/ItemManager，ItemsTest仍使用ItemsTestHealth。后者只验证物品测试面板，不能声称取代真实玩家接入。
+
+五、字体
+
+实际扫描项目Assets/Art及三个参考仓库的ttf/otf：项目原有资源没有可复用中文字体；参考中只有LiberationSans及LiDar的VCR_OSD_MONO，不足以覆盖中文。
+本轮引入NotoSansCJKsc-Regular.otf，来源https://github.com/notofonts/noto-cjk/blob/main/Sans/OTF/SimplifiedChinese/NotoSansCJKsc-Regular.otf；许可证从同仓库Sans/LICENSE保存为OFL.txt，SIL Open Font License1.1。下载文件SHA256：2C76254F6FC379FDDFCE0A7E84FB5385BB135D3E399294F6EEB6680D0365B74B；记录散列用于精确识别本次实际文件，不用可变main分支代替文件版本。
+已生成NotoSansCJKsc-Regular SDF.asset，2048×2048 Dynamic图集、启用多图集、引用工程内源Font，预热当前全部表与物品文字。FontImporter.includeFontData=1；不是DynamicOS。
+LocalizedText.prefab引用SDF（GUID ea772ff9b8ad5f34f901307751a05e01）；两个原测试场景的panelFont均引用Noto源Font（GUID 2ce6cace92653fa4c858c2253d15b21d）。这些是资源检查结果，中文实际无方框与布局另据Game截图验收。
+实际Game视图分别检查TMP示例、PlayerTest和ItemsTest的中英显示、标点、缺字与长英文按钮；六张截图及检查结论记录在下一节。
+
+六、实际验证与未执行范围
+
+已完成只读静态核对：用户附件、ProjectRules、00/01/02说明和交接、真实GameBootstrap/PlayerInputReader/物品SO/两个面板、Unity版本/manifest，以及四个要求参考源码与HEAD。
+开始接线前发现当前PlayerTest含未保存的Editor内存修改，已先用SaveScene(..., true)另存到Docs/Verification/Localization/PlayerTest.before.unity保留快照，继续在现有场景上追加语言引用；不覆盖用户未保存状态。
+与该快照比较时，PlayerTest还出现同期间外部Inspector相机字段变化（如Composition.ScreenPosition.y、FOV与投影设置）。03没有执行相机/镜头修改，这些用户或其他聊天的状态保持现值，未用备份回滚；最终场景的全部差异不都归于03接线。
+已读取本轮原生Docs/Verification/Localization/EditModeResults.xml：62通过、0失败、0跳过，耗时0.6067861秒；其中Localization7项、Items43项、Player12项。新增7项覆盖初始化幂等与切换通知、缺译回退/缺key去重、重复key来源与首条保留、错误格式与参数、原物品配置来源及不修改SO、通知防递归、表校验。
+独立静态审查：四表与真实物品总共85个key，无重复；三个验证驱动共73个静态引用key均存在，动态物品key从配置读取。8份新增自有C#无namespace，5份新增asmdef的rootNamespace为空；git diff --check退出0，仅提示部分历史文件LF/CRLF转换。
+按NewFiles.txt单独核对03范围：140个Assets文件条目中，非.meta文件缺对应.meta为0，79个已列出的.meta GUID无重复。全工程FileAudit.json另记录正在由04并行创建的Backpack文件及13个尚未导入的.meta；这不属于03范围，没有擅自替04生成、修改或阻塞本轮交付，亦不声称整个Assets在并行开发期间始终完整。
+已读取本轮原生Docs/Verification/Localization/PlayModeResults.xml：35通过、0失败、0跳过，耗时28.7143622秒；其中Localization6项、Base3项、Items3项、Player23项。
+新增6项使用真实LocalizationModule/LocalizedText预制体、现有输入资源与Keyboard队列F10，实际加载三个验证场景：验证按住与重复启用只按下一次切换一次；重复Bootstrap与先UI后入口绑定存活Manager；UI反复打开/关闭；LocalizationTest重载保留语言与静态/动态/真实物品文字；真实PlayerTest未准备/背包限制/死亡时F10及业务快照不变；ItemsTest满血失败、已消耗食物及历史HP结果快照重绘；重复Initialize保留英文、新入口默认中文。
+业务快照比较实例身份/定义/唯一ID/归属/容器/来源/保有/次数/找回记录，以及真实HP、轮次、准备/死亡/背包/CanAct；不把自然物理落地或时间推进算作语言副作用。
+另外实际关闭Domain Reload，连续退出/重进Play两次：两次初始均Chinese；第二次用真实Keyboard队列模拟F10，第一次按下English、保持按住English、松开后再按Chinese，始终只有1个有效Manager。证据DomainReloadOff_First.json、DomainReloadOff_Second.json。该次选项只禁用Domain Reload，未宣称同时禁用Scene Reload的组合已验证。
+同次运行实际从PlayerTest切换到LocalizationTest后仍为English，只有1个Manager，新场景立即显示“Current language: English”；证据SceneTransition.json。
+PlayerManual.json与ItemsManual.json分别记录真实面板已存在的“医疗包：生命值已满”切为“Medkit: Health is full”，HP和轮次不变；Player记录的提示key为player.interact.test。自动测试另外覆盖完整物品快照与次数不变。
+已独立目视检查Docs/Verification/Localization下六张实际Game截图：Localization_Chinese.png、Localization_English.png、Player_Chinese_Actual.png、Player_English.png、Items_Chinese.png、Items_English_Actual.png。TMP与两个IMGUI面板中文及标点无方框，英文长说明可换行，按钮与状态完整可读，无明显截断。
+Player英文画面显示真实“Press E: Test interaction”和上一条“Medkit: Health is full”；Items英文画面也显示该既有满血失败结果，3件物品、医疗包已用0次。Localization示例结果明确标注仅文字演示。以上为工具驱动的实际Game画面，不称真人试玩。
+上述六张是最终保留的截图；场景切换时错误命名或不稳定的两次捕获已删除，不作为证据。
+实施过程中脚本热重载后，IMGUI曾因临时缺少运行实例引用出现NullReferenceException；已给两个面板的显示入口补空引用保护，随后本轮35项PlayMode全部通过。构建工具曾在Play中被误调用而遭Editor拒绝，现已加入isPlayingOrWillChangePlaymode早返回提示；未为此修改生产入口或玩法。
+最终Unity编译与资源检查见FinalAssetAudit.json：Console最终错误0、警告0；四份表及原物品共85个key有效且唯一、当前文案缺字为空，Dynamic字体源文件随工程引用，输入引用为Player/ToggleLanguage。PlayerTest、ItemsTest、LocalizationTest每场景恰有1份LocalizationModule且缺失脚本均为0。
+检查完成后已停止Play并返回任务开始的PlayerTest场景，场景clean；Enter Play Mode Options恢复为None且未启用，FileAudit.json确认EditorSettings哈希已恢复。该结果是本轮最后检查，不把实施过程中已修复的热重载异常隐瞒为“全程Console始终为0”。
+保护快照110项中103项哈希保持一致，另7项是上文列出的并行需求文档更新；没有回滚它们。不能据此宣称任务期间整个工作区无其他聊天改动。
+
+未执行：完整Windows独立构建与真人试玩；04–09尚未交付界面的联合验收、正式场景全流程双语验收。当前正式模型/动画仍沿用02的资源边界，本轮不接入新动画或制作后续玩法。以上不包含在已通过的03测试和六张Game截图中。
+
+七、后续接入与答辩
+
+后续04–08界面直接GetText/FormatText，物品名称与描述使用ItemDataSO的稳定key；按需订阅LanguageChanged，仅刷新文字。业务数据由各模块保留权威，语言模块不接管。
+09负责正式场景集中接线：现有GameBootstrap实例下只放一份LocalizationModule，四份表、ItemLibrary与ToggleLanguage引用正确，TMP/IMGUI分别配置字体。09不能重复实现F10监听。
+没有新增服务定位器、注册框架、通用事件总线或跨模块公共接口，没有制作背包、仓库、搜刮、敌人、流程或存档系统。
+答辩说明：“SO保存两种语言的文本，Dictionary按key查询；F10改变当前语言并通知界面刷新。物品译文来自既有物品配置，语言模块只读数据，不执行玩法操作。”
+
+八、2026-10-18 背包缺key警告跟进
+
+用户提供backpack.test.scope、backpack.test.instructions、backpack.title等10条缺key警告。10个key的中英译文原本都在BackpackText.asset；实际原因是共享GameBootstrap.prefab后来内置了ItemModule和LocalizationModule，但BackpackTest仍额外添加同类模块。语言Resolve优先取得继承的基础4表实例，背包表挂在第二份实例；物品模块也存在序列化引用和运行查找对象不同的问题。
+03修改BackpackTest.unity：删除场景新增的重复Items/Localization，把背包表迁到Bootstrap继承语言模块，ItemManager原场景句柄重接到继承组件，保留业务引用。BackpackTestSceneBuilder同步先复用现有模块、缺失才创建、表引用Contains去重。保留04并行新增的Loot表、丢弃确认UI及测试，未修改共享Bootstrap、语言核心代码或原译文。
+新增BackpackIntegrationTests.SharedModulesResolveBackpackTextAndF10RefreshesUiWithoutChangingItems：验证唯一语言/物品模块、同源引用、5个样例物品、10个key的中英译文、真实输入队列F10双向切换、静态文本重启用、标题刷新及业务快照不变。
+本次40个自有程序集离线编译通过；随后Unity恢复响应，导入后Console读取0错误0警告，BackpackTest实查语言/物品模块各1份。04同时间补上Loot表及丢弃UI后，场景实际使用6表；03保留其接线。
+04启动的联合PlayMode原生结果（2026-10-18 19:53:19–19:53:33 UTC）包含本次测试，BackpackIntegrationTests 10/10通过，含新增语言回归、拖拽期间F10、重载保留语言及物品状态。完整联合运行29项为10通过19失败，失败属于LootTest初始化，不能表述为全项目通过。证据：Docs/Verification/Localization/BackpackMissingKeys/PlayMode-Combined-Initial.xml、BackpackResults.json、OfflineCompilationResults.json。
+用户明确授权后，已把同类重复模块根因与修复方式同步给任务004背包系统、任务005仓库系统；04负责其当前Loot场景节点，05负责Warehouse场景。03未抢占其后续Editor时段，也未恢复其他任务拥有的临时设置。
+只读另外发现ItemsTest和LocalizationTest仍有旧重复模块，Player/MinimumLoop等部分构建器也仍无条件创建模块；本次未连带改动，后续相应场景整合须遵守唯一模块接线。上文早期03通过成绩仅表示当时配置，不代表这些后续共享预制体变化已经重新验收。

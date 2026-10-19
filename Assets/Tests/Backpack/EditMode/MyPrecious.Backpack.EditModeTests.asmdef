@@ -1,0 +1,13 @@
+{
+    "name": "MyPrecious.Backpack.EditModeTests",
+    "rootNamespace": "",
+    "references": [
+        "MyPrecious.Backpack",
+        "MyPrecious.Items",
+        "MyPrecious.Player",
+        "MyPrecious.Health"
+    ],
+    "includePlatforms": ["Editor"],
+    "autoReferenced": false,
+    "optionalUnityReferences": ["TestAssemblies"]
+}

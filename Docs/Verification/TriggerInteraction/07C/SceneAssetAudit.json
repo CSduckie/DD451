@@ -1,0 +1,456 @@
+[
+  {
+    "path": "Assets/Scenes/Shelter.unity",
+    "targets": [
+      {
+        "name": "ShelterStoragePoint",
+        "type": "GameFlowInteractable",
+        "position": [
+          -5,
+          1.701,
+          2
+        ],
+        "scale": [
+          4.6,
+          4.6,
+          4.6
+        ],
+        "trigger": true,
+        "owner": true,
+        "size": [
+          3.6,
+          2.4,
+          2.4
+        ],
+        "source": null
+      },
+      {
+        "name": "DeparturePoint",
+        "type": "GameFlowInteractable",
+        "position": [
+          9,
+          0.7,
+          1
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "trigger": true,
+        "owner": true,
+        "size": [
+          3.6,
+          2.4,
+          2.4
+        ],
+        "source": null
+      }
+    ],
+    "cameras": [
+      {
+        "valid": true,
+        "error": null,
+        "scene": "Assets/Scenes/Shelter.unity",
+        "center": [
+          0,
+          3,
+          -12
+        ],
+        "size": [
+          15.6,
+          1,
+          2
+        ],
+        "fov": 50,
+        "distance": 12
+      }
+    ],
+    "dirty": false
+  },
+  {
+    "path": "Assets/Scenes/Ruins.unity",
+    "targets": [
+      {
+        "name": "ExtractionPoint",
+        "type": "GameFlowInteractable",
+        "position": [
+          14,
+          0.7,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "trigger": true,
+        "owner": true,
+        "size": [
+          3.6,
+          2.4,
+          2.4
+        ],
+        "source": null
+      },
+      {
+        "name": "SuppliesBox",
+        "type": "LootBox",
+        "position": [
+          -7,
+          0.43,
+          0
+        ],
+        "scale": [
+          0.9,
+          0.85,
+          0.75
+        ],
+        "trigger": true,
+        "owner": true,
+        "size": [
+          3.55555582,
+          3.29411745,
+          2.66666675
+        ],
+        "source": "supplies-box"
+      },
+      {
+        "name": "BatteryGroundOrigin",
+        "type": "GroundItem",
+        "position": [
+          0,
+          0.2,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "trigger": true,
+        "owner": true,
+        "size": [
+          3.2,
+          2.8,
+          2
+        ],
+        "source": "battery-ground"
+      }
+    ],
+    "cameras": [
+      {
+        "valid": true,
+        "error": null,
+        "scene": "Assets/Scenes/Ruins.unity",
+        "center": [
+          0,
+          4,
+          -12
+        ],
+        "size": [
+          14.6,
+          3,
+          2
+        ],
+        "fov": 50,
+        "distance": 12
+      }
+    ],
+    "dirty": false
+  },
+  {
+    "path": "Assets/Scenes/Tests/Player/PlayerTest.unity",
+    "targets": [
+      {
+        "name": "InteractTarget",
+        "type": "PlayerTestInteractable",
+        "position": [
+          -1,
+          0.5,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "trigger": true,
+        "owner": true,
+        "size": [
+          4,
+          3,
+          2
+        ],
+        "source": null
+      },
+      {
+        "name": "BehindWallTarget",
+        "type": "PlayerTestInteractable",
+        "position": [
+          10,
+          1,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "trigger": true,
+        "owner": true,
+        "size": [
+          4,
+          3,
+          2
+        ],
+        "source": null
+      },
+      {
+        "name": "BackgroundDecoration_NotInPlane",
+        "type": "PlayerTestInteractable",
+        "position": [
+          -2,
+          1,
+          0.02
+        ],
+        "scale": [
+          1,
+          2,
+          1
+        ],
+        "trigger": true,
+        "owner": true,
+        "size": [
+          4,
+          3,
+          1
+        ],
+        "source": null
+      }
+    ],
+    "cameras": [
+      {
+        "valid": true,
+        "error": null,
+        "scene": "Assets/Scenes/Tests/Player/PlayerTest.unity",
+        "center": [
+          0,
+          4,
+          -12
+        ],
+        "size": [
+          16.1,
+          3,
+          2
+        ],
+        "fov": 50,
+        "distance": 12
+      }
+    ],
+    "dirty": false
+  },
+  {
+    "path": "Assets/Scenes/Tests/Backpack/BackpackTest.unity",
+    "targets": [],
+    "cameras": [
+      {
+        "valid": true,
+        "error": null,
+        "scene": "Assets/Scenes/Tests/Backpack/BackpackTest.unity",
+        "center": [
+          0,
+          4,
+          -12
+        ],
+        "size": [
+          8.1,
+          3,
+          2
+        ],
+        "fov": 50,
+        "distance": 12
+      }
+    ],
+    "dirty": false
+  },
+  {
+    "path": "Assets/Scenes/Tests/Loot/LootTest.unity",
+    "targets": [
+      {
+        "name": "Box_Guaranteed",
+        "type": "LootBox",
+        "position": [
+          -6.8,
+          0.43,
+          0
+        ],
+        "scale": [
+          0.9,
+          0.85,
+          0.75
+        ],
+        "trigger": true,
+        "owner": true,
+        "size": [
+          3.55555582,
+          3.29411745,
+          2.66666675
+        ],
+        "source": "guaranteed"
+      },
+      {
+        "name": "Box_Zero",
+        "type": "LootBox",
+        "position": [
+          -3.30000019,
+          0.43,
+          0
+        ],
+        "scale": [
+          0.9,
+          0.85,
+          0.75
+        ],
+        "trigger": true,
+        "owner": true,
+        "size": [
+          3.55555582,
+          3.29411745,
+          2.66666675
+        ],
+        "source": "zero"
+      },
+      {
+        "name": "Box_Mixed",
+        "type": "LootBox",
+        "position": [
+          0.199999809,
+          0.43,
+          0
+        ],
+        "scale": [
+          0.9,
+          0.85,
+          0.75
+        ],
+        "trigger": true,
+        "owner": true,
+        "size": [
+          3.55555582,
+          3.29411745,
+          2.66666675
+        ],
+        "source": "mixed"
+      },
+      {
+        "name": "Box_Empty",
+        "type": "LootBox",
+        "position": [
+          3.69999981,
+          0.43,
+          0
+        ],
+        "scale": [
+          0.9,
+          0.85,
+          0.75
+        ],
+        "trigger": true,
+        "owner": true,
+        "size": [
+          3.55555582,
+          3.29411745,
+          2.66666675
+        ],
+        "source": "empty"
+      },
+      {
+        "name": "Box_Unique",
+        "type": "LootBox",
+        "position": [
+          7.2,
+          0.43,
+          0
+        ],
+        "scale": [
+          0.9,
+          0.85,
+          0.75
+        ],
+        "trigger": true,
+        "owner": true,
+        "size": [
+          3.55555582,
+          3.29411745,
+          2.66666675
+        ],
+        "source": "unique-doll"
+      },
+      {
+        "name": "Ground_ground-battery",
+        "type": "GroundItem",
+        "position": [
+          -9.3,
+          0.2,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "trigger": true,
+        "owner": true,
+        "size": [
+          3.2,
+          2.8,
+          2
+        ],
+        "source": "ground-battery"
+      },
+      {
+        "name": "Ground_medical-origin",
+        "type": "GroundItem",
+        "position": [
+          -11.4,
+          0.2,
+          0
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ],
+        "trigger": true,
+        "owner": true,
+        "size": [
+          3.2,
+          2.8,
+          2
+        ],
+        "source": "medical-origin"
+      }
+    ],
+    "cameras": [
+      {
+        "valid": true,
+        "error": null,
+        "scene": "Assets/Scenes/Tests/Loot/LootTest.unity",
+        "center": [
+          0,
+          4,
+          -12
+        ],
+        "size": [
+          24.1,
+          3,
+          2
+        ],
+        "fov": 50,
+        "distance": 12
+      }
+    ],
+    "dirty": false
+  }
+]

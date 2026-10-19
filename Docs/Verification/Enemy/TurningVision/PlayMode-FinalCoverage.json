@@ -1,0 +1,512 @@
+{
+  "Task": "09H TurningVision",
+  "GeneratedUtc": "2026-10-19T08:10:09.0544169Z",
+  "EvidenceOnlyNoTestsRerun": true,
+  "IsSingleRun": false,
+  "SelectionRule": "Select the 8 Passed test-case elements from AfterFix-9-First.xml and all 36 Passed elements from Related-36.xml. Exact fullname is identity; the passing sets have no overlap. The one earlier failed test is retained below and was passed in Related-36.xml. A four-variant coroutine remains one test-case.",
+  "Summary": {
+    "DistinctPassed": 44,
+    "SelectedPassedExecutions": 44,
+    "DuplicateSelectedPassedNames": 0,
+    "RawExecutionsAcrossSources": 45,
+    "HistoricalFailedExecutions": 1,
+    "DistinctCasesAcrossSources": 44,
+    "LatestFailed": 0
+  },
+  "Sources": [
+    {
+      "File": "AfterFix-9-First.xml",
+      "Path": "E:\\DD451\\Docs\\Verification\\Enemy\\TurningVision\\AfterFix-9-First.xml",
+      "Sha256": "5668665AC222B3C4488458119462F59E990E79126DCE7A2A9008F5EDA368367D",
+      "StartUtc": "2026-10-19 08:02:10Z",
+      "EndUtc": "2026-10-19 08:02:26Z",
+      "Result": "Failed(Child)",
+      "Total": 9,
+      "Passed": 8,
+      "Failed": 1,
+      "Skipped": 0
+    },
+    {
+      "File": "Related-36.xml",
+      "Path": "E:\\DD451\\Docs\\Verification\\Enemy\\TurningVision\\Related-36.xml",
+      "Sha256": "85D1923E97F73C87D44C7C934E00C61DAD3451C1F0ABF7640012A865BDD3AC54",
+      "StartUtc": "2026-10-19 08:03:08Z",
+      "EndUtc": "2026-10-19 08:03:53Z",
+      "Result": "Passed",
+      "Total": 36,
+      "Passed": 36,
+      "Failed": 0,
+      "Skipped": 0
+    }
+  ],
+  "SelectedPassedTests": [
+    {
+      "FullName": "DroneAlertTests.ChaseCoverStopsForTwoSecondsWithoutRestartThenResumesExistingRouteIndex",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:08Z",
+      "EndUtc": "2026-10-19 08:03:11Z",
+      "DurationSeconds": 3.338298,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneAlertTests.CoverRediscoveryImmediatelyChasesWhenStandingOrLeavingActualCover",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:11Z",
+      "EndUtc": "2026-10-19 08:03:13Z",
+      "DurationSeconds": 1.652935,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneAlertTests.DiscoveryPhysicalContactExplodesBeforeItsTimerCompletesOnlyOnce",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:13Z",
+      "EndUtc": "2026-10-19 08:03:13Z",
+      "DurationSeconds": 0.037958,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneAlertTests.DiscoverySwitchesToCoverDelayButWallAndDistanceLossUseSearch",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:13Z",
+      "EndUtc": "2026-10-19 08:03:15Z",
+      "DurationSeconds": 1.698782,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneAlertTests.HiddenPlayerStillExplodesOnDirectContactAndSweepBeforeAnyStateUpdate",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:15Z",
+      "EndUtc": "2026-10-19 08:03:16Z",
+      "DurationSeconds": 1.042287,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneAlertTests.HiddenTargetStopsBeforeFixedUpdateMovementButPhysicalContactStillExplodes",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:16Z",
+      "EndUtc": "2026-10-19 08:03:19Z",
+      "DurationSeconds": 3.078246,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneAlertTests.InvalidAndDestroyedTargetsCannotFinishDiscoveryOrResumeCoverAlert",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:19Z",
+      "EndUtc": "2026-10-19 08:03:26Z",
+      "DurationSeconds": 6.903635,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneAlertTests.RealDiscoveryHoversForConfiguredDelayThenChaseHidesOnlyRenderer",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:26Z",
+      "EndUtc": "2026-10-19 08:03:26Z",
+      "DurationSeconds": 0.696953,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneAlertTests.SameRoundPreservesBothTimersButNewRoundDisableAndDestroyClearThem",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:26Z",
+      "EndUtc": "2026-10-19 08:03:27Z",
+      "DurationSeconds": 0.537393,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneAlertTests.SearchRediscoveryUsesANewDiscoveryDelayInsteadOfCoverShortcut",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:27Z",
+      "EndUtc": "2026-10-19 08:03:28Z",
+      "DurationSeconds": 1.029135,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneAlertTests.TwoDronesKeepCoverAndDiscoveryTimersIndependent",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:28Z",
+      "EndUtc": "2026-10-19 08:03:29Z",
+      "DurationSeconds": 1.034646,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneBehaviourTests.ChaseSweepContactFinishesWithoutUsingTheUninitializedStateAgain",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:29Z",
+      "EndUtc": "2026-10-19 08:03:29Z",
+      "DurationSeconds": 0.412465,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneBehaviourTests.DamageObserverDisablingControllerStillFinishesExplosionCleanup",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:29Z",
+      "EndUtc": "2026-10-19 08:03:29Z",
+      "DurationSeconds": 0.018669,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneBehaviourTests.EmptyAndNullRoutesStaySafeAndAcceptPointsWithoutANewRound",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:29Z",
+      "EndUtc": "2026-10-19 08:03:30Z",
+      "DurationSeconds": 0.41971,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneBehaviourTests.EveryLiveStateExplodesOnceOnDirectOrAutomaticPhysicalContact",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:30Z",
+      "EndUtc": "2026-10-19 08:03:30Z",
+      "DurationSeconds": 0.482368,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneBehaviourTests.EveryLiveStateSweepExplodesOnceOnPlayerContact",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:30Z",
+      "EndUtc": "2026-10-19 08:03:30Z",
+      "DurationSeconds": 0.078664,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneBehaviourTests.ExplodedObjectCannotReviveOnReenableOrSameRoundButNewRoundRestoresIt",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:30Z",
+      "EndUtc": "2026-10-19 08:03:30Z",
+      "DurationSeconds": 0.059092,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneBehaviourTests.FlightLeansGraduallyThenLevelsAtRestWithoutBobOrPeriodicSway",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:30Z",
+      "EndUtc": "2026-10-19 08:03:34Z",
+      "DurationSeconds": 3.698679,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneBehaviourTests.InvalidPlayersNeverExplodeADroneEvenWhenBodyShapesOverlap",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:34Z",
+      "EndUtc": "2026-10-19 08:03:34Z",
+      "DurationSeconds": 0.101103,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneBehaviourTests.LostSightKeepsOnlyTheLastSeenPositionThenSearchReturnsToPatrol",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:34Z",
+      "EndUtc": "2026-10-19 08:03:35Z",
+      "DurationSeconds": 1.096929,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneBehaviourTests.ObstructedLastPositionSearchWaitsAtWallThenReturnsWithoutFollowingHiddenMovement",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:35Z",
+      "EndUtc": "2026-10-19 08:03:36Z",
+      "DurationSeconds": 0.720838,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneBehaviourTests.OpenBackpackContactAndInvulnerableContactEachExplodeOnlyOnce",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:36Z",
+      "EndUtc": "2026-10-19 08:03:36Z",
+      "DurationSeconds": 0.118187,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneBehaviourTests.PatrolCyclesAuthoredArrayOrderAndSkipsNullEntries",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:36Z",
+      "EndUtc": "2026-10-19 08:03:37Z",
+      "DurationSeconds": 1.182411,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneBehaviourTests.PatrolUpdatesMovedAndReorderedPointsWhileOtherDroneStaysIndependent",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:37Z",
+      "EndUtc": "2026-10-19 08:03:38Z",
+      "DurationSeconds": 0.260483,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneBehaviourTests.ReenablingLivingControllerRestoresVisionAndCanAcquireAgain",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:38Z",
+      "EndUtc": "2026-10-19 08:03:38Z",
+      "DurationSeconds": 0.526683,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneBehaviourTests.RotorAndVisualAnimationNeverRotateOrScaleThePhysicalRootOrVision",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:38Z",
+      "EndUtc": "2026-10-19 08:03:38Z",
+      "DurationSeconds": 0.093297,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneBehaviourTests.SmoothYawSharesHeadingWithVisionSurvivesRebuildAndResetsOnlyForNewRound",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:38Z",
+      "EndUtc": "2026-10-19 08:03:38Z",
+      "DurationSeconds": 0.122528,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneBehaviourTests.SphereSweepStopsAtSolidWallAndNeverMovesIntoAnotherDepthPlane",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:38Z",
+      "EndUtc": "2026-10-19 08:03:39Z",
+      "DurationSeconds": 0.836619,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneBehaviourTests.TwoDronesPatrolTheirOwnRoutesAndExplosionDoesNotStopTheOther",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:39Z",
+      "EndUtc": "2026-10-19 08:03:39Z",
+      "DurationSeconds": 0.18025,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneStatusLightTests.ActualPatrolAlertChaseAndSearchEachKeepBreathingInTheirOwnColor",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:39Z",
+      "EndUtc": "2026-10-19 08:03:45Z",
+      "DurationSeconds": 5.835221,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneStatusLightTests.DisablingEffectAfterExplosionLeavesNextRoundLightAtAuthoredStrength",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:45Z",
+      "EndUtc": "2026-10-19 08:03:46Z",
+      "DurationSeconds": 0.525608,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneStatusLightTests.DisablingRestoresAuthoredLightAndNeverEnablesAnOriginallyDisabledLight",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:46Z",
+      "EndUtc": "2026-10-19 08:03:47Z",
+      "DurationSeconds": 1.580723,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneStatusLightTests.ExplosionStaysDarkAcrossReenableAndNextRoundRestoresOriginalStrength",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:47Z",
+      "EndUtc": "2026-10-19 08:03:48Z",
+      "DurationSeconds": 0.812586,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneTurningVisionTests.MidTurnDiscoveryStillRespondsToRealLossAndCoverTimeout",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:48Z",
+      "EndUtc": "2026-10-19 08:03:50Z",
+      "DurationSeconds": 2.415887,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneTurningVisionTests.MovingPlayerEnteringLeftToRightTurnKeepsNaturalDiscovery",
+      "Result": "Passed",
+      "Source": "AfterFix-9-First.xml",
+      "StartUtc": "2026-10-19 08:02:10Z",
+      "EndUtc": "2026-10-19 08:02:11Z",
+      "DurationSeconds": 0.697696,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneTurningVisionTests.MovingPlayerEnteringRightToLeftTurnKeepsNaturalDiscovery",
+      "Result": "Passed",
+      "Source": "AfterFix-9-First.xml",
+      "StartUtc": "2026-10-19 08:02:11Z",
+      "EndUtc": "2026-10-19 08:02:12Z",
+      "DurationSeconds": 0.677776,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneTurningVisionTests.QueuedStandingAndCrouchingMovementEntersBothNaturalTurns",
+      "Result": "Passed",
+      "Source": "AfterFix-9-First.xml",
+      "StartUtc": "2026-10-19 08:02:12Z",
+      "EndUtc": "2026-10-19 08:02:16Z",
+      "DurationSeconds": 4.253205,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneTurningVisionTests.StationaryPlayerIsSweptIntoLeftToRightTurnAtAnIntermediateHeading",
+      "Result": "Passed",
+      "Source": "AfterFix-9-First.xml",
+      "StartUtc": "2026-10-19 08:02:16Z",
+      "EndUtc": "2026-10-19 08:02:17Z",
+      "DurationSeconds": 1.207501,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneTurningVisionTests.StationaryPlayerIsSweptIntoLeftToRightTurnNearItsEnd",
+      "Result": "Passed",
+      "Source": "AfterFix-9-First.xml",
+      "StartUtc": "2026-10-19 08:02:17Z",
+      "EndUtc": "2026-10-19 08:02:19Z",
+      "DurationSeconds": 1.68348,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneTurningVisionTests.StationaryPlayerIsSweptIntoRightToLeftTurnAtAnIntermediateHeading",
+      "Result": "Passed",
+      "Source": "AfterFix-9-First.xml",
+      "StartUtc": "2026-10-19 08:02:19Z",
+      "EndUtc": "2026-10-19 08:02:20Z",
+      "DurationSeconds": 1.217873,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneTurningVisionTests.StationaryPlayerIsSweptIntoRightToLeftTurnNearItsEnd",
+      "Result": "Passed",
+      "Source": "AfterFix-9-First.xml",
+      "StartUtc": "2026-10-19 08:02:20Z",
+      "EndUtc": "2026-10-19 08:02:22Z",
+      "DurationSeconds": 1.697836,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneTurningVisionTests.TurningRangeDoesNotSeeThroughWallOrCrouchingCover",
+      "Result": "Passed",
+      "Source": "AfterFix-9-First.xml",
+      "StartUtc": "2026-10-19 08:02:22Z",
+      "EndUtc": "2026-10-19 08:02:26Z",
+      "DurationSeconds": 3.935221,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneVisionAlignmentTests.DetectionUsesMovedModelOriginImmediatelyBeforeLateUpdate",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:50Z",
+      "EndUtc": "2026-10-19 08:03:50Z",
+      "DurationSeconds": 0.009686,
+      "FailureMessage": null
+    },
+    {
+      "FullName": "DroneVisionAlignmentTests.VisionStaysLevelDuringModelLeanTurnAndRoundReset",
+      "Result": "Passed",
+      "Source": "Related-36.xml",
+      "StartUtc": "2026-10-19 08:03:50Z",
+      "EndUtc": "2026-10-19 08:03:53Z",
+      "DurationSeconds": 2.02527,
+      "FailureMessage": null
+    }
+  ],
+  "HistoricalFailures": [
+    {
+      "FullName": "DroneTurningVisionTests.MidTurnDiscoveryStillRespondsToRealLossAndCoverTimeout",
+      "Source": "AfterFix-9-First.xml",
+      "Result": "Failed",
+      "FailureMessage": "  Expected: Alert\n  But was:  Patrol\n",
+      "SupersededBy": {
+        "FullName": "DroneTurningVisionTests.MidTurnDiscoveryStillRespondsToRealLossAndCoverTimeout",
+        "Result": "Passed",
+        "Source": "Related-36.xml",
+        "StartUtc": "2026-10-19 08:03:48Z",
+        "EndUtc": "2026-10-19 08:03:50Z",
+        "DurationSeconds": 2.415887,
+        "FailureMessage": null
+      }
+    }
+  ],
+  "EditMode": {
+    "Source": "EditMode-4.json",
+    "Path": "E:\\DD451\\Docs\\Verification\\Enemy\\TurningVision\\EditMode-4.json",
+    "Sha256": "23AC76DC772D740B32A98A7C838F9957A9921F876FA1B5AC187A018E176365C9",
+    "JobId": "bba6901063044127b16e632ee89274bd",
+    "Status": "succeeded",
+    "StartUtc": "2026-10-19T08:04:25.9070000Z",
+    "EndUtc": "2026-10-19T08:04:26.4740000Z",
+    "Summary": {
+      "total": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 0.0752525,
+      "resultState": "Passed"
+    },
+    "Tests": [
+      {
+        "name": "AThinSolidWallDoesNotTurnNearContactIntoAnExplosion",
+        "fullName": "DroneRoundTests.AThinSolidWallDoesNotTurnNearContactIntoAnExplosion",
+        "state": "Passed",
+        "durationSeconds": 0.0296258,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "DamageObserverCannotReenterContactOrAdvanceRoundAndDistantApiCallDoesNothing",
+        "fullName": "DroneRoundTests.DamageObserverCannotReenterContactOrAdvanceRoundAndDistantApiCallDoesNothing",
+        "state": "Passed",
+        "durationSeconds": 0.001689,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "ExplosionSurvivesSameRoundAndReenableButANewRoundRestoresBodyAndVisual",
+        "fullName": "DroneRoundTests.ExplosionSurvivesSameRoundAndReenableButANewRoundRestoresBodyAndVisual",
+        "state": "Passed",
+        "durationSeconds": 0.001893,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "NonPositiveSameAndOlderRoundsCannotResetAMovedLivingDrone",
+        "fullName": "DroneRoundTests.NonPositiveSameAndOlderRoundsCannotResetAMovedLivingDrone",
+        "state": "Passed",
+        "durationSeconds": 0.0005277,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      }
+    ]
+  }
+}

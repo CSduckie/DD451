@@ -1,0 +1,31 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"success\":true,\"message\":\"Code executed successfully.\",\"data\":{\"result\":{\"screen\":\"1280x720\",\"nextToken\":0,\"selected\":\"f0b5ce4b8e6e454286b3572c1a081453\",\"backpackFeedback\":\"backpack.ready\",\"sourceFeedback\":\"loot.return_hint\",\"mouse\":\"(398.00, 206.50)\",\"count\":11,\"sourceEntries\":3,\"firstId\":\"76a3108bd74342f8a2e0d7f645681c40\",\"firstOwner\":\"Container\",\"firstContainer\":\"loot-test/guaranteed\",\"firstTaken\":false,\"focus\":true},\"compiler\":\"codedom\"}}"
+    }
+  ],
+  "structuredContent": {
+    "success": true,
+    "message": "Code executed successfully.",
+    "data": {
+      "result": {
+        "screen": "1280x720",
+        "nextToken": 0,
+        "selected": "f0b5ce4b8e6e454286b3572c1a081453",
+        "backpackFeedback": "backpack.ready",
+        "sourceFeedback": "loot.return_hint",
+        "mouse": "(398.00, 206.50)",
+        "count": 11,
+        "sourceEntries": 3,
+        "firstId": "76a3108bd74342f8a2e0d7f645681c40",
+        "firstOwner": "Container",
+        "firstContainer": "loot-test/guaranteed",
+        "firstTaken": false,
+        "focus": true
+      },
+      "compiler": "codedom"
+    }
+  },
+  "isError": false
+}

@@ -1,0 +1,14 @@
+{
+  "review": "All four1920x1080 images visually inspected",
+  "sampleRecords": 550,
+  "captures": 4,
+  "states": [
+    "Patrol",
+    "Alert",
+    "Chase"
+  ],
+  "maxVisionY": 0.0,
+  "maxLogicMpbError": 0.0,
+  "health": 3,
+  "cleanupErrors": []
+}

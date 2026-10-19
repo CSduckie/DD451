@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Passed" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-19 08:31:03Z" end-time="2026-10-19 08:31:04Z" duration="1.1748471">
+  <test-suite type="TestSuite" id="1226" name="DD451Demo" fullname="DD451Demo" runstate="Runnable" testcasecount="189" result="Passed" start-time="2026-10-19 08:31:03Z" end-time="2026-10-19 08:31:04Z" duration="1.174847" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1102" name="MyPrecious.GameFlow.PlayModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.GameFlow.PlayModeTests.dll" runstate="Runnable" testcasecount="14" result="Passed" start-time="2026-10-19 08:31:03Z" end-time="2026-10-19 08:31:04Z" duration="1.150660" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="85336" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1086" name="MinimumLoopSceneTests" fullname="MinimumLoopSceneTests" classname="MinimumLoopSceneTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-19 08:31:03Z" end-time="2026-10-19 08:31:04Z" duration="1.144723" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1088" name="BootstrapStartsEmptyAtRoundZeroAndTwoTransitionsKeepOnePlayer" fullname="MinimumLoopSceneTests.BootstrapStartsEmptyAtRoundZeroAndTwoTransitionsKeepOnePlayer" methodname="BootstrapStartsEmptyAtRoundZeroAndTwoTransitionsKeepOnePlayer" classname="MinimumLoopSceneTests" runstate="Runnable" seed="986925299" result="Passed" start-time="2026-10-19 08:31:03Z" end-time="2026-10-19 08:31:04Z" duration="0.726379" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1087" name="EditPreviewCamerasStayDisabledUntilRuntimeActivation" fullname="MinimumLoopSceneTests.EditPreviewCamerasStayDisabledUntilRuntimeActivation" methodname="EditPreviewCamerasStayDisabledUntilRuntimeActivation" classname="MinimumLoopSceneTests" runstate="Runnable" seed="385325467" result="Passed" start-time="2026-10-19 08:31:04Z" end-time="2026-10-19 08:31:04Z" duration="0.129974" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1089" name="LoadedTargetBindingFailureRetriesTheSameSceneAndAllocatedRound" fullname="MinimumLoopSceneTests.LoadedTargetBindingFailureRetriesTheSameSceneAndAllocatedRound" methodname="LoadedTargetBindingFailureRetriesTheSameSceneAndAllocatedRound" classname="MinimumLoopSceneTests" runstate="Runnable" seed="905244476" result="Passed" start-time="2026-10-19 08:31:04Z" end-time="2026-10-19 08:31:04Z" duration="0.266168" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[GameFlow: 场景接线不完整：Assets/Scenes/Ruins.unity
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/cs200/AppData/LocalLow/DefaultCompany/DD451Demo\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

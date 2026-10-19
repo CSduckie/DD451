@@ -1,0 +1,28 @@
+{
+  "utc": "2026-10-19T17:24:38.4673906Z",
+  "scene": "Assets/Scenes/Ruins.unity",
+  "dirty": false,
+  "missingScripts": 0,
+  "effects": 1,
+  "binder": "PlayerCamera",
+  "parent": "ScenePresentation",
+  "intensity": 0.22,
+  "smoothness": 0.45,
+  "transitionSeconds": 0.2,
+  "stealthWeight": 0.0,
+  "stealthShared": true,
+  "baselinePath": "Assets/Settings/Effects/RuinsPostProcessingProfile.asset",
+  "baselineWeight": 1.0,
+  "baselineTypes": [
+    "Tonemapping",
+    "Bloom",
+    "Vignette"
+  ],
+  "cameras": [
+    {
+      "name": "OutputCamera",
+      "pp": true,
+      "mask": 1
+    }
+  ]
+}

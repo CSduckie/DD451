@@ -1,0 +1,9 @@
+{
+  "projectSettingsBefore": "51DE54AD534B42BC8FD7620A3E95CDBBD874E2859C24C5A313B070F0D9879760",
+  "projectSettingsRestored": "883568C7519C8C83808FEE8A39259427D8E2127D7CBF10ADE97CA42903711F1D",
+  "expectedBaselineMatched": true,
+  "restoredBlocks": [
+    "preloadedAssets",
+    "m_BuildTargetBatching"
+  ]
+}

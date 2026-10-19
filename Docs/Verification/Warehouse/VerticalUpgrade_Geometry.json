@@ -1,0 +1,89 @@
+{
+  "before": {
+    "screenWidth": 1920,
+    "screenHeight": 1080,
+    "columns": 20,
+    "rows": 20,
+    "cellSize": 42.65,
+    "gridWidth": 926,
+    "gridHeight": 926,
+    "viewportWidth": 926,
+    "viewportHeight": 452,
+    "scrollHorizontal": false,
+    "scrollVertical": true,
+    "items": [
+      {
+        "id": "d112675fa062436fbc06a040571f7f6a",
+        "viewId": -1871992,
+        "width": 88.3,
+        "height": 133.950012,
+        "x": 8,
+        "y": -8
+      },
+      {
+        "id": "39da901e9b2f47efb648834b546371c8",
+        "viewId": -1872018,
+        "width": 88.3,
+        "height": 88.3,
+        "x": 144.950012,
+        "y": -8
+      },
+      {
+        "id": "6c2a656aeba74049894803b6c3319d1a",
+        "viewId": -1872044,
+        "width": 42.65,
+        "height": 88.3,
+        "x": 281.900024,
+        "y": -8
+      }
+    ]
+  },
+  "after": {
+    "screenWidth": 1920,
+    "screenHeight": 1080,
+    "columns": 20,
+    "rows": 24,
+    "cellSize": 42.65,
+    "gridWidth": 926,
+    "gridHeight": 1108.6001,
+    "viewportWidth": 926,
+    "viewportHeight": 452,
+    "scrollHorizontal": false,
+    "scrollVertical": true,
+    "items": [
+      {
+        "id": "d112675fa062436fbc06a040571f7f6a",
+        "viewId": -1871992,
+        "width": 88.3,
+        "height": 133.950012,
+        "x": 8,
+        "y": -8
+      },
+      {
+        "id": "39da901e9b2f47efb648834b546371c8",
+        "viewId": -1872018,
+        "width": 88.3,
+        "height": 88.3,
+        "x": 144.950012,
+        "y": -8
+      },
+      {
+        "id": "6c2a656aeba74049894803b6c3319d1a",
+        "viewId": -1872044,
+        "width": 42.65,
+        "height": 88.3,
+        "x": 281.900024,
+        "y": -8
+      }
+    ]
+  },
+  "checks": {
+    "sameCellSize": true,
+    "sameGridWidth": true,
+    "rowsAdded": 4,
+    "cellsAdded": 80,
+    "sameExistingItems": true,
+    "verticalOnly": true
+  },
+  "note": "UI button UnityEvent invoked in live WarehouseTest, fixed 1920x1080 GameView and top scroll. Dimensions in Canvas local units. Screenshots are unedited Unity ScreenCapture output."
+}

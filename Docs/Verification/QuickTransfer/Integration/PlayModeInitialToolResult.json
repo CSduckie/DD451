@@ -1,0 +1,75 @@
+{
+  "start": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"success\":true,\"message\":\"Test job started.\",\"error\":null,\"data\":{\"job_id\":\"eb218367e3fa439fa6ae5c7c0e50c210\",\"status\":\"running\",\"mode\":\"PlayMode\",\"include_details\":true,\"include_failed_tests\":true},\"hint\":null}"
+      }
+    ],
+    "structuredContent": {
+      "result": {
+        "success": true,
+        "message": "Test job started.",
+        "error": null,
+        "data": {
+          "job_id": "eb218367e3fa439fa6ae5c7c0e50c210",
+          "status": "running",
+          "mode": "PlayMode",
+          "include_details": true,
+          "include_failed_tests": true
+        },
+        "hint": null
+      }
+    },
+    "isError": false
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"success\":true,\"message\":\"Test job status retrieved.\",\"error\":null,\"data\":{\"job_id\":\"eb218367e3fa439fa6ae5c7c0e50c210\",\"status\":\"failed\",\"mode\":\"PlayMode\",\"started_unix_ms\":1792367827095,\"finished_unix_ms\":1792367872977,\"last_update_unix_ms\":1792367872977,\"progress\":{\"completed\":75,\"total\":75,\"current_test_full_name\":null,\"current_test_started_unix_ms\":1792367872665,\"last_finished_test_full_name\":\"WarehouseIntegrationTests.VerticalScrollingKeepsEveryColumnVisibleAndMapsPointerWithoutRebuildingCells\",\"last_finished_unix_ms\":1792367872935,\"stuck_suspected\":false,\"editor_is_focused\":true,\"run_in_background\":null,\"focus_nudge_attempts\":null,\"focus_nudge_limit\":null,\"focus_nudge_status\":null,\"blocked_reason\":null,\"failures_so_far\":[{\"full_name\":\"BackpackIntegrationTests.QueuedSameFrameCtrlLeftAndRightPressCannotUseAndRightUseRecoversAfterRelease\",\"message\":\"  Expected: 1\\r\\n  But was:  0\\r\\n\"}],\"failures_capped\":false},\"error\":null,\"result\":null},\"hint\":null}"
+      }
+    ],
+    "structuredContent": {
+      "result": {
+        "success": true,
+        "message": "Test job status retrieved.",
+        "error": null,
+        "data": {
+          "job_id": "eb218367e3fa439fa6ae5c7c0e50c210",
+          "status": "failed",
+          "mode": "PlayMode",
+          "started_unix_ms": 1792367827095,
+          "finished_unix_ms": 1792367872977,
+          "last_update_unix_ms": 1792367872977,
+          "progress": {
+            "completed": 75,
+            "total": 75,
+            "current_test_full_name": null,
+            "current_test_started_unix_ms": 1792367872665,
+            "last_finished_test_full_name": "WarehouseIntegrationTests.VerticalScrollingKeepsEveryColumnVisibleAndMapsPointerWithoutRebuildingCells",
+            "last_finished_unix_ms": 1792367872935,
+            "stuck_suspected": false,
+            "editor_is_focused": true,
+            "run_in_background": null,
+            "focus_nudge_attempts": null,
+            "focus_nudge_limit": null,
+            "focus_nudge_status": null,
+            "blocked_reason": null,
+            "failures_so_far": [
+              {
+                "full_name": "BackpackIntegrationTests.QueuedSameFrameCtrlLeftAndRightPressCannotUseAndRightUseRecoversAfterRelease",
+                "message": "  Expected: 1\r\n  But was:  0\r\n"
+              }
+            ],
+            "failures_capped": false
+          },
+          "error": null,
+          "result": null
+        },
+        "hint": null
+      }
+    },
+    "isError": false
+  }
+}

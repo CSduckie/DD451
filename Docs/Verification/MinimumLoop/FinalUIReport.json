@@ -1,0 +1,169 @@
+{
+  "date": "2026-10-18",
+  "task": "007",
+  "status": "UI fixes and automated/visual verification completed; two full native keyboard/mouse rounds remain unverified",
+  "currentScope": "User's latest Dispatch v16/A23 instruction: default 16:9 1920x1080, no further multi-resolution support required. Existing 800x600 fixes and evidence retained; 1280 zero-test interruption is not a pass or assertion failure.",
+  "changes": [
+    "007-only GameFlowResponsiveLayout: 800x600 readable layout, matching backpack/warehouse rendered cells; fixed self-viewport details overlap, Close source button width and HUD stage line height.",
+    "1920x1080: no-wrap ellipsis thumbnail names with readable fonts, separate name/size strips for one-row rotated items, original cellSize=36/gap=3/padding=8 and item frames preserved.",
+    "1920x1080: discard message uses font 22 and measured text height, moves original guarded buttons below full localized consequence text; warehouse operation labels use font18/height30; shelter title height46.",
+    "PlayerSettings defaults 1920x1080 and defaultIsNativeResolution=false; FullScreenWindow unchanged; runInBackground restored false."
+  ],
+  "sourceHashes": {
+    "responsiveLayout": "254D8845C3964C2641BE16D73324AEDE363F76BEA23FD0BB1D14EC9225FF48CE",
+    "pointerTest": "CF7E637A371A7A927018951CA4754893F53764374F87A40D184CD533CD4373FF"
+  },
+  "automated": {
+    "latest": {
+      "file": "ResponsivePointer1920Results.json",
+      "jobId": "5b712cbb867b4651b49c9c98f1c463b3",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "passed": 1,
+      "failed": 0,
+      "durationSeconds": 5.7065322,
+      "mode": "PlayMode",
+      "input": "InputSystem queued events through InputAction / UIInputModule / UGUI; scene departure, relocation, source opening and extraction use public APIs; not OS keyboard/mouse"
+    },
+    "coverage": "Two rounds; real sequential reveal; source-to-backpack drag; Chinese/English discard confirmation cancellation; rotation; bidirectional backpack/warehouse transfer including new row 22; upgrade 20x20 to20x24 with unchanged EV7/cell geometry; same identities, coordinates and retained values; visible non-scroll label height assertions.",
+    "historical": "19 distinct tests; original11 EditMode +7 PlayMode +same pointer test at3 sizes=21 successful executions. Later expanded800 pass and final1920 pass add2; this is not a full19-test rerun on final source.",
+    "responsive800": {
+      "file": "ResponsivePointer800Results.json",
+      "passed": 1,
+      "durationSeconds": 5.6848193,
+      "scope": "Before final wide-only fixes; historical small-screen evidence"
+    },
+    "interrupted1280": {
+      "file": "ResponsivePointer1280Interrupted.json",
+      "executed": 0,
+      "status": "Interrupted before assertions; not rerun under latest scope"
+    },
+    "fixedFailures": [
+      "ResponsivePointer1920BeforeFix.json",
+      "ResponsivePointer1920DialogBeforeFix.json"
+    ]
+  },
+  "visual": {
+    "capture": "Ordinary Play from formal Bootstrap; public API fixtures for departure, pickup, extraction, storage and upgrade. Unity asynchronous ScreenCapture 1920x1080; inspected images, not proof of native gameplay.",
+    "screenshots": [
+      "Final1920-Chinese-Shelter-API.png",
+      "Final1920-Chinese-Loot-API.png",
+      "Final1920-English-Discard-API.png",
+      "Final1920-English-Storage-API.png",
+      "Final1920-Chinese-Storage-API.png"
+    ],
+    "fixedLabelOverflowScans": {
+      "chineseLoot": [],
+      "englishDiscard": [],
+      "englishStorage": [],
+      "chineseStorage": []
+    },
+    "scanBoundary": "Active TMP labels excluding ScrollRect content; includes thumbnail text for vertical-height checks. Scrollable details may extend beyond viewport intentionally.",
+    "renderedGeometry": {
+      "backpackCell": 40.18605,
+      "warehouseCell": 40.18605,
+      "backpackGap": 3.34883738,
+      "warehouseGap": 3.34883738,
+      "warehouseColumns": 20,
+      "warehouseRowsAfterUpgrade": 24,
+      "horizontalScroll": false
+    }
+  },
+  "native1920": {
+    "tool": "computer-use sky",
+    "gameZoom": 1,
+    "gameWindowOrigin": [
+      312,
+      207
+    ],
+    "before": {
+      "stage": "Shelter",
+      "width": 1920,
+      "height": 1080,
+      "focused": true,
+      "window": "GameView",
+      "keyboardEnabled": true,
+      "device": "Keyboard (RawInput)",
+      "keyboardLast": 13.731399199998123,
+      "canAct": true,
+      "position": "(-8.00, 0.00, 0.00)",
+      "backpack": false
+    },
+    "afterTab": {
+      "keyboardLast": 13.731399199998123,
+      "canAct": true,
+      "position": "(-8.00, 0.00, 0.00)",
+      "backpack": false
+    },
+    "afterD": {
+      "keyboardLast": 13.731399199998123,
+      "canAct": true,
+      "position": "(-8.00, 0.00, 0.00)",
+      "backpack": false
+    },
+    "keyboardOutcome": "Tab did not open backpack; D did not move player; RawInput lastUpdateTime unchanged despite active GameView and enabled keyboard. No full native round completed.",
+    "drag": {
+      "source": "Warehouse medkit (0,0)",
+      "destination": "Backpack (2,0)",
+      "fromWindow": [
+        1093,
+        494
+      ],
+      "toWindow": [
+        555,
+        479
+      ],
+      "outcome": "No commit; medkit remains warehouse(0,0), doll remains backpack(0,0); no live drag afterward."
+    },
+    "wheel": {
+      "input": {
+        "x": 1730,
+        "y": 680,
+        "scrollY": 600
+      },
+      "beforeVertical": 1,
+      "after": {
+        "vertical": 0,
+        "horizontal": false
+      },
+      "outcome": "Passed: reached bottom with horizontal disabled"
+    },
+    "close": {
+      "input": {
+        "x": 2055,
+        "y": 424
+      },
+      "after": {
+        "backpack": false,
+        "warehouse": false,
+        "canAct": true
+      },
+      "outcome": "Passed: both containers closed and player CanAct restored"
+    },
+    "twoFullRounds": "NOT COMPLETED; no substitution with API fixtures or queued-input test"
+  },
+  "editorFinal": {
+    "playing": false,
+    "changing": false,
+    "compiling": false,
+    "updating": false,
+    "scene": "Assets/Scenes/Bootstrap.unity",
+    "dirty": false,
+    "sceneCount": 1,
+    "gameIndex": 7,
+    "runInBackground": false,
+    "playerRunInBackground": false,
+    "width": 1920,
+    "height": 1080,
+    "native": false
+  },
+  "consoleFinal": {
+    "success": true,
+    "message": "Retrieved 0 log entries.",
+    "data": []
+  },
+  "previousToolIssue": "Earlier MCP composited screenshot caused PlayerLoop recursion in ScreenshotUtility.cs:197; original stack preserved in ResponsiveNativeAttempts.json. Final captures avoided that endpoint; final Console read returned0 errors/warnings.",
+  "remaining": "Two full native keyboard/mouse rounds require a working native input path; Windows build belongs to task08 and was not performed."
+}

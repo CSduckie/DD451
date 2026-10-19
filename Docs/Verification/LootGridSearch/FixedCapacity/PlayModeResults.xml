@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="27" result="Passed" total="27" passed="27" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-18 22:45:13Z" end-time="2026-10-18 22:45:33Z" duration="20.2444541">
+  <test-suite type="TestSuite" id="1395" name="DD451Demo" fullname="DD451Demo" runstate="Runnable" testcasecount="87" result="Passed" start-time="2026-10-18 22:45:13Z" end-time="2026-10-18 22:45:33Z" duration="20.244454" total="27" passed="27" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1353" name="MyPrecious.Loot.PlayModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.Loot.PlayModeTests.dll" runstate="Runnable" testcasecount="27" result="Passed" start-time="2026-10-18 22:45:13Z" end-time="2026-10-18 22:45:33Z" duration="20.235797" total="27" passed="27" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="48276" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1325" name="LootIntegrationTests" fullname="LootIntegrationTests" classname="LootIntegrationTests" runstate="Runnable" testcasecount="27" result="Passed" start-time="2026-10-18 22:45:13Z" end-time="2026-10-18 22:45:33Z" duration="20.227739" total="27" passed="27" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1341" name="ActualDistanceAndObstructionInterruptSearchWhileUiLockDoesNot" fullname="LootIntegrationTests.ActualDistanceAndObstructionInterruptSearchWhileUiLockDoesNot" methodname="ActualDistanceAndObstructionInterruptSearchWhileUiLockDoesNot" classname="LootIntegrationTests" runstate="Runnable" seed="1513868496" result="Passed" start-time="2026-10-18 22:45:13Z" end-time="2026-10-18 22:45:13Z" duration="0.556107" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1352" name="ClosingEndsSourceAndPreviewBeforeReleasingBackpackControl" fullname="LootIntegrationTests.ClosingEndsSourceAndPreviewBeforeReleasingBackpackControl" methodname="ClosingEndsSourceAndPreviewBeforeReleasingBackpackControl" classname="LootIntegrationTests" runstate="Runnable" seed="1400215242" result="Passed" start-time="2026-10-18 22:45:13Z" end-time="2026-10-18 22:45:13Z" duration="0.234727" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1350" name="ExistingRightClickStillRejectsFullHealthAndUsesOneRealFoodAfterDamage" fullname="LootIntegrationTests.ExistingRightClickStillRejectsFullHealthAndUsesOneRealFoodAfterDamage" methodname="ExistingRightClickStillRejectsFullHealthAndUsesOneRealFoodAfterDamage" classname="LootIntegrationTests" runstate="Runnable" seed="11746963" result="Passed" start-time="2026-10-18 22:45:13Z" end-time="2026-10-18 22:45:14Z" duration="0.190467" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1328" name="GridZeroSecondAndEmptySourcesShowCompletionWhileWideItemsRemainFullSize" fullname="LootIntegrationTests.GridZeroSecondAndEmptySourcesShowCompletionWhileWideItemsRemainFullSize" methodname="GridZeroSecondAndEmptySourcesShowCompletionWhileWideItemsRemainFullSize" classname="LootIntegrationTests" runstate="Runnable" seed="850806118" result="Passed" start-time="2026-10-18 22:45:14Z" end-time="2026-10-18 22:45:14Z" duration="0.204286" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1351" name="GroundPointerCancelAndFullBackpackKeepTheSameVisibleSource" fullname="LootIntegrationTests.GroundPointerCancelAndFullBackpackKeepTheSameVisibleSource" methodname="GroundPointerCancelAndFullBackpackKeepTheSameVisibleSource" classname="LootIntegrationTests" runstate="Runnable" seed="677003223" result="Passed" start-time="2026-10-18 22:45:14Z" end-time="2026-10-18 22:45:14Z" duration="0.186597" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1349" name="QueuedBackpackAndWarehousePointerReordersStillUseTheirOwnGridAndOneR" fullname="LootIntegrationTests.QueuedBackpackAndWarehousePointerReordersStillUseTheirOwnGridAndOneR" methodname="QueuedBackpackAndWarehousePointerReordersStillUseTheirOwnGridAndOneR" classname="LootIntegrationTests" runstate="Runnable" seed="969864890" result="Passed" start-time="2026-10-18 22:45:14Z" end-time="2026-10-18 22:45:14Z" duration="0.269399" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1342" name="QueuedBoxRoundTripReusesEntryIdentityAndKeepsTheNextSearch" fullname="LootIntegrationTests.QueuedBoxRoundTripReusesEntryIdentityAndKeepsTheNextSearch" methodname="QueuedBoxRoundTripReusesEntryIdentityAndKeepsTheNextSearch" classname="LootIntegrationTests" runstate="Runnable" seed="142048127" result="Passed" start-time="2026-10-18 22:45:14Z" end-time="2026-10-18 22:45:16Z" duration="1.274004" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1348" name="QueuedCrossPreviewCancelledByClaimNotificationReleasesWarehouseAndAllowsNextDrag" fullname="LootIntegrationTests.QueuedCrossPreviewCancelledByClaimNotificationReleasesWarehouseAndAllowsNextDrag" methodname="QueuedCrossPreviewCancelledByClaimNotificationReleasesWarehouseAndAllowsNextDrag" classname="LootIntegrationTests" runstate="Runnable" seed="1447966542" result="Passed" start-time="2026-10-18 22:45:16Z" end-time="2026-10-18 22:45:16Z" duration="0.232201" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1345" name="QueuedDamageCancelsValidBoxPickupAndLateTokenCannotAffectNextDrag" fullname="LootIntegrationTests.QueuedDamageCancelsValidBoxPickupAndLateTokenCannotAffectNextDrag" methodname="QueuedDamageCancelsValidBoxPickupAndLateTokenCannotAffectNextDrag" classname="LootIntegrationTests" runstate="Runnable" seed="255366679" result="Passed" start-time="2026-10-18 22:45:16Z" end-time="2026-10-18 22:45:17Z" duration="1.243083" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1344" name="QueuedDamageCancelsValidBoxReturnAndLateTokenCannotAffectNextDrag" fullname="LootIntegrationTests.QueuedDamageCancelsValidBoxReturnAndLateTokenCannotAffectNextDrag" methodname="QueuedDamageCancelsValidBoxReturnAndLateTokenCannotAffectNextDrag" classname="LootIntegrationTests" runstate="Runnable" seed="21741132" result="Passed" start-time="2026-10-18 22:45:17Z" end-time="2026-10-18 22:45:17Z" duration="0.261578" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1335" name="QueuedDiscardConfirmationCancelsTranslatesAndDestroysOrdinaryItemExactlyOnce" fullname="LootIntegrationTests.QueuedDiscardConfirmationCancelsTranslatesAndDestroysOrdinaryItemExactlyOnce" methodname="QueuedDiscardConfirmationCancelsTranslatesAndDestroysOrdinaryItemExactlyOnce" classname="LootIntegrationTests" runstate="Runnable" seed="2065000882" result="Passed" start-time="2026-10-18 22:45:17Z" end-time="2026-10-18 22:45:18Z" duration="0.291037" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1329" name="QueuedEmptyContainersWithEqualCellCountsKeepTheirOwnShapeAndLanguageState" fullname="LootIntegrationTests.QueuedEmptyContainersWithEqualCellCountsKeepTheirOwnShapeAndLanguageState" methodname="QueuedEmptyContainersWithEqualCellCountsKeepTheirOwnShapeAndLanguageState" classname="LootIntegrationTests" runstate="Runnable" seed="27195805" result="Passed" start-time="2026-10-18 22:45:18Z" end-time="2026-10-18 22:45:18Z" duration="0.192171" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1333" name="QueuedEOpensSearchDespiteClearedCurrentTargetAndHiddenEntryCannotTransfer" fullname="LootIntegrationTests.QueuedEOpensSearchDespiteClearedCurrentTargetAndHiddenEntryCannotTransfer" methodname="QueuedEOpensSearchDespiteClearedCurrentTargetAndHiddenEntryCannotTransfer" classname="LootIntegrationTests" runstate="Runnable" seed="220718892" result="Passed" start-time="2026-10-18 22:45:18Z" end-time="2026-10-18 22:45:18Z" duration="0.330208" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1330" name="QueuedFullContainerReturnRejectsWithoutChangingIdentityLayoutOrNotifications" fullname="LootIntegrationTests.QueuedFullContainerReturnRejectsWithoutChangingIdentityLayoutOrNotifications" methodname="QueuedFullContainerReturnRejectsWithoutChangingIdentityLayoutOrNotifications" classname="LootIntegrationTests" runstate="Runnable" seed="1580544568" result="Passed" start-time="2026-10-18 22:45:18Z" end-time="2026-10-18 22:45:18Z" duration="0.146695" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1327" name="QueuedGridInterruptedSecondSearchAndPickupReturnKeepEveryOriginalSlot" fullname="LootIntegrationTests.QueuedGridInterruptedSecondSearchAndPickupReturnKeepEveryOriginalSlot" methodname="QueuedGridInterruptedSecondSearchAndPickupReturnKeepEveryOriginalSlot" classname="LootIntegrationTests" runstate="Runnable" seed="182224126" result="Passed" start-time="2026-10-18 22:45:18Z" end-time="2026-10-18 22:45:21Z" duration="2.554164" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1326" name="QueuedGridUnknownOutlinesHaveOneCenteredCountdownAndMatchBackpackPixels" fullname="LootIntegrationTests.QueuedGridUnknownOutlinesHaveOneCenteredCountdownAndMatchBackpackPixels" methodname="QueuedGridUnknownOutlinesHaveOneCenteredCountdownAndMatchBackpackPixels" classname="LootIntegrationTests" runstate="Runnable" seed="1476382335" result="Passed" start-time="2026-10-18 22:45:21Z" end-time="2026-10-18 22:45:24Z" duration="3.092096" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1340" name="QueuedOldDiscardCancelReleaseCannotDismissANewerConfirmation" fullname="LootIntegrationTests.QueuedOldDiscardCancelReleaseCannotDismissANewerConfirmation" methodname="QueuedOldDiscardCancelReleaseCannotDismissANewerConfirmation" classname="LootIntegrationTests" runstate="Runnable" seed="1661981908" result="Passed" start-time="2026-10-18 22:45:24Z" end-time="2026-10-18 22:45:24Z" duration="0.244155" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1339" name="QueuedOldDiscardConfirmReleaseCannotOperateANewerConfirmation" fullname="LootIntegrationTests.QueuedOldDiscardConfirmReleaseCannotOperateANewerConfirmation" methodname="QueuedOldDiscardConfirmReleaseCannotOperateANewerConfirmation" classname="LootIntegrationTests" runstate="Runnable" seed="228362349" result="Passed" start-time="2026-10-18 22:45:24Z" end-time="2026-10-18 22:45:24Z" duration="0.228180" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1332" name="QueuedPointerTransfersBothWaysAndSingleRPreserveIdentityAndEv" fullname="LootIntegrationTests.QueuedPointerTransfersBothWaysAndSingleRPreserveIdentityAndEv" methodname="QueuedPointerTransfersBothWaysAndSingleRPreserveIdentityAndEv" classname="LootIntegrationTests" runstate="Runnable" seed="2025929928" result="Passed" start-time="2026-10-18 22:45:24Z" end-time="2026-10-18 22:45:25Z" duration="0.291050" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1346" name="QueuedReturnRequiresTopmostListAndOldSessionCannotCommitAfterReopen" fullname="LootIntegrationTests.QueuedReturnRequiresTopmostListAndOldSessionCannotCommitAfterReopen" methodname="QueuedReturnRequiresTopmostListAndOldSessionCannotCommitAfterReopen" classname="LootIntegrationTests" runstate="Runnable" seed="1108802188" result="Passed" start-time="2026-10-18 22:45:25Z" end-time="2026-10-18 22:45:25Z" duration="0.231790" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1331" name="QueuedTakenCellsAreReusableAndOriginalReturnFindsAnotherSlotWithoutMovingItems" fullname="LootIntegrationTests.QueuedTakenCellsAreReusableAndOriginalReturnFindsAnotherSlotWithoutMovingItems" methodname="QueuedTakenCellsAreReusableAndOriginalReturnFindsAnotherSlotWithoutMovingItems" classname="LootIntegrationTests" runstate="Runnable" seed="1089520758" result="Passed" start-time="2026-10-18 22:45:25Z" end-time="2026-10-18 22:45:25Z" duration="0.265342" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1338" name="QueuedUniqueDiscardReturnsToItsOriginalBoxNextRoundEvenAtZeroProbability" fullname="LootIntegrationTests.QueuedUniqueDiscardReturnsToItsOriginalBoxNextRoundEvenAtZeroProbability" methodname="QueuedUniqueDiscardReturnsToItsOriginalBoxNextRoundEvenAtZeroProbability" classname="LootIntegrationTests" runstate="Runnable" seed="196893079" result="Passed" start-time="2026-10-18 22:45:25Z" end-time="2026-10-18 22:45:27Z" duration="2.256333" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1343" name="QueuedUnrelatedBackpackItemAppendsRevealedEntryToAnEmptyBox" fullname="LootIntegrationTests.QueuedUnrelatedBackpackItemAppendsRevealedEntryToAnEmptyBox" methodname="QueuedUnrelatedBackpackItemAppendsRevealedEntryToAnEmptyBox" classname="LootIntegrationTests" runstate="Runnable" seed="520621019" result="Passed" start-time="2026-10-18 22:45:27Z" end-time="2026-10-18 22:45:28Z" duration="0.151304" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1347" name="QueuedWheelScrollRevealsLastLootDragAndMovesTheRealWarehouseViewport" fullname="LootIntegrationTests.QueuedWheelScrollRevealsLastLootDragAndMovesTheRealWarehouseViewport" methodname="QueuedWheelScrollRevealsLastLootDragAndMovesTheRealWarehouseViewport" classname="LootIntegrationTests" runstate="Runnable" seed="1719604835" result="Passed" start-time="2026-10-18 22:45:28Z" end-time="2026-10-18 22:45:28Z" duration="0.326522" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1336" name="RealDamageCancelsDiscardAndOldTokensCannotConfirmOrCancelANewerTarget" fullname="LootIntegrationTests.RealDamageCancelsDiscardAndOldTokensCannotConfirmOrCancelANewerTarget" methodname="RealDamageCancelsDiscardAndOldTokensCannotConfirmOrCancelANewerTarget" classname="LootIntegrationTests" runstate="Runnable" seed="1129987862" result="Passed" start-time="2026-10-18 22:45:28Z" end-time="2026-10-18 22:45:29Z" duration="0.941084" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1337" name="ReloadKeepsGeneratedSourcesAndDiscardedOrdinaryItemsHaveNoGroundPresentation" fullname="LootIntegrationTests.ReloadKeepsGeneratedSourcesAndDiscardedOrdinaryItemsHaveNoGroundPresentation" methodname="ReloadKeepsGeneratedSourcesAndDiscardedOrdinaryItemsHaveNoGroundPresentation" classname="LootIntegrationTests" runstate="Runnable" seed="8380052" result="Passed" start-time="2026-10-18 22:45:29Z" end-time="2026-10-18 22:45:30Z" duration="1.276511" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1334" name="RevealedEntryPointerPickupContinuesNextSearchAndDamageCancelsLateRelease" fullname="LootIntegrationTests.RevealedEntryPointerPickupContinuesNextSearchAndDamageCancelsLateRelease" methodname="RevealedEntryPointerPickupContinuesNextSearchAndDamageCancelsLateRelease" classname="LootIntegrationTests" runstate="Runnable" seed="993770759" result="Passed" start-time="2026-10-18 22:45:30Z" end-time="2026-10-18 22:45:33Z" duration="2.746116" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/cs200/AppData/LocalLow/DefaultCompany/DD451Demo\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

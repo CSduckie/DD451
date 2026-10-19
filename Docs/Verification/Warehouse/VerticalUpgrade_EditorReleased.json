@@ -1,0 +1,19 @@
+{
+  "scene": "Assets/Scenes/Tests/Backpack/BackpackTest.unity",
+  "sceneDirty": false,
+  "isPlaying": false,
+  "isCompiling": false,
+  "isUpdating": false,
+  "gameViewPreset": 7,
+  "maximized": false,
+  "runtimeEnterPlayModeOptionsEnabled": false,
+  "runtimeEnterPlayModeOptions": "None",
+  "diskEditorSettingsUnchanged": true,
+  "allSevenProtectedHashesMatch": true,
+  "console": {
+    "businessAndCompileErrors": 0,
+    "mcpWarnings": 1,
+    "warning": "[WebSocket] Unexpected receive error: WebSocket is not initialised"
+  },
+  "note": "Editor and Assets write ownership explicitly released to task04. No new standalone build for the 20x24 revision; prior native R/F10 boundary remains."
+}

@@ -1,0 +1,5 @@
+Runtime observation completed: True
+Duration seconds: 20.00
+Samples: 1131
+Light 0: dark transitions=10, restore on disable checked=True, passed=True
+Light 1: dark transitions=8, restore on disable checked=True, passed=True

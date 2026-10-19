@@ -1,0 +1,7 @@
+{
+    "name": "MyPrecious.Enemy.TestSupport",
+    "rootNamespace": "",
+    "references": ["MyPrecious.Enemy", "MyPrecious.Player", "MyPrecious.StateMachine.Contracts", "MyPrecious.Bootstrap", "MyPrecious.Items", "MyPrecious.Backpack", "MyPrecious.Loot", "MyPrecious.Localization", "MyPrecious.Health", "MyPrecious.Interaction", "Unity.TextMeshPro"],
+    "autoReferenced": true
+}
+

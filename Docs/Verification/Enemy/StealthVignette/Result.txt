@@ -1,0 +1,5 @@
+09I 已完成：Ruins草丛内真实蹲伏渐入相机暗角，站起/离开渐退；死亡/解绑/切场景清理；重叠掩体/背包保持。
+默认intensity=.22、smoothness=.45、transitionSeconds=.2，在ScenePresentation/StealthVignette调整。中性RuinsPostProcessing基底保持weight1，覆盖quality默认Tone/Bloom/Vignette，保留普通场景观感。
+最终6/6 PlayMode通过，官方PlayMode-6-Final.xml；先前4/6、诊断2/2、自然输入5/6历史保留，不隐藏失败。保存重载及FinalConsole通过。
+真实Game1920截图、1307帧状态记录、死亡/撤离/再次出发检查通过。API定位/合成输入/公开流程API辅助，不是原生键鼠或Windows构建声明。
+完整说明、修改文件、调参、图片路径、测试过程、Drone.prefab独立朝向变化例外及Editor释放状态见 Docs/Handoffs/09I_StealthVignette_Handoff.txt。

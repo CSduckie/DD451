@@ -1,0 +1,54 @@
+{
+  "setup": {
+    "originalSettings": -884,
+    "disabled": [
+      2
+    ],
+    "mouse": 1052,
+    "source": "loot-test/empty",
+    "food": "1b53f6156b874224a70c4e8e8a351ef1",
+    "point": [
+      274,
+      812
+    ],
+    "backpackCount": 3,
+    "sourceCount": 0,
+    "owner": "Backpack",
+    "screen": [
+      1920,
+      1080
+    ]
+  },
+  "hover": {
+    "dragging": true,
+    "dragId": "1b53f6156b874224a70c4e8e8a351ef1",
+    "backpackFeedback": "backpack.outside",
+    "lootFeedback": "loot.return_ready",
+    "preview": true,
+    "viewportColor": [
+      0.13,
+      0.38,
+      0.26,
+      1
+    ],
+    "bagCount": 3,
+    "sourceCount": 0
+  },
+  "release": {
+    "dragging": false,
+    "backpackFeedback": "transfer.Success",
+    "lootFeedback": "transfer.Success",
+    "preview": false,
+    "bagCount": 2,
+    "sourceCount": 1,
+    "instance": "1b53f6156b874224a70c4e8e8a351ef1",
+    "owner": "Container",
+    "entry": "returned-1b53f6156b874224a70c4e8e8a351ef1",
+    "rect": [
+      0,
+      0,
+      2,
+      2
+    ]
+  }
+}

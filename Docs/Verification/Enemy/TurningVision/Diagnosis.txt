@@ -1,0 +1,26 @@
+09H 最终诊断 — 2026-10-19
+状态：已实证、最小修复已部署、相关回归及实际原参数画面验证完成。
+
+确认的根因
+原 DroneController.Update 在所有存活状态持续 SmoothDampAngle 朝旧 FacingDirection 转动；进入 Alert 只停止线性位移，没有停止巡逻遗留yaw。DroneAlertState仍每帧真实ObservePlayer，所以发现成功后玩家又被残余转向转出实际视锥，立即Search。
+原始真实Prefab右转左证据 Turn-1-20261019T075109319.csv：yaw16.051/18.049/20.662/23.696度时 Alert、rangeDistance0、canSee/candidate/Target均true；yaw26.698时rangeDistance=.07832、candidate仍true，但CanSee=false、Search、Target=false。玩家已被放入当前实际有效体且保持静止、无人机机身不移动、无墙或掩体。由此确认是进入Alert后继续yaw造成丢失，不能归因为候选列表、输入未生效或只看屏幕投影。
+
+基线与夹具修正
+BeforeFix-2.xml 是原2项基线，右转左失败。Turn--1-20261019T075108476.csv 首采已Search，yaw205.151、rangeDistance=.01986、candidate=true；后续重新发现导致旧断言错误通过。修订后只要有效进入后发生任意Search即失败，不依赖采到短暂首Alert。BeforeFix-Left.xml 的强化左转右基线亦失败。
+一次左向尝试因用户切场景中断，无新XML；InterruptedAttempt-StalePreviousResult.xml仅是旧结果，不能计数。随后 BeforeFix-Left-FixtureOvershoot.xml 为入口角30.523>30的夹具失败，非产品断言。为稳定采样，普通专项运行时turnSmoothTime调整为.6，保存Prefab原.18不变。中断/孤立测试服务清理见SessionNotes.txt。
+
+最小修复
+DroneController进入Alert清turnVelocity，Alert期间停止更新facingYaw；发现当帧yaw持续保持。仍执行UpdatePose、Vision.SetHeading和状态Update/真实Observe。适用于发现与掩体Alert，真正离开/墙/有效草丛仍按原规则处理；Patrol/Search/Chase继续平滑转向，新轮/禁用清理不变。不增大厚度、半径、角度，不改mask、计时、路线或玩家胶囊，不保持不可见目标坐标，不用状态强制掩盖发现。
+没有证据要求额外修改Chase朝向逻辑，本轮未作该扩大修改。实际.18捕捉自然进入Chase且无Search。
+
+几何边界与测试缺口
+原视野是有限厚度3D体，Y轴转动时同一XY屏幕投影不保证在体内；yaw90附近扇形侧对镜头变窄仍是预期几何。原平滑转头专项将playerMask设0，能够证明heading同步/重建/轮次，却不能证明真实玩家被自然发现。本轮新增测试保持玩家Z=0，先核对实际RangeCollider包含与CanSee，覆盖移动进入及静止玩家被扫入；没有要求体外目标可见，也没有用扩张视野解决问题。
+负对照实际经过yaw变化和范围进入后，实体墙与有效蹲伏掩体仍阻止发现；发现后真实离开/加墙转Search，掩体触发2秒Alert并到期回Patrol。09G隐藏玩家真实实体接触仍爆炸的规则保持。
+
+最终证据
+AfterFix-9-First.xml：9项中8通过，1项 MidTurnDiscoveryStillRespondsToRealLossAndCoverTimeout 夹具失败(Expected Alert/actual Patrol)，前一轮临时墙未清理影响下一轮。修复为每轮声明 GameObject blocker=null，并在每轮结束对存在的 blocker.SetActive(false)（当前源码346/389行）；XML只记录当时344行Expected Alert/actual Patrol断言，不自行记载根因。完成此隔离清理后，Related-36.xml的同名例及相关回归36/36通过。合计44个不同用例最近一次均Passed，原始45次执行包含上述历史失败，不能称单轮44/44。PlayMode-FinalCoverage.json保存逐项映射，两个通过集合无重叠。EditMode-4.json为4/4通过。
+GameCapture-20261019T080740712使用实际EnemyTest、原Cinemachine、原配置/.18/路线，API定位玩家后自然蓝Patrol→橙Alert→红Chase(UI追击、视锥隐藏)。三张1920×1080由主程目视通过。Trace.csv中91条Alert的yaw恒195.0166、实际rangeDistance0且Target有效，无Search，自然Alert游戏时间.501268秒。截图短暂停时排除于Time.time。
+排队InputSystem四变体是一项自动化用例，实际画面使用API定位；均不等于原生键鼠验收。
+
+交付与边界
+生产仅改Controller；新增DroneTurningVisionTests。保留历史失败、原始捕捉与保护审计。Shelter后续已知保存使用最新副本保护，详见FinalProtectionAudit.json，不归因外部或回滚。09H代码/验收完成，Editor仍由主程用于相机发灰与新场景默认黑夜后续任务，不作全局释放。完整接入交接：Docs/Handoffs/09H_TurningVision_Handoff.txt。

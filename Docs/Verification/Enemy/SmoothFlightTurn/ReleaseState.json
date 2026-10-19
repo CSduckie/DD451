@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "message": "Code executed successfully.",
+  "data": {
+    "result": {
+      "utc": "2026-10-19T03:19:07.3726694Z",
+      "playing": false,
+      "compiling": false,
+      "updating": false,
+      "scene": "Assets/Scenes/Shelter.unity",
+      "dirty": true,
+      "sceneCount": 1,
+      "prefabStage": false,
+      "missingScripts": 0,
+      "turnSmoothTime": 0.18,
+      "tiltSmoothTime": 0.3,
+      "tiltDegrees": 10,
+      "rotor": 2400,
+      "rotors": 4,
+      "visionWired": true,
+      "bodyRotation": "(0.00, 0.00, 0.00)",
+      "timeScale": 1,
+      "background": false
+    },
+    "compiler": "codedom"
+  }
+}

@@ -1,0 +1,10 @@
+API-assisted real formal Drone/player. Temporary runtime CoverArea; NOT authored grass-layout acceptance.
+No AI state/timer/speed/route edits. FixedUpdate race remains covered by009 tests, not proved by this observer.
+Screenshot: E:/DD451/Docs/Verification/Enemy/TimedAlert/RootAcceptance/Sequence-e2a6f7a2\01-FirstAlert-0p2s.png
+PASS first standing-in-cover discovery: orange stationary Alert about0.5 seconds, then Chase.
+Screenshot: E:/DD451/Docs/Verification/Enemy/TimedAlert/RootAcceptance/Sequence-e2a6f7a2\02-Chase-DetectionStillActive.png
+Screenshot: E:/DD451/Docs/Verification/Enemy/TimedAlert/RootAcceptance/Sequence-e2a6f7a2\03-CoverAlert-1s.png
+PASS continuous actual Hidden:2-second stationary orange Alert then original Patrol target.
+PASS reappearance0.6 seconds into cover Alert immediately resumed Chase.
+PASS: Natural timed-alert/cover/reappearance/contact sequence completed; root still reviews screenshots, breathing samples and remaining targeted tests.
+Player/temporary cover/observer restored; real AI outcome and real health loss remain. Root reviews PNG/CSV and stops Play.

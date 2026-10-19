@@ -1,0 +1,30 @@
+[
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Shelter\\MonoBehaviour\\ShelterManager.cs",
+    "Hash": "EFEB8DF51F7EA301A4A369C8D420EB08A829FD0DB06FD1FC3511CCDED5C4665A"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Shelter\\ScriptableObject\\ShelterUpgradeSO.cs",
+    "Hash": "CB560644918F15A1A45AF8A9D00DF7A33E06D9BFCE4362220FA58FE42324C510"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Data\\ShelterUpgrades\\FirstWarehouseUpgrade.asset",
+    "Hash": "59664B391FABB4FEA78433BB37E05E0B5CD233E21145DB0A98F6DB69D331D980"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Data\\Localization\\Shelter\\ShelterText.asset",
+    "Hash": "F6EB082E6FCDCA8DB0B0110065E97F98D49B8E88AE847E027D6A7679C9797865"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Warehouse\\Editor\\WarehouseTestSceneBuilder.cs",
+    "Hash": "D8740E2941391A133CDC02B95C782B6CEA63D9623CBFEF8DB0281C12C79956EF"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Warehouse\\EditMode\\WarehouseShelterTests.cs",
+    "Hash": "CC3DF2EF944CC16161A61F68E481A8C4C3EB3BBAC639483131FC39B32C124446"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Warehouse\\PlayMode\\WarehouseIntegrationTests.cs",
+    "Hash": "E1742C0A5346D905F9C352524450A146E2FCE9BC3E72E45F9CD9BCBED832E084"
+  }
+]

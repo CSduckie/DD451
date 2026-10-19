@@ -1,0 +1,15 @@
+主程就绪核对与只读交叉复核 — 2026-10-18
+
+已实际读取02A_TriggerInteraction_Handoff.txt、02B_CameraBounds_Handoff.txt、06D_TriggerLoot_Handoff.txt，三份最终状态均为READY_FOR_INTEGRATION。
+02聊天已返回完成并处于idle；06明确报告停止源码写入。07已收到开始集中集成的通知，仍由07唯一操作Unity，009按EditorCoordination排队。
+
+只读交叉复核未发现具体新增接口阻断：
+- CameraBounds为无Loot/Interactable归属的Trigger，当前落点检查忽略它；物品小根占位仍参与阻挡。
+- GameFlowSceneBindings的边界验证允许加载期祖先inactive；激活顺序先环境/边界，后相机表现，与Binder等待实际active的逻辑兼容。
+- CanReachTarget不依赖InputBlocked或CurrentTarget；Loot持续会话沿用该空间入口，开UI本身不导致来源失效。
+- GroundItem只恢复自身曾关闭的Collider，不覆盖人工禁用配置。
+- 地面模板校验已分开根占位Box和显式交互Box。
+
+该记录仅证明交接和源码静态核对，不证明Unity编译、资产接线、测试、画面或实体输入通过。
+待07完成：原位Prefab/场景接线、LootTest真实字节备份与逐对象差异核对、必要测试、1920x1080正式循环验证。
+07B既有夹具失败和实体键鼠未验收项继续保留，不以READY状态或旧成绩替代。

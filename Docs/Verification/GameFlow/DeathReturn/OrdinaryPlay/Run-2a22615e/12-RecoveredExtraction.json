@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "stage": "Shelter",
+  "round": 3,
+  "settled": 3,
+  "hp": 2,
+  "ev": 7,
+  "dollId": "7550c364798b441199dfbb34a679ee48",
+  "dollRetained": true,
+  "storageCount": 1,
+  "height": 24,
+  "playerId": -4276422,
+  "observerRunning": false,
+  "acquireRunning": false,
+  "captureRunning": false
+}

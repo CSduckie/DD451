@@ -1,0 +1,992 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"success\":true,\"message\":\"Test job status retrieved.\",\"error\":null,\"data\":{\"job_id\":\"de648f37af6e410685b8d606526da51a\",\"status\":\"succeeded\",\"mode\":\"EditMode\",\"started_unix_ms\":1792363345866,\"finished_unix_ms\":1792363348928,\"last_update_unix_ms\":1792363348928,\"progress\":{\"completed\":104,\"total\":104,\"current_test_full_name\":null,\"current_test_started_unix_ms\":1792363348802,\"last_finished_test_full_name\":\"LootSourceStateTests.UniqueReturnedToAnotherBoxRecoversAtItsOriginalBoxNextRound\",\"last_finished_unix_ms\":1792363348804,\"stuck_suspected\":false,\"editor_is_focused\":false,\"run_in_background\":null,\"focus_nudge_attempts\":null,\"focus_nudge_limit\":null,\"focus_nudge_status\":null,\"blocked_reason\":null,\"failures_so_far\":[],\"failures_capped\":false},\"error\":null,\"result\":{\"mode\":\"EditMode\",\"summary\":{\"total\":104,\"passed\":104,\"failed\":0,\"skipped\":0,\"durationSeconds\":0.4590946,\"resultState\":\"Passed\"},\"results\":[{\"name\":\"BidirectionalTransferPreservesIdentityRetainedUsesAndEv\",\"fullName\":\"ItemTransferTests.BidirectionalTransferPreservesIdentityRetainedUsesAndEv\",\"state\":\"Passed\",\"durationSeconds\":0.0005133,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"BoundsOverlapAndFragmentedFreeAreaKeepSource\",\"fullName\":\"ItemTransferTests.BoundsOverlapAndFragmentedFreeAreaKeepSource\",\"state\":\"Passed\",\"durationSeconds\":0.0004836,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"DeadOrClosedPlayerCannotUseAnOldRequest\",\"fullName\":\"ItemTransferTests.DeadOrClosedPlayerCannotUseAnOldRequest\",\"state\":\"Passed\",\"durationSeconds\":0.0002733,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"DiscardWithoutLootRuntimePublishesCompleteStateAndRejectsReentry(False)\",\"fullName\":\"ItemTransferTests.DiscardWithoutLootRuntimePublishesCompleteStateAndRejectsReentry(False)\",\"state\":\"Passed\",\"durationSeconds\":0.0005798,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"DiscardWithoutLootRuntimePublishesCompleteStateAndRejectsReentry(True)\",\"fullName\":\"ItemTransferTests.DiscardWithoutLootRuntimePublishesCompleteStateAndRejectsReentry(True)\",\"state\":\"Passed\",\"durationSeconds\":0.0003074,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ExistingWarehouseDragClaimCanComplete\",\"fullName\":\"ItemTransferTests.ExistingWarehouseDragClaimCanComplete\",\"state\":\"Passed\",\"durationSeconds\":0.0002582,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"FailedDisplayListenerDoesNotReportCompletedTransferAsFailure\",\"fullName\":\"ItemTransferTests.FailedDisplayListenerDoesNotReportCompletedTransferAsFailure\",\"state\":\"Passed\",\"durationSeconds\":0.001252,\"message\":null,\"stackTrace\":null,\"output\":\"InvalidOperationException: 06 expected display failure\\r\\nItemTransferTests+<>c.<FailedDisplayListenerDoesNotReportCompletedTransferAsFailure>b__14_0 (System.String id) (at Assets/Tests/Loot/EditMode/ItemTransferTests.cs:170)\\nItemTransferCoordinator+<>c__DisplayClass23_1.<NotifyCompleted>b__2 () (at Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs:325)\\nItemTransferCoordinator.SafeNotify (System.Action callback) (at Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs:331)\\nUnityEngine.Debug:LogException(Exception, Object)\\nItemTransferCoordinator:SafeNotify(Action) (at Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs:332)\\nItemTransferCoordinator:NotifyCompleted(String, Boolean, Boolean, String) (at Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs:325)\\nItemTransferCoordinator:TransferContainers(Boolean, String, Int32, Int32, Boolean, Object, Func`1) (at Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs:134)\\nItemTransferCoordinator:TryBackpackToWarehouse(String, Int32, Int32, Boolean, Object, Func`1) (at Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs:39)\\nItemTransferTests:Move(Boolean, String, Int32, Int32, Boolean) (at Assets/Tests/Loot/EditMode/ItemTransferTests.cs:410)\\nItemTransferTests:FailedDisplayListenerDoesNotReportCompletedTransferAsFailure() (at Assets/Tests/Loot/EditMode/ItemTransferTests.cs:172)\\nSystem.Reflection.MethodBase:Invoke(Object, Object[])\\nNUnit.Framework.Internal.Reflect:InvokeMethod(MethodInfo, Object, Object[])\\nNUnit.Framework.Internal.MethodWrapper:Invoke(Object, Object[])\\nNUnit.Framework.Internal.Commands.TestMethodCommand:RunNonAsyncTestMethod(ITestExecutionContext)\\nNUnit.Framework.Internal.Commands.TestMethodCommand:RunTestMethod(ITestExecutionContext)\\nNUnit.Framework.Internal.Commands.TestMethodCommand:Execute(ITestExecutionContext)\\nUnityEditor.EditorApplication:Internal_CallUpdateFunctions()\\n\\r\\n\"},{\"name\":\"FailureAtEachCommitStepRestoresRealLayouts(True,1,Busy)\",\"fullName\":\"ItemTransferTests.FailureAtEachCommitStepRestoresRealLayouts(True,1,Busy)\",\"state\":\"Passed\",\"durationSeconds\":0.0006155,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"FailureAtEachCommitStepRestoresRealLayouts(True,2,SourceRemovalFailed)\",\"fullName\":\"ItemTransferTests.FailureAtEachCommitStepRestoresRealLayouts(True,2,SourceRemovalFailed)\",\"state\":\"Passed\",\"durationSeconds\":0.0003741,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"FailureAtEachCommitStepRestoresRealLayouts(True,3,OwnerRejected)\",\"fullName\":\"ItemTransferTests.FailureAtEachCommitStepRestoresRealLayouts(True,3,OwnerRejected)\",\"state\":\"Passed\",\"durationSeconds\":0.0002931,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"FailureAtEachCommitStepRestoresRealLayouts(False,1,Busy)\",\"fullName\":\"ItemTransferTests.FailureAtEachCommitStepRestoresRealLayouts(False,1,Busy)\",\"state\":\"Passed\",\"durationSeconds\":0.0002739,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"FailureAtEachCommitStepRestoresRealLayouts(False,2,SourceRemovalFailed)\",\"fullName\":\"ItemTransferTests.FailureAtEachCommitStepRestoresRealLayouts(False,2,SourceRemovalFailed)\",\"state\":\"Passed\",\"durationSeconds\":0.0002607,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"FailureAtEachCommitStepRestoresRealLayouts(False,3,OwnerRejected)\",\"fullName\":\"ItemTransferTests.FailureAtEachCommitStepRestoresRealLayouts(False,3,OwnerRejected)\",\"state\":\"Passed\",\"durationSeconds\":0.0002503,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InteractionClaimNotificationCannotCommitCancelledRequest(False)\",\"fullName\":\"ItemTransferTests.InteractionClaimNotificationCannotCommitCancelledRequest(False)\",\"state\":\"Passed\",\"durationSeconds\":0.0004097,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InteractionClaimNotificationCannotCommitCancelledRequest(True)\",\"fullName\":\"ItemTransferTests.InteractionClaimNotificationCannotCommitCancelledRequest(True)\",\"state\":\"Passed\",\"durationSeconds\":0.0002569,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidDiscardRequestCannotRemovePlacement(\\\"missing-request\\\",StaleRequest)\",\"fullName\":\"ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(\\\"missing-request\\\",StaleRequest)\",\"state\":\"Passed\",\"durationSeconds\":0.0006359,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidDiscardRequestCannotRemovePlacement(\\\"stale-request\\\",StaleRequest)\",\"fullName\":\"ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(\\\"stale-request\\\",StaleRequest)\",\"state\":\"Passed\",\"durationSeconds\":0.0003789,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidDiscardRequestCannotRemovePlacement(\\\"closed-player\\\",NotAllowed)\",\"fullName\":\"ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(\\\"closed-player\\\",NotAllowed)\",\"state\":\"Passed\",\"durationSeconds\":0.0002884,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidDiscardRequestCannotRemovePlacement(\\\"dead-player\\\",NotAllowed)\",\"fullName\":\"ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(\\\"dead-player\\\",NotAllowed)\",\"state\":\"Passed\",\"durationSeconds\":0.0002678,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidDiscardRequestCannotRemovePlacement(\\\"shelter\\\",NotAllowed)\",\"fullName\":\"ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(\\\"shelter\\\",NotAllowed)\",\"state\":\"Passed\",\"durationSeconds\":0.0002502,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidDiscardRequestCannotRemovePlacement(\\\"inactive-exploration\\\",NotAllowed)\",\"fullName\":\"ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(\\\"inactive-exploration\\\",NotAllowed)\",\"state\":\"Passed\",\"durationSeconds\":0.0002731,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidDiscardRequestCannotRemovePlacement(\\\"disabled-runtime\\\",NotReady)\",\"fullName\":\"ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(\\\"disabled-runtime\\\",NotReady)\",\"state\":\"Passed\",\"durationSeconds\":0.000354,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"NotificationsOnlyReadCompleteStateAndReentryIsBusy\",\"fullName\":\"ItemTransferTests.NotificationsOnlyReadCompleteStateAndReentryIsBusy\",\"state\":\"Passed\",\"durationSeconds\":0.0002699,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"RealItemManagerBusyRejectsDiscardAndRestoresPlacement\",\"fullName\":\"ItemTransferTests.RealItemManagerBusyRejectsDiscardAndRestoresPlacement\",\"state\":\"Passed\",\"durationSeconds\":0.0002643,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"RealItemManagerBusyRejectsOwnerAfterBothLayoutChangesAndRestoresThem\",\"fullName\":\"ItemTransferTests.RealItemManagerBusyRejectsOwnerAfterBothLayoutChangesAndRestoresThem\",\"state\":\"Passed\",\"durationSeconds\":0.0002522,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ShelterAllowsUnpreparedOrAbsentPlayerWithoutGrantingExploration(False)\",\"fullName\":\"ItemTransferTests.ShelterAllowsUnpreparedOrAbsentPlayerWithoutGrantingExploration(False)\",\"state\":\"Passed\",\"durationSeconds\":0.000563,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ShelterAllowsUnpreparedOrAbsentPlayerWithoutGrantingExploration(True)\",\"fullName\":\"ItemTransferTests.ShelterAllowsUnpreparedOrAbsentPlayerWithoutGrantingExploration(True)\",\"state\":\"Passed\",\"durationSeconds\":0.0002805,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"StalePermissionAndOtherConfirmationCannotCommit\",\"fullName\":\"ItemTransferTests.StalePermissionAndOtherConfirmationCannotCommit\",\"state\":\"Passed\",\"durationSeconds\":0.0002562,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"BoundariesAreExplicit(0.0f,0.0f,False)\",\"fullName\":\"LootGenerationTests.BoundariesAreExplicit(0.0f,0.0f,False)\",\"state\":\"Passed\",\"durationSeconds\":0.000202,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"BoundariesAreExplicit(0.0f,1.0f,False)\",\"fullName\":\"LootGenerationTests.BoundariesAreExplicit(0.0f,1.0f,False)\",\"state\":\"Passed\",\"durationSeconds\":0.0000696,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"BoundariesAreExplicit(1.0f,0.0f,True)\",\"fullName\":\"LootGenerationTests.BoundariesAreExplicit(1.0f,0.0f,True)\",\"state\":\"Passed\",\"durationSeconds\":0.0000558,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"BoundariesAreExplicit(1.0f,1.0f,True)\",\"fullName\":\"LootGenerationTests.BoundariesAreExplicit(1.0f,1.0f,True)\",\"state\":\"Passed\",\"durationSeconds\":0.0000528,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"BoundariesAreExplicit(0.5f,0.499f,True)\",\"fullName\":\"LootGenerationTests.BoundariesAreExplicit(0.5f,0.499f,True)\",\"state\":\"Passed\",\"durationSeconds\":0.0000482,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"BoundariesAreExplicit(0.5f,0.5f,False)\",\"fullName\":\"LootGenerationTests.BoundariesAreExplicit(0.5f,0.5f,False)\",\"state\":\"Passed\",\"durationSeconds\":0.0000475,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ConflictingUniqueOriginIsAnErrorEvenWhenChanceIsZero\",\"fullName\":\"LootGenerationTests.ConflictingUniqueOriginIsAnErrorEvenWhenChanceIsZero\",\"state\":\"Passed\",\"durationSeconds\":0.0001071,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"DuplicateEntryIdAndNonFiniteProbabilityAreRejected\",\"fullName\":\"LootGenerationTests.DuplicateEntryIdAndNonFiniteProbabilityAreRejected\",\"state\":\"Passed\",\"durationSeconds\":0.0000742,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"EligibleRecoveryBypassesZeroProbabilityAndKeepsTheRegisteredIdentity\",\"fullName\":\"LootGenerationTests.EligibleRecoveryBypassesZeroProbabilityAndKeepsTheRegisteredIdentity\",\"state\":\"Passed\",\"durationSeconds\":0.0000788,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"EveryIntermediateCandidateGetsAnIndependentSampleInConfiguredOrder\",\"fullName\":\"LootGenerationTests.EveryIntermediateCandidateGetsAnIndependentSampleInConfiguredOrder\",\"state\":\"Passed\",\"durationSeconds\":0.0001111,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ExistingUniqueAtItsSourceRemainsEligibleForRebinding(World)\",\"fullName\":\"LootGenerationTests.ExistingUniqueAtItsSourceRemainsEligibleForRebinding(World)\",\"state\":\"Passed\",\"durationSeconds\":0.0002344,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ExistingUniqueAtItsSourceRemainsEligibleForRebinding(Container)\",\"fullName\":\"LootGenerationTests.ExistingUniqueAtItsSourceRemainsEligibleForRebinding(Container)\",\"state\":\"Passed\",\"durationSeconds\":0.0000938,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidLaterCandidateRejectsWholeTableBeforeTakingSamples\",\"fullName\":\"LootGenerationTests.InvalidLaterCandidateRejectsWholeTableBeforeTakingSamples\",\"state\":\"Passed\",\"durationSeconds\":0.0000937,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"OverrideReplacesDefaultInsteadOfMultiplyingIt\",\"fullName\":\"LootGenerationTests.OverrideReplacesDefaultInsteadOfMultiplyingIt\",\"state\":\"Passed\",\"durationSeconds\":0.0000747,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"UniqueAlreadyCarriedOrStoredIsNotSelectedEvenAtOneHundredPercent(Backpack)\",\"fullName\":\"LootGenerationTests.UniqueAlreadyCarriedOrStoredIsNotSelectedEvenAtOneHundredPercent(Backpack)\",\"state\":\"Passed\",\"durationSeconds\":0.0002383,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"UniqueAlreadyCarriedOrStoredIsNotSelectedEvenAtOneHundredPercent(Storage)\",\"fullName\":\"LootGenerationTests.UniqueAlreadyCarriedOrStoredIsNotSelectedEvenAtOneHundredPercent(Storage)\",\"state\":\"Passed\",\"durationSeconds\":0.0000961,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ZeroOneAndEmptyTablesDoNotNeedRandomSamples\",\"fullName\":\"LootGenerationTests.ZeroOneAndEmptyTablesDoNotNeedRandomSamples\",\"state\":\"Passed\",\"durationSeconds\":0.0001279,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"DifferentBoxesSnapshotTheirOwnSizesAndOnlyTheNextRoundUsesEditedSizes\",\"fullName\":\"LootGridLayoutTests.DifferentBoxesSnapshotTheirOwnSizesAndOnlyTheNextRoundUsesEditedSizes\",\"state\":\"Passed\",\"durationSeconds\":0.0017884,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"EmptyRollKeepsAllConfiguredBackgroundCellsAndStaleRoundCannotRelayout\",\"fullName\":\"LootGridLayoutTests.EmptyRollKeepsAllConfiguredBackgroundCellsAndStaleRoundCannotRelayout\",\"state\":\"Passed\",\"durationSeconds\":0.0006008,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates(3,1,2,2)\",\"fullName\":\"LootGridLayoutTests.EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates(3,1,2,2)\",\"state\":\"Passed\",\"durationSeconds\":0.0004868,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates(1,3,2,2)\",\"fullName\":\"LootGridLayoutTests.EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates(1,3,2,2)\",\"state\":\"Passed\",\"durationSeconds\":0.0004921,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates(2,1,2,1)\",\"fullName\":\"LootGridLayoutTests.EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates(2,1,2,1)\",\"state\":\"Passed\",\"durationSeconds\":0.0003739,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates(1,2,2,2)\",\"fullName\":\"LootGridLayoutTests.EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates(1,2,2,2)\",\"state\":\"Passed\",\"durationSeconds\":0.0002985,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"FailedCreationKeepsItsRollAndRechecksSavedCandidatesBeforeRetrying\",\"fullName\":\"LootGridLayoutTests.FailedCreationKeepsItsRollAndRechecksSavedCandidatesBeforeRetrying\",\"state\":\"Passed\",\"durationSeconds\":0.0007707,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"GeneratedFootprintsUseStableRowOrderWithinTheFullConfiguredGrid\",\"fullName\":\"LootGridLayoutTests.GeneratedFootprintsUseStableRowOrderWithinTheFullConfiguredGrid\",\"state\":\"Passed\",\"durationSeconds\":0.0006931,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InterruptedSearchAndSameRoundRebindingKeepPositionsAndRevealedEntries\",\"fullName\":\"LootGridLayoutTests.InterruptedSearchAndSameRoundRebindingKeepPositionsAndRevealedEntries\",\"state\":\"Passed\",\"durationSeconds\":0.0013163,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidGridSizeFailsBeforeAnySourceGenerates(0,2)\",\"fullName\":\"LootGridLayoutTests.InvalidGridSizeFailsBeforeAnySourceGenerates(0,2)\",\"state\":\"Passed\",\"durationSeconds\":0.0004843,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidGridSizeFailsBeforeAnySourceGenerates(2,0)\",\"fullName\":\"LootGridLayoutTests.InvalidGridSizeFailsBeforeAnySourceGenerates(2,0)\",\"state\":\"Passed\",\"durationSeconds\":0.000316,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidGridSizeFailsBeforeAnySourceGenerates(-1,2)\",\"fullName\":\"LootGridLayoutTests.InvalidGridSizeFailsBeforeAnySourceGenerates(-1,2)\",\"state\":\"Passed\",\"durationSeconds\":0.0002084,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"NativeGroundUsesItsActualFootprintWithoutBoxCapacityOrReturnSupport\",\"fullName\":\"LootGridLayoutTests.NativeGroundUsesItsActualFootprintWithoutBoxCapacityOrReturnSupport\",\"state\":\"Passed\",\"durationSeconds\":0.0006668,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"OverwideOrOvertallReturnsAreRejectedWithoutGrowingAnEmptyBox(3,1)\",\"fullName\":\"LootGridLayoutTests.OverwideOrOvertallReturnsAreRejectedWithoutGrowingAnEmptyBox(3,1)\",\"state\":\"Passed\",\"durationSeconds\":0.0009373,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"OverwideOrOvertallReturnsAreRejectedWithoutGrowingAnEmptyBox(1,3)\",\"fullName\":\"LootGridLayoutTests.OverwideOrOvertallReturnsAreRejectedWithoutGrowingAnEmptyBox(1,3)\",\"state\":\"Passed\",\"durationSeconds\":0.0006191,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ReturningOriginalItemPrefersItsOldSlotEvenWhenAnEarlierHoleIsFree\",\"fullName\":\"LootGridLayoutTests.ReturningOriginalItemPrefersItsOldSlotEvenWhenAnEarlierHoleIsFree\",\"state\":\"Passed\",\"durationSeconds\":0.0006218,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"TakenSlotCanBeReusedAndOriginalReturnMovesOnlyTheReturningItem\",\"fullName\":\"LootGridLayoutTests.TakenSlotCanBeReusedAndOriginalReturnMovesOnlyTheReturningItem\",\"state\":\"Passed\",\"durationSeconds\":0.0008585,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ZeroChanceUniqueRecoveryCannotBeClaimedIntoAnUndersizedBox\",\"fullName\":\"LootGridLayoutTests.ZeroChanceUniqueRecoveryCannotBeClaimedIntoAnUndersizedBox\",\"state\":\"Passed\",\"durationSeconds\":0.0008486,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ZeroSecondEntriesAndLongFrameRevealInOrderOnlyOnceAndKeepTheirLayout\",\"fullName\":\"LootGridLayoutTests.ZeroSecondEntriesAndLongFrameRevealInOrderOnlyOnceAndKeepTheirLayout\",\"state\":\"Passed\",\"durationSeconds\":0.000669,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"BusyUniqueClaimKeepsRecordUnavailableUntilSameRoundRetrySucceeds\",\"fullName\":\"LootSourceStateTests.BusyUniqueClaimKeepsRecordUnavailableUntilSameRoundRetrySucceeds\",\"state\":\"Passed\",\"durationSeconds\":0.0008817,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"CommittedDropCanRebuildMissingPresentationWithoutAnotherIdentityOrClaim\",\"fullName\":\"LootSourceStateTests.CommittedDropCanRebuildMissingPresentationWithoutAnotherIdentityOrClaim\",\"state\":\"Passed\",\"durationSeconds\":0.0010851,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"DisabledRuntimeMakesExistingSourceUnavailableWithoutErasingIt\",\"fullName\":\"LootSourceStateTests.DisabledRuntimeMakesExistingSourceUnavailableWithoutErasingIt\",\"state\":\"Passed\",\"durationSeconds\":0.0006499,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"DiscardedUniqueWaitsUntilNextRoundAndRecoversSameIdentityAtOriginalBox\",\"fullName\":\"LootSourceStateTests.DiscardedUniqueWaitsUntilNextRoundAndRecoversSameIdentityAtOriginalBox\",\"state\":\"Passed\",\"durationSeconds\":0.0026916,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"DiscardFailureRestoresRealBackpackWithoutCreatingWorldRecord(2,SourceRemovalFailed)\",\"fullName\":\"LootSourceStateTests.DiscardFailureRestoresRealBackpackWithoutCreatingWorldRecord(2,SourceRemovalFailed)\",\"state\":\"Passed\",\"durationSeconds\":0.0013338,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"DiscardFailureRestoresRealBackpackWithoutCreatingWorldRecord(3,OwnerRejected)\",\"fullName\":\"LootSourceStateTests.DiscardFailureRestoresRealBackpackWithoutCreatingWorldRecord(3,OwnerRejected)\",\"state\":\"Passed\",\"durationSeconds\":0.0010634,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"FailedReturnAfterTakenCellReuseRestoresHistoricalLayoutAndBackpackPlacement(2,SourceRemovalFailed)\",\"fullName\":\"LootSourceStateTests.FailedReturnAfterTakenCellReuseRestoresHistoricalLayoutAndBackpackPlacement(2,SourceRemovalFailed)\",\"state\":\"Passed\",\"durationSeconds\":0.0015078,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"FailedReturnAfterTakenCellReuseRestoresHistoricalLayoutAndBackpackPlacement(3,OwnerRejected)\",\"fullName\":\"LootSourceStateTests.FailedReturnAfterTakenCellReuseRestoresHistoricalLayoutAndBackpackPlacement(3,OwnerRejected)\",\"state\":\"Passed\",\"durationSeconds\":0.0011366,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"FullBoxRejectsReturnBeforeCommitWithoutChangingIdentityLayoutSearchOrNotifications\",\"fullName\":\"LootSourceStateTests.FullBoxRejectsReturnBeforeCommitWithoutChangingIdentityLayoutSearchOrNotifications\",\"state\":\"Passed\",\"durationSeconds\":0.0014322,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"GroundSourceCannotReceiveBackpackReturnsThroughEitherPublicEntry\",\"fullName\":\"LootSourceStateTests.GroundSourceCannotReceiveBackpackReturnsThroughEitherPublicEntry\",\"state\":\"Passed\",\"durationSeconds\":0.0011932,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"GroundTriggersOccupyDropSpaceButNormalRangeTriggersDoNot\",\"fullName\":\"LootSourceStateTests.GroundTriggersOccupyDropSpaceButNormalRangeTriggersDoNot\",\"state\":\"Passed\",\"durationSeconds\":0.0009115,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"HiddenEntriesCannotBeMarkedTakenAndFailedTransferCanRestoreRevealedEntry\",\"fullName\":\"LootSourceStateTests.HiddenEntriesCannotBeMarkedTakenAndFailedTransferCanRestoreRevealedEntry\",\"state\":\"Passed\",\"durationSeconds\":0.0006698,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InactiveGroundPreparationKeepsCarriedOwnershipUntilCommitAndCanBeCancelled\",\"fullName\":\"LootSourceStateTests.InactiveGroundPreparationKeepsCarriedOwnershipUntilCommitAndCanBeCancelled\",\"state\":\"Passed\",\"durationSeconds\":0.0007284,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\\\"request\\\",StaleRequest)\",\"fullName\":\"LootSourceStateTests.InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\\\"request\\\",StaleRequest)\",\"state\":\"Passed\",\"durationSeconds\":0.0013218,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\\\"distance\\\",Unreachable)\",\"fullName\":\"LootSourceStateTests.InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\\\"distance\\\",Unreachable)\",\"state\":\"Passed\",\"durationSeconds\":0.0009379,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\\\"obstruction\\\",Unreachable)\",\"fullName\":\"LootSourceStateTests.InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\\\"obstruction\\\",Unreachable)\",\"state\":\"Passed\",\"durationSeconds\":0.0008795,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\\\"map\\\",Unreachable)\",\"fullName\":\"LootSourceStateTests.InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\\\"map\\\",Unreachable)\",\"state\":\"Passed\",\"durationSeconds\":0.0008876,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\\\"stale-source\\\",SourceInvalid)\",\"fullName\":\"LootSourceStateTests.InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\\\"stale-source\\\",SourceInvalid)\",\"state\":\"Passed\",\"durationSeconds\":0.0008423,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"NewRoundCannotEraseUnsettledWorldItems\",\"fullName\":\"LootSourceStateTests.NewRoundCannotEraseUnsettledWorldItems\",\"state\":\"Passed\",\"durationSeconds\":0.0013032,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(float.NaN,0.03f)\",\"fullName\":\"LootSourceStateTests.NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(float.NaN,0.03f)\",\"state\":\"Passed\",\"durationSeconds\":0.0009558,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(float.PositiveInfinity,0.03f)\",\"fullName\":\"LootSourceStateTests.NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(float.PositiveInfinity,0.03f)\",\"state\":\"Passed\",\"durationSeconds\":0.000658,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(0.18f,float.NaN)\",\"fullName\":\"LootSourceStateTests.NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(0.18f,float.NaN)\",\"state\":\"Passed\",\"durationSeconds\":0.0006305,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(0.18f,-1.0f)\",\"fullName\":\"LootSourceStateTests.NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(0.18f,-1.0f)\",\"state\":\"Passed\",\"durationSeconds\":0.0005997,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"PreparedDropRechecksConfigurationBeforeOwnerCommit\",\"fullName\":\"LootSourceStateTests.PreparedDropRechecksConfigurationBeforeOwnerCommit\",\"state\":\"Passed\",\"durationSeconds\":0.0007157,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(True,1,TargetRejected)\",\"fullName\":\"LootSourceStateTests.ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(True,1,TargetRejected)\",\"state\":\"Passed\",\"durationSeconds\":0.0013696,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(True,2,SourceRemovalFailed)\",\"fullName\":\"LootSourceStateTests.ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(True,2,SourceRemovalFailed)\",\"state\":\"Passed\",\"durationSeconds\":0.0010772,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(True,3,OwnerRejected)\",\"fullName\":\"LootSourceStateTests.ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(True,3,OwnerRejected)\",\"state\":\"Passed\",\"durationSeconds\":0.0012082,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(False,1,TargetRejected)\",\"fullName\":\"LootSourceStateTests.ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(False,1,TargetRejected)\",\"state\":\"Passed\",\"durationSeconds\":0.0013222,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(False,2,SourceRemovalFailed)\",\"fullName\":\"LootSourceStateTests.ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(False,2,SourceRemovalFailed)\",\"state\":\"Passed\",\"durationSeconds\":0.0016554,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(False,3,OwnerRejected)\",\"fullName\":\"LootSourceStateTests.ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(False,3,OwnerRejected)\",\"state\":\"Passed\",\"durationSeconds\":0.0012918,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ReturningToBoxReusesOrAppendsOneRevealedEntryWithoutChangingSearch(True)\",\"fullName\":\"LootSourceStateTests.ReturningToBoxReusesOrAppendsOneRevealedEntryWithoutChangingSearch(True)\",\"state\":\"Passed\",\"durationSeconds\":0.0014293,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ReturningToBoxReusesOrAppendsOneRevealedEntryWithoutChangingSearch(False)\",\"fullName\":\"LootSourceStateTests.ReturningToBoxReusesOrAppendsOneRevealedEntryWithoutChangingSearch(False)\",\"state\":\"Passed\",\"durationSeconds\":0.0013375,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ReusedTakenCellMakesOriginalReturnToAnotherFreeCellWithoutMovingOtherEntries\",\"fullName\":\"LootSourceStateTests.ReusedTakenCellMakesOriginalReturnToAnotherFreeCellWithoutMovingOtherEntries\",\"state\":\"Passed\",\"durationSeconds\":0.0011495,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"RevealedPickupDoesNotResetTheNextSearchAndInterruptOnlyResetsUnfinishedProgress\",\"fullName\":\"LootSourceStateTests.RevealedPickupDoesNotResetTheNextSearchAndInterruptOnlyResetsUnfinishedProgress\",\"state\":\"Passed\",\"durationSeconds\":0.0006552,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"SameRoundPreparationAndRebindingKeepEvenAnEmptyRoll\",\"fullName\":\"LootSourceStateTests.SameRoundPreparationAndRebindingKeepEvenAnEmptyRoll\",\"state\":\"Passed\",\"durationSeconds\":0.0010555,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"SourceBindingBetweenItemRoundAndLootPreparationDoesNotGenerateUnderOldRound\",\"fullName\":\"LootSourceStateTests.SourceBindingBetweenItemRoundAndLootPreparationDoesNotGenerateUnderOldRound\",\"state\":\"Passed\",\"durationSeconds\":0.0014311,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"SourcePickupOwnerFailureRestoresTakenSearchAndRealBackpackLayout\",\"fullName\":\"LootSourceStateTests.SourcePickupOwnerFailureRestoresTakenSearchAndRealBackpackLayout\",\"state\":\"Passed\",\"durationSeconds\":0.0013149,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"UniqueConflictIsFoundBeforeAnySourceCreatesAnInstance\",\"fullName\":\"LootSourceStateTests.UniqueConflictIsFoundBeforeAnySourceCreatesAnInstance\",\"state\":\"Passed\",\"durationSeconds\":0.0004538,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"UniqueRecoveryReturnsToContainerWithSameIdentityDespiteZeroProbability\",\"fullName\":\"LootSourceStateTests.UniqueRecoveryReturnsToContainerWithSameIdentityDespiteZeroProbability\",\"state\":\"Passed\",\"durationSeconds\":0.0010156,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"UniqueReturnedToAnotherBoxRecoversAtItsOriginalBoxNextRound\",\"fullName\":\"LootSourceStateTests.UniqueReturnedToAnotherBoxRecoversAtItsOriginalBoxNextRound\",\"state\":\"Passed\",\"durationSeconds\":0.0021579,\"message\":null,\"stackTrace\":null,\"output\":\"\"}]}},\"hint\":null}"
+    }
+  ],
+  "structuredContent": {
+    "result": {
+      "success": true,
+      "message": "Test job status retrieved.",
+      "error": null,
+      "data": {
+        "job_id": "de648f37af6e410685b8d606526da51a",
+        "status": "succeeded",
+        "mode": "EditMode",
+        "started_unix_ms": 1792363345866,
+        "finished_unix_ms": 1792363348928,
+        "last_update_unix_ms": 1792363348928,
+        "progress": {
+          "completed": 104,
+          "total": 104,
+          "current_test_full_name": null,
+          "current_test_started_unix_ms": 1792363348802,
+          "last_finished_test_full_name": "LootSourceStateTests.UniqueReturnedToAnotherBoxRecoversAtItsOriginalBoxNextRound",
+          "last_finished_unix_ms": 1792363348804,
+          "stuck_suspected": false,
+          "editor_is_focused": false,
+          "run_in_background": null,
+          "focus_nudge_attempts": null,
+          "focus_nudge_limit": null,
+          "focus_nudge_status": null,
+          "blocked_reason": null,
+          "failures_so_far": [],
+          "failures_capped": false
+        },
+        "error": null,
+        "result": {
+          "mode": "EditMode",
+          "summary": {
+            "total": 104,
+            "passed": 104,
+            "failed": 0,
+            "skipped": 0,
+            "durationSeconds": 0.4590946,
+            "resultState": "Passed"
+          },
+          "results": [
+            {
+              "name": "BidirectionalTransferPreservesIdentityRetainedUsesAndEv",
+              "fullName": "ItemTransferTests.BidirectionalTransferPreservesIdentityRetainedUsesAndEv",
+              "state": "Passed",
+              "durationSeconds": 0.0005133,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "BoundsOverlapAndFragmentedFreeAreaKeepSource",
+              "fullName": "ItemTransferTests.BoundsOverlapAndFragmentedFreeAreaKeepSource",
+              "state": "Passed",
+              "durationSeconds": 0.0004836,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "DeadOrClosedPlayerCannotUseAnOldRequest",
+              "fullName": "ItemTransferTests.DeadOrClosedPlayerCannotUseAnOldRequest",
+              "state": "Passed",
+              "durationSeconds": 0.0002733,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "DiscardWithoutLootRuntimePublishesCompleteStateAndRejectsReentry(False)",
+              "fullName": "ItemTransferTests.DiscardWithoutLootRuntimePublishesCompleteStateAndRejectsReentry(False)",
+              "state": "Passed",
+              "durationSeconds": 0.0005798,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "DiscardWithoutLootRuntimePublishesCompleteStateAndRejectsReentry(True)",
+              "fullName": "ItemTransferTests.DiscardWithoutLootRuntimePublishesCompleteStateAndRejectsReentry(True)",
+              "state": "Passed",
+              "durationSeconds": 0.0003074,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ExistingWarehouseDragClaimCanComplete",
+              "fullName": "ItemTransferTests.ExistingWarehouseDragClaimCanComplete",
+              "state": "Passed",
+              "durationSeconds": 0.0002582,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "FailedDisplayListenerDoesNotReportCompletedTransferAsFailure",
+              "fullName": "ItemTransferTests.FailedDisplayListenerDoesNotReportCompletedTransferAsFailure",
+              "state": "Passed",
+              "durationSeconds": 0.001252,
+              "message": null,
+              "stackTrace": null,
+              "output": "InvalidOperationException: 06 expected display failure\r\nItemTransferTests+<>c.<FailedDisplayListenerDoesNotReportCompletedTransferAsFailure>b__14_0 (System.String id) (at Assets/Tests/Loot/EditMode/ItemTransferTests.cs:170)\nItemTransferCoordinator+<>c__DisplayClass23_1.<NotifyCompleted>b__2 () (at Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs:325)\nItemTransferCoordinator.SafeNotify (System.Action callback) (at Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs:331)\nUnityEngine.Debug:LogException(Exception, Object)\nItemTransferCoordinator:SafeNotify(Action) (at Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs:332)\nItemTransferCoordinator:NotifyCompleted(String, Boolean, Boolean, String) (at Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs:325)\nItemTransferCoordinator:TransferContainers(Boolean, String, Int32, Int32, Boolean, Object, Func`1) (at Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs:134)\nItemTransferCoordinator:TryBackpackToWarehouse(String, Int32, Int32, Boolean, Object, Func`1) (at Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs:39)\nItemTransferTests:Move(Boolean, String, Int32, Int32, Boolean) (at Assets/Tests/Loot/EditMode/ItemTransferTests.cs:410)\nItemTransferTests:FailedDisplayListenerDoesNotReportCompletedTransferAsFailure() (at Assets/Tests/Loot/EditMode/ItemTransferTests.cs:172)\nSystem.Reflection.MethodBase:Invoke(Object, Object[])\nNUnit.Framework.Internal.Reflect:InvokeMethod(MethodInfo, Object, Object[])\nNUnit.Framework.Internal.MethodWrapper:Invoke(Object, Object[])\nNUnit.Framework.Internal.Commands.TestMethodCommand:RunNonAsyncTestMethod(ITestExecutionContext)\nNUnit.Framework.Internal.Commands.TestMethodCommand:RunTestMethod(ITestExecutionContext)\nNUnit.Framework.Internal.Commands.TestMethodCommand:Execute(ITestExecutionContext)\nUnityEditor.EditorApplication:Internal_CallUpdateFunctions()\n\r\n"
+            },
+            {
+              "name": "FailureAtEachCommitStepRestoresRealLayouts(True,1,Busy)",
+              "fullName": "ItemTransferTests.FailureAtEachCommitStepRestoresRealLayouts(True,1,Busy)",
+              "state": "Passed",
+              "durationSeconds": 0.0006155,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "FailureAtEachCommitStepRestoresRealLayouts(True,2,SourceRemovalFailed)",
+              "fullName": "ItemTransferTests.FailureAtEachCommitStepRestoresRealLayouts(True,2,SourceRemovalFailed)",
+              "state": "Passed",
+              "durationSeconds": 0.0003741,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "FailureAtEachCommitStepRestoresRealLayouts(True,3,OwnerRejected)",
+              "fullName": "ItemTransferTests.FailureAtEachCommitStepRestoresRealLayouts(True,3,OwnerRejected)",
+              "state": "Passed",
+              "durationSeconds": 0.0002931,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "FailureAtEachCommitStepRestoresRealLayouts(False,1,Busy)",
+              "fullName": "ItemTransferTests.FailureAtEachCommitStepRestoresRealLayouts(False,1,Busy)",
+              "state": "Passed",
+              "durationSeconds": 0.0002739,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "FailureAtEachCommitStepRestoresRealLayouts(False,2,SourceRemovalFailed)",
+              "fullName": "ItemTransferTests.FailureAtEachCommitStepRestoresRealLayouts(False,2,SourceRemovalFailed)",
+              "state": "Passed",
+              "durationSeconds": 0.0002607,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "FailureAtEachCommitStepRestoresRealLayouts(False,3,OwnerRejected)",
+              "fullName": "ItemTransferTests.FailureAtEachCommitStepRestoresRealLayouts(False,3,OwnerRejected)",
+              "state": "Passed",
+              "durationSeconds": 0.0002503,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InteractionClaimNotificationCannotCommitCancelledRequest(False)",
+              "fullName": "ItemTransferTests.InteractionClaimNotificationCannotCommitCancelledRequest(False)",
+              "state": "Passed",
+              "durationSeconds": 0.0004097,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InteractionClaimNotificationCannotCommitCancelledRequest(True)",
+              "fullName": "ItemTransferTests.InteractionClaimNotificationCannotCommitCancelledRequest(True)",
+              "state": "Passed",
+              "durationSeconds": 0.0002569,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidDiscardRequestCannotRemovePlacement(\"missing-request\",StaleRequest)",
+              "fullName": "ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(\"missing-request\",StaleRequest)",
+              "state": "Passed",
+              "durationSeconds": 0.0006359,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidDiscardRequestCannotRemovePlacement(\"stale-request\",StaleRequest)",
+              "fullName": "ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(\"stale-request\",StaleRequest)",
+              "state": "Passed",
+              "durationSeconds": 0.0003789,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidDiscardRequestCannotRemovePlacement(\"closed-player\",NotAllowed)",
+              "fullName": "ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(\"closed-player\",NotAllowed)",
+              "state": "Passed",
+              "durationSeconds": 0.0002884,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidDiscardRequestCannotRemovePlacement(\"dead-player\",NotAllowed)",
+              "fullName": "ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(\"dead-player\",NotAllowed)",
+              "state": "Passed",
+              "durationSeconds": 0.0002678,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidDiscardRequestCannotRemovePlacement(\"shelter\",NotAllowed)",
+              "fullName": "ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(\"shelter\",NotAllowed)",
+              "state": "Passed",
+              "durationSeconds": 0.0002502,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidDiscardRequestCannotRemovePlacement(\"inactive-exploration\",NotAllowed)",
+              "fullName": "ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(\"inactive-exploration\",NotAllowed)",
+              "state": "Passed",
+              "durationSeconds": 0.0002731,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidDiscardRequestCannotRemovePlacement(\"disabled-runtime\",NotReady)",
+              "fullName": "ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(\"disabled-runtime\",NotReady)",
+              "state": "Passed",
+              "durationSeconds": 0.000354,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "NotificationsOnlyReadCompleteStateAndReentryIsBusy",
+              "fullName": "ItemTransferTests.NotificationsOnlyReadCompleteStateAndReentryIsBusy",
+              "state": "Passed",
+              "durationSeconds": 0.0002699,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "RealItemManagerBusyRejectsDiscardAndRestoresPlacement",
+              "fullName": "ItemTransferTests.RealItemManagerBusyRejectsDiscardAndRestoresPlacement",
+              "state": "Passed",
+              "durationSeconds": 0.0002643,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "RealItemManagerBusyRejectsOwnerAfterBothLayoutChangesAndRestoresThem",
+              "fullName": "ItemTransferTests.RealItemManagerBusyRejectsOwnerAfterBothLayoutChangesAndRestoresThem",
+              "state": "Passed",
+              "durationSeconds": 0.0002522,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ShelterAllowsUnpreparedOrAbsentPlayerWithoutGrantingExploration(False)",
+              "fullName": "ItemTransferTests.ShelterAllowsUnpreparedOrAbsentPlayerWithoutGrantingExploration(False)",
+              "state": "Passed",
+              "durationSeconds": 0.000563,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ShelterAllowsUnpreparedOrAbsentPlayerWithoutGrantingExploration(True)",
+              "fullName": "ItemTransferTests.ShelterAllowsUnpreparedOrAbsentPlayerWithoutGrantingExploration(True)",
+              "state": "Passed",
+              "durationSeconds": 0.0002805,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "StalePermissionAndOtherConfirmationCannotCommit",
+              "fullName": "ItemTransferTests.StalePermissionAndOtherConfirmationCannotCommit",
+              "state": "Passed",
+              "durationSeconds": 0.0002562,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "BoundariesAreExplicit(0.0f,0.0f,False)",
+              "fullName": "LootGenerationTests.BoundariesAreExplicit(0.0f,0.0f,False)",
+              "state": "Passed",
+              "durationSeconds": 0.000202,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "BoundariesAreExplicit(0.0f,1.0f,False)",
+              "fullName": "LootGenerationTests.BoundariesAreExplicit(0.0f,1.0f,False)",
+              "state": "Passed",
+              "durationSeconds": 0.0000696,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "BoundariesAreExplicit(1.0f,0.0f,True)",
+              "fullName": "LootGenerationTests.BoundariesAreExplicit(1.0f,0.0f,True)",
+              "state": "Passed",
+              "durationSeconds": 0.0000558,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "BoundariesAreExplicit(1.0f,1.0f,True)",
+              "fullName": "LootGenerationTests.BoundariesAreExplicit(1.0f,1.0f,True)",
+              "state": "Passed",
+              "durationSeconds": 0.0000528,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "BoundariesAreExplicit(0.5f,0.499f,True)",
+              "fullName": "LootGenerationTests.BoundariesAreExplicit(0.5f,0.499f,True)",
+              "state": "Passed",
+              "durationSeconds": 0.0000482,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "BoundariesAreExplicit(0.5f,0.5f,False)",
+              "fullName": "LootGenerationTests.BoundariesAreExplicit(0.5f,0.5f,False)",
+              "state": "Passed",
+              "durationSeconds": 0.0000475,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ConflictingUniqueOriginIsAnErrorEvenWhenChanceIsZero",
+              "fullName": "LootGenerationTests.ConflictingUniqueOriginIsAnErrorEvenWhenChanceIsZero",
+              "state": "Passed",
+              "durationSeconds": 0.0001071,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "DuplicateEntryIdAndNonFiniteProbabilityAreRejected",
+              "fullName": "LootGenerationTests.DuplicateEntryIdAndNonFiniteProbabilityAreRejected",
+              "state": "Passed",
+              "durationSeconds": 0.0000742,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "EligibleRecoveryBypassesZeroProbabilityAndKeepsTheRegisteredIdentity",
+              "fullName": "LootGenerationTests.EligibleRecoveryBypassesZeroProbabilityAndKeepsTheRegisteredIdentity",
+              "state": "Passed",
+              "durationSeconds": 0.0000788,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "EveryIntermediateCandidateGetsAnIndependentSampleInConfiguredOrder",
+              "fullName": "LootGenerationTests.EveryIntermediateCandidateGetsAnIndependentSampleInConfiguredOrder",
+              "state": "Passed",
+              "durationSeconds": 0.0001111,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ExistingUniqueAtItsSourceRemainsEligibleForRebinding(World)",
+              "fullName": "LootGenerationTests.ExistingUniqueAtItsSourceRemainsEligibleForRebinding(World)",
+              "state": "Passed",
+              "durationSeconds": 0.0002344,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ExistingUniqueAtItsSourceRemainsEligibleForRebinding(Container)",
+              "fullName": "LootGenerationTests.ExistingUniqueAtItsSourceRemainsEligibleForRebinding(Container)",
+              "state": "Passed",
+              "durationSeconds": 0.0000938,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidLaterCandidateRejectsWholeTableBeforeTakingSamples",
+              "fullName": "LootGenerationTests.InvalidLaterCandidateRejectsWholeTableBeforeTakingSamples",
+              "state": "Passed",
+              "durationSeconds": 0.0000937,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "OverrideReplacesDefaultInsteadOfMultiplyingIt",
+              "fullName": "LootGenerationTests.OverrideReplacesDefaultInsteadOfMultiplyingIt",
+              "state": "Passed",
+              "durationSeconds": 0.0000747,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "UniqueAlreadyCarriedOrStoredIsNotSelectedEvenAtOneHundredPercent(Backpack)",
+              "fullName": "LootGenerationTests.UniqueAlreadyCarriedOrStoredIsNotSelectedEvenAtOneHundredPercent(Backpack)",
+              "state": "Passed",
+              "durationSeconds": 0.0002383,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "UniqueAlreadyCarriedOrStoredIsNotSelectedEvenAtOneHundredPercent(Storage)",
+              "fullName": "LootGenerationTests.UniqueAlreadyCarriedOrStoredIsNotSelectedEvenAtOneHundredPercent(Storage)",
+              "state": "Passed",
+              "durationSeconds": 0.0000961,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ZeroOneAndEmptyTablesDoNotNeedRandomSamples",
+              "fullName": "LootGenerationTests.ZeroOneAndEmptyTablesDoNotNeedRandomSamples",
+              "state": "Passed",
+              "durationSeconds": 0.0001279,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "DifferentBoxesSnapshotTheirOwnSizesAndOnlyTheNextRoundUsesEditedSizes",
+              "fullName": "LootGridLayoutTests.DifferentBoxesSnapshotTheirOwnSizesAndOnlyTheNextRoundUsesEditedSizes",
+              "state": "Passed",
+              "durationSeconds": 0.0017884,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "EmptyRollKeepsAllConfiguredBackgroundCellsAndStaleRoundCannotRelayout",
+              "fullName": "LootGridLayoutTests.EmptyRollKeepsAllConfiguredBackgroundCellsAndStaleRoundCannotRelayout",
+              "state": "Passed",
+              "durationSeconds": 0.0006008,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates(3,1,2,2)",
+              "fullName": "LootGridLayoutTests.EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates(3,1,2,2)",
+              "state": "Passed",
+              "durationSeconds": 0.0004868,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates(1,3,2,2)",
+              "fullName": "LootGridLayoutTests.EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates(1,3,2,2)",
+              "state": "Passed",
+              "durationSeconds": 0.0004921,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates(2,1,2,1)",
+              "fullName": "LootGridLayoutTests.EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates(2,1,2,1)",
+              "state": "Passed",
+              "durationSeconds": 0.0003739,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates(1,2,2,2)",
+              "fullName": "LootGridLayoutTests.EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates(1,2,2,2)",
+              "state": "Passed",
+              "durationSeconds": 0.0002985,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "FailedCreationKeepsItsRollAndRechecksSavedCandidatesBeforeRetrying",
+              "fullName": "LootGridLayoutTests.FailedCreationKeepsItsRollAndRechecksSavedCandidatesBeforeRetrying",
+              "state": "Passed",
+              "durationSeconds": 0.0007707,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "GeneratedFootprintsUseStableRowOrderWithinTheFullConfiguredGrid",
+              "fullName": "LootGridLayoutTests.GeneratedFootprintsUseStableRowOrderWithinTheFullConfiguredGrid",
+              "state": "Passed",
+              "durationSeconds": 0.0006931,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InterruptedSearchAndSameRoundRebindingKeepPositionsAndRevealedEntries",
+              "fullName": "LootGridLayoutTests.InterruptedSearchAndSameRoundRebindingKeepPositionsAndRevealedEntries",
+              "state": "Passed",
+              "durationSeconds": 0.0013163,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidGridSizeFailsBeforeAnySourceGenerates(0,2)",
+              "fullName": "LootGridLayoutTests.InvalidGridSizeFailsBeforeAnySourceGenerates(0,2)",
+              "state": "Passed",
+              "durationSeconds": 0.0004843,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidGridSizeFailsBeforeAnySourceGenerates(2,0)",
+              "fullName": "LootGridLayoutTests.InvalidGridSizeFailsBeforeAnySourceGenerates(2,0)",
+              "state": "Passed",
+              "durationSeconds": 0.000316,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidGridSizeFailsBeforeAnySourceGenerates(-1,2)",
+              "fullName": "LootGridLayoutTests.InvalidGridSizeFailsBeforeAnySourceGenerates(-1,2)",
+              "state": "Passed",
+              "durationSeconds": 0.0002084,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "NativeGroundUsesItsActualFootprintWithoutBoxCapacityOrReturnSupport",
+              "fullName": "LootGridLayoutTests.NativeGroundUsesItsActualFootprintWithoutBoxCapacityOrReturnSupport",
+              "state": "Passed",
+              "durationSeconds": 0.0006668,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "OverwideOrOvertallReturnsAreRejectedWithoutGrowingAnEmptyBox(3,1)",
+              "fullName": "LootGridLayoutTests.OverwideOrOvertallReturnsAreRejectedWithoutGrowingAnEmptyBox(3,1)",
+              "state": "Passed",
+              "durationSeconds": 0.0009373,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "OverwideOrOvertallReturnsAreRejectedWithoutGrowingAnEmptyBox(1,3)",
+              "fullName": "LootGridLayoutTests.OverwideOrOvertallReturnsAreRejectedWithoutGrowingAnEmptyBox(1,3)",
+              "state": "Passed",
+              "durationSeconds": 0.0006191,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ReturningOriginalItemPrefersItsOldSlotEvenWhenAnEarlierHoleIsFree",
+              "fullName": "LootGridLayoutTests.ReturningOriginalItemPrefersItsOldSlotEvenWhenAnEarlierHoleIsFree",
+              "state": "Passed",
+              "durationSeconds": 0.0006218,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "TakenSlotCanBeReusedAndOriginalReturnMovesOnlyTheReturningItem",
+              "fullName": "LootGridLayoutTests.TakenSlotCanBeReusedAndOriginalReturnMovesOnlyTheReturningItem",
+              "state": "Passed",
+              "durationSeconds": 0.0008585,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ZeroChanceUniqueRecoveryCannotBeClaimedIntoAnUndersizedBox",
+              "fullName": "LootGridLayoutTests.ZeroChanceUniqueRecoveryCannotBeClaimedIntoAnUndersizedBox",
+              "state": "Passed",
+              "durationSeconds": 0.0008486,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ZeroSecondEntriesAndLongFrameRevealInOrderOnlyOnceAndKeepTheirLayout",
+              "fullName": "LootGridLayoutTests.ZeroSecondEntriesAndLongFrameRevealInOrderOnlyOnceAndKeepTheirLayout",
+              "state": "Passed",
+              "durationSeconds": 0.000669,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "BusyUniqueClaimKeepsRecordUnavailableUntilSameRoundRetrySucceeds",
+              "fullName": "LootSourceStateTests.BusyUniqueClaimKeepsRecordUnavailableUntilSameRoundRetrySucceeds",
+              "state": "Passed",
+              "durationSeconds": 0.0008817,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "CommittedDropCanRebuildMissingPresentationWithoutAnotherIdentityOrClaim",
+              "fullName": "LootSourceStateTests.CommittedDropCanRebuildMissingPresentationWithoutAnotherIdentityOrClaim",
+              "state": "Passed",
+              "durationSeconds": 0.0010851,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "DisabledRuntimeMakesExistingSourceUnavailableWithoutErasingIt",
+              "fullName": "LootSourceStateTests.DisabledRuntimeMakesExistingSourceUnavailableWithoutErasingIt",
+              "state": "Passed",
+              "durationSeconds": 0.0006499,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "DiscardedUniqueWaitsUntilNextRoundAndRecoversSameIdentityAtOriginalBox",
+              "fullName": "LootSourceStateTests.DiscardedUniqueWaitsUntilNextRoundAndRecoversSameIdentityAtOriginalBox",
+              "state": "Passed",
+              "durationSeconds": 0.0026916,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "DiscardFailureRestoresRealBackpackWithoutCreatingWorldRecord(2,SourceRemovalFailed)",
+              "fullName": "LootSourceStateTests.DiscardFailureRestoresRealBackpackWithoutCreatingWorldRecord(2,SourceRemovalFailed)",
+              "state": "Passed",
+              "durationSeconds": 0.0013338,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "DiscardFailureRestoresRealBackpackWithoutCreatingWorldRecord(3,OwnerRejected)",
+              "fullName": "LootSourceStateTests.DiscardFailureRestoresRealBackpackWithoutCreatingWorldRecord(3,OwnerRejected)",
+              "state": "Passed",
+              "durationSeconds": 0.0010634,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "FailedReturnAfterTakenCellReuseRestoresHistoricalLayoutAndBackpackPlacement(2,SourceRemovalFailed)",
+              "fullName": "LootSourceStateTests.FailedReturnAfterTakenCellReuseRestoresHistoricalLayoutAndBackpackPlacement(2,SourceRemovalFailed)",
+              "state": "Passed",
+              "durationSeconds": 0.0015078,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "FailedReturnAfterTakenCellReuseRestoresHistoricalLayoutAndBackpackPlacement(3,OwnerRejected)",
+              "fullName": "LootSourceStateTests.FailedReturnAfterTakenCellReuseRestoresHistoricalLayoutAndBackpackPlacement(3,OwnerRejected)",
+              "state": "Passed",
+              "durationSeconds": 0.0011366,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "FullBoxRejectsReturnBeforeCommitWithoutChangingIdentityLayoutSearchOrNotifications",
+              "fullName": "LootSourceStateTests.FullBoxRejectsReturnBeforeCommitWithoutChangingIdentityLayoutSearchOrNotifications",
+              "state": "Passed",
+              "durationSeconds": 0.0014322,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "GroundSourceCannotReceiveBackpackReturnsThroughEitherPublicEntry",
+              "fullName": "LootSourceStateTests.GroundSourceCannotReceiveBackpackReturnsThroughEitherPublicEntry",
+              "state": "Passed",
+              "durationSeconds": 0.0011932,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "GroundTriggersOccupyDropSpaceButNormalRangeTriggersDoNot",
+              "fullName": "LootSourceStateTests.GroundTriggersOccupyDropSpaceButNormalRangeTriggersDoNot",
+              "state": "Passed",
+              "durationSeconds": 0.0009115,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "HiddenEntriesCannotBeMarkedTakenAndFailedTransferCanRestoreRevealedEntry",
+              "fullName": "LootSourceStateTests.HiddenEntriesCannotBeMarkedTakenAndFailedTransferCanRestoreRevealedEntry",
+              "state": "Passed",
+              "durationSeconds": 0.0006698,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InactiveGroundPreparationKeepsCarriedOwnershipUntilCommitAndCanBeCancelled",
+              "fullName": "LootSourceStateTests.InactiveGroundPreparationKeepsCarriedOwnershipUntilCommitAndCanBeCancelled",
+              "state": "Passed",
+              "durationSeconds": 0.0007284,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\"request\",StaleRequest)",
+              "fullName": "LootSourceStateTests.InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\"request\",StaleRequest)",
+              "state": "Passed",
+              "durationSeconds": 0.0013218,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\"distance\",Unreachable)",
+              "fullName": "LootSourceStateTests.InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\"distance\",Unreachable)",
+              "state": "Passed",
+              "durationSeconds": 0.0009379,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\"obstruction\",Unreachable)",
+              "fullName": "LootSourceStateTests.InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\"obstruction\",Unreachable)",
+              "state": "Passed",
+              "durationSeconds": 0.0008795,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\"map\",Unreachable)",
+              "fullName": "LootSourceStateTests.InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\"map\",Unreachable)",
+              "state": "Passed",
+              "durationSeconds": 0.0008876,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\"stale-source\",SourceInvalid)",
+              "fullName": "LootSourceStateTests.InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(\"stale-source\",SourceInvalid)",
+              "state": "Passed",
+              "durationSeconds": 0.0008423,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "NewRoundCannotEraseUnsettledWorldItems",
+              "fullName": "LootSourceStateTests.NewRoundCannotEraseUnsettledWorldItems",
+              "state": "Passed",
+              "durationSeconds": 0.0013032,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(float.NaN,0.03f)",
+              "fullName": "LootSourceStateTests.NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(float.NaN,0.03f)",
+              "state": "Passed",
+              "durationSeconds": 0.0009558,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(float.PositiveInfinity,0.03f)",
+              "fullName": "LootSourceStateTests.NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(float.PositiveInfinity,0.03f)",
+              "state": "Passed",
+              "durationSeconds": 0.000658,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(0.18f,float.NaN)",
+              "fullName": "LootSourceStateTests.NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(0.18f,float.NaN)",
+              "state": "Passed",
+              "durationSeconds": 0.0006305,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(0.18f,-1.0f)",
+              "fullName": "LootSourceStateTests.NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(0.18f,-1.0f)",
+              "state": "Passed",
+              "durationSeconds": 0.0005997,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "PreparedDropRechecksConfigurationBeforeOwnerCommit",
+              "fullName": "LootSourceStateTests.PreparedDropRechecksConfigurationBeforeOwnerCommit",
+              "state": "Passed",
+              "durationSeconds": 0.0007157,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(True,1,TargetRejected)",
+              "fullName": "LootSourceStateTests.ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(True,1,TargetRejected)",
+              "state": "Passed",
+              "durationSeconds": 0.0013696,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(True,2,SourceRemovalFailed)",
+              "fullName": "LootSourceStateTests.ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(True,2,SourceRemovalFailed)",
+              "state": "Passed",
+              "durationSeconds": 0.0010772,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(True,3,OwnerRejected)",
+              "fullName": "LootSourceStateTests.ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(True,3,OwnerRejected)",
+              "state": "Passed",
+              "durationSeconds": 0.0012082,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(False,1,TargetRejected)",
+              "fullName": "LootSourceStateTests.ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(False,1,TargetRejected)",
+              "state": "Passed",
+              "durationSeconds": 0.0013222,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(False,2,SourceRemovalFailed)",
+              "fullName": "LootSourceStateTests.ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(False,2,SourceRemovalFailed)",
+              "state": "Passed",
+              "durationSeconds": 0.0016554,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(False,3,OwnerRejected)",
+              "fullName": "LootSourceStateTests.ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(False,3,OwnerRejected)",
+              "state": "Passed",
+              "durationSeconds": 0.0012918,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ReturningToBoxReusesOrAppendsOneRevealedEntryWithoutChangingSearch(True)",
+              "fullName": "LootSourceStateTests.ReturningToBoxReusesOrAppendsOneRevealedEntryWithoutChangingSearch(True)",
+              "state": "Passed",
+              "durationSeconds": 0.0014293,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ReturningToBoxReusesOrAppendsOneRevealedEntryWithoutChangingSearch(False)",
+              "fullName": "LootSourceStateTests.ReturningToBoxReusesOrAppendsOneRevealedEntryWithoutChangingSearch(False)",
+              "state": "Passed",
+              "durationSeconds": 0.0013375,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ReusedTakenCellMakesOriginalReturnToAnotherFreeCellWithoutMovingOtherEntries",
+              "fullName": "LootSourceStateTests.ReusedTakenCellMakesOriginalReturnToAnotherFreeCellWithoutMovingOtherEntries",
+              "state": "Passed",
+              "durationSeconds": 0.0011495,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "RevealedPickupDoesNotResetTheNextSearchAndInterruptOnlyResetsUnfinishedProgress",
+              "fullName": "LootSourceStateTests.RevealedPickupDoesNotResetTheNextSearchAndInterruptOnlyResetsUnfinishedProgress",
+              "state": "Passed",
+              "durationSeconds": 0.0006552,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "SameRoundPreparationAndRebindingKeepEvenAnEmptyRoll",
+              "fullName": "LootSourceStateTests.SameRoundPreparationAndRebindingKeepEvenAnEmptyRoll",
+              "state": "Passed",
+              "durationSeconds": 0.0010555,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "SourceBindingBetweenItemRoundAndLootPreparationDoesNotGenerateUnderOldRound",
+              "fullName": "LootSourceStateTests.SourceBindingBetweenItemRoundAndLootPreparationDoesNotGenerateUnderOldRound",
+              "state": "Passed",
+              "durationSeconds": 0.0014311,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "SourcePickupOwnerFailureRestoresTakenSearchAndRealBackpackLayout",
+              "fullName": "LootSourceStateTests.SourcePickupOwnerFailureRestoresTakenSearchAndRealBackpackLayout",
+              "state": "Passed",
+              "durationSeconds": 0.0013149,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "UniqueConflictIsFoundBeforeAnySourceCreatesAnInstance",
+              "fullName": "LootSourceStateTests.UniqueConflictIsFoundBeforeAnySourceCreatesAnInstance",
+              "state": "Passed",
+              "durationSeconds": 0.0004538,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "UniqueRecoveryReturnsToContainerWithSameIdentityDespiteZeroProbability",
+              "fullName": "LootSourceStateTests.UniqueRecoveryReturnsToContainerWithSameIdentityDespiteZeroProbability",
+              "state": "Passed",
+              "durationSeconds": 0.0010156,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "UniqueReturnedToAnotherBoxRecoversAtItsOriginalBoxNextRound",
+              "fullName": "LootSourceStateTests.UniqueReturnedToAnotherBoxRecoversAtItsOriginalBoxNextRound",
+              "state": "Passed",
+              "durationSeconds": 0.0021579,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            }
+          ]
+        }
+      },
+      "hint": null
+    }
+  },
+  "isError": false
+}

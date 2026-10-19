@@ -1,0 +1,54 @@
+// Unity MCP method body. Docs only; never import into Assets.
+if (!EditorApplication.isPlaying || Screen.width != 1920 || Screen.height != 1080)
+    throw new System.Exception("Ordinary Play at1920x1080 is required.");
+string key = "07E.ObserverRunning";
+if (SessionState.GetBool(key, false)) throw new System.Exception("Observer already running.");
+string output = "E:/DD451/Docs/Verification/Enemy/RuinsIntegration/Integration/OrdinaryPlay";
+System.IO.Directory.CreateDirectory(output);
+var rows = new System.Collections.Generic.List<object>();
+var captured = new System.Collections.Generic.HashSet<string>();
+int lastFrame = -1;
+double started = EditorApplication.timeSinceStartup;
+bool background = Application.runInBackground;
+Application.runInBackground = true;
+SessionState.SetBool(key, true);
+EditorApplication.CallbackFunction observer = null;
+System.Action finish = () =>
+{
+    EditorApplication.update -= observer;
+    Application.runInBackground = background;
+    SessionState.SetBool(key, false);
+    System.IO.File.WriteAllText(output + "/Samples.json", Newtonsoft.Json.JsonConvert.SerializeObject(rows, Newtonsoft.Json.Formatting.Indented));
+    System.IO.File.WriteAllText(output + "/ObserverFinished.json", Newtonsoft.Json.JsonConvert.SerializeObject(new { utc = System.DateTime.UtcNow.ToString("o"), count = rows.Count, restoredBackground = background, callbacksRemoved = true }));
+};
+observer = () =>
+{
+    try
+    {
+        if (!EditorApplication.isPlaying || !SessionState.GetBool(key, false) || EditorApplication.timeSinceStartup - started > 300)
+        {
+            finish(); return;
+        }
+        if (Time.frameCount == lastFrame) return;
+        lastFrame = Time.frameCount;
+        var flow = UnityEngine.Object.FindFirstObjectByType<GameFlowManager>();
+        if (flow == null || flow.Player == null) return;
+        var scene = flow.Player.gameObject.scene;
+        var drones = scene.GetRootGameObjects().SelectMany(r => r.GetComponentsInChildren<DroneController>(true)).ToArray();
+        rows.Add(new { frame = Time.frameCount, time = Time.time, phase = SessionState.GetString("07E.Phase", "home"), stage = flow.Stage.ToString(), round = flow.CurrentRound, playerRound = flow.Player.health.CurrentRound, lootRound = flow.Loot.PreparedRound, health = flow.Player.health.CurrentHealth, locked = flow.Player.IsSceneTransitionBlocked, scene = scene.path, player = new[] { flow.Player.Position.x, flow.Player.Position.y, flow.Player.Position.z }, drones = drones.Select(d => new { d.name, round = d.CurrentRound, state = d.CurrentState.ToString(), d.AlertProgress, d.HasExploded, d.IsRunning, position = new[] { d.Body.position.x, d.Body.position.y, d.Body.position.z } }).ToArray() });
+        foreach (var drone in drones)
+        {
+            string image = null;
+            if (drone.CurrentState == DroneState.Alert && drone.AlertProgress >= 0.4f) image = "Natural-Alert-Round" + flow.CurrentRound;
+            if (drone.HasExploded) image = "Natural-Explosion-Round" + flow.CurrentRound;
+            if (image != null && captured.Add(image)) ScreenCapture.CaptureScreenshot(output + "/" + image + "-1920.png");
+        }
+    }
+    catch (System.Exception error)
+    {
+        System.IO.File.WriteAllText(output + "/ObserverError.txt", error.ToString());
+        finish();
+    }
+};
+EditorApplication.update += observer;
+return "Ordinary Play observer running; no AI, scene, input, route or camera changes.";

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-18 22:18:53Z" end-time="2026-10-18 22:18:56Z" duration="3.3695286">
+  <test-suite type="TestSuite" id="1110" name="DD451Demo" fullname="DD451Demo" runstate="Runnable" testcasecount="84" result="Passed" start-time="2026-10-18 22:18:53Z" end-time="2026-10-18 22:18:56Z" duration="3.369529" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1068" name="MyPrecious.Loot.PlayModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.Loot.PlayModeTests.dll" runstate="Runnable" testcasecount="24" result="Passed" start-time="2026-10-18 22:18:53Z" end-time="2026-10-18 22:18:56Z" duration="3.203173" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="48276" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1043" name="LootIntegrationTests" fullname="LootIntegrationTests" classname="LootIntegrationTests" runstate="Runnable" testcasecount="24" result="Passed" start-time="2026-10-18 22:18:53Z" end-time="2026-10-18 22:18:56Z" duration="3.198673" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1045" name="QueuedGridInterruptedSecondSearchAndPickupReturnKeepEveryOriginalSlot" fullname="LootIntegrationTests.QueuedGridInterruptedSecondSearchAndPickupReturnKeepEveryOriginalSlot" methodname="QueuedGridInterruptedSecondSearchAndPickupReturnKeepEveryOriginalSlot" classname="LootIntegrationTests" runstate="Runnable" seed="1135518725" result="Passed" start-time="2026-10-18 22:18:53Z" end-time="2026-10-18 22:18:56Z" duration="3.101369" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[06A queued close diagnostics:
+Before: frame=502 screen=1920x1080 focused=True background=True close=(1796.00, 913.00) active=True interactable=True top=Close topIsClose=True allHits=Close,LootPanel selected=none testMouse=851/(1796.00, 913.00)/False currentIsTest=True current=Mouse:/Mouse1 pointAction=(1796.00, 913.00)/Mouse:/Mouse1 clickAction=0/ mice=2/native=True/enabled=True/(-5166.50, 992.65)/left=False;851/native=False/enabled=True/(1796.00, 913.00)/left=False
+Pressed: frame=504 screen=1920x1080 focused=True background=True close=(1796.00, 913.00) active=True interactable=True top=Close topIsClose=True allHits=Close,LootPanel selected=Close testMouse=851/(1796.00, 913.00)/True currentIsTest=True current=Mouse:/Mouse1 pointAction=(1796.00, 913.00)/Mouse:/Mouse1 clickAction=1/Mouse:/Mouse1 mice=2/native=True/enabled=True/(-5166.50, 992.65)/left=False;851/native=False/enabled=True/(1796.00, 913.00)/left=True
+After: frame=506 screen=1920x1080 focused=True background=True close=(1796.00, 913.00) active=False interactable=True top=none topIsClose=False allHits= selected=Close testMouse=851/(1796.00, 913.00)/False currentIsTest=True current=Mouse:/Mouse1 pointAction=(1796.00, 913.00)/Mouse:/Mouse1 clickAction=0/Mouse:/Mouse1 mice=2/native=True/enabled=True/(-5166.50, 992.65)/left=False;851/native=False/enabled=True/(1796.00, 913.00)/left=False
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/cs200/AppData/LocalLow/DefaultCompany/DD451Demo\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -1,0 +1,44 @@
+Shelter Screen Dust — 2026-10-19
+
+完成物
+Assets/Prefabs/Shelter/ShelterScreenDust.prefab
+GUID c3548963c97a33e49a6aca789a4f6d22
+Assets/Art/Materials/Environment/ShelterScreenDust.mat
+GUID f647fdf3948e83f4f97c9c3426d78e2a
+无新增产品脚本或贴图；材质复制URP包内ParticlesUnlit模板，使用Unity内置Default-Particle软圆纹理。
+
+使用
+把Prefab作为当前场景 ScenePresentation/PlayerCamera/OutputCamera 的子物体。
+Transform局部Position=(0,0,4)，Rotation=(0,0,0)，Scale=(1,1,1)。
+不要挂在PlayerCamera根或SideFollow下：实际镜头移动的是OutputCamera。
+按当前16:9 / 1920x1080 / Perspective FOV50配置。若改FOV或距离，需要对应调整两个粒子系统Shape的Box宽高。
+本次交付独立Prefab；仅在普通Play中临时挂载检查，没有把实例保存到Shelter场景。需要常驻效果时按上述方式拖入并保存场景。
+
+效果
+FineDust：每秒10颗，寿命12–20秒，大小.012–.026，总上限220。
+ForegroundMotes：每秒2.2颗，寿命10–16秒，大小.024–.040，总上限64。
+两层Local simulation、Loop、Prewarm、PlayOnAwake；缓慢XY漂移与低频Noise；Color/Size over Lifetime使出现消失平滑。
+自然稳定时约190颗。URP Unlit Alpha透明，ZWrite关闭，无HDR高亮、额外灯光、碰撞、拖尾、阴影或探针。
+Inspector中调Emission/Rate over Time改变密度，Main/Start Color的Alpha改变明显程度，Noise/Strength改变扰动。
+
+参考
+https://www.youtube.com/watch?v=tPtRCpwSgBg
+Jimmy Vegas — HOW TO MAKE DUST PARTICLES IN UNITY TUTORIAL
+已打开视频预览并读取字幕；借鉴预热、缓慢漂浮与生命周期淡入淡出，按本项目相机/URP/暗调重新配置。
+
+验证
+Bootstrap普通Play进入真实Shelter相机，1920x1080 ScreenCapture.CaptureScreenshot。
+01-WithoutDust / 02-WithDust：相同gameTime、相机与灯光状态下，仅切换粒子Renderer；逐张视觉检查人物、箱子、暗部可读，无整屏发灰。
+03-AfterThreeSeconds + Motion.json：真实普通Play三秒自然模拟，记录particle seed、位置、剩余寿命；不是手动模拟替代运行。
+04-StorageAfterCameraMove：API辅助定位后通过真实PlayerInteraction/Trigger打开仓库，UI未被灰尘覆盖。
+05-AfterCameraMove：相机实际移到(-5,2.5,-12)，粒子保持本地(0,0,4)，画面边缘仍有稀疏覆盖，交互提示清楚。
+FreshPrefabPlayback.json：重新加载未修改Prefab，不调用Simulate，自动播放；FineDust161、ForegroundMotes27。
+ReloadValidation.json：落盘重载2个PS，材质/纹理有效，无missing script、额外Camera/Collider/MonoBehaviour。
+Final Console：0 error / 0 warning。
+只验证本次粒子配置与实际渲染，不宣称原生键鼠、Windows构建或保存场景后的自动切场景接入。
+
+保护与协调
+初始ProtectedBefore.json之后，主程相机预览任务完成了Shelter/Ruins序列化激活状态更新。两场景以其Docs/Verification/Rendering/SceneCameraPreview/DeliveredHashes.json为最新基线，已核对一致；其余8个保护文件保持初始哈希。未还原旧场景。
+场景、共享PlayerCamera、后处理Profile、夜空、LightFlicker本任务均未写入。
+检查结束回到唯一Ruins clean/Edit，选中成品Prefab方便查看。无Play/test/PrefabStage/截图或motion回调残留，timeScale1、runInBackgroundfalse。
+证据：Docs/Verification/Rendering/ShelterDust/；最终静态审计Audit.txt，ReleaseState.json。

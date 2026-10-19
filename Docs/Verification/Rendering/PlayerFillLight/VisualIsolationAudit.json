@@ -1,0 +1,433 @@
+{
+  "scope": "Read-only metadata and PNG audit, no Unity/Assets changes; no full hash audit.",
+  "captureMethod": "ScreenCapture.CaptureScreenshot, supersize1, ordinary Play Game framebuffer",
+  "gameTime": 15.2223263,
+  "baselineFill": {
+    "name": "PlayerFillLight",
+    "id": -4308704,
+    "enabled": false,
+    "intensity": 0.8,
+    "color": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "range": 4.5,
+    "position": [
+      -11.5,
+      1.10000014,
+      -2.0
+    ],
+    "mask": 2,
+    "urpMask": 2,
+    "shadows": "None"
+  },
+  "coordinateConvention": "WorldToScreenPoint is bottom-left origin. PNG y = 1080 - screenY; floor minima/ceil maxima; rectangles [left,top,right,bottom) with12px padding.",
+  "regions": [
+    {
+      "name": "fullFrame",
+      "rect": [
+        0,
+        0,
+        1920,
+        1080
+      ],
+      "outside": false
+    },
+    {
+      "name": "tightPlayerBounds",
+      "rect": [
+        610,
+        586,
+        718,
+        790
+      ],
+      "outside": false
+    },
+    {
+      "name": "paddedPlayerBounds",
+      "rect": [
+        598,
+        574,
+        730,
+        802
+      ],
+      "outside": false
+    },
+    {
+      "name": "outsidePaddedBounds",
+      "rect": [
+        598,
+        574,
+        730,
+        802
+      ],
+      "outside": true
+    },
+    {
+      "name": "capsuleInteriorProxy",
+      "rect": [
+        640,
+        637,
+        679,
+        740
+      ],
+      "outside": false
+    }
+  ],
+  "checks": [
+    {
+      "candidate": "03-FillOn1p2",
+      "gameTime": 15.2223263,
+      "same": {
+        "effectiveStack": true,
+        "camera": true,
+        "environment": true,
+        "volumes": true,
+        "gameTime": true,
+        "playerBounds": true,
+        "allOtherLights": true,
+        "screen": true,
+        "player": true
+      },
+      "otherLightCount": 5,
+      "fill": {
+        "name": "PlayerFillLight",
+        "id": -4308704,
+        "enabled": true,
+        "intensity": 1.2,
+        "color": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "range": 4.5,
+        "position": [
+          -11.5,
+          1.10000014,
+          -2.0
+        ],
+        "mask": 2,
+        "urpMask": 2,
+        "shadows": "None"
+      },
+      "nonPlayerDedicatedReceivers": []
+    },
+    {
+      "candidate": "04-ControlDefaultLayer",
+      "gameTime": 15.2223263,
+      "same": {
+        "effectiveStack": true,
+        "camera": true,
+        "environment": true,
+        "volumes": true,
+        "gameTime": true,
+        "playerBounds": true,
+        "allOtherLights": true,
+        "screen": true,
+        "player": true
+      },
+      "otherLightCount": 5,
+      "fill": {
+        "name": "PlayerFillLight",
+        "id": -4308704,
+        "enabled": true,
+        "intensity": 1.2,
+        "color": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "range": 4.5,
+        "position": [
+          -11.5,
+          1.10000014,
+          -2.0
+        ],
+        "mask": 1,
+        "urpMask": 1,
+        "shadows": "None"
+      },
+      "nonPlayerDedicatedReceivers": []
+    }
+  ],
+  "comparisons": [
+    {
+      "baseline": "01-FillOff",
+      "candidate": "03-FillOn1p2",
+      "regions": [
+        {
+          "region": "fullFrame",
+          "rect": [
+            0,
+            0,
+            1920,
+            1080
+          ],
+          "outside": false,
+          "pixels": 2073600.0,
+          "anyChangedPixels": 12878.0,
+          "anyChangedPercent": 0.621045524691358,
+          "over1ChangedPixels": 12779.0,
+          "over2ChangedPixels": 12694.0,
+          "over8ChangedPixels": 12181.0,
+          "maxAbsoluteChannelDelta": 91.0,
+          "meanAbsRgbDelta8Bit": 0.18860773533950617,
+          "meanEncodedLumaBefore": 22.986630594718385,
+          "meanEncodedLumaAfter": 23.197968876163696,
+          "meanEncodedLumaDelta": 0.21133828144289923,
+          "meanEncodedLumaAbsDelta": 0.21133828144289923,
+          "meanDecodedSrgbLuminanceBefore": 0.012937592252993353,
+          "meanDecodedSrgbLuminanceAfter": 0.013201498841546443,
+          "brightenedPixels": 12846.0,
+          "darkenedPixels": 0.0
+        },
+        {
+          "region": "tightPlayerBounds",
+          "rect": [
+            610,
+            586,
+            718,
+            790
+          ],
+          "outside": false,
+          "pixels": 22032.0,
+          "anyChangedPixels": 12878.0,
+          "anyChangedPercent": 58.45134350036311,
+          "over1ChangedPixels": 12779.0,
+          "over2ChangedPixels": 12694.0,
+          "over8ChangedPixels": 12181.0,
+          "maxAbsoluteChannelDelta": 91.0,
+          "meanAbsRgbDelta8Bit": 17.75131626724764,
+          "meanEncodedLumaBefore": 33.19737956608497,
+          "meanEncodedLumaAfter": 53.08804134894688,
+          "meanEncodedLumaDelta": 19.890661782861102,
+          "meanEncodedLumaAbsDelta": 19.890661782861102,
+          "meanDecodedSrgbLuminanceBefore": 0.021065484212501425,
+          "meanDecodedSrgbLuminanceAfter": 0.045903751370414594,
+          "brightenedPixels": 12846.0,
+          "darkenedPixels": 0.0
+        },
+        {
+          "region": "paddedPlayerBounds",
+          "rect": [
+            598,
+            574,
+            730,
+            802
+          ],
+          "outside": false,
+          "pixels": 30096.0,
+          "anyChangedPixels": 12878.0,
+          "anyChangedPercent": 42.78973950026582,
+          "over1ChangedPixels": 12779.0,
+          "over2ChangedPixels": 12694.0,
+          "over8ChangedPixels": 12181.0,
+          "maxAbsoluteChannelDelta": 91.0,
+          "meanAbsRgbDelta8Bit": 12.994982721956406,
+          "meanEncodedLumaBefore": 33.845779452417446,
+          "meanEncodedLumaAfter": 48.40688592504127,
+          "meanEncodedLumaDelta": 14.561106472620807,
+          "meanEncodedLumaAbsDelta": 14.561106472620807,
+          "meanDecodedSrgbLuminanceBefore": 0.020593196918205853,
+          "meanDecodedSrgbLuminanceAfter": 0.03877623459840217,
+          "brightenedPixels": 12846.0,
+          "darkenedPixels": 0.0
+        },
+        {
+          "region": "outsidePaddedBounds",
+          "rect": [
+            598,
+            574,
+            730,
+            802
+          ],
+          "outside": true,
+          "pixels": 2043504.0,
+          "anyChangedPixels": 0.0,
+          "anyChangedPercent": 0.0,
+          "over1ChangedPixels": 0.0,
+          "over2ChangedPixels": 0.0,
+          "over8ChangedPixels": 0.0,
+          "maxAbsoluteChannelDelta": 0.0,
+          "meanAbsRgbDelta8Bit": 0.0,
+          "meanEncodedLumaBefore": 22.826700913141213,
+          "meanEncodedLumaAfter": 22.826700913141213,
+          "meanEncodedLumaDelta": 0.0,
+          "meanEncodedLumaAbsDelta": 0.0,
+          "meanDecodedSrgbLuminanceBefore": 0.012824843230722038,
+          "meanDecodedSrgbLuminanceAfter": 0.012824843230722038,
+          "brightenedPixels": 0.0,
+          "darkenedPixels": 0.0
+        },
+        {
+          "region": "capsuleInteriorProxy",
+          "rect": [
+            640,
+            637,
+            679,
+            740
+          ],
+          "outside": false,
+          "pixels": 4017.0,
+          "anyChangedPixels": 4017.0,
+          "anyChangedPercent": 100.0,
+          "over1ChangedPixels": 4017.0,
+          "over2ChangedPixels": 4017.0,
+          "over8ChangedPixels": 4017.0,
+          "maxAbsoluteChannelDelta": 86.0,
+          "meanAbsRgbDelta8Bit": 47.25134843581446,
+          "meanEncodedLumaBefore": 20.148891909384783,
+          "meanEncodedLumaAfter": 73.78977978591088,
+          "meanEncodedLumaDelta": 53.640887876524275,
+          "meanEncodedLumaAbsDelta": 53.640887876524275,
+          "meanDecodedSrgbLuminanceBefore": 0.007304020751157141,
+          "meanDecodedSrgbLuminanceAfter": 0.07597221229387782,
+          "brightenedPixels": 4017.0,
+          "darkenedPixels": 0.0
+        }
+      ]
+    },
+    {
+      "baseline": "01-FillOff",
+      "candidate": "04-ControlDefaultLayer",
+      "regions": [
+        {
+          "region": "fullFrame",
+          "rect": [
+            0,
+            0,
+            1920,
+            1080
+          ],
+          "outside": false,
+          "pixels": 2073600.0,
+          "anyChangedPixels": 203852.0,
+          "anyChangedPercent": 9.830825617283951,
+          "over1ChangedPixels": 120626.0,
+          "over2ChangedPixels": 95077.0,
+          "over8ChangedPixels": 42780.0,
+          "maxAbsoluteChannelDelta": 91.0,
+          "meanAbsRgbDelta8Bit": 0.5146032664609054,
+          "meanEncodedLumaBefore": 22.986630594718385,
+          "meanEncodedLumaAfter": 23.51381220207314,
+          "meanEncodedLumaDelta": 0.5271816073495802,
+          "meanEncodedLumaAbsDelta": 0.5271816073495802,
+          "meanDecodedSrgbLuminanceBefore": 0.012937592252993353,
+          "meanDecodedSrgbLuminanceAfter": 0.013481247536268288,
+          "brightenedPixels": 167383.0,
+          "darkenedPixels": 0.0
+        },
+        {
+          "region": "tightPlayerBounds",
+          "rect": [
+            610,
+            586,
+            718,
+            790
+          ],
+          "outside": false,
+          "pixels": 22032.0,
+          "anyChangedPixels": 20357.0,
+          "anyChangedPercent": 92.39742193173566,
+          "over1ChangedPixels": 18939.0,
+          "over2ChangedPixels": 18801.0,
+          "over8ChangedPixels": 14311.0,
+          "maxAbsoluteChannelDelta": 91.0,
+          "meanAbsRgbDelta8Bit": 19.215610626966836,
+          "meanEncodedLumaBefore": 33.19737956608497,
+          "meanEncodedLumaAfter": 54.440202160494685,
+          "meanEncodedLumaDelta": 21.242822594408405,
+          "meanEncodedLumaAbsDelta": 21.242822594408405,
+          "meanDecodedSrgbLuminanceBefore": 0.021065484212501425,
+          "meanDecodedSrgbLuminanceAfter": 0.04733459228734397,
+          "brightenedPixels": 19635.0,
+          "darkenedPixels": 0.0
+        },
+        {
+          "region": "paddedPlayerBounds",
+          "rect": [
+            598,
+            574,
+            730,
+            802
+          ],
+          "outside": false,
+          "pixels": 30096.0,
+          "anyChangedPixels": 28142.0,
+          "anyChangedPercent": 93.50744284954811,
+          "over1ChangedPixels": 25071.0,
+          "over2ChangedPixels": 24329.0,
+          "over8ChangedPixels": 17040.0,
+          "maxAbsoluteChannelDelta": 91.0,
+          "meanAbsRgbDelta8Bit": 15.614334130781499,
+          "meanEncodedLumaBefore": 33.845779452417446,
+          "meanEncodedLumaAfter": 50.86077441520269,
+          "meanEncodedLumaDelta": 17.014994962786332,
+          "meanEncodedLumaAbsDelta": 17.014994962786332,
+          "meanDecodedSrgbLuminanceBefore": 0.020593196918205853,
+          "meanDecodedSrgbLuminanceAfter": 0.041444618352186616,
+          "brightenedPixels": 26990.0,
+          "darkenedPixels": 0.0
+        },
+        {
+          "region": "outsidePaddedBounds",
+          "rect": [
+            598,
+            574,
+            730,
+            802
+          ],
+          "outside": true,
+          "pixels": 2043504.0,
+          "anyChangedPixels": 175710.0,
+          "anyChangedPercent": 8.598466164000659,
+          "over1ChangedPixels": 95555.0,
+          "over2ChangedPixels": 70748.0,
+          "over8ChangedPixels": 25740.0,
+          "maxAbsoluteChannelDelta": 38.0,
+          "meanAbsRgbDelta8Bit": 0.29221980154349264,
+          "meanEncodedLumaBefore": 22.826700913141213,
+          "meanEncodedLumaAfter": 23.111055870412613,
+          "meanEncodedLumaDelta": 0.28435495726941606,
+          "meanEncodedLumaAbsDelta": 0.28435495726941606,
+          "meanDecodedSrgbLuminanceBefore": 0.012824843230722038,
+          "meanDecodedSrgbLuminanceAfter": 0.013069412957977693,
+          "brightenedPixels": 140393.0,
+          "darkenedPixels": 0.0
+        },
+        {
+          "region": "capsuleInteriorProxy",
+          "rect": [
+            640,
+            637,
+            679,
+            740
+          ],
+          "outside": false,
+          "pixels": 4017.0,
+          "anyChangedPixels": 4017.0,
+          "anyChangedPercent": 100.0,
+          "over1ChangedPixels": 4017.0,
+          "over2ChangedPixels": 4017.0,
+          "over8ChangedPixels": 4017.0,
+          "maxAbsoluteChannelDelta": 86.0,
+          "meanAbsRgbDelta8Bit": 47.25134843581446,
+          "meanEncodedLumaBefore": 20.148891909384783,
+          "meanEncodedLumaAfter": 73.78977978591088,
+          "meanEncodedLumaDelta": 53.640887876524275,
+          "meanEncodedLumaAbsDelta": 53.640887876524275,
+          "meanDecodedSrgbLuminanceBefore": 0.007304020751157141,
+          "meanDecodedSrgbLuminanceAfter": 0.07597221229387782,
+          "brightenedPixels": 4017.0,
+          "darkenedPixels": 0.0
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "The bounds rectangle includes some background; capsuleInteriorProxy is the central40% x central50% of the projected capsule bounds, not an exact segmentation.",
+    "Encoded luma uses Rec709 coefficients on PNG byte RGB. Decoded sRGB luminance is relative screen-image data, not physical scene luminance.",
+    "Single frozen camera/time captures support this configuration and view only; no dynamic or other-scene claim."
+  ]
+}

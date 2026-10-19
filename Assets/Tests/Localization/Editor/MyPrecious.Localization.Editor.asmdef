@@ -1,0 +1,7 @@
+{
+    "name": "MyPrecious.Localization.Editor",
+    "rootNamespace": "",
+    "references": ["MyPrecious.Localization", "MyPrecious.Localization.TestDoubles", "MyPrecious.Bootstrap", "MyPrecious.Items", "MyPrecious.Items.TestDoubles", "MyPrecious.Player", "MyPrecious.Player.TestDoubles", "Unity.TextMeshPro", "Unity.ugui", "Unity.InputSystem", "Unity.RenderPipelines.Universal.Runtime"],
+    "includePlatforms": ["Editor"],
+    "autoReferenced": false
+}

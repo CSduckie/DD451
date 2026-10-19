@@ -1,0 +1,21 @@
+{
+  "generatedUtc": "2026-10-19T08:30:59.9167423Z",
+  "status": "STAGING_ONLY_NOT_COMPILED_NOT_APPLIED",
+  "sourceFiles": [
+    {
+      "sha256": "BA4393EF8D0047B60D89DE67C84A9C20739974DCC6A550533AA80C20DFDFC7E7",
+      "draft": "PlayerHealth.cs.txt",
+      "path": "E:\\DD451\\Assets\\Scripts\\Player\\MonoBehaviour\\PlayerHealth.cs",
+      "draftSha256": "6DD8768FF1A310E42A0ED4CF32EDF9967D3DE21524773929B58082FDB3B8B5D0"
+    },
+    {
+      "sha256": "69E2354AE224E65FA89539A5D327946BDD547377027247F7816AFD85DB1E3A5D",
+      "draft": "PlayerController.cs.txt",
+      "path": "E:\\DD451\\Assets\\Scripts\\Player\\MonoBehaviour\\PlayerController.cs",
+      "draftSha256": "51739D9D003C39FA019E8298D80AF9EA4603BDEE614618F1E868657D7285AE75"
+    }
+  ],
+  "protection": "No Assets or Unity changes. Re-read hashes before applying exact minimal insertions to latest files.",
+  "updatedUtc": "2026-10-19T08:37:41.1823922Z",
+  "latestDraftChange": "Root added scene-transition damage guard to PlayerHealth draft; PlayerController draft unchanged."
+}

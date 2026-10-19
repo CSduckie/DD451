@@ -1,0 +1,866 @@
+{
+  "generatedUtc": "2026-10-19T06:16:54.8149246Z",
+  "evidenceType": "Ordinary Play; API-assisted player positioning, real interaction and transfer APIs. No native OS input claim.",
+  "sampleCount": 11072,
+  "firstFrame": 224,
+  "lastFrame": 11295,
+  "uniqueFrameCount": 11072,
+  "sampledGameTimeSeconds": 73.232277,
+  "rounds": [
+    {
+      "round": 1,
+      "samplesWithDrone": 4672,
+      "stateSampleCounts": {
+        "None": 1,
+        "Patrol": 399,
+        "Alert": 444,
+        "Chase": 252,
+        "Search": 0,
+        "Explode": 3576
+      },
+      "firstObserved": {
+        "frame": 820,
+        "time": 16.9688721,
+        "stage": "Departing",
+        "round": 1,
+        "playerRound": 1,
+        "lootRound": 1,
+        "health": 3,
+        "locked": true,
+        "scene": "Assets/Scenes/Ruins.unity",
+        "drone": {
+          "name": "Drone",
+          "round": 0,
+          "state": "None",
+          "AlertProgress": 0.0,
+          "HasExploded": false,
+          "IsRunning": false,
+          "position": [
+            -3.34101677,
+            2.39236856,
+            -0.382937431
+          ]
+        }
+      },
+      "firstRunning": {
+        "frame": 821,
+        "time": 16.99731,
+        "stage": "Exploring",
+        "round": 1,
+        "playerRound": 1,
+        "lootRound": 1,
+        "health": 3,
+        "locked": false,
+        "scene": "Assets/Scenes/Ruins.unity",
+        "drone": {
+          "name": "Drone",
+          "round": 1,
+          "state": "Patrol",
+          "AlertProgress": 0.0,
+          "HasExploded": false,
+          "IsRunning": true,
+          "position": [
+            -3.34101677,
+            2.39236856,
+            -0.382937431
+          ]
+        }
+      },
+      "stateTransitions": [
+        {
+          "frame": 820,
+          "time": 16.9688721,
+          "stage": "Departing",
+          "round": 1,
+          "playerRound": 1,
+          "lootRound": 1,
+          "health": 3,
+          "locked": true,
+          "scene": "Assets/Scenes/Ruins.unity",
+          "drone": {
+            "name": "Drone",
+            "round": 0,
+            "state": "None",
+            "AlertProgress": 0.0,
+            "HasExploded": false,
+            "IsRunning": false,
+            "position": [
+              -3.34101677,
+              2.39236856,
+              -0.382937431
+            ]
+          }
+        },
+        {
+          "frame": 821,
+          "time": 16.99731,
+          "stage": "Exploring",
+          "round": 1,
+          "playerRound": 1,
+          "lootRound": 1,
+          "health": 3,
+          "locked": false,
+          "scene": "Assets/Scenes/Ruins.unity",
+          "drone": {
+            "name": "Drone",
+            "round": 1,
+            "state": "Patrol",
+            "AlertProgress": 0.0,
+            "HasExploded": false,
+            "IsRunning": true,
+            "position": [
+              -3.34101677,
+              2.39236856,
+              -0.382937431
+            ]
+          }
+        },
+        {
+          "frame": 1216,
+          "time": 19.3676472,
+          "stage": "Exploring",
+          "round": 1,
+          "playerRound": 1,
+          "lootRound": 1,
+          "health": 3,
+          "locked": false,
+          "scene": "Assets/Scenes/Ruins.unity",
+          "drone": {
+            "name": "Drone",
+            "round": 1,
+            "state": "Alert",
+            "AlertProgress": 0.0,
+            "HasExploded": false,
+            "IsRunning": true,
+            "position": [
+              -6.910753,
+              2.436742,
+              -0.382937431
+            ]
+          }
+        },
+        {
+          "frame": 1313,
+          "time": 19.93204,
+          "stage": "Exploring",
+          "round": 1,
+          "playerRound": 1,
+          "lootRound": 1,
+          "health": 3,
+          "locked": false,
+          "scene": "Assets/Scenes/Ruins.unity",
+          "drone": {
+            "name": "Drone",
+            "round": 1,
+            "state": "Patrol",
+            "AlertProgress": 0.0,
+            "HasExploded": false,
+            "IsRunning": true,
+            "position": [
+              -6.910753,
+              2.436742,
+              -0.382937431
+            ]
+          }
+        },
+        {
+          "frame": 1317,
+          "time": 19.9544563,
+          "stage": "Exploring",
+          "round": 1,
+          "playerRound": 1,
+          "lootRound": 1,
+          "health": 3,
+          "locked": false,
+          "scene": "Assets/Scenes/Ruins.unity",
+          "drone": {
+            "name": "Drone",
+            "round": 1,
+            "state": "Alert",
+            "AlertProgress": 0.0,
+            "HasExploded": false,
+            "IsRunning": true,
+            "position": [
+              -6.9407506,
+              2.437115,
+              -0.382937431
+            ]
+          }
+        },
+        {
+          "frame": 1664,
+          "time": 21.9553356,
+          "stage": "Exploring",
+          "round": 1,
+          "playerRound": 1,
+          "lootRound": 1,
+          "health": 3,
+          "locked": false,
+          "scene": "Assets/Scenes/Ruins.unity",
+          "drone": {
+            "name": "Drone",
+            "round": 1,
+            "state": "Chase",
+            "AlertProgress": 0.0,
+            "HasExploded": false,
+            "IsRunning": true,
+            "position": [
+              -6.9407506,
+              2.437115,
+              -0.382937431
+            ]
+          }
+        },
+        {
+          "frame": 1916,
+          "time": 23.4415569,
+          "stage": "Exploring",
+          "round": 1,
+          "playerRound": 1,
+          "lootRound": 1,
+          "health": 2,
+          "locked": false,
+          "scene": "Assets/Scenes/Ruins.unity",
+          "drone": {
+            "name": "Drone",
+            "round": 1,
+            "state": "Explode",
+            "AlertProgress": 0.0,
+            "HasExploded": true,
+            "IsRunning": false,
+            "position": [
+              -11.2219076,
+              1.22102177,
+              -0.382937431
+            ]
+          }
+        }
+      ],
+      "patrolFirstToLastObservedDisplacement": 3.600011929249561,
+      "alertFirstProgress": 0.0,
+      "alertMaximumObservedProgress": 0.997786045,
+      "firstExplosion": {
+        "frame": 1916,
+        "time": 23.4415569,
+        "stage": "Exploring",
+        "round": 1,
+        "playerRound": 1,
+        "lootRound": 1,
+        "health": 2,
+        "locked": false,
+        "scene": "Assets/Scenes/Ruins.unity",
+        "drone": {
+          "name": "Drone",
+          "round": 1,
+          "state": "Explode",
+          "AlertProgress": 0.0,
+          "HasExploded": true,
+          "IsRunning": false,
+          "position": [
+            -11.2219076,
+            1.22102177,
+            -0.382937431
+          ]
+        }
+      },
+      "samplesFromExplosion": 3576,
+      "postExplosionRevivalSamples": 0,
+      "postExplosionHealthValues": [
+        2
+      ],
+      "droneZValues": [
+        -0.382937431
+      ],
+      "lockedUnstartedSamples": 1
+    },
+    {
+      "round": 2,
+      "samplesWithDrone": 2174,
+      "stateSampleCounts": {
+        "None": 1,
+        "Patrol": 394,
+        "Alert": 432,
+        "Chase": 252,
+        "Search": 0,
+        "Explode": 1095
+      },
+      "firstObserved": {
+        "frame": 8905,
+        "time": 71.18684,
+        "stage": "Departing",
+        "round": 2,
+        "playerRound": 2,
+        "lootRound": 2,
+        "health": 3,
+        "locked": true,
+        "scene": "Assets/Scenes/Ruins.unity",
+        "drone": {
+          "name": "Drone",
+          "round": 0,
+          "state": "None",
+          "AlertProgress": 0.0,
+          "HasExploded": false,
+          "IsRunning": false,
+          "position": [
+            -3.34101677,
+            2.39236856,
+            -0.382937431
+          ]
+        }
+      },
+      "firstRunning": {
+        "frame": 8906,
+        "time": 71.21291,
+        "stage": "Exploring",
+        "round": 2,
+        "playerRound": 2,
+        "lootRound": 2,
+        "health": 3,
+        "locked": false,
+        "scene": "Assets/Scenes/Ruins.unity",
+        "drone": {
+          "name": "Drone",
+          "round": 2,
+          "state": "Patrol",
+          "AlertProgress": 0.0,
+          "HasExploded": false,
+          "IsRunning": true,
+          "position": [
+            -3.34101677,
+            2.39236856,
+            -0.382937431
+          ]
+        }
+      },
+      "stateTransitions": [
+        {
+          "frame": 8905,
+          "time": 71.18684,
+          "stage": "Departing",
+          "round": 2,
+          "playerRound": 2,
+          "lootRound": 2,
+          "health": 3,
+          "locked": true,
+          "scene": "Assets/Scenes/Ruins.unity",
+          "drone": {
+            "name": "Drone",
+            "round": 0,
+            "state": "None",
+            "AlertProgress": 0.0,
+            "HasExploded": false,
+            "IsRunning": false,
+            "position": [
+              -3.34101677,
+              2.39236856,
+              -0.382937431
+            ]
+          }
+        },
+        {
+          "frame": 8906,
+          "time": 71.21291,
+          "stage": "Exploring",
+          "round": 2,
+          "playerRound": 2,
+          "lootRound": 2,
+          "health": 3,
+          "locked": false,
+          "scene": "Assets/Scenes/Ruins.unity",
+          "drone": {
+            "name": "Drone",
+            "round": 2,
+            "state": "Patrol",
+            "AlertProgress": 0.0,
+            "HasExploded": false,
+            "IsRunning": true,
+            "position": [
+              -3.34101677,
+              2.39236856,
+              -0.382937431
+            ]
+          }
+        },
+        {
+          "frame": 9296,
+          "time": 73.58939,
+          "stage": "Exploring",
+          "round": 2,
+          "playerRound": 2,
+          "lootRound": 2,
+          "health": 3,
+          "locked": false,
+          "scene": "Assets/Scenes/Ruins.unity",
+          "drone": {
+            "name": "Drone",
+            "round": 2,
+            "state": "Alert",
+            "AlertProgress": 0.0,
+            "HasExploded": false,
+            "IsRunning": true,
+            "position": [
+              -6.910753,
+              2.436742,
+              -0.382937431
+            ]
+          }
+        },
+        {
+          "frame": 9391,
+          "time": 74.14956,
+          "stage": "Exploring",
+          "round": 2,
+          "playerRound": 2,
+          "lootRound": 2,
+          "health": 3,
+          "locked": false,
+          "scene": "Assets/Scenes/Ruins.unity",
+          "drone": {
+            "name": "Drone",
+            "round": 2,
+            "state": "Patrol",
+            "AlertProgress": 0.0,
+            "HasExploded": false,
+            "IsRunning": true,
+            "position": [
+              -6.910753,
+              2.436742,
+              -0.382937431
+            ]
+          }
+        },
+        {
+          "frame": 9395,
+          "time": 74.17375,
+          "stage": "Exploring",
+          "round": 2,
+          "playerRound": 2,
+          "lootRound": 2,
+          "health": 3,
+          "locked": false,
+          "scene": "Assets/Scenes/Ruins.unity",
+          "drone": {
+            "name": "Drone",
+            "round": 2,
+            "state": "Alert",
+            "AlertProgress": 0.0,
+            "HasExploded": false,
+            "IsRunning": true,
+            "position": [
+              -6.9407506,
+              2.437115,
+              -0.382937431
+            ]
+          }
+        },
+        {
+          "frame": 9732,
+          "time": 76.18007,
+          "stage": "Exploring",
+          "round": 2,
+          "playerRound": 2,
+          "lootRound": 2,
+          "health": 3,
+          "locked": false,
+          "scene": "Assets/Scenes/Ruins.unity",
+          "drone": {
+            "name": "Drone",
+            "round": 2,
+            "state": "Chase",
+            "AlertProgress": 0.0,
+            "HasExploded": false,
+            "IsRunning": true,
+            "position": [
+              -6.9407506,
+              2.437115,
+              -0.382937431
+            ]
+          }
+        },
+        {
+          "frame": 9984,
+          "time": 77.68398,
+          "stage": "Exploring",
+          "round": 2,
+          "playerRound": 2,
+          "lootRound": 2,
+          "health": 2,
+          "locked": false,
+          "scene": "Assets/Scenes/Ruins.unity",
+          "drone": {
+            "name": "Drone",
+            "round": 2,
+            "state": "Explode",
+            "AlertProgress": 0.0,
+            "HasExploded": true,
+            "IsRunning": false,
+            "position": [
+              -11.2219076,
+              1.22102177,
+              -0.382937431
+            ]
+          }
+        }
+      ],
+      "patrolFirstToLastObservedDisplacement": 3.600011929249561,
+      "alertFirstProgress": 0.0,
+      "alertMaximumObservedProgress": 0.998125553,
+      "firstExplosion": {
+        "frame": 9984,
+        "time": 77.68398,
+        "stage": "Exploring",
+        "round": 2,
+        "playerRound": 2,
+        "lootRound": 2,
+        "health": 2,
+        "locked": false,
+        "scene": "Assets/Scenes/Ruins.unity",
+        "drone": {
+          "name": "Drone",
+          "round": 2,
+          "state": "Explode",
+          "AlertProgress": 0.0,
+          "HasExploded": true,
+          "IsRunning": false,
+          "position": [
+            -11.2219076,
+            1.22102177,
+            -0.382937431
+          ]
+        }
+      },
+      "samplesFromExplosion": 1095,
+      "postExplosionRevivalSamples": 0,
+      "postExplosionHealthValues": [
+        2
+      ],
+      "droneZValues": [
+        -0.382937431
+      ],
+      "lockedUnstartedSamples": 1
+    }
+  ],
+  "healthChanges": [
+    {
+      "frame": 1916,
+      "time": 23.4415569,
+      "previousRound": 1,
+      "round": 1,
+      "stage": "Exploring",
+      "from": 3,
+      "to": 2,
+      "locked": false,
+      "scene": "Assets/Scenes/Ruins.unity",
+      "droneStates": [
+        "Explode"
+      ]
+    },
+    {
+      "frame": 8905,
+      "time": 71.18684,
+      "previousRound": 2,
+      "round": 2,
+      "stage": "Departing",
+      "from": 2,
+      "to": 3,
+      "locked": true,
+      "scene": "Assets/Scenes/Ruins.unity",
+      "droneStates": [
+        "None"
+      ]
+    },
+    {
+      "frame": 9984,
+      "time": 77.68398,
+      "previousRound": 2,
+      "round": 2,
+      "stage": "Exploring",
+      "from": 3,
+      "to": 2,
+      "locked": false,
+      "scene": "Assets/Scenes/Ruins.unity",
+      "droneStates": [
+        "Explode"
+      ]
+    }
+  ],
+  "observedNegativeHealthChanges": 2,
+  "observedPositiveHealthChanges": 1,
+  "sceneAndRoundChecks": {
+    "samplingScope": "Observer enumerates only flow.Player.gameObject.scene roots. It is not a global scan of all loaded scenes.",
+    "exploringSamples": 6840,
+    "exploringRoundMismatchSamples": 0,
+    "exploringPlayerLockedSamples": 0,
+    "exploringWrongPlayerSceneSamples": 0,
+    "exploringNotExactlyOneDroneSamples": 0,
+    "shelterSamples": 4220,
+    "shelterSamplesWithDrone": 0,
+    "shelterWrongPlayerSceneSamples": 0,
+    "limits": "Other-scene startup isolation and disabled-object behavior are covered by RuinsEnemyIntegrationTests, not inferred from this player-scene-only observer."
+  },
+  "round2PatrolCapture": {
+    "utc": "2026-10-19T06:15:15.1154315Z",
+    "round": 2,
+    "playerRound": 2,
+    "lootRound": 2,
+    "droneRound": 2,
+    "state": "Patrol",
+    "HasExploded": false,
+    "initial": [
+      -3.34101677,
+      2.39236856,
+      -0.382937431
+    ],
+    "after": [
+      -3.94096851,
+      2.39982629,
+      -0.382937431
+    ],
+    "distance": 0.5999981,
+    "points": [
+      {
+        "name": "巡逻1",
+        "position": [
+          -12.0,
+          2.5,
+          0.0
+        ]
+      },
+      {
+        "name": "巡逻2",
+        "position": [
+          1.0,
+          2.5,
+          0.0
+        ]
+      }
+    ]
+  },
+  "events": [
+    {
+      "utc": "2026-10-19T06:14:12.9829291Z",
+      "stage": "Shelter",
+      "round": 0,
+      "playerRound": 0,
+      "lootRound": 0,
+      "health": 3,
+      "player": [
+        -11.5,
+        0.0,
+        0.0
+      ],
+      "screen": [
+        1920,
+        1080
+      ],
+      "drones": []
+    },
+    {
+      "utc": "2026-10-19T06:14:24.4830094Z",
+      "stage": "Exploring",
+      "round": 1,
+      "playerRound": 1,
+      "lootRound": 1,
+      "health": 2,
+      "player": [
+        -12.0,
+        0.0,
+        0.0
+      ],
+      "screen": [
+        1920,
+        1080
+      ],
+      "drones": [
+        {
+          "name": "Drone",
+          "state": "Explode",
+          "CurrentRound": 1,
+          "IsRunning": false,
+          "HasExploded": true,
+          "position": [
+            -11.2219076,
+            1.22102177,
+            -0.382937431
+          ],
+          "points": [
+            {
+              "name": "巡逻1",
+              "position": [
+                -12.0,
+                2.5,
+                0.0
+              ]
+            },
+            {
+              "name": "巡逻2",
+              "position": [
+                1.0,
+                2.5,
+                0.0
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-19T06:14:43.2371588Z",
+      "phase": "source-transfer",
+      "results": [
+        {
+          "id": "doll",
+          "result": "Success"
+        },
+        {
+          "id": "medkit",
+          "result": "Success"
+        }
+      ],
+      "backpack": [
+        "08c0cae7d9264f93b8e8a8b1e5b79f65",
+        "8ca18c230059469b94eef290bd2d685a"
+      ]
+    },
+    {
+      "utc": "2026-10-19T06:15:09.9369679Z",
+      "phase": "warehouse-store",
+      "health": 2,
+      "ev": 7,
+      "results": [
+        {
+          "id": "08c0cae7d9264f93b8e8a8b1e5b79f65",
+          "result": "Success"
+        },
+        {
+          "id": "8ca18c230059469b94eef290bd2d685a",
+          "result": "Success"
+        }
+      ],
+      "backpack": 0,
+      "warehouse": [
+        "08c0cae7d9264f93b8e8a8b1e5b79f65",
+        "8ca18c230059469b94eef290bd2d685a"
+      ]
+    },
+    {
+      "utc": "2026-10-19T06:15:25.7947874Z",
+      "stage": "Exploring",
+      "round": 2,
+      "playerRound": 2,
+      "lootRound": 2,
+      "health": 2,
+      "player": [
+        -12.0,
+        0.0,
+        0.0
+      ],
+      "screen": [
+        1920,
+        1080
+      ],
+      "drones": [
+        {
+          "name": "Drone",
+          "state": "Explode",
+          "CurrentRound": 2,
+          "IsRunning": false,
+          "HasExploded": true,
+          "position": [
+            -11.2219076,
+            1.22102177,
+            -0.382937431
+          ],
+          "points": [
+            {
+              "name": "巡逻1",
+              "position": [
+                -12.0,
+                2.5,
+                0.0
+              ]
+            },
+            {
+              "name": "巡逻2",
+              "position": [
+                1.0,
+                2.5,
+                0.0
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "utc": "2026-10-19T06:15:30.3497924Z",
+      "stage": "Shelter",
+      "round": 2,
+      "settled": 2,
+      "health": 2,
+      "ev": 7,
+      "backpack": 0,
+      "warehouse": [
+        "08c0cae7d9264f93b8e8a8b1e5b79f65",
+        "8ca18c230059469b94eef290bd2d685a"
+      ]
+    }
+  ],
+  "observerCleanup": {
+    "utc": "2026-10-19T06:15:30.4621562Z",
+    "count": 11072,
+    "restoredBackground": false,
+    "callbacksRemoved": true
+  },
+  "officialTestRuns": [
+    {
+      "file": "PlayMode-50-Final.xml",
+      "result": "Passed",
+      "total": 50,
+      "passed": 50,
+      "failed": 0,
+      "skipped": 0,
+      "startUtc": "2026-10-19 06:12:01Z",
+      "endUtc": "2026-10-19 06:13:02Z",
+      "durationSeconds": 60.9693779
+    },
+    {
+      "file": "EditMode-11-Final.xml",
+      "result": "Passed",
+      "total": 11,
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0,
+      "startUtc": "2026-10-19 06:13:20Z",
+      "endUtc": "2026-10-19 06:13:20Z",
+      "durationSeconds": 0.1967574
+    }
+  ],
+  "testRunnerNote": "EditMode MCP job reported initialization timeout; the official XML completed Passed 11/11. XML is the result evidence, not the job status.",
+  "sourceHashes": [
+    {
+      "file": "Samples.json",
+      "sha256": "6171734D07BA66D19FF4ABDA6DBE3EBD6B6DC08F596AD98553285AC15480E180"
+    },
+    {
+      "file": "Events.jsonl",
+      "sha256": "11B5ED64B73C9CFF978A597A92334756A713260305AD01ECFC2114EF36890DCE"
+    },
+    {
+      "file": "Round2Patrol.json",
+      "sha256": "F157AAF5F5F0C537C4096B2A0B57BF06ED61E0B112821A9B9F8392E8AE080BE2"
+    },
+    {
+      "file": "ObserverFinished.json",
+      "sha256": "9692259571C3475C329A4B8130B3BBA67800055149DE2CDFA880D775228632F8"
+    }
+  ],
+  "limitations": [
+    "No native OS keyboard/mouse or Windows build acceptance.",
+    "Root reports no forced ChangeState, per-drone BeginRound, camera changes or drone/route repositioning during this ordinary Play run.",
+    "Player movement to interactions and item transfers used APIs; search timing and enemy sensing/state changes were real.",
+    "Enemy died before the recorded source-transfer/store steps; this run links enemy risk and loot/extraction/storage in one real session, but does not establish looting under a simultaneously living attacking drone.",
+    "Samples are one per observed Time.frameCount from EditorApplication.update, not every physics tick or a video.",
+    "Screen captures were reviewed by root; this numeric analysis does not independently judge image composition."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "frames": 826,
+  "checks": [
+    "Outside cover: natural C crouch, hidden=false, weight=0.",
+    "Inside standing: hidden=false, weight=0.",
+    "Inside crouching: hidden=true, weight=1.",
+    "Stand-up restores weight=0 at the same location.",
+    "Leave cover while holding C: crouching remains true, hidden=false, weight=0.",
+    "Overlap before disabling first Cover: hidden=true, weight=1",
+    "Overlap with first Cover disabled: hidden=true, weight=1.",
+    "Real Backpack open: crouch/hidden/weight retained.",
+    "Real Backpack close: hidden=true, weight=1; raw per-render trace contains transition edges.",
+    "PASS: Behavior phases and four actual Game PNGs complete; root must visually inspect them and continue death/return."
+  ],
+  "cleanupErrors": [],
+  "transitions": 99,
+  "normalRestoredIdentical": true
+}

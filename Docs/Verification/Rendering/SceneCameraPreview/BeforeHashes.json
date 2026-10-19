@@ -1,0 +1,82 @@
+[
+  {
+    "Algorithm": "SHA256",
+    "Hash": "C5E5CBACB10DA5B087420D64CA42761C2822627EFF5C160ADECE1E04DE4C9DED",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Bootstrap.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "4A535E92CEA85883EAA63896A04E25CE5050954F14F84B30F6B62D256FF6742A",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Ruins.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "27C05A6B99D302B96E43169A6EF96122CDB360AC85ABD6F0C481102B06CA2C97",
+    "Path": "E:\\DD451\\Assets\\Scenes\\SampleScene.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "0233C2B93104163D43B3DC73485D45EDAB0DE8A4C439916A1A398F82B24019F8",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Shelter.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "92BD722219978A1A68056ECBB2D200A3B706312197C160AD1C757710B14FB1DD",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Shelter\\Global Volume Profile.asset"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "F6CF6D92C805B1D06B1FD8DF36BF94C743A767395AC2BE15E0497EDB65DA3E40",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Tests\\Backpack\\BackpackTest.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "79A6EAB44A3649D33DA13A6F63E9C746921DC41D0547640044D104DB3F23243B",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Tests\\Base\\BaseTest.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "718266BEF6D0A2B9165EA62725AA73346EAE8FA4E7F4DFB3C9F8135A7AFA6473",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Tests\\Enemy\\EnemyTest.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "37ADC7525EB747CA31A0E9204D4E318D1252D42AF5EED942028FCB42A4D24E1F",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Tests\\Items\\ItemsTest.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "D667F8618A9EB09A59219F6A64B47A925F96CAB63778AC51361982843FEE044A",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Tests\\Localization\\LocalizationTest.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "57470454AD62CA0D9DF21D45A42CBA67EC9E0E195FDE7B7F34A8587E76B1E002",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Tests\\Loot\\LootTest.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "A1C5D86611E1F7167CD4F5194BC2034615581C7C19C5AD46CC9A774F90C4E4C1",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Tests\\Player\\PlayerTest.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "FAC095B74374FBFCF8F3C6670889F948CA41E0500E94E1E91B0D261F588B3A8F",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Tests\\Warehouse\\WarehouseTest.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "7456EE6888DE03CFFC87AA52AA31B800867507EAF82C05A91FF850C993F0FD64",
+    "Path": "E:\\DD451\\Assets\\Prefabs\\Player\\PlayerCamera.prefab"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "F29BDA2174AB75CA4EEBE64B4C2153AF6E09965408548E5E2586DE101E876D32",
+    "Path": "E:\\DD451\\Assets\\Settings\\PC_RPAsset.asset"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "175DC252138EE95FBE84AB95A09F03256C25C0DAA4A045535AC4380789F8E688",
+    "Path": "E:\\DD451\\Assets\\Art\\Materials\\Environment\\ShelterNightSkybox.mat"
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "Path": "Assets/Scenes/Shelter.unity",
+    "Unchanged": true
+  },
+  {
+    "Path": "Assets/Scenes/Ruins.unity",
+    "Unchanged": true
+  },
+  {
+    "Path": "Assets/Scenes/Tests/Enemy/EnemyTest.unity",
+    "Unchanged": true
+  },
+  {
+    "Path": "Assets/Prefabs/Enemy/Drone/Drone.prefab",
+    "Unchanged": true
+  },
+  {
+    "Path": "Assets/Prefabs/Enemy/Drone/Drone.prefab.meta",
+    "Unchanged": true
+  },
+  {
+    "Path": "Assets/Data/Enemy/Drone/DroneConfig.asset",
+    "Unchanged": true
+  },
+  {
+    "Path": "Assets/Art/Materials/Enemy/DroneVision.mat",
+    "Unchanged": true
+  },
+  {
+    "Path": "ProjectSettings/EditorSettings.asset",
+    "Unchanged": true
+  }
+]

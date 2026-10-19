@@ -1,0 +1,41 @@
+07B 快捷转移/精确落位/去多余黑底 — 部分验证报告
+工程E:/DD451；Dispatch v18 / A25；本地2026-10-18，证据跨UTC 10-18/19。
+状态：WAITING_FOR_04_TEST_CORRECTION。不能宣称本轮全通过；原生完整两轮未验收。普通Play画面/API检查已收尾，Unity已释放。
+
+官方结果
+EditMode-209.xml：209/209，0失败/跳过；背包38+仓库49+Loot/Transfers122，23:54:29Z—23:54:32Z。见EditModeSummary.json。
+PlayMode-75-Initial.xml：74/75，1失败/0跳过；背包18/19、仓库12/12、Loot36/36、GameFlow8/8，23:57:09Z—23:57:52Z。GameFlow8=正式6+玩家适配2，见PlayModeInitialSummary.json。
+PlayMode-BackpackFailureRetry.xml：唯一失败独立重跑仍0/1，23:58:17Z—23:58:18Z。同一用例两次失败，不另算不同用例，也不将初次75改写为全通过。
+模块READY只代表此前代码就绪；旧105/29/6、07A和GridLootAcceptance均不计作新版测试。
+
+矩阵与本版证据映射
+1. 左/右Ctrl单件双向、一次提交、不重排：本次Play XML的Backpack QueuedLeftAndRightCtrlClickRequestOnceAfterReleaseWithoutHeldRepeats、Warehouse EitherControlClickRequestsOneItemAndConsumesSuccessOrFailureWithoutReentry、Loot QueuedLeftAndRightControlTransferOneKnownItemBothWaysWhileSearchContinues及QueuedBothControlKeysTransferBackpackAndWarehouseOnceWithoutRearrangingOtherItems均Passed；正式MinimumLoopPointerTests也Passed。04/05局部测试含spy回调，真实归属提交依据Loot与正式测试。
+2. 当前方向优先、只能旋转、满格、只读查询：Edit XML中BackpackManagerTests.ExternalSpaceQuery*、WarehouseShelterTests与LootGridLayoutTests/LootSourceStateTests相关用例通过；Play的QueuedControlUsesOnlyRotatedBackpackSpaceAndPrecisePickupKeepsBoxRotationAndGrabOffset、QueuedFullContainerReturnRejectsWithoutChangingIdentityLayoutOrNotifications通过。不能据此声称实体鼠标已试。
+3. 无目标/双目标/未知/确认/拖拽/失效目标、失败不转普通动作：Loot QueuedControlFailuresNeverBecomeDragUseOrDiscardAndDoNotNotifySuccess、04 QuickTransferApiRespectsRealDiscardGuardTransitionDeathAndReentry、05 QuickTransferRejectsLocalInteractionConflictsBeforeCallingDelegate通过。04混合同帧左右键专项失败单列，不能合并为全部手势恢复通过。
+4. 远格精确落位、抓取偏移/R、预览=提交、占用/越界/网格外空白拒绝：正式Pointer、Warehouse OrdinaryDragKeepsInternalGrabOffsetRotationAndExactFarCellAfterControl、Loot QueuedFoodReturnFollowsFarCellsAndRejectsViewportBlankWithoutAutofitting与QueuedPreciseReturnRejectsUnknownOverlapAndEdgeThenUsesOnlyTheChosenFreeCells通过。自动找位仅用于Ctrl，旧viewport自动吸附不再是当前规则。
+5. 仓库/长箱滚动：Loot QueuedWheelScrollRevealsLastLootDragAndMovesTheRealWarehouseViewport及Warehouse VerticalScrollingKeepsEveryColumnVisibleAndMapsPointerWithoutRebuildingCells通过。普通Play长箱05/06/07图及VisualApiChecks.txt补充API滚动、底部(5,13)映射和明确(4,12)提交；API滚动不算原生滚轮。
+6. 搜索继续、未知保密、中心倒计时、中断/F10：Loot QueuedGridUnknownOutlinesHaveOneCenteredCountdownAndMatchBackpackPixels、QueuedGridInterruptedSecondSearchAndPickupReturnKeepEveryOriginalSlot、QueuedBoxRoundTripReusesEntryIdentityAndKeepsTheNextSearch及相关已知项快捷用例通过。普通Play原箱自然Update取得01/02图，没有AdvanceSearch；两张画面不替代全部过程断言。
+7. Tab/受击/来源重开/迟到token/重入、身份/EV/次数：本次Loot QueuedHeldControlReleaseAfterCloseTabDamageOrReloadCannotTransferInANewSession、ReentrantLootPreviewRestartKeepsNewBridgeSourceWhenOldBeginReturnsFailure、既有伤害/丢弃/重载用例和正式两轮测试通过。04新增外部预览回归通过；混合左右键失败后续右键恢复断言未到达，仍需04修正夹具后重跑。
+8. 正式Bootstrap→Ruins→返箱→撤离→仓库双向→再出发：本次正式6/6通过，包括实际左右Ctrl/精确返箱和两轮场景重新Bind；流程API辅助部分存在，不是原生完整两轮。
+9. 6×4/4×3/6×14、黑底移除、中英文与66/4/6：普通Play01—07截图已查看；24/12/84背景格，viewport alpha0且raycast=true/Mask在、长箱滚动有效，可见固定文本未发现裁切。正式Pointer另验证66格/70步长/6边距、物品外框/预览与透明viewport。仓库08/09中英400格及10升级后英文480格均已查看，实际单格66、仅纵滚，VisualSnapshots.json的5份快照clips=[]。
+
+唯一失败
+BackpackIntegrationTests.QueuedSameFrameCtrlLeftAndRightPressCannotUseAndRightUseRecoversAfterRelease，BackpackIntegrationTests.cs:636，requests expected1/actual0；不是后续UsesThisRound断言失败。
+RightCtrl保持，MouseState 3→1→0先松右再松左。当前InputSystemUIInputModule共用的eligibleForClick被右键release清除，后来左键不发Click，解释了两次相同失败。详见BackpackFailure.txt。
+待04调整测试为混合手势安全取消，再独立完整Ctrl左键严格1次，最后普通右键恢复；保留真实UGUI与强断言。07未跨写04代码，不把尚未实施建议写成通过，也没有据此确认业务缺陷。
+
+普通Play/API证据
+01/02：正式6×4中/英文；24格，grid428×288，viewport428×584。
+03/04：运行时空4×3中/英文；12格，grid288×218。
+05/06/07：运行时6×14长箱顶部英文、底部英文医疗包、取回后底部中文；84格，grid428×988。
+08/09：20×20仓库中英文；400格，grid1408×1408。10：升级后20×24底部英文，480格，grid1408×1688，实际66不缩格、仅纵滚。
+真实公开API取/返/再取医疗包同ID 68f71fe5d745467b92e31536f73a42c0，数量3保持；高箱指定(4,12)/2×2提交并取回。第一次无request validator的直调被StaleRequest拒绝且无修改，修正夹具后成功，未删原始事实。详见VisualApiChecks.txt。
+临时空/长箱与表未保存场景/资产。原箱自然搜索、返回Shelter均使用实际模块；医疗包与布娃娃各包→仓→包→仓的API请求全部true，仓2件/EV7，升级Success且ID/坐标/旋转不变。5份运行快照见VisualSnapshots.json。
+SecondRoundApi.json：00:02:41.3968624Z再次进入Exploring round2、EV7、仓2件、20×24、满血3/3、fixtureCount0/syntheticDevices0。普通API检查到第二次出发；没有声称普通Play第二轮再次撤离。完整自动两轮依据正式Pointer，两者与原生试玩分开。
+
+原生及保护
+NativeInput.txt：本次sky实际向已聚焦GameView发送F10/Tab，但仍中文/背包关闭；RawInput键鼠启用，没有合成设备。不能判定实体键盘产品故障，也不能写按键通过；本轮完整两轮实体键鼠未验收，旧人工结果不迁用。
+51份真实内容备份在Before/与BackupManifest.json；测试前冻结的153项源码/meta基线SourceBaseline.json当前无漂移。07实际改LootPanel、三语言表与两正式测试；正式三场景及业务未改、meta/GUID保留。
+ReleaseState.json最终快照2026-10-19T00:03:35.373962Z，Play=false/compile=false，仅Bootstrap且dirty=false；Application/PlayerSettings.runInBackground=false，仅原RawInput Keyboard/Mouse enabled，tempObjects/tempTables=0。主执行者最终Console 0 error/0 warning；Unity已释放。
+MCP测试临时改变Enter Play Mode选项后，按实际Before内容仅通过Unity API恢复enabled=true、DisableDomainReload两字段，未覆盖整份资产。最终ProjectSettings.asset/EditorSettings.asset磁盘hash均与Before一致，ReleaseState为恢复后读数。Windows构建、敌人、完整死亡流程未在本轮验收。
+操作、参数与参考版本见Docs/Handoffs/07B_QuickTransferIntegration_Handoff.txt；旧07A历史保留。

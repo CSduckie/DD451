@@ -1,0 +1,174 @@
+{
+  "protected": [
+    {
+      "path": "Assets/Prefabs/Enemy/Drone/Drone.prefab",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Prefabs/Enemy/Drone/Drone.prefab.meta",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Prefabs/Enemy/Stealth/CoverArea.prefab",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Scenes/Tests/Enemy/EnemyTest.unity",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Scenes/Tests/Enemy/EnemyTest.unity.meta",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Scenes/Bootstrap.unity",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Scenes/Shelter.unity",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Scenes/Ruins.unity",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Art/Model/Enemy_Patrol_Drone_A.fbx",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Art/Model/Enemy_Patrol_Drone_A.fbx.meta",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Stealth/MonoBehaviour/CoverArea.cs",
+      "unchanged": true
+    }
+  ],
+  "existingMetas": [
+    {
+      "path": "Assets/Data/Enemy/Drone/DroneConfig.asset.meta",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Data/Localization/Enemy/EnemyText.asset.meta",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs.meta",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneStatusLight.cs.meta",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/ScriptableObject/DroneConfigSO.cs.meta",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DronePatrolState.cs.meta",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneSearchState.cs.meta",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Tests/Enemy/Editor/EnemyTestSceneBuilder.cs.meta",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/DroneBehaviourTests.cs.meta",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/DroneStatusLightTests.cs.meta",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/EnemySceneIntegrationTests.cs.meta",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/Runtime/EnemyTestDriver.cs.meta",
+      "unchanged": true
+    }
+  ],
+  "deployed": [
+    {
+      "path": "Assets/Data/Enemy/Drone/DroneConfig.asset",
+      "matchesReviewedStage": true,
+      "metaExists": true
+    },
+    {
+      "path": "Assets/Data/Localization/Enemy/EnemyText.asset",
+      "matchesReviewedStage": true,
+      "metaExists": true
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs",
+      "matchesReviewedStage": true,
+      "metaExists": true
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneStatusLight.cs",
+      "matchesReviewedStage": true,
+      "metaExists": true
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/ScriptableObject/DroneConfigSO.cs",
+      "matchesReviewedStage": true,
+      "metaExists": true
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneAlertState.cs",
+      "matchesReviewedStage": true,
+      "metaExists": true
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DronePatrolState.cs",
+      "matchesReviewedStage": true,
+      "metaExists": true
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneSearchState.cs",
+      "matchesReviewedStage": true,
+      "metaExists": true
+    },
+    {
+      "path": "Assets/Tests/Enemy/Editor/EnemyTestSceneBuilder.cs",
+      "matchesReviewedStage": true,
+      "metaExists": true
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/DroneAlertTests.cs",
+      "matchesReviewedStage": true,
+      "metaExists": true
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/DroneBehaviourTests.cs",
+      "matchesReviewedStage": true,
+      "metaExists": true
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/DroneStatusLightTests.cs",
+      "matchesReviewedStage": true,
+      "metaExists": true
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/EnemySceneIntegrationTests.cs",
+      "matchesReviewedStage": true,
+      "metaExists": true
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/Runtime/EnemyTestDriver.cs",
+      "matchesReviewedStage": true,
+      "metaExists": true
+    }
+  ]
+}

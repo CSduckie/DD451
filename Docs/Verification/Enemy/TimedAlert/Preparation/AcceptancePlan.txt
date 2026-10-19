@@ -1,0 +1,60 @@
+09F 主程独立验收准备：仅 Docs，未运行（2026-10-19）
+
+最新规则来源
+Docs/AgentPrompts/09_TimedAlert_Dispatch.txt，以及主程随后明确的修正：普通 Search 真正重新发现仍经过首次0.5秒Alert；只有草丛2秒警戒期间真正重新发现才立即Chase。不要把这两条混为一项。
+不依赖009最终警戒计时字段/上下文名称；只观察公开CurrentState、Body/FlightVelocity、TryGetPatrolPoint、LastKnownPosition、CanSee、CoverArea.IsHidden、Light、Renderer与RangeCollider。
+
+运行前
+等009交还Assets/Editor；读取新配置字段，确认Inspector默认与正式资产均为0.5/2秒。不要再运行旧AlertProgress探针。
+保留主程最新授权保存的Ruins基线，从真实Bootstrap→Shelter→正式TryDepart进入Ruins。沿用07E轮次验收：Drone/flow/items/player轮次一致，玩家仅一份；不用直接BeginRound启动实例。
+1920×1080。运行期玩家定位可用RelocateWithinRun，Z必须仍为玩家config.planeZ；原无人机出生Z与用户路线均不修改。
+需要固定姿态时：先定位，再SetCrouching(true)，再SetBackpackOpen(true)，最后Body.isKinematic=true。只设IsCrouching会被真实玩家状态机在下一帧恢复，不能把这种失效误判为草丛逻辑错误。开包不应给予免伤，CanTarget仍有效。
+
+核心自动序列
+RunNaturalSequence.cs可在上述正式Ruins/1920×1080条件下直接供MCP execute_code执行，无需手动抢0.5秒窗口。单EditorApplication.update，总超时35秒，自动执行首次0.5秒→隐藏2秒回原巡逻→再次0.5秒→隐藏0.6秒后可见立即追击→真实接触一次伤害。
+它创建并最终清理一个仅运行期CoverArea+TriggerBox夹具，验证真实隐藏判断但不代表用户原草丛布局已验收。玩家临时kinematic，Z仍由公开定位API保持；不改AI状态/速度/计时/路线。
+自动在首次Alert约0.2秒、Chase、草丛Alert约1秒抓ScreenCapture，抓图期间短暂停timeScale并等待实际渲染/文件完成后恢复，所以不会让截图耗时消耗0.5/2秒游戏计时。结束恢复timeScale1、runInBackground=false和玩家状态，删夹具、移除回调；用CancelNaturalSequence.cs取消并等待Running=false。
+结果读取MyPrecious.TimedAlertScenario.Result；输出RootAcceptance/Sequence-xxxxxx/。成功后的ExplodedDroneId/Round/AfterHitHealth保存在同前缀SessionState，供后续正式同轮准备验证。此脚本不验证墙/死亡或FixedUpdate竞态，也不会重复全部自动测试。
+
+A 首次自然发现与显示/检测分离
+1. 玩家站立且不隐藏，在Drone正前2.5m的实际扇形内；先确认CanSee=true。不得ChangeState或调用新警戒方法。
+2. RecordNaturalWindow.cs记录：自然Patrol→Alert→Chase。以实际进入/退出Alert的Time.time测时，目标0.5秒；正常帧率允许约一个Update步误差。Alert期间Body漂移<=0.005，FlightVelocity为0；橙灯强度有变化、视锥纯橙，无红色填充。
+3. Chase后MeshRenderer.enabled=false，但Vision组件和GameObject仍启用、RangeCollider.enabled=true、真实CanSee(player)=true。不要只看Renderer而漏测检测。
+4. 保持真实可见一小段时间确认Chase移动，红灯有呼吸。截图要等LateUpdate完成再抓，避免将同一帧尚未更新的灯误判为错误。
+
+B 真实草丛蹲伏与2秒悬停
+1. 先让玩家站立于实际CoverArea范围内、仍被CanSee发现；证明站立入草不隐藏。当前正式Ruins已保存草丛在x约-6，适合玩家站立于此，引导自然Chase接近。
+2. 在尚未接触无人机时，通过真实玩家API设蹲伏并保持；必须同时记录CoverArea.IsHidden=true、CanSee=false。
+3. 下一真实AI更新/物理入口停止移动，进入橙灯Alert，视锥Renderer重新显示。记录进入位置及此前TryGetPatrolPoint目标。
+4. 持续隐藏至少2.2秒：约2秒后自动Patrol，恢复原目标/索引且实际移动。持续Hidden不能每帧重置计时；隐藏玩家换位置时，LastKnownPosition不能追踪新坐标。若新版进入警戒清空LastKnown允许一次清空，但此后不得随隐藏位置更新。
+5. 保留一次同轮正式TryBeginExplorationEnemies(flow.CurrentRound,out error)调用，放在2秒警戒中间。状态/位置不重置、总等待仍约2秒，而非从调用后重新计时。
+
+C 2秒内重新发现
+1. 第二次自然追击后进入草丛隐藏，确认已进入2秒Alert。
+2. 约0.6秒时离开草丛/站起，使用实际几何确认Hidden=false且CanSee=true。首个观察到重新可见的Update就恢复Chase，不应额外停0.5秒；红灯、Renderer隐藏、Collider仍开。
+3. 只离开草丛但仍在扇形外/墙后时不可立即追击；确认CanSee=false，原2秒到期仍回原巡逻。
+
+D 首次0.5秒内失去目标
+1. 首次Alert约0.2秒进入草丛并蹲伏：转为草丛2秒Alert；计时以隐藏触发为起点，不残留旧0.5秒到期追击。
+2. 独立一轮首次Alert约0.2秒被普通实体墙遮挡/超出半径：走既有Search，不盲追；不应错误使用草丛2秒分支。
+3. 新一轮分别验证目标死亡或真实切场景锁：不能计时结束后追击无效目标。死亡用真实health.TakeDamage但单独运行，不破坏后续正常流程；切场景锁优先通过实际撤离路径。
+
+E 普通墙Search与再发现
+1. 真Chase中，让现有实体墙挡住视野；没有合适墙时可新建仅运行期Cube测试墙，记录尺寸/位置/Layer并在结束销毁，不修改已有资产。
+2. 确认Hidden=false、CanSee=false；进入Search，使用最后可见位置。墙后的玩家移动不更新该位置；不穿墙追踪。
+3. 真正重新可见时走0.5秒Alert再Chase（主程最新规则）。Search超时仍回原巡逻。
+
+F 同一个FixedUpdate里的隐藏接触保护
+普通EditorApplication.update采样只能证明“稍后没受伤”，不能证明FixedUpdate先于Update的竞态。
+此竞态交由009有针对性的自动测试及主程源码审查：测试必须在真实Chase仍成立时设置真实草丛隐藏+身体重叠，在任何Update转换之前执行实际FixedUpdate/接触门禁；验证健康不变、HasExploded=false、无本物理步的追击位移。若测试先执行Update切为Alert，再调用TryExplode，只证明Alert门禁，不覆盖此竞态。
+普通Play只做补充观察：候选身体位置必须同时与真实草丛Trigger和Drone实体Sphere重叠；确认CoverArea.IsHidden=true，之后至少0.12游戏秒健康不变、没有自爆。不能把这个观察写成已证明所有回调顺序。
+主程审查CheckContacts之前的隐藏处理，以及Sweep/OnCollision/TryExplode/私有Explode是否都遵循相同保护，避免只修单入口。不替换PlayerLoop、不安装时序钩子、不增加额外运行框架。
+
+G 仍存在的接触与正式流程规则
+无草丛隐藏的真实Chase重叠才一次自爆伤害；爆炸后继续0.3秒无重复伤害、模型/灯/视锥消失。
+重复真实正式TryBeginExplorationEnemies当前轮次不得复活；新一轮实际撤离→庇护所→再出发自动刷新。可沿用RuinsIntegration/RootAcceptance/Preparation中的01/03/04/05/06；02旧填条断言不能复用。
+
+证据及清理
+ReadSnapshot.cs只读即时数据；RecordNaturalWindow.cs只用单个EditorApplication.update采样，不改状态/计时/位置/TimeScale/PlayerLoop。默认记录6游戏秒、30真实秒超时；root可按具体步骤调整duration。它不回滚真实AI状态。
+执行CancelRecorder.cs并等待Running=false后再退出Play/刷新程序集。不要两个记录器并发；009和root不得并发操作Editor。玩家位置/姿态由root安排并自行恢复。证据只证明API辅助的自然业务/物理行为，不声称原生键盘测试。
+没有运行结果前，本目录任何内容都不得当作PASS记录。

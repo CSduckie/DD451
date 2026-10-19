@@ -1,0 +1,22 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"success\":true,\"message\":\"Retrieved 1 log entries.\",\"data\":[{\"type\":\"Warning\",\"message\":\"<b><color=#cc7a00>MCP-FOR-UNITY</color></b>: [TestJobManager] Job 0f44056b5c514d6897094005902967b2 failed to initialize within 15000ms, auto-failing\",\"file\":\"E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Helpers/McpLog.cs\",\"line\":45,\"stackTrace\":null}]}"
+    }
+  ],
+  "structuredContent": {
+    "success": true,
+    "message": "Retrieved 1 log entries.",
+    "data": [
+      {
+        "type": "Warning",
+        "message": "<b><color=#cc7a00>MCP-FOR-UNITY</color></b>: [TestJobManager] Job 0f44056b5c514d6897094005902967b2 failed to initialize within 15000ms, auto-failing",
+        "file": "E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Helpers/McpLog.cs",
+        "line": 45,
+        "stackTrace": null
+      }
+    ]
+  },
+  "isError": false
+}

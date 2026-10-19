@@ -1,0 +1,8 @@
+2026-10-19 first import: production compiled with no errors. New death-flow test initially referenced internal BackpackUIController.InputSession and failed CS1061 at lines98/101. Fixed test to validate public IsOpen flags and Shelter stage. Initial MCP job83221cd698584110b0a7c025764c406d was started while this compiler error existed; canceled the actual Unity TestRunner job before retry. This startup is not a test pass.
+
+Final focused PlayMode10/10; related PlayMode54/54; related EditMode161/161. All official XML saved. Initial EditMode dispatch during preceding PlayMode domain reconnect returned transport disconnect; verified inactive/no new result before dispatching actual161 run.
+
+Ordinary Play validation harness: an initial dynamic storage call supplied requestIsValid lambda as the fifth positional argument, but that argument is UnityEngine.Object owner; compilation rejected it before gameplay mutation. Corrected to named requestIsValid argument. An initial capture invocation rejected a missing label before registering a capture. Both corrected invocations completed and saved evidence. These are not product test failures or passes.
+
+Final release-state probe initially attempted to JSON serialize UnityEngine.Vector2 including recursive normalized property; the in-memory probe failed before writing ReleaseState.json. Changed the probe to explicit width/height scalar fields and successfully saved state. This was a read-only verification harness failure, not a product change. Console read immediately afterwards returned0 error/warning entries; no console clear was performed between those probes and the final read.
+

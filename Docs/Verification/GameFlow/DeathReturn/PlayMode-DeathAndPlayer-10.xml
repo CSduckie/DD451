@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="10" result="Passed" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-19 08:45:11Z" end-time="2026-10-19 08:45:16Z" duration="4.4597305">
+  <test-suite type="TestSuite" id="1235" name="DD451Demo" fullname="DD451Demo" runstate="Runnable" testcasecount="197" result="Passed" start-time="2026-10-19 08:45:11Z" end-time="2026-10-19 08:45:16Z" duration="4.459731" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1111" name="MyPrecious.GameFlow.PlayModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.GameFlow.PlayModeTests.dll" runstate="Runnable" testcasecount="22" result="Passed" start-time="2026-10-19 08:45:11Z" end-time="2026-10-19 08:45:16Z" duration="4.434817" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="85336" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1084" name="GameFlowDeathReturnTests" fullname="GameFlowDeathReturnTests" classname="GameFlowDeathReturnTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-19 08:45:11Z" end-time="2026-10-19 08:45:15Z" duration="3.797508" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1086" name="DeathClosesSearchAndDragSynchronouslyAndUsedMedkitKeepsItsRoundAllowance" fullname="GameFlowDeathReturnTests.DeathClosesSearchAndDragSynchronouslyAndUsedMedkitKeepsItsRoundAllowance" methodname="DeathClosesSearchAndDragSynchronouslyAndUsedMedkitKeepsItsRoundAllowance" classname="GameFlowDeathReturnTests" runstate="Runnable" seed="1363637780" result="Passed" start-time="2026-10-19 08:45:11Z" end-time="2026-10-19 08:45:13Z" duration="1.228050" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1085" name="DeathLosesOldAndNewCarryBeforeShelterLoadButKeepsStorageUpgradeAndRound" fullname="GameFlowDeathReturnTests.DeathLosesOldAndNewCarryBeforeShelterLoadButKeepsStorageUpgradeAndRound" methodname="DeathLosesOldAndNewCarryBeforeShelterLoadButKeepsStorageUpgradeAndRound" classname="GameFlowDeathReturnTests" runstate="Runnable" seed="681289228" result="Passed" start-time="2026-10-19 08:45:13Z" end-time="2026-10-19 08:45:13Z" duration="0.545977" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1087" name="DeathSettlementCompletesEvenWhenShelterPathFailsAndRetryDoesNotRepeatLoss" fullname="GameFlowDeathReturnTests.DeathSettlementCompletesEvenWhenShelterPathFailsAndRetryDoesNotRepeatLoss" methodname="DeathSettlementCompletesEvenWhenShelterPathFailsAndRetryDoesNotRepeatLoss" classname="GameFlowDeathReturnTests" runstate="Runnable" seed="1954221102" result="Passed" start-time="2026-10-19 08:45:13Z" end-time="2026-10-19 08:45:14Z" duration="0.367258" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[GameFlow: 目标场景未配置、与另一地图重复或未加入Build Settings：Assets/Scenes/Missing-DeathReturn-Test.unity
+]]></output>
+        </test-case>
+        <test-case id="1090" name="ExtractionAcceptedFirstRejectsLaterLethalDamageAndPreservesExistingInjury" fullname="GameFlowDeathReturnTests.ExtractionAcceptedFirstRejectsLaterLethalDamageAndPreservesExistingInjury" methodname="ExtractionAcceptedFirstRejectsLaterLethalDamageAndPreservesExistingInjury" classname="GameFlowDeathReturnTests" runstate="Runnable" seed="399769482" result="Passed" start-time="2026-10-19 08:45:14Z" end-time="2026-10-19 08:45:14Z" duration="0.883081" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1089" name="RetryAfterRevivalDoesNotCreateAnotherPlayerOrHealTwice" fullname="GameFlowDeathReturnTests.RetryAfterRevivalDoesNotCreateAnotherPlayerOrHealTwice" methodname="RetryAfterRevivalDoesNotCreateAnotherPlayerOrHealTwice" classname="GameFlowDeathReturnTests" runstate="Runnable" seed="1145995055" result="Passed" start-time="2026-10-19 08:45:14Z" end-time="2026-10-19 08:45:15Z" duration="0.367928" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[GameFlow: 场景接线不完整：Assets/Scenes/Shelter.unity
+]]></output>
+        </test-case>
+        <test-case id="1088" name="RetryRemovesLayoutAfterRecordLossAlreadySucceeded" fullname="GameFlowDeathReturnTests.RetryRemovesLayoutAfterRecordLossAlreadySucceeded" methodname="RetryRemovesLayoutAfterRecordLossAlreadySucceeded" classname="GameFlowDeathReturnTests" runstate="Runnable" seed="142982974" result="Passed" start-time="2026-10-19 08:45:15Z" end-time="2026-10-19 08:45:15Z" duration="0.382851" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[GameFlow: 死亡背包布局清理失败：3876daa22d59430bb54e3f237d1f9e38
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1100" name="PlayerSceneTransitionTests" fullname="PlayerSceneTransitionTests" classname="PlayerSceneTransitionTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-19 08:45:15Z" end-time="2026-10-19 08:45:16Z" duration="0.632564" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1104" name="DeathRecoveryRejectsUnpreparedLivingUnlockedInvalidAndRepeatedRequests" fullname="PlayerSceneTransitionTests.DeathRecoveryRejectsUnpreparedLivingUnlockedInvalidAndRepeatedRequests" methodname="DeathRecoveryRejectsUnpreparedLivingUnlockedInvalidAndRepeatedRequests" classname="PlayerSceneTransitionTests" runstate="Runnable" seed="631550925" result="Passed" start-time="2026-10-19 08:45:15Z" end-time="2026-10-19 08:45:15Z" duration="0.083554" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1103" name="DeathRecoveryWaitsForNotificationsAndKeepsTheSameRoundLocked" fullname="PlayerSceneTransitionTests.DeathRecoveryWaitsForNotificationsAndKeepsTheSameRoundLocked" methodname="DeathRecoveryWaitsForNotificationsAndKeepsTheSameRoundLocked" classname="PlayerSceneTransitionTests" runstate="Runnable" seed="1658018068" result="Passed" start-time="2026-10-19 08:45:15Z" end-time="2026-10-19 08:45:15Z" duration="0.132555" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1102" name="NewRoundWhileLockedStaysFrozenAndDeathIsPreservedOnReturn" fullname="PlayerSceneTransitionTests.NewRoundWhileLockedStaysFrozenAndDeathIsPreservedOnReturn" methodname="NewRoundWhileLockedStaysFrozenAndDeathIsPreservedOnReturn" classname="PlayerSceneTransitionTests" runstate="Runnable" seed="831458497" result="Passed" start-time="2026-10-19 08:45:15Z" end-time="2026-10-19 08:45:16Z" duration="0.183518" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1101" name="TransitionFreezesPhysicalStateAndDiscardsInputsBeforeUnlock" fullname="PlayerSceneTransitionTests.TransitionFreezesPhysicalStateAndDiscardsInputsBeforeUnlock" methodname="TransitionFreezesPhysicalStateAndDiscardsInputsBeforeUnlock" classname="PlayerSceneTransitionTests" runstate="Runnable" seed="1002301985" result="Passed" start-time="2026-10-19 08:45:16Z" end-time="2026-10-19 08:45:16Z" duration="0.216899" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/cs200/AppData/LocalLow/DefaultCompany/DD451Demo\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

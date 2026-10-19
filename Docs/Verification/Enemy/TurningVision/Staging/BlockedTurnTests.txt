@@ -1,0 +1,113 @@
+    [UnityTest]
+    public IEnumerator TurningRangeDoesNotSeeThroughWallOrCrouchingCover()
+    {
+        for (int mode = 0; mode < 2; mode++)
+        {
+            DroneController drone = CreateDrone(1);
+            PlayerController player = CreatePlayer(origin + new Vector3(-3f, 0.135f, 0f));
+            CapsuleCollider capsule = player.GetComponent<CapsuleCollider>();
+            GameObject blocker = Own(new GameObject(mode == 0 ? "Turning sight wall" : "Turning sight cover"));
+            BoxCollider box = blocker.AddComponent<BoxCollider>();
+            if (mode == 0)
+            {
+                blocker.transform.position = origin + Vector3.left * 1.5f;
+                box.size = new Vector3(0.15f, 8f, 12f);
+            }
+            else
+            {
+                player.SetCrouching(true);
+                player.SetBackpackOpen(true); // 固定真实02C蹲姿；本项隔离感知，非原生C键验收。
+                blocker.transform.position = capsule.bounds.center;
+                box.size = new Vector3(2f, 3f, 2f);
+                box.isTrigger = true;
+                blocker.AddComponent<CoverArea>();
+                Assert.That(capsule.height, Is.EqualTo(1.3f).Within(0.001f));
+                Assert.That(capsule.center.y, Is.EqualTo(0.65f).Within(0.001f));
+            }
+            Physics.SyncTransforms();
+            if (mode == 1) { Assert.That(CoverArea.IsHidden(player), Is.True); }
+            bool sweptInside = false;
+            Quaternion initial = drone.FacingRotation;
+            float limit = Time.realtimeSinceStartup + 3f;
+            while (Quaternion.Angle(initial, drone.FacingRotation) < 178f && Time.realtimeSinceStartup < limit)
+            {
+                yield return null;
+                Vector3 center = capsule.bounds.center;
+                sweptInside |= (drone.vision.RangeCollider.ClosestPoint(center) - center).sqrMagnitude < 0.000001f;
+                Assert.That(drone.CurrentState, Is.EqualTo(DroneState.Patrol));
+                Assert.That(drone.Target, Is.Null);
+                Assert.That(drone.HasExploded, Is.False);
+            }
+            Assert.That(sweptInside, Is.True, "Blocked target must actually be swept into the real collider.");
+            Assert.That(drone.vision.CanSee(player), Is.False);
+            blocker.SetActive(false);
+            if (mode == 1) { player.SetBackpackOpen(false); player.SetCrouching(false); }
+            Physics.SyncTransforms();
+            limit = Time.realtimeSinceStartup + 0.25f;
+            while (drone.CurrentState == DroneState.Patrol && Time.realtimeSinceStartup < limit) { yield return null; }
+            Assert.That(drone.CurrentState, Is.EqualTo(DroneState.Alert));
+            Assert.That(drone.Target, Is.SameAs(player));
+            drone.transform.parent.gameObject.SetActive(false);
+            player.gameObject.SetActive(false);
+        }
+    }
+
+    [UnityTest]
+    public IEnumerator MidTurnDiscoveryStillRespondsToRealLossAndCoverTimeout()
+    {
+        for (int mode = 0; mode < 3; mode++)
+        {
+            DroneController drone = CreateDrone(1);
+            PlayerController player = CreatePlayer(origin + Vector3.up * 12f);
+            float limit = Time.realtimeSinceStartup + 2f;
+            while (Quaternion.Angle(Quaternion.identity, drone.FacingRotation) < 10f && Time.realtimeSinceStartup < limit)
+            { yield return null; }
+            PlaceCenter(player, origin + new Vector3(2.4f, 0.135f, 0f));
+            limit = Time.realtimeSinceStartup + 0.2f;
+            while (drone.CurrentState == DroneState.Patrol && Time.realtimeSinceStartup < limit) { yield return null; }
+            Assert.That(drone.CurrentState, Is.EqualTo(DroneState.Alert));
+            Quaternion seenHeading = drone.FacingRotation;
+            if (mode == 0) { PlaceCenter(player, origin + Vector3.up * 12f); }
+            else
+            {
+                GameObject blocker = Own(new GameObject(mode == 1 ? "New wall after turning discovery" : "New cover after turning discovery"));
+                BoxCollider box = blocker.AddComponent<BoxCollider>();
+                if (mode == 1)
+                {
+                    blocker.transform.position = origin + Vector3.right * 1.2f;
+                    box.size = new Vector3(0.15f, 8f, 12f);
+                }
+                else
+                {
+                    blocker.transform.position = player.GetComponent<CapsuleCollider>().bounds.center;
+                    box.size = new Vector3(2f, 3f, 2f);
+                    box.isTrigger = true;
+                    blocker.AddComponent<CoverArea>();
+                    player.SetCrouching(true);
+                    player.SetBackpackOpen(true);
+                }
+                Physics.SyncTransforms();
+            }
+            yield return null;
+            yield return null;
+            Assert.That(drone.Target, Is.Null);
+            if (mode < 2) { Assert.That(drone.CurrentState, Is.EqualTo(DroneState.Search)); }
+            else
+            {
+                Assert.That(CoverArea.IsHidden(player), Is.True);
+                Assert.That(drone.IsCoverAlert, Is.True);
+                Assert.That(drone.AlertSecondsRemaining, Is.GreaterThan(1.7f));
+                float started = Time.time;
+                limit = Time.realtimeSinceStartup + 3f;
+                while (drone.CurrentState == DroneState.Alert && Time.realtimeSinceStartup < limit)
+                {
+                    Assert.That(Quaternion.Angle(seenHeading, drone.FacingRotation), Is.LessThan(0.05f));
+                    yield return null;
+                }
+                Assert.That(Time.time - started, Is.GreaterThan(1.7f));
+                Assert.That(drone.CurrentState, Is.EqualTo(DroneState.Patrol));
+            }
+            drone.transform.parent.gameObject.SetActive(false);
+            player.gameObject.SetActive(false);
+        }
+    }

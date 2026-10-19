@@ -1,0 +1,12 @@
+[
+  {
+    "Algorithm": "SHA256",
+    "Hash": "25219CDBA9362754160A080215CC1A33398EAAFF8675FE58AF51DC4ECF72483A",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Shelter.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "175DC252138EE95FBE84AB95A09F03256C25C0DAA4A045535AC4380789F8E688",
+    "Path": "E:\\DD451\\Assets\\Art\\Materials\\Environment\\ShelterNightSkybox.mat"
+  }
+]

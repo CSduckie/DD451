@@ -1,0 +1,10 @@
+已按007当前源码的公开 TryBeginExplorationEnemies 准备同名cs；尚未执行，007交还后再确认签名。
+
+在02成功、Drone.HasExploded=true、玩家只受伤1次、GameFlow仍Exploring时执行：
+1. 找当前真实Ruins的GameFlowSceneBindings和那个已爆炸Drone；记录本轮编号、位置、CurrentState、HasExploded、模型/视锥/Light激活、碰撞器enabled、玩家生命。
+2. 调用007正式流程实际使用的公开准备入口，参数必须为当前场景和当前flow.CurrentRound。若入口仅为private，请让007提供可验收的最小公开准备方法，或通过真正的同轮接线重试路径验证；不要反射调用Drone私有实现，也不要直接Drone.BeginRound替代正式接入。
+3. 核对调用返回值符合幂等成功约定；CurrentRound不变，HasExploded仍true，模型/视锥不显示，接触Collider仍禁用，生命未再改变。
+4. 等待至少0.3游戏秒再查一次，确认没有延迟复活或重复伤害；保存证据到本次Run目录。
+5. 只有全部满足后，将SessionState MyPrecious.RuinsAcceptance.SameRoundPassed设true。04会读取这个标志，避免漏检继续。
+
+正式入口不得为了同轮重试使用 CurrentRound+1；否则会把“同轮重复”伪装成新一轮刷新。

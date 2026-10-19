@@ -1,0 +1,30 @@
+Alert 接入只读审查（009 视野审查子 agent）
+日期：2026-10-19
+范围：当前 09_AlertFill_Dispatch、09_Handoff 第15节、实际 Assets 基线；根在 AIStaging/Assets 中的 Controller、Alert/Patrol/Search、Config、StatusLight 及受影响测试。
+本次只读代码并记录审查；未写 Assets，未操作 Unity，未运行测试。以下不能当作本轮运行验收。
+
+结论
+暂存生产逻辑未发现阻断项。新增 Alert 在枚举末尾，旧状态数值保持；Patrol/Search 自然发现进入 Alert；Alert 每帧只 Observe 一次后增减唯一逻辑进度，没有 FixedUpdate 位移，也不读不可见玩家的新位置。进入 Alert 立即清 FlightVelocity，既有模型动画随后逐渐回正，视锥的水平朝向规则未改。
+
+已确认的生命周期与同步边界
+1. Controller.Update 的无效 Target 直接回 Patrol 分支排除了 Alert。因此死亡、停用、未准备或场景切换阻挡应由 Alert 的 Observe=false 正常退条，而不是瞬间丢弃余量。销毁引用也由 Observe 清空。
+2. ChangeState 对同一活动状态先早退，再清进度。重复 ChangeState(Alert) 不会清余量。到满值切 Chase 时逻辑 AlertProgress 清零是合法设计：SetTint 已把整个视锥改为 Chase 红色，不需要在 Chase 保留警戒进度1。
+3. BeginRound 先检查同轮/旧轮/非法轮次和伤害重入，再清进度及路线索引。因此拒绝的调用不应改变正在增长或消退的警戒。真正新轮才归零、回出生点和路线首项。
+4. OnDisable 清逻辑进度并调用 vision.Clear。读取时视觉实际源码的 Clear 已调用 SetAlertProgress(0)，SetTint 也清填充；Rebuild 不重置 MPB。普通启用后 StartPatrol 恢复巡逻色并清填充。整合时应确认视觉正式移交版本仍保留这三项合同。
+5. Alert 退零仅 ChangeState(Patrol)，没有 BeginRound/重置 patrolIndex。Patrol.Enter 只清本状态的等待计时和目标；当前巡逻数组索引保留。
+6. 所有自毁入口仍统一要求 Chase，Alert 的实体球碰撞保持开启；颜色不控制伤害。状态灯在 LateUpdate 读取本帧最终状态，Alert/Search 共用橙色且继续原呼吸相位，没有每帧重新捕获原灯参数。
+7. 配置时长在运行计算中 Mathf.Max(0.01f, seconds)，不单依赖 Inspector Min；没有除零路径。Alert 更新只通过 SetAlertProgress 修改本实例 MPB，不每帧 SetTint，不重新构建网格。
+
+巡逻配置追加审查
+现有每机 patrolPoints 数组继续直接控制顺序；点位每次取实时 position，X/Y修改生效，Z投影到本机出生平面。空引用跳过、空数组安全原地观察。新增中文字段说明和选中时编号/闭合连线与取点规则一致，不需要新路线框架。运行时改变数组长度会先对现有索引取模，未发现越界路径；Alert 期间改点后退零会读取新点位。
+
+测试接入提醒
+1. 暂存 DroneBehaviourTests 已用短正时长和 WaitForAlertThenChase 维护自然发现链；这是正确适配。Target 非空只证明感知成功，不能证明已 Chase。保留该显式状态等待，不要恢复旧 Target==player 后直接断言 Chase 的写法。
+2. 暂存 DroneStatusLightTests 已自然经过 Patrol/Alert/Chase/Search 并采样 Alert 的橙色呼吸。默认填充2秒足够容纳现有0.75秒呼吸采样；若将夹具填充时长改得更短，会导致采样中合法切 Chase。应保持此夹具时长或同步调整采样，不能强制 Chase 绕过发现。
+3. 旧 Patrol/Search 接触与 Sweep 数组仍未包含 Alert。这不构成生产缺陷，但新增 DroneAlertTests 应实测 Alert 接触不伤害、保留球体实体阻挡，以及满条后只伤害一次。不能简单把 Alert 加进无 vision 且初始进度0的接触夹具再等多帧：它会按设计退零回 Patrol；需真实可见玩家并留足填充时间。Sweep 方法的同步专项可显式 Alert，因为它只检验公共伤害状态门。
+4. 建议新 PlayMode 用例必须覆盖：部分进度下无效玩家正常退条；重现延续余量；重复 ChangeState(Alert) 不清进度；同轮 BeginRound 拒绝保留逻辑与 MPB；停用/新轮清两者；Search 重获从新 Alert 0开始；退零保留已推进的巡逻索引。这些时序不宜只在 EditMode 用反射塞进度来证明。
+5. 当前 DroneRoundTests 的4项 EditMode 断言仍有效，无需把伤害专项改为自然发现；它们显式 Chase 只隔离原轮次/接触重入目的。纯 CanSee/FindVisiblePlayer 的 DroneVisionGeometryTests 不受积累时长影响，保持原几何断言。
+6. 暂存场景集成已追加 F10 期间增长/消退和两机 MPB 对应逻辑进度检查。保留旧背包受击/搜索/轮次断言；新增画面证据仍需主程在视觉移交后实际检查0/50/100%和消退，uniform断言不能替代画面。
+
+待正式验收
+等待视觉 Assets/Editor 的明确释放记录后由主程统一编译、执行 EditMode/PlayMode，并观察实际1920×1080画面。此审查没有确认新增 DroneAlertTests 最终内容或其运行结果，也没有授权抢占视觉文件/Editor。

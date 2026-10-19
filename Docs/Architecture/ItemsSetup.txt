@@ -1,0 +1,119 @@
+MyPrecious P0 物品模块使用说明
+版本：2026-10-18 / Dispatch v6 / Lean 01
+项目根目录：E:/DD451；以下均为项目相对路径。
+
+1. 配置与运行数据
+
+ItemDataSO 是一种物品的说明书；ItemInstance 是实际存在的一件物品。两份食物引用同一 Food.asset，但 InstanceId 各不相同。归属、保有状态、次数和找回记录只在实例中修改，不写回 SO。
+ItemLibrarySO 沿用列表配置：itemLibraryList 的每个 ItemLibraryEntry 只引用 itemData，不保存背包或仓库内容。ItemManager 是唯一的物品数据入口；其他模块保存实例 ID 与自己的布局，不另建身份或次数。
+
+在 Project 窗口使用 Create > Items > Item Data 新建定义，在 Inspector 填写：
+- definitionId：稳定定义 ID，不使用显示名称或 Unity InstanceID。
+- nameZh/nameEn、descriptionZh/descriptionEn、nameKey/descriptionKey：中英文文案和稳定文本键。03 尚未接入，当前只有这一份文案来源。
+- width/height、canRotate、ev：二维占格与价值；不代表世界坐标。
+- defaultSpawnProbability：0 到 1，1 为 100%；searchSeconds：非负秒数。01 不执行抽取或搜索。
+- isUnique/uniqueId：唯一剧情身份；P0 不允许唯一物品配置为消耗品。
+- canUse/consumedOnUse/usesPerRound/effects：使用配置；usesPerRound=0 表示不限次数。
+
+Create > Items > Effects > Heal 创建治疗资源。healToFull=true 表示回满；否则 amount 必须大于 0。多个 HealEffectSO 可以放进同一 effects 列表，按顺序执行，整次成功使用只计一次额度或消耗一次。P0 只支持此 sealed 治疗类型，空效果、不支持的类型或无效固定量会在任何效果执行前被拒绝。
+Create > Items > Item Library 创建目录并引用定义。使用 SO 的“校验物品配置”“校验物品目录”“校验治疗效果”右键菜单，或调用 TryValidate(out string error)。返回首个错误；新建空资源不会自动刷警告。目录校验检测重复定义 ID 与重复唯一 ID。
+已登记的 definitionId/isUnique/uniqueId 在本次运行中保持稳定。修改这些身份字段后，再次创建或使用会被拒绝；调身份请停止 Play 后修改。
+
+2. 已有示例资源
+
+定义目录：Assets/Data/Items/ItemLibrary.asset。
+- Doll.asset：doll / story.doll，布娃娃 / Doll，2×3，EV=5，唯一、不可使用，概率0.35，搜索2秒。
+- Medkit.asset：medkit / story.medkit，医疗包 / Medkit，2×2，EV=2，唯一、每轮1次、回满、使用保留，概率0.35，搜索2秒。
+- Food.asset：food，食物 / Food，2×2，EV=0，非唯一、回复1HP、成功后消耗，概率0.75，搜索1秒。
+- Battery.asset：battery，电池 / Battery，1×2，EV=0，非唯一、P0不可使用，概率0.5，搜索1秒。
+四份定义 canRotate=true；文本键为 items.<definitionId>.name / items.<definitionId>.description。
+Medkit 引用 Assets/Data/ItemEffects/HealFull.asset；Food 引用 Assets/Data/ItemEffects/HealOne.asset。
+概率和搜索秒数均为可调整的测试默认值，不是用户已锁定的平衡数值。
+
+3. ItemManager 的实际公开入口
+
+public ItemLibrarySO itemLibrary;
+public int CurrentRound { get; private set; }
+public int InstanceCount { get; }
+public bool TryCreateInstance(ItemDataSO definition, ItemOwner owner, string containerId,
+    string sourceId, string originalSpawnPointId, out ItemInstance instance);
+public bool TryGetInstance(string instanceId, out ItemInstance instance);
+public bool IsUniqueRegistered(string uniqueId);
+public bool TryGetUniqueInstance(string uniqueId, out ItemInstance instance);
+public List<ItemInstance> GetInstances();
+public bool TrySetOwner(string instanceId, ItemOwner owner, string containerId);
+public bool TrySetRetained(string instanceId, bool isRetained);
+public bool BeginRound(int round);
+public bool RecordLoss(string instanceId, ItemLossReason reason);
+public List<ItemInstance> GetRecoverableItems();
+public bool TryClaimUniqueSpawn(string instanceId, string spawnPointId);
+public ItemUseResult TryUseItem(string instanceId, IHealthTarget target);
+
+GetInstances/GetRecoverableItems 返回集合副本，实例本身仍是同一份数据；外部不能写实例属性。
+ItemOwner：World、Container、Backpack、Storage、PendingRecovery、Consumed、Lost。创建/普通移动只接受前四种活动归属；Container/Backpack/Storage 必须有非空 containerId。PendingRecovery 不能靠普通移动复活；Consumed/Lost 是保留身份记录的终止状态。
+ItemLossReason：ExplorationDeath、ShelterAbandonment、LeftBehindOnExtraction。06/08 负责在正确时点选择真实损失集合，再逐件调用；01 不扫描地图或判断整局死亡/撤离。
+ItemUseResult：Success、NotFound、NotCarried、NotUsable、InvalidTarget、FullHealth、RoundNotStarted、RoundLimitReached、InvalidConfiguration、NoHealingApplied、Busy。UI 后续按枚举映射双语提示。
+
+实例可读属性：InstanceId、Definition、DefinitionId、UniqueId、Owner、ContainerId、SourceId、IsRetained、UseRound、UsesThisRound、OriginalSpawnPointId、IsPendingRecovery、RecoveryRound、LastLossReason、SpawnClaimed。
+DefinitionId/UniqueId 在创建时固定；原始生成点使用可跨场景解析的字符串，例如“ruins01/medkit-point01”，同时含地图与点位信息，不能保存卸载后失效的 Transform。
+
+4. 普通物品与治疗调用示例
+
+以下是调用片段，manager 是已接线的 ItemManager，health 是02提供的真实生命对象：
+
+manager.BeginRound(1); // 由08在新一轮开始时调用；同轮或旧轮返回false。
+ItemDataSO food = manager.itemLibrary.FindDefinition("food");
+bool createdA = manager.TryCreateInstance(food, ItemOwner.Backpack, "player-backpack",
+    "ruins01/box01", "", out ItemInstance foodA);
+bool createdB = manager.TryCreateInstance(food, ItemOwner.Backpack, "player-backpack",
+    "ruins01/box01", "", out ItemInstance foodB);
+if (createdA && createdB)
+{
+    ItemUseResult result = manager.TryUseItem(foodA.InstanceId, health);
+    // result==Success时只有foodA消耗；foodB仍是另一件物品。
+}
+
+上例只展示01的数据调用；正式背包接入后，04/06必须先保证真实占格与对应归属一致，不能直接用此片段绕过布局。
+TryUseItem 要求背包归属、有效且存活的目标、已开始的轮次和剩余额度。满血拒绝且不扣次；固定治疗先按缺失HP封顶。医疗包成功后保留身份、归属和保有状态；食物成功后变为Consumed并清除容器/保有状态，身份记录仍可查询。目标未实际增加HP返回NoHealingApplied，不扣次、不消耗。
+BeginRound 只接受更大的正数，刷新全部实例次数。移动、查询、UI打开和语言选择均不调用此入口，因此不会刷新医疗包。它不恢复玩家生命；每轮出发满血由02/08实现。
+
+5. 唯一物品的首次出现与找回
+
+唯一查询与地图生成许可分开。IsUniqueRegistered/TryGetUniqueInstance 只读数据，返回已有实例不能作为创建新地图物体的依据。
+首次生成：06先确认地图、稳定原点、Prefab及容器准备有效；TryCreateInstance(medkit, World或Container, ..., "ruins01/medkit-point01", out instance) 成功后，调用 TryClaimUniqueSpawn(instance.InstanceId, "ruins01/medkit-point01")。只有返回true才创建首次地图表现。重复创建返回false且out为null；重复领取返回false。
+直接在Backpack/Storage创建的唯一实例已视为取得，不再授予首次地图出现许可；这用于测试或由正式初始化明确安排，不能拿来绕过真实拾取。
+
+临时丢地：TrySetOwner(id, ItemOwner.World, 当前地面标识)，本轮仍可拾回，不调用RecordLoss。
+死亡、确认遗弃或撤离时遗留：RecordLoss(id, reason) 清除保有状态；唯一实例变为PendingRecovery，记录CurrentRound+1和原始点；普通物品变为Lost，不获得找回资格。
+下轮：08调用BeginRound(newRound)，06读取GetRecoverableItems，按OriginalSpawnPointId解析地图/原点并预先确认Prefab可创建，然后调用TryClaimUniqueSpawn。成功后同一实例变为World，ContainerId设为原点，许可锁定；重复请求不会产生第二份。找回不重新抽普通概率。
+同一轮卸载后重载地图，如果该实例仍在World/Container，只重建或重新绑定已有实例的场景表现，不能再创建物品身份或重新领取一次生成许可。06需确保每个实例同时最多一份地图表现。
+01没有实际地图生成、异步加载、生成失败撤回或场景表现登记。06需在领取前完成可用性检查，并在正式整合时处理领取后创建失败与重复表现；这部分尚未联测，不能声称仅凭01已完成地图生成流程。
+
+6. 最小生命边界与集成顺序
+
+Assets/Scripts/Utilities/Contracts/Player/IHealthTarget.cs：
+public interface IHealthTarget
+{
+    int CurrentHealth { get; }
+    int MaxHealth { get; }
+    void Heal(int amount);
+}
+
+02是HP权威。Heal同步生效、不得超过MaxHealth、不得复活死亡对象；调用和通知不得抛异常，治疗回调不应改变本次效果配置。01不会另存玩家HP。读取目标和执行治疗期间，重入使用返回Busy，其他实例写入口返回false。当前只处理明确的治疗组合，不提供任意效果回滚框架。
+ItemEffectSO 只有 public abstract void Execute(IHealthTarget target)；HealEffectSO 公开 healToFull、amount、TryValidate(out string error)、override Execute(IHealthTarget target)。
+ItemDataSO：public bool TryValidate(out string error)。ItemLibrarySO：public List<ItemLibraryEntry> itemLibraryList；public ItemDataSO FindDefinition(string definitionId)；public bool TryValidate(out string error)。ItemLibraryEntry 是带 public ItemDataSO itemData 的简单struct。
+
+04/06正式接入使用时，在同一个同步完整操作里验证真实占格、调用TryUseItem、按Success且Owner==Consumed移除对应布局，再统一通知显示。失败保留布局与物品。当前ItemManager不发布UI事件，不能靠先广播成功、再让UI回调移除格子来补第二次业务。没有真实布局，因此当前只验证物品侧数据，不宣称完成跨模块原子操作。
+05读取Definition.ev和IsRetained计算真实保有EV；01没有EV总账。08撤离成功时设置新战利品保有状态；旧物携出/背包仓库移动不取消保有，实际损失再清除。
+03接入现有稳定文本键和双语字段，统一迁移文案后只保留一个来源；01不监听F10、不自建语言管理器。
+
+7. 常驻接线与测试
+
+将 Assets/Prefabs/Items/ItemModule.prefab 挂在现有 GameBootstrap 实例下，并保留 itemLibrary 引用。ItemManager不使用Singleton或自行DontDestroyOnLoad；常驻来自父入口。正式接线由09处理，不修改共享GameBootstrap脚本或Prefab。
+验证场景路径：Assets/Scenes/Tests/Items/ItemsTest.unity。已创建并将真实ItemModule Prefab挂在现有GameBootstrap Prefab实例下，检查缺失脚本数为0。
+场景附加仅测试的ItemsTestHealth/ItemsTestDriver。进入Play后创建一份医疗包和两份食物；测试面板可受伤、分别使用食物、使用医疗包、开始下一轮。驱动只在首次空管理器初始化，场景重载读取已有状态，不补充食物。该面板不是正式背包、玩家或双语UI。
+自动验证入口：Unity Test Runner 的 EditMode / MyPrecious.Items.EditModeTests 与 PlayMode / MyPrecious.Items.PlayModeTests。PlayMode测试应从干净测试场景启动；检测到用户正在运行的入口/管理器时会跳过，避免破坏用户数据。测试按Editor路径加载场景，不修改正式Build Settings。
+本轮Unity 6000.2.12f1编译通过；EditMode实际43/43通过，补齐测试相机URP组件后PlayMode最终3/3通过，均0失败/0跳过。原生证据：Docs/Architecture/01_EditModeResults.xml、Docs/Architecture/01_PlayModeResults.xml。工具曾在域重载后丢失载荷或报告初始化超时，但Unity继续完成测试并输出通过的原生XML；此处以XML为准，具体过程见Docs/Handoffs/01_Handoff.txt。最终退出Play并恢复原SampleScene，共享文件哈希未变。
+MCP实际运行检查：只有一个ItemManager，位于DontDestroyOnLoad场景，保留3个实例；医疗包首次Success，受伤后同轮再次使用为RoundLimitReached；随后食物成功恢复至5/5HP；医疗包实例ID不变且次数为1。Docs/Architecture/01_ItemsTest.png已保存并目视检查，测试面板可读，显示HP5/5、医疗包已用1次、Food A=Consumed、Food B=Backpack。此为工具调用和截图检查，未进行真人试玩。
+
+尚未接入：02真实生命、04/05格子/UI、06随机抽取/搜索/地图/转移、08结算流程、03正式F10语言切换。未实现磁盘存档、堆叠、重量、稀有度、装备、电池诱饵、角色或敌人框架。

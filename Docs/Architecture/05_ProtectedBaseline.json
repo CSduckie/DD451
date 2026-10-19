@@ -1,0 +1,458 @@
+[
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Bootstrap\\MonoBehaviour.meta",
+    "Hash": "8293214AB5A7B1EC4F668E911799D8950D3105B279C6720736D2CE2ED73264EF"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Bootstrap\\MyPrecious.Bootstrap.asmdef",
+    "Hash": "67FA7FC8EEF531F20C378F1DC316CD51439F428E646CC489A89ADAFFC9A43A8D"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Bootstrap\\MyPrecious.Bootstrap.asmdef.meta",
+    "Hash": "F883D80CC021D29AF9E6AA2CD920D4C83955AC6F41F160FB71D83373422232E4"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Bootstrap\\MonoBehaviour\\GameBootstrap.cs",
+    "Hash": "306034A23BB8CBE9BE79B5D7A05A8A80F39FF239631CCA9AF782623624BE3CB7"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Bootstrap\\MonoBehaviour\\GameBootstrap.cs.meta",
+    "Hash": "19AC78D93615DD3D40CB1D9906AC9EA2A4456B748E670111984B5AD079C09466"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Items\\MonoBehaviour.meta",
+    "Hash": "185673331FC9C0B447715F4B5D9656879DBBF8006F71DC77E371880ACB772EE3"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Items\\MyPrecious.Items.asmdef",
+    "Hash": "894CD67ACC8E5ED189ED68F36421C463C3D74B310143BE9E3C879B2F55D10BD9"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Items\\MyPrecious.Items.asmdef.meta",
+    "Hash": "CB1F28FE988EAC6D50E46E90FF69497E4B8BEDF755F5AD5263FBB53E86755E37"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Items\\RuntimeData.meta",
+    "Hash": "708454723C548724C9C5F8B60EAE17E33F568659887C58685708CFD88BFC1E37"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Items\\ScriptableObject.meta",
+    "Hash": "134EE7DDCB014A0CEE83A9D5B96274000EE67EC34EE20DF9962BA2EFB9FE8B35"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Items\\MonoBehaviour\\ItemManager.cs",
+    "Hash": "1F65B8FFE2857C3DFDAEF71E78D1D39A55BE3479079AA77A75D9E6C7EB2D6281"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Items\\MonoBehaviour\\ItemManager.cs.meta",
+    "Hash": "DBEF94D5D1EC6FD4D10A76F4E994582FD292CCE696C271A630CB8AED39192394"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Items\\RuntimeData\\ItemInstance.cs",
+    "Hash": "83AEE113FC71DA12711188E7D6F1A5372B5D5BE86B5E72C3F721BD4A211374D0"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Items\\RuntimeData\\ItemInstance.cs.meta",
+    "Hash": "F501D5E334FC2E638EA0FE0E2AF69E83F96B23CED1FF687EEF2FE74964531022"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Items\\ScriptableObject\\Effects.meta",
+    "Hash": "8A5024BB568D7251FA04050752148D2434EC2A03F634AEEC4E3A9595CCBF0F20"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Items\\ScriptableObject\\ItemDataSO.cs",
+    "Hash": "8F9F1ACA3C2FDAAEB94D4C55721E5B6B1E937CE1377CAD563EA52E463C1876AA"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Items\\ScriptableObject\\ItemDataSO.cs.meta",
+    "Hash": "05471E57CBBDFDB0D9C21FFF7F84F10BB49351EE00E3FC2453461A177A639893"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Items\\ScriptableObject\\ItemLibrarySO.cs",
+    "Hash": "F6F67A6088DB81771F03B7287973C871F84341192074C1FCA500189736660F0F"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Items\\ScriptableObject\\ItemLibrarySO.cs.meta",
+    "Hash": "1F1B952908A247B55582BBD23FE9A1AB9CC70FAA1BE04F93B57D9395C0CE986A"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Items\\ScriptableObject\\Effects\\HealEffectSO.cs",
+    "Hash": "A5B084616ADB53A579D2FE5568871A45C171C1AAD5C3797B1A47409E30ACAC71"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Items\\ScriptableObject\\Effects\\HealEffectSO.cs.meta",
+    "Hash": "73458047076FDBD066178CB26960E717C126104EE089705A311ABFE263ACE8C6"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Items\\ScriptableObject\\Effects\\ItemEffectSO.cs",
+    "Hash": "598BFED4A91BB7C94419557474EA2B3AF5085BA7F77C4A91B4D69838071CEFCC"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Items\\ScriptableObject\\Effects\\ItemEffectSO.cs.meta",
+    "Hash": "A323888AE476224B77F23465986DA29D9E4D65BCEB6E7B653967D9285571F310"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\MonoBehaviour.meta",
+    "Hash": "77B05140A386394C787F27AE9D0DC51AB993CAA8AE41FCD5591A988E5EA76C53"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\MyPrecious.Player.asmdef",
+    "Hash": "7B17E653C24ACAEE06DC0CF1B4C512294B91DDB9319EEF6D5A348B049649A776"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\MyPrecious.Player.asmdef.meta",
+    "Hash": "D3DE5F573A7FC0839688D5F830C6B98A4EC380255B590787FE3D41554B3B4E64"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\ScriptableObject.meta",
+    "Hash": "5ED7F3E64927E6981C869B1C17DB540BEF8BB3C233647A964B64CB2ADAE44A8A"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\States.meta",
+    "Hash": "2C918243921BAE9BD22E266410BEE14BC68EF18A25A1FCA59C807EC2F90CC43B"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\MonoBehaviour\\PlayerCameraTargetBinder.cs",
+    "Hash": "9962B2B5A7EE7765165777B95637BEC055BFDDBF7460114C9A37CDD413DCE247"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\MonoBehaviour\\PlayerCameraTargetBinder.cs.meta",
+    "Hash": "558EEB9ABA476071D647E2453589CFD14F93F222F36D3887F49B743FDEC26E43"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\MonoBehaviour\\PlayerController.cs",
+    "Hash": "6672407B63AA59F4F40A960A7263A5D54BC612344C5252F331F2F9555300469B"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\MonoBehaviour\\PlayerController.cs.meta",
+    "Hash": "0B5FEA6846A4B29EC967E8079017965E11B2D1BC9E34380646FB41F0DD451C70"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\MonoBehaviour\\PlayerHealth.cs",
+    "Hash": "633D0AAE1CA99DA4A9CB406B68C74861A6E6F1CC96EF61BE68CDAEA28EDC6E91"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\MonoBehaviour\\PlayerHealth.cs.meta",
+    "Hash": "E6C690279C48FFB221C5DB309418E86E2FACF87254AC03A9BFAD34834A974726"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\MonoBehaviour\\PlayerInputReader.cs",
+    "Hash": "60ABAC95E76AFD6F1C8A68A9CC42FEC722B926C3844CC783064D5DF369C22E1A"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\MonoBehaviour\\PlayerInputReader.cs.meta",
+    "Hash": "B702360FCE4A4F41678F95B10C706EA6D05A06DE0A3B0783AF8318F31FA4D411"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\ScriptableObject\\PlayerConfigSO.cs",
+    "Hash": "D6D175425AF7AC6617BED0B39CBE65A113CBC795322907CA4A80E030DD4B3831"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\ScriptableObject\\PlayerConfigSO.cs.meta",
+    "Hash": "D540EE1DF684E6F4B8D989BF80214B6623B40014CDA9CCB0017473F32D01CD95"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\States\\PlayerCrouchState.cs",
+    "Hash": "BC92B93A64E261C4A6EF8A424CAF88BC63E737C38DB358E4C63EF4FC02748943"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\States\\PlayerCrouchState.cs.meta",
+    "Hash": "F4B45EAE1E85A4F5F6F91844C18FDCD3863C11D58EF685F313F43497F2402A9F"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\States\\PlayerDieState.cs",
+    "Hash": "4F5F5688C488AE98E7C9B381AC67901807E212FBB406829A74B60041ECCF0B09"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\States\\PlayerDieState.cs.meta",
+    "Hash": "9921F316B857273B6324A1E730578AF9E18FAC47FFC18A6CE3DD0E4BC24C28DE"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\States\\PlayerFallState.cs",
+    "Hash": "334F76D63F9ACD912DB1E09B86FE8FABE290A113D3F44F0E846387A1913AB17C"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\States\\PlayerFallState.cs.meta",
+    "Hash": "4511A83FF1D64BC5DE55F807A18FF533E28AAE20A9EAD3F40095A0DDAF73410C"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\States\\PlayerIdleState.cs",
+    "Hash": "3C3E19235E4838FCD605E6A420140B13269A36449B4DB70F76020EEA7AE2E773"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\States\\PlayerIdleState.cs.meta",
+    "Hash": "96D48590BADCC08803A1E863194EC5A9DF2121D3D4CEA65AB0025E62F73B2F08"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\States\\PlayerJumpState.cs",
+    "Hash": "721B613966A937C3379A34A997BC6724CA540C1B08600190709DBAD2F9178677"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\States\\PlayerJumpState.cs.meta",
+    "Hash": "7F4B8EE0C426BB911CF75CE7750286714CAE2DA7E910A1A3DD2522A290BE2087"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\States\\PlayerMoveState.cs",
+    "Hash": "302ED1600DFE5A821BDCCC07A04EDAB52AA92FD4BAD49625A2CE3761E8EBAD6C"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\States\\PlayerMoveState.cs.meta",
+    "Hash": "DEDC5543C3EB8D924669DC00B5458DF84516667FF0F1CC2986559D280F43863F"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\States\\PlayerStateBase.cs",
+    "Hash": "E809FD169BB8251DF0A9E3A8A079D6799DFD8AACD842E8F7272A8F1CBCDBB615"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\States\\PlayerStateBase.cs.meta",
+    "Hash": "30E98D09A68972A830A6CA841ABEE422437E42A29B6A82AFB89CE99E2F18E800"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Localization\\MonoBehaviour.meta",
+    "Hash": "7AEACD462D1EBD9C966F372038BBD458CBECF475D9FC40206241165F0CA50A3D"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Localization\\MyPrecious.Localization.asmdef",
+    "Hash": "CB31E0B247938B08E86F2344A3C294BDBC28960EADE62371E214878E94FAFA6B"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Localization\\MyPrecious.Localization.asmdef.meta",
+    "Hash": "3FD9BEAF39A2476EE15CD45FDD3CB6A3E97E663EEBD21A32A8760743CF2F5617"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Localization\\RuntimeData.meta",
+    "Hash": "7F958326BEAC9FB56C3EEF83F350E6AE826914C809664DAB9860542BFAB1389E"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Localization\\ScriptableObject.meta",
+    "Hash": "D3D462484258FBAAEF6FC835BCCA15ECE9A697AFAA219DFC4F96007676DB3A73"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Localization\\MonoBehaviour\\LocalizationManager.cs",
+    "Hash": "DFB6E3D0222AA463F826DA2B7D5D1BC6CE163E5F006515FEC4847AD0ADFE7AA9"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Localization\\MonoBehaviour\\LocalizationManager.cs.meta",
+    "Hash": "59F6796C613B2CAC0CB5F3F9FD14A752CA48A59EDB5233C792C0097DDF09ED55"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Localization\\MonoBehaviour\\LocalizedText.cs",
+    "Hash": "3994BED3CE9A06E8DCF36C6F123B0CABE8CED250D95334895BF920EF4D49C3E2"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Localization\\MonoBehaviour\\LocalizedText.cs.meta",
+    "Hash": "48A0EFBC594E0D3AF00E0947903901D3B81D391B7047EEE23D70A94C9BF5A005"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Localization\\RuntimeData\\GameLanguage.cs",
+    "Hash": "3164117F7CBFB597371ADEF76171A219CACC723274A74C87ADFBBE5578D27215"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Localization\\RuntimeData\\GameLanguage.cs.meta",
+    "Hash": "E969CB17CD7A932E165AD013E6833F4F41200AE282A32FA847AAF5FFD847D6A2"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Localization\\ScriptableObject\\LocalizationTableSO.cs",
+    "Hash": "F1C657B25C3A8B9AA89FA31054DDC7806997859C7FB3406C00EE669A7D16629D"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Localization\\ScriptableObject\\LocalizationTableSO.cs.meta",
+    "Hash": "3917E9052859EB3FA2328C18C1B688BA9133251E076C0EB6472A4F4EE5EE9453"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Prefabs\\Bootstrap\\GameBootstrap.prefab",
+    "Hash": "08DFE64559756999345F4E2057C016BF849D1ADA5350755E818EAAE16F336BE1"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Prefabs\\Bootstrap\\GameBootstrap.prefab.meta",
+    "Hash": "B4BD8F1494CA2FBA631A7BE66D220963B9B2FFE0A63E9174E4F91EAA210A1D69"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Prefabs\\Items\\ItemModule.prefab",
+    "Hash": "9EC22B5B8A254E34C037E0A938BC27157080DB6A2B70C68FC0AAE1D1A5DDF352"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Prefabs\\Items\\ItemModule.prefab.meta",
+    "Hash": "A3421DC2E1153498F125AF75D5614E2E51DD2E1323F773A82030231B518CBEC1"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Prefabs\\Localization\\LocalizationModule.prefab",
+    "Hash": "85FED05A65A304601F663A9F1476F10061FDFF3CA933146FD55935B37802ED14"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Prefabs\\Localization\\LocalizationModule.prefab.meta",
+    "Hash": "F7D7A818BCC8264048166C9183C7714457821579DF86C43E27ADA3E740B9B068"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Input\\GameInputActions.inputactions",
+    "Hash": "483A802C6FEAD9F249F70B169277EBD5729D6B14A44B40030ADC8108EBC43DCB"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Input\\GameInputActions.inputactions.meta",
+    "Hash": "3B4E424A80F5B4FA76B6ABD774884A24285EAA61F22FF9BB20E5AD505FD8B569"
+  },
+  {
+    "Path": "E:\\DD451\\Packages\\manifest.json",
+    "Hash": "C1C8F6AF0C64F3AF470E39F74EA52DF8FE34E29397969E5DABF179EFE6D6F975"
+  },
+  {
+    "Path": "E:\\DD451\\Packages\\packages-lock.json",
+    "Hash": "E5F988394040532A2EE0FDC360B57B5E063484FB81EA36D2C7EC4E7A347557F6"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\AudioManager.asset",
+    "Hash": "AEEDEB3243F07B61DBBE854AA08B5EF6F0B5274DD9852AD9F6129DDE3E105A31"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\ClusterInputManager.asset",
+    "Hash": "40E65DD214BF254955D2C8829CA8CE2130FD3510485560CE012E9A1DDD93E623"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\DynamicsManager.asset",
+    "Hash": "B7C9A9DC08B98990109D4346F68745E15E238DE400F96C583E53E1C83C743A78"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\EditorBuildSettings.asset",
+    "Hash": "348BA1ECA4B0698957F264F877F76227B78583ACD3138FD5FC85BE92F158E261"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\EditorSettings.asset",
+    "Hash": "D31BE15C85A31D85372564BF5EE30188A9454274C6DF8FE7A3372375A0DB98BC"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\GraphicsSettings.asset",
+    "Hash": "9C1BB28A2AAC0FEE9D3CFD844F6F345FE573F18D35A5C9FD3048B9E9A066C4DF"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\InputManager.asset",
+    "Hash": "7A1BB836A1008D26D0860D143E9D9DF7CA41731D30A72901B518063819C62DF2"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\MemorySettings.asset",
+    "Hash": "1E8379A461B10AE09F3F696911088C16875D63E87ED5F2D95DF9E1892703F9FD"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\MultiplayerManager.asset",
+    "Hash": "ABA89FD1A1DDAD182727AD82727E536D27372E90328A8196DA2A4560398983DD"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\NavMeshAreas.asset",
+    "Hash": "80106CFA7E6181A1928B142C075F3E510D527441E3D79BC83590E4AC91E7CD66"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\PackageManagerSettings.asset",
+    "Hash": "A7DABBA589ABE7FC2B45BD3D3FBA3FE9BE97043492703F716DA2D9131C13A807"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\Physics2DSettings.asset",
+    "Hash": "E3CBDBF0BE15244B7B67D2F07BDB8E8981911C11A8C7FE8035F5261272FEC658"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\PresetManager.asset",
+    "Hash": "29C125923FE6E29F90190D4FCE1C82D660E7051546E2C9D02908D18C9CF2436C"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\ProjectSettings.asset",
+    "Hash": "883568C7519C8C83808FEE8A39259427D8E2127D7CBF10ADE97CA42903711F1D"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\ProjectVersion.txt",
+    "Hash": "A700781C44C17ECD6F7316C959B0055F4D5D08C4A2B5A6981E5947D8BB0F1994"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\QualitySettings.asset",
+    "Hash": "6814D6CC3EB850DD7D2A069A8B17BA9F7591DEBA8B1758A855978BD9C8627643"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\SceneTemplateSettings.json",
+    "Hash": "BB9098B3BFCDE78D93E264B96F7B77B5430E64E8C57A7AAD7F5A5D9C3945E16A"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\ShaderGraphSettings.asset",
+    "Hash": "CDBA1E5D65BCF6E3269D76ED3E60B6C21F98322002996642C9D74F1EB89F6B91"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\TagManager.asset",
+    "Hash": "23FC56B484AA3D7EDF5914CD3591F7A823CCEF5E3F3496F8A51F30388EAD63DC"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\TimeManager.asset",
+    "Hash": "1A83E54ADBBDA7C9F4851103A0C6AB7F6448A3343D4EA5B7620452FA08416ECD"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\UnityConnectSettings.asset",
+    "Hash": "B7DD1E8290598F5CE86919BA1C98B42B766C8C42191A30FA2C4D12195C4ECD00"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\URPProjectSettings.asset",
+    "Hash": "596D5C8BF4F957B03684C949BEBC252AE1918F25415A1147A00684C4B086EFDA"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\VersionControlSettings.asset",
+    "Hash": "E7BDA45BF7A394745FEE1316E6C71FA676004D591AD1F3AA247FD3E4CEB86071"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\VFXManager.asset",
+    "Hash": "F066C6483919961332415EE64204F74FE52F38C02E82892EB02B7A5B2E381F0E"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\XRSettings.asset",
+    "Hash": "EDD2BEB4A2E388312B4B7DA241AA51070434005D82C59363F1237DD2E567585F"
+  },
+  {
+    "Path": "E:\\DD451\\Docs\\AgentPrompts\\00_Foundation_Contracts.txt",
+    "Hash": "F9F7FB3F7BC026A9AF8A9DA641575B87F690869A6036F8C29043E42D27BEFE86"
+  },
+  {
+    "Path": "E:\\DD451\\Docs\\AgentPrompts\\01_Items_Identity_Effects.txt",
+    "Hash": "B33EB4761858468CE671A1F0664AFE7000F9C757C7DA3EB618EA8C4D0E3EEF1B"
+  },
+  {
+    "Path": "E:\\DD451\\Docs\\AgentPrompts\\02_Player_Health_Interaction.txt",
+    "Hash": "614757234AAD56F35F4EC4AFEFD44580F6BF667E5BE8CF56979725E918E58CFD"
+  },
+  {
+    "Path": "E:\\DD451\\Docs\\AgentPrompts\\03_Localization.txt",
+    "Hash": "753A88B3BDA5B29EA13BFCA8A25F7F987A9F9289858646176EC7E511C98E959B"
+  },
+  {
+    "Path": "E:\\DD451\\Docs\\AgentPrompts\\04_Backpack.txt",
+    "Hash": "B486C07985803CBCB1432BF9AE3280E674A3A23567D93D27FD31DC4317D272E2"
+  },
+  {
+    "Path": "E:\\DD451\\Docs\\AgentPrompts\\05_Warehouse_Shelter.txt",
+    "Hash": "E5D9F336BC74E71CDC7493FB2226045CF971A00304F51EEF70A6D0EC0C0325E5"
+  },
+  {
+    "Path": "E:\\DD451\\Docs\\AgentPrompts\\06_Transfers_Loot.txt",
+    "Hash": "28F9871B4B08E7B4ED4E95C0BB408B2C33F68EF91B1D2C5A37BD9422A2782E5A"
+  },
+  {
+    "Path": "E:\\DD451\\Docs\\AgentPrompts\\07_Enemy_Stealth.txt",
+    "Hash": "D9A5B37DD6CA3AFCC3623488B1CE16A524E54B1AE55120CA08EE00E10AF151C6"
+  },
+  {
+    "Path": "E:\\DD451\\Docs\\AgentPrompts\\08_GameFlow.txt",
+    "Hash": "FA0DA490F8954BFD40E0C826C995CA2FB107ECD5B5FF5CBC0E01EFB57A541357"
+  },
+  {
+    "Path": "E:\\DD451\\Docs\\AgentPrompts\\09_Scenes_UI_Integration.txt",
+    "Hash": "DF4AA0B4197A7B1FCC693247841EB19FA70FD64FB75A000F75355BD001C69063"
+  },
+  {
+    "Path": "E:\\DD451\\Docs\\AgentPrompts\\10_Regression_Windows_Delivery.txt",
+    "Hash": "0F01508261E2CBCE202A38C175461A163355A918F9B251E7F31563DAC59938C6"
+  },
+  {
+    "Path": "E:\\DD451\\Docs\\AgentPrompts\\AcceptanceCases.txt",
+    "Hash": "BD69533E7C669A3CF29EF99E72813FF76890E5EC1D3740E40BBDEA1BBE6B5165"
+  },
+  {
+    "Path": "E:\\DD451\\Docs\\AgentPrompts\\ProjectRules.txt",
+    "Hash": "8EE33237C5D4BC1320D0E81C82A6C5B191FE5F504871356754583F6749AD06FF"
+  },
+  {
+    "Path": "E:\\DD451\\Docs\\AgentPrompts\\README.txt",
+    "Hash": "19C6CAA73B96453720EFFB46438B2810F3A1BB6711B2A98E994EEC7D67D17595"
+  }
+]

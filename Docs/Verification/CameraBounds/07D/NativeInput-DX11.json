@@ -1,0 +1,23 @@
+{
+  "utc": "2026-10-19T01:51:50.0933844Z",
+  "graphics": "Direct3D11",
+  "mode": "Ordinary Play after sky click GameView, sky Tab and sky F10; no InputSystem queue used",
+  "bagOpen": false,
+  "language": "Chinese",
+  "focus": true,
+  "editorFocused": "GameView",
+  "devices": [
+    {
+      "name": "Keyboard",
+      "native": true,
+      "enabled": true,
+      "interfaceName": "RawInput"
+    },
+    {
+      "name": "Mouse",
+      "native": true,
+      "enabled": true,
+      "interfaceName": "RawInput"
+    }
+  ]
+}

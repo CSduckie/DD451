@@ -1,0 +1,116 @@
+灯光呼吸与间歇闪烁交接
+
+当前版本：2026-10-18（用户本地日期），在原 LightFlicker 上增加呼吸叠加。
+
+本轮实际修改：
+1. Assets/Scripts/Effects/MonoBehaviour/LightFlicker.cs：增加呼吸开关、周期和最低倍率，统一计算亮度。
+2. Assets/Prefabs/灯光.prefab：仅保存三个新增参数。根节点原组件、targetLight、子对象及其它参数均沿用。
+3. 本交接文档。
+4. Docs/Verification/Effects/LightBreathing/：修改前备份、引用检查、运行采样、游戏截图及最终状态。
+没有新增生产脚本、测试框架、材质、场景或公共契约。
+
+接线：
+LightFlicker 仍挂在 Assets/Prefabs/灯光.prefab 根节点。
+targetLight 指向自身子对象“光照”的 Realtime Spot Light。
+Shelter 的“灯光”和“灯光 (1)”均继承新增呼吸配置，没有这三个字段的实例覆盖。
+“灯光”已有 darkIntensityMultiplier=0 的实例覆盖保留；以后仅修改预制体该字段时，此实例不会跟随。
+
+实现说明：
+OnEnable 保存启用时的原亮度，每盏灯随机选择自己的呼吸起点，并启动原有闪烁协程。
+协程按原随机间隔切换 isDark，不再直接写灯光强度。
+LateUpdate 每帧推进呼吸，用正弦曲线在最低倍率和1之间平滑变化。
+最终亮度 = 原亮度 × 呼吸倍率 × 闪灭倍率。
+例如原亮度50：正常呼吸32.5～50；闪灭倍率0时完全熄灭；倍率0.5时在当前呼吸亮度上减半。
+闪灭期间呼吸计时继续，结束后接回当前呼吸亮度；只有一个位置负责写运行亮度，两个效果不会互相覆盖。
+OnDisable 停止并清空协程句柄、恢复原亮度、清理运行引用；再次启用重新记录原值。
+
+Inspector：
+enableBreathing：默认true；取消勾选仅关闭呼吸，间歇闪烁仍继续。
+breathingDuration：默认4秒；一次完整明暗循环的时间，运行时最低0.02秒。
+minBreathingMultiplier：默认0.65；呼吸最低亮度占原亮度的比例，限制0～1，最亮仍为原亮度。
+interval=(3,8)秒：两轮闪烁之间的正常照明时间。
+flashCount=(2,4)：每轮短促闪灭次数，运行时限制1～20。
+darkTime=(0.05,0.15)秒：每次暗态时间。
+brightTime=(0.08,0.2)秒：连续闪灭之间的亮态时间。
+darkIntensityMultiplier=0：闪灭时乘在当前呼吸亮度上的倍率，0完全熄灭、1不额外变暗。
+Vector2的X/Y仍分别代表最小/最大值，时长范围运行时最低0.02秒，上限不小于下限。
+
+参考来源（均已读取真实源码）：
+CSduckie/2DArpg-Portfolio，本机 E:/Portfolio-Clone。
+HEAD与指定提交均为 c601c36f95efdd4d67327489f9edb58412aa54b4；未修改参考仓库。
+本次新增参考 Assets/Scripts/Enemy/Turret/TurretLaserController.cs 第60～65行：
+借用 Mathf.Sin 随时间周期变化的公式。原用途是激光端点抖动，并非已有灯光呼吸功能。
+本项目将结果从-1～1映射为0～1，再计算亮度倍率；改用每盏灯独立计时/随机起点，未搬入炮台、Physics2D或战斗依赖。
+原有 Assets/Scripts/Enemy/Elites/Shielder/ShielderSprite.cs 短暂表现后恢复的协程写法继续沿用。
+原有 Assets/Scripts/Dialogue/Dialogue.cs 保存及停止Coroutine句柄的写法继续沿用。
+
+本轮验证：
+Unity编译完成，Console错误/警告查询0条。
+Shelter实际Play采样34.004秒、7492帧，涵盖两灯呼吸、随机闪灭及不同步。
+两灯在真实暗态分别禁用组件/整个根对象，均立即恢复50、清空协程，重新启用仍以50为基准继续运行。
+最后约11秒仅临时修改Play对象：一灯darkIntensityMultiplier=0.5，另一灯关闭呼吸，验证两种配置；观察结束恢复参数，退出Play不保存临时改动。
+通过现有Bootstrap入口进入Shelter，用原Cinemachine相机捕获并查看了1920×1080的高亮、低亮、闪灭三张游戏截图。
+直接运行Shelter没有游戏相机，第一组三张Game-*.png是黑屏，保留为无效画面证据，不计为视觉验证。
+有效画面为Bootstrap-High.png、Bootstrap-Low.png、Bootstrap-Dark.png；静帧用于核对照明差异，连续节奏由运行采样支持，未进行人工键鼠或完整游戏回归。
+缺失/销毁目标、初始关闭Light的边界本轮仍只做源码检查，没有另外构造运行用例。
+
+如何观察：
+打开Assets/Scenes/Bootstrap.unity，确认其它聊天未占用编辑器后进入Play，自动进入Shelter。
+Game使用1920×1080，观察灯下照亮的地面/物体：平时缓慢起伏，间隔数秒短促闪灭后继续呼吸。
+调整长期参数请编辑灯光预制体的LightFlicker；Play期间修改不会作为持久配置保存。
+
+状态和限制：
+最终已停止Play并回到Shelter；场景clean，未保存或改写Shelter，磁盘SHA256与本轮开始一致。
+原脚本和预制体.meta字节不变；预制体仅增加enableBreathing、breathingDuration、minBreathingMultiplier三行。
+测试临时Application.runInBackground已恢复false；未改Time.timeScale或PlayerSettings。
+呼吸与闪烁都随游戏时间缩放；targetLight在启用时缓存，运行中换引用需重新启用。
+仍只修改Light.intensity，保留enabled、颜色、范围、角度和阴影；没有Emission同步或音效等扩展。
+证据目录：Docs/Verification/Effects/LightBreathing/。原闪烁证据继续保留在Docs/Verification/LightFlicker/。
+
+以下为首次闪烁交接的历史记录（当前行为以以上呼吸叠加版本为准）：
+
+灯光间歇闪烁交接
+
+本轮新增：Assets/Scripts/Effects/MonoBehaviour/LightFlicker.cs。
+本轮修改：Assets/Prefabs/灯光.prefab，仅根节点增加 LightFlicker 并引用既有子对象“光照”。
+没有新增 Manager、接口、SO、asmdef、场景或测试脚本。
+
+参考：CSduckie/2DArpg-Portfolio，本机 E:/Portfolio-Clone，版本 c601c36f95efdd4d67327489f9edb58412aa54b4。
+实际读取 Enemy/Elites/Shielder/ShielderSprite.cs 的 damageFlash 与 Dialogue/Dialogue.cs 的 Coroutine 句柄停止写法，按本项目改写为单一 MonoBehaviour。
+没有搬入角色/战斗依赖，没有 namespace。
+
+行为：
+OnEnable 缓存 Light 和当时的强度，启动一条协程。
+正常照明等待随机 interval 后，执行 flashCount 次短暂变暗/恢复。
+暗时强度 = 原始强度 × darkIntensityMultiplier。每个实例独立取随机间隔。
+OnDisable 显式停止协程并恢复原始强度，保证重新启用时不缓存闪灭中的低亮度。
+目标销毁时协程安全退出；只改 intensity，不改 enabled、位置、颜色、Range、角度或阴影。
+当前不处理灯管的材质 Emission；没有加入烘焙/Bloom/音效/电力系统。
+
+默认值：
+interval=(3,8) 秒，flashCount=(2,4)，darkTime=(0.05,0.15) 秒，brightTime=(0.08,0.2) 秒，darkIntensityMultiplier=0。
+Inspector Vector2 的 X/Y 分别为最小/最大值。
+运行时对时间下限和次数范围做简单约束，避免错误范围造成忙循环。
+
+已验证：
+Unity 编译成功。
+Shelter 的“灯光”和“灯光 (1)”都继承预制体组件，targetLight 正确。
+实际 Play 20.00 秒、1131 组采样，两实例暗态进入次数分别10、8；106组采样的两灯强度不同。
+在实际闪灭期间：实例0禁用组件恢复50；实例1禁用整个根对象恢复50。随后重新启用，两灯继续闪烁。
+退出 Play 后两灯强度均50、Light和效果组件均启用。
+最终 Console errors/warnings 查询0条。
+只用运行观测验证这个小效果，未新增自动化测试框架；未将此记录称为人工画面验收或完整游戏回归。
+缺失/销毁引用、初始关闭Light的行为经过源码检查，本轮没有单独构造运行用例，不冒称全部边界都实测。
+
+持久化：
+Prefab已保存，原 .meta/GUID未变化；Prefab文本差异仅新增效果组件。
+Assets/Scenes/Shelter.unity磁盘字节与本轮开始一致。
+场景在开始和结束时均dirty=true，未保存、重载或覆盖用户未保存编辑。
+最终停在Shelter/Edit模式。
+原Prefab及meta、已保存场景的磁盘备份见 Docs/Verification/LightFlicker/Before/；场景磁盘备份不包含用户未保存修改。
+
+证据：
+Docs/Verification/LightFlicker/RuntimeResult.txt
+Docs/Verification/LightFlicker/RuntimeSamples.tsv
+Docs/Verification/LightFlicker/FinalState.json
+后续聊天提示词：Docs/AgentPrompts/Effects_Maintenance.txt

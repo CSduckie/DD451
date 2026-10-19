@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="35" result="Passed" total="35" passed="35" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-18 18:12:58Z" end-time="2026-10-18 18:13:26Z" duration="28.7143622">
+  <test-suite type="TestSuite" id="1051" name="DD451Demo" fullname="DD451Demo" runstate="Runnable" testcasecount="35" result="Passed" start-time="2026-10-18 18:12:58Z" end-time="2026-10-18 18:13:26Z" duration="28.714362" total="35" passed="35" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1005" name="MyPrecious.Base.PlayModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.Base.PlayModeTests.dll" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-18 18:12:58Z" end-time="2026-10-18 18:12:58Z" duration="0.149596" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="48276" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1001" name="GameBootstrapTests" fullname="GameBootstrapTests" classname="GameBootstrapTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-18 18:12:58Z" end-time="2026-10-18 18:12:58Z" duration="0.145196" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1004" name="BaseSceneCanReloadWithoutReplacingPersistentEntry" fullname="GameBootstrapTests.BaseSceneCanReloadWithoutReplacingPersistentEntry" methodname="BaseSceneCanReloadWithoutReplacingPersistentEntry" classname="GameBootstrapTests" runstate="Runnable" seed="1804581315" result="Passed" start-time="2026-10-18 18:12:58Z" end-time="2026-10-18 18:12:58Z" duration="0.086202" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1003" name="DestroyedEntryClearsReferenceAndCanBeRecreated" fullname="GameBootstrapTests.DestroyedEntryClearsReferenceAndCanBeRecreated" methodname="DestroyedEntryClearsReferenceAndCanBeRecreated" classname="GameBootstrapTests" runstate="Runnable" seed="218988905" result="Passed" start-time="2026-10-18 18:12:58Z" end-time="2026-10-18 18:12:58Z" duration="0.022113" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1002" name="DuplicateEntryKeepsOriginalInstance" fullname="GameBootstrapTests.DuplicateEntryKeepsOriginalInstance" methodname="DuplicateEntryKeepsOriginalInstance" classname="GameBootstrapTests" runstate="Runnable" seed="2077676226" result="Passed" start-time="2026-10-18 18:12:58Z" end-time="2026-10-18 18:12:58Z" duration="0.019919" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+    </test-suite>
+    <test-suite type="Assembly" id="1010" name="MyPrecious.Items.PlayModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.Items.PlayModeTests.dll" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-18 18:12:58Z" end-time="2026-10-18 18:12:58Z" duration="0.273716" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="48276" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1006" name="ItemsPlayModeTests" fullname="ItemsPlayModeTests" classname="ItemsPlayModeTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-18 18:12:58Z" end-time="2026-10-18 18:12:58Z" duration="0.270053" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1009" name="DestroyedUnityHealthTargetDoesNotConsumeOrSpendAllowance" fullname="ItemsPlayModeTests.DestroyedUnityHealthTargetDoesNotConsumeOrSpendAllowance" methodname="DestroyedUnityHealthTargetDoesNotConsumeOrSpendAllowance" classname="ItemsPlayModeTests" runstate="Runnable" seed="2122444476" result="Passed" start-time="2026-10-18 18:12:58Z" end-time="2026-10-18 18:12:58Z" duration="0.022060" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1008" name="ItemsSceneInitializesOnceAndRetainsConsumedFoodOnReload" fullname="ItemsPlayModeTests.ItemsSceneInitializesOnceAndRetainsConsumedFoodOnReload" methodname="ItemsSceneInitializesOnceAndRetainsConsumedFoodOnReload" classname="ItemsPlayModeTests" runstate="Runnable" seed="348523385" result="Passed" start-time="2026-10-18 18:12:58Z" end-time="2026-10-18 18:12:58Z" duration="0.158275" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[ItemsTest ready: test HP 2/5, round 1, 3 instances. Use the test dashboard or ItemsTestDriver context menu. This is not the real player or backpack.
+]]></output>
+        </test-case>
+        <test-case id="1007" name="RealPrefabsKeepIdentityAndUseStateAcrossSceneReloads" fullname="ItemsPlayModeTests.RealPrefabsKeepIdentityAndUseStateAcrossSceneReloads" methodname="RealPrefabsKeepIdentityAndUseStateAcrossSceneReloads" classname="ItemsPlayModeTests" runstate="Runnable" seed="1230102225" result="Passed" start-time="2026-10-18 18:12:58Z" end-time="2026-10-18 18:12:58Z" duration="0.085890" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+    </test-suite>
+    <test-suite type="Assembly" id="1018" name="MyPrecious.Localization.PlayModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.Localization.PlayModeTests.dll" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-18 18:12:58Z" end-time="2026-10-18 18:12:59Z" duration="0.726006" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="48276" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1011" name="LocalizationIntegrationTests" fullname="LocalizationIntegrationTests" classname="LocalizationIntegrationTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-18 18:12:58Z" end-time="2026-10-18 18:12:59Z" duration="0.719986" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1013" name="DuplicateBootstrapAndRepeatedUiEnableBindOnlyTheSurvivingManager" fullname="LocalizationIntegrationTests.DuplicateBootstrapAndRepeatedUiEnableBindOnlyTheSurvivingManager" methodname="DuplicateBootstrapAndRepeatedUiEnableBindOnlyTheSurvivingManager" classname="LocalizationIntegrationTests" runstate="Runnable" seed="83948352" result="Passed" start-time="2026-10-18 18:12:58Z" end-time="2026-10-18 18:12:58Z" duration="0.080514" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1016" name="ItemsPanelPreservesFailureConsumedFoodAndNumericResultSnapshotsAcrossLanguageChanges" fullname="LocalizationIntegrationTests.ItemsPanelPreservesFailureConsumedFoodAndNumericResultSnapshotsAcrossLanguageChanges" methodname="ItemsPanelPreservesFailureConsumedFoodAndNumericResultSnapshotsAcrossLanguageChanges" classname="LocalizationIntegrationTests" runstate="Runnable" seed="1900009595" result="Passed" start-time="2026-10-18 18:12:58Z" end-time="2026-10-18 18:12:58Z" duration="0.140718" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[ItemsTest ready: test HP 2/5, round 1, 3 instances. Use the test dashboard or ItemsTestDriver context menu. This is not the real player or backpack.
+]]></output>
+        </test-case>
+        <test-case id="1014" name="LocalizationSceneReloadKeepsLanguageAndRefreshesStaticDynamicAndItemText" fullname="LocalizationIntegrationTests.LocalizationSceneReloadKeepsLanguageAndRefreshesStaticDynamicAndItemText" methodname="LocalizationSceneReloadKeepsLanguageAndRefreshesStaticDynamicAndItemText" classname="LocalizationIntegrationTests" runstate="Runnable" seed="1859795326" result="Passed" start-time="2026-10-18 18:12:58Z" end-time="2026-10-18 18:12:58Z" duration="0.101329" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1015" name="PlayerPanelSavedResultAndBusinessStateSurviveF10WhileUnpreparedLockedAndDead" fullname="LocalizationIntegrationTests.PlayerPanelSavedResultAndBusinessStateSurviveF10WhileUnpreparedLockedAndDead" methodname="PlayerPanelSavedResultAndBusinessStateSurviveF10WhileUnpreparedLockedAndDead" classname="LocalizationIntegrationTests" runstate="Runnable" seed="1135974271" result="Passed" start-time="2026-10-18 18:12:58Z" end-time="2026-10-18 18:12:59Z" duration="0.286577" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1012" name="RealF10PressHoldAndModuleReenableProduceOneChangePerPress" fullname="LocalizationIntegrationTests.RealF10PressHoldAndModuleReenableProduceOneChangePerPress" methodname="RealF10PressHoldAndModuleReenableProduceOneChangePerPress" classname="LocalizationIntegrationTests" runstate="Runnable" seed="1354112134" result="Passed" start-time="2026-10-18 18:12:59Z" end-time="2026-10-18 18:12:59Z" duration="0.071926" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1017" name="RepeatedInitializationKeepsEnglishAndNewEntryStartsInChinese" fullname="LocalizationIntegrationTests.RepeatedInitializationKeepsEnglishAndNewEntryStartsInChinese" methodname="RepeatedInitializationKeepsEnglishAndNewEntryStartsInChinese" classname="LocalizationIntegrationTests" runstate="Runnable" seed="178913729" result="Passed" start-time="2026-10-18 18:12:59Z" end-time="2026-10-18 18:12:59Z" duration="0.034347" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+    </test-suite>
+    <test-suite type="Assembly" id="1047" name="MyPrecious.Player.PlayModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.Player.PlayModeTests.dll" runstate="Runnable" testcasecount="23" result="Passed" start-time="2026-10-18 18:12:59Z" end-time="2026-10-18 18:13:26Z" duration="27.547129" total="23" passed="23" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="48276" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1019" name="PlayerIntegrationTests" fullname="PlayerIntegrationTests" classname="PlayerIntegrationTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-18 18:12:59Z" end-time="2026-10-18 18:13:00Z" duration="0.734837" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1022" name="DeathReenableAndDuplicateRoundCannotReviveOrConsumeFood" fullname="PlayerIntegrationTests.DeathReenableAndDuplicateRoundCannotReviveOrConsumeFood" methodname="DeathReenableAndDuplicateRoundCannotReviveOrConsumeFood" classname="PlayerIntegrationTests" runstate="Runnable" seed="1637288373" result="Passed" start-time="2026-10-18 18:12:59Z" end-time="2026-10-18 18:12:59Z" duration="0.041773" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1021" name="ObserverExceptionCannotInterruptRealItemAccounting" fullname="PlayerIntegrationTests.ObserverExceptionCannotInterruptRealItemAccounting" methodname="ObserverExceptionCannotInterruptRealItemAccounting" classname="PlayerIntegrationTests" runstate="Runnable" seed="690038767" result="Passed" start-time="2026-10-18 18:12:59Z" end-time="2026-10-18 18:12:59Z" duration="0.028279" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[InvalidOperationException: observer failed
+PlayerIntegrationTests+<>c.<ObserverExceptionCannotInterruptRealItemAccounting>b__1_0 (System.Int32 current, System.Int32 maximum) (at Assets/Tests/Player/PlayMode/PlayerIntegrationTests.cs:76)
+PlayerHealth.NotifyHealthChanged () (at Assets/Scripts/Player/MonoBehaviour/PlayerHealth.cs:114)
+UnityEngine.Debug:LogException(Exception, Object)
+PlayerHealth:NotifyHealthChanged() (at Assets/Scripts/Player/MonoBehaviour/PlayerHealth.cs:119)
+PlayerHealth:NotifyChanges(Int32, Boolean) (at Assets/Scripts/Player/MonoBehaviour/PlayerHealth.cs:88)
+PlayerHealth:Heal(Int32) (at Assets/Scripts/Player/MonoBehaviour/PlayerHealth.cs:79)
+HealEffectSO:Execute(IHealthTarget) (at Assets/Scripts/Items/ScriptableObject/Effects/HealEffectSO.cs:40)
+ItemManager:TryUseItem(String, IHealthTarget) (at Assets/Scripts/Items/MonoBehaviour/ItemManager.cs:225)
+<ObserverExceptionCannotInterruptRealItemAccounting>d__1:MoveNext() (at Assets/Tests/Player/PlayMode/PlayerIntegrationTests.cs:81)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
+
+]]></output>
+        </test-case>
+        <test-case id="1020" name="RealItemsUseRealHealthAndKeepFailedUsesUnspent" fullname="PlayerIntegrationTests.RealItemsUseRealHealthAndKeepFailedUsesUnspent" methodname="RealItemsUseRealHealthAndKeepFailedUsesUnspent" classname="PlayerIntegrationTests" runstate="Runnable" seed="1030065872" result="Passed" start-time="2026-10-18 18:12:59Z" end-time="2026-10-18 18:12:59Z" duration="0.027289" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1023" name="RealSceneRequiresExplicitPreparationAndReloadPreservesConsumedItems" fullname="PlayerIntegrationTests.RealSceneRequiresExplicitPreparationAndReloadPreservesConsumedItems" methodname="RealSceneRequiresExplicitPreparationAndReloadPreservesConsumedItems" classname="PlayerIntegrationTests" runstate="Runnable" seed="314675835" result="Passed" start-time="2026-10-18 18:12:59Z" end-time="2026-10-18 18:13:00Z" duration="0.633237" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1024" name="PlayerInteractionTests" fullname="PlayerInteractionTests" classname="PlayerInteractionTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-18 18:13:00Z" end-time="2026-10-18 18:13:00Z" duration="0.022784" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1026" name="DepthAndSolidWallPreventInteraction" fullname="PlayerInteractionTests.DepthAndSolidWallPreventInteraction" methodname="DepthAndSolidWallPreventInteraction" classname="PlayerInteractionTests" runstate="Runnable" seed="152027981" result="Passed" start-time="2026-10-18 18:13:00Z" end-time="2026-10-18 18:13:00Z" duration="0.002363" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1030" name="DestroyedTargetCannotExecuteOrKeepPrompt" fullname="PlayerInteractionTests.DestroyedTargetCannotExecuteOrKeepPrompt" methodname="DestroyedTargetCannotExecuteOrKeepPrompt" classname="PlayerInteractionTests" runstate="Runnable" seed="1696808203" result="Passed" start-time="2026-10-18 18:13:00Z" end-time="2026-10-18 18:13:00Z" duration="0.012911" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1027" name="ExecutionRechecksRangeAvailabilityAndNewObstruction" fullname="PlayerInteractionTests.ExecutionRechecksRangeAvailabilityAndNewObstruction" methodname="ExecutionRechecksRangeAvailabilityAndNewObstruction" classname="PlayerInteractionTests" runstate="Runnable" seed="2009448490" result="Passed" start-time="2026-10-18 18:13:00Z" end-time="2026-10-18 18:13:00Z" duration="0.000695" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1028" name="InputLockAndDisabledComponentsClearCachedTarget" fullname="PlayerInteractionTests.InputLockAndDisabledComponentsClearCachedTarget" methodname="InputLockAndDisabledComponentsClearCachedTarget" classname="PlayerInteractionTests" runstate="Runnable" seed="176690492" result="Passed" start-time="2026-10-18 18:13:00Z" end-time="2026-10-18 18:13:00Z" duration="0.000450" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1025" name="NearestEligibleTargetAndMultipleCollidersExecuteOnlyOnce" fullname="PlayerInteractionTests.NearestEligibleTargetAndMultipleCollidersExecuteOnlyOnce" methodname="NearestEligibleTargetAndMultipleCollidersExecuteOnlyOnce" classname="PlayerInteractionTests" runstate="Runnable" seed="329872278" result="Passed" start-time="2026-10-18 18:13:00Z" end-time="2026-10-18 18:13:00Z" duration="0.000462" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1029" name="OwnCollidersAreExcludedAndTriggerTargetRemainsUsable" fullname="PlayerInteractionTests.OwnCollidersAreExcludedAndTriggerTargetRemainsUsable" methodname="OwnCollidersAreExcludedAndTriggerTargetRemainsUsable" classname="PlayerInteractionTests" runstate="Runnable" seed="1039841407" result="Passed" start-time="2026-10-18 18:13:00Z" end-time="2026-10-18 18:13:00Z" duration="0.000661" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1031" name="PlayerJumpGraceTests" fullname="PlayerJumpGraceTests" classname="PlayerJumpGraceTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-18 18:13:00Z" end-time="2026-10-18 18:13:09Z" duration="9.041755" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1036" name="BackpackDeathDisableAndRoundResetDiscardPendingLandingJump" fullname="PlayerJumpGraceTests.BackpackDeathDisableAndRoundResetDiscardPendingLandingJump" methodname="BackpackDeathDisableAndRoundResetDiscardPendingLandingJump" classname="PlayerJumpGraceTests" runstate="Runnable" seed="1144325920" result="Passed" start-time="2026-10-18 18:13:00Z" end-time="2026-10-18 18:13:03Z" duration="3.294187" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1032" name="ReleasedTapBeforeLandingIsBufferedAndLaunchesOnlyOnce" fullname="PlayerJumpGraceTests.ReleasedTapBeforeLandingIsBufferedAndLaunchesOnlyOnce" methodname="ReleasedTapBeforeLandingIsBufferedAndLaunchesOnlyOnce" classname="PlayerJumpGraceTests" runstate="Runnable" seed="2136580692" result="Passed" start-time="2026-10-18 18:13:03Z" end-time="2026-10-18 18:13:05Z" duration="2.024742" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1033" name="TapTooFarBeforeLandingExpiresWithoutLaunching" fullname="PlayerJumpGraceTests.TapTooFarBeforeLandingExpiresWithoutLaunching" methodname="TapTooFarBeforeLandingExpiresWithoutLaunching" classname="PlayerJumpGraceTests" runstate="Runnable" seed="2146383318" result="Passed" start-time="2026-10-18 18:13:05Z" end-time="2026-10-18 18:13:07Z" duration="2.038979" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1034" name="WalkingOffEdgeAllowsOneCoyoteJumpButNeverAnAirborneSecondJump" fullname="PlayerJumpGraceTests.WalkingOffEdgeAllowsOneCoyoteJumpButNeverAnAirborneSecondJump" methodname="WalkingOffEdgeAllowsOneCoyoteJumpButNeverAnAirborneSecondJump" classname="PlayerJumpGraceTests" runstate="Runnable" seed="1601394475" result="Passed" start-time="2026-10-18 18:13:07Z" end-time="2026-10-18 18:13:08Z" duration="0.719379" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1035" name="WalkingOffEdgePastCoyoteWindowDoesNotAllowJump" fullname="PlayerJumpGraceTests.WalkingOffEdgePastCoyoteWindowDoesNotAllowJump" methodname="WalkingOffEdgePastCoyoteWindowDoesNotAllowJump" classname="PlayerJumpGraceTests" runstate="Runnable" seed="2128588673" result="Passed" start-time="2026-10-18 18:13:08Z" end-time="2026-10-18 18:13:09Z" duration="0.959221" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1037" name="PlayerMovementTests" fullname="PlayerMovementTests" classname="PlayerMovementTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-18 18:13:09Z" end-time="2026-10-18 18:13:22Z" duration="13.320255" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1040" name="BackpackKeepsPoseAndGravityAndDoesNotReplayLockedJump" fullname="PlayerMovementTests.BackpackKeepsPoseAndGravityAndDoesNotReplayLockedJump" methodname="BackpackKeepsPoseAndGravityAndDoesNotReplayLockedJump" classname="PlayerMovementTests" runstate="Runnable" seed="280295377" result="Passed" start-time="2026-10-18 18:13:09Z" end-time="2026-10-18 18:13:12Z" duration="3.169595" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1042" name="CinemachineFollowsMovementAndWarpAndCanBindReplacementPlayer" fullname="PlayerMovementTests.CinemachineFollowsMovementAndWarpAndCanBindReplacementPlayer" methodname="CinemachineFollowsMovementAndWarpAndCanBindReplacementPlayer" classname="PlayerMovementTests" runstate="Runnable" seed="623704206" result="Passed" start-time="2026-10-18 18:13:12Z" end-time="2026-10-18 18:13:14Z" duration="2.003946" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1041" name="RealKeyboardInteractFiresOnceAndDoesNotReplayThroughLocksOrReenable" fullname="PlayerMovementTests.RealKeyboardInteractFiresOnceAndDoesNotReplayThroughLocksOrReenable" methodname="RealKeyboardInteractFiresOnceAndDoesNotReplayThroughLocksOrReenable" classname="PlayerMovementTests" runstate="Runnable" seed="1889504588" result="Passed" start-time="2026-10-18 18:13:14Z" end-time="2026-10-18 18:13:15Z" duration="1.454221" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1038" name="RealKeyboardMovesCrouchesJumpsOnceAndRespectsWallAndPlane" fullname="PlayerMovementTests.RealKeyboardMovesCrouchesJumpsOnceAndRespectsWallAndPlane" methodname="RealKeyboardMovesCrouchesJumpsOnceAndRespectsWallAndPlane" classname="PlayerMovementTests" runstate="Runnable" seed="1355258110" result="Passed" start-time="2026-10-18 18:13:15Z" end-time="2026-10-18 18:13:20Z" duration="4.644525" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1039" name="ShortJumpBesidePlatformReachesTopThenWalksOffAndLands" fullname="PlayerMovementTests.ShortJumpBesidePlatformReachesTopThenWalksOffAndLands" methodname="ShortJumpBesidePlatformReachesTopThenWalksOffAndLands" classname="PlayerMovementTests" runstate="Runnable" seed="366676384" result="Passed" start-time="2026-10-18 18:13:20Z" end-time="2026-10-18 18:13:22Z" duration="2.042850" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1043" name="PlayerReferenceMovementTests" fullname="PlayerReferenceMovementTests" classname="PlayerReferenceMovementTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-18 18:13:22Z" end-time="2026-10-18 18:13:26Z" duration="4.423305" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1046" name="RealFreeFallReachesButDoesNotExceedConfiguredTerminalSpeed" fullname="PlayerReferenceMovementTests.RealFreeFallReachesButDoesNotExceedConfiguredTerminalSpeed" methodname="RealFreeFallReachesButDoesNotExceedConfiguredTerminalSpeed" classname="PlayerReferenceMovementTests" runstate="Runnable" seed="1796891256" result="Passed" start-time="2026-10-18 18:13:22Z" end-time="2026-10-18 18:13:23Z" duration="1.236864" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1045" name="ReferenceGravityAndJumpSpeedMakeReleasedJumpLowerThanHeldJump" fullname="PlayerReferenceMovementTests.ReferenceGravityAndJumpSpeedMakeReleasedJumpLowerThanHeldJump" methodname="ReferenceGravityAndJumpSpeedMakeReleasedJumpLowerThanHeldJump" classname="PlayerReferenceMovementTests" runstate="Runnable" seed="1349572387" result="Passed" start-time="2026-10-18 18:13:23Z" end-time="2026-10-18 18:13:25Z" duration="1.621938" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1044" name="VelocityEasesTowardInputSlowsAfterReleaseAndCanReverseInAir" fullname="PlayerReferenceMovementTests.VelocityEasesTowardInputSlowsAfterReleaseAndCanReverseInAir" methodname="VelocityEasesTowardInputSlowsAfterReleaseAndCanReverseInAir" classname="PlayerReferenceMovementTests" runstate="Runnable" seed="1256618534" result="Passed" start-time="2026-10-18 18:13:25Z" end-time="2026-10-18 18:13:26Z" duration="1.560226" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/cs200/AppData/LocalLow/DefaultCompany/DD451Demo\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

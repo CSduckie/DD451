@@ -1,0 +1,125 @@
+var flags = System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Static;
+System.Type windowType = null;
+System.Type holderType = null;
+System.Type apiType = null;
+foreach (var assembly in System.AppDomain.CurrentDomain.GetAssemblies())
+{
+    if (windowType == null) { windowType = assembly.GetType("UnityEditor.TestTools.TestRunner.TestRunnerWindow", false); }
+    if (holderType == null) { holderType = assembly.GetType("TestRunner.Callbacks.WindowResultUpdaterDataHolder", false); }
+    if (apiType == null) { apiType = assembly.GetType("UnityEditor.TestTools.TestRunner.Api.TestRunnerApi", false); }
+}
+if (windowType == null) { return new { recovered = false, reason = "Loaded TestRunnerWindow type not found" }; }
+var prefixes = new[] { "DroneAlertTests.", "DroneBehaviourTests.", "DroneStatusLightTests.", "DroneVisionAlignmentTests.", "EnemySceneIntegrationTests." };
+System.Func<string, bool> isEnemy = name => {
+    foreach (string prefix in prefixes) { if (name != null && name.StartsWith(prefix, System.StringComparison.Ordinal)) { return true; } }
+    return false;
+};
+var lists = new System.Collections.Generic.HashSet<object>();
+foreach (var window in UnityEngine.Resources.FindObjectsOfTypeAll(windowType))
+{
+    var selected = windowType.GetField("m_SelectedTestTypes", flags).GetValue(window);
+    if (selected != null) { lists.Add(selected); }
+    var all = windowType.GetField("m_TestListGUIs", flags).GetValue(window) as System.Collections.IEnumerable;
+    if (all != null) { foreach (var list in all) { if (list != null) { lists.Add(list); } } }
+}
+string folder = "E:/DD451/Docs/Verification/Enemy/TimedAlert/Integration";
+System.IO.Directory.CreateDirectory(folder);
+string officialXmlPath = null;
+var latestDiagnostics = new System.Collections.Generic.List<object>();
+var rows = new System.Collections.Generic.Dictionary<string, object>();
+var statuses = new System.Collections.Generic.Dictionary<string, string>();
+var freshness = new System.Collections.Generic.Dictionary<string, bool>();
+System.Action<object, string> collectCached = (result, source) => {
+    var type = result.GetType();
+    string name = (string)type.GetField("fullName", flags).GetValue(result);
+    bool suite = (bool)type.GetField("isSuite", flags).GetValue(result);
+    if (suite || !isEnemy(name)) { return; }
+    string status = type.GetField("resultStatus", flags).GetValue(result).ToString();
+    bool fresh = (bool)type.GetField("notOutdated", flags).GetValue(result);
+    if (status == "NotRun" && rows.ContainsKey(name)) { return; }
+    rows[name] = new {
+        fullName = name,
+        status,
+        notOutdated = fresh,
+        source,
+        id = type.GetField("id", flags).GetValue(result),
+        uniqueId = type.GetField("uniqueId", flags).GetValue(result),
+        durationSeconds = type.GetField("duration", flags).GetValue(result),
+        messages = type.GetField("messages", flags).GetValue(result),
+        output = type.GetField("output", flags).GetValue(result),
+        stacktrace = type.GetField("stacktrace", flags).GetValue(result)
+    };
+    statuses[name] = status;
+    freshness[name] = fresh;
+};
+foreach (var list in lists)
+{
+    var type = list.GetType();
+    var latest = type.GetField("m_LatestTestResults", flags).GetValue(list);
+    if (latest != null)
+    {
+        int enemyLeaves = 0;
+        int allLeaves = 0;
+        System.Action<object> visit = null;
+        visit = node => {
+            var nodeType = node.GetType();
+            bool hasChildren = (bool)nodeType.GetProperty("HasChildren", flags).GetValue(node);
+            if (!hasChildren)
+            {
+                allLeaves++;
+                if (isEnemy((string)nodeType.GetProperty("FullName", flags).GetValue(node))) { enemyLeaves++; }
+                return;
+            }
+            var children = nodeType.GetProperty("Children", flags).GetValue(node) as System.Collections.IEnumerable;
+            if (children != null) { foreach (var child in children) { visit(child); } }
+        };
+        visit(latest);
+        latestDiagnostics.Add(new {
+            source = "TestListGUI.m_LatestTestResults",
+            fullName = latest.GetType().GetProperty("FullName", flags).GetValue(latest),
+            startTime = latest.GetType().GetProperty("StartTime", flags).GetValue(latest),
+            endTime = latest.GetType().GetProperty("EndTime", flags).GetValue(latest),
+            allLeaves, enemyLeaves
+        });
+        // 只有仍持有完整旧53项且含40个Enemy的官方根结果才按原批次导出。
+        if (officialXmlPath == null && apiType != null && allLeaves == 53 && enemyLeaves == 40)
+        {
+            officialXmlPath = System.IO.Path.Combine(folder, "PlayMode-53-Initial-Official.xml");
+            apiType.GetMethod("SaveResultToFile", System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Static)
+                .Invoke(null, new object[] { latest, officialXmlPath });
+            if (!System.IO.File.Exists(officialXmlPath)) { officialXmlPath = null; }
+        }
+    }
+    foreach (string fieldName in new[] { "m_NewResultList", "m_QueuedResults" })
+    {
+        var results = type.GetField(fieldName, flags).GetValue(list) as System.Collections.IEnumerable;
+        if (results != null) { foreach (var result in results) { collectCached(result, "TestListGUI." + fieldName); } }
+    }
+}
+// 只枚举已经存在的holder，不访问Singleton.instance、不创建/打开窗口、不清任何缓存。
+if (holderType != null)
+{
+    foreach (var holder in UnityEngine.Resources.FindObjectsOfTypeAll(holderType))
+    {
+        var cached = holderType.GetField("CachedResults", flags).GetValue(holder) as System.Collections.IEnumerable;
+        if (cached != null) { foreach (var result in cached) { collectCached(result, "WindowResultUpdaterDataHolder.CachedResults"); } }
+    }
+}
+int passed = 0;
+int outdated = 0;
+foreach (var status in statuses.Values) { if (status == "Passed") { passed++; } }
+foreach (var fresh in freshness.Values) { if (!fresh) { outdated++; } }
+string jsonPath = System.IO.Path.Combine(folder, "Enemy-40-UnityGuiCache-Recovered.json");
+var report = new {
+    source = "Existing Unity TestRunner GUI per-test cache; latest per-test records may span runs and contain no run timestamps/job id",
+    qualification = "Correlate with original MCP job's completed=53 and failure list. Do not label this cache export official NUnit XML or original-run exact timestamp proof.",
+    recoveredUtc = System.DateTime.UtcNow.ToString("O"),
+    actual = rows.Count, passed, nonPassed = rows.Count - passed, outdated,
+    fortyCurrentPassedRows = rows.Count == 40 && passed == 40 && outdated == 0,
+    latestDiagnostics,
+    officialXmlPath,
+    results = new System.Collections.Generic.List<object>(rows.Values)
+};
+System.IO.File.WriteAllText(jsonPath, Newtonsoft.Json.JsonConvert.SerializeObject(report, Newtonsoft.Json.Formatting.Indented));
+return new { recovered = rows.Count > 0, jsonPath, officialXmlPath, enemyCount = rows.Count, passed, nonPassed = rows.Count - passed, outdated,
+    fortyCurrentPassedRows = rows.Count == 40 && passed == 40 && outdated == 0 };

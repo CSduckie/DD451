@@ -1,0 +1,3 @@
+Saved Bootstrap->Shelter; sky=ShelterNightSkybox; PP=False; resolution=1920x1080
+Saved Shelter->Ruins; sky=ShelterNightSkybox; PP=False; fog=False; camera=(-11.00, 2.50, -12.00); probe00=0.1802838
+Returned Shelter; sky=ShelterNightSkybox; storedProbe00=0.1802838; afterUpdate=0.00553075

@@ -1,0 +1,35 @@
+{
+  "result": {
+    "success": true,
+    "message": "Test job status retrieved.",
+    "error": null,
+    "data": {
+      "job_id": "296edd16ddbf49cabb07c00ad51baa6d",
+      "status": "succeeded",
+      "mode": "EditMode",
+      "started_unix_ms": 1792375737245,
+      "finished_unix_ms": 1792375737819,
+      "last_update_unix_ms": 1792375737819,
+      "progress": {
+        "completed": 25,
+        "total": 25,
+        "current_test_full_name": null,
+        "current_test_started_unix_ms": 1792375737781,
+        "last_finished_test_full_name": "DroneVisionGeometryTests.WallAtAnotherDepthOfOriginBlocksTheWholeVisibleFan",
+        "last_finished_unix_ms": 1792375737782,
+        "stuck_suspected": false,
+        "editor_is_focused": true,
+        "run_in_background": null,
+        "focus_nudge_attempts": null,
+        "focus_nudge_limit": null,
+        "focus_nudge_status": null,
+        "blocked_reason": null,
+        "failures_so_far": [],
+        "failures_capped": false
+      },
+      "error": null,
+      "result": null
+    },
+    "hint": null
+  }
+}

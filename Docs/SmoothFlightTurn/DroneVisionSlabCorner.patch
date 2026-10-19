@@ -1,0 +1,60 @@
+*** Begin Patch
+*** Update File: E:/DD451/Docs/Verification/Enemy/Staging/Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs
+@@
+     private RaycastHit[] castBuffer = new RaycastHit[32];
++    private readonly Vector3[] obstacleCorners = new Vector3[8];
+@@
+     private void AddObstacleAngles(Collider obstacle)
+     {
+         BoxCollider box = obstacle as BoxCollider;
+         Bounds bounds = obstacle.bounds;
+-        for (int x = -1; x <= 1; x += 2)
+-        for (int y = -1; y <= 1; y += 2)
+-        for (int z = -1; z <= 1; z += 2)
++        for (int i = 0; i < obstacleCorners.Length; i++)
+         {
+-            Vector3 sign = new Vector3(x, y, z);
++            Vector3 sign = new Vector3((i & 1) == 0 ? -1f : 1f,
++                (i & 2) == 0 ? -1f : 1f, (i & 4) == 0 ? -1f : 1f);
+             Vector3 point = box != null
+                 ? box.transform.TransformPoint(box.center + Vector3.Scale(box.size * 0.5f, sign))
+                 : bounds.center + Vector3.Scale(bounds.extents, sign);
+-            Vector3 local = transform.InverseTransformPoint(point);
+-            float angle = Mathf.Atan2(local.y, local.x) * Mathf.Rad2Deg;
+-            // 墙角两侧各一条射线，避免相邻三角形跨过薄墙的轮廓边缘。
+-            for (int side = -1; side <= 1; side++)
++            obstacleCorners[i] = transform.InverseTransformPoint(point);
++            AddAngleSamples(obstacleCorners[i]);
++        }
++        if (box == null) { return; }
++        // 转头时，墙与有限厚度的交线会产生新角点；只遍历Box的12条边补齐。
++        for (int i = 0; i < obstacleCorners.Length; i++)
++        for (int axis = 0; axis < 3; axis++)
++        {
++            int next = i | (1 << axis);
++            if (next == i) { continue; }
++            Vector3 from = obstacleCorners[i];
++            Vector3 to = obstacleCorners[next];
++            float deltaZ = to.z - from.z;
++            if (Mathf.Abs(deltaZ) < 0.000001f) { continue; }
++            for (int side = -1; side <= 1; side += 2)
+             {
+-                float sample = angle + side * 0.01f;
+-                if (sample > -angleDegrees * 0.5f && sample < angleDegrees * 0.5f) { angles.Add(sample); }
++                float t = (side * thickness * 0.5f - from.z) / deltaZ;
++                if (t > 0f && t < 1f) { AddAngleSamples(Vector3.LerpUnclamped(from, to, t)); }
+             }
+         }
+     }
++
++    private void AddAngleSamples(Vector3 local)
++    {
++        float angle = Mathf.Atan2(local.y, local.x) * Mathf.Rad2Deg;
++        // 轮廓角点两侧各补一个方向，保持原有采样精度。
++        for (int side = -1; side <= 1; side++)
++        {
++            float sample = angle + side * 0.01f;
++            if (sample > -angleDegrees * 0.5f && sample < angleDegrees * 0.5f) { angles.Add(sample); }
++        }
++    }
+*** End Patch

@@ -1,0 +1,303 @@
+任务03：中英双语、默认中文与F10运行时切换
+MyPrecious P0｜精简开发提示词｜2026-10-18 / Dispatch v9
+
+你是本项目03号开发agent，负责实现中英双语功能及现有测试界面的接入。收到本提示词后，请先核对工程现状，简述本次工作内容和拟修改文件，然后完成范围内的实现、配置、验证和交接，不只提交方案。
+
+项目是我的作品集兼毕业设计。实现必须让我能够读懂、修改，并在答辩时解释。采用简单、明确的代码；不要提前建设没有实际用途的接口和框架。
+
+一、开始前核对
+
+项目根目录：E:/DD451；如果当前聊天使用独立工作树，以实际项目根目录为准。
+下文所有Assets/和Docs/路径均相对该项目根目录。
+
+先阅读：
+- 当前目录适用的AGENTS.md（如有）和git状态。
+- Docs/AgentPrompts/ProjectRules.txt。
+- Docs/Architecture/BaseSetup.txt、ItemsSetup.txt、PlayerSetup.txt。
+- Docs/Handoffs/00_Handoff.txt、01_Handoff.txt、02_Handoff.txt。
+- 现有GameBootstrap、输入资源、ItemDataSO、ItemLibrarySO，以及玩家和物品测试面板。
+- ProjectSettings/ProjectVersion.txt和Packages/manifest.json。
+
+以真实代码和用户最新要求为准。旧任务包提到的全量公共契约、模块注册框架、统一生命周期接口，不是本任务前置条件，不能恢复这些旧设计。
+保留用户及其他聊天的改动、.meta与资源引用。使用Unity MCP前读取对应技能，并确认连接到本项目；共享Editor的编译、场景切换和运行操作需要串行。
+
+二、已确定的要求
+
+1. 仅支持中文和英文；每次全新启动游戏默认中文。
+2. Game运行时按F10切换语言，中文→英文→中文。按住不连续切换，一次按下只切换一次。
+3. 同一次运行中，切换场景或重新打开界面保留当前语言；退出后下次启动仍默认中文。本任务不做语言偏好的磁盘保存。
+4. 新打开的界面立即显示当前语言；当前已经显示的标题、按钮、状态、提示和操作结果也要刷新。
+5. 语言切换只影响显示，不能执行使用物品、恢复生命、开始新轮次、重建物品或重置游戏流程等操作。
+6. 项目使用3D场景和3D模型制作横版游戏：X轴左右、Y轴跳跃与高度、Z轴固定。当前玩家允许胶囊占位，摄像机必须沿用Cinemachine。
+7. 玩家和后续敌人使用已适配的2DArpg代码状态机，不依赖手工Animator Transition连线。03不修改运动、状态机、动画或摄像机。
+8. 当前玩家和物品测试面板已改为中文。本任务在此基础上接入双语，不能另造一套测试业务。
+
+三、代码风格和参考复用
+
+参考仓库：
+- https://github.com/CSduckie/CardGame
+  本机参考：E:/Portfolio-Card-Clone
+- https://github.com/CSduckie/2DArpg-Portfolio
+  本机参考：E:/Portfolio-Clone
+- https://github.com/CSduckie/LiDarProject
+  本机参考：E:/Portfolio-LiDar
+
+必须先读实际源码，再选择适合的部分修改复用。参考目录不存在时再从对应仓库读取，不修改参考仓库本身。
+
+本任务优先参考：
+- CardGame的Assets/Scripts/Items/MonoBehaviour/ItemTemplet.cs：
+  持有数据引用，通过明确方法给TextMeshPro文字赋值。
+- 2DArpg的Assets/Scripts/UI/PlayerUI/PlayerUI.cs：
+  监听数据变化后刷新UI的写法。
+- CardGame的Assets/Scripts/Events/MonoBehaviour/BaseEventListener.cs：
+  OnEnable订阅、OnDisable解除订阅的配对方式。
+- 2DArpg的Assets/Scripts/Dialogue/Dialogue.cs：
+  简单文本数据及TextArea字段的组织方式。
+
+这些参考代码不等于已有完整双语系统。可复用适合的文本刷新、字段组织和订阅方式，不为凑“复用”搬入奖励、对话流程、MonoManager或通用SO事件框架。原代码若有漏取消订阅等问题，应在适配时修正。
+
+代码要求：
+- 新增项目自有C#不写namespace，测试和Editor脚本也一样；正常保留using。
+- 4空格缩进，类和方法大括号另起行；类和方法PascalCase，字段和局部变量camelCase。
+- 使用普通类、MonoBehaviour、ScriptableObject、枚举、List、Dictionary和必要的C#事件。
+- SO沿用...SO、CreateAssetMenu、Header、TextArea等熟悉形式。
+- 中文注释主要解释原因，不逐行翻译代码。
+- 不引入依赖注入、服务定位器、反射注册、通用事件总线、多层接口或复杂泛型框架。
+- 不安装Unity Localization、Addressables等新依赖来完成本次双语需求。
+- 如确需asmdef，按现有工程添加必要引用，rootNamespace为空。
+- 文件夹使用英文，只创建实际使用的目录。
+
+四、实现范围与具体目录
+
+建议用以下四个主要脚本完成核心功能：
+
+Assets/Scripts/Localization/RuntimeData/GameLanguage.cs
+- 中文、英文枚举。
+
+Assets/Scripts/Localization/ScriptableObject/LocalizationTableSO.cs
+- 保存文本条目列表。
+- 每条包含稳定key、中文、英文。
+- 简单的Serializable条目类可以放在同一文件，不必另建一层结构。
+
+Assets/Scripts/Localization/MonoBehaviour/LocalizationManager.cs
+- 当前语言、读取资源、建立查询字典、查找文本、切换语言及变化通知。
+- 使用一个明确的C#事件通知文字需要刷新。
+- 本任务唯一的F10处理入口也放在这里即可。
+- 不额外创建语言服务接口、注册中心或初始化框架。
+
+Assets/Scripts/Localization/MonoBehaviour/LocalizedText.cs
+- 引用TMP_Text和文本key。
+- 显示当前语言，并监听文字变化通知。
+- OnEnable刷新并订阅，OnDisable解除订阅。
+
+配置资源：
+- Assets/Data/Localization/Common/CommonText.asset
+- Assets/Data/Localization/Player/PlayerText.asset
+- Assets/Data/Localization/Items/ItemMessages.asset
+- Assets/Data/Localization/Tests/TestPanelText.asset
+
+其中ItemMessages只放使用结果等提示，物品名称和描述继续维护在现有ItemDataSO中。
+
+预制体：
+- Assets/Prefabs/Localization/LocalizationModule.prefab
+- Assets/Prefabs/UI/Localization/LocalizedText.prefab
+
+程序集：
+- Assets/Scripts/Localization/MyPrecious.Localization.asmdef
+现有测试脚本使用独立程序集，语言模块也使用一个简单asmdef，引用实际需要的Bootstrap、Items、Input System和TMP程序集。Items不反向引用Localization，避免循环依赖。
+
+字体资源：
+- Assets/Art/Fonts/Localization/
+已有合适字体优先复用；仅在需要新增字体资源时使用此目录。
+
+测试与文档：
+- Assets/Tests/Localization/EditMode/
+- Assets/Tests/Localization/PlayMode/
+- Assets/Tests/Localization/TestDoubles/
+- Assets/Scenes/Tests/Localization/LocalizationTest.unity
+- Docs/Architecture/LocalizationSetup.txt
+- Docs/Handoffs/03_Handoff.txt
+
+目录用于组织真实文件，不要求每个测试目录必须创建。
+基础测试仍是Assets/Tests/Base/。
+确有跨模块契约才放Assets/Scripts/Utilities/Contracts/；本任务目前不要求新增公共接口。
+
+允许进行以下有限接入修改：
+- Assets/Tests/Player/TestDoubles/PlayerTestDriver.cs
+- Assets/Tests/Items/TestDoubles/ItemsTestDriver.cs
+- Assets/Scenes/Tests/Player/PlayerTest.unity
+- Assets/Scenes/Tests/Items/ItemsTest.unity
+- Assets/Tests/Player/TestDoubles/MyPrecious.Player.TestDoubles.asmdef
+- Assets/Tests/Items/TestDoubles/MyPrecious.Items.TestDoubles.asmdef
+- Assets/Tests/Player/Editor/PlayerTestSceneBuilder.cs（如需保持重建场景后的语言接线）。
+- 对应Editor测试程序集确有需要的引用。
+
+修改仅用于文字显示、语言引用和LocalizationModule接线，保留测试按钮原有行为。
+不重写ItemManager、PlayerController、生命系统、状态机或输入资源。
+正式场景的集中接线仍由09负责；03交付可直接使用的模块与接入说明。
+
+五、文本数据与查询方式
+
+1. 通用文本
+
+使用稳定key查询，不使用中文原文作为key。
+例如：
+- common.language.chinese
+- common.language.english
+- player.interact.test
+- player.health.value
+- items.use.full_health
+- tests.player.prepare_round
+
+Inspector编辑SO里的中文和英文，不把大量译文散落在OnGUI、按钮回调和业务脚本中。
+
+Manager读取配置后建立Dictionary用于查询。这里只是普通的数据查询，不需要做通用资源管理框架。
+外部通过GetText(key)、SetLanguage(language)、ToggleLanguage()等少量明确方法使用。
+
+带数值的文字可以提供FormatText(key, params object[] args)，使用标准string.Format：
+- 中文：生命 {0}/{1}
+- 英文：Health {0}/{1}
+
+不实现自定义模板语法。若旧说明文档使用了{current}等示例，按本次实际采用的编号占位符更新接入说明。
+文本参数中的物品名称、状态名称也应按当前语言重新取得，不能永久缓存上一种语言的译文。
+
+2. 物品名称和描述
+
+现有ItemDataSO已经有：
+- nameKey、descriptionKey
+- nameZh、nameEn
+- descriptionZh、descriptionEn
+
+这些字段继续作为物品名称和描述的唯一编辑来源。
+LocalizationManager可直接只读引用现有ItemLibrarySO，遍历真实物品配置，把上述key及中英文本加入查询字典。
+这里允许简单、明确的配置依赖，不必为避免引用额外设计适配器或文本提供者接口。
+
+不要再复制一份可编辑的物品名称/描述语言表。
+不要删除现有字段、改变definitionId、重命名稳定key或破坏01的配置校验。
+不调用ItemManager创建实例来获取名称和描述。
+
+3. 错误处理
+
+- 找不到key时显示可识别的[key]，不要空白或直接抛出异常。
+- 当前语言缺译时，允许回退另一种语言，同时给出可定位的提示。
+- 重复key要指出来源资源和key，不允许悄悄覆盖。
+- 占位符错误要可诊断，不能导致玩法操作中断。
+- 相同问题不要每帧刷屏；采用简单的记录方式即可。
+- 用简单校验方法或ContextMenu检查资源，不为此制作复杂编辑器工具。
+
+六、常驻与F10接入
+
+1. 复用00的GameBootstrap常驻入口，把LocalizationModule作为其场景实例的子对象接入。
+不再创建第二套全局入口，不修改GameBootstrap的基础生命周期来容纳本模块。
+
+2. Manager在一次运行开始时初始化为中文。
+再次打开UI、重复初始化或切换场景不能把英文重置成中文。
+初始化应简单、明确且可重复调用；不能依靠碰巧正确的Awake顺序。要保证首次显示和重新启用界面的刷新可靠。
+如使用静态Instance，遵循现有GameBootstrap的清理方式，并考虑关闭Domain Reload后的重新进入Play。
+当前重复Bootstrap采用延迟销毁；语言组件应核对自己属于实际存活的GameBootstrap.Instance，只有有效模块接入输入。新场景UI须绑定存活模块，不能一直引用将被销毁的重复入口下的组件。用明确检查解决，不引入注册框架。
+
+3. 使用现有输入：
+Assets/Input/GameInputActions.inputactions
+动作：Player/ToggleLanguage，绑定F10。
+
+通过InputActionReference引用现有动作，参考PlayerInputReader的写法，只Clone ToggleLanguage作为本模块的运行实例，并自行订阅、Enable和释放；监听一次按下。不要再用另一条键盘轮询同时监听F10。
+整个运行中只有03负责实际切换语言的回调；09只接入这份模块，不再添加另一个F10监听。
+
+不能为了语言切换启停整个Player Action Map，影响移动、跳跃或交互。
+F10应在玩家尚未出发、死亡或背包限制操作时仍可使用。
+核对现有PlayerInputReader怎样管理输入，使语言动作的启停和订阅只由唯一入口负责；如果发现真实冲突，指出具体文件和最小修正，不另造一套输入资源。
+无需实现运行时改键功能。
+
+4. 重复加载测试场景后，不得出现两个有效语言Manager、一次F10切两次或重复事件订阅。
+模块销毁和UI关闭时正确解除自己建立的订阅，不关闭其他模块拥有的输入。
+修改设置或文字查询本身不能递归触发语言变化事件。
+
+七、UI与现有模块怎样接入
+
+1. 静态TMP文字
+在对象上挂LocalizedText，指定TMP_Text和key。
+语言变化后刷新，重新打开时直接读当前语言。
+支持已存在的TMP_Text对象，不要求每个界面重新做成统一预制体。
+
+2. 动态文字
+生命、轮次等由各自界面读取真实数据，再用FormatText显示。
+数据变化和语言变化都调用同一个明确的RefreshText方法。
+03不接管生命、物品归属、使用次数等业务数据。
+
+3. 物品
+名称和描述通过现有nameKey、descriptionKey查询。
+例如医疗包满血使用失败，显示当前语言的“生命值已满”提示，不能因刷新语言再次调用TryUseItem。
+
+4. 交互提示
+读取02实际提供的CurrentPromptKey，接入已有player.interact.test等真实key。
+03不重新实现交互判定，不修改距离、候选目标和玩家控制。
+没有可交互目标时隐藏提示；有目标时根据当前语言显示。
+
+5. 当前两个测试面板
+保持IMGUI/GUILayout结构，直接调用查询和格式化方法绘制，不把整个测试面板重写成TMP。
+标题、操作说明、按钮、状态、布尔值、物品归属和使用结果都要有中英文本。
+用于排错的实例ID、definitionId等技术标识保持原值，标签翻译即可。
+
+面板已有操作结果不能只保存一条最终中文字符串。
+可保存结果key、必要参数或原有结果枚举，在绘制时生成当前语言文字。物品名称等参数保存稳定标识，数字保留结果发生时的快照；不要把已翻译的参数永久存成字符串，也不必设计通用文本令牌结构。
+切换语言后，上一条“医疗包：生命值已满”等结果也应同步切换，不能重新执行使用物品。
+
+6. 字体
+TMP预制体明确引用能显示中文和英文的字体资源或必要fallback。
+优先复用项目现有可用字体；新引入字体保留许可证和来源。
+不能只在当前Windows机器上碰巧有字体，而构建后出现方框。
+TMP字体不会自动改变IMGUI字体，两种显示入口分别检查中文标点、缺字、长英文按钮和多行说明；保持现有面板功能和布局可用。
+
+八、测试场景与验收标准
+
+建立LocalizationTest.unity，展示：
+- 一组静态TMP文字。
+- 一条带数字的动态文字。
+- 真实ItemDataSO中的名称和描述。
+- F10切换提示和当前语言。
+- 必要的交互或使用结果接入示例。
+
+真实玩家和物品集成主要在既有PlayerTest、ItemsTest中验证，不能用测试替身冒充已完成的真实接入。
+04–09尚未交付的界面不提前实现，也不声称已经完成它们的联测。
+
+以下全部作为验收项：
+
+1. 全新进入Play默认中文；F10一次切英文，再按切回中文；按住不连续切换。
+2. 当前UI立即刷新，新打开UI显示当前语言；重复启用不会累计订阅。
+3. 本次运行切场景后保持语言；退出并重新运行恢复中文。
+4. 玩家不能主动操作时仍可切换语言，且不会因F10改变输入锁、生命或轮次。
+5. 静态文字、动态数值、真实物品名称/描述、交互提示及已有操作结果正确切换。
+6. 玩家和物品两个测试面板默认中文，并能实际切到英文；原按钮操作结果保持正确。
+7. 物品译文只维护在原ItemDataSO中；修改配置后重新运行可正确读取，不需要同步维护第二份表。
+8. 在受控场景下比较切换前后真实业务数据：物品身份、归属、使用次数、生命和轮次不被语言逻辑修改。正常运行的物理和时间仍继续，不把自然变化误判成语言副作用。
+9. 缺key、缺译、重复key、错误占位符有可定位反馈，不刷屏、不导致玩法异常。
+10. 中文无方框，英文不过度截断；实际Game视图检查TMP示例及两个现有测试面板。
+11. 只有一个有效F10入口，场景重载后仍一次按下切换一次。
+12. 新增代码无namespace，无多余框架；文件和资源位于指定目录，已有GUID与引用保留。
+13. 新增少量有价值的测试，重点覆盖查询/回退、重复key、语言初始化与切换，以及不改变业务数据；不要为每句译文写重复测试。
+14. 编译检查和实际运行验证完成。工程已有问题、未执行的检查、尚未接入的界面分别说明，不将静态检查写成真实运行通过。
+
+九、交付与答辩说明
+
+在LocalizationSetup.txt写清：
+- 每个脚本和配置资源的职责。
+- 如何增加一条中英文字。
+- 如何接入一个TMP文字和现有IMGUI面板。
+- 如何显示带数值的文字。
+- 如何通过ItemDataSO编辑物品名称和描述。
+- LocalizationModule挂在哪里、F10在哪里监听。
+- 字体引用与资源配置方法。
+- 后续04–09如何复用；明确09不能重复实现F10。
+- 当前关键公开方法与事件，保持实际文档和代码一致。
+
+在03_Handoff.txt写清：
+- 新增和修改文件。
+- 实际复用或参考的仓库、文件、核实版本、改动原因。
+- 运行验证和测试结果，明确未完成或受阻项目。
+- 后续接入事项，不虚报整个游戏已完成双语。
+
+最后用我能在答辩时说明的语言解释：
+“SO保存两种语言的文本，Dictionary按key查询；F10改变当前语言并通知界面刷新。物品译文来自既有物品配置，语言模块只读数据，不执行玩法操作。”
+
+完成当前任务即可，不顺带制作背包、仓库、搜刮、敌人、流程或存档系统。
+

@@ -1,0 +1,314 @@
+// Unity MCP execute_code method body. Docs only; do not import into Assets.
+// Requires the compiled 07F LootRuntimeManager.ClosedRound public property.
+// Uses the normal execute_code imports (UnityEngine, UnityEditor, System.Linq).
+// No game actions, input injection, screenshots, reflection or gameplay writes.
+if (!UnityEditor.EditorApplication.isPlaying || Screen.width != 1920 || Screen.height != 1080)
+    throw new System.Exception("Ordinary Play at 1920x1080 is required.");
+
+string runningKey = "07F.ObserverRunning";
+string cancelKey = "07F.ObserverCancel";
+string phaseKey = "07F.ObserverPhase";
+string outputKey = "07F.ObserverOutput";
+if (UnityEditor.SessionState.GetBool(runningKey, false))
+    throw new System.Exception("07F observer already running. Request cancellation and wait for ObserverFinished.json.");
+
+string startedUtc = System.DateTime.UtcNow.ToString("o");
+string runId = System.DateTime.UtcNow.ToString("yyyyMMddTHHmmssfffZ");
+string output = "E:/DD451/Docs/Verification/GameFlow/DeathReturn/OrdinaryPlay/Observer-" + runId;
+System.IO.Directory.CreateDirectory(output);
+double started = UnityEditor.EditorApplication.timeSinceStartup;
+bool originalBackground = Application.runInBackground;
+var samples = new System.Collections.Generic.List<object>();
+var inventories = new System.Collections.Generic.List<object>();
+int lastFrame = -1;
+int missedFrames = 0;
+int repeatedEditorTicks = 0;
+int inventoryRevision = -1;
+string previousInventoryJson = null;
+bool finished = false;
+string observerError = null;
+UnityEditor.EditorApplication.CallbackFunction observer = null;
+UnityEditor.AssemblyReloadEvents.AssemblyReloadCallback beforeReload = null;
+System.Action<UnityEditor.PlayModeStateChange> playModeChanged = null;
+System.Action<string> finish = null;
+
+finish = reason =>
+{
+    if (finished) return;
+    finished = true;
+    // Unsubscribe and restore first, even if an evidence file cannot be written.
+    UnityEditor.EditorApplication.update -= observer;
+    UnityEditor.AssemblyReloadEvents.beforeAssemblyReload -= beforeReload;
+    UnityEditor.EditorApplication.playModeStateChanged -= playModeChanged;
+    Application.runInBackground = originalBackground;
+    UnityEditor.SessionState.SetBool(runningKey, false);
+    UnityEditor.SessionState.SetBool(cancelKey, false);
+    string samplesWriteError = null;
+    try
+    {
+        var result = new
+        {
+            schema = "07F.readonly-observer.v1",
+            runId,
+            startedUtc,
+            finishedUtc = System.DateTime.UtcNow.ToString("o"),
+            reason,
+            observerError,
+            sampleCount = samples.Count,
+            inventoryRevisionCount = inventories.Count,
+            missedGameFrames = missedFrames,
+            note = "Editor-update sampling, deduplicated by Time.frameCount; missing frames are counted. Inventory revisions contain value snapshots, not live references. This observer does not establish native input evidence.",
+            samples,
+            inventories
+        };
+        System.IO.File.WriteAllText(output + "/Samples.json",
+            Newtonsoft.Json.JsonConvert.SerializeObject(result, Newtonsoft.Json.Formatting.None));
+    }
+    catch (System.Exception error)
+    {
+        samplesWriteError = error.ToString();
+    }
+    var metadata = new
+    {
+        schema = "07F.readonly-observer.finished.v1",
+        runId,
+        startedUtc,
+        finishedUtc = System.DateTime.UtcNow.ToString("o"),
+        elapsedEditorSeconds = UnityEditor.EditorApplication.timeSinceStartup - started,
+        limitSeconds = 180,
+        reason,
+        observerError,
+        samplesWriteError,
+        sampleCount = samples.Count,
+        inventoryRevisionCount = inventories.Count,
+        missedGameFrames = missedFrames,
+        repeatedEditorTicksIgnored = repeatedEditorTicks,
+        callbacksRemoved = true,
+        originalRunInBackground = originalBackground,
+        actualRunInBackground = Application.runInBackground,
+        backgroundRestored = Application.runInBackground == originalBackground,
+        runningFlag = UnityEditor.SessionState.GetBool(runningKey, false),
+        play = UnityEditor.EditorApplication.isPlaying,
+        cancelKey,
+        output,
+        gameActionsPerformed = false,
+        screenshotsTaken = false
+    };
+    try
+    {
+        System.IO.File.WriteAllText(output + "/ObserverFinished.json",
+            Newtonsoft.Json.JsonConvert.SerializeObject(metadata, Newtonsoft.Json.Formatting.Indented));
+    }
+    catch (System.Exception error)
+    {
+        // Cleanup already completed; do not retain a failing callback to retry disk writes.
+        Debug.LogError("07F observer evidence write failed after cleanup: " + error.Message);
+    }
+};
+
+observer = () =>
+{
+    if (finished) return;
+    try
+    {
+        if (UnityEditor.SessionState.GetBool(cancelKey, false)) { finish("cancelled"); return; }
+        if (!UnityEditor.EditorApplication.isPlaying) { finish("play_stopped"); return; }
+        if (UnityEditor.EditorApplication.timeSinceStartup - started >= 180d) { finish("time_limit"); return; }
+        int frame = Time.frameCount;
+        if (frame == lastFrame) { repeatedEditorTicks++; return; }
+        if (lastFrame >= 0 && frame > lastFrame + 1) missedFrames += frame - lastFrame - 1;
+        lastFrame = frame;
+
+        var flow = UnityEngine.Object.FindFirstObjectByType<GameFlowManager>();
+        var observedPlayer = flow != null ? flow.Player : null;
+        var observedHealth = observedPlayer != null ? observedPlayer.health : null;
+        var itemRows = new System.Collections.Generic.List<object>();
+        var backpackRows = new System.Collections.Generic.List<object>();
+        var warehouseRows = new System.Collections.Generic.List<object>();
+        var remainingIds = new System.Collections.Generic.List<string>();
+        long retainedEv = 0;
+        if (flow != null && flow.Items != null)
+        {
+            foreach (var item in flow.Items.GetInstances().OrderBy(value => value.InstanceId))
+            {
+                if (item == null) continue;
+                int ev = item.Definition != null ? item.Definition.ev : 0;
+                if (item.IsRetained && (item.Owner == ItemOwner.Backpack || item.Owner == ItemOwner.Storage
+                    || item.Owner == ItemOwner.World || item.Owner == ItemOwner.Container))
+                    retainedEv += System.Math.Max(0, ev);
+                itemRows.Add(new
+                {
+                    id = item.InstanceId,
+                    definition = item.DefinitionId,
+                    unique = item.UniqueId,
+                    owner = item.Owner.ToString(),
+                    container = item.ContainerId,
+                    source = item.SourceId,
+                    origin = item.OriginalSpawnPointId,
+                    retained = item.IsRetained,
+                    ev,
+                    useRound = item.UseRound,
+                    uses = item.UsesThisRound,
+                    recoveryRound = item.RecoveryRound,
+                    pendingRecovery = item.IsPendingRecovery,
+                    loss = item.LastLossReason.HasValue ? item.LastLossReason.Value.ToString() : null,
+                    spawnClaimed = item.SpawnClaimed
+                });
+            }
+        }
+        if (flow != null && flow.Backpack != null)
+            foreach (var placement in flow.Backpack.GetPlacements().OrderBy(value => value.InstanceId))
+                backpackRows.Add(new { id = placement.InstanceId, x = placement.X, y = placement.Y,
+                    rotated = placement.Rotated, width = placement.Width, height = placement.Height });
+        if (flow != null && flow.Warehouse != null)
+            foreach (var placement in flow.Warehouse.GetPlacements().OrderBy(value => value.InstanceId))
+                warehouseRows.Add(new { id = placement.InstanceId, x = placement.X, y = placement.Y,
+                    rotated = placement.Rotated, width = placement.Width, height = placement.Height });
+        if (flow != null && flow.Loot != null)
+            foreach (var item in flow.Loot.GetRemainingWorldItems().OrderBy(value => value.InstanceId))
+                remainingIds.Add(item.InstanceId);
+
+        var inventory = new
+        {
+            items = itemRows,
+            backpack = backpackRows,
+            backpackWidth = flow != null && flow.Backpack != null ? flow.Backpack.Width : 0,
+            backpackHeight = flow != null && flow.Backpack != null ? flow.Backpack.Height : 0,
+            warehouse = warehouseRows,
+            warehouseWidth = flow != null && flow.Warehouse != null ? flow.Warehouse.Width : 0,
+            warehouseHeight = flow != null && flow.Warehouse != null ? flow.Warehouse.Height : 0,
+            upgradeActivated = flow != null && flow.Shelter != null && flow.Shelter.IsUpgradeActivated,
+            retainedEvFromItems = (int)System.Math.Min(int.MaxValue, retainedEv),
+            remainingWorldItemIds = remainingIds
+        };
+        string inventoryJson = Newtonsoft.Json.JsonConvert.SerializeObject(inventory, Newtonsoft.Json.Formatting.None);
+        if (inventoryJson != previousInventoryJson)
+        {
+            inventoryRevision++;
+            previousInventoryJson = inventoryJson;
+            inventories.Add(new { revision = inventoryRevision, frame, utc = System.DateTime.UtcNow.ToString("o"), data = inventory });
+        }
+
+        var droneRows = new System.Collections.Generic.List<object>();
+        var sceneRows = new System.Collections.Generic.List<object>();
+        for (int sceneIndex = 0; sceneIndex < UnityEngine.SceneManagement.SceneManager.sceneCount; sceneIndex++)
+        {
+            var scene = UnityEngine.SceneManagement.SceneManager.GetSceneAt(sceneIndex);
+            sceneRows.Add(new { handle = scene.handle, path = scene.path, loaded = scene.isLoaded });
+            if (!scene.isLoaded) continue;
+            foreach (var root in scene.GetRootGameObjects())
+                foreach (var drone in root.GetComponentsInChildren<DroneController>(true))
+                {
+                    Vector3 position = drone.Body != null ? drone.Body.position : drone.transform.position;
+                    droneRows.Add(new
+                    {
+                        id = drone.GetInstanceID(),
+                        name = drone.name,
+                        scene = scene.path,
+                        sceneHandle = scene.handle,
+                        active = drone.isActiveAndEnabled,
+                        round = drone.CurrentRound,
+                        state = drone.CurrentState.ToString(),
+                        exploded = drone.HasExploded,
+                        running = drone.IsRunning,
+                        position = new[] { position.x, position.y, position.z }
+                    });
+                }
+        }
+        var backpackUis = UnityEngine.Object.FindObjectsByType<BackpackUIController>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        var lootUis = UnityEngine.Object.FindObjectsByType<LootUIController>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        var backpackUiRows = backpackUis.OrderBy(value => value.GetInstanceID()).Select(value => new
+        {
+            id = value.GetInstanceID(), scene = value.gameObject.scene.path, active = value.isActiveAndEnabled,
+            open = value.IsOpen, dragging = value.IsDragging, externalPreview = value.IsExternalPreview,
+            dragItem = value.DragInstanceId, dragToken = value.DragToken
+        }).ToArray();
+        var lootUiRows = lootUis.OrderBy(value => value.GetInstanceID()).Select(value => new
+        {
+            id = value.GetInstanceID(), scene = value.gameObject.scene.path, active = value.isActiveAndEnabled,
+            open = value.IsOpen, session = value.SessionToken,
+            source = value.Source != null ? value.Source.SourceId : null,
+            searchEntry = value.Source != null ? value.Source.SearchEntryId : null,
+            searchElapsed = value.Source != null ? value.Source.SearchElapsed : 0f
+        }).ToArray();
+        var activeCameras = UnityEngine.Object.FindObjectsByType<Camera>(FindObjectsSortMode.None);
+        var activeListeners = UnityEngine.Object.FindObjectsByType<AudioListener>(FindObjectsSortMode.None);
+        var activeEvents = UnityEngine.Object.FindObjectsByType<UnityEngine.EventSystems.EventSystem>(FindObjectsSortMode.None);
+        Vector3 playerPosition = observedPlayer != null ? observedPlayer.Position : Vector3.zero;
+        int preparedRound = flow != null && flow.Loot != null ? flow.Loot.PreparedRound : 0;
+        int closedRound = flow != null && flow.Loot != null ? flow.Loot.ClosedRound : 0;
+        samples.Add(new
+        {
+            frame,
+            gameTime = Time.time,
+            editorElapsed = UnityEditor.EditorApplication.timeSinceStartup - started,
+            phase = UnityEditor.SessionState.GetString(phaseKey, string.Empty),
+            stage = flow != null ? flow.Stage.ToString() : "flow_missing",
+            currentRound = flow != null ? (int?)flow.CurrentRound : null,
+            settledRound = flow != null ? (int?)flow.SettledRound : null,
+            feedback = flow != null ? flow.FeedbackKey : null,
+            error = flow != null ? flow.LastError : null,
+            playerId = observedPlayer != null ? (int?)observedPlayer.GetInstanceID() : null,
+            playerRound = observedHealth != null ? (int?)observedHealth.CurrentRound : null,
+            hp = observedHealth != null ? (int?)observedHealth.CurrentHealth : null,
+            maxHp = observedHealth != null ? (int?)observedHealth.MaxHealth : null,
+            dead = observedPlayer != null && observedPlayer.IsDead,
+            locked = observedPlayer != null && observedPlayer.IsSceneTransitionBlocked,
+            canAct = observedPlayer != null && observedPlayer.CanAct,
+            playerScene = observedPlayer != null ? observedPlayer.gameObject.scene.path : null,
+            playerSceneHandle = observedPlayer != null ? (int?)observedPlayer.gameObject.scene.handle : null,
+            playerPosition = observedPlayer != null ? new[] { playerPosition.x, playerPosition.y, playerPosition.z } : null,
+            ev = flow != null && flow.Shelter != null ? (int?)flow.Shelter.CurrentEv : null,
+            inventoryRevision,
+            backpackCount = backpackRows.Count,
+            warehouseCount = warehouseRows.Count,
+            upgradeActivated = flow != null && flow.Shelter != null && flow.Shelter.IsUpgradeActivated,
+            warehouseManagementAllowed = flow != null && flow.Warehouse != null && flow.Warehouse.IsManagementAllowed,
+            transfersBusy = flow != null && flow.Transfers != null && flow.Transfers.IsBusy,
+            lootPreparedRound = preparedRound,
+            lootClosedRound = closedRound,
+            lootClosed = preparedRound > 0 && closedRound == preparedRound,
+            lootActive = flow != null && flow.Loot != null && flow.Loot.IsExplorationActive,
+            lootRemainingCount = remainingIds.Count,
+            backpackUi = backpackUiRows,
+            lootUi = lootUiRows,
+            drones = droneRows,
+            scenes = sceneRows,
+            playerCount = UnityEngine.Object.FindObjectsByType<PlayerController>(FindObjectsInactive.Include, FindObjectsSortMode.None).Length,
+            cameraCount = activeCameras.Count(value => value.isActiveAndEnabled),
+            audioListenerCount = activeListeners.Count(value => value.isActiveAndEnabled),
+            eventSystemCount = activeEvents.Count(value => value.isActiveAndEnabled),
+            width = Screen.width,
+            height = Screen.height
+        });
+    }
+    catch (System.Exception error)
+    {
+        observerError = error.ToString();
+        finish("observer_error");
+    }
+};
+beforeReload = () => finish("assembly_reload");
+playModeChanged = state =>
+{
+    if (state == UnityEditor.PlayModeStateChange.ExitingPlayMode || state == UnityEditor.PlayModeStateChange.EnteredEditMode)
+        finish("play_stopped");
+};
+
+System.IO.File.WriteAllText(output + "/ObserverStarted.json", Newtonsoft.Json.JsonConvert.SerializeObject(new
+{
+    runId, startedUtc, output, limitSeconds = 180, originalRunInBackground = originalBackground,
+    runningKey, cancelKey, phaseKey,
+    cancelInstruction = "SessionState.SetBool(\"07F.ObserverCancel\", true); then wait for ObserverFinished.json.",
+    purpose = "Read-only evidence sampler; no gameplay actions or native-input claim."
+}, Newtonsoft.Json.Formatting.Indented));
+Application.runInBackground = true;
+UnityEditor.SessionState.SetBool(cancelKey, false);
+UnityEditor.SessionState.SetBool(runningKey, true);
+UnityEditor.SessionState.SetString(outputKey, output);
+UnityEditor.EditorApplication.update += observer;
+UnityEditor.AssemblyReloadEvents.beforeAssemblyReload += beforeReload;
+UnityEditor.EditorApplication.playModeStateChanged += playModeChanged;
+observer();
+if (finished) return "07F observer stopped during first sample; inspect " + output + "/ObserverFinished.json.";
+return "07F read-only observer started: " + output + "; cancel with SessionState.SetBool(\"07F.ObserverCancel\", true). Auto-removes callbacks after 180 seconds, exit Play, or assembly reload.";

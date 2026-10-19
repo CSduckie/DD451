@@ -1,0 +1,40 @@
+{
+  "time": "2026-10-19T05:41:26.3999582Z",
+  "scenes": [
+    {
+      "path": "Assets/Scenes/Tests/Enemy/EnemyTest.unity",
+      "dirty": false
+    }
+  ],
+  "playing": false,
+  "paused": false,
+  "changing": false,
+  "compiling": false,
+  "updating": false,
+  "prefabStage": null,
+  "timeScale": 1.0,
+  "background": false,
+  "playerBackground": false,
+  "width": 1920,
+  "height": 1080,
+  "sceneMissingScripts": 0,
+  "prefabMissingScripts": 0,
+  "alertEnum": 5,
+  "fill": 2.0,
+  "decay": 2.0,
+  "shader": "MyPrecious/DroneVision",
+  "materialGuid": "3791f5303dc69fa479f6b053e4a02622",
+  "fillMaterial": 0.0,
+  "cull": 2.0,
+  "prefabLight": {
+    "name": "Point Light",
+    "range": 0.3,
+    "intensity": 8.0,
+    "position": "(0.000, 0.135, -0.326)"
+  },
+  "rotors": 4,
+  "visionOrigin": "VisionOrigin",
+  "hasAlertText": true,
+  "probeRunning": false,
+  "autoRefreshHeld": false
+}

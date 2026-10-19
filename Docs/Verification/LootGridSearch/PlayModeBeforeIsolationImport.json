@@ -1,0 +1,18 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"success\":false,\"message\":null,\"error\":\"Unity plugin session 417f95d6-8d1e-4051-8921-67787d42cf4a disconnected while awaiting command_result\",\"data\":null,\"hint\":\"retry\"}"
+    }
+  ],
+  "structuredContent": {
+    "result": {
+      "success": false,
+      "message": null,
+      "error": "Unity plugin session 417f95d6-8d1e-4051-8921-67787d42cf4a disconnected while awaiting command_result",
+      "data": null,
+      "hint": "retry"
+    }
+  },
+  "isError": false
+}

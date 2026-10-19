@@ -1,0 +1,260 @@
+	Integration of assets:  0.062 ms
+	Thread Wait Time:       57.891 ms
+	Total Operation Time:   95.714 ms
+D3D12Fence::Wait(2842810) error: got 2842809. May cause crash or visual artifacts
+D3D12Fence::Wait(2842813) error: got 2842812. May cause crash or visual artifacts
+D3D12Fence::Wait(2842814) error: got 2842813. May cause crash or visual artifacts
+D3D12Fence::Wait(2842819) error: got 2842818. May cause crash or visual artifacts
+D3D12Fence::Wait(2842822) error: got 2842821. May cause crash or visual artifacts
+D3D12Fence::Wait(2842828) error: got 2842827. May cause crash or visual artifacts
+D3D12Fence::Wait(2842829) error: got 2842828. May cause crash or visual artifacts
+D3D12Fence::Wait(2842830) error: got 2842829. May cause crash or visual artifacts
+D3D12Fence::Wait(2842833) error: got 2842832. May cause crash or visual artifacts
+D3D12Fence::Wait(2842834) error: got 2842833. May cause crash or visual artifacts
+D3D12Fence::Wait(2842838) error: got 2842837. May cause crash or visual artifacts
+D3D12Fence::Wait(2842847) error: got 2842846. May cause crash or visual artifacts
+D3D12Fence::Wait(2842850) error: got 2842849. May cause crash or visual artifacts
+D3D12Fence::Wait(2842851) error: got 2842850. May cause crash or visual artifacts
+D3D12Fence::Wait(2842856) error: got 2842855. May cause crash or visual artifacts
+Loaded scene 'Assets/Scenes/Ruins.unity'
+	Deserialize:            5.832 ms
+	Integration:            21.884 ms
+	Integration of assets:  0.103 ms
+	Thread Wait Time:       14.628 ms
+	Total Operation Time:   42.447 ms
+D3D12Fence::Wait(2842868) error: got 2842867. May cause crash or visual artifacts
+D3D12Fence::Wait(2842869) error: got 2842868. May cause crash or visual artifacts
+D3D12Fence::Wait(2842874) error: got 2842873. May cause crash or visual artifacts
+D3D12Fence::Wait(2842877) error: got 2842876. May cause crash or visual artifacts
+D3D12Fence::Wait(2842879) error: got 2842878. May cause crash or visual artifacts
+D3D12Fence::Wait(2842880) error: got 2842879. May cause crash or visual artifacts
+D3D12Fence::Wait(2842883) error: got 2842882. May cause crash or visual artifacts
+D3D12Fence::Wait(2842886) error: got 2842885. May cause crash or visual artifacts
+D3D12Fence::Wait(2842905) error: got 2842904. May cause crash or visual artifacts
+D3D12Fence::Wait(2842916) error: got 2842915. May cause crash or visual artifacts
+D3D12Fence::Wait(2842917) error: got 2842916. May cause crash or visual artifacts
+D3D12Fence::Wait(2842920) error: got 2842919. May cause crash or visual artifacts
+D3D12Fence::Wait(2842921) error: got 2842920. May cause crash or visual artifacts
+D3D12Fence::Wait(2842924) error: got 2842923. May cause crash or visual artifacts
+D3D12Fence::Wait(2842925) error: got 2842924. May cause crash or visual artifacts
+D3D12Fence::Wait(2842940) error: got 2842939. May cause crash or visual artifacts
+D3D12Fence::Wait(2842941) error: got 2842940. May cause crash or visual artifacts
+D3D12Fence::Wait(2842942) error: got 2842941. May cause crash or visual artifacts
+D3D12Fence::Wait(2842945) error: got 2842944. May cause crash or visual artifacts
+D3D12Fence::Wait(2842946) error: got 2842945. May cause crash or visual artifacts
+D3D12Fence::Wait(2842947) error: got 2842946. May cause crash or visual artifacts
+D3D12Fence::Wait(2842951) error: got 2842950. May cause crash or visual artifacts
+D3D12Fence::Wait(2842959) error: got 2842958. May cause crash or visual artifacts
+D3D12Fence::Wait(2842960) error: got 2842959. May cause crash or visual artifacts
+D3D12Fence::Wait(2842962) error: got 2842961. May cause crash or visual artifacts
+[ScriptCompilation] Requested script compilation because: Assetdatabase observed changes in script compilation related files
+AssetDatabase: script compilation time: 0.000808s
+Refreshing native plugins compatible for Editor in 1.14 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Asset Pipeline Refresh (id=2fcf62023e32dd649915c2218ba1ee75): Total: 0.063 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=dfaaa38b14980ad4099ba4248ef3fe59): Total: 0.015 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Loaded scene 'Assets/Scenes/Bootstrap.unity'
+	Deserialize:            0.782 ms
+	Integration:            2.776 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       140.245 ms
+	Total Operation Time:   143.806 ms
+Loaded scene 'Assets/Scenes/Shelter.unity'
+	Deserialize:            2.697 ms
+	Integration:            6.552 ms
+	Integration of assets:  0.003 ms
+	Thread Wait Time:       24.795 ms
+	Total Operation Time:   34.047 ms
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping application/grpc -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/Ping'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/Ping application/grpc - - 200 - application/grpc 0.0697ms
+Starting: E:\6000.2.12f1\Editor\Data\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
+WorkingDir: E:/DD451
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+      Request starting HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors application/grpc -
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+      Executing endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
+info: Unity.ILPP.Runner.PostProcessingAssemblyLoadContext[0]
+      Current configuration matches the requested one, skipping
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+      Executed endpoint 'gRPC - /UnityILPP.PostProcessing/ConfigurePostProcessors'
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+      Request finished HTTP/2 POST http://ilpp/UnityILPP.PostProcessing/ConfigurePostProcessors application/grpc - - 200 - application/grpc 1.8264ms
+ExitCode: 0 Duration: 0s558ms
+[ 975/1288  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+*** Tundra build success (0.52 seconds), 1 items updated, 1288 evaluated
+Loaded scene 'Assets/Scenes/Ruins.unity'
+	Deserialize:            2.829 ms
+	Integration:            6.213 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       12.599 ms
+	Total Operation Time:   21.643 ms
+Reloading assemblies after finishing script compilation.
+Reloading assemblies after forced synchronous recompile.
+Begin MonoManager ReloadAssembly
+Total cache size 85476344
+Total cache size after purge 85476344, took 00:00:00.1629374
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  2.074 seconds
+Refreshing native plugins compatible for Editor in 0.99 ms, found 3 plugins.
+The referenced script (Unknown) on this Behaviour is missing!
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Assembly reference Packages/com.unity.cinemachine/Editor/Samples/ExposeHDRPInternals/HDRP-Editor-ref.asmref has no target assembly definition
+[MODES] ModeService[none].Initialize
+[MODES] ModeService[none].LoadModes
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Recovered from domain reload - reapplying No Throttling.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+MCPForUnity.Editor.Helpers.McpLog:Info (string,bool) (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Helpers/McpLog.cs:40)
+MCPForUnity.Editor.Services.TestRunnerNoThrottle:.cctor () (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Services/TestRunnerNoThrottle.cs:53)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Helpers/McpLog.cs Line: 40)
+
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Applied No Throttling for test run.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+MCPForUnity.Editor.Helpers.McpLog:Info (string,bool) (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Helpers/McpLog.cs:40)
+MCPForUnity.Editor.Services.TestRunnerNoThrottle:ApplyNoThrottling () (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Services/TestRunnerNoThrottle.cs:101)
+MCPForUnity.Editor.Services.TestRunnerNoThrottle:.cctor () (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Services/TestRunnerNoThrottle.cs:54)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Helpers/McpLog.cs Line: 40)
+
+[Licensing::Client] Successfully resolved entitlement details
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in 15.350 seconds
+Domain Reload Profiling: 17420ms
+	BeginReloadAssembly (1766ms)
+		ExecutionOrderSort (4ms)
+		DisableScriptedObjects (216ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (2ms)
+		CreateAndSetChildDomain (280ms)
+	RebuildCommonClasses (34ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (35ms)
+	LoadAllAssembliesAndSetupDomain (224ms)
+		LoadAssemblies (140ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (169ms)
+			TypeCache.Refresh (7ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (145ms)
+			ResolveRequiredComponents (14ms)
+	FinalizeReload (15350ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (7633ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (157ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (2259ms)
+			ProcessInitializeOnLoadAttributes (4647ms)
+			ProcessInitializeOnLoadMethodAttributes (560ms)
+			AfterProcessingInitializeOnLoad (7ms)
+			EditorAssembliesLoaded (1ms)
+		ExecutionOrderSort2 (3ms)
+		AwakeInstancesAfterBackupRestoration (5361ms)
+Asset Pipeline Refresh (id=45833adc7c5dc6744bf60a3cdd2f5b41): Total: 18.271 seconds - Initiated by StopAssetImportingV2(ForceSynchronousImport | ForceDomainReload)
+	Summary:
+		Imports: total=0 (actual=0, local cache=0, cache server=0)
+		Asset DB Process Time: managed=0 ms, native=15706 ms
+		Asset DB Callback time: managed=466 ms, native=0 ms
+		Scripting: domain reloads=1, domain reload time=2096 ms, compile time=1 ms, other=0 ms
+		Project Asset Count: scripts=1535, non-scripts=2511
+		Asset File Changes: new=0, changed=0, moved=0, deleted=0
+		Scan Filter Count: 0
+	InvokeCustomDependenciesCallbacks: 0.001ms
+	InvokePackagesCallback: 4.194ms
+	ApplyChangesToAssetFolders: 0.594ms
+	Scan: 0.001ms
+	OnSourceAssetsModified: 0.001ms
+	CategorizeAssetsWithTransientArtifact: 0.003ms
+	ProcessAssetsWithTransientArtifactChanges: 5.119ms
+	CategorizeAssets: 42.988ms
+	ImportOutOfDateAssets: 15358.300ms (15353.751ms without children)
+		CompileScripts: 1.265ms
+		CollectScriptTypesHashes: 0.595ms
+		ReloadNativeAssets: 1.387ms
+		UnloadImportedAssets: 0.095ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 0.538ms
+		InitializingProgressBar: 0.001ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.001ms
+		OnDemandSchedulerStart: 0.669ms
+	PostProcessAllAssets: 466.908ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.470ms
+	UnloadStreamsBegin: 0.003ms
+	PersistCurrentRevisions: 0.167ms
+	UnloadStreamsEnd: 0.003ms
+	GenerateScriptTypeHashes: 4.025ms
+	Untracked: 2392.697ms
+
+NullReferenceException: Object reference not set to an instance of an object
+  at UnityEditor.TestTools.TestRunner.TestRun.Tasks.PlayModeRunTask+<Execute>d__1.MoveNext () [0x001b1] in .\Library\PackageCache\com.unity.test-framework@d97b7cd61ded\UnityEditor.TestRunner\TestRun\Tasks\PlayModeRunTask.cs:52 
+  at UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner.ExecuteStep () [0x0016a] in .\Library\PackageCache\com.unity.test-framework@d97b7cd61ded\UnityEditor.TestRunner\TestRun\TestJobRunner.cs:173 
+UnityEngine.DebugLogHandler:Internal_LogException_Injected(Exception, IntPtr)
+UnityEngine.DebugLogHandler:Internal_LogException(Exception, Object)
+UnityEngine.DebugLogHandler:LogException(Exception, Object)
+UnityEngine.Logger:LogException(Exception, Object)
+UnityEngine.Debug:LogException(Exception)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep() (at .\Library\PackageCache\com.unity.test-framework@d97b7cd61ded\UnityEditor.TestRunner\TestRun\TestJobRunner.cs:216)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback() (at .\Library\PackageCache\com.unity.test-framework@d97b7cd61ded\UnityEditor.TestRunner\TestRun\TestJobRunner.cs:108)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions()
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@d97b7cd61ded/UnityEditor.TestRunner/TestRun/Tasks/PlayModeRunTask.cs Line: 52)
+
+An unexpected error happened while running tests.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.TestTools.TestRunner.Api.CallbacksDelegator:RunFailed (string) (at ./Library/PackageCache/com.unity.test-framework@d97b7cd61ded/UnityEditor.TestRunner/Api/CallbacksDelegator.cs:67)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@d97b7cd61ded/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:217)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@d97b7cd61ded/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:108)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@d97b7cd61ded/UnityEditor.TestRunner/Api/CallbacksDelegator.cs Line: 67)
+
+Too many instant steps in test execution mode: Error. Current task ExitPlayModeTask.
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@d97b7cd61ded/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:119)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: ./Library/PackageCache/com.unity.test-framework@d97b7cd61ded/UnityEditor.TestRunner/TestRun/TestJobRunner.cs Line: 119)
+
+Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
+Loaded scene 'Temp/__Backupscenes/0.backup'
+	Deserialize:            0.751 ms
+	Integration:            190.191 ms
+	Integration of assets:  0.002 ms
+	Thread Wait Time:       0.008 ms
+	Total Operation Time:   190.952 ms
+Unloading 801 unused Assets / (2.5 MB). Loaded Objects now: 32356.
+Memory consumption went from 0.61 GB to 0.61 GB.
+Total: 27.876400 ms (FindLiveObjects: 2.204000 ms CreateObjectMapping: 0.445200 ms MarkObjects: 24.383100 ms  DeleteObjects: 0.843100 ms)
+
+[Licensing::Client] Successfully resolved entitlement details

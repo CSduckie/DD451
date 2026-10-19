@@ -1,0 +1,82 @@
+黑夜默认环境与画面发灰：只读工程审计
+日期：2026-10-19
+审计范围：E:/DD451；磁盘中的 Assets/Scenes、实际相机 Prefab、URP 资产、Volume、环境材质与 Editor 场景搭建脚本。
+边界：未调用 Unity、未读取 Editor 当前运行状态、未改 Assets/ProjectSettings。以下是保存到磁盘的配置证据，不是当前 Game 画面实测，也不证明发灰的最终根因。
+
+结论
+1. Assets/Scenes 共 12 个场景，只有 Shelter 已绑定 ShelterNightSkybox；其余 11 个仍绑定 Unity 内置默认天空盒。统一黑夜目前尚未完成。
+2. 正式 Shelter/Ruins 继承 PlayerCamera：ClearFlags=Skybox，后处理关闭。全部 12 个场景 Fog=0。现有证据不能把正式游戏画面发灰归因于 Bloom、色调映射或雾。
+3. 工程没有现成的新场景黑夜初始化脚本或项目 Scene Template。只更改当前场景不会覆盖之后新建的场景；部分旧 Builder 还明确创建 SolidColor 相机。
+4. 建议先统一场景天空盒和必要的世界相机 ClearFlags，再由唯一 Editor 操作者用同机位 Game 帧确认灰感是否仍存在。不要为了“去灰”先整体改 Gamma/Linear、HDR、后处理开关或相机跟随。
+
+一、渲染管线与后处理
+- Unity 6000.2.12f1，URP 17.2.0（ProjectVersion.txt、Packages/manifest.json）。
+- ProjectSettings/ProjectSettings.asset:50，m_ActiveColorSpace=1（Linear）。useHDRDisplay=0 是显示输出设置，不等同关闭 URP HDR。
+- 当前 Quality 索引 1=PC；Standalone 默认也是 PC。GraphicsSettings 默认和 PC quality 均指向 PC_RPAsset（guid 4b83569d67af61e458304325a23e5dfd）。
+- PC_RPAsset：HDR=1、RenderScale=1、ColorGradingMode=0（LDR）、LUTSize=32、UseFastSRGBLinearConversion=0；Renderer=PC_Renderer。
+- PC_Renderer 只有 ScreenSpaceAmbientOcclusion feature（active=1，Intensity=.4，DirectLightingStrength=.25，Radius=.3）；未发现全屏灰色滤镜或自定义颜色覆盖 feature。SSAO 仍可在关闭相机后处理时工作，但本身不是已证实的全画面灰幕原因。
+- Mobile_RPAsset：HDR=1、RenderScale=.8、ColorGradingMode=0；Mobile_Renderer 没有 RendererFeature。当前 Windows/PC 路径不使用它。
+- PC/Mobile 两个 RPAsset 的 m_VolumeProfile 都指向 Assets/Settings/SampleSceneProfile.asset，不是名称为 DefaultVolumeProfile 的资产。
+  本地 URP Runtime/UniversalRenderPipeline.cs:254 调用 VolumeManager.Initialize(globalProfile, asset.volumeProfile)，UniversalRenderPipelineAsset.cs:1534 注释说明后者是质量级默认覆盖；所以即使场景没有 Volume，启用后处理的相机也可能使用 SampleSceneProfile。
+- SampleSceneProfile：Neutral Tonemapping（mode=1）、Bloom intensity=.25/threshold=1、Vignette intensity=.2、MotionBlur active=0。不是 ACES，也没有降低饱和度/对比度的 ColorAdjustments。
+- URP GlobalSettings 中的项目默认是 Assets/Settings/DefaultVolumeProfile.asset。可见颜色项为中性：postExposure/contrast/hueShift/saturation=0，colorFilter=白，Lift/Gamma/Gain 的 w=0，ChannelMixer 单位矩阵，主/RGB曲线为 0→0、1→1，Tonemapping=None，Bloom intensity=0，ColorLookup contribution=0。
+- Shelter 的 Global Volume（active、weight=1、priority=0、Default layer）引用 Assets/Scenes/Shelter/Global Volume Profile.asset，只覆盖 Bloom intensity=.1 和暗灰红 tint；threshold=5.68 的 OverrideState=0，因此不能当成实际阈值。当前正式 PlayerCamera 后处理关闭，这个 Volume 不提供已证实的去灰调整入口。
+- SampleScene 主相机后处理开启，它与正式玩家相机的视觉管线不同。若用户指的是 SampleScene，它的 Neutral/Bloom 可以进入对照检查；不能据此推断 Shelter/Ruins。
+
+二、全部场景与相机（保存的 YAML + Prefab 引用）
+场景                         天空盒                  实际世界/入口相机 ClearFlags   后处理
+Bootstrap                    Unity 内置默认          GameFlowModule 内加载相机 2   0
+Shelter                      ShelterNightSkybox      PlayerCamera 1（场景覆盖1）   0
+Ruins                        Unity 内置默认          PlayerCamera 1                0
+SampleScene                  Unity 内置默认          场景主相机 1                  1
+Tests/Backpack/BackpackTest   Unity 内置默认          PlayerCamera 1                0
+Tests/Base/BaseTest           Unity 内置默认          场景相机 2                    0
+Tests/Enemy/EnemyTest         Unity 内置默认          PlayerCamera 1                0
+Tests/Items/ItemsTest         Unity 内置默认          场景相机 2                    0
+Tests/Localization/LocalizationTest Unity 内置默认    场景相机 2                    0
+Tests/Loot/LootTest           Unity 内置默认          PlayerCamera 1                0
+Tests/Player/PlayerTest       Unity 内置默认          PlayerCamera 1                0
+Tests/Warehouse/WarehouseTest Unity 内置默认          场景相机 2                    0
+说明：1=Skybox，2=SolidColor。Prefab 相机不是场景内独立 Camera YAML，已解析引用而非遗漏。
+
+- Assets/Prefabs/Player/PlayerCamera.prefab:47 ClearFlags=1；:120 RenderPostProcessing=0。URP CameraType=Base，cameraStack 空，VolumeLayerMask=1，HDR=1。未见相机独立 Skybox 组件覆盖。
+- PlayerCamera 的位置、透视投影、FOV、CinemachineBrain、SideFollow、Confiner 等应保留。
+- Assets/Prefabs/GameFlow/GameFlowModule.prefab:159 加载相机 ClearFlags=2、背景 (.045,.065,.09)。它是入口加载展示，不应为了背景改动其启用/跟随/UI 生命周期。
+- 4 个启用的 BuildSettings 场景为 Bootstrap、Shelter、Ruins、SampleScene。
+
+三、环境光、反射、灯光和新夜空材质
+- 所有 12 个场景均为 Fog=0、AmbientMode=0（Skybox）、AmbientIntensity=1、DefaultReflectionMode=0、ReflectionIntensity=1。
+- Shelter/Ruins/PlayerTest/BackpackTest/LootTest/EnemyTest 保存了 AmbientSkyColor=(.5,.55,.65)；其他为 (.212,.227,.259)。但当前模式是 Skybox，不能单凭这个颜色字段就声称正在使用高亮平面环境光。应实测环境探针/天空照明。
+- 各场景 LightingSettings 均为 null，LightingDataAsset 为内置资源引用；没有从这份场景 YAML 查到自定义 LightingData 资产。也不能据此声称当前 GPU 环境探针已经更新或没更新。
+- Ruins Directional Light 启用、白色、强度1.2。Shelter 的“全局光”Directional Light 当前 m_Enabled=0，强度.1，蓝色；场景仍可能有 Prefab 内局部光源，本审计不把该一盏灯当成所有光源。
+- 测试场景的保存直射光强度：Backpack/Player/Loot=1.5，Base/Items/Localization/Warehouse=1，Enemy=.33；SampleScene=2。黑夜天空盒不会自动把这些灯调成夜间强度。
+- Assets/Art/Materials/Environment/ShelterNightSkybox.mat，guid 8ea61fa5552419d4fbbc16241b881895：
+  内置 shader fileID=106；_SUNDISK_NONE；_SunDisk=0；_Exposure=.18；_AtmosphereThickness=.8；_SkyTint=(.08,.12,.23)；_GroundColor=(.015,.02,.04)；m_TexEnvs 为空。
+  这是带大气/地面颜色参数的程序天空配置，没有星空或月亮贴图。参数本身不能保证 Game 中地平线一定不是灰蓝色；必须看真实画面。可直接复用同一材质统一全部场景，不需要为每个场景复制一份，也不需要改 GUID。
+
+四、发灰原因候选，按证据区分
+A. 已证实的不统一：Ruins 和绝大部分场景仍是内置默认天空盒，且环境照明/反射来自 Skybox。这会保留日间背景/照明来源，与黑夜目标不一致；是否就是用户说的灰感，尚未实测。
+B. 候选：背景地平线的程序天空颜色，或默认天空照明/反射对低饱和材质的影响；白色直射光在 Ruins 强度1.2。应通过固定机位先仅替换夜空，再对照环境光/反射和直射光，不要同时改多项后再猜原因。
+C. 低优先且仅条件适用：SampleScene/未来开启后处理的相机，会得到质量级 SampleSceneProfile 的 Neutral、Bloom、Vignette。正式 PlayerCamera 当前 PP=0，因此不应直接全局改 Profile 声称修好正式游戏灰感。
+D. 当前磁盘证据反对：全局雾（全关）、全局负饱和/低对比 ColorAdjustments（未发现）、正式相机 Bloom 灰幕（PP关）。
+E. 未覆盖：Editor Scene View 与 Game 的显示差异、实际运行中的 Volume stack/环境探针缓存、显示器/HDR 输出、相机后处理临时覆盖。没有运行证据，不作根因结论。
+
+五、最小实施方案（供 root 操作，不是本审计已执行）
+1. 对 12 个 Assets/Scenes 场景只设置 RenderSettings.skybox 为同一个 ShelterNightSkybox。已是夜空的 Shelter 保持引用。优先通过 Unity 保存 RenderSettings，保留最新用户编辑和已有对象/灯光/布局。
+2. 世界相机若是 SolidColor，改为 Skybox；已是 Skybox 的共享 PlayerCamera 不重复改动。只改 clearFlags/必要 fallbackColor，不改 transform、FOV、Cinemachine、UI Camera 或堆叠。Bootstrap 加载相机可保留暗色清屏，只要该场景 RenderSettings 同样持有夜空；若验收要求它也显示夜空，只改该相机 clearFlags，不触碰入口展示启用逻辑。
+3. 首次完成背景后，拍同场景/机位的真实 Game 前后帧，尤其 Shelter 和 Ruins。若灰感仍在，再分别对照天空曝光、ambient/reflection 强度和主光，不先改变工程 Linear/HDR，也不为去灰强行打开所有相机 PP。现有夜空材质参数并非“发灰修复已验证”的证据。
+4. 增加一个小型 Editor 默认环境帮助类，集中引用夜空材质，给新建场景赋值。订阅 EditorSceneManager.newSceneCreated；处理新增场景时临时切 active scene 再设置 RenderSettings，finally 恢复原 active scene，避免 Additive 新场景误改旧场景。排除 Play、Preview/Prefab 隔离场景；不在每次 Update/OpenScene 强制刷值或自动保存，保留显式编辑的空间。
+5. 只靠 newSceneCreated 是否覆盖 Unity 6 的每种 Scene Template 路径，需要本机验证；本审计没有找到该事件的本地源码证据。项目内没有自定义模板，包内现成 URPBasicScenePipeline 实现了 ISceneTemplatePipeline.AfterTemplateInstantiation，可作为项目夜空模板的具体落点。若同时要求“任意模板新建也默认黑夜”，root 应验证 Ctrl+N / Empty / Basic(URP) 三条路径，并按实际事件顺序补模板创建完成回调，不能只验 Empty 就宣称全部生效。不要修改 Library/PackageCache。
+6. 现有 Builder 需接入同一默认函数，或者至少在填充完成、保存之前显式 Apply。仅 creation callback 太早时，后续 Builder 可覆盖初始值：
+   PlayerTestSceneBuilder.cs:81 生成共享玩家相机时仍写 SolidColor；:152 写 ambientLight；当前已有场景有存在保护，所以这不是每次启动都会覆盖。
+   MinimumLoopSceneBuilder.cs:294 加载相机写 SolidColor；:363 写 ambientLight；CreateScene:493 NewScene(Empty,Additive)，fill 后立即 SaveScene。
+   WarehouseTestSceneBuilder.cs:271、LocalizationTestSceneBuilder.cs:127 生成 SolidColor 世界相机。
+   Backpack/Loot/Enemy/Player builders 写 ambientLight=(.5,.55,.65)。若后续采用明确夜间 AmbientMode/颜色策略，应改调用顺序，免得生成后又恢复白盒环境；无需为本任务重建正式场景。
+
+建议最小验收
+- 保存后重载 Shelter、Ruins；真实 Game 截图尺寸1920x1080，背景为夜间，玩家/无人机锥体/UI仍清楚，Cinemachine机位和控制未改变。
+- 12 个场景逐一核对 RenderSettings.skybox 引用；世界相机 ClearFlags与Bootstrap加载相机例外有明确记录。
+- 分别新建 Empty 与 Basic(URP)，保存重开仍绑定同一夜空；新建后旧 Additive 场景未被意外改脏。
+- 若动了环境亮度或 Profile，保存前后固定机位对照；仅截图变暗不足以说明“灰感根因已查明”。
+
+本次产物只有本文件。全部上述修改与运行验证由 root 后续决定和执行。

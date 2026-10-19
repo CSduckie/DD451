@@ -1,0 +1,18 @@
+Shelter post-processing preparation — 2026-10-19
+Status: READ-ONLY DESIGN; waiting for exact 009 NIGHT DEFAULT EXPLICIT RELEASE TO SHELTER POSTPROCESS record.
+No Unity calls, Assets writes, scene/Play/test operations made during this phase.
+
+Authorized intent: create a dim Shelter with readable player, interactions and local lights; avoid a flat gray veil. This is separate from 009's gray-camera investigation and default night-sky work.
+
+Expected production files (reconfirm after release):
+- Assets/Scenes/Shelter.unity: scene-instance UniversalAdditionalCameraData.renderPostProcessing override; preserve camera transform/lens/Cinemachine, lights, all other objects and latest saved user content.
+- Assets/Scenes/Shelter/Global Volume Profile.asset: reuse existing Shelter-only profile/GUID and Volume, introduce explicit ColorAdjustments and local defaults for inherited Tonemapping/Vignette; tune Bloom only if actual-frame comparison requires it.
+No planned project script, shared prefab, quality, URP, color-space, skybox, Ruins or test-scene change.
+
+Before mutation, take fresh real file/meta copies and SHA256/GUID baseline under Before. Recheck live scenes, dirty state, Play/compiler/tests, and 009 release report. Never restore an old scene copy. Preserve unsaved changes using a copy before deciding how to save.
+
+First runtime baseline: actual Bootstrap to Shelter, Screen 1920x1080, actual Game framebuffer including UI. Compare identical camera/player pose before versus selected PP settings. Prefer mild negative exposure plus moderate positive contrast and retained saturation; parameter values remain provisional until observed. Explicitly control inherited effects, without global profile changes. Existing sky and lights remain.
+
+Verification: saved-scene reload; ordinary Bootstrap -> Shelter -> Ruins -> Shelter using real public flow/interaction entry points. Observe per-scene camera PP, actual Volume stack and refs. Shelter change must return correctly; Ruins stays at released baseline. Capture readable player, warehouse/departure prompts, local lights and GUI. Run targeted existing tests only if configuration/reference risk or actual failure calls for them; no broad unrelated suite. API-assisted play is not physical keyboard/mouse acceptance. Record console and missing scripts/references.
+
+Completion: Docs/Handoffs/ShelterPostProcessing_Handoff.txt with exact changed files/settings, screenshots, integrity results, API/native distinctions and limits; append explicit Editor release with fresh state and no pending callbacks/writers.

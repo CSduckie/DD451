@@ -1,0 +1,6 @@
+Real Bootstrap->Shelter->TryDepart->Ruins. API-assisted player positioning only.
+PASS automatic common round and real patrol movement; user route and Z unchanged.
+PASS real visible Alert accumulated while hovering and naturally entered Chase.
+PASS: Real contact exploded once; no repeat after0.3 seconds. Next verify same-round formal preparation.
+Max Alert drift=0
+No direct damage/AI initialization/state/progress calls. Real explosion and health loss remain for next step.

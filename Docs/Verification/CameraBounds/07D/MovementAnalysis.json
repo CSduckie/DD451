@@ -1,0 +1,1375 @@
+{
+  "schemaVersion": 1,
+  "generatedUtc": "2026-10-19T02:05:07.7518031Z",
+  "evidenceBoundary": "Post-save ordinary Play with queued InputSystem keyboard and real gameplay/physics/Brain. Not native input. PNG existence/dimensions checked; visual content reviewed by root separately.",
+  "tolerances": {
+    "geometryAndZ": 1E-05,
+    "monotonicCameraXStep": 0.0001,
+    "phase4StableAfterSeconds": 0.3
+  },
+  "scenes": [
+    {
+      "scene": "Shelter",
+      "source": "E:\\DD451\\Docs\\Verification\\CameraBounds\\07D\\Shelter-Movement.json",
+      "sourceModifiedUtc": "2026-10-19T02:01:58.6546105Z",
+      "sourceSha256": "731FAFA560C20EBDE61077550E94832EE55CDED3C690AA9BE8F8B84412B82899",
+      "mode": "ordinary Play / queued keyboard / real controller, physics and Brain; not native",
+      "status": "completed",
+      "savedBoundsWidth": 16.8,
+      "sampleCount": 2118,
+      "firstSampleTime": 0.3333335,
+      "lastSampleTime": 12.0028362,
+      "screenSizes": [
+        "1920x1080"
+      ],
+      "captureFlags": {
+        "left": true,
+        "right": true,
+        "airborne": true,
+        "apex": true
+      },
+      "captures": [
+        {
+          "label": "Left",
+          "time": 1.80455542,
+          "frame": 1670,
+          "path": "E:/DD451/Docs/Verification/CameraBounds/07D/Shelter-Left-1920x1080.png",
+          "exists": true,
+          "pixelSize": [
+            1920,
+            1080
+          ],
+          "bytes": 327349,
+          "sha256": "2B28E6278A404DC05D5CE32FACE01C772E58CA807B985426E2CC841B65F23A80",
+          "player": [
+            -17.35,
+            0.0,
+            0.0
+          ],
+          "camera": [
+            -8.4,
+            2.75488,
+            -12.0
+          ],
+          "absolutePlayerCameraXGap": 8.950000000000001,
+          "nearestSampleFrame": 1670,
+          "nearestSamplePhase": 0,
+          "nearestSampleTimeGap": 0.0,
+          "apexHeightShortfall": null,
+          "apexTimeOffset": null
+        },
+        {
+          "label": "Jump",
+          "time": 6.497888,
+          "frame": 2521,
+          "path": "E:/DD451/Docs/Verification/CameraBounds/07D/Shelter-Jump-1920x1080.png",
+          "exists": true,
+          "pixelSize": [
+            1920,
+            1080
+          ],
+          "bytes": 326042,
+          "sha256": "4A9398F78B46D25C6D2969D067D5EE679D82952F2D65C6FBA553FA4418E85DA8",
+          "player": [
+            4.812312,
+            2.32227564,
+            0.0
+          ],
+          "camera": [
+            4.554827,
+            3.5,
+            -12.0
+          ],
+          "absolutePlayerCameraXGap": 0.25748499999999996,
+          "nearestSampleFrame": 2521,
+          "nearestSamplePhase": 3,
+          "nearestSampleTimeGap": 0.0,
+          "apexHeightShortfall": 0.0,
+          "apexTimeOffset": 0.0
+        },
+        {
+          "label": "Right",
+          "time": 9.491825,
+          "frame": 3064,
+          "path": "E:/DD451/Docs/Verification/CameraBounds/07D/Shelter-Right-1920x1080.png",
+          "exists": true,
+          "pixelSize": [
+            1920,
+            1080
+          ],
+          "bytes": 319289,
+          "sha256": "D66699C05F81F2F10FED9A4BC670A063C531793672E3B55A8CEDEDE3F02B81CA",
+          "player": [
+            17.35,
+            0.0,
+            0.0
+          ],
+          "camera": [
+            8.4,
+            2.75488,
+            -12.0
+          ],
+          "absolutePlayerCameraXGap": 8.950000000000001,
+          "nearestSampleFrame": 3064,
+          "nearestSamplePhase": 3,
+          "nearestSampleTimeGap": 0.0,
+          "apexHeightShortfall": null,
+          "apexTimeOffset": null
+        }
+      ],
+      "measuredMaxOutside": 0.0,
+      "declaredMaxOutside": 0.0,
+      "boundsTolerance": 1E-05,
+      "boundsWithinTolerance": true,
+      "playerZTarget": 0,
+      "playerMaxZError": 0.0,
+      "cameraZTarget": -12,
+      "cameraMaxZError": 0.0,
+      "boundsDiagnosticSampleCount": 0,
+      "phases": [
+        {
+          "phase": 0,
+          "count": 299,
+          "firstTime": 0.3333335,
+          "lastTime": 2.00436258,
+          "duration": 1.67102908,
+          "player": {
+            "minimum": [
+              -17.3500023,
+              0.0,
+              0.0
+            ],
+            "maximum": [
+              -11.5,
+              0.0,
+              0.0
+            ],
+            "span": [
+              5.8500023,
+              0.0,
+              0.0
+            ],
+            "first": [
+              -11.5,
+              0.0,
+              0.0
+            ],
+            "last": [
+              -17.35,
+              0.0,
+              0.0
+            ],
+            "netDelta": [
+              -5.850000000000001,
+              0.0,
+              0.0
+            ],
+            "netDistance": 5.850000000000001,
+            "spanDiagonal": 5.8500023
+          },
+          "camera": {
+            "minimum": [
+              -8.4,
+              2.75488,
+              -12.0
+            ],
+            "maximum": [
+              -8.4,
+              2.75488,
+              -12.0
+            ],
+            "span": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "first": [
+              -8.4,
+              2.75488,
+              -12.0
+            ],
+            "last": [
+              -8.4,
+              2.75488,
+              -12.0
+            ],
+            "netDelta": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "netDistance": 0.0,
+            "spanDiagonal": 0.0
+          }
+        },
+        {
+          "phase": 1,
+          "count": 755,
+          "firstTime": 2.00905466,
+          "lastTime": 6.136605,
+          "duration": 4.127550340000001,
+          "player": {
+            "minimum": [
+              -17.35,
+              0.0,
+              0.0
+            ],
+            "maximum": [
+              3.00589323,
+              0.0,
+              0.0
+            ],
+            "span": [
+              20.35589323,
+              0.0,
+              0.0
+            ],
+            "first": [
+              -17.35,
+              0.0,
+              0.0
+            ],
+            "last": [
+              3.00589323,
+              0.0,
+              0.0
+            ],
+            "netDelta": [
+              20.35589323,
+              0.0,
+              0.0
+            ],
+            "netDistance": 20.35589323,
+            "spanDiagonal": 20.35589323
+          },
+          "camera": {
+            "minimum": [
+              -8.4,
+              2.75488,
+              -12.0
+            ],
+            "maximum": [
+              2.74887228,
+              2.75488,
+              -12.0
+            ],
+            "span": [
+              11.14887228,
+              0.0,
+              0.0
+            ],
+            "first": [
+              -8.4,
+              2.75488,
+              -12.0
+            ],
+            "last": [
+              2.74887228,
+              2.75488,
+              -12.0
+            ],
+            "netDelta": [
+              11.14887228,
+              0.0,
+              0.0
+            ],
+            "netDistance": 11.14887228,
+            "spanDiagonal": 11.14887228
+          }
+        },
+        {
+          "phase": 2,
+          "count": 65,
+          "firstTime": 6.141194,
+          "lastTime": 6.49053049,
+          "duration": 0.34933649000000067,
+          "player": {
+            "minimum": [
+              3.02884221,
+              0.0,
+              0.0
+            ],
+            "maximum": [
+              4.77552366,
+              2.31636143,
+              0.0
+            ],
+            "span": [
+              1.74668145,
+              2.31636143,
+              0.0
+            ],
+            "first": [
+              3.02884221,
+              0.0,
+              0.0
+            ],
+            "last": [
+              4.77552366,
+              2.31636143,
+              0.0
+            ],
+            "netDelta": [
+              1.74668145,
+              2.31636143,
+              0.0
+            ],
+            "netDistance": 2.9011077818939697,
+            "spanDiagonal": 2.9011077818939697
+          },
+          "camera": {
+            "minimum": [
+              2.77157,
+              2.75488,
+              -12.0
+            ],
+            "maximum": [
+              4.517453,
+              3.5,
+              -12.0
+            ],
+            "span": [
+              1.7458829999999996,
+              0.74512,
+              0.0
+            ],
+            "first": [
+              2.77157,
+              2.75488,
+              -12.0
+            ],
+            "last": [
+              4.517453,
+              3.5,
+              -12.0
+            ],
+            "netDelta": [
+              1.7458829999999996,
+              0.74512,
+              0.0
+            ],
+            "netDistance": 1.8982389902456958,
+            "spanDiagonal": 1.8982389902456958
+          }
+        },
+        {
+          "phase": 3,
+          "count": 544,
+          "firstTime": 6.497888,
+          "lastTime": 9.491825,
+          "duration": 2.9939370000000007,
+          "player": {
+            "minimum": [
+              4.812312,
+              0.0,
+              0.0
+            ],
+            "maximum": [
+              17.35,
+              2.32227564,
+              0.0
+            ],
+            "span": [
+              12.537688000000001,
+              2.32227564,
+              0.0
+            ],
+            "first": [
+              4.812312,
+              2.32227564,
+              0.0
+            ],
+            "last": [
+              17.35,
+              0.0,
+              0.0
+            ],
+            "netDelta": [
+              12.537688000000001,
+              -2.32227564,
+              0.0
+            ],
+            "netDistance": 12.750944456528757,
+            "spanDiagonal": 12.750944456528757
+          },
+          "camera": {
+            "minimum": [
+              4.554827,
+              2.75488,
+              -12.0
+            ],
+            "maximum": [
+              8.4,
+              3.5,
+              -12.0
+            ],
+            "span": [
+              3.845173,
+              0.74512,
+              0.0
+            ],
+            "first": [
+              4.554827,
+              3.5,
+              -12.0
+            ],
+            "last": [
+              8.4,
+              2.75488,
+              -12.0
+            ],
+            "netDelta": [
+              3.845173,
+              -0.74512,
+              0.0
+            ],
+            "netDistance": 3.9167025945722505,
+            "spanDiagonal": 3.9167025945722505
+          }
+        },
+        {
+          "phase": 4,
+          "count": 455,
+          "firstTime": 9.538042,
+          "lastTime": 12.0028362,
+          "duration": 2.4647942,
+          "player": {
+            "minimum": [
+              17.3499985,
+              0.0,
+              0.0
+            ],
+            "maximum": [
+              17.3500023,
+              0.0,
+              0.0
+            ],
+            "span": [
+              3.7999999982218924E-06,
+              0.0,
+              0.0
+            ],
+            "first": [
+              17.35,
+              0.0,
+              0.0
+            ],
+            "last": [
+              17.35,
+              0.0,
+              0.0
+            ],
+            "netDelta": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "netDistance": 0.0,
+            "spanDiagonal": 3.7999999982218924E-06
+          },
+          "camera": {
+            "minimum": [
+              8.4,
+              2.75488,
+              -12.0
+            ],
+            "maximum": [
+              8.4,
+              2.75488,
+              -12.0
+            ],
+            "span": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "first": [
+              8.4,
+              2.75488,
+              -12.0
+            ],
+            "last": [
+              8.4,
+              2.75488,
+              -12.0
+            ],
+            "netDelta": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "netDistance": 0.0,
+            "spanDiagonal": 0.0
+          }
+        }
+      ],
+      "cameraXMonotonic": {
+        "leftPhase0": {
+          "sampleCount": 299,
+          "expectedDirection": -1,
+          "tolerance": 0.0001,
+          "reversalsBeyondTolerance": 0,
+          "rawFloatingPointReversals": 0,
+          "largestReverseStep": 0.0,
+          "totalRawReverseDistance": 0.0,
+          "largestForwardStep": 0.0,
+          "netCameraX": 0.0,
+          "passes": true
+        },
+        "rightPhases1Through3": {
+          "sampleCount": 1364,
+          "expectedDirection": 1,
+          "tolerance": 0.0001,
+          "reversalsBeyondTolerance": 0,
+          "rawFloatingPointReversals": 0,
+          "largestReverseStep": 0.0,
+          "totalRawReverseDistance": 0.0,
+          "largestForwardStep": 0.2783919999999993,
+          "netCameraX": 16.8,
+          "passes": true
+        },
+        "note": "Both runs start with the camera already clamped to the left edge; phase 0 verifies clamping while the player moves left, not the approach to that edge."
+      },
+      "jump": {
+        "declaredRise": 2.32227564,
+        "peakPlayerY": 2.32227564,
+        "peakTime": 6.497888,
+        "peakFrame": 2521,
+        "airborneSampleCount": 110
+      },
+      "stationaryPhase4": {
+        "count": 455,
+        "duration": 2.4647942,
+        "player": {
+          "minimum": [
+            17.3499985,
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            17.3500023,
+            0.0,
+            0.0
+          ],
+          "span": [
+            3.7999999982218924E-06,
+            0.0,
+            0.0
+          ],
+          "first": [
+            17.35,
+            0.0,
+            0.0
+          ],
+          "last": [
+            17.35,
+            0.0,
+            0.0
+          ],
+          "netDelta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "netDistance": 0.0,
+          "spanDiagonal": 3.7999999982218924E-06
+        },
+        "camera": {
+          "minimum": [
+            8.4,
+            2.75488,
+            -12.0
+          ],
+          "maximum": [
+            8.4,
+            2.75488,
+            -12.0
+          ],
+          "span": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "first": [
+            8.4,
+            2.75488,
+            -12.0
+          ],
+          "last": [
+            8.4,
+            2.75488,
+            -12.0
+          ],
+          "netDelta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "netDistance": 0.0,
+          "spanDiagonal": 0.0
+        },
+        "stableAfterSeconds": 0.3,
+        "stableCount": 400,
+        "stableDuration": 2.1640282000000006,
+        "stablePlayer": {
+          "minimum": [
+            17.3499985,
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            17.3500023,
+            0.0,
+            0.0
+          ],
+          "span": [
+            3.7999999982218924E-06,
+            0.0,
+            0.0
+          ],
+          "first": [
+            17.35,
+            0.0,
+            0.0
+          ],
+          "last": [
+            17.35,
+            0.0,
+            0.0
+          ],
+          "netDelta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "netDistance": 0.0,
+          "spanDiagonal": 3.7999999982218924E-06
+        },
+        "stableCamera": {
+          "minimum": [
+            8.4,
+            2.75488,
+            -12.0
+          ],
+          "maximum": [
+            8.4,
+            2.75488,
+            -12.0
+          ],
+          "span": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "first": [
+            8.4,
+            2.75488,
+            -12.0
+          ],
+          "last": [
+            8.4,
+            2.75488,
+            -12.0
+          ],
+          "netDelta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "netDistance": 0.0,
+          "spanDiagonal": 0.0
+        },
+        "inputNonZeroCount": 0,
+        "note": "This phase is at the right wall; zero drift is not a free-space stopping-distance test."
+      },
+      "frameOrderViolations": 0,
+      "timeOrderViolations": 0,
+      "numericChecksPass": true
+    },
+    {
+      "scene": "Ruins",
+      "source": "E:\\DD451\\Docs\\Verification\\CameraBounds\\07D\\Ruins-Movement.json",
+      "sourceModifiedUtc": "2026-10-19T02:02:40.5591949Z",
+      "sourceSha256": "0B913AC85B94302DDB55F3076C8922C7C89609AA9E61047FAD941A292E927941",
+      "mode": "ordinary Play / queued keyboard / real controller, physics and Brain; not native",
+      "status": "completed",
+      "savedBoundsWidth": 15.8,
+      "sampleCount": 2198,
+      "firstSampleTime": 0.009223938,
+      "lastSampleTime": 12.0035439,
+      "screenSizes": [
+        "1920x1080"
+      ],
+      "captureFlags": {
+        "left": true,
+        "right": true,
+        "airborne": true,
+        "apex": true
+      },
+      "captures": [
+        {
+          "label": "Left",
+          "time": 1.80547714,
+          "frame": 8949,
+          "path": "E:/DD451/Docs/Verification/CameraBounds/07D/Ruins-Left-1920x1080.png",
+          "exists": true,
+          "pixelSize": [
+            1920,
+            1080
+          ],
+          "bytes": 133260,
+          "sha256": "164F3A6CAAA7E044C0FDD9231A1A6BC4D8E7DC6AA7E9F85934A5840CC4CBEA57",
+          "player": [
+            -16.85,
+            0.0,
+            0.0
+          ],
+          "camera": [
+            -7.89999962,
+            2.75488,
+            -12.0
+          ],
+          "absolutePlayerCameraXGap": 8.950000380000002,
+          "nearestSampleFrame": 8949,
+          "nearestSamplePhase": 0,
+          "nearestSampleTimeGap": 0.0,
+          "apexHeightShortfall": null,
+          "apexTimeOffset": null
+        },
+        {
+          "label": "Jump",
+          "time": 6.407978,
+          "frame": 9793,
+          "path": "E:/DD451/Docs/Verification/CameraBounds/07D/Ruins-Jump-1920x1080.png",
+          "exists": true,
+          "pixelSize": [
+            1920,
+            1080
+          ],
+          "bytes": 122045,
+          "sha256": "183988E5BE88C03B3C4EEE1357AC3B92E7E90D59F77D37083F7BA51B076247D8",
+          "player": [
+            4.804717,
+            2.32130456,
+            0.0
+          ],
+          "camera": [
+            4.546255,
+            4.981041,
+            -12.0
+          ],
+          "absolutePlayerCameraXGap": 0.25846199999999975,
+          "nearestSampleFrame": 9793,
+          "nearestSamplePhase": 3,
+          "nearestSampleTimeGap": 0.0,
+          "apexHeightShortfall": 0.0,
+          "apexTimeOffset": 0.0
+        },
+        {
+          "label": "Right",
+          "time": 9.406673,
+          "frame": 10344,
+          "path": "E:/DD451/Docs/Verification/CameraBounds/07D/Ruins-Right-1920x1080.png",
+          "exists": true,
+          "pixelSize": [
+            1920,
+            1080
+          ],
+          "bytes": 138977,
+          "sha256": "72E6851823FB4D8641C8D10C9DBB9C1E5D5B443CD8E7CC0A3F1579EBFB6DE050",
+          "player": [
+            16.85,
+            0.0,
+            0.0
+          ],
+          "camera": [
+            7.89999962,
+            2.75488,
+            -12.0
+          ],
+          "absolutePlayerCameraXGap": 8.950000380000002,
+          "nearestSampleFrame": 10344,
+          "nearestSamplePhase": 3,
+          "nearestSampleTimeGap": 0.0,
+          "apexHeightShortfall": null,
+          "apexTimeOffset": null
+        }
+      ],
+      "measuredMaxOutside": 4.76837158E-07,
+      "declaredMaxOutside": 4.76837158E-07,
+      "boundsTolerance": 1E-05,
+      "boundsWithinTolerance": true,
+      "playerZTarget": 0,
+      "playerMaxZError": 0.0,
+      "cameraZTarget": -12,
+      "cameraMaxZError": 0.0,
+      "boundsDiagnosticSampleCount": 0,
+      "phases": [
+        {
+          "phase": 0,
+          "count": 355,
+          "firstTime": 0.009223938,
+          "lastTime": 2.00428,
+          "duration": 1.995056062,
+          "player": {
+            "minimum": [
+              -16.8500023,
+              0.0,
+              0.0
+            ],
+            "maximum": [
+              -12.0,
+              0.0,
+              0.0
+            ],
+            "span": [
+              4.8500023,
+              0.0,
+              0.0
+            ],
+            "first": [
+              -12.0,
+              0.0,
+              0.0
+            ],
+            "last": [
+              -16.85,
+              0.0,
+              0.0
+            ],
+            "netDelta": [
+              -4.850000000000001,
+              0.0,
+              0.0
+            ],
+            "netDistance": 4.850000000000001,
+            "spanDiagonal": 4.8500023
+          },
+          "camera": {
+            "minimum": [
+              -7.90000057,
+              2.75488,
+              -12.0
+            ],
+            "maximum": [
+              -7.89999962,
+              2.75488,
+              -12.0
+            ],
+            "span": [
+              9.500000004436515E-07,
+              0.0,
+              0.0
+            ],
+            "first": [
+              -7.9,
+              2.75488,
+              -12.0
+            ],
+            "last": [
+              -7.89999962,
+              2.75488,
+              -12.0
+            ],
+            "netDelta": [
+              3.800000003550963E-07,
+              0.0,
+              0.0
+            ],
+            "netDistance": 3.800000003550963E-07,
+            "spanDiagonal": 9.500000004436515E-07
+          }
+        },
+        {
+          "phase": 1,
+          "count": 747,
+          "firstTime": 2.00971985,
+          "lastTime": 6.05233,
+          "duration": 4.04261015,
+          "player": {
+            "minimum": [
+              -16.85,
+              0.0,
+              0.0
+            ],
+            "maximum": [
+              3.026473,
+              0.0,
+              0.0
+            ],
+            "span": [
+              19.876473,
+              0.0,
+              0.0
+            ],
+            "first": [
+              -16.85,
+              0.0,
+              0.0
+            ],
+            "last": [
+              3.026473,
+              0.0,
+              0.0
+            ],
+            "netDelta": [
+              19.876473,
+              0.0,
+              0.0
+            ],
+            "netDistance": 19.876473,
+            "spanDiagonal": 19.876473
+          },
+          "camera": {
+            "minimum": [
+              -7.90000057,
+              2.75488,
+              -12.0
+            ],
+            "maximum": [
+              2.76800966,
+              2.75488,
+              -12.0
+            ],
+            "span": [
+              10.66801023,
+              0.0,
+              0.0
+            ],
+            "first": [
+              -7.89999962,
+              2.75488,
+              -12.0
+            ],
+            "last": [
+              2.76800966,
+              2.75488,
+              -12.0
+            ],
+            "netDelta": [
+              10.66800928,
+              0.0,
+              0.0
+            ],
+            "netDistance": 10.66800928,
+            "spanDiagonal": 10.66801023
+          }
+        },
+        {
+          "phase": 2,
+          "count": 66,
+          "firstTime": 6.056938,
+          "lastTime": 6.402546,
+          "duration": 0.34560800000000036,
+          "player": {
+            "minimum": [
+              3.04950166,
+              0.0,
+              0.0
+            ],
+            "maximum": [
+              4.77755451,
+              2.3169,
+              0.0
+            ],
+            "span": [
+              1.72805285,
+              2.3169,
+              0.0
+            ],
+            "first": [
+              3.04950166,
+              0.0,
+              0.0
+            ],
+            "last": [
+              4.77755451,
+              2.3169,
+              0.0
+            ],
+            "netDelta": [
+              1.72805285,
+              2.3169,
+              0.0
+            ],
+            "netDistance": 2.890361960445979,
+            "spanDiagonal": 2.890361960445979
+          },
+          "camera": {
+            "minimum": [
+              2.79090643,
+              2.75488,
+              -12.0
+            ],
+            "maximum": [
+              4.51905251,
+              4.96836329,
+              -12.0
+            ],
+            "span": [
+              1.7281460799999997,
+              2.21348329,
+              0.0
+            ],
+            "first": [
+              2.79090643,
+              2.75488,
+              -12.0
+            ],
+            "last": [
+              4.51905251,
+              4.96836329,
+              -12.0
+            ],
+            "netDelta": [
+              1.7281460799999997,
+              2.21348329,
+              0.0
+            ],
+            "netDistance": 2.808201764284146,
+            "spanDiagonal": 2.808201764284146
+          }
+        },
+        {
+          "phase": 3,
+          "count": 552,
+          "firstTime": 6.407978,
+          "lastTime": 9.406673,
+          "duration": 2.9986949999999997,
+          "player": {
+            "minimum": [
+              4.804717,
+              0.0,
+              0.0
+            ],
+            "maximum": [
+              16.85,
+              2.32130456,
+              0.0
+            ],
+            "span": [
+              12.045283000000001,
+              2.32130456,
+              0.0
+            ],
+            "first": [
+              4.804717,
+              2.32130456,
+              0.0
+            ],
+            "last": [
+              16.85,
+              0.0,
+              0.0
+            ],
+            "netDelta": [
+              12.045283000000001,
+              -2.32130456,
+              0.0
+            ],
+            "netDistance": 12.266918823011988,
+            "spanDiagonal": 12.266918823011988
+          },
+          "camera": {
+            "minimum": [
+              4.546255,
+              2.75488,
+              -12.0
+            ],
+            "maximum": [
+              7.90000057,
+              5.04134226,
+              -12.0
+            ],
+            "span": [
+              3.35374557,
+              2.2864622600000004,
+              0.0
+            ],
+            "first": [
+              4.546255,
+              4.981041,
+              -12.0
+            ],
+            "last": [
+              7.89999962,
+              2.75488,
+              -12.0
+            ],
+            "netDelta": [
+              3.3537446199999996,
+              -2.2261610000000003,
+              0.0
+            ],
+            "netDistance": 4.025344180824783,
+            "spanDiagonal": 4.059004682763859
+          }
+        },
+        {
+          "phase": 4,
+          "count": 478,
+          "firstTime": 9.452938,
+          "lastTime": 12.0035439,
+          "duration": 2.5506059000000008,
+          "player": {
+            "minimum": [
+              16.8499985,
+              0.0,
+              0.0
+            ],
+            "maximum": [
+              16.8500023,
+              0.0,
+              0.0
+            ],
+            "span": [
+              3.7999999982218924E-06,
+              0.0,
+              0.0
+            ],
+            "first": [
+              16.85,
+              0.0,
+              0.0
+            ],
+            "last": [
+              16.85,
+              0.0,
+              0.0
+            ],
+            "netDelta": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "netDistance": 0.0,
+            "spanDiagonal": 3.7999999982218924E-06
+          },
+          "camera": {
+            "minimum": [
+              7.89999962,
+              2.75488,
+              -12.0
+            ],
+            "maximum": [
+              7.89999962,
+              2.75488,
+              -12.0
+            ],
+            "span": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "first": [
+              7.89999962,
+              2.75488,
+              -12.0
+            ],
+            "last": [
+              7.89999962,
+              2.75488,
+              -12.0
+            ],
+            "netDelta": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "netDistance": 0.0,
+            "spanDiagonal": 0.0
+          }
+        }
+      ],
+      "cameraXMonotonic": {
+        "leftPhase0": {
+          "sampleCount": 355,
+          "expectedDirection": -1,
+          "tolerance": 0.0001,
+          "reversalsBeyondTolerance": 0,
+          "rawFloatingPointReversals": 1,
+          "largestReverseStep": 9.500000004436515E-07,
+          "totalRawReverseDistance": 9.500000004436515E-07,
+          "largestForwardStep": 5.700000000885552E-07,
+          "netCameraX": 3.800000003550963E-07,
+          "passes": true
+        },
+        "rightPhases1Through3": {
+          "sampleCount": 1365,
+          "expectedDirection": 1,
+          "tolerance": 0.0001,
+          "reversalsBeyondTolerance": 0,
+          "rawFloatingPointReversals": 3,
+          "largestReverseStep": 9.500000004436515E-07,
+          "totalRawReverseDistance": 2.2800000012423993E-06,
+          "largestForwardStep": 0.24707328999999945,
+          "netCameraX": 15.79999924,
+          "passes": true
+        },
+        "note": "Both runs start with the camera already clamped to the left edge; phase 0 verifies clamping while the player moves left, not the approach to that edge."
+      },
+      "jump": {
+        "declaredRise": 2.32130456,
+        "peakPlayerY": 2.32130456,
+        "peakTime": 6.407978,
+        "peakFrame": 9793,
+        "airborneSampleCount": 122
+      },
+      "stationaryPhase4": {
+        "count": 478,
+        "duration": 2.5506059000000008,
+        "player": {
+          "minimum": [
+            16.8499985,
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            16.8500023,
+            0.0,
+            0.0
+          ],
+          "span": [
+            3.7999999982218924E-06,
+            0.0,
+            0.0
+          ],
+          "first": [
+            16.85,
+            0.0,
+            0.0
+          ],
+          "last": [
+            16.85,
+            0.0,
+            0.0
+          ],
+          "netDelta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "netDistance": 0.0,
+          "spanDiagonal": 3.7999999982218924E-06
+        },
+        "camera": {
+          "minimum": [
+            7.89999962,
+            2.75488,
+            -12.0
+          ],
+          "maximum": [
+            7.89999962,
+            2.75488,
+            -12.0
+          ],
+          "span": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "first": [
+            7.89999962,
+            2.75488,
+            -12.0
+          ],
+          "last": [
+            7.89999962,
+            2.75488,
+            -12.0
+          ],
+          "netDelta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "netDistance": 0.0,
+          "spanDiagonal": 0.0
+        },
+        "stableAfterSeconds": 0.3,
+        "stableCount": 428,
+        "stableDuration": 2.246989900000001,
+        "stablePlayer": {
+          "minimum": [
+            16.8499985,
+            0.0,
+            0.0
+          ],
+          "maximum": [
+            16.8500023,
+            0.0,
+            0.0
+          ],
+          "span": [
+            3.7999999982218924E-06,
+            0.0,
+            0.0
+          ],
+          "first": [
+            16.85,
+            0.0,
+            0.0
+          ],
+          "last": [
+            16.85,
+            0.0,
+            0.0
+          ],
+          "netDelta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "netDistance": 0.0,
+          "spanDiagonal": 3.7999999982218924E-06
+        },
+        "stableCamera": {
+          "minimum": [
+            7.89999962,
+            2.75488,
+            -12.0
+          ],
+          "maximum": [
+            7.89999962,
+            2.75488,
+            -12.0
+          ],
+          "span": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "first": [
+            7.89999962,
+            2.75488,
+            -12.0
+          ],
+          "last": [
+            7.89999962,
+            2.75488,
+            -12.0
+          ],
+          "netDelta": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "netDistance": 0.0,
+          "spanDiagonal": 0.0
+        },
+        "inputNonZeroCount": 0,
+        "note": "This phase is at the right wall; zero drift is not a free-space stopping-distance test."
+      },
+      "frameOrderViolations": 0,
+      "timeOrderViolations": 0,
+      "numericChecksPass": true
+    }
+  ],
+  "moduleScenesUnchanged": {
+    "PlayerTest": 16.1,
+    "BackpackTest": 8.1,
+    "LootTest": 24.1,
+    "reason": "No outer side walls; extending camera bounds introduces a separate ground/environment coverage tradeoff."
+  },
+  "allNumericChecksPass": true
+}

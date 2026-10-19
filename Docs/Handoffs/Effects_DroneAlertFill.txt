@@ -1,0 +1,95 @@
+无人机警戒视锥填充：视觉交接
+2026-10-19 UTC
+执行依据：Docs/AgentPrompts/09_AlertFill_Dispatch.txt。仅完成其中视觉分工。
+
+交接状态
+视觉Assets和Editor已释放，009可以接入。
+所有本聊天与审查agent的Assets写入已停止；测试、Play和截图回调均已结束，没有排队的Editor操作。
+最终只读观测时间：2026-10-19T05:36:50.3759622Z。
+当前唯一场景：Assets/Scenes/Shelter.unity，dirty=false，Play=false，changing=false，compiling=false，updating=false，PrefabStage=null。
+实际画面采样使用EnemyTest；退出Play后的最终观测为Shelter。本轮未主动调用切场景或保存场景，也没有强制切回EnemyTest。
+runInBackground与PlayerSettings.runInBackground均false，timeScale=1；Enter Play Mode原设置保留enabled/DisableDomainReload。
+Console最终错误/警告0条，未清空Console。临时墙副本已经随Play退出清除。
+
+实际文件
+修改 Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs：增加径向UV、SetAlertProgress及清零。
+新增 Assets/Art/Shaders/Enemy/DroneVision.shader：透明Unlit空间填充，shader名MyPrecious/DroneVision。
+修改 Assets/Art/Materials/Enemy/DroneVision.mat：MCP切换shader，保留原GUID 3791f5303dc69fa479f6b053e4a02622。
+新增 Assets/Tests/Enemy/EditMode/DroneVisionAlertFillTests.cs：7个聚焦用例。
+修改 Assets/Tests/Enemy/Editor/DroneVisionEditor.cs：增加中文接入说明。
+Unity生成新shader、测试和实际使用的Shaders/Enemy目录.meta。
+本交接及 Docs/Verification/Enemy/AlertFill/Visual/ 保存证据；EditorCoordination.txt追加释放。
+77个既有资产基线只变化上述3个既有文件；Drone.prefab及其meta、三张场景EnemyTest/Shelter/Ruins、009的Controller/状态/配置/测试均保持原字节。
+没有移动预制体、改灯光位置/范围、增加asmdef、公共契约或表现管理器。
+
+原接线与方法签名
+DroneVision仍挂在Drone预制体原Vision对象；原MeshRenderer继续引用原DroneVision.mat。
+运行的Drone_A与Drone_B沿用此材质，模型机头锚点、真实MeshCollider、水平朝向和墙裁剪保持原实现。
+public void SetTint(Color color)
+    写本实例_BaseColor/_Color，并清空本实例_FillProgress。
+public void SetAlertProgress(float progress)
+    Mathf.Clamp01后，只写本实例MaterialPropertyBlock的_FillProgress；不计时、不换颜色、不重建网格或Collider。
+public void Clear()
+    清空填充并保留原有停止检测/隐藏行为；OnDisable会调用它。
+Rebuild保留填充，避免运行中重建形状意外清进度。新轮次沿用Controller的普通状态SetTint清零。
+
+给009的接入顺序
+进入Alert时先SetTint橙色(1,.67,.1,.20)，之后按唯一逻辑AlertProgress调用SetAlertProgress。
+退出Alert通过普通状态SetTint换色并清零。不要每帧仅SetTint而忘记随后恢复进度。
+Shader自己不计时，填满不会自行切状态。积累/消退、悬停、Chase、自毁、路线与双语均由009接入。
+现有EnemySceneIntegrationTests与EnemyTestSceneBuilder中的旧Universal Render Pipeline/Unlit名称由009适配；
+本轮未运行整个集成类，也未删除或规避其旧断言来声称完整Enemy回归通过。
+参考本轮Dispatch安排，009可在复核当前实时Editor状态后接入暂存代码，再统一运行集成测试。
+主程后续的1920×1080独立验收尚未执行，不将本轮受控视觉测试冒充该验收。
+
+简单原理与Inspector
+UV是网格上的位置刻度：机头为0，每条被墙截短的可见外缘为1。
+Shader对每个位置比较UV.x和进度：到达的区域红色，剩余区域橙色；因此是空间推进而非整片颜色渐变。
+退条只需传更小的进度。不同墙距方向按各自可见长度比例推进。
+只用原来的单平面网格；保持原正反绕序和_Cull=2，每个观察侧只绘制一次，避免叠加透明层。
+MaterialPropertyBlock是每个Renderer独立的一小份显示参数；共用材质但进度互不影响。
+_BaseColor：底色，由SetTint提供。
+_FillColor：填充色，当前(1,.22,.12,.24)，与原Chase视锥红色一致。
+_FillProgress：0～1，运行时由每机MPB覆盖；材质资产保持0。修改资产此值不替代AI接线。
+_Cull：隐藏参数，保持2。
+原Vision的radius/angleDegrees/thickness/directionDegrees等几何参数含义不变。
+
+参考与复用
+沿用本项目当前DroneVision的扇形几何、墙裁剪、水平朝向、MPB用法。
+Shader参考实际读取的当前URP包Shaders/Unlit.shader与Core.hlsl，仅保留本需求需要的透明Unlit结构。
+本轮没有额外复用ARPG战斗逻辑；既有Controller状态机未改。普通灯光呼吸/闪烁是此前独立交付，本轮未修改。
+
+实际测试结果
+EditMode：原DroneVisionGeometryTests 11/11；新增DroneVisionAlertFillTests 7/7；无跳过。
+PlayMode：DroneVisionAlignmentTests 2项，加SmoothYawSharesHeadingWithVisionSurvivesRebuildAndResetsOnlyForNewRound，共3/3；无跳过。
+涵盖进度Clamp、换色清零、Clear/禁用/重新启用、两实例独立及退条、共享材质不变、墙裁剪径向UV/单平面、进度更新不替换几何、模型约20度前倾时视锥水平、平滑转向和重建/新轮复位。
+新增测试首次5通过/2失败：MPB颜色读写有约2.98e-8舍入，严格Color相等误判；仅改为Vector4总误差<1e-5并重跑7/7。保留初次失败XML。
+有一次MCP job在真实测试结束后仍running；以官方XML与idle Editor核实后清理stale job，不将工具running或0tests作为通过。
+没有修改生产逻辑来迎合测试。
+
+实际1920×1080画面与采样
+使用现有EnemyTest的OutputCamera/Cinemachine，不调整相机、玩家、材质透明度或灯光参数。
+临时禁用两机Controller以隔离视觉进度；Drone_A在Play内移至(-7,1.5,0)，朝右；
+仅在Play复制已有SolidSightWall到(-2,1,0)，使完整视锥和墙进入原相机画面，退出Play全部丢弃。
+这是直接API驱动的视觉验证，截图HUD显示“未运行”与禁用Controller一致，不代表Alert游戏流程已接入。
+连续推进0→.5→1→.25→0；12.2046秒，2220个采样帧。
+另一机进度固定.6，所有采样均未被影响；水平中心方向Y始终0。
+实际墙高内64个顶点没有越墙；最远x=-2.36037159，墙前沿x=-2.35。
+已逐张查看Fill-000.png、Fill-050.png、Fill-100.png、Retreat-025.png，退至0的像素探针也恢复橙色。
+50%图机头红/外侧橙，100%填至裁剪外缘，25%红区缩回机头，墙后没有延续扇形。
+三处固定像素(1140,650)/(1250,650)/(1400,650)：
+0%全橙；50%红/红/橙；100%全红；退25%红/橙/橙；退0%全橙。
+橙像素RGB(125,84,38)，红像素RGB(136,35,38)。这些是渲染截图读数，不是只检查shader uniform。
+首组FirstViewport-*保留：原墙位于画面右侧，扇形被屏幕边缘裁掉；最终证据采用完整入镜的上述五张。
+没有视频或原生键鼠验收；发现玩家后的真实增长、遮挡消退、Chase切换及F10仍待009接入与主程复验。
+
+观察方法
+当前未接入AI时，普通运行EnemyTest不会自动出现新Alert流程。
+视觉复现代码在RuntimeCaptureCode.txt：先打开EnemyTest、进入Play并等现有启动完成，再经MCP执行；它会临时布置视觉探针并保存五张截图。
+接入009后，应直接通过玩家进出视野观察完整Alert行为，届时另记集成结果。
+最终证据索引
+EditMode-Geometry-11.json、EditMode-Fill-7-Final.xml、PlayMode-Alignment-3.xml。
+CaptureResult.txt、RuntimeCaptureCode.txt、RuntimeSamples.csv、RuntimeAnalysis.json、RuntimeGeometry.json、PixelProbe.json。
+Fill-000.png、Fill-050.png、Fill-100.png、Retreat-025.png、Retreat-000.png。
+ReleaseState.json、FinalConsole.json、ChangedExistingFiles.json、ReleaseAssetHashes.json、BeforeHashes.json。
+

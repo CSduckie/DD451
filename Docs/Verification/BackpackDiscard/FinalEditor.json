@@ -1,0 +1,15 @@
+{
+  "play": false,
+  "changing": false,
+  "compiling": false,
+  "updating": false,
+  "tests": false,
+  "scene": "Assets/Scenes/Tests/Backpack/BackpackTest.unity",
+  "dirty": false,
+  "gameSize": 7,
+  "maximized": false,
+  "consoleErrors": 0,
+  "consoleWarnings": 0,
+  "editorSettingsMatchedRecordedBaseline": true,
+  "releasedTo": "05"
+}

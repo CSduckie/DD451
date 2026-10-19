@@ -1,0 +1,103 @@
+MyPrecious P0 — 05A仓库Ctrl快捷转移与找空位交接
+工程：E:/DD451；2026-10-18；Dispatch v18 / ProjectRules A25。
+05A代码、测试源码及文档已完成，主执行者整合审查与独立UI静态审查未发现阻断项；已就绪供07集成。本轮未操作Unity、未编译、未启动任何测试、未主动刷新或重建资产；运行验证待07，不把旧测试成绩写成新版通过。
+
+一、已读任务、基准和修改边界
+
+已完整读取Docs/AgentPrompts/05A_WarehouseQuickTransfer.txt、QuickTransfer_Dispatch.txt、ProjectRules.txt A25/A23/A24，以及Docs/Verification/QuickTransfer/UserRequest.png。截图右侧6×4箱格下方有大块黑色视口填充；这项删除多余背景属于06，05不修改Loot背景、射线、滚动或Prefab。
+已读Docs/Handoffs/05_Handoff.txt、04_Handoff.txt、06A_LootGridSearch_Handoff.txt、06B_LootReturnPreview_Handoff.txt、07A_GridIntegration_Handoff.txt和Docs/Verification/GridLootAcceptance/Report.txt；以新A25覆盖06A/06B/07A历史返箱自动归位描述，不修改这些历史证据。
+现行显示基准为1920×1080、66/4/6、scale=1，仓库20列内容宽1408、实际viewport1430，仅纵滚。初始20×20、EV7手动免费扩至20×24/480格，新增底部80格，已有单格和物品尺寸保持；本轮不改Shelter规则、EV、保有、唯一身份、使用次数或两套格子核心边界。07A已更新WarehouseTest演示场景和Builder，不再将其说成旧布局。05旧42.65/926测量仅为旧配置历史，不是当前规格。
+只写Warehouse范围的代码/测试/必要帮助文字与本交接、WarehouseShelterSetup。04负责背包；06独占Transfers/Loot，负责目标选择、完整提交、失败反馈与新返箱精确坐标；07是本轮唯一Unity操作者。05不跨聊天发消息，不操作Editor，不改场景、Prefab、输入资源、共享语言.asset或06代码。
+
+二、本轮路径与备份
+
+当前实际修改的6个Assets文件：
+- Assets/Scripts/Warehouse/MonoBehaviour/WarehouseItemView.cs：Ctrl手势识别与一次按压消费。
+- Assets/Scripts/Warehouse/MonoBehaviour/WarehouseUIController.cs：快捷委托、资格与生命周期保护。
+- Assets/Scripts/Warehouse/MonoBehaviour/WarehouseManager.cs：只读找位，复用原WarehouseGrid.CanPlace。
+- Assets/Tests/Warehouse/EditMode/WarehouseShelterTests.cs：新增只读找位与状态不变用例源码。
+- Assets/Tests/Warehouse/PlayMode/WarehouseIntegrationTests.cs：手势及精确落位回归源码。
+- Assets/Tests/Warehouse/Editor/WarehouseTextEntries.cs：只更新现有warehouse.controls中英帮助，不写.asset。
+另有2份Docs：Docs/Architecture/WarehouseShelterSetup.txt、本交接。
+最初任务允许必要时修改Grid.cs、WarehouseGridTests.cs及View；实际实现无需修改三者，均保留原样。静态审查没有发现需要改写的仓库坐标算法。六份Assets源码与两份文档已落盘并完成整合静态审查；文件已列出不等同于编译或测试通过。
+
+保存前实际内容备份位于Docs/Verification/QuickTransfer/05A/Before/，按工程相对路径保存；不是仅记hash。本文档子任务已保存：
+- Docs/Architecture/WarehouseShelterSetup.txt，SHA256 8630DA716F5315656D621AB210E72A978439DDFD9FAD51632747895C5FF147E6。
+- Assets/Tests/Warehouse/Editor/WarehouseTextEntries.cs，SHA256 9C4AE51A849F6A81A4FA4596197A1492842F8B980A1F4C0F02FF885F1D53EBE5。
+备份与修改前原文件已核对一致。新交接此前不存在，无旧内容可备份。当前Before目录另含WarehouseItemView.cs、WarehouseUIController.cs、WarehouseManager.cs、WarehouseShelterTests.cs、WarehouseIntegrationTests.cs的修改前内容，按各自Assets相对路径保存；六份既有Assets与一份既有Architecture文档备份齐全。不覆盖他人备份，不复制旧快照覆盖并行变更。
+
+三、实际API与职责
+
+WarehouseUIController：
+public Func<string, bool> QuickTransferRequested { get; set; }
+public bool TryQuickTransfer(string instanceId)
+返回本次请求实际成功与否。06绑定回调并调用真实Coordinator、给出双语结果；05不引用06类型，不自行改Owner/ContainerId、不添加背包摆放、不扣EV。没有回调或本地资格不符即false；false不是让ItemView退回普通拖拽的指令，快捷手势无论成功失败都必须消费。
+当前已读实现先验证CanInteract，再拒绝quickTransferInProgress、当前拖拽/遗弃确认、HasPendingInteraction，以及CanBeginDrag回调报告的外部忙状态；校验TryGetStoredItem后才调用委托。没有委托反馈warehouse.result.not_ready，交互冲突反馈warehouse.result.busy，物品失败用现有ResultKey。用本地同步bool保护回调期间重入，finally恢复，不提前Claim仓库占用；06在完整提交内申请/释放占用，避免找位前就被自己的占用拒绝。返回委托的真实bool，不把处理过请求等同于业务成功。
+当前ItemView在左键PointerDown锁定左右Ctrl状态，PointerClick先清状态并Use再请求；false没有普通选择/拖拽回退。Ctrl手势跨过拖拽阈值时消费且不请求，不进入普通拖拽；普通手势已开始拖拽后Ctrl不转换。普通拖拽保留pressPosition和pressEventCamera，避免越过阈值后错用目标作抓取原点。Bind（包含Controller同源重绑）、Close、LayoutChanged、ContextChanged、取消、失焦/暂停、停用会清本地手势，ItemView换绑/停用也清自身手势与旧drag token。以上已做静态阅读，尚未经Unity编译或输入回归。
+
+WarehouseManager：
+public WarehouseResult TryFindSpaceForExternal(string instanceId, bool preferredRotated, out Vector2Int cell, out bool rotated)
+已读Manager落盘实现：先检查IsReady→IsManagementAllowed→busy/HasPendingInteraction，再复用GetPlacementCandidate和原grid.CanPlace校验，不提前Claim。先固定preferredRotated，按y由小到大、同一行x由小到大查找；该方向所有位置均失败且canRotate允许、宽高不相同时才试另一方向。不以每格轮换方向破坏当前方向优先，不重排已有物品。
+Success输出合法左上角与最终方向。所有失败cell=(-1,-1)、rotated=preferredRotated：未准备NotReady，非庇护所NotInShelter，占用/通知中Busy，无实例NotFound，终止归属WrongOwner，Storage属于其他containerId为WrongContainer，已存在实例DuplicateInstance，非法定义InvalidConfiguration，首选旋转但定义禁止旋转为RotationNotAllowed。至少一种方向尺寸可放但无空矩形时Overlap；所有允许尝试方向均尺寸不符时OutOfBounds。不可旋转物不会退到另一个方向；方形物无需重复搜索。此为源码语义，运行结果仍待07。
+查询不得修改Owner、ContainerId、IsRetained、UseRound/UsesThisRound、任何Placement、升级尺寸、EV、占用或通知；快捷提交仍需06用返回坐标调用Coordinator并重新校验，查询结果不是保留空位或提交凭证。满仓保持源物原坐标，不丢弃或强行塞入。
+
+四、已完成的静态鼠标落位审查
+
+已实际阅读Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferUIBridge.cs与ItemTransferCoordinator.cs，以及WarehouseView.TryScreenToCell/GetGrabOffset和WarehouseUIController拖拽流程。未调用Unity复现，以下仅是源码结论。
+背包→仓库预览：OnBackpackDrag调用warehouse.view.TryScreenToCell(position,eventCamera,out cell)，计算target=cell-backpack.DragGrabOffset，使用backpack.PreviewRotated调用WarehouseManager.CanPlaceExternal并画ShowPreview。只在仓库打开、目标可见并取得本地占用时显示有效预览。
+背包→仓库松手：OnBackpackDrop重新TryScreenToCell，仍减同一个DragGrabOffset，调用coordinator.TryBackpackToWarehouse(id,x,y,backpack.PreviewRotated,interactionOwner,requestIsValid)。
+仓库→背包预览：OnWarehouseDrag调用backpack.view.TryScreenToCell，减warehouse.DragGrabOffset并以warehouse.PreviewRotated查询和画框。OnWarehouseDrop重复同一坐标链，调用TryWarehouseToBackpack传明确x/y/rotated。
+Coordinator.TransferContainers先验证请求、真实源摆放、目标CanPlaceExternal、庇护所权限和交互持有者，再静默写目标/移源、最后改01归属，失败恢复并保留源；目标非法时直接失败，没有调用first-fit或找替代格。普通拖拽的查询、预览和提交均保留具体落点，不应接入新增自动找位方法。
+WarehouseView使用实际滚动后的gridRoot做RectTransformUtility.ScreenPointToLocalPointInRectangle转换；减实际rect边缘与padding，以EffectiveCellSize+gap算格，并拒绝viewport外、其他窗口遮挡、格缝、负坐标、超出Width/Height的空白。GetGrabOffset基于来源物品实际矩形内格；Canvas缩放由RectTransform转换处理。这里没有用height计算单格尺寸。
+独立指针生命周期审查还读取Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/Plugins/UI/InputSystemUIInputModule.cs的ProcessPointerButton/ProcessPointerButtonDrag。库在释放时先计算isClick，再调用PointerUp，随后Click；05没有在PointerUp提前清掉正常Click所需标记。OnBeginDrag先eligibleForClick=false，Ctrl手势无本地token，因此库后续Drag/End不提交。取消后本地pointerPressed=false会拒绝迟到Click；未跨阈值但物品外松手时库不发Click，下一次Down覆盖残留Ctrl状态。正常Begin使用pressPosition，Claim引发ContextChanged虽清指针手势但不取消新token，后续按Ctrl也不转换普通拖拽。CancelDrag本身清手势，可覆盖06 CancelAll/受击路径，不仅靠Close。此轮静态审查未发现需要另改运行代码的阻断项，不能据此标运行通过。
+边界发现：本轮开始静态读取到的06B返箱路径使用LootView.TryHitReturnTarget接受整个viewport，TryGetReturnedItemPosition自动找位，TryBackpackToSource不收鼠标x/y，原始宽高规则未跟随R；A25明确要求改为鼠标精确坐标、运行旋转布局且空白拒绝。此问题归06本轮修复，05没有改其文件，也不据该旧返箱问题否定已经传坐标的背包↔仓库路径。06正在独立并行开发，最新完成状态应看06C交接，不用本段开工快照断言其最终实现仍旧。
+
+五、必要双语帮助及07集成入口
+
+仅WarehouseTextEntries现有warehouse.controls键更新：
+中文：Ctrl+左键转入背包；左键拖动 / R旋转；滚轮上下查看
+English: Ctrl + click to backpack; drag / R to rotate; scroll vertically
+没有新key，没有把失败结果文案复制到仓库；没有修改Assets/Data/Localization/Warehouse/WarehouseText.asset。07最终更新现有键时保留其他条目，并检查1920下提示可读。已核对WarehouseTestSceneBuilder.CreateTable：表已存在就直接返回，只有新建表才调用WarehouseTextEntries.Fill。因此运行创建缺失资产菜单不会更新现有表，07应明确更新已有warehouse.controls，不能只改生成源后声称运行表已更新。
+06应在现有Bind/Unbind接入05的QuickTransferRequested，卸载时只清自己绑定的回调；返回bool表示实际业务结果。对侧必须恰好一个已打开有效目标，没有目标或两个有效目标拒绝，不根据鼠标距离猜，不快捷丢地；这些决策由06统一负责。05继续保持独立模块与原本地遗弃确认。
+07等待04A、05A与06C最终交接后才编译、更新必要语言表/界面、串行运行测试；正确正式入口为Assets/Scenes/Bootstrap.unity → Game 1920×1080 → Play，不能独立启动Shelter/Ruins来绕过Bootstrap。复验仓库20×20与升级20×24、66/4/6、只纵滚和物品尺寸保持，完整出发/搜刮/撤离/自由存取/再出发由07负责。
+
+六、新版验证状态
+
+本轮没有Unity编译结果，没有EditMode/PlayMode执行结果，没有新版Game截图或原生输入成绩。测试源码的编写/静态审查不等于运行通过。
+PlayMode源码保留原7项并新增5项，共12项，未编译/运行：
+- EitherControlClickRequestsOneItemAndConsumesSuccessOrFailureWithoutReentry：左右Ctrl、true/false单次请求、提前松Ctrl、回调重入拒绝，Ctrl右键/普通左键不快捷，快照保持。
+- ControlPressCrossingDragThresholdConsumesGestureWithoutFallback：跨阈值不拖拽/不请求；物品边缘2px到格缝松手无Click，下一次普通点击/拖拽不继承Ctrl。
+- OrdinaryDragKeepsInternalGrabOffsetRotationAndExactFarCellAfterControl：从布娃娃内部(1,1)抓取，R及后来按Ctrl仍为普通拖拽，指定远处(12,3)；重叠、右越界、格缝、标题失败不找替代位。
+- QuickTransferRejectsLocalInteractionConflictsBeforeCallingDelegate：外部占用、遗弃确认、普通拖拽、CanBeginDrag=false、无实例/错误归属/缺摆放、失去上下文、无回调拒绝，返回实际委托结果。
+- ClosingDisablingRebindingAndCancelDragClearPendingControlClickBeforeLateRelease：Close/disable/同源Bind/CancelDrag清旧按压，旧释放零提交，新按压仍可请求。
+滚动后的精确队列落位、新增底部行和20×24显示保持沿用并保留原VerticalScrollingKeepsEveryColumnVisibleAndMapsPointerWithoutRebuildingCells。上述新增测试仅验证05本地委托及仓库整理，不替代06真实双向事务、完整会话或最终反馈联验。
+WarehouseShelterTests新增12个方法、19个案例源码（含参数化案例），已静态读取，未编译/运行；静态枚举预计本模块EditMode共49个案例（未改动的Grid12+当前Shelter37），该数字不是运行成绩：
+- QuickSpaceQueryUsesRowMajorOrderWithoutChangingRuntimeStateOrNotifying：左上行优先，重复查询保持全实例快照、EV、次数、布局、尺寸及零通知/零占用。
+- QuickSpaceQueryExhaustsPreferredOrientationBeforeTryingAlternate（2案例）：另一方向原点可放时仍优先当前方向较后位置。
+- QuickSpaceQueryTriesAllowedAlternateWhenPreferredCannotFit（4案例）：首选方向越界或被阻挡，允许旋转后返回另一方向且不修改定义。
+- QuickSpaceQueryDoesNotRotateForbiddenItemsOrRepairIllegalOrientation（2案例）：禁止旋转不暗中换向，非法首选旋转明确拒绝。
+- QuickSpaceQueryRejectsBothOversizedOrientationsAndPreservesOutputDefaults（2案例）：两向都超尺寸、输出初值保持。
+- QuickSpaceQueryRejectsFullOrFragmentedSpaceWithoutMutatingLayout（2案例）：满仓和总面积足够但没有矩形空位时拒绝、无通知。
+- QuickSpaceQueryRequiresReadyManagerAndShelterPermission：未初始化与无庇护所权限。
+- QuickSpaceQueryRejectsPendingInteractionWithoutTakingOrReleasingItsClaim：外部占用保留、查询不抢占/释放，解除后可查询。
+- QuickSpaceQueryRejectsReentryDuringWarehouseNotification：Changed通知期间Busy，不重入。
+- QuickSpaceQueryKeepsExistingIdentityOwnershipAndConfigurationValidation：无实例、重复、错容器、终止归属和非法定义。
+- QuickSpaceQueryDoesNotSkipExistingInvalidPlacementToFindAnotherCell：原有非法矩形不能通过找其他空格绕过或被查询修复。
+- QuickSpaceQueryUsesNewRowsAfterUpgradeWithoutChangingActivationOrStoredItems：初始满仓，真实20×24升级后找到(0,20)，保留激活/EV/旧摆放与身份。
+非默认宽度由3×2、3×3、4×4、5×4目标夹具参与找位验证；Grid与GridTests保持原样。19个新增case只是源代码数量，不是本轮执行成绩。
+07运行时须区分公开API夹具、InputSystem.QueueStateEvent→真实InputAction/EventSystem/UGUI、实体键鼠。旧05的30+7+7、06A的105/27、06B的105/29、07A的正式6/6及主程自然搜索/返箱API证据均只作为版本基线，不是本轮05A通过结果。
+A25已经覆盖历史“viewport空白可返箱”“历史原位优先”的普通拖拽规则；不能拿旧通过测试要求恢复旧行为。新自动找位只属于明确Ctrl快捷命令。
+
+七、实际参考源码与核实版本
+
+本轮从本地.git/HEAD及refs/heads/main重新核实，没有外网请求或修改参考仓库：
+- E:/Portfolio-Card-Clone：57eabac0f946f21ef00b489e83c1c133905ea673。
+- E:/Portfolio-Clone（2DArpg-Portfolio）：c601c36f95efdd4d67327489f9edb58412aa54b4。
+- E:/Portfolio-LiDar：7d691ab14ff69a85cf6be7b91cc910139205507f。
+已重新读取CardGame的Assets/Scripts/Cards/MonoBehaviour/CardDragHandler.cs、Assets/Scripts/GameBoard/UIGridController.cs、Assets/Scripts/Items/MonoBehaviour/ItemTemplet.cs：沿用已适配UGUI Begin/Drag/End、普通行列循环和显式点击/文字刷新形式；不迁入旧固定深度ScreenToWorldPoint、Card技能/回合、DOTween或全局拖拽单例。新增快捷委托与只读找位是当前模块的实际需求，不声称参考仓库已有完整仓库快捷转移系统。
+重新读取2DArpg-Portfolio的Assets/Scripts/UI/PlayerUI/PlayerUI.cs以核对明确数据查询和订阅形式；其OnDisable只退订health，当前05必须完整清理自身订阅，不照搬遗漏。LiDar本轮只核实版本，没有迁入无关实现。原WarehouseGrid、Manager、UI和06精确拖放链是本次直接基础，背包/仓库核心继续独立，无框架、事件总线或反射业务。
+
+八、交付状态与待运行事项
+
+Controller/ItemView、Manager与新增测试已完成主执行者整合静态核对，独立UI生命周期审查未发现阻断项；既有文件内容备份齐全。Docs/Verification/QuickTransfer/05A/StaticReview.json已记录6份源码的实际Before、meta存在、无namespace与差异空白检查，以及源码枚举预计EditMode49/PlayMode12；全部均未编译、未运行。07仍需完成06委托接线联验、已有语言表更新、编译、自动测试和1920正式入口验收。READY仅表示本模块代码、测试源码和交接可供集成，不表示上述待运行项目已通过。
+READY_FOR_INTEGRATION；05A代码及测试已就绪，未操作Unity，运行验证待07

@@ -1,0 +1,17 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"success\":true,\"message\":\"Code executed successfully.\",\"data\":{\"result\":\"{ utc = 2026-10-19T06:50:37.7536674Z, scene = Assets/Scenes/Ruins.unity, dirty = False, loadedSceneCount = 1, playing = False, paused = False, changing = False, compiling = False, updating = False, prefabStage = none, timeScale = 1, background = False, backgroundSetting = False, enterPlayModeOptions = DisableDomainReload, width = 1920, height = 1080, probeRunning = False, probeResult = PASS: Timed discovery, hidden renderer with real detection, real cover stop/timeout, immediate rediscovery and formal same-round timer preservation., autoRefreshHeld = False, missingSceneScripts = 0, missingPrefabScripts = 0, rotors = 4, allRotorsPresent = True, rotorSpeed = 2400, drones = <>__AnonType1`8[System.String,System.String,UnityEngine.Vector3,System.Boolean,System.Single,System.Single,System.Boolean,<>__AnonType0`2[System.String,UnityEngine.Vector3][]][], devices = <>__AnonType2`3[System.String,System.Boolean,System.Boolean][] }\",\"compiler\":\"codedom\"}}"
+    }
+  ],
+  "structuredContent": {
+    "success": true,
+    "message": "Code executed successfully.",
+    "data": {
+      "result": "{ utc = 2026-10-19T06:50:37.7536674Z, scene = Assets/Scenes/Ruins.unity, dirty = False, loadedSceneCount = 1, playing = False, paused = False, changing = False, compiling = False, updating = False, prefabStage = none, timeScale = 1, background = False, backgroundSetting = False, enterPlayModeOptions = DisableDomainReload, width = 1920, height = 1080, probeRunning = False, probeResult = PASS: Timed discovery, hidden renderer with real detection, real cover stop/timeout, immediate rediscovery and formal same-round timer preservation., autoRefreshHeld = False, missingSceneScripts = 0, missingPrefabScripts = 0, rotors = 4, allRotorsPresent = True, rotorSpeed = 2400, drones = <>__AnonType1`8[System.String,System.String,UnityEngine.Vector3,System.Boolean,System.Single,System.Single,System.Boolean,<>__AnonType0`2[System.String,UnityEngine.Vector3][]][], devices = <>__AnonType2`3[System.String,System.Boolean,System.Boolean][] }",
+      "compiler": "codedom"
+    }
+  },
+  "isError": false
+}

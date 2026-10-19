@@ -1,0 +1,25 @@
+Rendering / NightDefault change audit
+Captured UTC: 2026-10-19T08:13:10.5605283Z through 2026-10-19T08:13:11.9394951Z
+Read-only Assets inspection; no Unity calls, Assets writes, or test reruns.
+
+Baseline: 17 files in BeforeHashes.json. Retained Before copies: 17/17 match. Existing meta files: 17/17 unchanged.
+Complete-text checks: 17/17 equal baseline after only the declared transformations. Unexpected differences: 0.
+11 scenes changed their skybox reference to existing ShelterNightSkybox (GUID 8ea61fa5552419d4fbbc16241b881895). Seven have only that one line change.
+BaseTest, ItemsTest, LocalizationTest and WarehouseTest each also change exactly one Camera.m_ClearFlags from 2 to 1. No other RenderSettings, object layout/Transform, Light, camera, component or reference changes appear in any scene diff.
+Shelter.unity remains byte-identical to this rendering baseline: D1DD18A573846182F45BDD2E8A802A6F0FFC8E044D3C1ED3F9EE1B71A7CAF46F.
+PlayerCamera.prefab and ShelterNightSkybox.mat are byte-identical to baseline.
+PlayerTestSceneBuilder, WarehouseTestSceneBuilder and LocalizationTestSceneBuilder each change exactly one SolidColor to Skybox expression; remaining text is identical.
+New assets inspected: Assets/Editor/ProjectNightEnvironment.cs, its .meta, and Assets/Editor.meta. Editor script only initializes a newly created scene skybox and restores previous active scene; it does not save scenes or alter cameras, lights or object layout.
+Assets now contains exactly 12 .unity files, matching the original 12-scene inventory; all 12 reference the same night skybox. The three temporary verification scenes and their meta files are retained under Docs/Verification/Rendering/NightDefault/CreatedScenes and absent from Assets.
+ChangeAudit.json contains per-file before/current hashes, meta hashes/GUIDs, complete diffs, new asset hashes, current scene inventory, and archived validation scene hashes.
+Scope: comparisons use this task baseline, not Git attribution. No statement is made about unrelated files absent from the declared baseline.
+
+Runtime environment refresh follow-up
+Captured UTC: 2026-10-19T08:14:07.5892361Z through 2026-10-19T08:14:07.8665013Z
+Rechecked existing content: 17/17 unchanged from the previous audited result. Existing meta: 17/17 unchanged. Assets scene count remains 12. Original scene diff findings still apply.
+New runtime script: Assets/Scripts/Rendering/SceneEnvironmentRefresh.cs, its automatically generated meta, and Assets/Scripts/Rendering.meta are recorded below and in JSON. Both new GUIDs resolve to exactly their own meta file.
+Static review: AfterSceneLoad initialization removes/adds activeSceneChanged handler to avoid duplicate subscription; initialization and active-scene changes call DynamicGI.UpdateEnvironment only during Play and Skybox ambient mode. No scene asset, camera, light, layout or skybox assignment is mutated by this script.
+Parent-reported runtime diagnosis: ambientProbe[0,0] remained 0.180283785 with night sky assigned, then became 0.00553075 after manual DynamicGI.UpdateEnvironment. This audit records the observation as reported and did not independently run Unity.
+Assets\Scripts\Rendering\SceneEnvironmentRefresh.cs SHA256=2ABBFF6B6E51D13BC1062B48F1CAB0A4EB7924E7E8A11866F50449F79D15DBBB 
+Assets\Scripts\Rendering\SceneEnvironmentRefresh.cs.meta SHA256=CF9750FCEBC02C8E08A00DAE91817D702072BF259EF590BC46312AACB28B7C0E guid: b1185fc20f15ac94e9e8cd5cfb45945a
+Assets\Scripts\Rendering.meta SHA256=5FEC37CCEBAF249D0C4BF98CC0ACA434F642927AC6F8E9E6EC3DD65618EE79E5 guid: 2c5ecabbd64fc5249bb13ec3d660037c

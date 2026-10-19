@@ -1,0 +1,38 @@
+{
+  "geometry": {
+    "scene": "BackpackTest",
+    "screen": [
+      1920,
+      1080
+    ],
+    "grids": [
+      {
+        "kind": "Backpack",
+        "active": true,
+        "cellSize": 66,
+        "gap": 4,
+        "padding": 6,
+        "scale": "(1.00, 1.00, 1.00)",
+        "count": 16,
+        "actual": [
+          66,
+          66
+        ],
+        "canvas": [
+          1920,
+          1080
+        ]
+      }
+    ]
+  },
+  "layout": {
+    "panelSize": "(360.00, 680.00)",
+    "discardPosition": "(20.00, -522.00)",
+    "discardSize": "(320.00, 34.00)",
+    "hintPosition": "(20.00, -564.00)",
+    "hintSize": "(320.00, 96.00)",
+    "clips": []
+  },
+  "image": "BackpackTestFixed-API.png",
+  "method": "Ordinary Play API-open; actual screenshot inspected, not native input."
+}

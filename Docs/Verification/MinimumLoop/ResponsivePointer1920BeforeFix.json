@@ -1,0 +1,38 @@
+{
+  "success": true,
+  "message": "Test job status retrieved.",
+  "error": null,
+  "data": {
+    "job_id": "9af1589f03d54efca524c49c1c8a3d52",
+    "status": "failed",
+    "mode": "PlayMode",
+    "started_unix_ms": 1792357457560,
+    "finished_unix_ms": 1792357463314,
+    "last_update_unix_ms": 1792357463314,
+    "progress": {
+      "completed": 1,
+      "total": 1,
+      "current_test_full_name": null,
+      "current_test_started_unix_ms": 1792357458730,
+      "last_finished_test_full_name": "MinimumLoopPointerTests.FormalSearchPickupExtractionAndBidirectionalStorageUseQueuedPointers",
+      "last_finished_unix_ms": 1792357463302,
+      "stuck_suspected": false,
+      "editor_is_focused": true,
+      "run_in_background": null,
+      "focus_nudge_attempts": null,
+      "focus_nudge_limit": null,
+      "focus_nudge_status": null,
+      "blocked_reason": null,
+      "failures_so_far": [
+        {
+          "full_name": "MinimumLoopPointerTests.FormalSearchPickupExtractionAndBidirectionalStorageUseQueuedPointers",
+          "message": "  Ruins/BackpackItem_c1e40301ca764784a6119f765cac82d7/Name clips vertically: 医疗包\r\n  Expected: less than or equal to 31.75f\r\n  But was:  33.3100014f\r\n"
+        }
+      ],
+      "failures_capped": false
+    },
+    "error": null,
+    "result": null
+  },
+  "hint": null
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "Path": "Assets/Scenes/Shelter.unity",
+    "Hash": "F4A36F7B10057621E7CBD4FB013C6D30EB92BE94FBF245786AC2E8C388F892B8"
+  },
+  {
+    "Path": "Assets/Scenes/Ruins.unity",
+    "Hash": "A440DBD94EBAA2C3AB4DCCCEFE3B94E8F84C2388664C7B95D2606F0E214A77E1"
+  },
+  {
+    "Path": "Assets/Scenes/Tests/Enemy/EnemyTest.unity",
+    "Hash": "AA62E8EDC69AC0C08F7F4F8FA6DE3AD0425A0DDFB7FC344B85D20C7D40242200"
+  },
+  {
+    "Path": "Assets/Prefabs/Enemy/Drone/Drone.prefab",
+    "Hash": "3DBF48088A9FC82470A4E5DFB056A8E962002B23CED19F883FB23A23891114EB"
+  },
+  {
+    "Path": "Assets/Prefabs/Enemy/Drone/Drone.prefab.meta",
+    "Hash": "7373C79FC9230FA996B140D761A8E06DE02E78D0803E5FA2FDAF064B771E4603"
+  },
+  {
+    "Path": "Assets/Data/Enemy/Drone/DroneConfig.asset",
+    "Hash": "9AC93E385E708E3576C47DDB63FAD851190C96C26705051577F29F81F647BBEC"
+  },
+  {
+    "Path": "Assets/Art/Materials/Enemy/DroneVision.mat",
+    "Hash": "4535371ED6236C24E50D231CEF6192093C4251AA53B9D5590D1AC01D949A3676"
+  },
+  {
+    "Path": "ProjectSettings/EditorSettings.asset",
+    "Hash": "D31BE15C85A31D85372564BF5EE30188A9454274C6DF8FE7A3372375A0DB98BC"
+  }
+]

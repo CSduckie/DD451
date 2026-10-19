@@ -1,0 +1,21 @@
+{
+  "success": true,
+  "message": "Code executed successfully.",
+  "data": {
+    "result": {
+      "started": true,
+      "camera": "OutputCamera",
+      "cameraPosition": "(-8.00, 2.75, -12.00)",
+      "shader": "MyPrecious/DroneVision",
+      "materialProgress": 0,
+      "cull": 2,
+      "nose": "(-6.67, 1.64, 0.00)",
+      "wall": "Center: (-2.00, 1.00, 0.00), Extents: (0.35, 1.00, 1.25)",
+      "meshId": -1896136,
+      "colliderId": -1893332,
+      "previousRunInBackground": false,
+      "runtimeOnly": true
+    },
+    "compiler": "codedom"
+  }
+}

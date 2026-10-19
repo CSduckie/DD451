@@ -1,0 +1,37 @@
+灯光呼吸与闪烁叠加：本轮验证结果
+
+实现：沿用原LightFlicker；最终亮度=启用时原亮度×呼吸倍率×闪灭倍率。
+默认呼吸4秒一轮，最低0.65，最高1；原亮度50时范围32.5～50。
+参考ARPG TurretLaserController的Mathf.Sin周期变化公式；参考版本c601c36f95efdd4d67327489f9edb58412aa54b4。
+
+实际运行采样：
+Shelter Play 34.004秒，7492帧、14984条两灯记录。完整统计见RuntimeAnalysis.json。
+默认阶段两灯非暗时都覆盖32.5～50，既上升又下降；暗时227/141条记录均为0。
+两灯同时启用的默认阶段4839帧，4837帧亮度不同、368帧暗亮状态不同。
+暗态禁用组件/根对象后各68/67条禁用样本全部恢复50，约0.3秒后重新启用。
+重新启用基准仍为50、继续覆盖32.5～50，协程清理和重启句柄检查通过。
+临时设暗倍率0.5：95条暗时样本16.28908～18.31078，符合当前呼吸亮度减半；短暗窗仅观察到下降，未宣称暗窗覆盖整个呼吸周期。
+临时关闭另一灯呼吸：2437条亮时样本全为50，81条暗时样本全为0。
+分析保留全部过渡样本；与对应公式最大误差0.0000353，超过0.001容差记录0条。
+观察结束恢复临时字段；退出Play后均亮度50，enabled和active均true。
+
+画面核对：
+直接启动Shelter时没有游戏相机，Game-High/Low/Dark.png三张均为黑屏，仅保留失败尝试，不计验收。
+随后通过现有Bootstrap进入Shelter，沿用现有OutputCamera、Cinemachine和玩家。
+15秒捕获Bootstrap-High/Low/Dark.png，均1920×1080；已实际查看，高亮/低亮/闪灭照明差异可见。
+截图请求时灯光强度分别49.508220、32.981720、0；截图为异步帧末截图，不把请求值冒称为逐像素精确测量。
+仅静帧视觉检查，连续变化用运行采样交叉核对；未做视频/人工键鼠验收或完整游戏回归。
+
+编译与持久化：
+Unity编译完成，最终Console错误/警告0条，未清空Console。
+PrefabInheritance.json确认两灯继承三个新增呼吸字段，均无这些字段的实例覆盖。
+灯光实例原darkIntensityMultiplier=0覆盖保留。
+Prefab差异仅三个新增字段；原Prefab和脚本meta字节保持一致，Shelter磁盘字节不变，见Integrity.json。
+最终回到Shelter/Edit、dirty=false、compiling=false、updating=false；两灯原亮度50，呼吸默认启用。
+Application.runInBackground仅采样时临时设true，已恢复false；Time.timeScale保持1。
+编辑器已释放，本聊天没有继续运行的观察回调或Play任务。
+
+未运行边界与限制：
+缺失/销毁目标、初始关闭Light本轮只检查源码判空和不写enabled，没有另外构造运行用例。
+仅控制intensity，不处理材质Emission。呼吸/闪烁随Time.timeScale；运行时换targetLight需重新启用。
+未新增测试框架、生产脚本、场景、材质或公共接口。

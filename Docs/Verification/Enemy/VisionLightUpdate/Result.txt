@@ -1,0 +1,19 @@
+Drone vision alignment and breathing status light — 2026-10-19
+
+User confirmed Search is the orange alert/search state; Chase is red. No new AI state or detection delay.
+Drone.prefab now has Visual/VisionOrigin, local position (0,.135,-.326), local rotation (0,90,0), matching the authored nose with Visual's -90 degree model correction. DroneVision follows its world pose for both visible fan and actual trigger MeshCollider. Extra directionDegrees is zero. Controller updates the model before detection; FlightVisual LateUpdate still rotates the propellers.
+DroneStatusLight references the user's existing Visual/Point Light. Original blue, intensity8, range.3, enabled state, shadows and position are preserved. Default breathing is2 seconds at35%-100% authored intensity. Search orange, Chase red; all states breathe. Disabled effect restores original color/intensity; exploded Visual remains hidden; next round recovers correctly, including when the effect stays disabled.
+
+Verification:
+- Real prefab isolated in current scene Play:3357 rendered-frame samples over18 seconds; movement lean reached20 degrees, measured model/vision rotation error0 degrees and position error<=.00001. Actual target discovery entered Chase and target removal entered Search. Each of Patrol/Chase/Search sampled brightness approximately2.8 to8.0 in its intended color.
+- Explosion hid the light; new round restored it; same-round reset rejected. Disabling effect restored authored values and disabled effect remained steady8 in the next round. Sample evidence:ActualPrefabSamples.csv and ActualPrefabChecks.txt.
+- Unity Test Runner Enemy EditMode27/27, PlayMode22/22, failed0/skipped0. Six new tests cover origin/tilt/turn/reset, immediate detection and wall clipping, breathing states and lifecycle. Existing saved-scene integration additionally asserts anchor/light references.
+- Final Console0 errors/0 warnings. Editor stopped, Shelter clean, no prefab stage, timeScale1, runInBackgroundfalse.
+
+Scene preservation:
+Shelter was dirty at initial takeover; preserved its disk and live saveAsCopy snapshot under BeforeApply. During runtime verification Editor was subsequently externally stopped and Shelter saved; root did not save or overwrite that scene. Latest disk version was backed up as Shelter-BeforeTestRunner.unity before running the TestRunner and verified byte-identical afterward. EnemyTest/Ruins scene files and Drone.prefab.meta are unchanged from initial baseline. Drone_A's authored scene light range.1/position overrides remain unchanged; this report does not claim its light has the prefab range.3.
+
+Maintenance:
+No namespace, extra manager, event framework or new state machine. Existing enum/state design retained; simple per-frame sine effect follows the user's ARPG code style.
+EnemyTestSceneBuilder preserves an existing Drone.prefab and was not run. Its legacy missing-prefab generation branch still predates the user's added light/model tuning; do not delete/rebuild the maintained prefab as a way of applying this update. The maintained Drone.prefab is the authoritative setup.
+Staging contains historical preparation files; Assets and this report are the delivered version.

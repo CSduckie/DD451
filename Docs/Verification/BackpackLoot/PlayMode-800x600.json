@@ -1,0 +1,227 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"success\":true,\"message\":\"Test job status retrieved.\",\"error\":null,\"data\":{\"job_id\":\"1435455e35f94f9c8eda79c962c01b72\",\"status\":\"succeeded\",\"mode\":\"PlayMode\",\"started_unix_ms\":1792351453613,\"finished_unix_ms\":1792351469478,\"last_update_unix_ms\":1792351469478,\"progress\":{\"completed\":19,\"total\":19,\"current_test_full_name\":null,\"current_test_started_unix_ms\":1792351466725,\"last_finished_test_full_name\":\"LootIntegrationTests.RevealedEntryPointerPickupContinuesNextSearchAndDamageCancelsLateRelease\",\"last_finished_unix_ms\":1792351469463,\"stuck_suspected\":false,\"editor_is_focused\":false,\"run_in_background\":null,\"focus_nudge_attempts\":null,\"focus_nudge_limit\":null,\"focus_nudge_status\":null,\"blocked_reason\":null,\"failures_so_far\":[],\"failures_capped\":false},\"error\":null,\"result\":{\"mode\":\"PlayMode\",\"summary\":{\"total\":19,\"passed\":19,\"failed\":0,\"skipped\":0,\"durationSeconds\":12.7226125,\"resultState\":\"Passed\"},\"results\":[{\"name\":\"ActualDistanceAndObstructionInterruptSearchWhileUiLockDoesNot\",\"fullName\":\"LootIntegrationTests.ActualDistanceAndObstructionInterruptSearchWhileUiLockDoesNot\",\"state\":\"Passed\",\"durationSeconds\":0.4016418,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ClosingEndsSourceAndPreviewBeforeReleasingBackpackControl\",\"fullName\":\"LootIntegrationTests.ClosingEndsSourceAndPreviewBeforeReleasingBackpackControl\",\"state\":\"Passed\",\"durationSeconds\":0.1163649,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ExistingRightClickStillRejectsFullHealthAndUsesOneRealFoodAfterDamage\",\"fullName\":\"LootIntegrationTests.ExistingRightClickStillRejectsFullHealthAndUsesOneRealFoodAfterDamage\",\"state\":\"Passed\",\"durationSeconds\":0.2005979,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"GroundDropButtonAndSourceDragReuseSameIdentityWhileBackpackLocksAction\",\"fullName\":\"LootIntegrationTests.GroundDropButtonAndSourceDragReuseSameIdentityWhileBackpackLocksAction\",\"state\":\"Passed\",\"durationSeconds\":0.2489463,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"GroundPointerCancelAndFullBackpackKeepTheSameVisibleSource\",\"fullName\":\"LootIntegrationTests.GroundPointerCancelAndFullBackpackKeepTheSameVisibleSource\",\"state\":\"Passed\",\"durationSeconds\":0.1752241,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"MissingGroundRefusesDropWithoutChangingLayoutOrOwner\",\"fullName\":\"LootIntegrationTests.MissingGroundRefusesDropWithoutChangingLayoutOrOwner\",\"state\":\"Passed\",\"durationSeconds\":0.1004347,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"NextRoundRecoversUniqueIdentityEvenWhenTableChanceBecomesZero\",\"fullName\":\"LootIntegrationTests.NextRoundRecoversUniqueIdentityEvenWhenTableChanceBecomesZero\",\"state\":\"Passed\",\"durationSeconds\":0.0918284,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"QueuedBackpackAndWarehousePointerReordersStillUseTheirOwnGridAndOneR\",\"fullName\":\"LootIntegrationTests.QueuedBackpackAndWarehousePointerReordersStillUseTheirOwnGridAndOneR\",\"state\":\"Passed\",\"durationSeconds\":0.2479806,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"QueuedBoxRoundTripReusesEntryIdentityAndKeepsTheNextSearch\",\"fullName\":\"LootIntegrationTests.QueuedBoxRoundTripReusesEntryIdentityAndKeepsTheNextSearch\",\"state\":\"Passed\",\"durationSeconds\":1.2972584,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"QueuedCrossPreviewCancelledByClaimNotificationReleasesWarehouseAndAllowsNextDrag\",\"fullName\":\"LootIntegrationTests.QueuedCrossPreviewCancelledByClaimNotificationReleasesWarehouseAndAllowsNextDrag\",\"state\":\"Passed\",\"durationSeconds\":0.2160351,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"QueuedDamageCancelsValidBoxPickupAndLateTokenCannotAffectNextDrag\",\"fullName\":\"LootIntegrationTests.QueuedDamageCancelsValidBoxPickupAndLateTokenCannotAffectNextDrag\",\"state\":\"Passed\",\"durationSeconds\":1.2270797,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"QueuedDamageCancelsValidBoxReturnAndLateTokenCannotAffectNextDrag\",\"fullName\":\"LootIntegrationTests.QueuedDamageCancelsValidBoxReturnAndLateTokenCannotAffectNextDrag\",\"state\":\"Passed\",\"durationSeconds\":0.2311104,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"QueuedEOpensSearchDespiteClearedCurrentTargetAndHiddenEntryCannotTransfer\",\"fullName\":\"LootIntegrationTests.QueuedEOpensSearchDespiteClearedCurrentTargetAndHiddenEntryCannotTransfer\",\"state\":\"Passed\",\"durationSeconds\":0.3307431,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"QueuedPointerTransfersBothWaysAndSingleRPreserveIdentityAndEv\",\"fullName\":\"LootIntegrationTests.QueuedPointerTransfersBothWaysAndSingleRPreserveIdentityAndEv\",\"state\":\"Passed\",\"durationSeconds\":0.2658656,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"QueuedReturnRequiresTopmostListAndOldSessionCannotCommitAfterReopen\",\"fullName\":\"LootIntegrationTests.QueuedReturnRequiresTopmostListAndOldSessionCannotCommitAfterReopen\",\"state\":\"Passed\",\"durationSeconds\":0.2086456,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"QueuedUnrelatedBackpackItemAppendsRevealedEntryToAnEmptyBox\",\"fullName\":\"LootIntegrationTests.QueuedUnrelatedBackpackItemAppendsRevealedEntryToAnEmptyBox\",\"state\":\"Passed\",\"durationSeconds\":0.1432343,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"QueuedWheelScrollRevealsLastLootDragAndMovesTheRealWarehouseViewport\",\"fullName\":\"LootIntegrationTests.QueuedWheelScrollRevealsLastLootDragAndMovesTheRealWarehouseViewport\",\"state\":\"Passed\",\"durationSeconds\":3.2177906,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ReloadKeepsGeneratedSourceStatesAndOnlyOneGroundPresentation\",\"fullName\":\"LootIntegrationTests.ReloadKeepsGeneratedSourceStatesAndOnlyOneGroundPresentation\",\"state\":\"Passed\",\"durationSeconds\":1.2476969,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"RevealedEntryPointerPickupContinuesNextSearchAndDamageCancelsLateRelease\",\"fullName\":\"LootIntegrationTests.RevealedEntryPointerPickupContinuesNextSearchAndDamageCancelsLateRelease\",\"state\":\"Passed\",\"durationSeconds\":2.7375488,\"message\":null,\"stackTrace\":null,\"output\":\"\"}]}},\"hint\":null}"
+    }
+  ],
+  "structuredContent": {
+    "result": {
+      "success": true,
+      "message": "Test job status retrieved.",
+      "error": null,
+      "data": {
+        "job_id": "1435455e35f94f9c8eda79c962c01b72",
+        "status": "succeeded",
+        "mode": "PlayMode",
+        "started_unix_ms": 1792351453613,
+        "finished_unix_ms": 1792351469478,
+        "last_update_unix_ms": 1792351469478,
+        "progress": {
+          "completed": 19,
+          "total": 19,
+          "current_test_full_name": null,
+          "current_test_started_unix_ms": 1792351466725,
+          "last_finished_test_full_name": "LootIntegrationTests.RevealedEntryPointerPickupContinuesNextSearchAndDamageCancelsLateRelease",
+          "last_finished_unix_ms": 1792351469463,
+          "stuck_suspected": false,
+          "editor_is_focused": false,
+          "run_in_background": null,
+          "focus_nudge_attempts": null,
+          "focus_nudge_limit": null,
+          "focus_nudge_status": null,
+          "blocked_reason": null,
+          "failures_so_far": [],
+          "failures_capped": false
+        },
+        "error": null,
+        "result": {
+          "mode": "PlayMode",
+          "summary": {
+            "total": 19,
+            "passed": 19,
+            "failed": 0,
+            "skipped": 0,
+            "durationSeconds": 12.7226125,
+            "resultState": "Passed"
+          },
+          "results": [
+            {
+              "name": "ActualDistanceAndObstructionInterruptSearchWhileUiLockDoesNot",
+              "fullName": "LootIntegrationTests.ActualDistanceAndObstructionInterruptSearchWhileUiLockDoesNot",
+              "state": "Passed",
+              "durationSeconds": 0.4016418,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ClosingEndsSourceAndPreviewBeforeReleasingBackpackControl",
+              "fullName": "LootIntegrationTests.ClosingEndsSourceAndPreviewBeforeReleasingBackpackControl",
+              "state": "Passed",
+              "durationSeconds": 0.1163649,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ExistingRightClickStillRejectsFullHealthAndUsesOneRealFoodAfterDamage",
+              "fullName": "LootIntegrationTests.ExistingRightClickStillRejectsFullHealthAndUsesOneRealFoodAfterDamage",
+              "state": "Passed",
+              "durationSeconds": 0.2005979,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "GroundDropButtonAndSourceDragReuseSameIdentityWhileBackpackLocksAction",
+              "fullName": "LootIntegrationTests.GroundDropButtonAndSourceDragReuseSameIdentityWhileBackpackLocksAction",
+              "state": "Passed",
+              "durationSeconds": 0.2489463,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "GroundPointerCancelAndFullBackpackKeepTheSameVisibleSource",
+              "fullName": "LootIntegrationTests.GroundPointerCancelAndFullBackpackKeepTheSameVisibleSource",
+              "state": "Passed",
+              "durationSeconds": 0.1752241,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "MissingGroundRefusesDropWithoutChangingLayoutOrOwner",
+              "fullName": "LootIntegrationTests.MissingGroundRefusesDropWithoutChangingLayoutOrOwner",
+              "state": "Passed",
+              "durationSeconds": 0.1004347,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "NextRoundRecoversUniqueIdentityEvenWhenTableChanceBecomesZero",
+              "fullName": "LootIntegrationTests.NextRoundRecoversUniqueIdentityEvenWhenTableChanceBecomesZero",
+              "state": "Passed",
+              "durationSeconds": 0.0918284,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "QueuedBackpackAndWarehousePointerReordersStillUseTheirOwnGridAndOneR",
+              "fullName": "LootIntegrationTests.QueuedBackpackAndWarehousePointerReordersStillUseTheirOwnGridAndOneR",
+              "state": "Passed",
+              "durationSeconds": 0.2479806,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "QueuedBoxRoundTripReusesEntryIdentityAndKeepsTheNextSearch",
+              "fullName": "LootIntegrationTests.QueuedBoxRoundTripReusesEntryIdentityAndKeepsTheNextSearch",
+              "state": "Passed",
+              "durationSeconds": 1.2972584,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "QueuedCrossPreviewCancelledByClaimNotificationReleasesWarehouseAndAllowsNextDrag",
+              "fullName": "LootIntegrationTests.QueuedCrossPreviewCancelledByClaimNotificationReleasesWarehouseAndAllowsNextDrag",
+              "state": "Passed",
+              "durationSeconds": 0.2160351,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "QueuedDamageCancelsValidBoxPickupAndLateTokenCannotAffectNextDrag",
+              "fullName": "LootIntegrationTests.QueuedDamageCancelsValidBoxPickupAndLateTokenCannotAffectNextDrag",
+              "state": "Passed",
+              "durationSeconds": 1.2270797,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "QueuedDamageCancelsValidBoxReturnAndLateTokenCannotAffectNextDrag",
+              "fullName": "LootIntegrationTests.QueuedDamageCancelsValidBoxReturnAndLateTokenCannotAffectNextDrag",
+              "state": "Passed",
+              "durationSeconds": 0.2311104,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "QueuedEOpensSearchDespiteClearedCurrentTargetAndHiddenEntryCannotTransfer",
+              "fullName": "LootIntegrationTests.QueuedEOpensSearchDespiteClearedCurrentTargetAndHiddenEntryCannotTransfer",
+              "state": "Passed",
+              "durationSeconds": 0.3307431,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "QueuedPointerTransfersBothWaysAndSingleRPreserveIdentityAndEv",
+              "fullName": "LootIntegrationTests.QueuedPointerTransfersBothWaysAndSingleRPreserveIdentityAndEv",
+              "state": "Passed",
+              "durationSeconds": 0.2658656,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "QueuedReturnRequiresTopmostListAndOldSessionCannotCommitAfterReopen",
+              "fullName": "LootIntegrationTests.QueuedReturnRequiresTopmostListAndOldSessionCannotCommitAfterReopen",
+              "state": "Passed",
+              "durationSeconds": 0.2086456,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "QueuedUnrelatedBackpackItemAppendsRevealedEntryToAnEmptyBox",
+              "fullName": "LootIntegrationTests.QueuedUnrelatedBackpackItemAppendsRevealedEntryToAnEmptyBox",
+              "state": "Passed",
+              "durationSeconds": 0.1432343,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "QueuedWheelScrollRevealsLastLootDragAndMovesTheRealWarehouseViewport",
+              "fullName": "LootIntegrationTests.QueuedWheelScrollRevealsLastLootDragAndMovesTheRealWarehouseViewport",
+              "state": "Passed",
+              "durationSeconds": 3.2177906,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ReloadKeepsGeneratedSourceStatesAndOnlyOneGroundPresentation",
+              "fullName": "LootIntegrationTests.ReloadKeepsGeneratedSourceStatesAndOnlyOneGroundPresentation",
+              "state": "Passed",
+              "durationSeconds": 1.2476969,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "RevealedEntryPointerPickupContinuesNextSearchAndDamageCancelsLateRelease",
+              "fullName": "LootIntegrationTests.RevealedEntryPointerPickupContinuesNextSearchAndDamageCancelsLateRelease",
+              "state": "Passed",
+              "durationSeconds": 2.7375488,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            }
+          ]
+        }
+      },
+      "hint": null
+    }
+  },
+  "isError": false
+}

@@ -1,0 +1,10 @@
+{
+  "generatedUtc": "2026-10-19T08:37:41.1996670Z",
+  "status": "STAGING_ONLY_NOT_COMPILED_NOT_APPLIED",
+  "sourcePath": "E:\\DD451\\Assets\\Tests\\GameFlow\\PlayMode\\PlayerSceneTransitionTests.cs",
+  "sourceSha256": "8D112EB6F70AC46E2C98B75BBEB953CCB4922291B2F7ECAD0BA681A8B1F50981",
+  "draftPath": "E:\\DD451\\Docs\\Verification\\GameFlow\\DeathReturn\\Staging\\Tests\\PlayerSceneTransitionTests.cs.txt",
+  "draftSha256": "981351B81E1D0F3D3ACE2AF0C27080C51B586179FAC5A9D353F1E1E442D7801B",
+  "testCount": 4,
+  "changes": "Original 2 tests retained; existing locked-damage case now proves rejection before unlocked real death; adds 2 recovery boundary tests. Items use-count coverage belongs to main death-flow tests."
+}

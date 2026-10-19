@@ -1,0 +1,15 @@
+{
+  "utc": "2026-10-19T00:02:41.3968624Z",
+  "stage": "Exploring",
+  "round": 2,
+  "ev": 7,
+  "warehouse": 2,
+  "grid": [
+    20,
+    24
+  ],
+  "health": 3,
+  "maxHealth": 3,
+  "fixtureCount": 0,
+  "syntheticDevices": 0
+}

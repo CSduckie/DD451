@@ -1,0 +1,75 @@
+{
+  "setup": {
+    "originalSettings": -884,
+    "disabled": [
+      1,
+      2
+    ],
+    "mouse": 1111,
+    "keyboard": 1112,
+    "food": "de0dc6e7ac77428e9ea3b76c0e61cf8c",
+    "source": "loot-test/empty",
+    "bagCount": 3,
+    "sourceCount": 0,
+    "language": "Chinese",
+    "screen": [
+      712,
+      570
+    ],
+    "viewportColor": [
+      0.025,
+      0.055,
+      0.065,
+      1
+    ]
+  },
+  "chineseDragging": {
+    "screen": [
+      712,
+      570
+    ],
+    "language": "Chinese",
+    "dragging": true,
+    "id": "de0dc6e7ac77428e9ea3b76c0e61cf8c",
+    "backpackFeedback": "loot.return_ready",
+    "lootFeedback": "loot.return_ready",
+    "backpackText": "松开放回当前箱子，物品保持已发现。",
+    "lootText": "松开放回当前箱子，物品保持已发现。",
+    "preview": true,
+    "previewPosition": [
+      6,
+      -6
+    ],
+    "previewSize": [
+      136,
+      136
+    ],
+    "viewportColor": [
+      0.025,
+      0.055,
+      0.065,
+      1
+    ],
+    "bagCount": 3,
+    "sourceCount": 0
+  },
+  "chineseReleased": {
+    "language": "Chinese",
+    "instance": "de0dc6e7ac77428e9ea3b76c0e61cf8c",
+    "entry": "returned-de0dc6e7ac77428e9ea3b76c0e61cf8c",
+    "owner": "Container",
+    "container": "loot-test/empty",
+    "rect": [
+      0,
+      0,
+      2,
+      2
+    ],
+    "bagCount": 2,
+    "sourceCount": 1,
+    "preview": false,
+    "backpackFeedback": "transfer.Success",
+    "lootFeedback": "transfer.Success"
+  },
+  "note": "Screen.width/height in execute_code varied with Editor render context. Saved screenshot PNG IHDR and GameView.targetRenderSize are authoritative for 1920x1080 evidence. English sequence records are adjacent JSON files."
+}

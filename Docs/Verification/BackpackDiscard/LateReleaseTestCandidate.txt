@@ -1,0 +1,78 @@
+// 待父代理停止Play后，加入Assets/Tests/Loot/PlayMode/LootIntegrationTests.cs的同一partial fixture。
+// 这里只准备候选内容；真实UI输入仍由现有Pointer/Press/Click帮助方法排队。
+
+    [UnityTest]
+    public IEnumerator QueuedOldDiscardConfirmReleaseCannotOperateANewerConfirmation()
+    {
+        yield return HeldDiscardButtonReleaseDoesNotOperateNextConfirmation("ConfirmDiscard");
+    }
+
+    [UnityTest]
+    public IEnumerator QueuedOldDiscardCancelReleaseCannotDismissANewerConfirmation()
+    {
+        yield return HeldDiscardButtonReleaseDoesNotOperateNextConfirmation("CancelDiscard");
+    }
+
+    private IEnumerator HeldDiscardButtonReleaseDoesNotOperateNextConfirmation(string heldButtonName)
+    {
+        yield return LoadScene();
+        ItemTransferUIBridge bridge = Object.FindFirstObjectByType<ItemTransferUIBridge>();
+        Assert.That(bridge, Is.Not.Null);
+        ItemInstance battery = driver.backpack.GetPlacements().Single(value => value.Item.DefinitionId == "battery").Item;
+        ItemInstance food = driver.backpack.GetPlacements().Single(value => value.Item.DefinitionId == "food").Item;
+        yield return Press(Key.Tab);
+        yield return Click(BackpackPoint(0, 2));
+        yield return Click(ButtonPoint("DiscardItem"));
+        int oldToken = bridge.DiscardToken;
+        Assert.That(oldToken, Is.Not.Zero);
+        Assert.That(bridge.PendingDiscardInstanceId, Is.EqualTo(battery.InstanceId));
+        string before = TransferSnapshot();
+        Vector2 heldPoint = ButtonPoint(heldButtonName);
+        yield return Pointer(heldPoint, false);
+        yield return Pointer(heldPoint, true);
+        Assert.That(mouse.leftButton.isPressed, Is.True);
+        Assert.That(bridge.DiscardToken, Is.EqualTo(oldToken), "PointerDown alone must not confirm or cancel.");
+
+        int health = driver.player.health.CurrentHealth;
+        yield return Press(Key.H);
+        Assert.That(driver.player.health.CurrentHealth, Is.EqualTo(health - 1));
+        Assert.That(driver.backpackUI.IsOpen, Is.False);
+        Assert.That(bridge.IsAwaitingDiscardConfirmation, Is.False);
+        Assert.That(bridge.discardPanel.activeInHierarchy, Is.False);
+        Assert.That(mouse.leftButton.isPressed, Is.True, "The original mouse press remains held across real damage.");
+        Assert.That(TransferSnapshot(), Is.EqualTo(before));
+
+        // 只用API安排下一确认；保留旧UGUI PointerDown，不能通过新鼠标点击顺手释放它。
+        Assert.That(driver.backpackUI.TryOpen(), Is.True);
+        driver.backpackUI.SelectItem(food.InstanceId);
+        bridge.DropSelected();
+        int newToken = bridge.DiscardToken;
+        Assert.That(newToken, Is.Not.Zero.And.Not.EqualTo(oldToken));
+        Assert.That(bridge.PendingDiscardInstanceId, Is.EqualTo(food.InstanceId));
+        Assert.That(bridge.discardPanel.activeInHierarchy, Is.True);
+        yield return null;
+        Canvas.ForceUpdateCanvases();
+        RectTransform reopenedButton = GameObject.Find(heldButtonName).GetComponent<RectTransform>();
+        Assert.That(RectTransformUtility.RectangleContainsScreenPoint(reopenedButton, heldPoint, null), Is.True,
+            "The old release must hit the reused button to exercise the stale UGUI press path.");
+        Assert.That(mouse.leftButton.isPressed, Is.True);
+
+        // 这是真实InputSystem释放，经过UIInputModule/UGUI，不能替换为直接调用旧token方法。
+        yield return Pointer(heldPoint, false);
+        Assert.That(bridge.IsAwaitingDiscardConfirmation, Is.True,
+            "An old " + heldButtonName + " PointerUp must not act on the new confirmation listener.");
+        Assert.That(bridge.DiscardToken, Is.EqualTo(newToken));
+        Assert.That(bridge.PendingDiscardInstanceId, Is.EqualTo(food.InstanceId));
+        Assert.That(food.Owner, Is.EqualTo(ItemOwner.Backpack));
+        Assert.That(battery.Owner, Is.EqualTo(ItemOwner.Backpack));
+        Assert.That(TransferSnapshot(), Is.EqualTo(before));
+
+        // 新的完整PointerDown/PointerUp仍能正常确认，修复不能把新按钮永久锁死。
+        yield return Click(ButtonPoint("ConfirmDiscard"));
+        Assert.That(bridge.IsAwaitingDiscardConfirmation, Is.False);
+        Assert.That(food.Owner, Is.EqualTo(ItemOwner.Lost), driver.backpackUI.FeedbackKey);
+        Assert.That(battery.Owner, Is.EqualTo(ItemOwner.Backpack));
+        Assert.That(driver.backpack.TryGetPlacement(food.InstanceId, out _), Is.False);
+        Assert.That(driver.backpack.TryGetPlacement(battery.InstanceId, out _), Is.True);
+        AssertNoGroundPresentation(food.InstanceId);
+    }

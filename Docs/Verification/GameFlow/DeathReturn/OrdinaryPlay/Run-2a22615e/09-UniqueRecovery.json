@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "round": 3,
+  "settled": 2,
+  "playerId": -4276422,
+  "dollId": "7550c364798b441199dfbb34a679ee48",
+  "origin": "ruins01/supplies-box/doll",
+  "owner": "Container",
+  "uniqueInstances": 1,
+  "storageCount": 1,
+  "ev": 2,
+  "source": "ruins01/supplies-box"
+}

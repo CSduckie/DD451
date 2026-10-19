@@ -1,0 +1,26 @@
+本轮只实现警戒填充视觉。AI的Alert枚举、积累/消退计时、悬停和Chase切换由009随后接入。
+
+代码与接线：
+原DroneVision仍在原Vision对象；MeshRenderer继续使用原DroneVision.mat（GUID 3791f5303dc69fa479f6b053e4a02622）。
+材质shader切为MyPrecious/DroneVision，保留透明Unlit和背面剔除_Cull=2。
+SetTint(Color color)写本机_BaseColor，并把本机_FillProgress清0。
+SetAlertProgress(float progress)把Mathf.Clamp01(progress)写入本机MPB的_FillProgress，仅此一项；不计时、不设置颜色、不重建Collider或替换Mesh。
+Clear/OnDisable清0。Rebuild本身保留填充，避免调形状或跟随墙更新时清掉正在显示的进度；新轮由普通状态SetTint清零。
+SetTint应在状态切换时调用；如果每帧先SetTint，必须随后再SetAlertProgress，否则填充每帧会被清零。
+
+Shader四个属性：
+_BaseColor：剩余区域底色，由现有状态SetTint提供；Alert进入时009传橙色。
+_FillColor：填充区域颜色，默认与现有Chase视锥一致的红色(1,.22,.12,.24)。
+_FillProgress：0～1，由AI提供；shader不读取时间。
+_Cull：2为背面剔除，隐藏在Inspector。原mesh同一平面有正反绕序，保持剔除保证任一观察侧只混合一次。
+
+UV就是网格上的位置刻度：机头0，每条被墙裁短的可见外缘1。三角形内部自动插值。
+shader逐像素比较UV.x与进度：已到达的位置红色，其余底色；0明确全底色，1明确全红。
+不是整片Color.Lerp，也不添加第二层同面网格；原墙裁剪、显示三角形、真实Collider、RefreshPose和水平朝向代码不变。
+边界沿当前可见轮廓的比例推进；遇到不同距离的墙时各方向的实际米数不同，这是本轮“当前可见外缘=100%”约定。
+
+参考：沿用本项目原DroneVision的扇形几何及MPB写法；shader结构读取了当前URP包Shaders/Unlit.shader及Core.hlsl。
+本轮没有从ARPG搬入额外战斗/状态逻辑，没有新增namespace、Manager、接口、asmdef或通用表现框架。
+
+集成提醒：EnemySceneIntegrationTests及EnemyTestSceneBuilder内原Universal Render Pipeline/Unlit引用/断言由009更新。
+本视觉时段不修改这两个文件，也不以其尚未适配的名称断言代表新shader渲染失败。

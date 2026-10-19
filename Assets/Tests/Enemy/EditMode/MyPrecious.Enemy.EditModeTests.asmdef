@@ -1,0 +1,9 @@
+{
+    "name": "MyPrecious.Enemy.EditModeTests",
+    "rootNamespace": "",
+    "references": ["MyPrecious.Enemy", "MyPrecious.Player", "MyPrecious.StateMachine", "MyPrecious.StateMachine.Contracts", "MyPrecious.Health", "MyPrecious.Interaction", "Unity.InputSystem"],
+    "includePlatforms": ["Editor"],
+    "optionalUnityReferences": ["TestAssemblies"],
+    "autoReferenced": false
+}
+

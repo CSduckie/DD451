@@ -1,0 +1,12 @@
+{
+  "utc": "2026-10-19T01:38:12.2014919Z",
+  "baselineAudit": "SerializedAssetAudit.json",
+  "files": 56,
+  "changedSinceSemanticAudit": [
+    {
+      "path": "ProjectSettings/ProjectSettings.asset",
+      "auditHash": "7E8D7317565EE7C2DC4832BE2E3DBB806F616CCAA34BE60E4211996413A3D19D",
+      "currentHash": "239D1B5139A4922C0D3F08EA40DCDDB8444F9376796F048FA6DE645A125CAED4"
+    }
+  ]
+}

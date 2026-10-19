@@ -1,0 +1,13 @@
+潜行暗角强度调整 — 2026-10-19
+
+用户要求：Ruins暗角Intensity改为0.4，其余参数不变，保存并在1920×1080验收。
+唯一产品文件变更：Assets/Scenes/Ruins.unity，PlayerStealthVignette.intensity 0.22→0.4一行；smoothness仍0.45，transitionSeconds仍0.2。没有改脚本默认值或其他Profile。相对此次Before-Ruins.unity的diff确认只有这一行。7个相关保护文件哈希全部相同。
+
+验收：从Bootstrap普通Play经GameFlow.TryDepart进入Ruins，复用已有09I运行探针。API定位+合成C输入+真实背包API，临时禁用无人机以避免打断视觉验收，所有临时资源已恢复；非原生键鼠试玩。timeScale全程1。
+Probe-1f5e8cd4包含4张实际ScreenCapture 1920×1080截图，826帧记录与99个过渡中间采样。草外蹲伏/草内站立有效暗角0，草内蹲伏有效暗角0.4；站起/离开恢复0。重叠掩体、背包开关保持正确。正常与退出截图PNG哈希完全一致。双人只读审图通过：边缘明显压暗，中心物体和露出的角色仍可辨，HUD/背包格子文字清楚。身体被既有不透明绿色草丛占位体遮挡不属于暗角问题。
+本轮针对调参做视觉验证，没有重跑之前09I自动化全套或死亡清算。复用探针输出中“continue death/return”是原通用文案，并非本轮已执行或必需验收的声明。
+
+证据目录：Docs/Verification/Enemy/StealthVignette/Intensity04/
+Summary.json、SavedReload.json、ProtectedBefore/After.json、Probe-1f5e8cd4/Result.json及4张PNG。
+一次打开Bootstrap被dirty保护拦截，保存当前场景副本对比与磁盘完全一致后才再次保存/切换，未丢用户编辑。
+重新读取磁盘Ruins确认.4/.45/.2。已退出Play、选中ScenePresentation/StealthVignette供用户调参。临时键盘移除、原生键盘恢复、runtime background还原false、探针回调清理，无待执行Unity任务。

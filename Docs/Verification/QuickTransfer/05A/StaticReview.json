@@ -1,0 +1,75 @@
+{
+  "task": "05A Warehouse quick transfer",
+  "unityOperated": false,
+  "compiled": false,
+  "testsExecuted": false,
+  "staticExpectedCases": {
+    "editModeGrid": 12,
+    "editModeShelter": 37,
+    "editModeTotal": 49,
+    "playMode": 12
+  },
+  "review": "Source review and whitespace checks only. Runtime integration and authoritative test results are pending task07. QuickTransferRequested is a local request; task06 owns destination selection, atomic transfer and bilingual result feedback. Ordinary drag coordinate path unchanged.",
+  "files": [
+    {
+      "path": "Assets/Scripts/Warehouse/MonoBehaviour/WarehouseItemView.cs",
+      "beforeExists": true,
+      "beforeSha256": "3742CB0A94E0D6CA8E77450110170B8C0086BCABD8404E0F5E3689C419747E90",
+      "afterSha256": "F449993F02A8ED09880970B6D754C251DEAFE3233FD3EC4986398BFA9DB29EA4",
+      "metaPresent": true,
+      "namespaceDeclaration": false,
+      "whitespaceCheckExitCode": 1,
+      "whitespaceCheckOutput": ""
+    },
+    {
+      "path": "Assets/Scripts/Warehouse/MonoBehaviour/WarehouseUIController.cs",
+      "beforeExists": true,
+      "beforeSha256": "14E636760868501C0085B398CAE1204E845B317280123ECEE194D4E15FCFA6DA",
+      "afterSha256": "164E43B452B8442E03F800A17439376776088E25E058278AB215CE353AC88CEA",
+      "metaPresent": true,
+      "namespaceDeclaration": false,
+      "whitespaceCheckExitCode": 1,
+      "whitespaceCheckOutput": ""
+    },
+    {
+      "path": "Assets/Scripts/Warehouse/MonoBehaviour/WarehouseManager.cs",
+      "beforeExists": true,
+      "beforeSha256": "B3B975AD6BE0754D5F4DCA21A760F14473B7EA7C2E2B2D90D999C225460B5443",
+      "afterSha256": "9E29F1B66D4C14E4F9D24EB4D42499906C867B933EF43504E39418DBA592D19B",
+      "metaPresent": true,
+      "namespaceDeclaration": false,
+      "whitespaceCheckExitCode": 1,
+      "whitespaceCheckOutput": ""
+    },
+    {
+      "path": "Assets/Tests/Warehouse/EditMode/WarehouseShelterTests.cs",
+      "beforeExists": true,
+      "beforeSha256": "CC3DF2EF944CC16161A61F68E481A8C4C3EB3BBAC639483131FC39B32C124446",
+      "afterSha256": "9ED12164B1DFFAC0224C86C6E739B874C14C07F2A8919043B9DA21FB45686E4E",
+      "metaPresent": true,
+      "namespaceDeclaration": false,
+      "whitespaceCheckExitCode": 1,
+      "whitespaceCheckOutput": ""
+    },
+    {
+      "path": "Assets/Tests/Warehouse/PlayMode/WarehouseIntegrationTests.cs",
+      "beforeExists": true,
+      "beforeSha256": "E1742C0A5346D905F9C352524450A146E2FCE9BC3E72E45F9CD9BCBED832E084",
+      "afterSha256": "669672320E5A4157CB5C67D83A0CBD5DF66E2C096B298D7D689950ADFD3892BF",
+      "metaPresent": true,
+      "namespaceDeclaration": false,
+      "whitespaceCheckExitCode": 1,
+      "whitespaceCheckOutput": ""
+    },
+    {
+      "path": "Assets/Tests/Warehouse/Editor/WarehouseTextEntries.cs",
+      "beforeExists": true,
+      "beforeSha256": "9C4AE51A849F6A81A4FA4596197A1492842F8B980A1F4C0F02FF885F1D53EBE5",
+      "afterSha256": "4631DFB38AEE5484CFCFBB71A1CB30E58B35BF5C89BEA6C95E24E4D4A8463EF9",
+      "metaPresent": true,
+      "namespaceDeclaration": false,
+      "whitespaceCheckExitCode": 1,
+      "whitespaceCheckOutput": ""
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "message": "Retrieved 3 log entries.",
+  "data": [
+    {
+      "type": "Warning",
+      "message": "无人机没有有效巡逻点，将原地观察。请在DroneController配置路线。",
+      "file": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs",
+      "line": 161,
+      "stackTrace": "UnityEngine.Debug:LogWarning (object,UnityEngine.Object)\nDroneController:BeginRound (int) (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:161)\nDroneBehaviourTests/<EmptyAndNullRoutesStaySafeAndAcceptPointsWithoutANewRound>d__22:MoveNext () (at Assets/Tests/Enemy/PlayMode/DroneBehaviourTests.cs:629)\nUnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)\n"
+    },
+    {
+      "type": "Warning",
+      "message": "无人机没有有效巡逻点，将原地观察。请在DroneController配置路线。",
+      "file": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs",
+      "line": 161,
+      "stackTrace": "UnityEngine.Debug:LogWarning (object,UnityEngine.Object)\nDroneController:BeginRound (int) (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:161)\nDroneBehaviourTests/<EmptyAndNullRoutesStaySafeAndAcceptPointsWithoutANewRound>d__22:MoveNext () (at Assets/Tests/Enemy/PlayMode/DroneBehaviourTests.cs:629)\nUnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)\n"
+    },
+    {
+      "type": "Warning",
+      "message": "无人机没有有效巡逻点，将原地观察。请在DroneController配置路线。",
+      "file": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs",
+      "line": 161,
+      "stackTrace": "UnityEngine.Debug:LogWarning (object,UnityEngine.Object)\nDroneController:BeginRound (int) (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:161)\nDroneBehaviourTests/<EmptyAndNullRoutesStaySafeAndAcceptPointsWithoutANewRound>d__22:MoveNext () (at Assets/Tests/Enemy/PlayMode/DroneBehaviourTests.cs:629)\nUnityEngine.SetupCoroutine:InvokeMoveNext (System.Collections.IEnumerator,intptr)\n"
+    }
+  ]
+}

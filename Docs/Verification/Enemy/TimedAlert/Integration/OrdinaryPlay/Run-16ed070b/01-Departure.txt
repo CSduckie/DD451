@@ -1,0 +1,2 @@
+Actual Bootstrap reached Shelter at round0; public flow.TryDepart is the sole departure trigger.
+1920x1080, timeScale1. Later positioning/crouch assistance uses player APIs; no native keyboard claim.

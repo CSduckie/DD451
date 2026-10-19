@@ -1,0 +1,37 @@
+{
+  "timeScale": 0.0,
+  "gameTime": 91.67061,
+  "lights": [
+    {
+      "id": -3697236,
+      "name": "光照",
+      "intensity": 38.75341,
+      "enabled": true
+    },
+    {
+      "id": -3697064,
+      "name": "光照",
+      "intensity": 32.9697342,
+      "enabled": true
+    },
+    {
+      "id": 592592,
+      "name": "全局光",
+      "intensity": 7.29,
+      "enabled": true
+    },
+    {
+      "id": -3697258,
+      "name": "光照",
+      "intensity": 31.790493,
+      "enabled": true
+    },
+    {
+      "id": -3696976,
+      "name": "光照",
+      "intensity": 0.0,
+      "enabled": true
+    }
+  ],
+  "reason": "Freeze simulation time to retain identical existing LightFlicker phase; do not change Light or flicker settings."
+}

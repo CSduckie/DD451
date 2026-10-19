@@ -1,0 +1,33 @@
+07E 正式 Ruins 无人机接入 — 主程独立验收通过
+2026-10-19，记录时间为 UTC；项目 E:/DD451。
+
+实施由“任务007串联游戏流程”完成，主程只读复核后，在其明确释放 Editor 后独立验证。
+正式场景接入沿用 GameFlow 当前轮次，旧图卸载和玩家准备成功后启动目标场景启用的无人机，再解锁玩家。
+同轮重复准备直接跳过，无需更改策划原场景层级或手工登记敌人。下一次正式出发重新加载场景，按新轮次启动。
+
+独立普通 Play：从 Assets/Scenes/Bootstrap.unity 启动 → Shelter → 实际 TryDepart → Ruins。
+分辨率实际为 1920×1080。证据 Run-089cac50/。
+01：真实初始庇护所 round0，唯一常驻玩家；正式出发分配 round1。
+02：实际用户 Drone 自动获得与 GameFlow/ItemManager/PlayerHealth 相同的 round1，并沿原路线产生位移。
+    玩家位置由公开 API 辅助安排，实际视野自然发现玩家；Alert 原地积累，最大位移为0。
+    自然填满进入 Chase 后实际3D碰撞触发一次自毁，生命3→2；0.3秒观察无重复伤害。
+    未直接调用 BeginRound、ChangeState、伤害函数或改写警戒进度。02-Ruins-AlertHalf.png已实际查看，橙红填充与HUD正常。
+03：在同一个自毁实例上重复正式 TryBeginExplorationEnemies(currentRound)，继续观察0.3游戏秒，仍保持自毁、不可见、无碰撞、无灯光和无重复伤害。
+04：通过真实 TriggerBox 范围查询及 PlayerInteraction.TryInteract 打开正式箱子，LootUI.Update 自然搜索揭示布娃娃；通过会话校验转移接口装入背包，再经真实撤离交互返回庇护所，round1结算。
+05：真实仓库界面打开，同一布娃娃存仓再取回，InstanceId和对象引用不变，拥有者与两套摆放一致，实例总数没有增加；随后正式再次出发。
+06：round2 自动恢复无人机可见/碰撞并重新产生巡逻位移；玩家与物品模块同步round2，玩家出发满血，同一布娃娃仍保留在背包。
+    第二轮新无人机Unity实例-2546520，上一轮自毁实例-2540598；刷新来源是正式场景重新加载。
+    探针清理恢复玩家原位置后，无人机又自然发现并自毁，因此稍后FinalRuntime.json记录生命2及Explode；不是刷新失败。06-NextRound.txt记录此前成功启动和移动观察。
+
+保留原巡逻引用和顺序：巡逻1(-12,2.5,0)、巡逻2(1,2.5,0)。未更改用户Drone出生Z或位置。
+基线使用007经用户授权保存的最新Ruins，未回写早期备份。Integrity.json核对8个正式文件均无主程验收修改；AuthorizedBaselineCheck.json确认Ruins/DroneConfig及meta符合最新授权基线。
+
+007测试结果：PlayMode50/50（GameFlow13＋Enemy37），GameFlow EditMode官方XML11/11。
+主程没有重复运行这些已通过测试；代码独立复核未发现阻断。完整失败历史与MCP EditMode作业超时/官方XML差异见07E交接，未掩盖初始失败。
+007普通Play另有两轮实录及1920截图；主程也查看其05-Round2-Patrol-1920.png确认蓝色巡逻和3/3生命画面。
+
+验证边界：API辅助正式业务与实际物理/自然AI验收，不代表新增原生键盘/鼠标验收或Windows构建验收；未开发010死亡返回分支。
+本次主程只写Docs和运行期探针，没有新增生产脚本、框架或测试驱动到Assets。
+
+最终06:19:18Z：Bootstrap唯一场景、干净/Edit，Play/changing/compile/updating/PrefabStage全部false，所有主程回调结束；timeScale1、两项runInBackgroundfalse，Console0错误/0警告。
+Editor已释放。用户可直接从Bootstrap按Play进入庇护所，再正式出发到Ruins测试。

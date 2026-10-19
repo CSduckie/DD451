@@ -1,0 +1,55 @@
+09I stealth vignette:pixel and per-render trace audit
+Scope:four original1920x1080Game PNGs andResult.json only. No Unity,Assets or original-image changes.
+
+Files:
+00-InsideStanding-Normal-1920x1080.png
+01-InsideCrouching-Stealth-1920x1080.png
+02-InsideStanding-Exited-1920x1080.png
+03-InsideCrouching-Backpack-1920x1080.png
+
+Method:API relocation + synthetic InputSystem C + real Backpack API; scene drones disabled temporarily; no native keyboard/mouse claim
+All four captures have matching camera ID/position/rotation/size,playerID/health,stage/scene,PP enabled,exposure0,bloom0,tonemappingNone. Their gameTimes differ. Standing/crouching changes player geometry; static spatial checks exclude the player.
+
+Restoration:
+00standing normal vs02standing exited:2073600RGB pixels exact;changed0,maxDelta0,meanDelta0. Full PNG SHA256 identical:True.
+00/02 positions differ only by approximately1.2e-7Y in metadata; no image difference results.
+
+Vignette spatial falloff,00standing normal vs01crouching stealth:
+Effective vignette0->0.22,volume weight0->1. ROI coordinates[left,top,right,bottom),PNG upper-left origin; RGB/luma statistics use8-bit encoded screenshot values.
+staticCenterSky[840,400,1080,560]:mean luma61.79061 -> 61.58624,drop0.33075%;meanAbsRGB0.21964,maxChannelDelta1.
+midLeftSky[430,300,530,380]:mean luma43.73432 -> 41.41373,drop5.30612%;meanAbsRGB2.45729,maxChannelDelta4.
+midRightSky[1390,300,1490,380]:mean luma39.71295 -> 37.56706,drop5.40351%;meanAbsRGB2.29354,maxChannelDelta4.
+topCenterSky[910,150,1010,230]:mean luma30.2962 -> 28.41623,drop6.20533%;meanAbsRGB2.07746,maxChannelDelta4.
+upperLeftEdgeSky[0,140,120,240]:mean luma35.60247 -> 28.96949,drop18.63066%;meanAbsRGB7.11022,maxChannelDelta11.
+upperRightEdgeSky[1800,140,1920,240]:mean luma31.56254 -> 25.50093,drop19.20507%;meanAbsRGB6.52181,maxChannelDelta10.
+bottomCenterStatic[840,960,1080,1080]:mean luma30.51879 -> 26.87969,drop11.92413%;meanAbsRGB3.65275,maxChannelDelta5.
+bottomLeftCornerStatic[0,960,120,1080]:mean luma27.91559 -> 20.7272,drop25.75044%;meanAbsRGB7.24773,maxChannelDelta9.
+topUiGlyphInteriorProxy[0,0,1920,140]:mean luma245.4516 -> 245.4516,drop0%;meanAbsRGB0,maxChannelDelta0.
+The global maximum242 comes from the standing capsule disappearing behind the existing opaque cover when crouched; it must not be described as vignette strength or a large color-grade shift. Spatial vignette assessment uses static sky/floor ROIs above.
+Top923dominant bright glyph-interior pixels remain exact. This is an opacity proxy from image color,not originalCanvas alpha readback.
+
+Backpack:
+01crouching stealth vs03crouching backpack:1820416pixels outside padded backpack rectangle[20,156,388,844)are RGB exact;changed0/max0. All244800full-frame changed pixels belong to the newly visible panel region.
+Backpack text/grid and normal HUD remain readable. Player head remains visible above the opaque green cover; the hidden body is not described as fully visible.
+
+Time trace:
+1307consecutive frame samples across10phases;nonconsecutive frame pairs=0;alltimeScale1=True;max observed gameTime step=0.046157s.
+Exposure/bloom/tone remain0/0/None. EffectiveVignette=weight*0.22 with max numerical residual1.30000000209129E-08.
+Phase0outside cover crouched:132samples hiddenfalse/weight0. Phase1inside standing:130samples hiddenfalse/weight0.
+Each measured transition is monotonic; durations below run from the last pre-transition sample to first endpoint. Actual change begins between sampled frames,so these are observed intervals,not exact event timestamps.
+Phase2in:33intermediate weight samples;lastOld->endpoint0.202195s;firstChanged->endpoint0.157224s;monotonic=True.
+Phase3out:31intermediate weight samples;lastOld->endpoint0.200653s;firstChanged->endpoint0.156586s;monotonic=True.
+Phase4in:33intermediate weight samples;lastOld->endpoint0.204616s;firstChanged->endpoint0.162567s;monotonic=True.
+Phase5out:39intermediate weight samples;lastOld->endpoint0.202987s;firstChanged->endpoint0.198608s;monotonic=True.
+Phase6in:40intermediate weight samples;lastOld->endpoint0.2043s;firstChanged->endpoint0.198757s;monotonic=True.
+Phase5leaving cover still crouched:130samples crouchtrue/hiddenfalse;weight decays to0.
+Phase7overlap replacement(firstcoverdisabled,secondcoverexists):119/119samples hidden/crouchtrue,weight1. Phase8backpackopen:128/128same;phase9backpackclosed:137/137same. No weight dip or reversal in these384samples or their boundaries.
+
+Visual review:
+All four originals inspected. Vignette gently darkens peripheral sky/floor while the center cover,chest and visible head remain readable. Normal exit restores the original image exactly. Backpack overlay remains legible.
+
+Limits:
+No native keyboard/mouse claim:positioning isAPI-assisted andC is syntheticInputSystem input. No death/return,unbind/disable or build validation in this report;those remain separate lifecycle evidence.
+Result.json recordsdisabledDroneCount0 for this probe;do not claim it newly disabled drones. Prior runtime isolation belongs to preceding evidence.
+Discrete per-render samples support monotonic fades and no sampled weight flicker;they do not establish all future frame rates or replace subjective video-motion review.
+OnlyStealthPixelTraceAudit.txt/json were written;original image hashes and detailed ROI/trace summaries are preserved inJSON.

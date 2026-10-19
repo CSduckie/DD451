@@ -1,0 +1,45 @@
+{
+  "method": "Real PlayerHealth.TakeDamage API during ordinary Play; backpack open, all enemies untouched",
+  "before": {
+    "stage": "Exploring",
+    "round": 2,
+    "hp": 2,
+    "playerId": -4276422,
+    "ev": 7,
+    "carried": [
+      {
+        "InstanceId": "7550c364798b441199dfbb34a679ee48",
+        "DefinitionId": "doll",
+        "retained": true
+      },
+      {
+        "InstanceId": "d0fa40d8cdd449919434be46913169bb",
+        "DefinitionId": "food",
+        "retained": false
+      }
+    ],
+    "storage": [
+      {
+        "InstanceId": "80f94f77db3d45b883e2fdef9c177116",
+        "X": 3,
+        "Y": 4,
+        "Rotated": true
+      }
+    ],
+    "upgrade": true
+  },
+  "after": {
+    "stage": "DeathReturning",
+    "round": 2,
+    "hp": 0,
+    "dead": true,
+    "locked": true,
+    "backpackOpen": false,
+    "dragging": false,
+    "sourceOpen": false,
+    "deaths": 1,
+    "damageAccepted": true,
+    "repeatDamageAccepted": false,
+    "extractionAccepted": false
+  }
+}

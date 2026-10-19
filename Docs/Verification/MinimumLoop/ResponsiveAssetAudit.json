@@ -1,0 +1,57 @@
+{
+  "success": true,
+  "message": "Code executed successfully.",
+  "data": {
+    "result": [
+      {
+        "path": "Assets/Scenes/Bootstrap.unity",
+        "valid": true,
+        "error": null,
+        "missingScripts": 0,
+        "testDrivers": 0,
+        "layouts": [
+          {
+            "name": "GameFlowHUD",
+            "hasHud": true,
+            "canvas": false,
+            "backpack": false,
+            "warehouse": false
+          }
+        ]
+      },
+      {
+        "path": "Assets/Scenes/Shelter.unity",
+        "valid": true,
+        "error": null,
+        "missingScripts": 0,
+        "testDrivers": 0,
+        "layouts": [
+          {
+            "name": "GameFlowSceneBindings",
+            "hasHud": true,
+            "canvas": true,
+            "backpack": true,
+            "warehouse": true
+          }
+        ]
+      },
+      {
+        "path": "Assets/Scenes/Ruins.unity",
+        "valid": true,
+        "error": null,
+        "missingScripts": 0,
+        "testDrivers": 0,
+        "layouts": [
+          {
+            "name": "GameFlowSceneBindings",
+            "hasHud": true,
+            "canvas": true,
+            "backpack": true,
+            "warehouse": false
+          }
+        ]
+      }
+    ],
+    "compiler": "codedom"
+  }
+}

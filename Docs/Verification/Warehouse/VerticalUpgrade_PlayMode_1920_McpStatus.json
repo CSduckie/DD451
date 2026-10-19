@@ -1,0 +1,47 @@
+{
+  "note": "MCP callback lost across domain reload. This orphan status was cleared only after Editor was idle, no live TestRunner objects, and the official XML confirmed all 7 passed. See VerticalUpgrade_PlayMode_1920.xml.",
+  "raw": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"success\":true,\"message\":\"Test job status retrieved.\",\"error\":null,\"data\":{\"job_id\":\"2db8f16b15854d46b8fda8a19b9ec885\",\"status\":\"running\",\"mode\":\"PlayMode\",\"started_unix_ms\":1792354006758,\"finished_unix_ms\":null,\"last_update_unix_ms\":1792354006758,\"progress\":{\"completed\":0,\"total\":null,\"current_test_full_name\":null,\"current_test_started_unix_ms\":null,\"last_finished_test_full_name\":null,\"last_finished_unix_ms\":null,\"stuck_suspected\":true,\"editor_is_focused\":false,\"run_in_background\":null,\"focus_nudge_attempts\":3,\"focus_nudge_limit\":3,\"focus_nudge_status\":\"attempt_limit_reached\",\"blocked_reason\":null,\"failures_so_far\":[],\"failures_capped\":false},\"error\":null,\"result\":null},\"hint\":null}"
+      }
+    ],
+    "structuredContent": {
+      "result": {
+        "success": true,
+        "message": "Test job status retrieved.",
+        "error": null,
+        "data": {
+          "job_id": "2db8f16b15854d46b8fda8a19b9ec885",
+          "status": "running",
+          "mode": "PlayMode",
+          "started_unix_ms": 1792354006758,
+          "finished_unix_ms": null,
+          "last_update_unix_ms": 1792354006758,
+          "progress": {
+            "completed": 0,
+            "total": null,
+            "current_test_full_name": null,
+            "current_test_started_unix_ms": null,
+            "last_finished_test_full_name": null,
+            "last_finished_unix_ms": null,
+            "stuck_suspected": true,
+            "editor_is_focused": false,
+            "run_in_background": null,
+            "focus_nudge_attempts": 3,
+            "focus_nudge_limit": 3,
+            "focus_nudge_status": "attempt_limit_reached",
+            "blocked_reason": null,
+            "failures_so_far": [],
+            "failures_capped": false
+          },
+          "error": null,
+          "result": null
+        },
+        "hint": null
+      }
+    },
+    "isError": false
+  }
+}

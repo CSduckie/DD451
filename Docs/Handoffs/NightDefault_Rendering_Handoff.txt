@@ -1,0 +1,22 @@
+MyPrecious — 黑夜默认天空盒与环境发灰修复
+2026-10-19；009追加任务；项目 E:/DD451
+
+完成范围
+12个现有场景全部引用既有 ShelterNightSkybox.mat。原本已经正确的Shelter保持文件内容不变；其余11个场景只换天空盒引用，Base/Items/Localization/Warehouse的4个世界相机另改ClearFlags为Skybox。Bootstrap加载相机保留暗色清屏，它只用于加载展示；Bootstrap场景本身同样为夜空。
+新增 Assets/Editor/ProjectNightEnvironment.cs：仅在新场景创建、场景模板实例化完成时设置同一夜空。处理目标Scene并恢复之前活动Scene，不在每次打开/Update覆盖用户设置、不自动保存。EmptyScene、DefaultGameObjects、Basic(URP)真实创建及保存重开均验证通过。三个旧世界相机Builder的SolidColor改为Skybox，以免重新生成恢复灰色纯色背景。
+
+已证实的发灰原因
+正式PlayerCamera后处理原本关闭，全部场景Fog关闭，未把这些误称为原因。Ruins默认日间天空盒造成灰白地平线；更换保存后，实际Bootstrap->Shelter->Ruins流程仍读取旧日间环境探针，ambientProbe[0,0]=0.180283785。只调用DynamicGI.UpdateEnvironment、保持相机/灯光/材质不变，探针变为0.00553075，Shelter原本均匀提亮的墙体转为符合现有局部灯光的明暗。因此仅替换天空盒引用不足以更新运行时环境照明。
+新增 Assets/Scripts/Rendering/SceneEnvironmentRefresh.cs：首场景AfterSceneLoad刷新，后续活动场景变化时刷新当前Skybox环境。正式流程Additive加载后SetActiveScene，因此使用activeSceneChanged；每次启动先移除同一回调再订阅，兼容当前关闭Domain Reload配置。只在Play且AmbientMode.Skybox时刷新，不改用户环境参数；没有每帧调用。UpdateEnvironment是调度更新，不能要求同帧立即完成。
+
+实际验证
+- 新建EmptyScene/DefaultGameObjects/BasicURP共3条路径，保存重开均绑定夜空；原场景未变脏。临时验证场景已移出Assets到Docs/Verification/Rendering/NightDefault/CreatedScenes。
+- 自动环境刷新生效后的真实Bootstrap->Shelter->Ruins->Shelter流程，三个阶段probe00均0.00553075；未手动调用刷新来代替最终验证。流程出发/撤离使用公开API，无实体键鼠声明。
+- 实际Game截图1920x1080已目视：Shelter-Refreshed-1920.png、Ruins-Refreshed-1920.png。角色/UI仍可见，灰白背景消失；Shelter进一步后处理调色属于新小任务。
+- RuntimeVerification.txt保留“只有sky引用改变仍残留旧探针”的中间证据；RuntimeFinal.txt是最终运行结果。对比原图Shelter-Before-1920.png、Ruins-Before-1920.png。无Windows构建声明；未为纯配置重跑无关全工程测试。
+- ChangeAudit.txt/json记录17个基线文件及meta：现有修改严格限于11个sky引用、4个ClearFlags和3个Builder单行；额外布局/灯光差异0。Shelter、共享PlayerCamera和夜空材质保持内容不变。新两个小脚本及meta另列。
+
+交给Shelter后处理小任务
+用户已要求并新建聊天“Shelter 昏暗氛围与后处理”，ID 01a15334-7b5a-7560-8640-548971112548。它等待EditorCoordination.txt中的明确释放记录。
+必须从当前真实环境刷新结果继续：室内已比原先更暗，有局部黄灯和冷色阴影；不要用旧日间探针截图作为最终基线，避免再过度降低曝光。任务负责Shelter专属后处理并保证角色/交互物可读，勿连带更改Ruins、全局URP、颜色空间或共享相机Prefab。当前正式相机后处理仍关闭，本任务没有代做这项后处理。
+009转身修复另见09H_TurningVision_Handoff.txt，44个不同PlayMode用例最近通过与EditMode4通过均已收尾。最终Editor释放状态以EditorCoordination.txt及NightDefault/ReleaseState.json为准。

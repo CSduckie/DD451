@@ -1,0 +1,120 @@
+09I 潜行轻暗角：URP 17.2 本地源码审阅
+日期：2026-10-19
+范围：只读Library中URP/Core源码，并核对PC_RPAsset/SampleSceneProfile关键引用；未调用Unity、未联网、未修改Assets/ProjectSettings。唯一交付为本文件。当前场景/相机/最终有效stack由主线程独立检查，本文不把旧会话配置当成当前运行事实。
+
+建议结论
+
+先试黑色Vignette：center=(0.5,0.5)、intensity=0.14、smoothness=0.35、rounded=false。偏保守可从0.12开始，0.16作为稍强对照。仅为源码推导后的调参起点，不是实际Game验收结论。
+Vignette自身在精确中心不改变输入颜色，周边也不是硬切黑框；但附近中心区域仍会轻微变暗。屏幕空间暗角不会主动避开边缘的玩家、交互物或无人机，必须实看左右边界可读性。
+关键限制：Vignette intensity=0只跳过暗角分支，不能让“相机PP=true”变成“PP=false”。内部LUT、HDR/LDR映射及输出转换路径仍存在，不能承诺原本PP关闭的相机开启后中心RGB逐像素不变。
+必须区分三帧：A=原相机管线；B=同相机PP启用且有效暗角0；C=B基础上仅加暗角。A/B检查开启后处理的基础偏差，B/C才隔离暗角本身；不要只拍A/C后把所有差异都归因于暗角。
+
+一、源码版本与定位
+
+本地package.json：com.unity.render-pipelines.universal 17.2.0，Unity6000.2，core17.2.0。
+以下路径前缀：
+URP = E:/DD451/Library/PackageCache/com.unity.render-pipelines.universal@6c02063a0a76/
+Core = E:/DD451/Library/PackageCache/com.unity.render-pipelines.core@8d70e2c352d2/
+
+URP/Runtime/Overrides/Vignette.cs:109–145
+URP/Runtime/Passes/PostProcessPass.cs:1486–1515、1523–1555
+URP/Shaders/PostProcessing/Common.hlsl:91–166
+URP/Shaders/PostProcessing/UberPost.shader:226–265、276–303
+URP/Runtime/Passes/ColorGradingLutPass.cs:50–67、103–112、158–178
+URP/Shaders/PostProcessing/LutBuilderLdr.shader
+Core/Runtime/Volume/VolumeManager.cs:487–514、589–602、738–817
+Core/Runtime/Volume/VolumeComponent.cs:278–292
+Core/Runtime/Volume/VolumeParameter.cs:224–227、351、795–797
+Core/Runtime/Volume/VolumeCollection.cs:77–91
+URP/Runtime/UniversalRendererRenderGraph.cs:744–749、1293–1299、1416–1417、1490–1506
+URP/Runtime/UniversalRenderer.cs:416–417、1541–1545
+
+二、暗角实际公式与中心影响
+
+Vignette参数范围/default：color黑；center(.5,.5)；intensity0且范围0..1；smoothness默认.2、范围.01..1；rounded默认false。IsActive()只检查intensity>0。
+SetupVignette把Inspector intensity乘3、smoothness乘5；rounded=true时把横向距离再乘width/height，false则乘1。不要把Inspector .14直接代入shader当成.14。
+Common.hlsl计算：
+  d = abs(uv-center) * (3*I)
+  d.x *= rounded ? aspect : 1
+  f = pow(saturate(1-dot(d,d)), 5*S)
+  output = input * lerp(vignetteColor, white, f)
+黑色时output=input*f。计算位于Bloom合成之后、ColorGrading之前；下表是这一处的线性色值乘数，不是最终PNG sRGB亮度差。
+
+黑色、center(.5,.5)、S=.35、rounded=false时：
+I      精确中心       uv(.75,.5)     uv(.75,.75)     边中点uv(1,.5)    四角uv(1,1)
+.12    1.000000       .985868        .971822         .943991           .889371
+.14    1.000000       .980786        .961732         .924106           .850794
+.16    1.000000       .974936        .950146         .901388           .807196
+
+因此推荐.14/.35在边中点约乘.924、四角约乘.851，中心半宽半高区域的角也约乘.962；不是“中心大区域完全不受影响”。intensity0时UberPost跳过暗角分支，但其它后处理仍运行。
+黑色暗角只乘通道，不引入额外灰色/色调；在shader这一步保留RGB比例。后面的色调/量化仍可能改变最终观感，不能据此宣称任何图都不发灰。
+smoothness并非只移动一条边缘：它是上述pow指数，提高它也会增强非中心处的衰减。若太暗先降低intensity，避免同时大幅改两项后难以比较。
+16:9下rounded=true会扩大横向衰减；相同.14/.35下左右边比rounded=false更暗，对横版左右目标更不利。首轮建议false，不把“圆”当成必须项。
+URP内建暗角没有“中心保护半径/安全矩形”参数，只在精确中心数学上f=1。如要求一整块中心区域绝对无变化，单靠这些参数无法保证。
+
+三、为什么无暗角的PP仍不等于原相机
+
+1. UniversalRendererRenderGraph.cs:744按camera.postProcessEnabled生成内部LUT，不以ColorAdjustments.IsActive作为免LUT条件。兼容路径UniversalRenderer.cs:866同理。
+2. UberPost.shader:242–244无条件执行ApplyColorGrading，并明确注释Color grading always enabled when post-processing/uber is active。Vignette的if(intensity>0)不会包住它。
+3. PostProcessPass.cs:1531使用2^postExposure；postExposure=0只是乘数1，不绕过后续LUT。
+4. LDR Grading路径的ApplyTonemap即使None也return saturate(input)，随后仍ApplyLut2D。超出0..1的HDR颜色会在这里夹取。无PP的最终8bit输出也可能有夹取，故这条源码不能单独证明一定出现可见差异，但可以证明两条管线不等价、不能承诺保留所有HDR输入。
+5. ColorGradingLutPass的LDR LUT格式是R8G8B8A8_UNorm，尺寸LUTSize^2×LUTSize，Bilinear采样；即便全部参数取默认，有限精度LUT与采样也不提供任意输入RGB逐位恒等保证。暗色区域尤其需要实际像素对照。把LUTSize变大并不等于绕过8bit格式。
+6. LutBuilderLdr依然执行LMS白平衡、LogC对比、gamma空间split toning、通道混合、Lift/Gamma/Gain、HSV、曲线采样等运算。中性参数在设计上保持颜色，但有限精度/往返运算与LUT量化使“中性”不等同二进制直通。
+7. UberPost含Gamma/Linear及可选fast sRGB转换分支；RenderGraph/FinalBlit按输出条件安排sRGB/HDR转换和编码。无PP也有正确输出转换，这不是“开启PP必定双重Gamma”的证据；不应据此擅改工程Linear、全局HDR、全局grading mode或fast转换设置。
+8. HDR grading模式走LogC LUT；HDR显示输出还含色域/亮度转换及编码，是另一个条件分支。不要把Camera.allowHDR、管线SupportsHDR、gradingMode与HDR显示输出当成同一个开关。
+
+若A/B中心或亮部出现不能接受的偏差，先查有效stack与管线，不用额外曝光/对比“抵消”来伪造中性；也不能只把Vignette归0就宣布已修复。若明确要求PP关闭时的颜色严格不变，内建UberPost没有现成的只运行暗角而跳过LUT选项；需由主线程按实际需求选择另一个呈现路径，本文不扩展实现。
+
+四、尽量中性的参数条件
+
+09I当前已核实的实际精简方案（主线程/009约定，本审阅再次只读核对关键引用）：
+- Assets/Settings/PC_RPAsset.asset:95的m_VolumeProfile指向SampleSceneProfile，GUID=10fc4df2da32a41aaa32d77bc913491c。
+- 该质量Profile有active Neutral Tonemapping(mode1)、Bloom intensity.25、Vignette intensity.2；MotionBlur组件active0。项目globalDefaultProfile中性，不代表相机启用PP后的有效基线中性。
+- URP/Runtime/UniversalRenderPipeline.cs:254调用VolumeManager.Initialize(globalProfile, asset.volumeProfile)；Core/Runtime/Volume/VolumeManager.cs:510–511先global后quality，所以此处quality默认会覆盖global中性值。
+- Ruins采用一个常驻中性base Volume，稳定weight1，仅明确override Tonemapping=None、Bloom intensity0、Vignette intensity0；上面再用更高priority、只含Vignette的Volume渐变weight。这样暗角weight回0时回到真正无Bloom/无Tone/无Vignette的基础stack，不重新露出质量默认的.2暗角/.25Bloom/Neutral映射。其它中性项按当前stack保留，不因下列通用清单而批量创建不需要的覆盖。
+- 不直接写camera.volumeStack作为持续效果。VolumeManager.Update在逐Volume混合之前调用ReplaceData(stack)重置默认值（本地约734行），临时改stack可被下一次更新覆盖；另造手动stack还引入更新模式/切相机/销毁恢复责任。使用正常Volume覆盖符合本任务的精简约定。
+- 此方案针对原本PP关闭的Ruins；不得用它压掉Shelter已有授权调色/Bloom，也不更改共享SampleSceneProfile或全局管线。
+- 这是实现约定和源码可行性判断，不取消A/B中性PP开关对照；常驻base已挡住默认风格，但内部LUT/输出路径的有限精度差异仍需验收。
+
+先区分原本已有后处理的场景与原本PP关闭的场景。
+原本已有风格化后处理：仅叠加Vignette，不用一套“中性”ColorAdjustments覆盖已授权的Shelter曝光/对比/Bloom；A/B均保留原有效stack。
+原本PP关闭：启用后仍会继承项目/质量默认Profile；只加Vignette不足以保证只出现暗角。主线程需fresh读取有效stack，显式中和实际非中性项，且中和项须保持稳定，不随暗角淡入淡出一起消失。
+
+用于独立中性基线的目标值（仅对确实需要中和的原本PP关闭相机，不是要求覆盖所有场景）：
+- ColorAdjustments：postExposure0、contrast0、hueShift0、saturation0、colorFilter白。
+- WhiteBalance：temperature0、tint0。
+- Tonemapping：None（不是名为Neutral的色调映射；Neutral仍有映射）。
+- Bloom intensity0、Vignette intensity0（基线帧）、ColorLookup contribution0；MotionBlur intensity0、LensDistortion intensity0、ChromaticAberration intensity0、FilmGrain intensity0、Panini distance0、DepthOfField mode Off。其它实际启用的镜头光晕等同理按有效stack关闭，不假定存在或逐项创建无用覆盖。
+- ChannelMixer：对角100，其余0。
+- Lift/Gamma/Gain、Shadows/Midtones/Highlights：各Vector4(1,1,1,0)，采用组件默认中性值；不要把Gamma/Gain向量错误设为全0。
+- SplitToning：shadows/highlights=(.5,.5,.5)，balance0。
+- ColorCurves：master/R/G/B为(0,0)→(1,1)线性曲线；HueVsHue/HueVsSat/SatVsSat/LumVsSat取中性.5。直接使用组件正确默认曲线比手造无切线曲线更稳妥。
+- 相机AA、dithering、stopNaN等保持已有配置并记录；若为了隔离对照临时关闭需恢复，不能让其变化混入暗角归因。不要为此次效果全局改Renderer/URP资产。
+
+上述是“目标尽量中性”，不是保证A/B完全一致。有效参数必须真的进入最终stack：组件active=true，相应Parameter.overrideState=true，且Volume权重/priority/相机mask允许其生效。把一个含默认Bloom的上层组件active=false只表示跳过它，不能压掉下层Bloom；应显式覆盖intensity=0。Tonemapping同理用mode=None的有效override。
+
+五、Volume混合容易出现的偏差
+
+VolumeManager先从组件默认值开始，再应用globalDefaultProfile、qualityDefaultProfile、customDefaultProfiles。之后每帧先恢复默认状态，再按Volume priority从低到高混合；全局Volume用clamp01(weight)，局部Volume用距离系数×weight。
+VolumeComponent只混合overrideState=true的参数；active=false的组件被跳过。Float线性插值；Bool等默认离散插值在t>0即选目标，因此不要用淡入weight同时切rounded，避免刚离开0就改变形状。
+如果基底Vignette为0，目标I=.14，Volume weight=.5时有效I=.07；由于shader含I平方和pow，屏幕衰减不是最终暗角图以50%不透明度叠加。淡入可以平滑但不是亮度线性。
+如果基底本身Vignette=.2，把动态Volume权重降到0会回到.2，不会自动归0。是否恢复已有场景暗角或要求无暗角，应以主线程定义的原状态为准。
+只控制Vignette的强度或只含Vignette的动态Volume，能避免暗角淡出时把Bloom/色调等中和项也逐步撤销。切场景与销毁时要恢复原相机/Volume状态；不要写共享Profile来承载单玩家动态状态。
+注册Volume按GameObject普通Layer和相机volumeLayerMask过滤，运行时并非天然按Scene隔离；与上一个补光任务使用的Rendering Layer是不同系统。Additive切换中的生命周期、原相机PP开关由实现方核查。
+
+六、Overlay UI影响的准确边界
+
+标准Screen Space - Overlay Canvas（SDR输出）：UniversalRenderer的OverlayUI Pass位于FinalBlit之后；RenderGraph在后处理之后调用RenderOverlay。因此该Canvas的图像本身不经前面的Vignette/ColorGrading。
+HDR输出：UI先画到单独OverlayUITexture；UberPost.shader在暗角和调色之后的276–283行才SceneUIComposition，随后HDR编码。因此暗角同样不直接乘到这个UI纹理，但HDR输出转换仍作用最终呈现。
+透明/半透明UI背后是已经变暗的世界；其最终合成像素、抗锯齿边缘和视觉对比可变化。不能把“Overlay UI不参与暗角”夸大为所有UI矩形RGB字节必定相同。
+Screen Space - Camera Canvas、World Space Canvas、场景里的文字/图标若已经渲入相机颜色，会随相机后处理受暗角影响。它们不享有上述ScreenSpaceOverlay结论。
+URP的Overlay Camera（相机堆叠）与Canvas的Screen Space - Overlay不是同一个概念。只知道CameraType=Overlay不能据此断言UI避开后处理，应检查实际渲染顺序与Canvas模式。
+
+七、针对本任务的最小验收建议
+
+1. 同机位、同灯相位、同质量/分辨率1920×1080记录A/B/C，并读取目标相机当帧最终有效stack；先判A/B，再判B/C。比较玩家、中央世界ROI、边缘交互/敌人、HUD实心文字与半透明区域。
+2. 初值.14/.35/black/center(.5,.5)/rounded=false；如B/C中心附近影响过大或边缘目标难辨，优先降到.12；不要用抬Lift/负对比抵消黑边，那会改变整体黑位。
+3. 如果已有摇曳灯，锁相位时避免沿用timeScale0冻结存活无人机：此前PlayerFillLight任务保留了SmoothDampAngle零deltaTime触发NaN的真实证据。可由主线程选择不会改变生产Assets的受控采样方式，本文没有运行或验证替代方案。
+4. 验证逻辑触发/退出、死亡/场景切换后恢复、已有Shelter风格与玩家专属补光保留。仅字段正确、Vignette.IsActive为false或一张更暗截图都不足以证明颜色中性/生命周期正确。
+
+本文件为源码事实与数学推导，不是09I实现完成、截图验收、Console检查或Editor释放记录。

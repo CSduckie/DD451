@@ -1,0 +1,23 @@
+09F SourceStaging生产只读审查
+范围：DroneController、DroneAlertState、DroneChaseState、DroneVision、DroneConfigSO；同时对照原Patrol/Search及公共StateMachine。未写Assets、未操作Unity。
+
+结论：当前五份暂存生产实现未发现阻断项。
+
+物理与隐藏
+- FixedUpdate在CheckContacts和状态FixedUpdate之前TryStartCoverAlert。已满足CoverArea.IsHidden的当前Target会先转为无位移Alert，停止原Chase FixedUpdate。
+- CanExplodeOnContact再次检查!CoverArea.IsHidden(player)，覆盖TryExplode/OnCollision/SphereCast路径；即使没有进入当前Target的脱战分支，也不能对实际隐藏玩家造成Chase接触伤害。
+- 首次Alert转草丛Alert时，ChangeState同状态早退是正确行为：原Alert本已零速度、橙色、可见，随后仅设置cover标志与2秒计时。IsCoverAlert阻止持续Hidden逐帧重新初始化。
+- 进入cover后ForgetTarget同时清隐藏目标位置；后续Observe只在真正可见时读取新位置。普通墙/超距丢失仍由Observe=false进入Search并使用旧LastKnownPosition；真实cover再发现则直接Chase。
+- 每次Update只有一个TickAlertTimer；FixedUpdate只进入分支不推进时间。首次0.5秒内的墙遮挡不能盲等到期Chase；死亡/禁用/场景锁走Controller既有无效目标退出规则。
+
+显示生命周期
+- SetViewVisible只改显示请求与Renderer.enabled，HasActiveRange不依赖Renderer。LateUpdate和Rebuild均使用activeRange&&viewVisible，不会下一帧把Chase扇形重新打开。
+- Clear停用检测与显示但保留显示请求，Vision单独重新启用/重建仍遵守原Chase隐藏请求。Controller重新启用或新正式轮次由StartPatrol明确设置可见；BeginRound同轮拒绝在任何重置之前。
+- ChangeState(Explode)的Enter先FinishExplosion/Clear，随后SetViewVisible(false)仍不会复活检测/显示。下轮Rebuild可以恢复range，最终Patrol显示请求恢复扇形。
+- SetTint始终把旧_FillProgress压到0，新状态逻辑不再调用填充API。当前Clear不额外写fill不会产生新残留，因为所有正式状态着色已统一清零。
+- 几何、墙体全厚度遮挡、水平朝向、真实Collider候选等算法没有被本次显示开关改动。
+
+整合提醒
+- 审查时SourceStaging/DroneAlertTests仍含旧AlertProgress/alertFillSeconds断言，应为测试改写进行中。部署前需要全局扫描旧API及旧填条文案，不能直接复制未完成测试；此记录不宣称整套测试已编译或运行通过。
+- 同物理帧保护测试应先证明真实CoverArea.IsHidden，再执行物理接触，不把“C键已排队但Player尚未进入蹲伏”当成已隐藏。
+- 当前记录只证明代码路径审查与独立离线生产依赖编译；正式Editor编译、Enemy/GameFlow回归及普通Play画面仍由根完成。

@@ -1,0 +1,21 @@
+Player fill light preparation — read-only phase
+Do not operate Unity or write Assets/ProjectSettings until 07F explicit release.
+Queued authorization: Docs/AgentPrompts/Shelter_PlayerFillLight_Dispatch.txt.
+
+Expected minimum production scope, to recheck after ownership:
+1. Assets/Prefabs/Player/Player.prefab: add one Point Light under Player root; two model Renderers keep Default(bit0) and add PlayerLighting(bit1). Existing GUID and unrelated component data preserved.
+2. ProjectSettings/TagManager.asset: rename Rendering Layer index1 from Light Layer 1 to PlayerLighting. Normal Layers, tags, sorting layers unchanged.
+No product scripts or RendererFeatures. PC and Mobile assets already support light layers. Do not alter cameras, volume/profile, sky, scenes, material, physics, AI or input settings.
+
+Proposed initial runtime tuning only:
+Name PlayerFillLight, local(0,1.2,-2), Point, range4.5, intensity low initial0.8, neutral slightly warm(.93,.97,1) or white, realtime, no shadows, bounce0. Choose final intensity from actual1920 screenshots, do not treat initial numbers as final.
+Use UniversalAdditionalLightData.renderingLayers mask2, synchronized Light renderingLayerMask. Player masks OR2 (current1→3).
+Parent under root (not scaled/rotating visual); z toward current camera ensures frontal fill while X symmetry treats both facings consistently.
+
+Validation:
+After explicit release read latest07F handoff, state/custom tools/resources, clean scenes/test/Play/PrefabStage; capture fresh file hashes/backups before mutation.
+Use ordinary Bootstrap runtime. Keep same scene/timeScale0/camera and snapshot all scene Light properties for before/after capture. Capture actual framebuffer1920x1080 asynchronously and wait complete.
+Use layer masks and pixel comparison outside expanded player bounds to confirm floor/walls/boxes do not receive fill; place existing ordinary object within light radius if available, no saved scene edits. Check drone nearby inRuins.
+API input injection for actual move/turn/jump/crouch; verify same root local light transform and one light. Explicitly label API-assisted.
+Formal actual interactions Shelter→Ruins→Shelter, then new departure and lethal damage through actualPlayerHealth API for07F death return; verify same player/light and unchanged round/EV rules.
+Save/reload asset; read console, final diffs/hashes, clean and restore initial scene, releaseEditor. No large unrelated test run.

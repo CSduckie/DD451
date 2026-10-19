@@ -1,0 +1,277 @@
+{
+  "version": "Dispatch v5 / Lean 00",
+  "date": "2026-10-18",
+  "projectRoot": "E:/DD451",
+  "unityVersion": "6000.2.12f1",
+  "replacesOldValidation": true,
+  "compilation": {
+    "succeeded": true,
+    "errors": 0,
+    "warnings": 0
+  },
+  "assetInspection": {
+    "rootPath": "E:/DD451/Assets",
+    "compiling": false,
+    "prefabEntryCount": 1,
+    "prefabMissingScripts": 0,
+    "inputReferencePreserved": true,
+    "inputGuid": "052faaac586de48259a63d0c4782560b",
+    "uiNavigateExists": true,
+    "bindings": [
+      {
+        "action": "Move",
+        "actionType": "Value",
+        "controlType": "Vector2",
+        "interactions": "",
+        "paths": [
+          "<Gamepad>/leftStick",
+          "Dpad",
+          "<Keyboard>/w",
+          "<Keyboard>/upArrow",
+          "<Keyboard>/s",
+          "<Keyboard>/downArrow",
+          "<Keyboard>/a",
+          "<Keyboard>/leftArrow",
+          "<Keyboard>/d",
+          "<Keyboard>/rightArrow",
+          "<XRController>/{Primary2DAxis}",
+          "<Joystick>/stick"
+        ]
+      },
+      {
+        "action": "Jump",
+        "actionType": "Button",
+        "controlType": "Button",
+        "interactions": "",
+        "paths": [
+          "<Keyboard>/space",
+          "<Gamepad>/buttonSouth",
+          "<XRController>/secondaryButton"
+        ]
+      },
+      {
+        "action": "Crouch",
+        "actionType": "Button",
+        "controlType": "Button",
+        "interactions": "",
+        "paths": [
+          "<Gamepad>/buttonEast",
+          "<Keyboard>/c"
+        ]
+      },
+      {
+        "action": "Interact",
+        "actionType": "Button",
+        "controlType": "Button",
+        "interactions": "Press(behavior=0)",
+        "paths": [
+          "<Keyboard>/e",
+          "<Gamepad>/buttonNorth"
+        ]
+      },
+      {
+        "action": "ToggleBackpack",
+        "actionType": "Button",
+        "controlType": "Button",
+        "interactions": "Press(behavior=0)",
+        "paths": [
+          "<Keyboard>/tab"
+        ]
+      },
+      {
+        "action": "RotateItem",
+        "actionType": "Button",
+        "controlType": "Button",
+        "interactions": "Press(behavior=0)",
+        "paths": [
+          "<Keyboard>/r"
+        ]
+      },
+      {
+        "action": "UseItem",
+        "actionType": "Button",
+        "controlType": "Button",
+        "interactions": "Press(behavior=0)",
+        "paths": [
+          "<Mouse>/rightButton"
+        ]
+      },
+      {
+        "action": "ToggleLanguage",
+        "actionType": "Button",
+        "controlType": "Button",
+        "interactions": "Press(behavior=0)",
+        "paths": [
+          "<Keyboard>/f10"
+        ]
+      }
+    ],
+    "enterPlayOptions": 0,
+    "sceneDirty": false
+  },
+  "playModeTests": {
+    "job_id": "d5168bbe96094734bde4f486364f1449",
+    "status": "succeeded",
+    "mode": "PlayMode",
+    "started_unix_ms": 1792305841739,
+    "finished_unix_ms": 1792305844438,
+    "last_update_unix_ms": 1792305844438,
+    "progress": {
+      "completed": 3,
+      "total": 3,
+      "current_test_full_name": null,
+      "current_test_started_unix_ms": 1792305844388,
+      "last_finished_test_full_name": "GameBootstrapTests.DuplicateEntryKeepsOriginalInstance",
+      "last_finished_unix_ms": 1792305844413,
+      "stuck_suspected": false,
+      "editor_is_focused": false,
+      "run_in_background": null,
+      "focus_nudge_attempts": null,
+      "focus_nudge_limit": null,
+      "focus_nudge_status": null,
+      "blocked_reason": null,
+      "failures_so_far": [],
+      "failures_capped": false
+    },
+    "error": null,
+    "result": {
+      "mode": "PlayMode",
+      "summary": {
+        "total": 3,
+        "passed": 3,
+        "failed": 0,
+        "skipped": 0,
+        "durationSeconds": 0.1790989,
+        "resultState": "Passed"
+      },
+      "results": [
+        {
+          "name": "BaseSceneCanReloadWithoutReplacingPersistentEntry",
+          "fullName": "GameBootstrapTests.BaseSceneCanReloadWithoutReplacingPersistentEntry",
+          "state": "Passed",
+          "durationSeconds": 0.095119,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "DestroyedEntryClearsReferenceAndCanBeRecreated",
+          "fullName": "GameBootstrapTests.DestroyedEntryClearsReferenceAndCanBeRecreated",
+          "state": "Passed",
+          "durationSeconds": 0.0353399,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "DuplicateEntryKeepsOriginalInstance",
+          "fullName": "GameBootstrapTests.DuplicateEntryKeepsOriginalInstance",
+          "state": "Passed",
+          "durationSeconds": 0.0243361,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        }
+      ]
+    }
+  },
+  "sceneChecks": {
+    "method": "Direct Editor/MCP Play-Stop-Play-Stop under current enterPlayModeOptions=0; not a human playtest.",
+    "firstPlay": {
+      "playing": true,
+      "scene": "Assets/Scenes/Tests/Base/BaseTest.unity",
+      "count": 1,
+      "instanceMatches": true,
+      "persistentScene": "DontDestroyOnLoad",
+      "missingScripts": 0,
+      "enterPlayOptions": 0
+    },
+    "firstStop": {
+      "playing": false,
+      "staticReferenceCleared": true,
+      "enterPlayOptions": 0
+    },
+    "secondPlay": {
+      "playing": true,
+      "scene": "Assets/Scenes/Tests/Base/BaseTest.unity",
+      "count": 1,
+      "instanceMatches": true,
+      "persistentScene": "DontDestroyOnLoad",
+      "enterPlayOptions": 0
+    },
+    "secondStop": {
+      "playing": false,
+      "staticReferenceCleared": true,
+      "compiling": false,
+      "enterPlayOptions": 0
+    }
+  },
+  "preservedFiles": [
+    {
+      "path": "Assets/Input/GameInputActions.inputactions",
+      "sha256": "483A802C6FEAD9F249F70B169277EBD5729D6B14A44B40030ADC8108EBC43DCB",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Input/GameInputActions.inputactions.meta",
+      "sha256": "3B4E424A80F5B4FA76B6ABD774884A24285EAA61F22FF9BB20E5AD505FD8B569",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Prefabs/Bootstrap/GameBootstrap.prefab.meta",
+      "sha256": "B4BD8F1494CA2FBA631A7BE66D220963B9B2FFE0A63E9174E4F91EAA210A1D69",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Scenes/SampleScene.unity",
+      "sha256": "AA55BCC6DD3B5E6DCFA46BD3CB0B0CF606E22B81B2ED8D9FA34D7005944201CA",
+      "unchanged": true
+    },
+    {
+      "path": "Assets/Scenes/Tests/Base/BaseTest.unity.meta",
+      "sha256": "DECA6E6DAE4D7947BEAD518AC73E42E3212955AB678366AEA75E18655A4877CC",
+      "unchanged": true
+    },
+    {
+      "path": "Packages/manifest.json",
+      "sha256": "3E82F54FF677A882C2348F8E64BF5EC7118CBD30D3E674915CF07E0541F4F7F6",
+      "unchanged": true
+    },
+    {
+      "path": "Packages/packages-lock.json",
+      "sha256": "8A5EBB21FFE88430D707E89B0F083B627192018EAA7998ACCF1248BC5E73D288",
+      "unchanged": true
+    },
+    {
+      "path": "ProjectSettings/EditorBuildSettings.asset",
+      "sha256": "348BA1ECA4B0698957F264F877F76227B78583ACD3138FD5FC85BE92F158E261",
+      "unchanged": true
+    },
+    {
+      "path": "ProjectSettings/EditorSettings.asset",
+      "sha256": "32D6A9BE4C9AA9795A96BD951820A2D9BE1BFEFAB82ED05A5DB111AF0863938F",
+      "unchanged": true
+    },
+    {
+      "path": "ProjectSettings/ProjectSettings.asset",
+      "sha256": "883568C7519C8C83808FEE8A39259427D8E2127D7CBF10ADE97CA42903711F1D",
+      "unchanged": true
+    }
+  ],
+  "cleanup": {
+    "oldBusinessConsumers": 0,
+    "removedCSharpFiles": 37,
+    "removedAssemblies": 3,
+    "remainingBusinessInterfaces": 0,
+    "productionCSharp": "Assets/Scripts/Bootstrap/MonoBehaviour/GameBootstrap.cs",
+    "testCSharp": "Assets/Tests/Base/PlayMode/GameBootstrapTests.cs",
+    "testDoublesRemaining": 0,
+    "namespaces": 0
+  },
+  "notExecuted": [
+    "EditMode: old framework removed; input inspected directly.",
+    "Character movement/fixed-Z, gameplay integrations, actual F10 localization: not implemented.",
+    "Complete Windows player build and human playtest: outside Lean00 scope.",
+    "Other Domain Reload/Scene Reload combinations: not requested."
+  ]
+}

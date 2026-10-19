@@ -1,0 +1,22 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"success\":true,\"message\":\"Code executed successfully.\",\"data\":{\"result\":{\"scene\":\"Assets/Scenes/Tests/Localization/LocalizationTest.unity\",\"language\":\"English\",\"managers\":1,\"text\":\"Current language: English\"},\"compiler\":\"codedom\"}}"
+    }
+  ],
+  "structuredContent": {
+    "success": true,
+    "message": "Code executed successfully.",
+    "data": {
+      "result": {
+        "scene": "Assets/Scenes/Tests/Localization/LocalizationTest.unity",
+        "language": "English",
+        "managers": 1,
+        "text": "Current language: English"
+      },
+      "compiler": "codedom"
+    }
+  },
+  "isError": false
+}

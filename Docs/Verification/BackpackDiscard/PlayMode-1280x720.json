@@ -1,0 +1,318 @@
+{
+  "job_id": "dc8c6db23e204fae9e6f290116c24f0f",
+  "status": "succeeded",
+  "mode": "PlayMode",
+  "started_unix_ms": 1792353432084,
+  "finished_unix_ms": 1792353459405,
+  "last_update_unix_ms": 1792353459405,
+  "progress": {
+    "completed": 31,
+    "total": 31,
+    "current_test_full_name": null,
+    "current_test_started_unix_ms": 1792353456526,
+    "last_finished_test_full_name": "LootIntegrationTests.RevealedEntryPointerPickupContinuesNextSearchAndDamageCancelsLateRelease",
+    "last_finished_unix_ms": 1792353459366,
+    "stuck_suspected": false,
+    "editor_is_focused": false,
+    "run_in_background": null,
+    "focus_nudge_attempts": null,
+    "focus_nudge_limit": null,
+    "focus_nudge_status": null,
+    "blocked_reason": null,
+    "failures_so_far": [],
+    "failures_capped": false
+  },
+  "error": null,
+  "result": {
+    "mode": "PlayMode",
+    "summary": {
+      "total": 31,
+      "passed": 31,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 23.2952523,
+      "resultState": "Passed"
+    },
+    "results": [
+      {
+        "name": "DamageCancelsBeforeLateReleaseAndDeathLeavesItemsForFlowCoordinator",
+        "fullName": "BackpackIntegrationTests.DamageCancelsBeforeLateReleaseAndDeathLeavesItemsForFlowCoordinator",
+        "state": "Passed",
+        "durationSeconds": 0.9819283,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "DestroyingBoundExplorationPlayerClosesAndCancelsWithoutChangingItems",
+        "fullName": "BackpackIntegrationTests.DestroyingBoundExplorationPlayerClosesAndCancelsWithoutChangingItems",
+        "state": "Passed",
+        "durationSeconds": 0.1112394,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "ExternalPreviewAndShelterContextNeverTransferOwnershipOrLeaveOldPlayerLocked",
+        "fullName": "BackpackIntegrationTests.ExternalPreviewAndShelterContextNeverTransferOwnershipOrLeaveOldPlayerLocked",
+        "state": "Passed",
+        "durationSeconds": 0.1321329,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "OpenBackpackPreservesCrouchAndAllowsWorldTimeAndGravity",
+        "fullName": "BackpackIntegrationTests.OpenBackpackPreservesCrouchAndAllowsWorldTimeAndGravity",
+        "state": "Passed",
+        "durationSeconds": 0.7024074,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "QueuedCloseButtonAndSimulatedFocusLossCancelPreviewAndIgnoreLateRelease",
+        "fullName": "BackpackIntegrationTests.QueuedCloseButtonAndSimulatedFocusLossCancelPreviewAndIgnoreLateRelease",
+        "state": "Passed",
+        "durationSeconds": 0.1532122,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "QueuedPointerDragKeyboardRotationAndF10PreservePreviewUntilRelease",
+        "fullName": "BackpackIntegrationTests.QueuedPointerDragKeyboardRotationAndF10PreservePreviewUntilRelease",
+        "state": "Passed",
+        "durationSeconds": 0.3050035,
+        "message": null,
+        "stackTrace": null,
+        "output": "Backpack pointer/UI verification at 1280 x 720\r\n"
+      },
+      {
+        "name": "ReloadKeepsPlacementsConsumedFoodMedkitUseAndLanguageWhileCancellingPreview",
+        "fullName": "BackpackIntegrationTests.ReloadKeepsPlacementsConsumedFoodMedkitUseAndLanguageWhileCancellingPreview",
+        "state": "Passed",
+        "durationSeconds": 0.6845969,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "RightClickUsesExactlyOneRealItemAndFullHealthDoesNotFreeCells",
+        "fullName": "BackpackIntegrationTests.RightClickUsesExactlyOneRealItemAndFullHealthDoesNotFreeCells",
+        "state": "Passed",
+        "durationSeconds": 1.6448479,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "SharedModulesResolveBackpackTextAndF10RefreshesUiWithoutChangingItems",
+        "fullName": "BackpackIntegrationTests.SharedModulesResolveBackpackTextAndF10RefreshesUiWithoutChangingItems",
+        "state": "Passed",
+        "durationSeconds": 0.1837358,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "StandaloneBackpackHidesDisconnectedSourceAndConfirmsDiscardWithoutLootRuntime",
+        "fullName": "BackpackIntegrationTests.StandaloneBackpackHidesDisconnectedSourceAndConfirmsDiscardWithoutLootRuntime",
+        "state": "Passed",
+        "durationSeconds": 0.234981,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "ActualDistanceAndObstructionInterruptSearchWhileUiLockDoesNot",
+        "fullName": "LootIntegrationTests.ActualDistanceAndObstructionInterruptSearchWhileUiLockDoesNot",
+        "state": "Passed",
+        "durationSeconds": 0.4865061,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "ClosingEndsSourceAndPreviewBeforeReleasingBackpackControl",
+        "fullName": "LootIntegrationTests.ClosingEndsSourceAndPreviewBeforeReleasingBackpackControl",
+        "state": "Passed",
+        "durationSeconds": 0.1557346,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "ExistingRightClickStillRejectsFullHealthAndUsesOneRealFoodAfterDamage",
+        "fullName": "LootIntegrationTests.ExistingRightClickStillRejectsFullHealthAndUsesOneRealFoodAfterDamage",
+        "state": "Passed",
+        "durationSeconds": 0.2406885,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "GroundPointerCancelAndFullBackpackKeepTheSameVisibleSource",
+        "fullName": "LootIntegrationTests.GroundPointerCancelAndFullBackpackKeepTheSameVisibleSource",
+        "state": "Passed",
+        "durationSeconds": 0.2613488,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "QueuedBackpackAndWarehousePointerReordersStillUseTheirOwnGridAndOneR",
+        "fullName": "LootIntegrationTests.QueuedBackpackAndWarehousePointerReordersStillUseTheirOwnGridAndOneR",
+        "state": "Passed",
+        "durationSeconds": 0.3230115,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "QueuedBoxRoundTripReusesEntryIdentityAndKeepsTheNextSearch",
+        "fullName": "LootIntegrationTests.QueuedBoxRoundTripReusesEntryIdentityAndKeepsTheNextSearch",
+        "state": "Passed",
+        "durationSeconds": 1.3575647,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "QueuedCrossPreviewCancelledByClaimNotificationReleasesWarehouseAndAllowsNextDrag",
+        "fullName": "LootIntegrationTests.QueuedCrossPreviewCancelledByClaimNotificationReleasesWarehouseAndAllowsNextDrag",
+        "state": "Passed",
+        "durationSeconds": 0.2779349,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "QueuedDamageCancelsValidBoxPickupAndLateTokenCannotAffectNextDrag",
+        "fullName": "LootIntegrationTests.QueuedDamageCancelsValidBoxPickupAndLateTokenCannotAffectNextDrag",
+        "state": "Passed",
+        "durationSeconds": 1.3164145,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "QueuedDamageCancelsValidBoxReturnAndLateTokenCannotAffectNextDrag",
+        "fullName": "LootIntegrationTests.QueuedDamageCancelsValidBoxReturnAndLateTokenCannotAffectNextDrag",
+        "state": "Passed",
+        "durationSeconds": 0.3092107,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "QueuedDiscardConfirmationCancelsTranslatesAndDestroysOrdinaryItemExactlyOnce",
+        "fullName": "LootIntegrationTests.QueuedDiscardConfirmationCancelsTranslatesAndDestroysOrdinaryItemExactlyOnce",
+        "state": "Passed",
+        "durationSeconds": 0.3753197,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "QueuedEOpensSearchDespiteClearedCurrentTargetAndHiddenEntryCannotTransfer",
+        "fullName": "LootIntegrationTests.QueuedEOpensSearchDespiteClearedCurrentTargetAndHiddenEntryCannotTransfer",
+        "state": "Passed",
+        "durationSeconds": 0.3603605,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "QueuedOldDiscardCancelReleaseCannotDismissANewerConfirmation",
+        "fullName": "LootIntegrationTests.QueuedOldDiscardCancelReleaseCannotDismissANewerConfirmation",
+        "state": "Passed",
+        "durationSeconds": 0.345946,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "QueuedOldDiscardConfirmReleaseCannotOperateANewerConfirmation",
+        "fullName": "LootIntegrationTests.QueuedOldDiscardConfirmReleaseCannotOperateANewerConfirmation",
+        "state": "Passed",
+        "durationSeconds": 0.3252949,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "QueuedPointerTransfersBothWaysAndSingleRPreserveIdentityAndEv",
+        "fullName": "LootIntegrationTests.QueuedPointerTransfersBothWaysAndSingleRPreserveIdentityAndEv",
+        "state": "Passed",
+        "durationSeconds": 0.4352903,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "QueuedReturnRequiresTopmostListAndOldSessionCannotCommitAfterReopen",
+        "fullName": "LootIntegrationTests.QueuedReturnRequiresTopmostListAndOldSessionCannotCommitAfterReopen",
+        "state": "Passed",
+        "durationSeconds": 0.3164378,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "QueuedUniqueDiscardReturnsToItsOriginalBoxNextRoundEvenAtZeroProbability",
+        "fullName": "LootIntegrationTests.QueuedUniqueDiscardReturnsToItsOriginalBoxNextRoundEvenAtZeroProbability",
+        "state": "Passed",
+        "durationSeconds": 2.3702177,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "QueuedUnrelatedBackpackItemAppendsRevealedEntryToAnEmptyBox",
+        "fullName": "LootIntegrationTests.QueuedUnrelatedBackpackItemAppendsRevealedEntryToAnEmptyBox",
+        "state": "Passed",
+        "durationSeconds": 0.204129,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "QueuedWheelScrollRevealsLastLootDragAndMovesTheRealWarehouseViewport",
+        "fullName": "LootIntegrationTests.QueuedWheelScrollRevealsLastLootDragAndMovesTheRealWarehouseViewport",
+        "state": "Passed",
+        "durationSeconds": 3.2877636,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "RealDamageCancelsDiscardAndOldTokensCannotConfirmOrCancelANewerTarget",
+        "fullName": "LootIntegrationTests.RealDamageCancelsDiscardAndOldTokensCannotConfirmOrCancelANewerTarget",
+        "state": "Passed",
+        "durationSeconds": 1.0402298,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "ReloadKeepsGeneratedSourcesAndDiscardedOrdinaryItemsHaveNoGroundPresentation",
+        "fullName": "LootIntegrationTests.ReloadKeepsGeneratedSourcesAndDiscardedOrdinaryItemsHaveNoGroundPresentation",
+        "state": "Passed",
+        "durationSeconds": 1.3683033,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      },
+      {
+        "name": "RevealedEntryPointerPickupContinuesNextSearchAndDamageCancelsLateRelease",
+        "fullName": "LootIntegrationTests.RevealedEntryPointerPickupContinuesNextSearchAndDamageCancelsLateRelease",
+        "state": "Passed",
+        "durationSeconds": 2.8392048,
+        "message": null,
+        "stackTrace": null,
+        "output": ""
+      }
+    ]
+  }
+}

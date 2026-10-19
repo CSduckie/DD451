@@ -1,0 +1,303 @@
+{
+  "status": "PASS",
+  "reason": "Complete PNG1920x1080 with target-camera stack snapshot; visual review still required.",
+  "captureMethod": "ScreenCapture.CaptureScreenshot, supersize1, ordinary Play Game framebuffer",
+  "png": "E:/DD451/Docs/Verification/Rendering/PlayerFillLight\\10-RuinsFillOn-1920x1080.png",
+  "requestedFrame": 12684,
+  "utc": "2026-10-19T09:09:59.2385201Z",
+  "callbacksRemoved": true,
+  "restoredRunInBackground": false,
+  "sample": {
+    "samplePoint": "Target formal camera endCameraRendering, after URP UpdateVolumeFramework; read-only stack",
+    "frame": 12684,
+    "stage": "Exploring",
+    "round": 1,
+    "settledRound": 0,
+    "scene": "Assets/Scenes/Ruins.unity",
+    "screen": [
+      1920,
+      1080
+    ],
+    "player": {
+      "id": -4310918,
+      "scene": "Assets/Scenes/Ruins.unity",
+      "position": [
+        41.4360733,
+        0.0,
+        0.0
+      ],
+      "health": 2
+    },
+    "camera": {
+      "id": -4315682,
+      "name": "OutputCamera",
+      "scene": "Assets/Scenes/Ruins.unity",
+      "pixelWidth": 1920,
+      "pixelHeight": 1080,
+      "position": [
+        41.4360733,
+        2.5,
+        -12.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "fov": 50.0,
+      "orthographic": false,
+      "orthographicSize": 6.0,
+      "clearFlags": "Skybox",
+      "postProcessing": false,
+      "volumeMask": 1,
+      "volumeUpdate": "UsePipelineSettings",
+      "perFrameVolumeUpdate": true,
+      "cameraVolumeStackIsNull": true,
+      "binderError": null
+    },
+    "environment": {
+      "skybox": "Assets/Art/Materials/Environment/ShelterNightSkybox.mat",
+      "skyboxGuid": "8ea61fa5552419d4fbbc16241b881895",
+      "fog": false,
+      "ambientIntensity": 1.0,
+      "reflectionIntensity": 1.0
+    },
+    "effectiveStack": {
+      "color": {
+        "active": false,
+        "exposure": 0.0,
+        "contrast": 0.0,
+        "saturation": 0.0,
+        "hue": 0.0,
+        "filter": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "bloom": {
+        "active": true,
+        "intensity": 0.25,
+        "threshold": 1.0
+      },
+      "tone": {
+        "active": true,
+        "mode": "Neutral"
+      },
+      "vignette": {
+        "active": true,
+        "intensity": 0.2
+      },
+      "whiteBalance": {
+        "active": false,
+        "temperature": 0.0,
+        "tint": 0.0
+      }
+    },
+    "volumes": [],
+    "fillValidation": {
+      "gameTime": 116.94809,
+      "playerBounds": [
+        {
+          "name": "CapsulePlaceholder",
+          "id": -4310926,
+          "mask": 3,
+          "screenCorners": [
+            [
+              920.067566,
+              290.423828,
+              11.6
+            ],
+            [
+              999.9321,
+              290.423828,
+              11.6
+            ],
+            [
+              920.067566,
+              490.084778,
+              11.6
+            ],
+            [
+              999.9321,
+              490.084778,
+              11.6
+            ],
+            [
+              922.64386,
+              306.525482,
+              12.4
+            ],
+            [
+              997.3559,
+              306.525482,
+              12.4
+            ],
+            [
+              922.64386,
+              493.3051,
+              12.4
+            ],
+            [
+              997.3559,
+              493.3051,
+              12.4
+            ]
+          ]
+        },
+        {
+          "name": "FacingMarker",
+          "id": -4310934,
+          "mask": 3,
+          "screenCorners": [
+            [
+              983.3947,
+              422.052155,
+              11.88
+            ],
+            [
+              1014.58728,
+              422.052155,
+              11.88
+            ],
+            [
+              983.3947,
+              433.749451,
+              11.88
+            ],
+            [
+              1014.58728,
+              433.749451,
+              11.88
+            ],
+            [
+              982.931458,
+              424.387726,
+              12.12
+            ],
+            [
+              1013.50641,
+              424.387726,
+              12.12
+            ],
+            [
+              982.931458,
+              435.8534,
+              12.12
+            ],
+            [
+              1013.50641,
+              435.8534,
+              12.12
+            ]
+          ]
+        }
+      ],
+      "lights": [
+        {
+          "name": "Point Light",
+          "id": -4314414,
+          "enabled": true,
+          "intensity": 5.250339,
+          "color": [
+            0.0,
+            0.1215651,
+            1.0
+          ],
+          "range": 0.3,
+          "position": [
+            67.19089,
+            4.26125765,
+            -0.3829374
+          ],
+          "mask": 1,
+          "urpMask": 1,
+          "shadows": "None"
+        },
+        {
+          "name": "Directional Light",
+          "id": 728494,
+          "enabled": true,
+          "intensity": 1.2,
+          "color": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "range": 10.0,
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mask": 1,
+          "urpMask": 1,
+          "shadows": "None"
+        },
+        {
+          "name": "Point Light",
+          "id": -4316092,
+          "enabled": true,
+          "intensity": 5.250339,
+          "color": [
+            0.0,
+            0.1215651,
+            1.0
+          ],
+          "range": 0.3,
+          "position": [
+            43.7805557,
+            3.07527447,
+            -0.382937163
+          ],
+          "mask": 1,
+          "urpMask": 1,
+          "shadows": "None"
+        },
+        {
+          "name": "Point Light",
+          "id": -4314968,
+          "enabled": true,
+          "intensity": 5.250339,
+          "color": [
+            0.0,
+            0.1215651,
+            1.0
+          ],
+          "range": 0.3,
+          "position": [
+            24.7404938,
+            5.57533264,
+            -0.382937461
+          ],
+          "mask": 1,
+          "urpMask": 1,
+          "shadows": "None"
+        },
+        {
+          "name": "PlayerFillLight",
+          "id": -4310944,
+          "enabled": true,
+          "intensity": 1.2,
+          "color": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "range": 4.5,
+          "position": [
+            41.4360733,
+            1.1,
+            -2.0
+          ],
+          "mask": 2,
+          "urpMask": 2,
+          "shadows": "None"
+        }
+      ],
+      "nonPlayerDedicatedReceivers": []
+    }
+  }
+}

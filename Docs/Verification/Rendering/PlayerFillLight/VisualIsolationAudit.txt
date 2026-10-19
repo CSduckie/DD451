@@ -1,0 +1,34 @@
+Player fill light: visual isolation audit
+Input: 01-FillOff, 03-FillOn1p2, 04-ControlDefaultLayer; all actual1920x1080 ordinary Play Game framebuffer PNGs.
+Read-only audit. No Unity operation, Assets edit or original PNG edit. Full743-file hash audit intentionally not performed.
+
+Metadata isolation:
+All three gameTime=15.2223263. The complete recorded camera, player, environment, effectiveVolume stack, volumes, screen dimensions and projected player bounds match exactly.
+All recorded properties of the five other lights match exactly after sorting by instanceID, including enabled/intensity/color/range/position/mask/urpMask/shadows.
+PlayerFillLight:01 disabled(mask2,intensity0.8);03 enabled(mask2,urpMask2,intensity1.2);04 enabled(mask1,urpMask1,intensity1.2). All share position(-11.5,1.10000014,-2),range4.5,white,no shadows.
+03 and04 differ only in the fill light mask values among the recorded rendering inputs. Both player renderers use mask3. nonPlayerDedicatedReceivers is empty in all captures.
+
+ROI construction:
+WorldToScreenPoint uses bottom-left origin; PNG y=1080-screenY. All16 corners have positive camera depth.
+Tight combined bounds=[610,586,718,790),22032pixels. Padding12px gives[598,574,730,802),30096pixels. Rectangles are[left,top,right,bottom),exclusive right/bottom.
+Capsule interior proxy=[640,637,679,740),4017pixels,approximately central40%width x central50%height of capsule bounds. This avoids most boundary/background pixels but is not exact model segmentation.
+
+03 final candidate compared with01 off:
+All12878 changed pixels fall inside the tight player bounds. Outside padded bounds, all2043504 RGB pixels are byte-identical; changed0,maximum channel delta0.
+Tight-bounds mean encoded luma 33.19738 -> 53.088041/255.
+Capsule interior mean encoded luma 20.148892 -> 73.78978/255 (3.662x). All4017 pixels brighten, with no darkened pixels.
+Capsule interior decoded-sRGB relative luminance 0.00730402 -> 0.07597221.
+
+04 positive control compared with01 off:
+Outside padded player bounds,175710/2043504 pixels change(8.598466%);70748 exceed2/255 channel difference;25740 exceed8/255;maximum channel delta38/255.
+Exterior mean encoded luma 22.826701 -> 23.111056/255; brightened140393,darkened0 at0.5luma threshold.
+The capsule interior statistics equal03. Thus the default-mask control lights nearby scene geometry while the dedicated-mask candidate preserves exterior pixels in this view.
+
+Visual review:
+All three originals inspected.03 makes the teal capsule and facing marker readable while retaining shape shading; surrounding container/floor/boxes/HUD remain visually unchanged.04 visibly brightens the nearby container and floor, supporting the numerical positive control.
+
+Limits:
+This is one frozen-time/camera Shelter view, not a claim about every viewpoint, future renderer or other scene. Inside the bounding rectangle some background is present; exact per-object pixel segmentation was not available.
+Luma uses Rec709 coefficients on encoded PNG RGB; decoded-sRGB values describe relative screenshot luminance, not physical scene illuminance. Comparison is RGB-only and all evidence stays unedited.
+No performance measurement, native keyboard-input claim, lifecycle claim, final hash audit or Editor-release claim is made here.
+See VisualIsolationAudit.json for full checks and metrics.

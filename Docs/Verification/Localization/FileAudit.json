@@ -1,0 +1,32 @@
+{
+  "missingMetas": [
+    "Assets\\Tests\\Backpack\\TestDoubles\\MyPrecious.Backpack.TestDoubles.asmdef",
+    "Assets\\Tests\\Backpack\\TestDoubles\\BackpackTestDriver.cs",
+    "Assets\\Tests\\Backpack\\PlayMode\\MyPrecious.Backpack.PlayModeTests.asmdef",
+    "Assets\\Tests\\Backpack\\PlayMode\\BackpackIntegrationTests.cs",
+    "Assets\\Tests\\Backpack\\Editor\\MyPrecious.Backpack.Editor.asmdef",
+    "Assets\\Tests\\Backpack\\Editor\\BackpackTextEntries.cs",
+    "Assets\\Tests\\Backpack\\Editor\\BackpackTestSceneBuilder.cs",
+    "Assets\\Tests\\Backpack\\EditMode\\MyPrecious.Backpack.EditModeTests.asmdef",
+    "Assets\\Tests\\Backpack\\EditMode\\BackpackManagerTests.cs",
+    "Assets\\Tests\\Backpack\\EditMode\\BackpackGridTests.cs",
+    "Assets\\Scripts\\Backpack\\MonoBehaviour\\BackpackView.cs",
+    "Assets\\Scripts\\Backpack\\MonoBehaviour\\BackpackUIController.cs",
+    "Assets\\Scripts\\Backpack\\MonoBehaviour\\BackpackItemView.cs"
+  ],
+  "duplicateGuids": [],
+  "totalGuids": 243,
+  "protectedTotal": 110,
+  "changedProtectedFiles": [
+    "Docs/AgentPrompts\\README.txt",
+    "Docs/AgentPrompts\\ProjectRules.txt",
+    "Docs/AgentPrompts\\09_Scenes_UI_Integration.txt",
+    "Docs/AgentPrompts\\08_GameFlow.txt",
+    "Docs/AgentPrompts\\06_Transfers_Loot.txt",
+    "Docs/AgentPrompts\\05_Warehouse_Shelter.txt",
+    "Docs/AgentPrompts\\04_Backpack.txt"
+  ],
+  "editorSettingsRestored": true,
+  "task03MissingMetas": [],
+  "note": "Whole-Assets missing meta snapshot includes concurrently created Backpack files outside task03; task03 scope is audited separately. Other chats continue editing requirements and scene inspector settings."
+}

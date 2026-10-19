@@ -1,0 +1,47 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"success\":true,\"message\":\"Code executed successfully.\",\"data\":{\"result\":{\"play\":false,\"scene\":\"Assets/Scenes/Ruins.unity\",\"dirty\":false,\"drones\":[{\"name\":\"Drone\",\"id\":-2103768,\"scene\":\"Assets/Scenes/Ruins.unity\",\"active\":true,\"enabled\":true,\"x\":-3.34101677,\"y\":2.39236856,\"z\":-0.382937431,\"points\":[{\"name\":\"巡逻1\",\"x\":-12.0,\"y\":2.5,\"z\":0.0},{\"name\":\"巡逻2\",\"x\":1.0,\"y\":2.5,\"z\":0.0}]}]},\"compiler\":\"codedom\"}}"
+    }
+  ],
+  "structuredContent": {
+    "success": true,
+    "message": "Code executed successfully.",
+    "data": {
+      "result": {
+        "play": false,
+        "scene": "Assets/Scenes/Ruins.unity",
+        "dirty": false,
+        "drones": [
+          {
+            "name": "Drone",
+            "id": -2103768,
+            "scene": "Assets/Scenes/Ruins.unity",
+            "active": true,
+            "enabled": true,
+            "x": -3.34101677,
+            "y": 2.39236856,
+            "z": -0.382937431,
+            "points": [
+              {
+                "name": "巡逻1",
+                "x": -12,
+                "y": 2.5,
+                "z": 0
+              },
+              {
+                "name": "巡逻2",
+                "x": 1,
+                "y": 2.5,
+                "z": 0
+              }
+            ]
+          }
+        ]
+      },
+      "compiler": "codedom"
+    }
+  },
+  "isError": false
+}

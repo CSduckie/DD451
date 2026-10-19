@@ -1,0 +1,31 @@
+009 最终执行清单 — 最新平滑前倾/转头已交付并释放Editor；Unity EditMode 27/27、PlayMode 16/16通过；Shelter未保存状态保留，原生键盘未通过
+本文件区分已验证结果与未验收边界。自动测试以本轮官方XML为证据，不用计划、离线编译或其他任务成绩替代；完整交付说明见Docs/Handoffs/09_Handoff.txt。
+
+前置
+1. [009最新调整完成并释放] 初版于2026-10-19 02:20 UTC释放；用户追加后再于03:20 UTC明确释放，见EditorCoordination.txt。009已无Assets写入或Editor操作排队；最新结果见SmoothFlightTurn/Result.txt与ReleaseState.json，根目录FinalVerification.json/ReleaseState.json保留初版时刻。当前唯一Shelter场景dirty，未保存修改原样保留。
+2. [已部署] 009代码已实际写入Assets/Scripts/Enemy、Assets/Tests/Enemy及对应程序集。交付以实际Assets为准，Staging保留草稿；后续同名既有文件仍需先检查并真实备份，不直接覆盖。
+3. [已构建，最新参数已更新] 初版Unity已导入编译并成功执行EnemyTestSceneBuilder.Build，生成独立EnemyTest、Drone/Cover Prefab、Config、EnemyText和视野材质。首次Build因未保存临时场景旁再次NewScene(Additive)失败；真实builder及.meta备份于BeforeBuildFix/Assets/Tests/Enemy/Editor，修正为先关闭自有模板工作区再建场景后成功。正式Bootstrap未修改且Build后恢复；初版曾保留clean EnemyTest，当前状态以第14项Shelter为准。
+
+自动测试
+4. [最新通过27/27] SmoothFlightTurn/EditMode-27-Final.xml，2026-10-19 03:17:25 UTC：原25项真实掩体几何/重叠/生命周期、扇形Collider形状/厚度/朝向/墙/显示同步、同轮/新轮/接触重入，以及新增45度/90度yaw的真实Collider范围、旋转厚度与墙遮挡显示一致性两项。
+5. [最新通过13项行为测试] SmoothFlightTurn/PlayMode-16-Final.xml中的DroneBehaviourTests：原11项双机巡逻、阻挡、最后位置搜索、接触/无敌、生命周期与视觉隔离；新增逐渐前倾/到点逐渐回正、无bob/周期摇摆/局部位置变化，以及Y轴中间转角、Visual/vision共享heading、root不转、同轮保留/Rebuild保角/新轮复位两项。
+6. [最新通过3项场景集成测试] 同一PlayMode XML中的EnemySceneIntegrationTests：加载保存的EnemyTest；真实Bootstrap/Player/Backpack/Loot/Transfer链；受击中断搜索/排队拖拽且身份布局不变；排队F10不重置业务；真实FBX、四转子、运行时网格、相机与独立CameraBounds引用。玩家身体需真实重叠既有TriggerBox，不补替代范围。每项测试开始只聚焦GameView一次并等待一帧，IsOpen失败附焦点信息；保留业务失焦关闭行为。
+7. [最新官方证据已保存] SmoothFlightTurn/EditMode-27-Final.xml为Passed、27/27；PlayMode-16-Final.xml为Passed、16/16，时间03:17:45–03:17:54 UTC；两份failed/skipped均0。原39项加新增4项共43项全部通过，不代表全工程回归。官方16 passed完成后MCP工具job仍残留running/progress=0，已保存PlayModeToolStatusBeforeCleanup.json并用clear_stuck清理；不是测试失败或另一次重跑。输入使用合成Keyboard/Mouse排队事件，定位/接触为API辅助，不能算原生键鼠证据。
+
+API辅助及资产检查
+8. [原完整性审计与最新备份/GUID核验] 初版保存场景和Prefab引用由原ReleaseState.json、ExistingAssetIntegrity.json记录：309/309基线文件hash不变，新增29文件/20目录.meta/GUID齐，332处外部GUID/51处脚本引用和本地fileID无静态缺失，两处Unity.ugui名称提示由实际rsp的UnityEngine.UI.ref.dll澄清。这是初版审计时刻，不能代替本轮变更记录。最新SmoothFlightTurn/Before备份7个修改文件及.meta，ChangedFiles.json中主体6文件.meta不变，另行备份的Editor脚本.meta也未改；原FBX未改。最新ReleaseState读回Drone Prefab Missing Script=0、四转子、vision及参数齐；静态审计不代替导入后子资源fileID核验。
+9. [历史有效截图；本轮无新动画视频] 1920×1080中文EnemyTest-CN-Initial.png与英文EnemyTest-EN-GameView-Final.png的标题、状态、按钮和提示完整无溢出。英文由LocalizationManager.SetLanguage API切换，不是原生F10成功；英文验收只认Final文件。EnemyTest-Wall-API.png显示左扇形在墙前截断、墙后玩家与两架真实FBX，采用API定位及timeScale=0冻结，之后恢复。EnemyTest-EN-API.png是工具回退无UI、EnemyTest-EN-GameView.png是切换前中文旧帧，均不计英文验收。上述均为初版画面，不证明本次平滑前倾/转头观感；本轮未新增实际Game视频或原生键鼠验收。
+10. [自动及真实场景API检查通过；原生组合未验收] 原自动测试覆盖站立/内蹲/空地蹲、墙遮挡、重叠掩体退出其一、禁用/销毁、最后位置搜索。RealSceneChecks.json进一步记录实际EnemyTest：墙启用CanSee=false、禁用true、随后恢复；掩体内站立false/内蹲true/空地蹲false/重叠true/关一个仍true/关两个false，随后恢复。API检查和截图不算原生交互通过。
+11. [API覆盖通过；按钮原生点击未逐项验收] 同轮/旧轮不复活、停用启用、新轮恢复、双机独立已有自动测试证据。场景两按钮没有逐项原生点击验收结论；新轮按钮只调用敌人BeginRound，不回血、不结算/刷新物品，不伪称010完整风险流程。
+
+实体键鼠
+12. [原生F10/Tab未通过] 009主执行已用computer-use sky点击Game画面，UIA focused_element与Unity fresh focus均为UnityEditor.GameView；F10发送后CurrentLanguage仍Chinese，Tab发送后IsBackpackOpen仍false。工具均无错误，但游戏未响应。原因尚未判定，与007曾记录的环境输入现象一致；未修改玩家输入模块。不能把调用成功写成游戏操作成功，原生键盘验收仍未完成。
+13. [未逐项验收] 用户确实手动试玩并停止，回复“已试玩完，可继续最后核验”，但没有逐项报告结果。因此原生A/D、Space、C、E、鼠标拖拽、两按钮及完整两轮组合仍未逐项验收；不以用户已试玩或API辅助结果推定通过。Windows独立构建未执行。
+
+收尾
+14. [最新检查完成；未保存场景原样保留] SmoothFlightTurn/ReleaseState.json在2026-10-19T03:19:07.3726694Z确认Play/compiling/updating=false、PrefabStage=false，唯一Assets/Scenes/Shelter.unity且dirty=true；Prefab Missing Script=0、四转子、vision齐，turnSmoothTime=.18/tiltSmoothTime=.3/tiltDegrees=10/rotor=2400读回正确，物理根旋转(0,0,0)，timeScale=1、runInBackground=false。SmoothFlightTurn/Console.json为0 error/0 warning。Shelter在请求切换前出现dirty，manage_scene拒绝切换；未丢弃、保存或重载，未覆盖正式场景磁盘文件。原根目录ReleaseState.json的clean EnemyTest是02:19历史读数，不能当成当前状态。
+    截图工具事件保留CaptureToolError.json：一次MCP manage_camera截图触发PlayerLoop递归错误，堆栈指向ScreenshotUtility.cs:197而非Enemy代码；随后停用该工具，使用Unity ScreenCapture.CaptureScreenshot帧末异步成功。截图等待时临时runInBackground=true、冻结时间、墙/掩体开关及定位均已恢复；后续运行与停止后的Console均0，不隐去历史工具错误。
+15. [交付文档已定稿] 09_Handoff第十三节及SmoothFlightTurn/Result.txt记录最新43项成绩、无bob/sway的平滑前倾/回正与共享heading、备份/GUID及dirty Shelter保留状态；原生输入失败、未逐项验收、无本轮新视频、未构建和010正式布置/跨场景同轮记录/死亡风险依赖仍保留。009于03:20 UTC释放Editor，不宣称全部玩法或全工程验收通过。
+
+历史动画追加（已替换）：FlightVisualTune中的sway=4、bob=.07/frequency=1.4及2/2回归仅属于旧方案，用户已明确取消摇晃；不是当前实现或最新成绩。
+最新替换规则：无bob/sway，实际速度dot当前heading right决定前倾目标，tiltDegrees=10、tiltSmoothTime=.3，停速目标为0并平滑回正；rotor保留2400。Controller以Y轴SmoothDampAngle、turnSmoothTime=.18维护FacingRotation，统一驱动Visual及Vision.SetHeading；Vision.directionDegrees保持独立俯仰，模型lean不额外倾斜视野，厚度局部Z随yaw转，90度时侧对相机变窄属正常。BeginRound重置yaw/turnVelocity并ResetPose，Rebuild保当前yaw；查询使用局部平面，Box墙补12边与厚度边界交点采样。上述新行为已由原39+新增4共43项自动回归覆盖，实际Game动画观感和原生键鼠未新增验收。

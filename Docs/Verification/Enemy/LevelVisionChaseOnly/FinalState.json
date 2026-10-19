@@ -1,0 +1,19 @@
+{
+  "success": true,
+  "message": "Code executed successfully.",
+  "data": {
+    "result": {
+      "observed": "2026-10-19T05:01:06.8830283Z",
+      "playing": false,
+      "changing": false,
+      "compiling": false,
+      "updating": false,
+      "scene": "Assets/Scenes/Tests/Enemy/EnemyTest.unity",
+      "dirty": false,
+      "prefabStage": null,
+      "timeScale": 1,
+      "runInBackground": false
+    },
+    "compiler": "codedom"
+  }
+}

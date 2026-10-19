@@ -1,0 +1,164 @@
+02B Camera bounds handoff
+Status: READY_FOR_INTEGRATION
+Date: 2026-10-18
+Owner: 任务002玩家移动 / 02B source work; integration and editor execution remain 07D.
+
+Read and followed Docs/AgentPrompts/CameraBounds_Dispatch.txt and ProjectRules A27.
+This means source and focused test code are ready for integration. It is NOT a compile, test,
+scene, visual or native acceptance claim. No Unity tools, refresh, Play, test runs or scene
+switches were performed for 02B. No prefab or scene asset was edited.
+
+Changed files
+- Assets/Scripts/Player/MonoBehaviour/PlayerCameraTargetBinder.cs
+- Assets/Tests/Player/PlayMode/PlayerCameraBoundsTests.cs
+- Assets/Tests/Player/PlayMode/PlayerCameraBoundsTests.cs.meta
+- Docs/Handoffs/02B_CameraBounds_Handoff.txt
+No separate PlayerCameraBounds component, scene rebuilding command or upgrade helper added.
+The existing Binder script GUID is preserved. New test GUID: 49e605233fe541fdb7fb32b0fbb2f924.
+
+Verified native API / source, not assumptions from Cinemachine 2
+Installed Library/PackageCache/com.unity.cinemachine@f3f96bcb59af/package.json declares 3.1.7.
+Runtime/Behaviours/CinemachineConfiner3D.cs:
+- public Collider BoundingVolume (line 21), public float SlowingDistance (line 25).
+- IsValid checks collider enabled + activeInHierarchy (line 58).
+- OnTargetObjectWarped adjusts its previous camera position (lines 71-78).
+- Native Body-stage position correction uses Collider.ClosestPoint (lines 92-125).
+- Slowing history is skipped when PreviousStateIsValid is false (line 98).
+Runtime/Behaviours/CinemachineCamera.cs:118 forwards OnTargetObjectWarped to pipeline/extensions.
+No m_BoundingVolume / Cinemachine 2 API names, custom LateUpdate clamp, new manager, or lens edits.
+
+Exact public contract
+Existing player, followCamera and Bind(PlayerController) remain.
+Added public CinemachineConfiner3D confiner: reference the extension on the SAME SideFollow
+GameObject as followCamera. If omitted, Binder resolves only followCamera.GetComponent;
+there is no global search or cross-scene selection.
+THE ONLY EDITABLE BOUNDS REFERENCE is native confiner.BoundingVolume.
+Slowing distance remains native confiner.SlowingDistance; Binder does not duplicate it.
+Added public bool ValidateBounds(out string error) for scene setup/activation validation.
+Added read-only string LastBoundsError for current invalid-configuration diagnostics.
+
+Validation / lifecycle
+- Requires same loaded scene for Binder, followCamera and native BoundingVolume.
+- Bounds must be BoxCollider, component enabled, own GameObject activeSelf, isTrigger=true.
+- No attached Rigidbody, Renderer on bounds object, or Interactable in its ancestry.
+- Bounds cannot be under any Camera (including OutputCamera), CinemachineCamera, player,
+  or player's cameraTarget. Ancestor component checks include dormant ancestors.
+- Inactive ancestors during additive staging are permitted by ValidateBounds. They are not
+  equated with disabling the BoxCollider or its own GameObject.
+- Bind may be called during staging. Native Follow is kept null until Binder, camera and
+  bounds are active in hierarchy. Update then completes binding. This avoids a following
+  frame with an inactive volume; it does not change scene activation itself.
+- Bind, target replacement, native-volume reference replacement, unbind and teleport reset
+  PreviousStateIsValid. Teleport also retains OnTargetObjectWarped(Follow, delta).
+- Runtime Inspector edits to the same Box center/size or its world transform are supported:
+  Binder keeps noneditable geometry snapshots and invalidates old slowing/damping history on
+  change. It syncs physics transforms only on initial/rebinding, geometry changes and teleport,
+  before the native extension's next ClosestPoint sample, not every ordinary follow frame.
+- Runtime snapshots boundPlayer/boundCamera/boundVolume are not editable configuration.
+  Switching followCamera clears Follow and state on the old camera as well as initializing
+  the new one. Old player Teleported subscriptions are removed.
+- OnDisable/Bind(null) release Follow and runtime snapshots but retain THIS scene's authored
+  native BoundingVolume so ordinary deactivate/reactivate or rollback can bind again.
+- Null, disabled or invalid volumes clear following and report [PlayerCameraBounds] once per
+  continuous failure (or explicit Bind attempt). A foreign-scene BoundingVolume is additionally
+  cleared from the native extension so it cannot keep using another map. Assign the correct
+  local volume to recover; disabled same-scene configuration can recover when re-enabled.
+- Missing player with the shared prefab's player=null does not produce a null-bounds warning.
+- DefaultExecutionOrder(-100) runs validity checks in Update before the usual Brain LateUpdate.
+  Integration must still configure/activate bounds before presenting the new camera. Do not
+  mutate scene camera references after its Brain update and expect same-frame ordering magic.
+
+07D precise shared prefab upgrade (do once, no recreation)
+1. First reread actual editor/dirty-scene state and back up full touched asset contents + GUIDs.
+   Do not run the old PlayerTestSceneBuilder: it has older orthographic camera defaults.
+2. Open existing Assets/Prefabs/Player/PlayerCamera.prefab for a minimal prefab edit.
+   Keep existing prefab GUID 3cf4a390a92e98447ada0654fb991c91.
+3. On existing child SideFollow add ONE native CinemachineConfiner3D.
+4. Set the root PlayerCameraTargetBinder.confiner to this new extension. Keep followCamera
+   pointing to the existing SideFollow CinemachineCamera. Leave BoundingVolume null on the
+   shared prefab: scene geometry references belong to scene instances.
+5. SlowingDistance may start at 1 world unit for a first visual pass; tune per scene if needed.
+   This is a suggested initial value, not a measured accepted setting.
+6. Preserve OutputCamera perspective, FieldOfView 50, Cinemachine Lens values, composer
+   CameraDistance 12, Composition, Damping, rotation, existing Brain, and one AudioListener.
+   Do not move camera Z to 0 or add another camera/Brain/listener.
+
+07D per-scene upgrade / activation order
+1. Every playable map and actual player/camera module scene gets its OWN CameraBounds empty
+   GameObject, with BoxCollider only: enabled, own activeSelf=true, isTrigger=true, no renderer,
+   Rigidbody or Interactable. Put it under that scene's static environment or static root.
+   Do not parent it to the player, CameraTarget or SideFollow. Bootstrap needs no dummy camera.
+2. Author its world-space allowable CAMERA CENTER range using Inspector center/size and scale.
+   Current player plane is Z0 and camera is near Z-12: bounds must include Z-12. With identity
+   scale/rotation a center.z=-12 and size.z=2 is a reasonable starting depth, not a mandated
+   map width/height. Derive each map's X/Y from its existing environment and 1920x1080 view.
+   Shelter and Ruins must have independently authored, different appropriate dimensions.
+3. On that scene's existing PlayerCamera instance, assign SideFollow Confiner3D.BoundingVolume
+   to that scene's CameraBounds. This is a scene instance override; never apply it to prefab.
+4. Before presenting a loaded scene, call cameraBinder.ValidateBounds(out error) while roots
+   are dormant; treat false as failed wiring. It intentionally accepts inactive ancestors.
+5. Move player into the target scene per existing flow; set cameraBinder.player; activate the
+   target environment including CameraBounds; activate presentation and Bind(player). Existing
+   GameFlowSceneBindings already activates environment before presentation, but 07D must add
+   the new bounds validation to its activation failure/rollback checks as appropriate.
+6. On departure/deactivation Bind(null) then deactivate presentation/environment. On rollback
+   restore the previous environment before reactivating/rebinding its own camera. Native volume
+   field on the old camera remains that old scene's authored reference, not the new map's.
+7. Update future setup in MinimumLoopSceneBuilder and other existing camera fixture builders
+   without rebuilding user-authored scenes. Known builders: Player, Backpack, Loot, GameFlow;
+   locate actual PlayerCamera prefab consumers and actual follow cameras before editing.
+8. CameraBounds isTrigger means existing Physics rays/ground queries with Ignore skip it. It
+   has no Interactable so new E TriggerBox discovery does not select it. 06D/07C still need to
+   confirm their drop-obstacle filter ignores an ordinary camera bounds trigger.
+
+Existing test migration dependency
+PlayerMovementTests.CinemachineFollowsMovementAndWarpAndCanBindReplacementPlayer formerly
+instantiated the shared camera with no scene boundary. It must explicitly create a large
+local BoxCollider trigger (covering X movement/warp at -10 to 20 and camera Z-12), add/resolve
+native Confiner3D on SideFollow, assign Binder.confiner and native BoundingVolume, then Bind.
+02B parent agent has prepared that test migration: transient CameraBounds at (0,0,-12),
+size (200,100,20), isTrigger=true, native Confiner3D added/resolved, Binder.confiner and native
+BoundingVolume assigned, fixture SlowingDistance=0 before Bind. This source change is NOT run.
+An inactive holder around the camera instance is safest when a fixture has a serialized player.
+Prefab player=null is also quiet until explicitly bound. A shared prefab cannot supply a valid
+cross-scene volume for arbitrary runtime-instantiated test cameras.
+
+The parent also updated PlayerTestSceneBuilder SOURCE for future fresh fixtures: native
+Confiner3D, prefab-stage BoundingVolume=null, then an independent scene CameraBounds centered
+at (0,3,-12) with size (26,8,6). The builder has NOT run. Do not rerun it over user-authored
+content or current camera lens. 07D must still minimally upgrade the existing saved PlayerTest
+scene instance and other saved module scenes; builder source changes do not modify those assets.
+
+Prepared focused tests (NOT RUN)
+PlayerCameraBoundsTests.InactiveAncestorsValidateAndDeferFollowingUntilBoundsAreActive
+PlayerCameraBoundsTests.MissingDisabledAndSolidBoundsRejectFollowWithDiagnostics
+PlayerCameraBoundsTests.WrongSceneAndDestroyedVolumesCannotKeepAStaleBinding
+PlayerCameraBoundsTests.NativeBrainConfinesWarpAndReplacementVolumeWithoutChangingLens
+PlayerCameraBoundsTests.RebindingAndUnbindingRemoveOldPlayerWarpSubscriptions
+PlayerCameraBoundsTests.ReplacingFollowCameraClearsThePreviouslyBoundCamera
+PlayerCameraBoundsTests.BoundsUnderOutputCameraAreRejectedAsMovingGeometry
+Tests instantiate the existing camera prefab under an inactive holder and configure transient
+scene bounds. The native-output test uses the real CinemachineBrain ManualUpdate, real native
+Confiner3D, real player reset/Teleported event and output Camera position. It also edits the same
+volume's center/size while running and checks immediate confinement without test-helper physics
+sync or a direct clamp. Its zero-time blend
+is fixture-only. Production lens and prefab are not changed. Other tests check lifecycle/API.
+They require the Test Runner's clean scene, like the existing Player PlayMode suite.
+
+Remaining 07D acceptance, all pending
+- Unity refresh/compile; focused CameraBoundsTests + existing movement camera test + relevant
+  GameFlow/Trigger interaction/source/drop regression after all source writers release.
+- Actual Shelter -> Ruins -> Shelter -> second departure, within-run teleport, failed activation
+  rollback, and first following frame using the correct scene volume.
+- At 1920x1080 inspect real Brain output during left/right movement/jumps at each boundary,
+  native slowing smoothness, perspective/FOV50/distance12/Z-12 preservation, and no duplicate
+  camera/Brain/listener. Save actual screenshots and test outputs in Docs/Verification/CameraBounds.
+- Change one scene's bounds and verify the other scene and shared prefab geometry are unchanged.
+- Deliberately missing/disabled/wrong-scene configuration must diagnose without stale following;
+  restoring the valid configuration must recover. Dormant loading ancestors must not false-fail.
+- Confirm E prompts, source UI sessions, solid walls, ground probes and dropped items are unchanged.
+- Preserve prior unrelated 07B failures in their own evidence; do not count them as resolved here.
+
+Native Confiner3D bounds the CAMERA POSITION, not a guaranteed full-screen rectangle. Tune
+visible margins for the existing 1920x1080 perspective view; no all-projection screen-edge
+guarantee is claimed. No source-level review here substitutes for the pending real scene run.

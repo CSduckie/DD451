@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2568938552449347387
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7806099895074599291}
+  - component: {fileID: 7616180893539799889}
+  m_Layer: 0
+  m_Name: LocalizationModule
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7806099895074599291
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2568938552449347387}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7616180893539799889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2568938552449347387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 224fee616fb2a9f48a07c1ca410c2e68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: MyPrecious.Localization::LocalizationManager
+  tables:
+  - {fileID: 11400000, guid: 1ba5dde467960b945834ff10f2f81411, type: 2}
+  - {fileID: 11400000, guid: 2d48730c548cf4447a91848dd986b75a, type: 2}
+  - {fileID: 11400000, guid: d563031d56c2e0d4885c6422a7d2557b, type: 2}
+  - {fileID: 11400000, guid: 2fa7841fb07b8d540849e8a82a8d1088, type: 2}
+  itemLibrary: {fileID: 11400000, guid: 68774b0199e4c5f429701003dac53e8c, type: 2}
+  toggleLanguageAction: {fileID: 191420335225794478, guid: 052faaac586de48259a63d0c4782560b, type: 3}

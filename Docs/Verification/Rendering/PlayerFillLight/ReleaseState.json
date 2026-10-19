@@ -1,0 +1,61 @@
+{
+  "utc": "2026-10-19T09:19:40.2291206Z",
+  "playing": false,
+  "paused": false,
+  "playOrChanging": false,
+  "compiling": false,
+  "updating": false,
+  "scenes": [
+    {
+      "path": "Assets/Scenes/Bootstrap.unity",
+      "dirty": false
+    }
+  ],
+  "tests": false,
+  "prefabStage": false,
+  "captureRunning": false,
+  "actionRunning": false,
+  "actionHeld": false,
+  "normalWatchRunning": false,
+  "normalWatchResult": "PASS",
+  "syntheticDeviceId": -1,
+  "remainingProbeDevices": [],
+  "timeScale": 1.0,
+  "background": false,
+  "playerSettingsBackground": false,
+  "enterPlayModeOptions": "DisableDomainReload",
+  "graphicsDevice": "Direct3D11",
+  "quality": "PC",
+  "pipeline": "Assets/Settings/PC_RPAsset.asset",
+  "useRenderingLayers": true,
+  "prefab": {
+    "path": "Assets/Prefabs/Player/Player.prefab",
+    "guid": "4a37e015a99af1948851c34d90ec57de",
+    "missingScripts": 0,
+    "childParent": "Player",
+    "position": [
+      0.0,
+      1.1,
+      -2.0
+    ],
+    "type": "Point",
+    "mode": "Realtime",
+    "intensity": 1.2,
+    "range": 4.5,
+    "shadows": "None",
+    "bounce": 0.0,
+    "lightMask": 2,
+    "additionalMask": 2,
+    "renderers": [
+      {
+        "name": "CapsulePlaceholder",
+        "mask": 3
+      },
+      {
+        "name": "FacingMarker",
+        "mask": 3
+      }
+    ],
+    "layerName": "PlayerLighting"
+  }
+}

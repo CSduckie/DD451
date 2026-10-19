@@ -1,0 +1,614 @@
+[
+  {
+    "path": "Assets/Scripts/GameFlow/MonoBehaviour.meta",
+    "sha256": "B4178CFCA1515D332C1C4116D64BEC8414651098B4BCC2826F3607FC105AC5BC"
+  },
+  {
+    "path": "Assets/Scripts/GameFlow/MyPrecious.GameFlow.asmdef",
+    "sha256": "BFD7BE2FDB143123634E593C1406BF76B5EFCDDF537C7FB2D879963991D26C99"
+  },
+  {
+    "path": "Assets/Scripts/GameFlow/MyPrecious.GameFlow.asmdef.meta",
+    "sha256": "82A43613D9838D5E6B82EBE99F7C3ACE59EF4A1DBC12E90014DE8170814EF6A9"
+  },
+  {
+    "path": "Assets/Scripts/GameFlow/RuntimeData.meta",
+    "sha256": "56A337591969CCA43051ADD76B90E3B2F092121E6CB3BE732930DF1251BC4EFA"
+  },
+  {
+    "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowHUD.cs",
+    "sha256": "E430481D146E43846C767C18207638A6F5876CD13797062BB599FAD5E6DB3D54"
+  },
+  {
+    "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowHUD.cs.meta",
+    "sha256": "A18D743BD728AEC91B9173803931DA868D7BBF2D75F9E7F53E9B3DB5DD6AF07A"
+  },
+  {
+    "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowInteractable.cs",
+    "sha256": "4C8299AF84C7B66CC616888C8591ECEE7067F19745E7F7A23EA3DF3B1C24E252"
+  },
+  {
+    "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowInteractable.cs.meta",
+    "sha256": "2E80D49A7094FF09990AA028765AF705294A02D186ADD74D2BF2C60C1C1D1BA9"
+  },
+  {
+    "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowManager.cs",
+    "sha256": "B0D2EC22A4BFE7CADAE2D46199A622254B593DD4EE103781487EBC8BC344434C"
+  },
+  {
+    "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowManager.cs.meta",
+    "sha256": "21A1565C8D783501970235437F5E1008A56DBDA0CBF2A732CD583349D83028C1"
+  },
+  {
+    "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowResponsiveLayout.cs",
+    "sha256": "1FBE48CB7822F2D66B0CC6316993F812D461A4A06AC899842A84F9F46CF63297"
+  },
+  {
+    "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowResponsiveLayout.cs.meta",
+    "sha256": "5743EA9E789266047BDD9DD66F826826D04D93F7E626692358AA6B8CA6BBBAF1"
+  },
+  {
+    "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowSceneBindings.cs",
+    "sha256": "E772B51A90E094DD4D47058F86C7ECD781B346F608331F8BD4A6CD173C60C253"
+  },
+  {
+    "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowSceneBindings.cs.meta",
+    "sha256": "C32B9975E96E68B2D4384B8998FB1ED59280DBBCD71A2477AEF343A02CD9998B"
+  },
+  {
+    "path": "Assets/Scripts/GameFlow/RuntimeData/GameFlowStage.cs",
+    "sha256": "C83264E09897C06F54208B5553AE7D345950D449C5CD9936B12056021989E638"
+  },
+  {
+    "path": "Assets/Scripts/GameFlow/RuntimeData/GameFlowStage.cs.meta",
+    "sha256": "49C0E63941304D5336BF15338E56EDD78622DD2572CB02E5EEFCDE863E2C6DDC"
+  },
+  {
+    "path": "Assets/Scripts/Items/MonoBehaviour.meta",
+    "sha256": "185673331FC9C0B447715F4B5D9656879DBBF8006F71DC77E371880ACB772EE3"
+  },
+  {
+    "path": "Assets/Scripts/Items/MyPrecious.Items.asmdef",
+    "sha256": "894CD67ACC8E5ED189ED68F36421C463C3D74B310143BE9E3C879B2F55D10BD9"
+  },
+  {
+    "path": "Assets/Scripts/Items/MyPrecious.Items.asmdef.meta",
+    "sha256": "CB1F28FE988EAC6D50E46E90FF69497E4B8BEDF755F5AD5263FBB53E86755E37"
+  },
+  {
+    "path": "Assets/Scripts/Items/RuntimeData.meta",
+    "sha256": "708454723C548724C9C5F8B60EAE17E33F568659887C58685708CFD88BFC1E37"
+  },
+  {
+    "path": "Assets/Scripts/Items/ScriptableObject.meta",
+    "sha256": "134EE7DDCB014A0CEE83A9D5B96274000EE67EC34EE20DF9962BA2EFB9FE8B35"
+  },
+  {
+    "path": "Assets/Scripts/Items/Transfers.meta",
+    "sha256": "1C0FD64FBB0741A083544C6091532021C89F67B3A065B8F14AFB8499574DE030"
+  },
+  {
+    "path": "Assets/Scripts/Items/MonoBehaviour/ItemManager.cs",
+    "sha256": "1F65B8FFE2857C3DFDAEF71E78D1D39A55BE3479079AA77A75D9E6C7EB2D6281"
+  },
+  {
+    "path": "Assets/Scripts/Items/MonoBehaviour/ItemManager.cs.meta",
+    "sha256": "DBEF94D5D1EC6FD4D10A76F4E994582FD292CCE696C271A630CB8AED39192394"
+  },
+  {
+    "path": "Assets/Scripts/Items/RuntimeData/ItemInstance.cs",
+    "sha256": "591CBC63AC69B260B5347790C3E6F21D10EF88BC16C67BCA203521586FE5DBBE"
+  },
+  {
+    "path": "Assets/Scripts/Items/RuntimeData/ItemInstance.cs.meta",
+    "sha256": "F501D5E334FC2E638EA0FE0E2AF69E83F96B23CED1FF687EEF2FE74964531022"
+  },
+  {
+    "path": "Assets/Scripts/Items/ScriptableObject/Effects.meta",
+    "sha256": "8A5024BB568D7251FA04050752148D2434EC2A03F634AEEC4E3A9595CCBF0F20"
+  },
+  {
+    "path": "Assets/Scripts/Items/ScriptableObject/ItemDataSO.cs",
+    "sha256": "8F9F1ACA3C2FDAAEB94D4C55721E5B6B1E937CE1377CAD563EA52E463C1876AA"
+  },
+  {
+    "path": "Assets/Scripts/Items/ScriptableObject/ItemDataSO.cs.meta",
+    "sha256": "05471E57CBBDFDB0D9C21FFF7F84F10BB49351EE00E3FC2453461A177A639893"
+  },
+  {
+    "path": "Assets/Scripts/Items/ScriptableObject/ItemLibrarySO.cs",
+    "sha256": "F6F67A6088DB81771F03B7287973C871F84341192074C1FCA500189736660F0F"
+  },
+  {
+    "path": "Assets/Scripts/Items/ScriptableObject/ItemLibrarySO.cs.meta",
+    "sha256": "1F1B952908A247B55582BBD23FE9A1AB9CC70FAA1BE04F93B57D9395C0CE986A"
+  },
+  {
+    "path": "Assets/Scripts/Items/ScriptableObject/Effects/HealEffectSO.cs",
+    "sha256": "A5B084616ADB53A579D2FE5568871A45C171C1AAD5C3797B1A47409E30ACAC71"
+  },
+  {
+    "path": "Assets/Scripts/Items/ScriptableObject/Effects/HealEffectSO.cs.meta",
+    "sha256": "73458047076FDBD066178CB26960E717C126104EE089705A311ABFE263ACE8C6"
+  },
+  {
+    "path": "Assets/Scripts/Items/ScriptableObject/Effects/ItemEffectSO.cs",
+    "sha256": "598BFED4A91BB7C94419557474EA2B3AF5085BA7F77C4A91B4D69838071CEFCC"
+  },
+  {
+    "path": "Assets/Scripts/Items/ScriptableObject/Effects/ItemEffectSO.cs.meta",
+    "sha256": "A323888AE476224B77F23465986DA29D9E4D65BCEB6E7B653967D9285571F310"
+  },
+  {
+    "path": "Assets/Scripts/Items/Transfers/MonoBehaviour.meta",
+    "sha256": "5BE1951FB6826CF6ADF11774B62F0DE09F2CBEE87F942058BD11F4A725339524"
+  },
+  {
+    "path": "Assets/Scripts/Items/Transfers/MyPrecious.Loot.asmref",
+    "sha256": "D9F1713B70C256FA5FB58B9F8100E5AA81F8EA64F45B2A58C82407710DC41B95"
+  },
+  {
+    "path": "Assets/Scripts/Items/Transfers/MyPrecious.Loot.asmref.meta",
+    "sha256": "A5A80811F31D188EACA12958A1B63E6D05F9B09A42E7307A28C3756439F4E5F0"
+  },
+  {
+    "path": "Assets/Scripts/Items/Transfers/RuntimeData.meta",
+    "sha256": "92E9F4DAB2913068E5395E37B98A8D7B5E437F6EC09BCC6180031B99D39C726A"
+  },
+  {
+    "path": "Assets/Scripts/Items/Transfers/MonoBehaviour/DiscardConfirmationButton.cs",
+    "sha256": "6683C61EC93BF3D0CB4FA8D5B3CAE18563691E521FCFA7DB6A5F9F5A178F93FE"
+  },
+  {
+    "path": "Assets/Scripts/Items/Transfers/MonoBehaviour/DiscardConfirmationButton.cs.meta",
+    "sha256": "7B0FD490CD0D962A2163AA2A7CE29EC5C36288E6A62FCD00310B7831EF0A6BCE"
+  },
+  {
+    "path": "Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs",
+    "sha256": "C9547E96908FF577ADA647AC5387A9070A3E16789E006B4C7F393131567839C5"
+  },
+  {
+    "path": "Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs.meta",
+    "sha256": "D54E6EBC879D63C48EEBCBBDF9FC46E4050BE069CCB6A2DD5FE1096A08EA0692"
+  },
+  {
+    "path": "Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferUIBridge.cs",
+    "sha256": "32139B77CAA90173A02019B5039D6288DAB13EB07D111960F07875520CC840E1"
+  },
+  {
+    "path": "Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferUIBridge.cs.meta",
+    "sha256": "81916BB6477BC665DDB3C93F74ECF5920A5FDF03ACF2295ED340E3B0FBB55788"
+  },
+  {
+    "path": "Assets/Scripts/Items/Transfers/RuntimeData/ItemTransferResult.cs",
+    "sha256": "74A03379447AE32D687528CD977402EAA29B5097A23C76B941460393EB16A457"
+  },
+  {
+    "path": "Assets/Scripts/Items/Transfers/RuntimeData/ItemTransferResult.cs.meta",
+    "sha256": "9CE695D98F14A324FB774D166C96A6D7A5C1E32741349F2201BD1747650087C2"
+  },
+  {
+    "path": "Assets/Scripts/Loot/Logic.meta",
+    "sha256": "829D2507ACFEE94F2573DEC76C0865773FC9731717471DDE09FB15633F3FA527"
+  },
+  {
+    "path": "Assets/Scripts/Loot/MonoBehaviour.meta",
+    "sha256": "2D0EB847EA6473845862BBBB14EC20D65638E3309CFCEBF3738E784CA2B2FB97"
+  },
+  {
+    "path": "Assets/Scripts/Loot/MyPrecious.Loot.asmdef",
+    "sha256": "ED685BD41E71196D7486E0DB4EC03F860883E9A0CCCDB30296AAAAF0B5C5A9C4"
+  },
+  {
+    "path": "Assets/Scripts/Loot/MyPrecious.Loot.asmdef.meta",
+    "sha256": "2AC8BB978035DAA34838433885E32B05DDDC49A17D6D111563368009664ED7B1"
+  },
+  {
+    "path": "Assets/Scripts/Loot/RuntimeData.meta",
+    "sha256": "381E5621A76AA74396D5F2422B20B6FDD67AEDE7D4004F5230C25312B11903F2"
+  },
+  {
+    "path": "Assets/Scripts/Loot/ScriptableObject.meta",
+    "sha256": "2A1D5077AE86F681B5039F1BA7749B2F5BB68CFEB2A07336527D96E9E65B7C25"
+  },
+  {
+    "path": "Assets/Scripts/Loot/Logic/LootGenerator.cs",
+    "sha256": "464CA24D9C56635F4F3C3984C7260B3E8E4B3E4E240CE76E2E72B175B3D56159"
+  },
+  {
+    "path": "Assets/Scripts/Loot/Logic/LootGenerator.cs.meta",
+    "sha256": "F4DD7B4233981310EBD97E9BB5C221004483DC95028D053C930869A99E4629AE"
+  },
+  {
+    "path": "Assets/Scripts/Loot/MonoBehaviour/GroundItem.cs",
+    "sha256": "F6817A7B68E9FA29B720EC6858A4883B52A6171E2744DE704F1D2C4780D41A08"
+  },
+  {
+    "path": "Assets/Scripts/Loot/MonoBehaviour/GroundItem.cs.meta",
+    "sha256": "870BFF8C0F020CD4C6188488600CC7740F4AE542ADA8FF90A1C164795FEE0B1E"
+  },
+  {
+    "path": "Assets/Scripts/Loot/MonoBehaviour/LootBox.cs",
+    "sha256": "DDA90A45F23C28B4EE0C17B1A3A01C842D642B5D2775D2C17829A054E6A70D47"
+  },
+  {
+    "path": "Assets/Scripts/Loot/MonoBehaviour/LootBox.cs.meta",
+    "sha256": "8FF7C756D17DC019CF0E231E81A0EC962B927C763E6E0C87DC20D4BC13BFFFCB"
+  },
+  {
+    "path": "Assets/Scripts/Loot/MonoBehaviour/LootItemView.cs",
+    "sha256": "49CBCBB182C3CF5D7AB7D8A6BA7ED7C6ADF35757CE916D0610C208CEBBC3D605"
+  },
+  {
+    "path": "Assets/Scripts/Loot/MonoBehaviour/LootItemView.cs.meta",
+    "sha256": "5132E7587325520191FC8207F7E6E85DB6651E0CF207E0AC90A1D1938091C82F"
+  },
+  {
+    "path": "Assets/Scripts/Loot/MonoBehaviour/LootRuntimeManager.cs",
+    "sha256": "89540F0B9C1BA5CBAC6441D951F20A46D877370DBE2F9C9B5ACB1A7A7F7D79AE"
+  },
+  {
+    "path": "Assets/Scripts/Loot/MonoBehaviour/LootRuntimeManager.cs.meta",
+    "sha256": "A46CC2E0A176A9C0688E93758AC5201BA018B7FCCDF2CC823BFEA08475867562"
+  },
+  {
+    "path": "Assets/Scripts/Loot/MonoBehaviour/LootUIController.cs",
+    "sha256": "6F160C9D9B2351C30F9C8E48C097A4FE8A278F424CBF1417B4655D2C83E53D6B"
+  },
+  {
+    "path": "Assets/Scripts/Loot/MonoBehaviour/LootUIController.cs.meta",
+    "sha256": "BFE551C0649172B2DDC1C241A4506108744553995F221AE1CF95570A578F0DBF"
+  },
+  {
+    "path": "Assets/Scripts/Loot/MonoBehaviour/LootView.cs",
+    "sha256": "0C1A8CD5089506AD3AAD18F8E80B3911FF6369AACD4994C9C56BC4E9AF87F4B4"
+  },
+  {
+    "path": "Assets/Scripts/Loot/MonoBehaviour/LootView.cs.meta",
+    "sha256": "A660ACC632C5591DC77218B4ACF78621F38A628E823F585C410564DDC6A88CB9"
+  },
+  {
+    "path": "Assets/Scripts/Loot/RuntimeData/LootSourceState.cs",
+    "sha256": "62D036C684AF8736FB770771CFF4E5B4CF212EC0BE9C0B4257D7B60FE5F19591"
+  },
+  {
+    "path": "Assets/Scripts/Loot/RuntimeData/LootSourceState.cs.meta",
+    "sha256": "6F1AC280C50CA1FFF3DCCBB48BE609D4F395D5F24E01BFB72322EE2F8C12BF78"
+  },
+  {
+    "path": "Assets/Scripts/Loot/ScriptableObject/LootTableSO.cs",
+    "sha256": "D99EC3D7036B874740A7D1AB6E742BA0B092D580BF4FFC5DFB2108060B364070"
+  },
+  {
+    "path": "Assets/Scripts/Loot/ScriptableObject/LootTableSO.cs.meta",
+    "sha256": "FC5246F65F2E1333913A45BC8DE881FAA38EF8581661BD43BFDA16D3F864FCCA"
+  },
+  {
+    "path": "Assets/Scripts/Backpack/Logic.meta",
+    "sha256": "87776AB0066CEF377F4C2C1A495095A63F2465D7F6C35145927FC0BFE39CEFEB"
+  },
+  {
+    "path": "Assets/Scripts/Backpack/MonoBehaviour.meta",
+    "sha256": "5522B0A379372BC0EB45E742E16A8C8C23B9F7880D2ABE6B3684A3537111588F"
+  },
+  {
+    "path": "Assets/Scripts/Backpack/MyPrecious.Backpack.asmdef",
+    "sha256": "F22471C465993EFB33137DB275E5468225F6CE416C44956E7164E372CD6B01AD"
+  },
+  {
+    "path": "Assets/Scripts/Backpack/MyPrecious.Backpack.asmdef.meta",
+    "sha256": "1B8DA6C5B7DFABBC390E950B31D87DD8BFC2D8B4A29D38B8D68E5A6758AFDEAA"
+  },
+  {
+    "path": "Assets/Scripts/Backpack/RuntimeData.meta",
+    "sha256": "4A507DC548190CEF9CB384128B27E8725F8ED4BAC9D16204915D4B48CE510CA5"
+  },
+  {
+    "path": "Assets/Scripts/Backpack/ScriptableObject.meta",
+    "sha256": "4DD7B37AC2CB20545C27DB91BCB8EBFA62138C86A50D9E849FFE46E34375D709"
+  },
+  {
+    "path": "Assets/Scripts/Backpack/Logic/BackpackGrid.cs",
+    "sha256": "1B1698A898C3D66B3AE9163DF11626F3F9562007A69E517A6C53E5ECDF7B7C4C"
+  },
+  {
+    "path": "Assets/Scripts/Backpack/Logic/BackpackGrid.cs.meta",
+    "sha256": "94716257B8698D6B76CA38AAB43BB216E490FE9BF3A5CB538208618C0203493B"
+  },
+  {
+    "path": "Assets/Scripts/Backpack/MonoBehaviour/BackpackItemView.cs",
+    "sha256": "07237A8A8033DBF49E4DDF36A53B92B14D80052FEC6E0E136F2DDE431A732A55"
+  },
+  {
+    "path": "Assets/Scripts/Backpack/MonoBehaviour/BackpackItemView.cs.meta",
+    "sha256": "B195C1C9DD5168E15D5E71531C98D8CD29640158D842DF4E926E1DBE51596F05"
+  },
+  {
+    "path": "Assets/Scripts/Backpack/MonoBehaviour/BackpackManager.cs",
+    "sha256": "346BAC713BFC45DE0E99F0DFFF29F7E6A5EE2C20D4335E4427147019A1F627CA"
+  },
+  {
+    "path": "Assets/Scripts/Backpack/MonoBehaviour/BackpackManager.cs.meta",
+    "sha256": "A936088D617156F048691208E40059EE4497C5A917474D192959F5236E226572"
+  },
+  {
+    "path": "Assets/Scripts/Backpack/MonoBehaviour/BackpackUIController.cs",
+    "sha256": "8978D707CDB5EAA4268A4F5DA28B2287C8432B6D01CA4FFD2CB87BB210F6E234"
+  },
+  {
+    "path": "Assets/Scripts/Backpack/MonoBehaviour/BackpackUIController.cs.meta",
+    "sha256": "B27BF9E1E9311E98FA920E05522227C90D62EFED32D4DF04B037ECB87C1E266C"
+  },
+  {
+    "path": "Assets/Scripts/Backpack/MonoBehaviour/BackpackView.cs",
+    "sha256": "78DF08DAB1D99F63CE598C170F3EAD0B33F700CE377F9CC6DE8A83DEB54C1085"
+  },
+  {
+    "path": "Assets/Scripts/Backpack/MonoBehaviour/BackpackView.cs.meta",
+    "sha256": "306718602B4328BCE993AA8A6C606BAFF40AAA614D3E5FA3BF0101C3C2277CC4"
+  },
+  {
+    "path": "Assets/Scripts/Backpack/RuntimeData/BackpackPlacement.cs",
+    "sha256": "0B8610E100752D87CAEA1838BE23576750AC84549976EEE14FEE3DFA33D36AF7"
+  },
+  {
+    "path": "Assets/Scripts/Backpack/RuntimeData/BackpackPlacement.cs.meta",
+    "sha256": "EBBBF1149CE64F38B42380758B4DE313EB39227B0055B975D187268CB878E292"
+  },
+  {
+    "path": "Assets/Scripts/Backpack/ScriptableObject/BackpackConfigSO.cs",
+    "sha256": "371A9A1047E29C1AF12FB247AD9CE56005A4BAC03B9E52A78760F1439495C2D4"
+  },
+  {
+    "path": "Assets/Scripts/Backpack/ScriptableObject/BackpackConfigSO.cs.meta",
+    "sha256": "B5950223EA5FF8B03474F3B9D92FA01624A8C82B833B0762D700B733DAAF1751"
+  },
+  {
+    "path": "Assets/Scripts/Warehouse/Logic.meta",
+    "sha256": "B1013D191C8F77F729A9A2A66E94851EAF451DAA43EA6BEC9270A15359376CF7"
+  },
+  {
+    "path": "Assets/Scripts/Warehouse/MonoBehaviour.meta",
+    "sha256": "6D400DC94581611E8669E26CFA1E548D4A43E817830CB9FFC3D8CA85569C140F"
+  },
+  {
+    "path": "Assets/Scripts/Warehouse/MyPrecious.Warehouse.asmdef",
+    "sha256": "F66A9E129FC45D46D08A2C1F28E0485050CBCEF0FABEE5EFAC547BFE66AE0994"
+  },
+  {
+    "path": "Assets/Scripts/Warehouse/MyPrecious.Warehouse.asmdef.meta",
+    "sha256": "C7EA5FC37B95819B1726BD99D449D2EAD1E7457A51FD144C817F583538DF9C88"
+  },
+  {
+    "path": "Assets/Scripts/Warehouse/RuntimeData.meta",
+    "sha256": "AD2DA31B01D8D95F8DDC771BC4A4BA24CB6D3F14C6939863A05C7347F6782A92"
+  },
+  {
+    "path": "Assets/Scripts/Warehouse/ScriptableObject.meta",
+    "sha256": "3001974C6C6CE0B5D2BDCF8EAA7B652BBA8F4DD3E73F5A7379AAA078AE588A71"
+  },
+  {
+    "path": "Assets/Scripts/Warehouse/Logic/WarehouseGrid.cs",
+    "sha256": "4C6AF21C851DEAE7C4C2BFE68E3CFE92AC69FCA6FE839C047A661613D36FD932"
+  },
+  {
+    "path": "Assets/Scripts/Warehouse/Logic/WarehouseGrid.cs.meta",
+    "sha256": "B6F7374D2CCD2809AEBF9C4DE860494B666D9E9F2BB51401CD692EA3F62C7C3A"
+  },
+  {
+    "path": "Assets/Scripts/Warehouse/MonoBehaviour/WarehouseItemView.cs",
+    "sha256": "F449993F02A8ED09880970B6D754C251DEAFE3233FD3EC4986398BFA9DB29EA4"
+  },
+  {
+    "path": "Assets/Scripts/Warehouse/MonoBehaviour/WarehouseItemView.cs.meta",
+    "sha256": "A1D52810BF4F5B85FCD7C15AF48DB1C966DA3AA72473D3C530E580BEA08CDA3F"
+  },
+  {
+    "path": "Assets/Scripts/Warehouse/MonoBehaviour/WarehouseManager.cs",
+    "sha256": "9E29F1B66D4C14E4F9D24EB4D42499906C867B933EF43504E39418DBA592D19B"
+  },
+  {
+    "path": "Assets/Scripts/Warehouse/MonoBehaviour/WarehouseManager.cs.meta",
+    "sha256": "0875F187CB87497BB3DE78E46AE34C9B43466736D985D95397800656966118BF"
+  },
+  {
+    "path": "Assets/Scripts/Warehouse/MonoBehaviour/WarehouseUIController.cs",
+    "sha256": "164E43B452B8442E03F800A17439376776088E25E058278AB215CE353AC88CEA"
+  },
+  {
+    "path": "Assets/Scripts/Warehouse/MonoBehaviour/WarehouseUIController.cs.meta",
+    "sha256": "1DEA5F2E4E993CBBCF3E7E8E1B30557AB69134584BBDCF54A4DD6A8562B21AD9"
+  },
+  {
+    "path": "Assets/Scripts/Warehouse/MonoBehaviour/WarehouseView.cs",
+    "sha256": "D0CC1A5797E777E1B4A3C333B80423EDA1F87F0E1B14F40F6ED5689990657388"
+  },
+  {
+    "path": "Assets/Scripts/Warehouse/MonoBehaviour/WarehouseView.cs.meta",
+    "sha256": "1E57DE89201800047C3F21192CB5C65CE0DC07DD63CBEDD9C3EBEAD4D1E5CA89"
+  },
+  {
+    "path": "Assets/Scripts/Warehouse/RuntimeData/WarehousePlacement.cs",
+    "sha256": "E6E5AECC52B629AD955AE76698AE5EA9633B77A15FCD79076AD1A45482B3BC52"
+  },
+  {
+    "path": "Assets/Scripts/Warehouse/RuntimeData/WarehousePlacement.cs.meta",
+    "sha256": "C37947AAFFC8B2536AF5F52C8A64E0D9FD9658E86F5BD6EDDA01DC3C690AAD91"
+  },
+  {
+    "path": "Assets/Scripts/Warehouse/ScriptableObject/WarehouseConfigSO.cs",
+    "sha256": "D6BB2273BACABCEF1D0602DBA022D94EDC2838563C11E2C627AB8C4C2025D8C5"
+  },
+  {
+    "path": "Assets/Scripts/Warehouse/ScriptableObject/WarehouseConfigSO.cs.meta",
+    "sha256": "C873791A68186C25D6D91A5AC219934001F611CCB5EA6FD6A0F2EDE918E6E381"
+  },
+  {
+    "path": "Assets/Scripts/Player/MonoBehaviour.meta",
+    "sha256": "77B05140A386394C787F27AE9D0DC51AB993CAA8AE41FCD5591A988E5EA76C53"
+  },
+  {
+    "path": "Assets/Scripts/Player/MyPrecious.Player.asmdef",
+    "sha256": "7B17E653C24ACAEE06DC0CF1B4C512294B91DDB9319EEF6D5A348B049649A776"
+  },
+  {
+    "path": "Assets/Scripts/Player/MyPrecious.Player.asmdef.meta",
+    "sha256": "D3DE5F573A7FC0839688D5F830C6B98A4EC380255B590787FE3D41554B3B4E64"
+  },
+  {
+    "path": "Assets/Scripts/Player/ScriptableObject.meta",
+    "sha256": "5ED7F3E64927E6981C869B1C17DB540BEF8BB3C233647A964B64CB2ADAE44A8A"
+  },
+  {
+    "path": "Assets/Scripts/Player/States.meta",
+    "sha256": "2C918243921BAE9BD22E266410BEE14BC68EF18A25A1FCA59C807EC2F90CC43B"
+  },
+  {
+    "path": "Assets/Scripts/Player/MonoBehaviour/PlayerCameraTargetBinder.cs",
+    "sha256": "9962B2B5A7EE7765165777B95637BEC055BFDDBF7460114C9A37CDD413DCE247"
+  },
+  {
+    "path": "Assets/Scripts/Player/MonoBehaviour/PlayerCameraTargetBinder.cs.meta",
+    "sha256": "558EEB9ABA476071D647E2453589CFD14F93F222F36D3887F49B743FDEC26E43"
+  },
+  {
+    "path": "Assets/Scripts/Player/MonoBehaviour/PlayerController.cs",
+    "sha256": "F4F65D95F40215C644BD4E134EB3514857822CE2CCE73FD9FD6788643DEEF2CF"
+  },
+  {
+    "path": "Assets/Scripts/Player/MonoBehaviour/PlayerController.cs.meta",
+    "sha256": "0B5FEA6846A4B29EC967E8079017965E11B2D1BC9E34380646FB41F0DD451C70"
+  },
+  {
+    "path": "Assets/Scripts/Player/MonoBehaviour/PlayerHealth.cs",
+    "sha256": "BA4393EF8D0047B60D89DE67C84A9C20739974DCC6A550533AA80C20DFDFC7E7"
+  },
+  {
+    "path": "Assets/Scripts/Player/MonoBehaviour/PlayerHealth.cs.meta",
+    "sha256": "E6C690279C48FFB221C5DB309418E86E2FACF87254AC03A9BFAD34834A974726"
+  },
+  {
+    "path": "Assets/Scripts/Player/MonoBehaviour/PlayerInputReader.cs",
+    "sha256": "60ABAC95E76AFD6F1C8A68A9CC42FEC722B926C3844CC783064D5DF369C22E1A"
+  },
+  {
+    "path": "Assets/Scripts/Player/MonoBehaviour/PlayerInputReader.cs.meta",
+    "sha256": "B702360FCE4A4F41678F95B10C706EA6D05A06DE0A3B0783AF8318F31FA4D411"
+  },
+  {
+    "path": "Assets/Scripts/Player/ScriptableObject/PlayerConfigSO.cs",
+    "sha256": "D6D175425AF7AC6617BED0B39CBE65A113CBC795322907CA4A80E030DD4B3831"
+  },
+  {
+    "path": "Assets/Scripts/Player/ScriptableObject/PlayerConfigSO.cs.meta",
+    "sha256": "D540EE1DF684E6F4B8D989BF80214B6623B40014CDA9CCB0017473F32D01CD95"
+  },
+  {
+    "path": "Assets/Scripts/Player/States/PlayerCrouchState.cs",
+    "sha256": "BC92B93A64E261C4A6EF8A424CAF88BC63E737C38DB358E4C63EF4FC02748943"
+  },
+  {
+    "path": "Assets/Scripts/Player/States/PlayerCrouchState.cs.meta",
+    "sha256": "F4B45EAE1E85A4F5F6F91844C18FDCD3863C11D58EF685F313F43497F2402A9F"
+  },
+  {
+    "path": "Assets/Scripts/Player/States/PlayerDieState.cs",
+    "sha256": "4F5F5688C488AE98E7C9B381AC67901807E212FBB406829A74B60041ECCF0B09"
+  },
+  {
+    "path": "Assets/Scripts/Player/States/PlayerDieState.cs.meta",
+    "sha256": "9921F316B857273B6324A1E730578AF9E18FAC47FFC18A6CE3DD0E4BC24C28DE"
+  },
+  {
+    "path": "Assets/Scripts/Player/States/PlayerFallState.cs",
+    "sha256": "334F76D63F9ACD912DB1E09B86FE8FABE290A113D3F44F0E846387A1913AB17C"
+  },
+  {
+    "path": "Assets/Scripts/Player/States/PlayerFallState.cs.meta",
+    "sha256": "4511A83FF1D64BC5DE55F807A18FF533E28AAE20A9EAD3F40095A0DDAF73410C"
+  },
+  {
+    "path": "Assets/Scripts/Player/States/PlayerIdleState.cs",
+    "sha256": "3C3E19235E4838FCD605E6A420140B13269A36449B4DB70F76020EEA7AE2E773"
+  },
+  {
+    "path": "Assets/Scripts/Player/States/PlayerIdleState.cs.meta",
+    "sha256": "96D48590BADCC08803A1E863194EC5A9DF2121D3D4CEA65AB0025E62F73B2F08"
+  },
+  {
+    "path": "Assets/Scripts/Player/States/PlayerJumpState.cs",
+    "sha256": "721B613966A937C3379A34A997BC6724CA540C1B08600190709DBAD2F9178677"
+  },
+  {
+    "path": "Assets/Scripts/Player/States/PlayerJumpState.cs.meta",
+    "sha256": "7F4B8EE0C426BB911CF75CE7750286714CAE2DA7E910A1A3DD2522A290BE2087"
+  },
+  {
+    "path": "Assets/Scripts/Player/States/PlayerMoveState.cs",
+    "sha256": "302ED1600DFE5A821BDCCC07A04EDAB52AA92FD4BAD49625A2CE3761E8EBAD6C"
+  },
+  {
+    "path": "Assets/Scripts/Player/States/PlayerMoveState.cs.meta",
+    "sha256": "DEDC5543C3EB8D924669DC00B5458DF84516667FF0F1CC2986559D280F43863F"
+  },
+  {
+    "path": "Assets/Scripts/Player/States/PlayerStateBase.cs",
+    "sha256": "E809FD169BB8251DF0A9E3A8A079D6799DFD8AACD842E8F7272A8F1CBCDBB615"
+  },
+  {
+    "path": "Assets/Scripts/Player/States/PlayerStateBase.cs.meta",
+    "sha256": "30E98D09A68972A830A6CA841ABEE422437E42A29B6A82AFB89CE99E2F18E800"
+  },
+  {
+    "path": "Assets/Scripts/Localization/MonoBehaviour.meta",
+    "sha256": "7AEACD462D1EBD9C966F372038BBD458CBECF475D9FC40206241165F0CA50A3D"
+  },
+  {
+    "path": "Assets/Scripts/Localization/MyPrecious.Localization.asmdef",
+    "sha256": "CB31E0B247938B08E86F2344A3C294BDBC28960EADE62371E214878E94FAFA6B"
+  },
+  {
+    "path": "Assets/Scripts/Localization/MyPrecious.Localization.asmdef.meta",
+    "sha256": "3FD9BEAF39A2476EE15CD45FDD3CB6A3E97E663EEBD21A32A8760743CF2F5617"
+  },
+  {
+    "path": "Assets/Scripts/Localization/RuntimeData.meta",
+    "sha256": "7F958326BEAC9FB56C3EEF83F350E6AE826914C809664DAB9860542BFAB1389E"
+  },
+  {
+    "path": "Assets/Scripts/Localization/ScriptableObject.meta",
+    "sha256": "D3D462484258FBAAEF6FC835BCCA15ECE9A697AFAA219DFC4F96007676DB3A73"
+  },
+  {
+    "path": "Assets/Scripts/Localization/MonoBehaviour/LocalizationManager.cs",
+    "sha256": "DFB6E3D0222AA463F826DA2B7D5D1BC6CE163E5F006515FEC4847AD0ADFE7AA9"
+  },
+  {
+    "path": "Assets/Scripts/Localization/MonoBehaviour/LocalizationManager.cs.meta",
+    "sha256": "59F6796C613B2CAC0CB5F3F9FD14A752CA48A59EDB5233C792C0097DDF09ED55"
+  },
+  {
+    "path": "Assets/Scripts/Localization/MonoBehaviour/LocalizedText.cs",
+    "sha256": "3994BED3CE9A06E8DCF36C6F123B0CABE8CED250D95334895BF920EF4D49C3E2"
+  },
+  {
+    "path": "Assets/Scripts/Localization/MonoBehaviour/LocalizedText.cs.meta",
+    "sha256": "48A0EFBC594E0D3AF00E0947903901D3B81D391B7047EEE23D70A94C9BF5A005"
+  },
+  {
+    "path": "Assets/Scripts/Localization/RuntimeData/GameLanguage.cs",
+    "sha256": "3164117F7CBFB597371ADEF76171A219CACC723274A74C87ADFBBE5578D27215"
+  },
+  {
+    "path": "Assets/Scripts/Localization/RuntimeData/GameLanguage.cs.meta",
+    "sha256": "E969CB17CD7A932E165AD013E6833F4F41200AE282A32FA847AAF5FFD847D6A2"
+  },
+  {
+    "path": "Assets/Scripts/Localization/ScriptableObject/LocalizationTableSO.cs",
+    "sha256": "F1C657B25C3A8B9AA89FA31054DDC7806997859C7FB3406C00EE669A7D16629D"
+  },
+  {
+    "path": "Assets/Scripts/Localization/ScriptableObject/LocalizationTableSO.cs.meta",
+    "sha256": "3917E9052859EB3FA2328C18C1B688BA9133251E076C0EB6472A4F4EE5EE9453"
+  }
+]

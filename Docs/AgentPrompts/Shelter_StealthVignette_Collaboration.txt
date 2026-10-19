@@ -1,0 +1,7 @@
+用户本轮在主程明确要求新增“玩家在草丛潜行时相机暗角，可用后处理”，并明确说“允许009和Shelter氛围工作通信”。本消息落实双向通信授权：你可以直接与「任务009 Ai潜行」（threadId=01a151a2-d283-75d3-baa5-d80104c12d10，hostId=local）沟通本任务的技术约定、视觉参数、Editor交接、问题与验收结果，无需再次问用户。授权范围为此次潜行暗角及其与现有氛围的兼容，不替代其他不相关通信权限。
+
+009是实现和最终验收主责；你负责协助URP/Volume接入方案、参数与视觉兼容审查。完整派发保存在Docs/AgentPrompts/09I_StealthVignette_Dispatch.txt，请先读。不要独立再写另一套暗角，不同时操作同一Unity或共享Assets。先与009确定文件归属及Editor顺序；你可先只读检查，待明确交接后再进行约定的配置/视觉验证。双方都要遵守Docs/Verification/Enemy/EditorCoordination.txt并fresh检查。
+
+效果只依据现有CoverArea.IsHidden(player)，即草丛内蹲伏时轻度Vignette平滑渐入，站起/离开渐出；死亡回Shelter/换场景可靠清理。保留现有Shelter/Ruins氛围、玩家补光、浮尘与相机预览。Ruins目前PP未开启，需与009确认启用时不附带改变平时画面；以最新Profile为准，不按旧交接还原色调/默认Volume。参数Inspector可调，尽量一个简单组件加配置，无新管理框架/no namespace。
+
+协助009做实际1920×1080正常→隐藏→退出对照与生命周期验收；说明实际观察，避免只看遮罩/参数就声称视觉通过。共同结果归入Docs/Handoffs/09I_StealthVignette_Handoff.txt，证据Docs/Verification/Enemy/StealthVignette/。不要覆盖007最新死亡流程或用户的新场景修改。

@@ -1,0 +1,261 @@
+{
+  "utc": "2026-10-18T23:52:57.2356545Z",
+  "root": "E:\\DD451\\Docs\\Verification\\QuickTransfer\\Integration\\Before",
+  "files": [
+    {
+      "path": "Assets/Scenes/Bootstrap.unity",
+      "sha256": "9063DB1C2FD9EFBB83A120531BCA35644BE835D203A68EC49FBB1B8306526500",
+      "bytes": 27151
+    },
+    {
+      "path": "Assets/Scenes/Shelter.unity",
+      "sha256": "1D3C6918E436ECB9BC74BE8568A6235ED72741D231B314E672B9F7F989F2AEB6",
+      "bytes": 111789
+    },
+    {
+      "path": "Assets/Scenes/Ruins.unity",
+      "sha256": "90625D2C3D4BB14144F0E2618A8509CD7EC418DB54406798E30070AF020A1D19",
+      "bytes": 116549
+    },
+    {
+      "path": "Assets/Scenes/Tests/Backpack/BackpackTest.unity",
+      "sha256": "D898114AD90760B7FF01E4DDBE5702218712F1FDF5BA1CA84E2FC3A1FB9E3730",
+      "bytes": 110939
+    },
+    {
+      "path": "Assets/Scenes/Tests/Warehouse/WarehouseTest.unity",
+      "sha256": "B661B3E4139570A2527C6D22A84282149772959A16A952DA55979BBB8F932D87",
+      "bytes": 81865
+    },
+    {
+      "path": "Assets/Scenes/Tests/Loot/LootTest.unity",
+      "sha256": "5138DE1660AB2F068CBC58FADE1A6BCA739BB6BD958AFF5449FF7555CBF870C4",
+      "bytes": 233426
+    },
+    {
+      "path": "Assets/Prefabs/UI/Loot/LootPanel.prefab",
+      "sha256": "E70322430D6D3A95EE0288EAD70605A68AC4F39E5F239D7D9B495BE21660EFDF",
+      "bytes": 47328
+    },
+    {
+      "path": "Assets/Prefabs/UI/Loot/LootItem.prefab",
+      "sha256": "9C5492F163AB7A6887D536A736E160C93D7CFC19EEFAA22398702AABA9B6B96D",
+      "bytes": 30184
+    },
+    {
+      "path": "Assets/Data/Localization/Backpack/BackpackText.asset",
+      "sha256": "E454D40C74465E361A2ACC542835973E3B25A8D1ACC3DD974CE3E9C99533FDBE",
+      "bytes": 9384
+    },
+    {
+      "path": "Assets/Data/Localization/Warehouse/WarehouseText.asset",
+      "sha256": "45E4A4830321FE3D07D314E603E3C99071F9141C06C77B3F96AB78DD773926B5",
+      "bytes": 5729
+    },
+    {
+      "path": "Assets/Data/Localization/Loot/LootText.asset",
+      "sha256": "6C6459ACFBCA6F7CF6D29928802D1BFD631DCDD5D0CAA2505A230B9B6DBE49C6",
+      "bytes": 11438
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/MinimumLoopPointerTests.cs",
+      "sha256": "B8E38044319665752DB9A57B7F2615B7296EC6DC364FEA203563177241B3D3D1",
+      "bytes": 39920
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/MinimumLoopSceneTests.cs",
+      "sha256": "16B42B80303820CCE277BD92E98A20F9669B8F9740286721AE22D9E4D8897AF4",
+      "bytes": 22575
+    },
+    {
+      "path": "Assets/Tests/GameFlow/Editor/MinimumLoopSceneBuilder.cs",
+      "sha256": "50BBE520634A1DCD4EA3A99A8E2E05DE957C2E171C35FD02201C885F3FAADFF2",
+      "bytes": 35714
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowResponsiveLayout.cs",
+      "sha256": "1FBE48CB7822F2D66B0CC6316993F812D461A4A06AC899842A84F9F46CF63297",
+      "bytes": 26477
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowSceneBindings.cs",
+      "sha256": "E772B51A90E094DD4D47058F86C7ECD781B346F608331F8BD4A6CD173C60C253",
+      "bytes": 7871
+    },
+    {
+      "path": "Assets/Prefabs/GameFlow/GameFlowModule.prefab",
+      "sha256": "534B5DFB7B11C7D852D1EEB86673EEA276938D48AD8BD6CE5C06951EE193506D",
+      "bytes": 15717
+    },
+    {
+      "path": "Assets/Prefabs/UI/GameFlow/GameFlowHUD.prefab",
+      "sha256": "B6C42D626CDABFDC9BAEB65B4FC188841E29FB63DA2368AB650C3067DD4CBC43",
+      "bytes": 31564
+    },
+    {
+      "path": "ProjectSettings/ProjectSettings.asset",
+      "sha256": "7E8D7317565EE7C2DC4832BE2E3DBB806F616CCAA34BE60E4211996413A3D19D",
+      "bytes": 25286
+    },
+    {
+      "path": "ProjectSettings/EditorSettings.asset",
+      "sha256": "D31BE15C85A31D85372564BF5EE30188A9454274C6DF8FE7A3372375A0DB98BC",
+      "bytes": 1585
+    },
+    {
+      "path": "Docs/Architecture/MinimumLoopSetup.txt",
+      "sha256": "9797342B0D38EAC9F686D9099F811863A59CBB15D14E235E1F03C119341CF9C9",
+      "bytes": 24808
+    },
+    {
+      "path": "Assets/Scenes/Bootstrap.unity.meta",
+      "sha256": "7949600BE4F1DD1DCA13B37C142445FE5EB3F62518153EA2BA1B725AD567F1D3",
+      "bytes": 155
+    },
+    {
+      "path": "Assets/Scenes/Shelter.unity.meta",
+      "sha256": "E32C6E5FFC8F10D2BB611941967203616E52F76353A7722CF717703EDD4D2889",
+      "bytes": 155
+    },
+    {
+      "path": "Assets/Scenes/Ruins.unity.meta",
+      "sha256": "71BD0E68CE9B34EF682661D60BCD36605007FE6FFE66D8FD09D1A56542A66594",
+      "bytes": 155
+    },
+    {
+      "path": "Assets/Scenes/Tests/Backpack/BackpackTest.unity.meta",
+      "sha256": "A463B4A292ED09D1C93D2F191DC7F7E68E22C3D73AF6F6933970B814A99B0A1C",
+      "bytes": 155
+    },
+    {
+      "path": "Assets/Scenes/Tests/Warehouse/WarehouseTest.unity.meta",
+      "sha256": "3C0706359D0390E5A253C5FD702D42E49DA5B66AC0638821C9495A623E3B79D3",
+      "bytes": 155
+    },
+    {
+      "path": "Assets/Scenes/Tests/Loot/LootTest.unity.meta",
+      "sha256": "5E5BC4F24F5B7ADC037649C6F371C629B9DDEDBFEAFE8A8748A54C4DB026E088",
+      "bytes": 155
+    },
+    {
+      "path": "Assets/Prefabs/UI/Loot/LootPanel.prefab.meta",
+      "sha256": "984B59ADF5CBD5464382E7D4D0270603AD8F98163E9FB38E85B24FE15F4B2455",
+      "bytes": 154
+    },
+    {
+      "path": "Assets/Prefabs/UI/Loot/LootItem.prefab.meta",
+      "sha256": "08DE35C3841E354D0E807F3EF7CBAC1FE4FC37BEDEE4508D004EBEDD9F52F2AC",
+      "bytes": 154
+    },
+    {
+      "path": "Assets/Data/Localization/Backpack/BackpackText.asset.meta",
+      "sha256": "D4472F096C7BD5F8122D1E14DD3CA1D0B15A8DD636291F855596E62BB5A3C365",
+      "bytes": 189
+    },
+    {
+      "path": "Assets/Data/Localization/Warehouse/WarehouseText.asset.meta",
+      "sha256": "D6BA1237DA67CC24DA66B4160E12382B102B4218F35429821F1C65027136736F",
+      "bytes": 189
+    },
+    {
+      "path": "Assets/Data/Localization/Loot/LootText.asset.meta",
+      "sha256": "06B4B4C5DB02FEC079C38017FD7937B0D6514AA102FFFA2587FF31AE36B49043",
+      "bytes": 189
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/MinimumLoopPointerTests.cs.meta",
+      "sha256": "02C1BF78211F827FB820D7CC44C1C9D475F6BB4D3C343B4B7AF4CE718DFC7E8E",
+      "bytes": 59
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/MinimumLoopSceneTests.cs.meta",
+      "sha256": "1449BA777F82101A78D0938304C4A061B3AED94E45A16DA693577399E820A625",
+      "bytes": 59
+    },
+    {
+      "path": "Assets/Tests/GameFlow/Editor/MinimumLoopSceneBuilder.cs.meta",
+      "sha256": "7E71CB6AD8C3D687066784A87B3A7730862B40FB9D428127EDD00202FEBD615D",
+      "bytes": 59
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowResponsiveLayout.cs.meta",
+      "sha256": "5743EA9E789266047BDD9DD66F826826D04D93F7E626692358AA6B8CA6BBBAF1",
+      "bytes": 59
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowSceneBindings.cs.meta",
+      "sha256": "C32B9975E96E68B2D4384B8998FB1ED59280DBBCD71A2477AEF343A02CD9998B",
+      "bytes": 59
+    },
+    {
+      "path": "Assets/Prefabs/GameFlow/GameFlowModule.prefab.meta",
+      "sha256": "8EC05C35DBCA535F8DDC636B1BCAB6AFC1F4770F56ECA7035E4B925A79A7257F",
+      "bytes": 154
+    },
+    {
+      "path": "Assets/Prefabs/UI/GameFlow/GameFlowHUD.prefab.meta",
+      "sha256": "63BE11031187E1072D0BC149649D2977C4FDE041FDF2EC092285C021D2C5EE8D",
+      "bytes": 154
+    },
+    {
+      "path": "Assets/Data/ShelterUpgrades/FirstWarehouseUpgrade.asset",
+      "sha256": "59664B391FABB4FEA78433BB37E05E0B5CD233E21145DB0A98F6DB69D331D980",
+      "bytes": 499
+    },
+    {
+      "path": "Assets/Art/Fonts/Localization/NotoSansCJKsc-Regular.otf",
+      "sha256": "2C76254F6FC379FDDFCE0A7E84FB5385BB135D3E399294F6EEB6680D0365B74B",
+      "bytes": 16437364
+    },
+    {
+      "path": "Assets/TextMesh Pro/Fonts/LiberationSans.ttf",
+      "sha256": "E5B0AF421EA2BFBC1AC8D251D647268087AE82786234C57F757D1F0B90FA8B49",
+      "bytes": 350200
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader",
+      "sha256": "2A991951B00B0C052363A1025F655450054325437B3D13C2623A987C8EC77C30",
+      "bytes": 12438
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF.shader",
+      "sha256": "10EFE6D4728474A09970B857FAF37913793E168DC13DBD4D7316B54B37615D97",
+      "bytes": 11027
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader",
+      "sha256": "A0D318756CBA0F95A7052C387E629D0ADD3E9A4125C8333F1D1ED591AF5F17CB",
+      "bytes": 11054
+    },
+    {
+      "path": "Assets/Data/ShelterUpgrades/FirstWarehouseUpgrade.asset.meta",
+      "sha256": "022FC86297AEC649DC419BF1889B5AA747EE3DFDC074AB5E7E35B2FCB9DF6B9E",
+      "bytes": 189
+    },
+    {
+      "path": "Assets/Art/Fonts/Localization/NotoSansCJKsc-Regular.otf.meta",
+      "sha256": "37BEFB89499E4BD5D4E45342CDCB7ED2FA99C089B68C7D2F95A6E6FC04ACD6C1",
+      "bytes": 481
+    },
+    {
+      "path": "Assets/TextMesh Pro/Fonts/LiberationSans.ttf.meta",
+      "sha256": "E2E35A015703584FB119355FA02631764D111C3E112D32519801D46BD697B596",
+      "bytes": 414
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader.meta",
+      "sha256": "BEA74D576F181A8BB04B8CF02EEDD0136540325ECB2824928A3AA52C75ADCB13",
+      "bytes": 204
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF.shader.meta",
+      "sha256": "0897FB06D170043FFFA2D28783B347BBAEE87A3F09F08374CA44B2C3848697D6",
+      "bytes": 204
+    },
+    {
+      "path": "Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader.meta",
+      "sha256": "FB8FC84B612E19C169CDF3596195B416E68D227A8987A0EAA90D8C137FB69797",
+      "bytes": 204
+    }
+  ]
+}

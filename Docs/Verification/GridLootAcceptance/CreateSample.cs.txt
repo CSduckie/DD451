@@ -1,0 +1,63 @@
+// API临时夹具，仅创建当前Play内的样本；不修改ItemDataSO磁盘资源。
+var flow = UnityEngine.Object.FindFirstObjectByType<GameFlowManager>();
+if (flow == null || flow.Stage != GameFlowStage.Exploring || UnityEngine.Screen.width != 1920 || UnityEngine.Screen.height != 1080)
+{
+    return "Expected formal Exploring at 1920x1080";
+}
+GameFlowSceneBindings ruins = null;
+LootBox original = null;
+foreach (var candidate in UnityEngine.Object.FindObjectsByType<GameFlowSceneBindings>(UnityEngine.FindObjectsSortMode.None))
+{
+    if (candidate.gameObject.scene.path == "Assets/Scenes/Ruins.unity") { ruins = candidate; }
+}
+foreach (var candidate in UnityEngine.Object.FindObjectsByType<LootBox>(UnityEngine.FindObjectsSortMode.None))
+{
+    if (candidate.sourceId == "supplies-box") { original = candidate; }
+}
+if (ruins == null || original == null) { return "Formal Ruins binding missing"; }
+System.AppDomain.CurrentDomain.SetData("RootGridAudit.Position", flow.Player.Position);
+var position = ruins.spawnPoint.position;
+position.x = original.transform.position.x - 1.2f;
+if (!flow.Player.RelocateWithinRun(position)) { return "Cannot position player fixture"; }
+var table = UnityEngine.ScriptableObject.CreateInstance<LootTableSO>();
+table.hideFlags = UnityEngine.HideFlags.DontSave;
+var prototype = flow.Items.itemLibrary.FindDefinition("battery");
+var sizes = new UnityEngine.Vector2Int[] { new UnityEngine.Vector2Int(1,1), new UnityEngine.Vector2Int(1,2),
+    new UnityEngine.Vector2Int(2,2), new UnityEngine.Vector2Int(2,3) };
+var durations = new float[] { 12f, 35f, 8f, 0f };
+for (int i=0; i<sizes.Length; i++)
+{
+    var definition = UnityEngine.Object.Instantiate(prototype);
+    definition.hideFlags = UnityEngine.HideFlags.DontSave;
+    definition.definitionId = "root-audit-" + System.Guid.NewGuid().ToString("N");
+    definition.width = sizes[i].x;
+    definition.height = sizes[i].y;
+    definition.searchSeconds = durations[i];
+    definition.isUnique = false;
+    definition.uniqueId = "";
+    table.entries.Add(new LootTableEntry { entryId = "item-" + i, item = definition,
+        useDefaultProbability = false, overrideProbability = 1f });
+}
+var sampleObject = new UnityEngine.GameObject("RootGridAuditBox");
+sampleObject.SetActive(false);
+UnityEngine.SceneManagement.SceneManager.MoveGameObjectToScene(sampleObject, ruins.gameObject.scene);
+sampleObject.layer = original.gameObject.layer;
+sampleObject.transform.position = new UnityEngine.Vector3(flow.Player.Position.x-1.2f, original.transform.position.y, flow.Player.Position.z);
+var sample = sampleObject.AddComponent<LootBox>();
+sample.mapId = ruins.mapId;
+sample.sourceId = "root-grid-a";
+sample.lootTable = table;
+sample.gridWidth = 6;
+sample.gridHeight = 4;
+sample.runtimeManager = flow.Loot;
+sample.lootUI = ruins.lootUI;
+sample.GetComponent<UnityEngine.BoxCollider>().size = original.GetComponent<UnityEngine.BoxCollider>().size;
+sample.GetComponent<UnityEngine.BoxCollider>().isTrigger = true;
+sampleObject.SetActive(true);
+UnityEngine.Physics.SyncTransforms();
+bool opened = ruins.lootUI.TryOpenSource(sample.State, sample, flow.Player.interaction);
+System.AppDomain.CurrentDomain.SetData("RootGridAudit.UI", ruins.lootUI);
+System.AppDomain.CurrentDomain.SetData("RootGridAudit.Source", sample.State);
+System.AppDomain.CurrentDomain.SetData("RootGridAudit.Box", sample);
+return new { opened = opened, source = sample.State != null ? sample.State.SourceId : null,
+    count = sample.State != null ? sample.State.Entries.Count : 0, gridWidth = sample.gridWidth, gridHeight = sample.gridHeight };

@@ -1,0 +1,50 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"success\":true,\"message\":\"Retrieved 5 log entries.\",\"data\":[{\"type\":\"Warning\",\"message\":\"SuppliesBox (2): mapId/sourceId为空、不稳定或重复。\",\"file\":\"Assets/Scripts/Loot/MonoBehaviour/LootRuntimeManager.cs\",\"line\":890,\"stackTrace\":null},{\"type\":\"Warning\",\"message\":\"SuppliesBox (2): mapId/sourceId为空、不稳定或重复。\",\"file\":\"Assets/Scripts/Loot/MonoBehaviour/LootBox.cs\",\"line\":28,\"stackTrace\":null},{\"type\":\"Warning\",\"message\":\"SuppliesBox (2): mapId/sourceId为空、不稳定或重复。\",\"file\":\"Assets/Scripts/Loot/MonoBehaviour/LootBox.cs\",\"line\":28,\"stackTrace\":null},{\"type\":\"Warning\",\"message\":\"SuppliesBox (2): mapId/sourceId为空、不稳定或重复。\",\"file\":\"Assets/Scripts/Loot/MonoBehaviour/LootBox.cs\",\"line\":28,\"stackTrace\":null},{\"type\":\"Warning\",\"message\":\"GameFlow: SuppliesBox (2): mapId/sourceId为空、不稳定或重复。\",\"file\":\"Assets/Scripts/GameFlow/MonoBehaviour/GameFlowManager.cs\",\"line\":525,\"stackTrace\":null}]}"
+    }
+  ],
+  "structuredContent": {
+    "success": true,
+    "message": "Retrieved 5 log entries.",
+    "data": [
+      {
+        "type": "Warning",
+        "message": "SuppliesBox (2): mapId/sourceId为空、不稳定或重复。",
+        "file": "Assets/Scripts/Loot/MonoBehaviour/LootRuntimeManager.cs",
+        "line": 890,
+        "stackTrace": null
+      },
+      {
+        "type": "Warning",
+        "message": "SuppliesBox (2): mapId/sourceId为空、不稳定或重复。",
+        "file": "Assets/Scripts/Loot/MonoBehaviour/LootBox.cs",
+        "line": 28,
+        "stackTrace": null
+      },
+      {
+        "type": "Warning",
+        "message": "SuppliesBox (2): mapId/sourceId为空、不稳定或重复。",
+        "file": "Assets/Scripts/Loot/MonoBehaviour/LootBox.cs",
+        "line": 28,
+        "stackTrace": null
+      },
+      {
+        "type": "Warning",
+        "message": "SuppliesBox (2): mapId/sourceId为空、不稳定或重复。",
+        "file": "Assets/Scripts/Loot/MonoBehaviour/LootBox.cs",
+        "line": 28,
+        "stackTrace": null
+      },
+      {
+        "type": "Warning",
+        "message": "GameFlow: SuppliesBox (2): mapId/sourceId为空、不稳定或重复。",
+        "file": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowManager.cs",
+        "line": 525,
+        "stackTrace": null
+      }
+    ]
+  },
+  "isError": false
+}

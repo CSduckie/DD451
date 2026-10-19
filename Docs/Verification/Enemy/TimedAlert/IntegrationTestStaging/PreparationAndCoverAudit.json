@@ -1,0 +1,55 @@
+{
+  "status": "FROZEN_READY_FOR_PARENT_DEPLOYMENT_NOT_COMPILED_NOT_RUN",
+  "checkedAtUtc": "2026-10-19T06:38:43.0813120Z",
+  "files": [
+    {
+      "source": "Assets/Tests/Enemy/PlayMode/EnemySceneIntegrationTests.cs",
+      "sourceSha256": "1E27B3CEA84C8F2F19A0CABEBE8B8FF83B95210DBA2A9654451BB168640DE5B3",
+      "staged": "E:\\DD451\\Docs\\Verification\\Enemy\\TimedAlert\\IntegrationTestStaging\\Assets\\Tests\\Enemy\\PlayMode\\EnemySceneIntegrationTests.cs",
+      "stagedSha256": "09051301677C122079EF312AC109BAD5CC56A4B9C8A51771EE4592C5CE6F552B",
+      "unityTestsBefore": 5,
+      "unityTestsAfter": 5,
+      "unchangedMethods": [
+        "DroneContactClosesRealBackpackCancelsQueuedDragAndInterruptsSearchWithoutItemChanges",
+        "QueuedF10KeepsEnemyRoundExplosionHealthAndLiveSearchSession",
+        "SceneUsesRealModelFourRotatingPropellersCinemachineAndGeneratedVision"
+      ],
+      "oldGameplayApiReferences": 0
+    },
+    {
+      "source": "Assets/Tests/GameFlow/PlayMode/RuinsEnemyIntegrationTests.cs",
+      "sourceSha256": "6D95E230E9847DD83A254126795427D5AA927CCE0631EE576984283DCD9C0B3D",
+      "staged": "E:\\DD451\\Docs\\Verification\\Enemy\\TimedAlert\\IntegrationTestStaging\\Assets\\Tests\\GameFlow\\PlayMode\\RuinsEnemyIntegrationTests.cs",
+      "stagedSha256": "A8C07E1835171A9DBD62DA3DF8345840D1769850EC11E3A594273EB72D782428",
+      "unityTestsBefore": 5,
+      "unityTestsAfter": 5,
+      "unchangedMethods": [
+        "EmptyShelterOtherSceneAndDisabledEnemiesRespectStartupScopeAndRoundGuards"
+      ],
+      "oldGameplayApiReferences": 0
+    }
+  ],
+  "changes": [
+    "Natural saved-scene discovery waits the configured 0.5-second timer while hovering; pure orange and _FillProgress zero. Chase hides only MeshRenderer and retains enabled Vision, GameObject, MeshCollider and CanSee.",
+    "Queued F10 maintains independent discovery countdowns; real wall loss now enters ordinary Search instead of removed fill-decay behavior. Only this runtime input fixture lengthens discovery to four seconds.",
+    "Formal Bootstrap-Shelter-Ruins shared-round tests remain. Same-round Activate/TryBeginExplorationEnemies preserve partially consumed countdown, Alert state, target and position; explosion remains final until the next real extraction and departure.",
+    "All ten UnityTest cases retained; original damage, drag-cancellation, loot-search, F10/explosion/session, prefab/model/camera assertions and all failure/retry/scope tests preserved.",
+    "Fresh user Ruins layout has two drones parented under a group. Formal tests enumerate every enabled scene drone, preserve each authored spawn/route/Z, select the leftmost only for natural alert/contact without disabling peers, and inject a missing config into one actual scene drone to verify all-round-zero preflight and same-round retry."
+  ],
+  "coverAudit": {
+    "conclusion": "Reliable for an already established IsCrouching state and actual current collider overlap; does not depend on Trigger callbacks. Does not establish crouching from an input event before Player.Update processes it.",
+    "geometry": "IsHidden rejects invalid/dead/disabled/transition-blocked/non-crouching players, inspects enabled non-trigger child colliders belonging to this player, and calls ComputePenetration using explicit current Transform positions and rotations against registered active BoxColliders.",
+    "lifecycle": "OnEnable registers; OnDisable removes; null entries are pruned; subsystem registration clears and after-scene-load repopulates for disabled reload settings.",
+    "physicsBoundary": "Project m_AutoSyncTransforms is false, but ComputePenetration is a direct pair/pose query. Player Rigidbody uses interpolation; this audit does not claim prediction of a pending physics movement or certify render/physics interpolation edge cases without actual Play tests.",
+    "source": "Assets/Scripts/Enemy/Stealth/MonoBehaviour/CoverArea.cs:54",
+    "playerTiming": "PlayerController.Update:111 samples crouchHeld. Ground state Update transitions to PlayerCrouchState.Enter:8, which sets IsCrouching. PlayerController.FixedUpdate does not consume new crouch input.",
+    "productionStagingReview": "SourceStaging Controller.FixedUpdate calls TryStartCoverAlert before CheckContacts. CanExplodeOnContact checks !CoverArea.IsHidden and is reused by TryExplode, sweep and Explode; callbacks delegate to TryExplode. Repeated hidden frames cannot reset cover timer because TryStartCoverAlert rejects IsCoverAlert.",
+    "recommendedChecks": [
+      "Established crouching collider overlaps active Cover before a FixedUpdate with player contact; no explosion or damage.",
+      "Same protection through TryExplode, collision callbacks and sweep contacts.",
+      "Continuous hidden frames reduce the cover countdown and return to Patrol; same-round formal rebinding keeps its current timer.",
+      "Treat fresh input before Player.Update and still-pending body motion separately from the established hidden-condition acceptance."
+    ]
+  },
+  "verification": "Text diffs reviewed; three unrelated Enemy tests and the GameFlow scope/disabled-enemy test remain exactly unchanged. Ten UnityTest cases retained; no old AlertProgress/alertFillSeconds/alertDecaySeconds references and no Drone Single/root-parent-null assumptions remain. No Unity tools, compilation or runs; no Assets or scene writes. Final static check: balanced C# delimiters, matching new public API in SourceStaging, git diff whitespace checks passed with only LF/CRLF notices. The only remaining Single() is the legitimate unique GameFlowSceneBindings lookup. Forced Chase remains only in the existing dedicated damage fixture. Prepared files are now frozen for parent deployment."
+}

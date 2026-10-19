@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Passed" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-19 02:26:39Z" end-time="2026-10-19 02:26:40Z" duration="0.4988447">
+  <test-suite type="TestSuite" id="1173" name="DD451Demo" fullname="DD451Demo" runstate="Runnable" testcasecount="142" result="Passed" start-time="2026-10-19 02:26:39Z" end-time="2026-10-19 02:26:40Z" duration="0.498845" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1043" name="MyPrecious.Enemy.PlayModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.Enemy.PlayModeTests.dll" runstate="Runnable" testcasecount="14" result="Passed" start-time="2026-10-19 02:26:39Z" end-time="2026-10-19 02:26:40Z" duration="0.490529" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="85336" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1027" name="DroneBehaviourTests" fullname="DroneBehaviourTests" classname="DroneBehaviourTests" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-10-19 02:26:39Z" end-time="2026-10-19 02:26:39Z" duration="0.139823" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1038" name="RotorAndVisualAnimationNeverRotateOrScaleThePhysicalRootOrVision" fullname="DroneBehaviourTests.RotorAndVisualAnimationNeverRotateOrScaleThePhysicalRootOrVision" methodname="RotorAndVisualAnimationNeverRotateOrScaleThePhysicalRootOrVision" classname="DroneBehaviourTests" runstate="Runnable" seed="378210394" result="Passed" start-time="2026-10-19 02:26:39Z" end-time="2026-10-19 02:26:39Z" duration="0.126004" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1039" name="EnemySceneIntegrationTests" fullname="EnemySceneIntegrationTests" classname="EnemySceneIntegrationTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-19 02:26:39Z" end-time="2026-10-19 02:26:40Z" duration="0.346147" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1042" name="SceneUsesRealModelFourRotatingPropellersCinemachineAndGeneratedVision" fullname="EnemySceneIntegrationTests.SceneUsesRealModelFourRotatingPropellersCinemachineAndGeneratedVision" methodname="SceneUsesRealModelFourRotatingPropellersCinemachineAndGeneratedVision" classname="EnemySceneIntegrationTests" runstate="Runnable" seed="5547144" result="Passed" start-time="2026-10-19 02:26:39Z" end-time="2026-10-19 02:26:40Z" duration="0.340156" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/cs200/AppData/LocalLow/DefaultCompany/DD451Demo\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

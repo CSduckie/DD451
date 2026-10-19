@@ -1,0 +1,50 @@
+[
+  {
+    "path": "Assets/Prefabs/Enemy/Drone/Drone.prefab",
+    "hash": "3DBF48088A9FC82470A4E5DFB056A8E962002B23CED19F883FB23A23891114EB"
+  },
+  {
+    "path": "Assets/Prefabs/Enemy/Drone/Drone.prefab.meta",
+    "hash": "7373C79FC9230FA996B140D761A8E06DE02E78D0803E5FA2FDAF064B771E4603"
+  },
+  {
+    "path": "Assets/Prefabs/Enemy/Stealth/CoverArea.prefab",
+    "hash": "82DD2D5FB33B8164234CC51062CF929D874E43630E0E65693421C09DD3912330"
+  },
+  {
+    "path": "Assets/Scenes/Tests/Enemy/EnemyTest.unity",
+    "hash": "AA62E8EDC69AC0C08F7F4F8FA6DE3AD0425A0DDFB7FC344B85D20C7D40242200"
+  },
+  {
+    "path": "Assets/Scenes/Tests/Enemy/EnemyTest.unity.meta",
+    "hash": "C0A9DAB23896CA347B2C9EA4E221023A532CBF25F6279A51A02480E474543ACD"
+  },
+  {
+    "path": "Assets/Scenes/Bootstrap.unity",
+    "hash": "9063DB1C2FD9EFBB83A120531BCA35644BE835D203A68EC49FBB1B8306526500"
+  },
+  {
+    "path": "Assets/Scenes/Shelter.unity",
+    "hash": "F4A36F7B10057621E7CBD4FB013C6D30EB92BE94FBF245786AC2E8C388F892B8"
+  },
+  {
+    "path": "Assets/Scenes/Ruins.unity",
+    "hash": "A440DBD94EBAA2C3AB4DCCCEFE3B94E8F84C2388664C7B95D2606F0E214A77E1"
+  },
+  {
+    "path": "Assets/Art/Model/Enemy_Patrol_Drone_A.fbx",
+    "hash": "DC04A7BC4003C530988A9A15DABC7185C10A881C024AF04B622E8DBC795B49C6"
+  },
+  {
+    "path": "Assets/Art/Model/Enemy_Patrol_Drone_A.fbx.meta",
+    "hash": "EE7027ED6A5C5610E0A7AE4C0D8B278937BB540F0C7FF1A2676C5EDA5F1C755A"
+  },
+  {
+    "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs",
+    "hash": "EBA65D068F20AD4AEB5AEA8B6985F4AE43A1F7D1CD092E35F6ECFABE06A5CE27"
+  },
+  {
+    "path": "Assets/Scripts/Enemy/Stealth/MonoBehaviour/CoverArea.cs",
+    "hash": "F70D62D4DEFA7AFE38F9F66B43A2CDA08C4740E641F9FD7274D08388E148C17C"
+  }
+]

@@ -1,0 +1,61 @@
+{
+  "date": "2026-10-18",
+  "program": "Builds/WarehouseNativeQA/WarehouseQA.exe",
+  "buildResult": "Succeeded",
+  "buildErrors": 0,
+  "scene": "Assets/Scenes/Tests/Warehouse/WarehouseTest.unity",
+  "screen": "2560x1440",
+  "settingsRestore": "BuildSettingsRestore.json; all four captured hashes match before and after standalone run",
+  "nativeDrag": {
+    "status": "Passed single native drop",
+    "source": {
+      "screen": [
+        675,
+        295
+      ],
+      "cell": [
+        0,
+        0
+      ]
+    },
+    "destination": {
+      "screen": [
+        900,
+        750
+      ],
+      "cell": [
+        3,
+        6
+      ]
+    },
+    "item": "doll",
+    "size": "2x3",
+    "ev": 7,
+    "result": "摆放已更新。",
+    "api": "sky.drag without screenshotId",
+    "limitations": "Visual placement verification only; no standalone instance-ID probe installed"
+  },
+  "earlierDrag": {
+    "destinationScreen": [
+      1440,
+      675
+    ],
+    "api": "sky.drag with screenshotId",
+    "result": "请在可见仓库格子内摆放。; placement unchanged",
+    "cause": "Code/layout inference: at 2560x1440 and 24 columns, x=1440 lies in the gap between cell edge1434.9167 and next cell start1440.9167. WarehouseView rejects grid gaps; EndDrag rechecks release position. Runtime geometry not instrumented, so this is a supported explanation, not absolute attribution."
+  },
+  "f10": {
+    "status": "Not passed",
+    "attempts": 2,
+    "api": "sky.press_key F10",
+    "result": "Chinese remained unchanged in subsequent stable screenshot",
+    "cause": "Standalone raw keyboard event arrival was not instrumented; tool return alone is insufficient"
+  },
+  "rotateR": {
+    "status": "Not validated",
+    "reason": "Documented tool API cannot hold left mouse button while pressing R; no synthetic business/API rotation used as native evidence"
+  },
+  "screenshot": "Docs/Architecture/05_Standalone_2560_Chinese_Drag.jpg",
+  "shutdown": "Alt_L+F4 requested; Player.log confirmed input subsystem shutdown and cleanup",
+  "priorCoverage": "EditMode 28/28; PlayMode 800x600 and 1920x1080 each 7/7, retained as automated evidence only"
+}

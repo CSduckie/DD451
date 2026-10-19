@@ -1,0 +1,54 @@
+{
+  "success": true,
+  "message": "Test job status retrieved.",
+  "error": null,
+  "data": {
+    "job_id": "5b712cbb867b4651b49c9c98f1c463b3",
+    "status": "succeeded",
+    "mode": "PlayMode",
+    "started_unix_ms": 1792357840596,
+    "finished_unix_ms": 1792357848376,
+    "last_update_unix_ms": 1792357848376,
+    "progress": {
+      "completed": 1,
+      "total": 1,
+      "current_test_full_name": null,
+      "current_test_started_unix_ms": 1792357842855,
+      "last_finished_test_full_name": "MinimumLoopPointerTests.FormalSearchPickupExtractionAndBidirectionalStorageUseQueuedPointers",
+      "last_finished_unix_ms": 1792357848341,
+      "stuck_suspected": false,
+      "editor_is_focused": true,
+      "run_in_background": null,
+      "focus_nudge_attempts": null,
+      "focus_nudge_limit": null,
+      "focus_nudge_status": null,
+      "blocked_reason": null,
+      "failures_so_far": [],
+      "failures_capped": false
+    },
+    "error": null,
+    "result": {
+      "mode": "PlayMode",
+      "summary": {
+        "total": 1,
+        "passed": 1,
+        "failed": 0,
+        "skipped": 0,
+        "durationSeconds": 5.7065322,
+        "resultState": "Passed"
+      },
+      "results": [
+        {
+          "name": "FormalSearchPickupExtractionAndBidirectionalStorageUseQueuedPointers",
+          "fullName": "MinimumLoopPointerTests.FormalSearchPickupExtractionAndBidirectionalStorageUseQueuedPointers",
+          "state": "Passed",
+          "durationSeconds": 5.4821314,
+          "message": null,
+          "stackTrace": null,
+          "output": "Formal queued-pointer integration at 1920x1080; not native OS input.\r\n"
+        }
+      ]
+    }
+  },
+  "hint": null
+}

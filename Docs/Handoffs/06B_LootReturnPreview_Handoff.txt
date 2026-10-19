@@ -1,0 +1,73 @@
+06B：背包物品返箱预览与提示修复交接
+项目 E:/DD451；2026-10-18；Dispatch v17
+06B修复与验证完成，已释放Unity。
+
+一、实际复现
+先查看并保留用户原图 Docs/Verification/LootReturnPreview/UserReported.png。
+修复前普通LootTest Play中，用隔离合成Mouse经QueueStateEvent→真实InputAction/UIInputModule→UGUI拖拽食物2×2至空箱视口空白。
+实际观察：整个viewport变绿，背包FeedbackKey=backpack.outside，箱子=loot.return_ready。
+实际松手成功，不能把截图判成转移失败：同一实例1b53f6156b874224a70c4e8e8a351ef1，Owner Backpack→Container；背包3→2、箱子0→1，落位(0,0,2,2)。
+修复前两张1920截图及BeforeFix-QueuedInput.json完整保存。未发现本次复现有丢物或复制。
+
+二、最小业务修改
+Assets/Scripts/Loot/MonoBehaviour/LootRuntimeManager.cs：
+增加TryGetReturnedItemPosition(source,item,out RectInt)，复用原资格检查与Source.TryGetReturnPosition；CanAcceptReturnedItem委托它。
+查询不调用EnsureLayout、不修改条目、归属、搜索或通知；TryAddReturnedItem实际提交逻辑保持原算法再次选位，Coordinator未改。
+
+Assets/Scripts/Loot/MonoBehaviour/LootView.cs：
+ShowReturnPreview接收实际RectInt，在Content内创建透明根和四条3px绿色边框；无根Image/TMP，边框raycastTarget=false。
+按66/4/6绘制实际占格，与内容一起滚动、裁剪；不再修改returnTarget/viewport颜色，保留原序列化引用。
+布局失效、换来源、关闭与禁用清框。满箱/无效无绿色框；整个合法viewport（含格子下方空白）的自动归位接收规则保留。
+
+Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferUIBridge.cs：
+有效返箱查询实际位置，背包和箱子同步显示ready/full/unavailable。
+移出只清仍匹配本预览key的文字，保留新目标反馈；ShowResult先清再写，避免同步DragCancelled/后续EndDrag覆盖结果。
+CloseSource调用的CancelLootDrag也撤销匹配返箱token，立即清框/文字；旧松手不借用重开会话或新拖拽。
+未增加箱内手动摆放或旋转；原位可用优先原位、占用另寻空位、满箱保留原物；箱内用物品原始宽高，不跟随背包R旋转。
+未改Coordinator、SourceState、格子核心、正式场景业务、Prefab/GUID或语言配置；F10沿用03唯一入口。
+
+三、回归与证据
+Assets/Tests/Loot/PlayMode/LootReturnTests.cs、LootGridSearchTests.cs：
+在既有用例增加实际预览与提交后tile的屏幕矩形比较、只读查询状态快照、双方key/文本一致、viewport/背景不变、边框不挡射线。
+新增2项：食物2×2外来返空箱→取回→原箱返还；显式取消与排队Tab后迟到松手零提交。
+增强已有旋转电池1×2仍66×136、滚动末项原位返还、原位被占另寻空位、满箱零通知、搜索中未知轮廓/唯一中心倒计时、受击与旧token/旧会话清理。
+同帧API暂撤探索许可检查unavailable；真实移动/拖拽/松手及R/F10/Tab使用排队输入。API夹具和排队输入不冒称实体操作。
+
+本版本执行：
+- EditMode 105/105通过，0失败/跳过。官方EditMode-105.xml；job 589a0db1791846e7a4645f71d32ed359。
+- PlayMode 29/29通过，0失败/跳过。官方PlayMode-29.xml，2026-10-18 23:16:58Z至23:17:22Z。
+  MCP job e126396b9882486a9c5e3c8bf60a25bf在域重载后状态滞留running；已核对官方XML及Editor实际退出测试，再清孤立job，不重复计数或追加重跑。
+- 最终Console 0 error / 0 warning。未扩大到无关模块或重复07A正式6/6；105/29是本版实际新跑。
+
+四、新版普通Play截图与松手结果
+证据目录 Docs/Verification/LootReturnPreview/。
+AfterFix-ChineseDragging-Queued.png、AfterFix-ChineseReleased-Queued.png：
+食物外来返空箱；实际局部框(6,-6)、136×136，对应(0,0,2,2)，背景色保持(0.025,0.055,0.065,1)。
+AfterFix-EnglishDragging-Queued.png、AfterFix-EnglishReleased-Queued.png：
+将同食物从箱取回背包，再通过F10切英语并返原箱；复用同一EntryId/InstanceId，没有新增第二条记录。
+新版实例de0dc6e7ac77428e9ea3b76c0e61cf8c；每次松手Owner=Container，箱内(0,0,2,2)，背包3→2，箱内活动项1，双方最终transfer.Success，预览关闭。
+英文序列在Editor帧回调分帧排队真实键鼠状态，以避免工具间失焦中断；完成后已移除回调。不是直接调用提交API，也不是实体鼠标。
+四张均已实际打开检查：局部框、背景格、双侧文字和松手后物品可读。ScreenshotDimensions.json从PNG IHDR记录四张实际1920×1080；GameView.targetRenderSize也1920×1080。execute_code的Screen.width/height偶尔读到Editor其它渲染上下文712×570，原始JSON保留，不用它替代PNG尺寸。
+AfterFix-QueuedInput.json、EnglishDragging.json、EnglishReleased.json保留实际读回状态。
+
+五、资产审计与具体限制
+ProtectedBefore.json与ProtectedAudit.json检查96项，95项一致，正式GameFlow/场景、Coordinator、SourceState与Prefab保护项未变。
+唯一例外：Assets/Scenes/Tests/Loot/LootTest.unity在测试运行器启动EditMode时重新保存。
+前SHA256=8F2B9278A0951D13B42E7E63EA05B2A0640F5F887730E45F937AD469A320E547；
+后SHA256=5138DE1660AB2F068CBC58FADE1A6BCA739BB6BD958AFF5449FF7555CBF870C4。
+编译后曾发现其编辑态dirty，直接不保存切场景被自动审批拒绝，未执行该丢弃动作。后续TestRunner保存后场景转clean；原保护清单仅有哈希、Git未跟踪、未找到旧副本，无法确定此次重新序列化的具体差异。
+UGUI/TMP的编辑态刷新是候选原因，未经证实；不把猜测写成已证根因，也未用猜测版本覆盖场景。当前无ReturnPreview或运行Cell对象写入scene，布局/容量相关回归通过。主程请单独关注这一测试场景变更；不能宣称全部96项零变化。
+Docs/Architecture/TransfersLootSetup.txt已更新06B行为及07A正式接入现状。
+本次未做实体键鼠新验收、正式Bootstrap完整闭环或独立构建；主程接手原定正式1920自然搜索与三类格子验收。
+
+六、释放与参考
+最终状态2026-10-18T23:21:03.0281445Z：
+Play=false、changing=false、compiling=false、updating=false；
+Assets/Scenes/Bootstrap.unity，dirty=false；
+Application.runInBackground=false、PlayerSettings.runInBackground=false；
+GameView内置FullHD index7/target1920×1080；
+原生Keyboard/Mouse enabled，合成设备移除，InputSettings恢复。
+ReleaseState.json记录实际Unity读回；没有保存或丢弃正式场景。
+沿用实际读过的CardGame CardDragHandler.cs、ItemTemplet.cs、UIGridController.cs及已适配流程，参考版本57eabac0f946f21ef00b489e83c1c133905ea673；未修改参考仓库。
+新增/修改自有C#均在既定目录、无namespace，未引入通用框架。
+06B修复与验证完成，已释放Unity。

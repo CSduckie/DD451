@@ -1,0 +1,8 @@
+{
+  "Samples": 735,
+  "FirstAlertSeconds": 0.5023617800000002,
+  "CoverWaitSeconds": 2.01256323,
+  "RediscoverySeconds": 0.005125749999999485,
+  "InitialHealth": "3",
+  "FinalHealth": "2"
+}

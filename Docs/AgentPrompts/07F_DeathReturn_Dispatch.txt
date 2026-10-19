@@ -1,0 +1,39 @@
+你继续负责 MyPrecious「任务007串联游戏流程」。用户刚在主程明确要求：实现玩家死亡后自动返回Shelter，并将本任务下发给007。请接手此任务（07F死亡返回）。
+
+项目 E:/DD451。先审查现有源码/交接，不重做框架、不写namespace，保持作品集/毕设可读的简单分步协程和现有明确方法调用。可以修改复用用户已有风格，不引入事件总线/通用事务或额外管理体系。
+
+编辑器协调（必须先遵守）
+主程当前正在做“各scene编辑态Game相机预览”，暂时独占Unity和Assets写入。你现在先只读诊断、准备代码/测试草稿，暂存放 Docs/Verification/GameFlow/DeathReturn/Staging/，不要编辑Assets或操作Unity。等主程在本聊天及Docs/Verification/Enemy/EditorCoordination.txt明确释放后再实施。
+主程正在修改 GameFlowSceneBindings.cs、MinimumLoopSceneBuilder.cs、MinimumLoopSceneTests.cs 以及Shelter/Ruins的编辑态相机可见性；必须接续最新文件，不覆盖主程改动。不要恢复任何旧场景基线。
+
+核心行为
+1. 正式探索中真实PlayerHealth.Died触发死亡返回，关闭背包/搜刮/拖拽并锁住玩家输入，避免死亡后还能转移/使用/撤离。
+2. 先完成该轮死亡损失，再加载/激活Shelter。背包全部物品（出发前携带的旧物和本轮新物）丢失；已保有物品相应EV扣除。仓库内容、摆放和已激活升级保留，不清空常驻模块或重开整个游戏。
+3. 唯一剧情物品（布娃娃、医疗包等）保持原InstanceId，死亡丢失后下一轮原拾取点可找回，同一身份不能复制。沿用ItemManager.RecordLoss/现有来源状态，不写另一套唯一物品系统。妥善处理本轮地面/容器遗留与来源关闭，避免卸载即丢失未结算或下一轮卡住。
+4. 返回同一Shelter出生点后玩家恢复存活、可移动、可开仓库并可再次出发。本次按死亡返回满血恢复操作能力，随后每轮出发满血继续沿用既定规则；不能为复活调用“新探索”而提前增加ItemManager/Player的探索轮次，不能额外刷新物品使用次数。成功撤离保留伤势的现行规则不变。
+5. 再次真实出发才进入下一轮，地图/敌人按当前轮次正常刷新；同轮重试不得重复生成或重复损失。保留09H/09G无人机当前行为及02C真实下蹲碰撞体。
+6. 重复死亡通知、多次接触伤害、死亡发生在拖拽/搜索中均只处理一次。死亡与撤离/切场景相邻时处理顺序明确，不产生同时成功撤离和死亡两次结算。失败时保留现有失败提示/Retry，可从未完成步骤恢复，不重复扣EV、不复制物品、不多生成玩家和相机。
+7. 接入现有03中文/英文，默认中文、F10切换；新死亡返回提示写现有GameFlow本地化表，不硬编码第二套语言。
+8. 暂不新增死亡动画、复活收费、复活选择菜单或新存档系统。直接完成最小可玩死亡→庇护所→再次出发闭环。
+
+优先文件/目录
+- Assets/Scripts/GameFlow/MonoBehaviour/GameFlowManager.cs
+- Assets/Scripts/GameFlow/RuntimeData/GameFlowStage.cs
+- Assets/Scripts/GameFlow/MonoBehaviour/GameFlowHUD.cs（确需时）
+- Assets/Scripts/Player/MonoBehaviour/PlayerHealth.cs、PlayerController.cs（仅增加必要的死亡后庇护所恢复入口，保留健康通知/下蹲/场景锁）
+- 现有Items、Backpack、Loot、Shelter明确接口优先复用，仅确有缺口才做最小补充。
+- 本地化沿当前GameFlow表实际目录修改，先查实路径。
+- 测试 Assets/Tests/GameFlow/PlayMode/，优先独立 GameFlowDeathReturnTests.cs，避免与主程当前MinimumLoopSceneTests编辑冲突。
+- 证据 Docs/Verification/GameFlow/DeathReturn/；交接 Docs/Handoffs/07F_DeathReturn_Handoff.txt。
+
+当前已知缺口
+GameFlowManager没有订阅Died，CanStartAction和RunTransition对dead player拒绝；PlayerController已有Die状态但RelocateWithinRun不复活。因此不能仅在死亡回调调用TryExtract、把死亡当正常撤离，或直接加载Shelter遗漏清算/复位。请先核实实际最新代码，再给出小范围实现。
+
+验收
+- 从Bootstrap进入Shelter，在仓库存一件物品，携带有EV旧物并在Ruins取得新物；用真实TakeDamage/无人机接触造成死亡。
+- 自动回Shelter；携带物全损失，仓库/扩容保留，EV正确，玩家存活满血可操作；没有多Player/Camera/AudioListener/EventSystem。
+- 死亡发生在背包拖拽/搜索时正常关闭和回收临时操作，无悬空物品。
+- 再次出发轮次只加1，唯一物品可找回同身份，敌人下一轮刷新。
+- 重复通知及人工注入加载/结算失败后的Retry不重复清算，已有成功撤离流程回归不退化。
+- 最终普通Game 1920×1080验证死亡返回和再次出发，标明API辅助与原生键鼠区别；Console无新增错误，保留真实结果/失败记录，不虚报全量通过。
+完成后交付根因与修改文件、实际验证证据及剩余限制，保存并释放Editor。不要重建或覆盖用户Shelter/Ruins布局、灯光、天空盒、后处理、巡逻点和交互配置。

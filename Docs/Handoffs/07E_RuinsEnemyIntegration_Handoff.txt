@@ -1,0 +1,60 @@
+MyPrecious P0 — 07E 正式 Ruins 无人机接入
+日期：2026-10-19（America/New_York）；工程：E:/DD451。
+状态：IMPLEMENTED_VALIDATED / READY_FOR_MAIN_ACCEPTANCE。
+007 Assets和Editor已释放，主程可以验收。最终现场见第7节；独立主程验收尚未计入本交接。
+
+1. 已交付行为
+正式Bootstrap→Shelter→出发Ruins现会把GameFlow分配的同一探索轮次交给该地图实际启用的无人机。无需EnemyTestDriver、手填敌人清单或改变用户层级。没有新Manager、通用接口框架、敌人ID持久化或Animator连线。
+只在旧场景UnloadPrevious成功、目标场景和玩家准备完成、仍持有玩家切场景锁时启动敌人，随后解锁并进入Exploring。庇护所不启动敌人轮次。首次加载但准备失败的机保持CurrentRound0；空敌人地图正常通过。009生产代码、警戒/伤害规则、Kinematic设计均未改。
+场景接线方法TryBeginExplorationEnemies遍历自身Scene.GetRootGameObjects及子层级，覆盖用户放在场景根的Drone，跳过停用组件/非activeInHierarchy对象。先校验全部候选的config和是否轮次超前，再启动新轮；同轮直接跳过，包含HasExploded对象。没有用SetActive(true)、切换enabled或重建实例处理BeginRound的false返回。
+重复接线/同轮初始化不会主动清位置、Target、AlertProgress或自毁记录。失败等待期间不是AI冻结：现有玩家锁使目标无效，009仍可按自然规则巡逻、失去目标或退警戒；本次未添加暂停框架。
+正常撤离卸载旧Ruins，下一次出发加载新的场景实例，以新的GameFlow轮次从原出生配置开始巡逻。未实现010完整死亡返回、携带物损失和找回流程。
+
+2. 文件与必要修正
+已有6个文件修改，原.meta/GUID保留：
+- Assets/Scripts/GameFlow/MonoBehaviour/GameFlowManager.cs：成功转场尾部调用TryBeginExplorationEnemies；另修正目标已经是活动Scene时不重复SetActiveScene。实际Unity对此重复调用返回false，曾使敌人配置失败后的同轮Retry误判失败；新测试已复现并验证修复。
+- Assets/Scripts/GameFlow/MonoBehaviour/GameFlowSceneBindings.cs：新增上述明确场景方法，错误通过现有flow.error.scene与LastError路径处理，不新增玩家文案key。
+- Assets/Scripts/GameFlow/MyPrecious.GameFlow.asmdef：引用MyPrecious.Enemy。
+- Assets/Tests/GameFlow/PlayMode/MyPrecious.GameFlow.PlayModeTests.asmdef：同样补引用。
+- Assets/Tests/GameFlow/PlayMode/MinimumLoopSceneTests.cs：仅测试会话sceneLoaded隔离DroneController，保持原生命/物品/失败重试断言；TearDown退订。
+- Assets/Tests/GameFlow/PlayMode/MinimumLoopPointerTests.cs：同样隔离AI；用户当前场景已无旧battery-ground，因此在测试会话内使用真实GroundItem prefab补1×2来源夹具，仍经真实搜索/转移/排队指针。未把电池重新写回正式场景，未删除原断言。
+新增Assets/Tests/GameFlow/PlayMode/RuinsEnemyIntegrationTests.cs及Unity生成的.meta；全局类型，无namespace。5项正式启动/状态/重试/范围用例不使用旧夹具AI隔离。
+
+3. 用户场景与保护基线
+接手06:05:55Z确认Ruins/Edit/clean，实际根节点Drone位置(-3.34101677,2.39236856,-0.382937431)，巡逻1(-12,2.5,0)、巡逻2(1,2.5,0)，保持原数组顺序和Transform引用。无人机出生Z未强制改为0。
+随后发现Ruins出现用户未保存编辑。先SaveScene(saveAsCopy)到Integration/DirtyAfterCompile-Ruins.unity；用户明确允许“保存当前Ruins改动后继续验收”，06:09:16Z再次保存完整副本AuthorizedLatest-Ruins.unity后保存原场景。
+授权场景变化仅OptionalJumpPlatform3D Transform：position(6,0.2,0)→(6,0.70000005,0)，scale(2,0.4,2)→(2,2,4)。这是用户工作，不是007为通过测试修改关卡。AuthorizedSceneBaseline.json作为后续Ruins保护基线；旧副本只留证据，不回写。
+本次未重建场景、Prefab或修改无人机模型、灯光、镜头、路线。Integrity.json核对86个已有文件：6份允许源码/asmdef变化，Ruins仅匹配上述用户授权新基线，其他受保护场景/Enemy生产代码/Prefab以及原meta均无非授权漂移。Before目录保存实际修改前原件，含Bootstrap/Shelter/Ruins、Drone prefab/meta；新增测试及meta hash另列。
+
+4. 官方自动测试
+最终PlayMode：50/50 Passed，0失败/跳过；GameFlow13（旧8+新增5）与Enemy原37。06:12:01Z—06:13:02Z，60.9693779秒。
+证据：Docs/Verification/Enemy/RuinsIntegration/Integration/PlayMode-50-Final.xml
+SHA256 D7106D0DC06310D68257BD46800F9C4A433A5B5A7C10701B1982A6ED237F7B06。
+新增测试覆盖：真实Bootstrap两次出发与共享轮次/原巡逻路线/实际运动；重复Activate及初始化保持自然Alert余量与位置；自然Chase接触伤害回调仍为Chase、自毁后重复接入不复活/重复伤害、下轮刷新；接线失败前不启动与同场景同轮Retry；多机配置预检失败无部分启动且修复后同轮Retry；空地图/庇护所/其它Scene/禁用组件/停用对象及旧轮拒绝。
+原搜刮和仓库存放测试保持其全部断言，但它们的AI隔离性质必须明确；敌人存在的普通流程另见第5节。
+最终EditMode：GameFlow11/11 Passed，0失败/跳过，06:13:20Z，0.1967574秒。
+证据：Integration/EditMode-11-Final.xml，SHA256 DC752134D2463190D97789ED26E7A8B7B70B08099AB2E0A50D9B2165293605DF。MCP作业0f44056b5c514d6897094005902967b2误报initialization timeout、completed0，但Unity官方XML及实际完成日志确认11项已执行通过；未重复跑来掩盖工具问题。该工具warning另存TestConsole-EditJobTimeout.json。
+
+5. 普通Play与1920×1080画面
+从真实Bootstrap开始，依次Shelter→Ruins→Shelter→Ruins→Shelter。未挂测试Driver、未逐机调用BeginRound、未强制AI状态、未调速度/警戒时间/相机、未改路线。普通Play保留用户场景唯一无人机及原出生Z；观察器只记录、截图，临时runInBackground恢复。
+两轮均自然巡逻→Alert→Chase→接触自毁，每轮玩家3→2生命。第一次两物品自然搜索完成后，真实会话校验的TrySourceToBackpack各Success；撤离后在仓库交互范围开启面板，TryBackpackToWarehouse各Success。背包0、仓库2、EV7，第二轮返回后两件InstanceId仍相同。没有调用AdvanceSearch或直接赠物。
+第二轮启动记录Round2Patrol.json：flow/player/loot/drone均round2，Patrol、HasExploded=false；位置从原(-3.34101677,2.39236856,-0.382937431)到(-3.94096851,2.39982629,-0.382937431)，约0.4秒真实移动0.5999981，仍沿原巡逻1方向；两个点位及顺序未变。
+OrdinaryPlay/Samples.json含11072条逐Unity帧观察；Events.jsonl记录交互后的阶段、转移与身份；ObserverFinished.json确认回调结束/后台设置恢复。采样为Editor update观察，不宣称每一渲染帧或原生OS操作。
+Analysis.json/.txt逐帧复核：两轮完整观察路径均None→Patrol→Alert→Patrol→Alert→Chase→Explode，包含早期自然退警戒；6840条Exploring样本轮次错配0，4220条Shelter样本没有本场景无人机，自毁后复活0。观察器仅扫描玩家所在Scene，目标Scene隔离仍以自动测试为据。AuthorizedBaselineFinalCheck.json另确认当前Ruins及DroneConfig及各自meta与授权后基线一致。
+已逐张查看4张关键1920图：05-Round2-Patrol-1920.png（正常蓝色巡逻，3/3生命）、Natural-Alert-Round1-1920.png（自然橙红填充）、03-Loot-Revealed-1920.png（两物品揭示，2/3生命）、04-Stored-1920.png（两物品入仓，EV7）。其余保存图片是补充证据。
+该流程使用API定位玩家、PlayerInteraction.TryInteract真实范围入口，以及会话校验的转移API；不是原生键鼠试玩，也不等同逐次鼠标拖拽。搜刮发生在该轮无人机自然自毁之后，不声称在持续追击中完成拖拽。
+
+6. 失败历史与范围
+首轮13项10通过/3失败保存在PlayMode-13-Initial.xml：旧电池来源已被用户移除；配置失败后重复SetActiveScene误判；自然Chase瞬时状态轮询超时。前两项分别由运行期电池夹具及活动场景判断修正。自然AI测试改为等待实际自毁，并在伤害回调取Chase状态，避免只轮询短暂状态；未通过强制AI/缩短警戒或删断言换通过，未把瞬时漏采认定为已证明的唯一根因。
+中间13/13为PlayMode-13-Second.xml；最后修改后的最终覆盖以50项XML为准。一次普通Play的仓库检查工具代码List拼写错误只在内存编译失败、未执行业务；修正后两次转移均成功，未改项目源码。
+本次不宣称新增原生Windows键鼠、Windows构建或010死亡分支验收；旧07B/04混合鼠标按键问题不在本次测试范围，不借此次通过关闭。
+
+7. 最终释放与主程接手
+007 Assets和Editor已释放，主程可以验收。所有007 Assets写入、测试、截图和采样回调已结束，无排队Editor操作。后续只收尾Docs。
+ReleaseState.json最终06:16:05.8652239Z：唯一Assets/Scenes/Bootstrap.unity，loaded/clean；Play/changing/paused/compiling/updating均false，PrefabStage=false；timeScale1，两runInBackground=false；EnterPlayModeOptions enabled/DisableDomainReload保持。仅原生Keyboard/Mouse启用，observer/patrolCapture=false，TestRunner临时资产0。FinalConsole.json为0 errors/0 warnings。
+Unity沿用此前临时Direct3D11会话，未改项目图形API设置；不宣称DX12问题已根治。
+主程独立验收入口：从Bootstrap Play，Shelter出发后查看根Drone.CurrentRound与GameFlow/Player一致、原路线实际移动；同轮自毁后不重启；撤离再出发新轮刷新。复用当前已保存用户场景，勿用Before备份覆盖。
+
+8. 主程独立验收补充（2026-10-19 06:19 UTC）
+状态：ACCEPTED。主程从正式Bootstrap经Shelter完成两轮1920×1080 API辅助验收；实际巡逻/自然警戒与追击/物理自毁、同轮不复活、真实搜刮撤离与仓库存取、下一轮刷新均通过。原路线和最新授权场景基线保持。已正常退出Play并释放Editor，Bootstrap干净，Console0错误/警告。详见Docs/Verification/Enemy/RuinsIntegration/RootAcceptance/Result.txt。
+

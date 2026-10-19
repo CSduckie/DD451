@@ -1,0 +1,27 @@
+{
+  "job_id": "dd9eb435f9ab45e580f5eee84df5b348",
+  "status": "failed",
+  "mode": "EditMode",
+  "started_unix_ms": 1792372384904,
+  "finished_unix_ms": 1792372409248,
+  "last_update_unix_ms": 1792372409248,
+  "progress": {
+    "completed": 0,
+    "total": null,
+    "current_test_full_name": null,
+    "current_test_started_unix_ms": null,
+    "last_finished_test_full_name": null,
+    "last_finished_unix_ms": null,
+    "stuck_suspected": false,
+    "editor_is_focused": false,
+    "run_in_background": null,
+    "focus_nudge_attempts": null,
+    "focus_nudge_limit": null,
+    "focus_nudge_status": null,
+    "blocked_reason": null,
+    "failures_so_far": [],
+    "failures_capped": false
+  },
+  "error": "Test job failed to initialize (tests did not start within timeout)",
+  "result": null
+}

@@ -1,0 +1,5 @@
+06C UI source baseline provenance
+
+LootItemView.cs, LootUIController.cs and LootTextEntries.cs were copied from their actual contents before this agent's first edit to those files. Nested paths and flattened copies contain the same originals.
+
+LootView.cs and LootTestSceneBuilder.cs were already patched when the instruction to preserve a baseline arrived. Their copies under Assets/ were reconstructed by reversing this agent's exact 06C patches. They are useful text-diff baselines, not original pre-edit byte snapshots, and must not be described as such. No Unity asset, prefab, scene, GUID or .meta was edited by this agent.

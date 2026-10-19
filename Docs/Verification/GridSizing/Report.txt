@@ -1,0 +1,30 @@
+MyPrecious — 背包与仓库格子显示统一
+2026-10-18；用户授权停止试玩后应用和验证。
+
+结果
+两份View默认值与正式UI Prefab统一为cellSize=36、gap=3、padding=8（Canvas UI单位，不是所有分辨率下固定36物理像素）。背包4×4外框169×169，在360宽面板内x=95.5居中；两边2×3物品矩形同为75×114。仓库20列总宽793，适配本轮已有最窄794视口；20×20向下扩到20×24不改变单格尺寸。
+两套格子算法、身份、转移、搜索、EV和升级规则未改。不新增共享格子核心、SO、同步器或接口。
+
+5个Assets修改
+Assets/Scripts/Backpack/MonoBehaviour/BackpackView.cs：默认cellSize 36、gap 3。
+Assets/Scripts/Warehouse/MonoBehaviour/WarehouseView.cs：默认cellSize 36。
+Assets/Tests/Backpack/Editor/BackpackTestSceneBuilder.cs：36/3/8、Grid/Items居中与169尺寸、36预览，避免重建回退。
+Assets/Prefabs/UI/Backpack/BackpackPanel.prefab：对应显示参数与Grid/Items/Preview几何。
+Assets/Prefabs/UI/Warehouse/WarehousePanel.prefab：cellSize 36。
+未改GUID、fileID、对象引用或任何场景文件；现有场景没有上述显示参数的覆盖，继承Prefab。
+
+验证
+1. 独立只读diff复核：仅上述显示改动，业务逻辑及引用不变。
+2. Unity刷新编译完成，末次Console错误0。
+3. Unity AssetDatabase实际读回：两份Prefab为36/3/8；背包Grid169×169、x95.5；仓库Prefab viewport926、20列总宽793。
+4. 800×600现有MinimumLoopPointerTests.FormalSearchPickupExtractionAndBidirectionalStorageUseQueuedPointers通过，1/1、0失败、0跳过。job=fce8330a2d75488588ea1e414f71e2c3。覆盖真实逐件搜索、InputSystem/UGUI拾取、R旋转、双向转仓、两轮场景返回及身份/摆放保持。详见Pointer800Results.json。
+5. 这是排队设备事件测试，不是原生键鼠试玩；本次未新增测试代码、未运行新的Windows构建、未完成第二分辨率复跑或升级运行几何截图。007接手继续响应布局与双尺寸验收。
+
+保留的异常记录
+初次800测试在搜索doll阶段10秒超时，尚未进入拖拽，详见InitialSearchTimeout.json；没有因此修改搜索参数或测试断言。
+第二次job=0f5f6c5366bd4f89bda3bcd3334e7ad0停在running且无测试起始回调；实际Editor已非Play/非编译，确认后使用clear_stuck清理。
+经computer-use选择实际Unity窗口并激活，第一次截图处于切窗动画，第二次重新观察为Unity；MCP确认isApplicationActive=true，随后同一测试成功。未修改业务/测试/输入配置。该时序支持焦点或运行环境相关性，不宣称已证明首次超时唯一根因。
+
+共享Editor交还
+按用户在007聊天的明确协调授权，已将完成与释放状态发给007。交还时Play=false、compiling=false、updating=false、Bootstrap场景干净、Game View恢复接手前索引7。EditorSettings.asset和ProjectSettings.asset与接手前备份无内容差异。
+007随后处理小屏文字和GameFlowResponsiveLayout，可能使两边按同一比例缩放；以上记录为本次交还快照，不冒充其后新布局已验收。后续保持36/3/8显示基准，并验证同屏格子、间距和物品实际大小一致。

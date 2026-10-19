@@ -1,0 +1,410 @@
+任务04：独立背包格子、实时整理、受击取消与双语接入
+MyPrecious P0｜精简开发提示词｜2026-10-18 / Dispatch v10
+
+你是本项目04号开发agent，负责实现背包格子、背包局部UI、输入和玩家联动，并接入03号中英双语。
+请先核对工程现状，说明本次工作内容和拟新增、修改的文件，然后完成本任务范围内的实现、配置、验证和交接，不只返回方案。
+
+这是我的作品集兼毕业设计。代码必须让我能够读懂、修改，并在答辩时解释。简单实现也必须保证不复制物品、不吞物品、失败不破坏原数据；不要为此搭建通用框架。
+
+一、开始前读取与依赖核对
+
+项目根目录：E:/DD451；若在独立工作树，以实际项目根目录为准。
+以下Assets/和Docs/路径均相对项目根目录。
+
+先阅读：
+- 适用的AGENTS.md（如有）、git状态和当前Unity/Packages版本。
+- Docs/AgentPrompts/ProjectRules.txt。
+- Docs/Architecture/BaseSetup.txt、ItemsSetup.txt、PlayerSetup.txt。
+- Docs/Handoffs/00_Handoff.txt、01_Handoff.txt、02_Handoff.txt。
+- 03实际交付的Docs/Architecture/LocalizationSetup.txt与Docs/Handoffs/03_Handoff.txt。
+- 实际ItemManager、ItemInstance、ItemDataSO、PlayerController、PlayerHealth、PlayerInputReader和语言模块代码。
+
+本提示词整理时，工作区已有00—02，但尚未看到03实现及交接文件。实施时必须重新核对，不能把03提示词里的建议方法当成已经存在的签名。
+若03仍未交付，可先完成独立格子逻辑、玩家接入和文本键整理；取得03后必须完成真实双语接入与联测。缺少依赖时准确报告，不另建语言管理器或用假的语言服务冒充完成。
+
+不恢复旧任务包的预建全量契约、注册框架或通用事务协议。
+保留他人改动、已有.meta与GUID。使用Unity MCP前读取对应技能并确认工程；共享Editor的编译、运行和场景操作串行执行。
+
+二、已确定的业务规则
+
+1. 背包默认4×4。宽高使用Inspector配置，当前不做背包升级流程。
+2. 背包与仓库各自独立实现格子规则，不共用GridContainer，不让双方继承同一套格子算法。
+3. 物品可以占多个矩形格子；读取现有ItemDataSO的width、height、canRotate。允许旋转的物品支持90°旋转。
+4. 01物品模块保存身份、归属、使用次数等权威数据；04只保存实例引用或稳定ID、位置和朝向。
+5. 打开背包世界继续运行，玩家仍可能受到伤害。禁止主动移动和跳跃，保持打开时的站立或蹲伏姿态；关闭后恢复正常控制。
+6. 有效非致命伤害自动关闭背包并取消拖拽。包内重排取消后回原格、原朝向；外部待拾取取消后留在原来源。
+7. 死亡也关闭界面和取消预览，但不能恢复角色行动。死亡物品损失、EV和返回庇护所由08协调，04不自行结算。
+8. 成功撤离保留背包内新旧物品及摆放，回庇护所自由整理。关闭UI、切语言或切场景均不能清空背包、自动整理或刷新使用次数。
+9. 医疗包每轮限用一次、回满血、使用后保留；食物成功使用后消耗。满血时两者均拒绝使用，不扣次数或消耗。
+10. 默认中文，F10切换中英文，由03统一处理。
+11. 世界使用3D模型和3D物理；玩家X轴左右、Y轴跳跃、Z轴固定，允许胶囊占位，摄像机沿用Cinemachine。UI的二维格子坐标与世界坐标分开，04不修改角色运动或摄像机。
+
+三、代码风格与实际复用
+
+参考仓库：
+- https://github.com/CSduckie/CardGame
+  本机：E:/Portfolio-Card-Clone
+- https://github.com/CSduckie/2DArpg-Portfolio
+  本机：E:/Portfolio-Clone
+- https://github.com/CSduckie/LiDarProject
+  本机：E:/Portfolio-LiDar
+
+先读实际文件，选择适合部分修改复用，不修改参考仓库本身。
+
+本任务重点参考CardGame：
+1. Assets/Scripts/Cards/MonoBehaviour/CardDragHandler.cs
+   修改复用IBeginDragHandler、IDragHandler、IEndDragHandler的拖拽流程。
+   保留“开始→预览→松手确认或恢复”的清楚结构。
+   移除卡牌技能、回合、PlayerHandManager、GameManager和DOTween依赖。
+   原来的固定深度ScreenToWorldPoint不适用于Canvas背包，应按RectTransform处理指针位置。
+
+2. Assets/Scripts/GameBoard/UIGridController.cs
+   参考按行列生成格子表现的循环。
+   不照搬固定5列、世界位置转换、查找敌人和延迟初始化。
+
+3. Assets/Scripts/GameBoard/SlotController.cs
+   参考明确保存格子坐标和状态的风格。
+   原来是一格放一张卡，不能当成多格背包核心；不搬入Collider2D触发器。
+
+4. Assets/Scripts/Items/MonoBehaviour/ItemTemplet.cs
+   参考持有数据引用、用明确方法更新TMP文字。
+   不搬入奖励领取业务，显示文字改为调用03。
+
+参考仓库没有可直接使用的完整多格背包核心。需要新增的矩形占格逻辑就直接实现，不能宣称只修改原背包即可完成。
+
+代码要求：
+- 所有新增项目自有C#不写namespace，测试和Editor脚本也一样；保留正常using。
+- 4空格缩进，类和方法大括号另起行；类型、方法PascalCase，字段、局部变量camelCase。
+- 使用普通类、MonoBehaviour、SO、枚举、List/Dictionary、明确方法和必要的C#事件。
+- 沿用...SO、CreateAssetMenu、Header等熟悉形式。
+- 中文注释解释关键原因，尤其说明为什么拖拽不提前移除物品。
+- 不引入依赖注入、通用容器基类、反射注册、全局拖拽单例、事件总线或通用事务引擎。
+- 不为每个类建立接口，不预建空模块。
+- asmdef只添加实际需要的引用，rootNamespace为空。
+- 英文文件夹，配置脚本与配置资源分开。
+
+四、具体文件目录与职责
+
+建议以下文件构成最小实现；不要按列表扩展成多层框架。
+
+Assets/Scripts/Backpack/ScriptableObject/BackpackConfigSO.cs
+- 背包宽高，默认4×4；必要的简单显示配置。
+
+Assets/Scripts/Backpack/RuntimeData/BackpackPlacement.cs
+- 某件物品的引用或ID、左上角格子坐标、旋转状态。
+- 不复制物品归属、剩余次数、HP或EV。
+
+Assets/Scripts/Backpack/Logic/BackpackGrid.cs
+- 背包自己的边界、占格、重叠、合法放置、移动和移除逻辑。
+- 不依赖UI图标或Transform判断物品在哪里。
+
+Assets/Scripts/Backpack/MonoBehaviour/BackpackManager.cs
+- 持有本次运行的背包布局，引用真实ItemManager。
+- 提供包内移动、真实使用物品和查询入口；完整操作后通知视图。
+- 跟随现有GameBootstrap常驻，不自行建立第二个全局入口。
+
+Assets/Scripts/Backpack/MonoBehaviour/BackpackUIController.cs
+- 开关背包、Tab/R/右键输入、绑定玩家和受击通知。
+- 保存当前一次拖拽的简单预览状态，统一处理确认和取消。
+- 无需为拖拽再做一套状态机。
+
+Assets/Scripts/Backpack/MonoBehaviour/BackpackView.cs
+- 绘制格子和物品、选中信息、预览、提示，接入03文本。
+- 只展示并请求操作，不保存第二份真实背包。
+
+Assets/Scripts/Backpack/MonoBehaviour/BackpackItemView.cs
+- 单个物品UI；把点击、拖拽回调交给BackpackUIController。
+- 不在OnEndDrag中自行改ItemManager归属或调用治疗。
+
+Assets/Scripts/Backpack/MyPrecious.Backpack.asmdef
+- 引用实际需要的Items、Player、Bootstrap、Localization、UGUI、Input System、TMP等程序集。
+- 不让Items或Player反向依赖Backpack，不引用尚未存在的06实现。
+
+资源：
+- Assets/Data/Backpack/BackpackConfig.asset
+- Assets/Data/Localization/Backpack/BackpackText.asset
+- Assets/Prefabs/Backpack/BackpackModule.prefab
+- Assets/Prefabs/UI/Backpack/BackpackPanel.prefab
+- Assets/Prefabs/UI/Backpack/BackpackCell.prefab
+- Assets/Prefabs/UI/Backpack/BackpackItem.prefab
+
+测试与说明：
+- Assets/Tests/Backpack/EditMode/
+- Assets/Tests/Backpack/PlayMode/
+- Assets/Tests/Backpack/TestDoubles/
+- Assets/Tests/Backpack/Editor/（仅确需测试场景搭建工具时）
+- Assets/Scenes/Tests/Backpack/BackpackTest.unity
+- Docs/Architecture/BackpackSetup.txt
+- Docs/Handoffs/04_Handoff.txt
+
+必要的小型结果枚举可与对应逻辑放在同一文件，不必为每个状态拆文件。
+只创建实际使用的目录。基础测试继续放Assets/Tests/Base/；真正需要共享的契约才放Assets/Scripts/Utilities/Contracts/，本任务不要求预建通用背包接口。
+
+本任务只修改自己的上述文件与资源。通过自己的测试场景实例引用已有预制体，不改共享GameBootstrap、Player预制体、输入资源或其他测试场景。
+如发现真实跨模块缺陷，说明具体文件和最小修改需求，不为接入而重写01—03。
+正式场景由09接线，不代表04可以推迟本任务的真实输入和受击联动。
+
+五、格子数据和放置规则
+
+1. 坐标统一：
+左上角为(0,0)，x向右、y向下。物品记录左上角坐标。
+原尺寸来自ItemDataSO；旋转90°后宽高交换，不修改SO中的原始宽高。
+对于当前矩形物品，旋转状态用简单bool即可。
+
+2. 校验至少覆盖：
+- 宽高和坐标有效。
+- 放置后整个矩形都在背包范围内。
+- 不与其他物品占格重叠。
+- 同一个实例不能重复加入。
+- 不允许旋转的物品不能旋转。
+- 同一件物品包内移动时可以忽略自己的旧占格，但不能忽略其他物品。
+- 总空面积足够但形状放不下时仍拒绝。
+
+3. 4×4规模使用简单摆放列表与矩形检查即可，不为性能建设复杂空间索引。
+布局集合由模块管理；查询返回只读视图或副本，UI不能直接改内部集合。
+
+4. 查询、校验、提交分清职责：
+CanPlace一类查询不改数据；
+TryMove一类操作先完整校验，成功才一次修改位置和朝向；
+失败返回明确原因，原位置、原朝向和其他物品保持不变。
+
+5. 不做自动整理、自动交换、堆叠、重量、装备格或多层背包。
+不自动挪动其他物品给当前物品腾地方。
+
+六、拖拽、旋转和取消
+
+1. 左键选择并拖拽包内物品。
+开始时记录物品ID、原坐标和原朝向；拖拽只移动预览，不提前从真实布局移除。
+
+2. 原占格在真实数据中仍保留。
+预览校验允许忽略当前物品自身，其他物品仍按实际占格参与检查。
+不能因为图标跟着鼠标移动，就把物品当成已经离开背包。
+
+3. R只在有效拖拽期间旋转预览，读取canRotate。
+用颜色和当前语言的提示说明位置是否合法。
+旋转后的非法位置不得提交。
+
+4. 在合法背包位置松开左键，重新检查当前拖拽仍有效、物品仍在本背包、目标仍合法，再提交一次。
+在非法位置或面板外松手，取消并恢复原显示。
+拖出面板不等于丢弃；实际地面丢放由06处理。
+
+5. Tab关包、关闭按钮、有效受击、死亡、界面卸载或失去应用焦点时，统一取消预览。
+CancelDrag和Close重复调用应安全。
+取消后收到迟到的OnEndDrag或鼠标松开事件，也不能再提交原来的预览。
+
+6. 预览不改变实例ID、归属、containerId、使用次数或保有状态。
+F10切语言只刷新文字，不取消、确认或重新创建当前拖拽。
+
+7. 外部待拾取：
+提供简单的外部物品预览和取消能力，读取已有实例，不创建新身份。
+未确认前物品留在世界、箱子或仓库，04不调用TrySetOwner，也不删除来源。
+06尚未接入时，只验证预览和取消；外部确认转入不能伪装成已完成。
+
+七、与01物品模块接入
+
+当前已存在的真实入口包括：
+- ItemManager.TryGetInstance(instanceId, out instance)
+- ItemManager.GetInstances()
+- ItemManager.TryUseItem(instanceId, IHealthTarget target)
+- ItemManager.TrySetOwner(instanceId, owner, containerId)
+
+实施时再次核对实际签名。
+
+1. 背包使用稳定containerId，默认可用player-backpack。
+包内移动、旋转和使用先确认实例存在、Owner为Backpack、ContainerId匹配当前背包，并且有真实合法摆放记录。供06调用的外部放置检查和新增摆放允许该实例尚无本包记录，但必须拒绝重复加入。
+仅有Owner==Backpack不代表已经通过占格验证。
+
+2. 包内移动和旋转只修改04布局，不需要修改物品归属。
+不能通过重新创建ItemInstance模拟移动；不能更改internal setter或用反射写实例状态。
+
+3. 右键使用：
+背包打开、没有拖拽、指针指向本背包物品、当前有有效存活玩家时，进入唯一的使用入口。
+先验证真实归属和摆放，再把真实PlayerHealth作为IHealthTarget传给TryUseItem。
+
+4. 调用返回后：
+- 失败：摆放不变，显示03翻译的失败原因。
+- 成功且Owner变成Consumed：移除这一件物品的布局。
+- 成功但物品保留：布局不移除，例如医疗包。
+
+布局和物品状态一致后，再通知背包UI刷新。
+当前ItemManager不发布物品UI事件，不能假定已有ItemUsed事件。
+不能让“显示成功”的事件监听者承担移除布局的第二次业务。
+
+5. 医疗包每轮次数、满血拒绝、回血量和食物消耗都沿用01，不在04重复实现。
+满血使用不腾格；医疗包成功后仍占原格；两份食物按不同实例区分。
+需要防止同一次右键被UI回调和InputAction回调分别执行一次。
+
+6. 用一个明确的同步方法完成使用与布局处理即可。必要时用简单busy标记防止重入，不增加异步事务或回滚框架。
+打开背包、重排、切语言和重新绑定UI均不能调用BeginRound、ResetForExploration或修改IsRetained。
+
+八、与02玩家和现有输入接入
+
+真实玩家接口：
+- PlayerController.SetBackpackOpen(bool open)
+- IsBackpackOpen、IsCrouching、IsPrepared、IsDead
+- PlayerHealth.NonLethalDamaged：Action<int>
+- PlayerHealth.Died：Action
+
+1. 探索中打开背包，调用SetBackpackOpen(true)，让02负责限制主动移动、跳跃及世界交互，并保持站立/蹲伏姿态。
+不禁用PlayerController，不冻结Rigidbody，不设置Time.timeScale，不停止物理或敌人。
+若在空中打开，正常重力和落地继续。
+
+2. 正常关闭时先取消拖拽、关闭视图，再调用SetBackpackOpen(false)解除本背包限制。
+不能调用角色重置、补血或切换到Idle来恢复控制。
+CanAct在开包时本来就是false，不能用它阻止关包。
+
+3. 订阅NonLethalDamaged：
+只有被02实际接受的非致命伤害触发关包。
+立即取消拖拽并关闭，再解除背包限制。
+无敌期内被拒绝的伤害没有该通知，不另按碰撞重复处理。
+
+4. 订阅Died：
+取消拖拽、关闭面板并清理本背包打开标记，但保持02的死亡限制。
+04不调用RecordLoss、不清空全部物品、不扣EV、不推进轮次。
+真实携带物仍由01和布局完整记录，供08执行损失，拖拽中的包内物品不能遗漏。
+后续06/08完成损失或转移后，通过明确入口更新布局。
+
+5. 停用UI控制器、换玩家或卸载场景时，先取消预览、关闭视图，对仍存在的旧玩家调用SetBackpackOpen(false)，再解除旧订阅并绑定新玩家；避免玩家残留背包限制或一次受击多次关闭。清理背包标记不会解除死亡限制。
+当前PlayerTestDriver已经模拟了受击关包和直接使用物品。04测试场景不要同时启用它，否则会绕过真实背包或提前解除限制。
+建立自己的BackpackTestDriver用于测试准备和伤害；真实开关包、拖拽和物品使用必须经过04。
+
+6. 输入使用现有Assets/Input/GameInputActions.inputactions：
+- Player/ToggleBackpack：Tab。
+- Player/RotateItem：R。
+- Player/UseItem：鼠标右键。
+- UI/Point、UI/Click：指针和左键。
+- Player/ToggleLanguage：F10，完全归03。
+
+参考PlayerInputReader，只Clone并管理04拥有的动作，不启停整张共享Action Map。
+右键使用选择一个实际业务入口；不要同时在OnPointerClick与动作回调中各使用一次。
+09以后复用04处理者，不再加第二套Tab、R或使用监听。
+
+关闭背包时输入控制器仍需能接收Tab，不能把唯一监听者放在被整体禁用的面板对象上。
+UI使用现有UGUI与InputSystemUIInputModule，场景中保持一个有效EventSystem。
+
+7. 探索中禁止未准备或死亡玩家打开背包。
+庇护所自由整理由08/09明确提供场景上下文或打开入口，不能把“未出发”统一当成禁止整理。
+采用简单明确的方法或场景配置即可，不制作流程框架；当前未接入真实庇护所时，用测试上下文验证并标明范围。
+
+九、常驻、06边界与UI表现
+
+1. BackpackModule挂在现有GameBootstrap场景实例下，保存本次运行布局。
+UI和玩家属于场景，可销毁后重绑。
+初始化只在新模块建立时执行，不能每次开包或加载场景都生成默认物品、清空布局。
+
+2. 场景重载后绑定实际存活入口下的ItemManager、BackpackManager和语言模块。
+重复Bootstrap会延迟销毁，不能长期引用重复根下的模块。
+拖拽预览属于临时界面状态，切场景取消；已提交摆放保留。
+
+3. 给06提供少量明确的能力：
+- 查询摆放及快照。
+- 检查某件物品在目标格子是否合法。
+- 添加、移除或恢复指定摆放。
+- 完整操作结束后刷新显示。
+
+具体方法按实际代码确定，在交接中写清。
+这些底层布局操作不负责修改01归属；跨来源完整转移由06协调，保持来源布局、目标布局和01归属一致后再通知UI。
+不要让04反向依赖06，或提前写通用转移、预留空间、命令队列及事务系统。
+06尚未实现的仓库转移、地图拾取与地面丢放，明确列为待联合验收。
+
+4. UI至少有：
+- 背包标题、4×4格子和关闭按钮。
+- 物品块及所占范围。
+- 选中物品的名称、描述、尺寸和必要的使用状态。
+- 拖拽预览、合法性提示、操作失败原因。
+- Tab、R、右键、F10操作说明。
+
+已有ItemDataSO没有可用图标时，使用色块和本地化名称占位，不为本任务扩写图标资源框架或强迫修改01。
+
+5. 屏幕坐标转格子使用RectTransform的本地坐标，处理CanvasScaler、边距和格子间距。
+不以Camera.main.ScreenToWorldPoint的固定深度计算背包位置。
+按当前统一基准1920×1080（16:9）检查拖拽位置与实际占格一致，暂不要求多分辨率适配。
+
+十、接入03中英双语
+
+1. 按03实际LocalizationTableSO格式创建：
+Assets/Data/Localization/Backpack/BackpackText.asset
+
+至少包含标题、关闭、操作说明、尺寸/使用状态、越界、重叠、不能旋转、无法使用、依赖未就绪等实际使用文字。
+key使用backpack.前缀；优先复用03已有的通用按钮和物品使用结果文本，不复制相同文案。
+
+2. 物品名称和描述使用现有ItemDataSO.nameKey、descriptionKey查询。
+原ItemDataSO中英字段仍为唯一编辑来源，不复制到BackpackText。
+
+3. 静态TMP文字可使用03的LocalizedText；动态文字使用03实际查询/格式化方法和变化通知。
+新打开背包立即显示当前语言；F10由03唯一监听。
+
+4. 切换语言时刷新当前名称、描述、提示和上一条操作结果，不能只更新标题。
+保存稳定key、枚举和必要参数，不永久缓存最终中文字符串。
+语言刷新不能重新执行使用、移动、旋转或物品生成。
+
+5. 拖拽中切语言保持当前物品ID、原摆放、旋转预览和目标格子。
+避免通过重建整个面板意外取消拖拽；优先只刷新相关文字。
+
+6. 在04自己的测试场景中把BackpackText接入03模块的实际配置入口。
+不修改03共享预制体来塞入本模块资源；正式资源汇总交09完成。
+如03没有可用配置接入方式，提出最小接线差异，不发明第二套文本注册框架。
+
+十一、测试场景与验收
+
+BackpackTest.unity使用：
+- 真实GameBootstrap、ItemModule、04的BackpackModule及03语言模块。
+- 02真实Player和Cinemachine相机预制体。
+- 04真实背包UI。
+- 3D地面、可观察的运动物体或计时器、真实伤害测试源。
+- 测试专用驱动，明确模拟08的新轮次准备，不进入生产脚本。
+
+初始化样本只能由测试驱动在干净数据下明确创建，并安排合法初始位置。
+重载场景不得补发食物或重置医疗包次数。
+不要随意把01/02旧测试中其他containerId的物品认领为本背包。
+可复用02的PlayerTestDamageSource，避免重复实现伤害规则；不要挂旧PlayerTestDriver。
+
+验收标准：
+
+1. 默认4×4，非正方形测试配置也能正确计算边界。
+2. 越界、重叠、重复实例、非法旋转和碎片空位正确拒绝；失败前后原布局完全一致。
+3. 移动时正确忽略自身旧占格；合法移动、旋转只修改该件物品的摆放，不改身份和次数。
+4. 非法松手、面板外松手、Tab关包、关闭按钮和重复取消都回原格、原朝向，不丢物。
+5. 站立和蹲伏分别打开背包，禁止主动移动/跳跃，姿态保持；世界时间、运动物体和真实伤害继续。
+6. 拖拽及旋转预览期间受到有效非致命伤害，立即关闭和取消；之后迟到的松手事件不能提交，角色恢复正常控制。
+7. 致命伤关闭和取消但不恢复行动；04不提前删除携带物或结算损失。
+8. 外部物品预览取消后，01记录的来源归属不变；06未接入时不得标记真实拾取/转移通过。
+9. 满血使用医疗包/食物不扣次、不消耗、不腾格；受伤后食物成功使用只移除对应实例的格子；医疗包成功后仍占原格，同轮再次使用拒绝。
+10. 一次右键只执行一次，拖拽期间不使用物品；不存在两个Tab处理者。
+11. 初始参考物品总面积为20格：布娃娃2×3、医疗包2×2、两份食物各2×2、电池1×2，不能全部装进16格背包。
+12. 关包重开、场景重载并重新绑定后，已提交的实例ID、坐标、旋转、使用次数保留；临时拖拽已取消。
+13. 默认中文，F10切英文再切回；关闭后重开仍是当前语言。名称、描述、反馈均更新，拖拽和业务数据不被重置。
+14. 在1920×1080（16:9）下TMP中文无方框，英文和多行说明可读；实际检查点击与拖拽坐标。暂不要求其他分辨率验收。
+15. 运行时界面只反映真实数据；重复刷新通知不重复移动、使用或生成物品。
+16. 新代码无namespace，目录和程序集引用正确，无未使用框架或新增无关依赖。
+
+用少量有价值的EditMode测试覆盖边界、重叠、旋转、取消不变和重复实例；用PlayMode/实际Game运行验证02、03、真实物品和UI联动。
+不能只用测试方法直接调用通过就声称鼠标拖拽已验证；需要检查实际指针、UI事件和键盘操作。
+尚无07敌人时，运动物体与伤害源验证仅代表世界继续运行，不宣称敌人联测通过。
+真实仓库、地面拾取、撤离与死亡损失属于05/06/08/09后续联验，分别列出。
+
+十二、交付和答辩说明
+
+Docs/Architecture/BackpackSetup.txt说明：
+- 各脚本职责、Inspector配置和具体接线。
+- 4×4如何配置、坐标及旋转怎样表示。
+- 拖拽为何只做预览，何时真正提交。
+- 受击时取消、关包和解除限制的顺序。
+- 物品使用如何与01保持一致。
+- 03语言资源、字体和刷新方式。
+- 06可调用的实际方法与通知时机。
+- 08/09如何绑定玩家、场景上下文与常驻数据，避免重复输入监听。
+- 测试场景启动和复验步骤。
+
+Docs/Handoffs/04_Handoff.txt说明：
+- 完成范围及尚未完成、待接入部分。
+- 新增/修改文件的准确路径。
+- 实际复用的仓库、文件、核实版本及修改原因。
+- 编译、自动测试、真实UI运行各自的结果。
+- 依赖缺失或工程已有问题，不把未执行项目写成通过。
+
+最后用我能在答辩时讲清楚的话解释：
+“01保存这件物品是谁、属于哪里、用了几次；04保存它在背包哪几格。拖拽先显示预览，合法松手才改位置，受击只需取消预览，因此不会丢物。UI读取这些数据并显示03提供的当前语言文字。”
+
+完成本任务即可，不顺带开发仓库、箱子、搜刮、敌人、完整流程或磁盘存档。
+

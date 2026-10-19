@@ -1,0 +1,15 @@
+{
+  "ready": true,
+  "before": 4.55555248,
+  "closed": 0.0,
+  "reopened": true,
+  "after": 0.0,
+  "firstRevealed": true,
+  "firstTaken": false,
+  "sameFirst": true,
+  "sameSecond": true,
+  "pickup": "StaleRequest",
+  "search": "item-1",
+  "elapsedAfterPickupAndLanguage": 0.0,
+  "language": "English"
+}

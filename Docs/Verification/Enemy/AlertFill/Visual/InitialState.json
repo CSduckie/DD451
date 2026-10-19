@@ -1,0 +1,41 @@
+{
+  "success": true,
+  "message": "Code executed successfully.",
+  "data": {
+    "result": {
+      "time": "2026-10-19T05:26:53.8155435Z",
+      "scene": "Assets/Scenes/Tests/Enemy/EnemyTest.unity",
+      "dirty": false,
+      "playing": false,
+      "compiling": false,
+      "updating": false,
+      "runInBackground": false,
+      "timeScale": 1,
+      "width": 1920,
+      "height": 1080,
+      "visions": [
+        {
+          "name": "Drone_B",
+          "origin": "VisionOrigin",
+          "material": "Assets/Art/Materials/Enemy/DroneVision.mat",
+          "shader": "Universal Render Pipeline/Unlit",
+          "radius": 5,
+          "angle": 80,
+          "thickness": 2,
+          "direction": 0
+        },
+        {
+          "name": "Drone_A",
+          "origin": "VisionOrigin",
+          "material": "Assets/Art/Materials/Enemy/DroneVision.mat",
+          "shader": "Universal Render Pipeline/Unlit",
+          "radius": 5,
+          "angle": 80,
+          "thickness": 2,
+          "direction": 0
+        }
+      ]
+    },
+    "compiler": "codedom"
+  }
+}

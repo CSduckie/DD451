@@ -1,0 +1,101 @@
+任务04A：背包Ctrl快捷转移入口与只读找空位
+日期：2026-10-18；工程E:/DD451；Dispatch v18 / ProjectRules A25。
+本交接只描述04的代码与测试准备；04A没有操作Unity、刷新、编译或运行测试。历史04/06/07成绩不用于本轮通过声明。
+
+一、公开接口与06接法
+
+BackpackUIController：
+public Func<string, bool> QuickTransferRequested { get; set; }
+public bool TryQuickTransfer(string instanceId)
+
+06把唯一有效目标选择、同步转移及双侧反馈接到QuickTransferRequested，返回实际成功与否；没有回调安全返回false。04不查找仓库/箱子，不引用Items/Transfers或Loot，不改变物品归属。
+先验证组件启用、背包已打开且不在关闭中、当前绑定manager/玩家仍有效、01权威物品属于本包且占格合法、无活动拖拽、无死亡/场景切换锁。探索要求已准备玩家，庇护所保留允许未准备或无玩家的现有边界。
+调用现有CanBeginDrag，沿用06的提交中、背包丢弃确认、仓库拖拽/遗弃确认限制；不另造确认标志。该闸门返回后再次核对会话、委托及本地状态，关闭后重开也不能继续旧请求。
+同步回调期间拒绝递归快捷请求、普通拖拽、选择和使用；finally释放请求标志。false不回退普通动作、不覆盖06反馈、不静默丢弃。06解绑时只清自己绑定的委托；04 Close撤销手势，不清空外部委托，重开仍可复用桥接。
+
+BackpackManager：
+public BackpackResult TryFindSpaceForExternal(string instanceId, bool preferredRotated, out Vector2Int cell, out bool rotated)
+
+复用GetPlacementCandidate与grid.CanPlace，y从上到下、x从左到右。完整扫描preferredRotated方向，全部无位且canRotate允许时才扫描另一方向。没有移动、预留或重排；无归属/实例/次数/通知修改。普通拖拽未接入自动找位，仍使用鼠标格位减抓取偏移和当前旋转。
+Success输出合法cell与实际rotated。所有失败cell=(-1,-1)、rotated=preferredRotated；调用者必须检查结果。
+失败语义：Busy；NotReady；NotFound；WrongOwner；WrongContainer；DuplicateInstance；InvalidConfiguration沿用已有校验。preferredRotated=true且禁止旋转返回RotationNotAllowed，不偷偷改方向。任一允许方向尺寸可以放入、但全部位置被占用返回Overlap；所有允许方向尺寸都超大返回OutOfBounds。
+此API仅找位，不授权来源或预先提交；06必须在Coordinator完整提交时再校验。
+
+二、UGUI手势
+
+BackpackItemView增加PointerDown/PointerUp，在左键按下时读取Keyboard.current左右Ctrl，记录本次pointerId与InputSession；没有新增InputAction或全局轮询。
+只有本轮有效PointerUp→PointerClick发送一次请求。clickPending在同步回调前清除，避免回调移除View后重发。按住不逐帧转移；释放Ctrl不把已开始的快捷按压变成普通按压。
+快捷按压超过拖动阈值只取消，不启动普通拖拽，也不接受UGUI随后对同物品补发的Click。普通按下后才按Ctrl仍为普通选择/拖拽，已有拖拽不转换成快捷请求。
+快捷按住期间阻止独立UseItem动作；使用入口额外读取当前Ctrl+左键状态，覆盖同帧左右键按下时InputAction早于UGUI PointerDown的情况。释放后新的普通右键可正常使用。
+关闭、受击、死亡、禁用及换绑使手势失效；旧松手/点击/开始拖拽不能借用重开的界面。相同实例Bind刷新保留手势，语言刷新不重执行业务。新增场景切换锁检查阻止重开，切场景中已打开界面沿用Close取消。
+原有拖拽token、R旋转、右键使用、Tab与健康事件处理者保留，没有增加第二份伤害订阅。
+
+三、修改文件（本轮只写这些归属路径）
+
+Assets/Scripts/Backpack/MonoBehaviour/BackpackItemView.cs
+Assets/Scripts/Backpack/MonoBehaviour/BackpackUIController.cs
+Assets/Scripts/Backpack/MonoBehaviour/BackpackManager.cs
+Assets/Tests/Backpack/Editor/BackpackTextEntries.cs
+Assets/Tests/Backpack/EditMode/BackpackManagerTests.cs
+Assets/Tests/Backpack/PlayMode/BackpackIntegrationTests.cs
+Docs/Architecture/BackpackSetup.txt
+Docs/Handoffs/04A_BackpackQuickTransfer_Handoff.txt
+
+没有修改BackpackGrid、输入资产、玩家、Items/Transfers、Loot、Warehouse、场景或Prefab；没有新增公共契约或namespace，没有新增脚本文件/.meta。保留现有GUID。
+
+四、语言与07资源更新
+
+仅更新TextEntries生成源的现有backpack.controls键，无新增键、无共享语言.asset写入。
+中文：左键拖动 · R旋转 · 右键使用\nCtrl+左键快捷转移 · 受击关包
+英文：Drag · R rotate · Right click: use\nCtrl+Left: transfer · Damage closes
+BackpackView另加F10行，因此controls保持两行，避免增加现有提示高度。07统一应用BackpackTextEntries.ApplySplitLayoutText并保存语言资源，在1920×1080核对文字实际可读；04没有渲染验证。66/4/6和容量不变。
+
+五、测试准备与证据边界
+
+BackpackManagerTests新增14个测试方法、22个参数展开用例：
+- 首个合法行优先位置；左右方向均先穷尽当前方向；只能旋转放下；非正方背包旋转尺寸适配。
+- 禁止旋转、满包、超大/极值尺寸、缺失实例、未初始化、非活动归属、错包、重复占格、非法尺寸拒绝。
+- 已用医疗包、唯一/已保有物和外部实例保持同对象；摆放对象、全部身份/来源/次数/恢复字段、实例总数、轮次及配置不变；Changed不增加。
+- Changed回调中查询返回Busy，不递归发布变化。
+
+BackpackIntegrationTests新增6个UnityTest：
+QueuedLeftAndRightCtrlClickRequestOnceAfterReleaseWithoutHeldRepeats
+QueuedRejectedCtrlGestureBlocksDragAndRightUseAndKeepsItsSource
+QueuedSameFrameCtrlLeftAndRightPressCannotUseAndRightUseRecoversAfterRelease
+QueuedOrdinaryPointerDownAndDragNeverBecomeQuickAfterCtrlIsAdded
+QueuedQuickPressCancelledByDamageCloseOrDisableRejectsOldReleaseAfterReopen
+QuickTransferApiRespectsRealDiscardGuardTransitionDeathAndReentry
+
+前5条采用排队InputSystem→EventSystem→UGUI，覆盖左右Ctrl、长按、释放修饰键、跨阈值取消、失败、同帧右键、普通操作恢复、受击/Tab/禁用重开后迟到松手。最后一条是API门禁夹具，包含真实06丢弃闸门、外部实例、拖拽中、未绑定、递归请求、闸门内关闭重开、切场景与死亡。
+快捷回调使用spy计数且不真实搬运物品，明确只证明04请求交接；不能代替06的跨容器提交、回滚、搜索状态或Windows实体鼠标验收。快照补充UniqueId、SourceId、OriginalSpawnPointId、RecoveryRound、LastLossReason、SpawnClaimed及EV。
+以上均为已编写、待07执行的测试。04A没有测试结果XML/截图，没有宣称任何新增用例已通过。07待04A/05A/06C就绪后统一编译，执行背包EditMode/PlayMode及06跨模块回归，并核对真实返回值和反馈接线。
+
+六、已读参考与静态审查
+
+已读04A任务、QuickTransfer_Dispatch、ProjectRules A25及相关当前规则、用户QuickTransfer/UserRequest.png、04/05与06A/06B/07A交接和GridLootAcceptance/Report.txt，按当前代码继续，没有从头重写。
+本轮实际重新读取E:/Portfolio-Card-Clone/Assets/Scripts/Cards/MonoBehaviour/CardDragHandler.cs。参考仓库https://github.com/CSduckie/CardGame；通过.git/HEAD和refs/heads/main读得57eabac0f946f21ef00b489e83c1c133905ea673。沿用已适配的UGUI Begin/Drag/End明确流程，增加本项目Ctrl按压与会话防迟到保护；不搬卡牌效果、DOTween或全局拖拽单例，未修改参考仓库。
+静态复核了本地InputSystemUIInputModule的PointerUp→Click→EndDrag顺序及相同pointerPress/pointerDrag时仍会发Click的情况，据此取消越阈值快捷手势。核对现有Player.IsSceneTransitionBlocked、CanBeginDrag与真实丢弃接口；源码检查不替代Unity编译。
+本轮未操作Editor、未刷新、未执行测试、未改场景/预制体、未给其他聊天发消息；由主程和07读取本交接继续。
+六份修改C#的.meta均存在，namespace声明为0；独立只读审查已复核新增Play用例的现有API、4×4样本格位、真实丢弃接线及生命/物品快照边界，未发现静态阻塞。该检查不构成运行通过。
+
+七、主程补发的06C外部预览依赖（已补代码，运行待07）
+
+已完成精确重载：public bool BeginExternalPreview(string instanceId, bool rotated, Vector2Int grabOffset)。
+原单参保留并委托false/Vector2Int.zero，保留自动开包的兼容行为。06 BeginLootDrag可传入条目的LayoutRotated及真实按下抓取偏移；本轮04没有跨改06调用者。
+初始化顺序：复用外部身份/来源归属与本包无占格、CanBeginDrag、无活动拖拽/快捷按压等门禁；验证当前会话/组件/玩家/切场景状态；检查定义存在、width/height均大于0、rotated=true时canRotate=true。通过后按当前方向实际宽高夹紧偏移，设置PreviewRotated、grabOffset和新token，最后首次UpdateDrag。
+非法参数或门禁拒绝返回false，不改源数据、不留半启动拖拽；已有拖拽被新请求阻挡时原token继续有效。首次更新回调同步取消/关闭或改来源后，返回false并只清自己的token；回调中重新开始的不同token不会被旧请求取消，其他调用者主动修改的来源也不由04回滚。首次更新抛异常则清理本次token并原样抛出。当前位置重叠/越界是有效但红色的预览，返回true不表示可以提交。
+R仍用原04输入动作和RotatePreview；不另建旋转入口，不修改鼠标位置来补偏移。
+
+BackpackIntegrationTests另新增3个UnityTest，因此本轮04A新增Play方法合计9条（此前6条快捷入口+本次3条API预览）：
+ExternalPreviewOverloadPreservesLegacyDefaultsAndRotatedGrabBeforeFirstUpdate
+ExternalPreviewOverloadRejectsInvalidDefinitionRotationAndGateWithoutPartialDrag
+ExternalPreviewOverloadDamageAndFirstUpdateCancellationCannotCommitOrCancelNewToken
+
+覆盖：旧单参默认/开包；1×2电池以2×1旋转形态、抓取(1,0)从鼠标(3,2)显示到(2,2)，首次通知就正确；实际预览尺寸；真实排队R恢复1×2及偏移夹紧；负数/极值偏移上下界；禁止旋转、零/负尺寸及被销毁定义；门禁false或同步关闭；真实非致命伤；旧松手/重复取消不能影响新token；首次更新关闭返回false、真实01更改来源ContainerId后仅取消预览、异常清理，以及首次更新中新建拖拽不会被外层旧请求清除。
+无效配置只修改/销毁运行时克隆SO并在TearDown清理；补充null安全快照。外部电池用真实01归属和04移格作API来源夹具，不虚构06箱子条目，不据此声称旋转箱内物品实体鼠标拾回或提交已通过。测试前后比较实例同对象、身份字段、次数、归属、总列表与布局，拒绝用例同时核对零Changed/零DragUpdated/无残留预览。
+新增重载与3条回归均未编译、未运行；07等待更新后的04A及05A/06C交接再统一执行。上述旧的6条静态审查记录只对应其明确范围，不冒称本次新增3条已有运行结果。
+本次重载与3条测试已作独立只读审查，核对首次通知顺序、方向夹紧、token清理、实际电池尺寸与空位、运行时配置克隆和失效定义快照；后续来源改变/异常清理分支由04补充并静态核对，仍无运行成绩。
+
+给06/07的接入核对项：静态读取时，ItemTransferUIBridge.BeginLootDrag已改调此重载，但false分支仍直接ClearLootDrag，首次启动之后又UpdateDrag一次并直接返回token。若同步回调经06新建另一来源拖拽，旧调用不应清理新lootSource/entry/session，第二次更新取消后也不应返回过期token。请06按本次启动资格复核清理及更新后的返回资格。04测试中新token替换通过Controller夹具描述此边界，不覆盖06来源记录；04未跨改06，此项不冒称已联测复现或修复。
+
+READY_FOR_INTEGRATION；04A代码及测试已就绪，未操作Unity，运行验证待07

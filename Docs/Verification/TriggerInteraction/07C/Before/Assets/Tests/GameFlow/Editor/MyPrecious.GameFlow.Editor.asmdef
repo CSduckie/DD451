@@ -1,0 +1,28 @@
+{
+  "name": "MyPrecious.GameFlow.Editor",
+  "rootNamespace": "",
+  "references": [
+    "MyPrecious.GameFlow",
+    "MyPrecious.Bootstrap",
+    "MyPrecious.Items",
+    "MyPrecious.Player",
+    "MyPrecious.Interaction",
+    "MyPrecious.Backpack",
+    "MyPrecious.Warehouse",
+    "MyPrecious.Shelter",
+    "MyPrecious.Localization",
+    "MyPrecious.Loot",
+    "MyPrecious.Health",
+    "MyPrecious.StateMachine.Contracts",
+    "Unity.Cinemachine",
+    "Unity.InputSystem",
+    "Unity.TextMeshPro",
+    "Unity.ugui",
+    "Unity.RenderPipelines.Universal.Runtime",
+    "MyPrecious.Loot.Editor"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "autoReferenced": false
+}

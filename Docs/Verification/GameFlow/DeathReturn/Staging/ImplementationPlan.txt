@@ -1,0 +1,26 @@
+07F implementation plan (staging only; not a completion report)
+
+Scene ownership: wait for SHELTER SCREEN DUST explicit release before any Assets mutation or Unity request. Main camera preview work is released; preserve its current SceneBindings and both scene saved presentation/input states. The user's current saved Ruins edits remain the baseline; do not rebuild scenes.
+
+Runtime design:
+- Append DeathReturning enum, leaving prior enum values intact.
+- Subscribe/unsubscribe the one real player's PlayerHealth.Died. Died first synchronously enters DeathReturning, takes the existing scene lock and closes existing UI sessions. Coroutine yields one frame before settlement/revival to exit Health notifications and synchronous transfer commits.
+- First accepted event owns the transition: TakeDamage refuses the existing sceneTransitionBlocked state. Death first makes TryExtract fail; extraction first locks immediately, then rejects later damage. Backpack/UI locks do NOT block damage. Existing Drone already respects the scene lock; no enemy production code changes.
+- Reuse validated carried/remaining snapshots. RecordLoss(ExplorationDeath) for every backpack item, including retained items. Separate successful loss and layout removal indices; Retry never repeats completed RecordLoss. Finish remaining world/container losses and close Loot sources before beginning Shelter load.
+- Settle once, then refresh backpack/EV. Keep warehouse placements, upgrades and existing module instances. No BeginRound on death/revival and no item use reset.
+- Move the same player to the existing Shelter spawn. Only a dead, prepared, transition-blocked player can RecoverAfterDeathInShelter; already-revived Retry uses RelocateWithinRun without healing. Normal extraction continues RelocateWithinRun without healing.
+- Next actual departure alone begins the next round and clears step counters. Existing unique instance recovery uses its original spawn and identity; existing enemy initialization remains at end of departure.
+- Add three bilingual keys to the existing GameFlow table and builder definition; no HUD framework changes.
+
+Deployment candidates:
+Assets/Scripts/GameFlow/MonoBehaviour/GameFlowManager.cs
+Assets/Scripts/GameFlow/RuntimeData/GameFlowStage.cs
+Assets/Scripts/Player/MonoBehaviour/PlayerHealth.cs
+Assets/Scripts/Player/MonoBehaviour/PlayerController.cs
+Assets/Scripts/Loot/MonoBehaviour/LootRuntimeManager.cs
+Assets/Data/Localization/GameFlow/GameFlowText.asset
+Assets/Tests/GameFlow/Editor/MinimumLoopSceneBuilder.cs (three localization entries only, read latest first)
+Assets/Tests/GameFlow/PlayMode/GameFlowDeathReturnTests.cs (new)
+Assets/Tests/GameFlow/PlayMode/PlayerSceneTransitionTests.cs (updated scene lock boundary, recovery coverage)
+
+Validation planned after ownership release: fresh saved-scene backup/status, compile; focused real Bootstrap PlayMode deaths/retries/normal return; existing GameFlow/Player/Loot checks affected by new boundaries; ordinary Play actual TakeDamage or natural Drone damage, UI/EV/warehouse/next round capture, 1920 frame inspection with honest API-vs-native classification. Preserve failure evidence. Finish Edit/no callback and explicit release.

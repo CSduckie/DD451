@@ -1,0 +1,27 @@
+09H 转身漏检：只读代码审计及最小实证矩阵
+2026-10-19；仅检查磁盘代码，未运行 Unity、未改 Assets。本文件不是复现结果或根因结论。
+
+一、已经确认的代码事实
+1. DroneController.cs:87-99 每次 Update 先 SmoothDampAngle 推动 facingYaw，再更新模型/vision.SetHeading，最后运行当前状态的 Update；没有针对 Alert 暂停 yaw 的分支。
+2. Controller.cs:177-190 进入 Alert 只清 FlightVelocity/IsBlocked；不会冻结 facingYaw/turnVelocity，也不改变 FacingDirection。FacingDirection 通常在 MoveTowards:310 按路线/最后目标位置改变。
+3. Patrol.Update:19 / Search.Update:20 都经 ObservePlayer 自然进入 Alert。Alert.Update:6 重新 ObservePlayer；普通发现警戒只要当帧不可见，就在:16 转 Search，尚未结束的 .5 秒计时不会强制追击。Search 缓存进入时 LastKnownPosition，并可在 FixedUpdate 移动/改变目标转向，再发现重新 Alert。
+4. Vision.cs:128-153 使用 Controller 当前 FacingRotation，位置跟随模型 VisionOrigin；转向及前倾回正可能同时移动该锚点，不能只记录 yaw 忽略视野起点。
+5. Vision.CanSeePrepared:209-228 要求合法玩家、非掩体隐藏、layer匹配，然后用实际 RangeCollider.ClosestPoint(capsule.bounds.center) 检查身体中心处于凸体内，最后做遮挡。不是屏幕区域判断，也不是任意身体边缘进入即发现。
+6. BuildRange:312 起建立局部 XY 扇形、局部 Z 有限厚度柱体；当前真实 Drone.prefab radius=5 / angleDegrees=90 / thickness=2 / directionDegrees=0。yaw 旋转也旋转厚度方向，显示网格在局部 Z=0 平面；屏幕上投影重合不能单独证明玩家身体中心进入了三维凸体。
+
+二、最小诊断矩阵（建议先记录，再决定产品修正）
+A. 端点基线：无墙/无掩体、有效启用玩家、原 playerMask；yaw 已稳定在 0 或 180，玩家分别置实际视野前方约 3m 且中心与锚点近同高，远离实体球。确认自然 Patrol→Alert→Chase，以及 CanSee/FindVisiblePlayer/实际 Collider 内点一致。复用 DroneAlertTests.cs:44 RealDiscoveryHoversForConfiguredDelayThenChaseHidesOnlyRenderer；真实模型复用 EnemySceneIntegrationTests.cs:227。
+B. 几何对照：独立 Vision 静态 yaw 0/45/90/135/180；一组玩家始终停留世界 XY、Z=0，另一组把玩家随 yaw 转到同一个合法局部坐标。每格记录真实中心的 vision.InverseTransformPoint、ClosestPoint 距离、CanSee、FindVisiblePlayer。仅用实际 Collider 作包含证据，不使用 ComputePenetration 的深度返回作唯一依据。复用 DroneVisionGeometryTests.cs:176-225 YawHeadingRotatesActualRangeAndKeepsWallClippingAligned；现有测试只把玩家随 heading 一起旋转，没有“固定世界 XY 玩家”这一组。墙遮挡恢复对照可直接保留已有同一测试。
+C. 自然巡逻反向：保留 playerMask、合法玩家和真实路线，通过既有点位让 FacingDirection 自然翻转；先让玩家在远处，待出现中间 yaw 后置于旧前方或新前方约 3m（左右反向各一次）。记录从 Patrol 到首次 Alert、之后的每帧状态、计时、真实包含关系，观察是否 Alert→Search→Alert 往返；不要先强制状态、私改 facingYaw 或冻结 yaw。复用 DroneBehaviourTests.cs:493 的转向夹具与 Until/Point/CreateDrone，加 DroneAlertTests.cs:44 的真实发现/计时断言。是否应允许旧前方目标随转头丢失属于玩法判定，此矩阵仅复现事实。
+D. Alert 归因对照：将 C 中同一玩家位置分别用于“yaw 已稳定才发现”和“yaw 尚未稳定就发现”；两组无墙/无掩体、悬停位移受控。若仅中间 yaw 组在 Alert 中继续旋转，且失去包含的那帧转 Search，才支持“继续转向导致该次警戒丢失”。若实际中心仍在范围内、CanSee=true 而状态漏转，转查查询/状态更新时序；若 CanSee=false 但中心在范围内，转查资格/掩体/遮挡而非直接归咎 yaw。复用 DroneAlertTests.cs:168（普通墙/距离丢失必须 Search）、:414（Search 再发现新倒计时），这些既有行为不能在修复时无意取消。
+
+三、每帧最小取证字段
+frameCount/time/fixedTime；State、IsCoverAlert、AlertSecondsRemaining、Target、LastKnownPosition；FacingDirection、FacingRotation.eulerAngles.y；Body.position 与 transform.position；VisionOrigin.position、vision.transform.position/rotation；capsule.bounds.center、player.Body.position；localCenter=vision.InverseTransformPoint(center)；实际 Collider ClosestPoint 距离；RangeCollider enabled/convex/sharedMesh、Renderer enabled；CanSee、FindVisiblePlayer结果；CanTarget/IsPrepared/IsDead/transition lock/CoverArea.IsHidden、playerMask与玩家layer。先记录状态和姿态，再在同一稳定帧边界做公开查询，避免把测试读取发生在半帧误当成产品漏检。真实相机截图/投影只作显示证据，和三维包含分别保存。
+
+四、现有测试的明确缺口
+DroneBehaviourTests.cs:493-547 SmoothYawSharesHeadingWithVisionSurvivesRebuildAndResetsOnlyForNewRound 在:497 设置 playerMask=0，且不创建可发现玩家；directionDegrees=20、tiltDegrees=0、独立无模型锚点。因此它只证明中间 Y 角、模型/视野 heading 同步、root 不转、Rebuild/同轮保姿态/新轮复位；不能证明转头时发现玩家，不能排除 Alert 期间失去目标，也不能覆盖真实 VisionOrigin 随模型移动。
+DroneVisionGeometryTests.cs:178 的 45/90° 用例把玩家一起转到扇形内部，只证明转后的三维几何及墙裁剪一致，不证明固定 XY 平面的玩家会持续处于范围内。
+DroneAlertTests.cs:44 和真实场景 :227 从稳定的前向目标开始；既有墙/距离丢失与 Search 再发现测试没有横跨巡逻反向中的 Alert。
+
+五、边界
+两条候选路径都尚无本次运行时实证。暂不建议增加厚度、吸附玩家、忽略 Collider、强制保持目标或冻结 yaw；任何行为改动须根据上述矩阵结果与当前玩法规则决定。无需新增通用 helper；先用现有 fixtures 和现有公开只读状态取证即可。

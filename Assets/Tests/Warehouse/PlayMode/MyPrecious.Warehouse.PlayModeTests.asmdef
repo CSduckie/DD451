@@ -1,0 +1,7 @@
+{
+    "name": "MyPrecious.Warehouse.PlayModeTests",
+    "rootNamespace": "",
+    "references": ["MyPrecious.Warehouse", "MyPrecious.Shelter", "MyPrecious.Items", "MyPrecious.Bootstrap", "MyPrecious.Localization", "Unity.InputSystem", "Unity.TextMeshPro", "Unity.ugui"],
+    "autoReferenced": false,
+    "optionalUnityReferences": ["TestAssemblies"]
+}

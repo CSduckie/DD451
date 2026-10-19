@@ -1,0 +1,39 @@
+任务04A：背包Ctrl快捷转移入口与只读找空位
+项目E:/DD451；Dispatch v18；由用户明确授权主程下发。
+
+先完整阅读Docs/AgentPrompts/QuickTransfer_Dispatch.txt和ProjectRules A25，按当前实际04代码与04_Handoff继续，不从头重做背包。
+本任务只写本模块代码/测试/文档，不操作Unity、不切场景、不主动刷新、不运行测试。07统一编译和集成验收；你应提供可运行的测试而不是虚报通过。
+
+具体可修改文件
+Assets/Scripts/Backpack/MonoBehaviour/BackpackItemView.cs
+Assets/Scripts/Backpack/MonoBehaviour/BackpackUIController.cs
+Assets/Scripts/Backpack/MonoBehaviour/BackpackManager.cs
+必要时Assets/Scripts/Backpack/Logic/BackpackGrid.cs
+必要时Assets/Tests/Backpack/Editor/BackpackTextEntries.cs（文字生成源，不直接保存共享语言.asset）
+Assets/Tests/Backpack/EditMode/BackpackGridTests.cs、BackpackManagerTests.cs
+Assets/Tests/Backpack/PlayMode/BackpackIntegrationTests.cs；相关新增测试仅放这些既有目录。
+文档Docs/Architecture/BackpackSetup.txt；交接Docs/Handoffs/04A_BackpackQuickTransfer_Handoff.txt。
+不得修改Items/Transfers、Loot、Warehouse、正式场景、Prefab、玩家或输入资产。本轮没有必要预建Utilities/Contracts类型。
+
+开发内容
+0. 实际消费者补充：06C旋转箱内条目拾回需要 public bool BeginExternalPreview(string instanceId, bool rotated, Vector2Int grabOffset)。现单参保留并委托false/zero；新重载复用原门禁，验证合法尺寸/旋转，再在首次UpdateDrag之前设置方向、按该方向宽高夹紧抓取偏移、建立唯一拖拽token。拒绝时不留半启动状态，不改源归属/占格。R/逐帧拖拽仍归04。补单参兼容、非方形旋转与抓取偏移、非法旋转/尺寸、取消迟到回调等必要回归；未运行如实标注。该依赖由主程核对后补发，必须完成并在新交接注明再写READY。
+1. 在现有UGUI物品点击路径识别左右Ctrl+左键，用Input System，不再注册一份全局轮询/业务按键。
+2. UIController暴露 public Func<string, bool> QuickTransferRequested { get; set; } 和 public bool TryQuickTransfer(string instanceId)。保持明确调用和返回结果；06后续接回调。先验证背包打开、物品仍归本包、无拖拽/确认/关闭/死亡/切场景等限制；复用现有CanBeginDrag等真实入口，不反向引用06业务类型。
+3. 本按压周期是快捷动作时消费该手势；成功或失败都不能再启动普通拖拽/使用/二次提交。已经普通拖拽后按Ctrl不得改成快捷操作。关闭/禁用清手势状态；普通左拖、R、右键使用、Tab/受击取消保持。
+4. Manager新增签名：public BackpackResult TryFindSpaceForExternal(string instanceId, bool preferredRotated, out Vector2Int cell, out bool rotated)。只读扫描合法位置，复用现有校验；按左上行优先，当前方向全部无位且允许旋转才试另一方向；不重排既有物品，不改归属/计数/通知。失败使用已有合理结果，不另造复杂算法或事务。
+5. 快捷目标选择、真实搬运、双侧反馈由06完成；没有回调时安全拒绝，不能本模块私自寻找仓库/箱子并转移。
+6. 显示文字复用03；必要帮助文本在本模块TextEntries生成源改动并在交接列键名，让07统一更新资源。
+
+代码要求
+这是用户作品集兼毕设。参考并可修改复用用户CardGame的点击/拖拽组织及当前适配代码，实际读取源码/既有参考并记录来源；不拷贝未用框架。
+英文目录；4空格、括号另起行；自有C#不写namespace。普通字段/方法，注释用简短中文解释边界，用户须能修改和答辩说明。
+
+交付验收用例
+找位返回预期行优先位置、当前方向优先、旋转后才可容纳、满包/超大/无效实例拒绝，查询前后所有已有摆放/身份/通知不变。
+左/右Ctrl点击一次只调用一次回调；回调失败不回退成拖拽；按住不每帧重复；普通输入与取消路径无回归。
+使用本模块合适测试层覆盖，不写镜像测试，不宣称跨模块已完成。
+
+交接
+先列拟修改路径再执行。交接明确API签名、失败语义、手势处理、修改文件、参考来源、测试待07运行。
+完成时写“READY_FOR_INTEGRATION；04A代码及测试已就绪，未操作Unity，运行验证待07”，将此标记放交接最后一行；如尚未完成不得写。
+随后结束本聊天本轮，不抢Editor、不主动给别的聊天发消息；主程与07会读取交接。

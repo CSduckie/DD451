@@ -1,0 +1,17 @@
+待部署/待验收稿，不是完成记录。
+
+最新规则：原“发现立即Chase”和“警戒等于Search”均被独立Alert替换。Patrol/Search发现有效玩家先Alert；每机Controller只读AlertProgress为唯一积累值。Alert不移动，沿用原模型缓慢回正及平滑水平朝向；失去视线不自动追踪玩家。看到玩家时增加，墙遮挡、离开范围、有效蹲伏掩体或玩家无效时减少，再看到从剩余进度增加；满后Chase，退0回Patrol保留当前路线索引。
+填满/消退采用主程可调整默认值2秒/2秒，位于DroneConfigSO和DroneConfig.asset，非用户指定数值；运行时对非正时长至少按.01秒处理。公共StateMachine继续复用用户2DArpg适配版本，不添加框架或namespace。原enum编号0..4不变，Alert追加为5。
+SetTint负责进入橙色或退出时状态换色并清填充；SetAlertProgress由Controller每帧按逻辑值调用，视觉不自行计时。Alert/Search橙灯呼吸，Chase红灯，Patrol原蓝灯。红色只反映状态，自毁资格仍由CanExplodeOnContact明确判断Chase。原伤害、轮次和背包受击中断规则保留。
+停用/销毁/新轮清警戒进度；相同或旧轮BeginRound在任何重置前直接拒绝。EnemyTest双语状态增加“警戒/Alert”和整数百分比，F10仍走03唯一入口。
+
+策划巡逻配置操作（原有能力补说明与可视化）：
+1. 在EnemyTest Hierarchy选Drone_A或Drone_B场景实例，查看DroneController的“本机巡逻路线：在场景实例上配置”下Patrol Points数组。每机独立持有自己的引用。
+2. 场景点位位于Drone_A_PatrolPoints/Point_A、Point_B和Drone_B_PatrolPoints/Point_A、Point_B。可新增普通空GameObject作为点位，逐个拖入对应机的数组。
+3. 在Scene视图移动点位的X/Y，或修改Transform位置；数组顺序就是行走顺序，末点后循环回第一有效点。更改数组顺序即可改变路线顺序，不需要改代码。点位Z不改变无人机出生Z约束。
+4. 选中无人机且打开Scene的Gizmos，可看到投影到本机飞行平面的点、连线和数组序号。不是新路线管理器，也没有硬编码场景坐标。
+5. Patrol Speed和Patrol Wait Seconds在现有DroneConfig资源中配置；共享同一Config的无人机共享这些数值，路线数组仍独立。
+6. 全空路线安全原地观察，BeginRound有既有警告；个别空引用跳过。Alert退0继续原路线当前索引，不回出生点或强制第一点。运行时改点位只影响本次Play，长期调整请在Edit模式修改并保存自己的场景实例覆盖。
+Prefab资源不能引用场景Transform，正确做法是在场景中放置Prefab实例，再填本实例Patrol Points数组。保留已有Prefab与EnemyTest实例引用，不重建场景。
+
+验收占位：完整Enemy回归、实际1920x1080状态填充/退条画面、参数与GUID/Scene完整性、最后Console和Editor状态尚待整合完成后填写。禁止用本稿声明已通过。

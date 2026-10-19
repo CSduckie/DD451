@@ -1,0 +1,43 @@
+09I 测试夹具诊断与最终验证（2026-10-19）
+本审计只读Assets/本地包、只修改Docs，未调用Unity或运行TestRunner。下列Unity结果由root实际执行并保存；最终原6项整组6/6通过、0失败/0跳过，首轮与中间结果全部保留。
+
+证据边界
+PlayMode-6-First.xml：2026-10-19 17:16:54–17:17:00 UTC，6项4通过2失败、0跳过。
+OnlyActualCrouchingCoverFadesInAndStandingOrLeavingFadesOut：AssertGradualWeight递增断言在当时370行失败，期望>=.0127362562，实际0。结合断言previous-.0001，说明上次权重约.012836后回到0；没有记录当时CrouchHeld/WantsCrouch/Hidden/生命周期条件，不能仅凭此判定具体原因。
+ReenableReusesOneOwnedProfileAndDestroyCleansItWithoutChangingOtherVolumes：在Hidden before disabling iteration0等待3秒超时。这发生在第一次disable之前，所以不是已经证明了profile重建、重复enable或销毁泄漏。
+PlayMode-2-Diagnostic.xml：2026-10-19 17:18:38–17:18:41 UTC，原两失败例仅增加Describe诊断、未做功能修正后均通过。故首轮确切触发条件未复现，不把复跑成功解释为根因已找到，也不删首轮XML。
+PlayMode-6-NaturalInput.xml：2026-10-19 17:22:31–17:22:34 UTC，自然输入同步修正后原6项5通过1失败、0跳过。OnlyActual的递增监测仍失败，权重约.017927→0；失败时Describe记录pose=True、wants=True、input=True、hidden=True，transform/body均(7000,100,0)，state=Fall、prepared=True、blocked=False。因此不能继续把C丢失、ClearRequests或输入缓冲当作已经证实的失败原因。Describe是在协程恢复时查询，不是此前效果LateUpdate的同刻轨迹。
+PlayMode-6-Final.xml：2026-10-19 17:23:49–17:23:54 UTC，仅再在测试CreatePlayer内将固定刚体设为RigidbodyInterpolation.None，原6项完整组6通过、0失败/0跳过。所有产品断言保留，没有skip、延长效果等待或放宽单调/中间值判断；本轮夹具排错未改生产代码。
+完整结果顺序为4/6→仅诊断复跑2/2→自然输入5/6→固定刚体无插值6/6。最终6/6是一批实际完整执行，不是拼接通过项或隐藏历史失败。
+最终实际测试源码Assets/Tests/Enemy/PlayMode/PlayerStealthVignetteTests.cs的SHA256：60C7231A999E524AF999D96185C015E8FC8BFBB008F2B8260B215E21FFF034F0。
+最终XML的SHA256：B34B8347C11A6C28F64CBB19D740480E8F18BDC2F3012A8D6755DF7F5764739D。两个SHA分别对应源码与结果，不能混用。
+
+可由源码确定
+PlayerInputReader.CrouchHeld读取私有cloned crouch action.IsPressed()。其ClearRequests只清jumpPending/interactPending/LastJumpPressedTime，不取消crouch action。
+PlayerController.Update先把reader.CrouchHeld存入crouchHeld，再转发PlayerFallState.Update；Fall只在IsCrouching且背包关闭且WantsCrouch=false时自动站起。Controller.ClearRequests确会清缓存crouchHeld，但首轮两失败阶段没有新增背包/transition调用；仅凭该方法存在不能断言它触发失败。
+夹具groundLayers=0、Body.isKinematic=true，正常处于Fall但身体不下落。API SetCrouching之后必须由真实reader持续持键；原helper没有确认reader已经接收到目标状态。
+生产Vignette每帧对CoverArea.IsHidden求值，失效玩家/绑定条件则立即0。首轮缺少条件采样，不能区分失效分支还是真实隐藏条件改变。
+
+本地InputSystem包核对（com.unity.inputsystem@be6c4fd0abf5）
+InputSystem/InputSystem.cs:2803–2823：手动Update会插入额外完整input frame并flush队列。
+InputSystem/InputManager.cs:165–177、1796–1798：无参Update选defaultUpdateType；363–380定义gameHasFocus。当前夹具IgnoreFocus+AllDeviceInputAlwaysGoesToGameView下正常未暂停Play应选player更新，不能声称无参调用必然选Editor。
+InputSystem/State/InputStateBuffers.cs:18–24、118–125：Editor/Player缓冲分离，Dynamic/Fixed/Manual共Player缓冲。
+InputSystem/Actions/InputAction.cs:1178–1187：IsPressed读actionStates中的isPressed，不是直接读当前Keyboard buffer。因此“Editor切buffer导致CrouchHeld=false”在此没有事件/phase证据。
+InputSystem/InputSettings.cs:51–72说明自动输入更新早于MonoBehaviour.Update。让队列按自然player loop处理并确认reader，比在测试协程手工插入输入帧更明确；这属于夹具同步改进，不是已证实根因修复。
+
+输入同步修订（保留历史）
+当时Staging/PlayerStealthVignetteTests.cs从root带Describe的实际Assets源码生成，保留Describe与全部6例产品断言。该阶段稿不是最后无插值版本；最终交付以实际Assets及以上源码SHA为准：
+1. SetCrouching返回IEnumerator；QueueStateEvent后至少yield null，再在1秒内等待真实player.inputReader.CrouchHeld等于请求值；失败报frame/updateType/key/focus和Describe。
+2. 确认reader后只调用一次player.SetCrouching并SyncTransforms；移除InputSystem.Update，所有调用yield return。不每帧强设姿态，不延长原3秒效果等待，不skip。
+3. 站起渐退时AssertGradualWeight先记录满权重，再执行可选change协程等待松C，之后仍要求单调渐变、中间值和0终值。避免新的输入准备等待漏掉渐退起点，保留原>.9起点约束。
+其余player、cover、volume、profile、binder和生命周期实现不改，不改任何生产Assets。
+
+固定刚体夹具调整与因果边界
+真实PlayerController.InitializeReferences会配置RigidbodyInterpolation.Interpolate。测试为隔离掉落将Body设kinematic、groundLayers设0，并用Body.position与transform.position直接瞬移；OnlyActual还会在短时间内移出8m再移回。插值是此固定位置状态映射夹具不必要的渲染条件，最终在CreatePlayer的Body.isKinematic=true之后设Body.interpolation=RigidbodyInterpolation.None，再SyncTransforms，仅作用于测试实例。生产玩家的插值配置与暗角组件均未修改。
+CoverArea.ComputePenetration使用玩家Collider的transform位置，而失败Describe也只记录协程恢复时的位置。引擎存在插值相关PlayerLoop阶段，因而LateUpdate时刻与稍后协程采样的姿态可能不同；但本次没有实际LateUpdate采样轨迹，也没有证明Transform确曾回到旧位置。最后6/6支持移除该不必要夹具条件后测试通过，不能夸称已经彻底复现/证明“插值回旧位置”根因，亦不能据此把首轮全部失败归于同一个原因。
+高执行序LateUpdate被动采样方案只被提出，没有执行，不能作为已有证据。失败XML、诊断复跑和自然输入5/6都保留。
+
+最终验证与保留范围
+最终所有6个测试方法仍在；>.9起点、单调渐变、0..1中间权重与终点、真实隐藏/背包/重叠Cover、死亡/解绑/场景锁/跨场景立即清零、Profile复用/销毁及其他Volume不受污染断言均保留。现有Describe与自然输入确认改进保留，没有逐帧强制玩家姿态。
+输入同步草稿此前离线编译exit0，Compiler-FixtureFix.log仅有Unity源码生成器USG0001信息；离线编译不替代测试结果。最终通过依据是root实际执行的PlayMode-6-Final.xml，不再是待执行计划。
+root另报告正式实景probe10阶段/生命周期通过，这是独立产品证据，不能抹掉测试夹具的历史不稳定性。本文件只收尾这6项focused测试的证据，不扩称全项目回归、原生键鼠验收或Editor释放。

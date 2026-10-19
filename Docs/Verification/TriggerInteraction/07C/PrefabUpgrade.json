@@ -1,0 +1,11 @@
+{
+  "utc": "2026-10-19T01:11:10.7295544Z",
+  "changed": [
+    "Assets/Prefabs/Player/PlayerCamera.prefab",
+    "Assets/Prefabs/GameFlow/ShelterStoragePoint.prefab",
+    "Assets/Prefabs/GameFlow/DeparturePoint.prefab",
+    "Assets/Prefabs/GameFlow/ExtractionPoint.prefab",
+    "Assets/Prefabs/Loot/LootBox.prefab",
+    "Assets/Prefabs/Loot/GroundItem.prefab"
+  ]
+}

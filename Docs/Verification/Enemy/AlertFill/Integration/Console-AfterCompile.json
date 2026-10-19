@@ -1,0 +1,13 @@
+{
+  "success": true,
+  "message": "Retrieved 1 log entries.",
+  "data": [
+    {
+      "type": "Warning",
+      "message": "<b><color=#cc7a00>MCP-FOR-UNITY</color></b>: [WebSocket] Unexpected receive error: WebSocket is not initialised",
+      "file": "E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Helpers/McpLog.cs",
+      "line": 45,
+      "stackTrace": "UnityEngine.Debug:LogWarning (object)\nMCPForUnity.Editor.Helpers.McpLog:Warn (string) (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Helpers/McpLog.cs:45)\nMCPForUnity.Editor.Services.Transport.Transports.WebSocketTransportClient/<ReceiveLoopAsync>d__41:MoveNext () (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Services/Transport/Transports/WebSocketTransportClient.cs:404)\nSystem.Runtime.CompilerServices.AsyncTaskMethodBuilder:SetException (System.Exception)\nMCPForUnity.Editor.Services.Transport.Transports.WebSocketTransportClient/<HandleMessageAsync>d__43:MoveNext () (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Services/Transport/Transports/WebSocketTransportClient.cs:485)\nSystem.Runtime.CompilerServices.AsyncTaskMethodBuilder:SetException (System.Exception)\nMCPForUnity.Editor.Services.Transport.Transports.WebSocketTransportClient/<HandleExecuteAsync>d__48:MoveNext () (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Services/Transport/Transports/WebSocketTransportClient.cs:664)\nSystem.Threading._ThreadPoolWaitCallback:PerformWaitCallback ()\n"
+    }
+  ]
+}

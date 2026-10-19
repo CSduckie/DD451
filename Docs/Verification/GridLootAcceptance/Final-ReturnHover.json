@@ -1,0 +1,22 @@
+{
+  "token": 1,
+  "id": "996c9601a9664add845299c14985494e",
+  "owner": "Backpack",
+  "visible": true,
+  "rect": [
+    1578.0,
+    674.0,
+    136.0,
+    136.0
+  ],
+  "backpackFeedback": "loot.return_ready",
+  "lootFeedback": "loot.return_ready",
+  "viewportColorUnchanged": true,
+  "bagCount": 2,
+  "width": 1920,
+  "height": 1080,
+  "target": [
+    1646.0,
+    262.0
+  ]
+}

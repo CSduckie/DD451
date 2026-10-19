@@ -1,0 +1,187 @@
+MyPrecious 009 — 敌人AI与潜行
+项目：E:/DD451
+当前状态：ALERT_FILL_DELIVERED / ENEMY_TESTS_PASSED / EDITOR_RELEASED。完整Enemy EditMode34/34、PlayMode37/37通过，共71项；真实1920×1080自然Alert积累/遮挡退条/续积追击画面已验证。
+本轮最新规则为独立Alert警戒积累：Patrol/Search真实发现玩家先悬停警戒，橙色视锥由红色逐渐填充，满后Chase；丢失、遮挡、有效掩体或目标无效时渐退，余量可续积，退0继续原巡逻索引。Patrol/Alert/Search接触均无自毁伤害；只允许Chase接触自毁。策划可在各场景实例上配置巡逻点与顺序。
+当前实现说明见第一/四/六/八/九及第16节。代码与资源已经部署；最后Editor为EnemyTest/clean/Edit，Console0错误0警告；完整证据位于Docs/Verification/Enemy/AlertFill/Integration/。主程另行进行连续场景复验，本记录不冒充该后续验收。
+第10至15节保留历史交付和规则演进记录；最新基线保留第15节水平视锥、模型前倾不传给视野、Chase专属伤害及原灯光配置约束。第14节“警戒对应Search”“无新状态”已被本轮Alert替换，第13节dirty Shelter并非本轮实时Editor状态。
+原生键盘边界保留：历史GameView已获焦点但原生F10/Tab无响应，原因尚未判定；其他完整原生组合、两轮试玩和Windows独立构建未逐项验收。本轮通过的排队输入与API辅助截图不等于原生键鼠验证。
+
+一、范围与已确认设计
+无人机在XY平面飞行，固定自身出生Z；每机使用独立状态机与场景巡逻点引用。最新用户规则用独立Alert替换此前“发现立即追击、无怀疑读条”和“警戒等于Search”：Patrol或Search发现有效玩家先进入Alert，停止位置移动；积累满后才进入Chase。
+Alert内可见时增长；玩家离开视野、墙遮挡、有效蹲伏掩体或玩家失效时渐退。再次发现从余量继续；退0回Patrol并保留当前巡逻索引，不回出生点，不读取不可见玩家实时坐标。Chase失去视线仍沿最后看见的位置短暂Search，再回巡逻；Search重获目标同样重新Alert。
+只在Chase真正接触有效玩家时自毁并结算一次伤害。Patrol、Alert、Search均保留实体阻挡但无接触自毁/伤害；灯光RGB只表现状态，不决定伤害资格。
+飞行继续无bob/sway：速度驱动平滑前倾、停止平滑回正；四桨叶持续旋转。模型与视锥共享平滑左右yaw，但VisionOrigin只提供机头位置，视锥不继承模型前倾；当前directionDegrees=0，Game画面必须显示水平扇形。
+alertFillSeconds=2、alertDecaySeconds=2是主程采用的可调整默认秒数，不是用户指定常量；速度、伤害、到点等待、搜索时间同样可配置。运行时对警戒时长至少按0.01秒处理，避免除零。
+本轮不重建或覆盖正式Bootstrap/Shelter/Ruins、现有Drone Prefab或EnemyTest场景；保留用户模型/灯光配置、GUID与实例覆盖。不实现死亡返回、物品损失、EV、唯一找回或跨场景敌人存档。
+
+二、当前文件与部署状态
+以下为已部署生产文件；本轮新增DroneAlertState.cs、DroneAlertTests.cs，并接入视觉侧shader/填充代码，详见第16节。AIStaging/Assets保留当时审查稿，交付以当前实际Assets及Integration证据为准。Docs/Verification/Enemy/Staging/Assets是更早开发稿，不得用旧稿覆盖当前真实Assets或已修正构建器。
+生产代码：
+Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs
+Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs
+Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs
+Assets/Scripts/Enemy/Drone/ScriptableObject/DroneConfigSO.cs
+Assets/Scripts/Enemy/Drone/States/DroneStateBase.cs
+Assets/Scripts/Enemy/Drone/States/DronePatrolState.cs
+Assets/Scripts/Enemy/Drone/States/DroneChaseState.cs
+Assets/Scripts/Enemy/Drone/States/DroneSearchState.cs
+Assets/Scripts/Enemy/Drone/States/DroneExplodeState.cs
+Assets/Scripts/Enemy/Stealth/MonoBehaviour/CoverArea.cs
+Assets/Scripts/Enemy/MyPrecious.Enemy.asmdef
+
+测试与构建：Assets/Tests/Enemy/EditMode/CoverAreaTests.cs、DroneVisionGeometryTests.cs、DroneRoundTests.cs；PlayMode/DroneBehaviourTests.cs、EnemySceneIntegrationTests.cs；PlayMode/Runtime/EnemyTestDriver.cs；Editor/DroneVisionEditor.cs、EnemyTestSceneBuilder.cs。
+四份必要测试/Editor程序集另加一份Enemy生产程序集，rootNamespace均空；TestSupport只服务独立测试启动，生产Enemy不引用测试代码。
+
+已生成并保存的资源：Assets/Data/Enemy/Drone/DroneConfig.asset；Assets/Data/Localization/Enemy/EnemyText.asset；Assets/Prefabs/Enemy/Drone/Drone.prefab；Assets/Prefabs/Enemy/Stealth/CoverArea.prefab；Assets/Art/Materials/Enemy/DroneVision.mat；Assets/Scenes/Tests/Enemy/EnemyTest.unity。对应.meta均已存在。
+构建器仅创建缺失的009资产，遇到已存在目标会保留；不重建玩家/背包/搜刮Prefab。要调整已有009资产，应先复制当时真实内容和.meta，保留GUID后进行局部编辑。
+首次构建遇到Unity禁止在未保存临时场景旁再次新建Additive场景的错误。修正前的实际EnemyTestSceneBuilder.cs及.meta已备份到Docs/Verification/Enemy/BeforeBuildFix/Assets/Tests/Enemy/Editor；修正为先关闭自有Prefab模板工作区，再创建/保存/关闭EnemyTest，并恢复原场景。之后构建成功，未修改正式Bootstrap。
+
+三、参考来源与公共模块
+参考本机E:/Portfolio-Clone，读取.git/HEAD与refs/heads/main核实c601c36f95efdd4d67327489f9edb58412aa54b4。
+实际读取FrameWork/StateMachine/StateMachine.cs、StateBase.cs，Enemy/Drone/DroneController.cs及States中的StateBase、Patrol、Chase、Attack。
+复用本工程02已适配的Utilities/StateMachine/StateMachine.cs、StateBase.cs和Utilities/Contracts/StateMachine/IStateMachineOwner.cs；DroneStateBase沿用PlayerStateBase宿主适配。
+保留原ARPG枚举switch切换具体状态的可读结构，不复制另一份状态机；不迁入2D物理、NavMesh、MonoManager、战斗属性或原失去视线仍读实时位置的缺陷。
+参考仓库未改。其他两个参考仓库本次无必要代码迁入，不为凑复用宣称已复用。
+
+四、状态与运动
+每机new独立StateMachine，Update/FixedUpdate/LateUpdate各入口只转发一次。状态Enter/Exit不递归切换；停用/销毁Stop清缓存。沿用现有公共StateMachine，不新增框架或namespace。原枚举None/Patrol/Chase/Search/Explode的0..4编号不变，Alert追加为5。
+Patrol：读取本实例Inspector的patrolPoints，按数组顺序循环；到点等待patrolWaitSeconds。个别null点跳过；null数组、空数组、全空数组安全原地观察，BeginRound保留既有警告。持续受阻达到blockedReturnSeconds后等待并换下一点。真实发现有效玩家时进入Alert。
+Alert：DroneAlertState只在Update观察有效视线并推进Controller的唯一AlertProgress；无FixedUpdate移动路径，进入时FlightVelocity清零，原模型平滑回正。按alertFillSeconds向1增加，失去可见资格按alertDecaySeconds向0减少；同一次Alert重新发现保留余量。满值切Chase，退0切Patrol，当前patrolIndex不变，位置不重置。悬停期间沿用当前平滑水平朝向，不额外转向不可见玩家；无效目标不走旧的“立即回Patrol”分支，而是正常退条。
+Chase：只有DroneVision有效发现时记录玩家主胶囊中心；不可见立即Search。只有Chase接触允许TryExplode、Collision、Overlap或SphereCast触发一次自毁。
+Search：固定lastSeen快照，达到该点后静止观察searchSeconds；途中墙阻挡或不能移动时，停在墙前短暂搜索后返回巡逻。不绕墙、不穿墙、不永久读取隐藏玩家坐标。重新看见进入新的Alert，进度从0开始，不能直接跳过警戒追击。
+Explode：先HasExploded=true关闭再次结算资格，再只调用一次TakeDamage，之后关闭本机实体Collider、Visual和Vision并Stop。
+每次真正切换状态清AlertProgress；重复ChangeState到同一活动状态直接返回，不清余量。离开Alert通过SetTint切到对应状态色并清视觉填充；Chase仍呈全红状态色，即使独立Alert积累值已清零。停用/销毁、新轮次及自爆清警戒进度和显示残留，具体生命周期见第八节。
+移动只由Controller.FixedUpdate路径使用3D Rigidbody.MovePosition驱动；SphereCast预检阻挡。物理根固定Z和旋转。MoveTowards只更新目标FacingDirection，Controller.Update统一用Y轴SmoothDampAngle平滑当前朝向，turnSmoothTime默认0.18秒；只读FacingRotation同时供Visual及Vision.SetHeading使用。
+策划移动场景点位Transform或调整patrolPoints顺序后，后续巡逻直接读取新位置/新数组；每机路线独立，不需要新轮或重建场景。长期配置步骤见第九节。
+
+五、模型与动画
+原始Assets/Art/Model/Enemy_Patrol_Drone_A.fbx未改，GUID ce29ead940f271d49a312fb6944b6d8f。
+已只读核实：无AnimationClip，材质已经URP/Lit；四个Propeller_FL/FR/RL/RR为独立局部Z轴节点。
+DroneFlightVisual在LateUpdate旋转桨叶，rotorDegreesPerSecond默认2400。移动时以实际速度与当前heading right的点积决定局部前倾目标，tiltDegrees默认10度，tiltSmoothTime默认0.3秒；速度为0时目标倾角为0并平滑回正。没有bob/sway或周期位置、旋转偏移，Visual保留原局部位置。
+Visual旋转顺序为FacingRotation * 局部Z轴前倾 * 模型初始旋转；转头与前倾分开，物理根不随模型旋转。停留/搜索仍转桨，自爆隐藏Visual。ResetPose清倾角与平滑缓存并恢复本轮heading下的初始姿态。无需Animator和手工Transition，不编造动画状态名。
+可调整rotorDegreesPerSecond、tiltDegrees、tiltSmoothTime及Controller.turnSmoothTime；旧movingBobHeight、bobFrequency、swayDegrees不再是当前动画配置。模型初始比例与朝向只调整Visual子层，不用物理根负缩放。
+
+六、视野与掩体配置
+视野范围是Vision子物体的凸MeshCollider Trigger。DroneVision的radius、angleDegrees、thickness、segments生成唯一扇形柱。保留第15节最新水平规则：VisionOrigin只提供机头世界位置，有DroneController时旋转为物理根世界旋转×平滑FacingRotation，不能继承模型前倾或重复叠加美术校正；当前directionDegrees=0。SetHeading驱动显示Mesh和真实Collider的同一水平yaw；SetFacing(int)保留0/180度Y轴朝向兼容入口。
+Inspector变更同步重建Collider与可见网格；保存的是形状字段，加载时自动生成独立临时Mesh，不修改共享Mesh资源。角度限制1–170度，segments4–60，最多244个三角面，保持合法凸Trigger。手动禁用范围Collider时检测和可见扇形一并关闭；重新启用在下次LateUpdate恢复，不偷偷重建或改回Collider开关。
+候选先按该Collider的包围盒查询，再用其ClosestPoint确认玩家主胶囊中心确在范围内。不是仅画Gizmo，也不以另一组隐藏距离/夹角代替Collider。
+playerMask与obstructionMask可在Inspector设置；普通装饰使用无Collider或Ignore Raycast，墙使用非Trigger实体Collider。自己、玩家Collider及Trigger不算墙。
+检测点为现有主胶囊中心；02当前蹲伏不改变身体胶囊，因此隐藏显式读取IsCrouching，不通过胶囊变矮猜姿态。
+显示与检测统一使用扇形局部平面的整厚度3D BoxCast：局部XY截面半宽0.001米，厚度沿局部Z并随yaw旋转，数值来自同一形状配置与Transform缩放。厚度内任一位置的实体墙都会截断该方向，起点厚度与墙重叠则整扇形被挡。这是保守的整厚度规则，不是分层体积光；检测投影、墙体检测与显示共用当前局部平面，不能继续把厚度当成固定世界Z。
+墙前余量统一0.01米，保留墙角采样，并补充BoxCollider的12条边与扇形厚度边界交点采样，避免转头过程中显示三角形越过斜墙边界。Rebuild保留当前heading，不跳向目标左右角。yaw达到90度时扇形侧对原相机、投影变窄属于正常几何结果，不应强制面向相机。新增45/90度真实Collider、厚度及墙遮挡显示一致性EditMode用例已通过；历史Game截图不代替本轮转头动画视频验收。
+
+CoverArea使用真实BoxCollider Trigger，Inspector可直接调center/size和Transform。查询玩家有效+IsCrouching+与任一启用掩体实际重叠；站立、空地蹲伏不隐藏。仅Chase追击状态真正接触玩家才会自爆；Patrol巡逻、Alert警戒和Search搜索接触均不自爆、不造成接触伤害，但保留实体碰撞。
+不保存玩家引用/Trigger进出计数；重叠掩体、多个身体Collider、瞬移、禁用或销毁时查询当前形状，所以退出一个掩体不会把另一个清掉。仅维护简单启用Cover列表，无潜行管理器。
+
+警戒填充接入约定：SetTint(Color)用于状态换色并清填充，SetAlertProgress(float)只Clamp01并写本实例MaterialPropertyBlock的_FillProgress，由Controller传入唯一AlertProgress，不由shader自行计时，不重建Collider。新shader名MyPrecious/DroneVision，保留_BaseColor和_Cull=2，新增_FillColor和_FillProgress；红色沿墙裁剪后的当前可见扇形从机头向外缘推进，退条向机头收回，不是整个扇形Color.Lerp，不使用同面双层网格，也不填到墙后。视觉侧与本轮整合的实际0/约50/全红及消退画面均已检查，见第16节。
+灯光沿用已有DroneStatusLight和Visual/Point Light：Patrol保留原蓝色，Alert/Search共用现有searchColor橙色呼吸，Chase用红色呼吸；保持breathingDuration及最小/最大亮度倍数、原Light强度/范围/位置/阴影/enabled和Scene实例覆盖，不在同一灯再挂LightFlicker。原Prefab灯intensity=8、range=0.3，以及EnemyTest Drone_A的range=0.1/位置等实例覆盖继续保留；不通过改灯色判断AI状态或接触伤害。
+
+七、伤害与背包链
+CanTarget检查启用、IsPrepared、!IsDead、!IsSceneTransitionBlocked，不用CanAct；打开背包仍可被发现/攻击。
+伤害只调用player.health.TakeDamage(config.contactDamage)。无敌时间拒绝扣血仍消耗本次自爆，不反复尝试。
+实际已核对链：PlayerHealth.NonLethalDamaged/Died → BackpackUIController.Close → Closing → LootUIController.CloseSource/InterruptSearch与ItemTransferUIBridge.CancelAll。敌人不复制关包或搜刮中断逻辑。
+同机多Collider、重复碰撞、伤害通知重入均被HasExploded/处理标记阻断。Skin只用于墙前停留，接触资格不额外扩大到Skin范围。
+
+八、新轮次入口和010依赖
+bool DroneController.BeginRound(int roundId)：首次由流程显式调用，只接受更大的正轮次；同轮或旧轮在重置之前返回false，完全不改位置、状态、自爆记录、转头或AlertProgress/填充余量。重复ChangeState(Alert)也不重新进入状态或清进度。
+新轮恢复记录的出生位置/旋转、初始左右朝向、实体Collider、Visual、Vision和巡逻索引0；重置yaw及turnVelocity，调用ResetPose清前倾缓存；上轮状态缓存、目标、计时和AlertProgress清零，通过重建/状态换色清视觉填充。Alert退0回巡逻只恢复原路线索引，不等于BeginRound，也不重置出生位置。
+OnDisable停状态机、清目标/速度/AlertProgress和视野填充；销毁执行同样的停用清理后Stop。OnEnable不清HasExploded，单独禁用再启用Controller或整个GameObject都不代表新轮；存活敌人恢复本轮巡逻且警戒从0开始，已自爆敌人仍关闭。
+F10只走03语言切换入口，不调用BeginRound或状态初始化；显示读取当前状态与警戒百分比，语言切换不应清积累/消退进度，多机互不共享该值。本轮真实场景排队F10双向切换测试通过，积累/消退未重置；这不等于原生键盘已通过。
+010必须在同一实际探索轮次分配后调用各机BeginRound；模块不调用玩家准备、ItemManager.BeginRound或Loot.PrepareRound。
+对象字段只能保留该对象生命周期内的本轮状态。场景卸载重建后的同轮已爆状态需要010按稳定敌人ID/流程记录恢复或跳过生成，本模块不宣称解决该依赖。
+
+九、独立场景启动、策划巡逻配置与后续正式接入
+测试入口为Assets/Scenes/Tests/Enemy/EnemyTest.unity。本轮接入前必须读取视觉聊天明确释放和实时Editor状态；若存在dirty场景先保留用户工作，不能照搬第13节dirty Shelter或第15节clean EnemyTest历史状态。Tools/MyPrecious/Create Enemy Test Assets此前已实际成功，仅在缺失自有资产时补建，不覆盖已有EnemyTest或Drone Prefab，也不是当前用户手工灯光/模型配置的完整复刻。
+EnemyTestDriver负责首次物品/Loot与真实玩家准备；敌人不偷偷回血。相机直接实例化PlayerCamera，配置独立CameraBounds并复用02B原生Confiner3D；不修改共享镜头。
+真实背包Tab、搜索E、蹲伏C、移动A/D、跳跃Space；F10由03唯一入口切换，EnemyText预先接入唯一LocalizationManager。本轮新增enemy.state.alert的“警戒/Alert”，Driver仅在Alert状态显示当前整数百分比，按当前语言动态查询。
+测试按钮“下一敌人测试轮次”只推进敌人模块的轮次并调用正式BeginRound，不回血、不结算/刷新物品；玩家死亡后重新Play。它不是010的完整探索新轮。
+
+策划巡逻配置：
+1. 在EnemyTest的Hierarchy选中Drone_A或Drone_B场景实例，查看DroneController的“本机巡逻路线：在场景实例上配置”下Patrol Points数组；每机持有自己的引用。
+2. 现有场景点位为Drone_A_PatrolPoints/Point_A、Point_B和Drone_B_PatrolPoints/Point_A、Point_B。可新增普通空GameObject作为点位，逐个拖入对应无人机的数组。Prefab资源不能引用场景Transform，应在场景Prefab实例上配置，不重建Prefab或整场景。
+3. 在Scene视图移动点位X/Y，或直接编辑Transform位置；数组顺序就是巡逻顺序，末点后回第一有效点。调整数组顺序即可改路线顺序，不需要改代码；点位Z不改变本机出生Z约束。
+4. 选中无人机并打开Scene的Gizmos，显示投影到该机飞行平面的点、连线和数组序号。没有新增路线管理器、寻路、编辑窗口或硬编码场景坐标。
+5. Patrol Speed和Patrol Wait Seconds在现有DroneConfig资源配置；共享同一Config的无人机共享这些数值，路线数组仍独立。Alert Fill Seconds和Alert Decay Seconds同在Config配置，默认均2秒。
+6. 个别空引用会跳过；全空路线安全原地观察，BeginRound有既有警告。移动实际点位、调整数组顺序或补入有效点后可在当前轮更新巡逻；Alert退0继续原路线当前索引，不回出生点或强制第一点。Play中修改只影响本次运行，长期配置应在Edit模式修改并保存自己的场景实例覆盖。
+
+010正式场景需放置Drone/Cover实例，给每架独立巡逻点，确认水平视觉方向、相同玩法深度、墙/装饰Mask及现有VisionOrigin/灯引用，加入EnemyText，调用BeginRound，接同轮重载保留，并自行整合死亡返回/携带物损失/EV/唯一找回。本轮独立EnemyTest的实际整合记录见第16节；正式流程仍由010接入。
+
+十、初版完整验证、证据与验收边界（历史时刻，最新见第十三节）
+EditorCoordination.txt已有007于2026-10-19 02:06 UTC的明确释放；009随后完成实际部署、Unity导入编译、构建、测试及收尾核验，并于02:20 UTC明确释放Editor，无009 Assets写入或Editor操作排队。最终汇总见Docs/Verification/Enemy/FinalVerification.json，最终状态见ReleaseState.json，协调释放记录见同目录EditorCoordination.txt。
+Unity官方XML：Docs/Verification/Enemy/EditMode-25-Final.xml，2026-10-19 02:10:15 UTC，Passed，25/25，failed/skipped/inconclusive均0；Docs/Verification/Enemy/PlayMode-14-Final.xml，02:09:41–02:09:46 UTC，Passed，14/14，同样无失败或跳过。
+EditMode覆盖真实掩体几何/重叠/多Collider/生命周期、扇形Collider与显示及墙体遮挡、同轮/新轮与伤害重入。PlayMode含11项行为测试及3项实际EnemyTest场景集成测试：双机独立、最后位置搜索与受阻返回、移动接触与无敌、自爆/重新启用、四桨动画与物理根分离；真实背包排队拖拽受击取消、搜刮中断及物品身份/布局不变；F10排队输入不重置敌人/生命/搜刮；真实FBX、四转子、运行时网格、相机及独立CameraBounds引用。
+场景集成从保存的EnemyTest加载，显式校验07C真实TriggerBox归属及玩家身体重叠。输入使用隔离的合成Keyboard/Mouse，UI拖拽与F10为InputSystem排队事件，定位/接触由API辅助；这组成绩不等于原生键鼠验收。夹具每项测试开始前只聚焦GameView一次并等待一帧；IsOpen失败附焦点信息，不屏蔽业务OnApplicationFocus(false)关闭UI的行为。
+有效Game截图均位于Docs/Verification/Enemy：EnemyTest-CN-Initial.png为1920×1080中文初始画面；EnemyTest-EN-GameView-Final.png为唯一有效英文验收截图，1920×1080标题、状态、按钮和提示完整无溢出；EnemyTest-Wall-API.png显示两架真实FBX、左侧扇形在墙前截断及墙后玩家。英文切换使用LocalizationManager.SetLanguage API；墙截图使用API定位及timeScale=0冻结，之后恢复。单张截图不代替动画或全部交互验证。
+EnemyTest-EN-API.png为截图工具回退且无UI，EnemyTest-EN-GameView.png捕获了切换前的中文旧帧；两者均不计入英文验收，只认EnemyTest-EN-GameView-Final.png。
+RealSceneChecks.json记录真实保存场景的API辅助检查：墙启用时CanSee=false、临时禁用后true，再恢复墙；掩体内站立false、内蹲true、空地蹲false、重叠掩体true、禁用一个仍true、禁用两个false，再恢复。该证据与墙面截图共同验证实际布置，不能替代原生操作。
+原生输入实测（009主执行记录）：computer-use sky点击Game画面，UIA focused_element与Unity fresh focus均为UnityEditor.GameView；发送F10后CurrentLanguage仍为Chinese，发送Tab后IsBackpackOpen仍false。工具调用均无错误，但游戏未响应，原生F10/Tab验收未通过，原因未判定；与007曾记录的环境输入现象一致，本任务未因此修改玩家输入模块。后续英文展示使用LocalizationManager.SetLanguage API辅助，不记录为原生F10成功。
+用户期间已手动试玩并停止，明确回复“已试玩完，可继续最后核验”；没有逐项报告操作结果，因此不把该回复折算成A/D、Space、C、E、拖拽、两按钮或完整两轮原生组合验收通过。这些项目保持未逐项验收，Windows独立构建未执行。
+ExistingAssetIntegrity.json确认部署基线309/309既有文件SHA256不变；009新增29个文件资产及20个目录的.meta/GUID完整，无孤立、无效或重复GUID。332处外部GUID引用、51处脚本引用及本地fileID静态解析无缺失；静态审计不代替导入后子资源fileID检查。两处Unity.ugui名字提示已用实际Unity编译rsp证实解析到UnityEngine.UI.ref.dll，并非缺依赖。GameBootstrap.prefab、Bootstrap/Shelter/Ruins正式场景及原FBX均保持原内容。
+ReleaseState.json的2026-10-19T02:19:26.4017352Z最终读数：唯一加载场景为clean EnemyTest；Play/paused/compiling/updating均false，无PrefabStage；场景及Drone/Cover两Prefab Missing Script均0；driver所有required refs齐，两机各有4个有效转子、2个巡逻点及config/visual/vision/生成网格。停止Play后两机恢复(-6,2.4,0)/(6,2.4,0)出生位置，timeScale=1、runInBackground=false，图形后端Direct3D11。FinalConsole.json最终error/warning均0。
+原Bootstrap在Build后已恢复且hash不变；最终为便于用户直接试用，保留clean EnemyTest打开，不再次切回Bootstrap。截图等待时临时启用的runInBackground、墙/掩体开关、冻结时间与API定位均已恢复，未把QA状态保存进场景。
+截图工具异常单独保留于CaptureToolError.json：一次MCP manage_camera截图触发PlayerLoop内部递归错误，堆栈指向截图工具ScreenshotUtility.cs:197，未出现Enemy代码；随后停用该截图工具，改用Unity ScreenCapture.CaptureScreenshot帧末异步成功。后续运行与停止Play后的Console均0 error/warning，不把历史工具错误隐去，也不将其当成已复现的Enemy业务故障。
+前期及部署证据另有Docs/Verification/Enemy/DesignDecisions.txt、InitialGitStatus.txt、InitialHashes.json、BeforeDeploymentHashes.json、OfflineCompilation.json、StaticAudit.json、BeforeBuildFix/；最终执行状态与未验收边界见AcceptancePlan.txt。
+前置07B历史有一项背包混合左右键夹具失败，08完整交接缺失；本轮只声明上述009范围的39项通过，不声明整个工程全绿、完整两轮原生游玩或独立Windows构建通过。Editor沿用007临时-force-d3d11启动的实例，项目图形API设置未由009更改，DX12历史问题不在本轮解决范围内。
+
+十一、答辩阅读顺序
+状态机怎么切换：Controller的enum switch指定具体StateBase子类，公共StateMachine先Exit旧状态再Enter新状态；Update只调用当前状态。
+Collider怎么决定视野：同一组扇形形状参数实际生成凸Collider与Game网格，玩家身体中心在Collider内才有候选资格，再检查实体墙和掩体。
+掩体为什么只有蹲下才隐藏：CoverArea.IsHidden同时要求IsCrouching和真实Trigger形状重叠，少一个条件都返回false。
+一次接触为什么不重复伤害：调用PlayerHealth之前先锁HasExploded，后续回调立即拒绝；无敌拒伤也不会取消自爆标记。
+重新启用为什么不是新一轮：OnEnable只恢复存活行为，没有清自爆记录；只有带更大roundId的BeginRound才能重置。
+
+十二、飞行动画追加调整（历史方案，已被第十三节最新要求替换）
+用户当时要求更明显的简单飞行摇晃及更快的螺旋桨；随后明确取消摇晃。以下只保留变更历史，不是当前实现：当时修改DroneFlightVisual.cs与Drone.prefab，在速度决定的前倾上叠加swayDegrees=4的周期摇晃，与上下浮动错开四分之一相位；幅度按飞行速度缩放。转速900→2400度/秒（约2.67倍），浮动幅度0.035→0.07，频率2→1.4 Hz。最新实现仅保留2400转速，bob/sway均已移除。
+脚本默认和实际Prefab同步更新，EnemyTest两机直接继承；原FBX及两个修改资产的GUID未变。修改前真实内容与.meta位于Docs/Verification/Enemy/FlightVisualTune/Before/。
+Unity编译通过，实际Prefab参数读回正确；复跑现有动画隔离及真实模型四桨两项PlayMode，2/2通过、无失败/跳过，证据FlightVisualTune/PlayMode-2.xml和Result.txt。未重新跑原39项全套，未新增原生键鼠验收或动画录像。
+该轮释放读数2026-10-19T02:28:06.3460013Z见FlightVisualTune/ReleaseState.json：Play/compiling/updating=false、timeScale=1、runInBackground=false。当时用户工作场景Shelter在测试后呈dirty，来源未判定；原样保留未保存状态，未保存、重载或切走该场景，也未覆盖正式场景磁盘文件。Console最后0 error/0 warning；该轮结束时无009 Assets写入或Editor操作排队。
+
+十三、最新替换：平滑前倾/回正与模型视野共同转头（2026-10-19 UTC）
+用户取消前述摇晃方案，现已按第五/六节更新为无bob/sway、速度点积驱动平滑前倾和停止回正；tiltDegrees=10、tiltSmoothTime=0.3、turnSmoothTime=0.18、rotorDegreesPerSecond=2400。Controller统一Y轴SmoothDampAngle及FacingRotation，模型与视野共享当前heading，视野保留独立directionDegrees俯仰；物理root不转，lean不叠加到视野。BeginRound清yaw/turnVelocity并ResetPose，Rebuild保留当前yaw；局部几何查询和新增Box边/厚度边界交点采样支持45/90度转头遮挡。
+修改前真实内容及.meta备份位于Docs/Verification/Enemy/SmoothFlightTurn/Before，包含7个修改文件。ChangedFiles.json记录主体6文件的.meta均未变化，第7个Editor脚本另行备份且.meta未改；保留GUID，不改原FBX。
+最新Unity官方结果：SmoothFlightTurn/EditMode-27-Final.xml于2026-10-19 03:17:25 UTC通过27/27；SmoothFlightTurn/PlayMode-16-Final.xml于03:17:45–03:17:54 UTC通过16/16，两份failed/skipped均0。原39项与新增4项均通过，共43项；不是仅复跑旧动画2项。
+新增4项为：移动逐渐前倾、正常巡逻到点后逐渐回正及无bob/周期摆动/局部位置变化；自然Y轴中间转角、Visual与vision共享heading、root不转、同轮不复位/Rebuild不跳角/新轮复位；45度和90度两项真实Collider范围厚度与墙遮挡显示同步。复用既有夹具/global namespace，不建立另一套动画实现作期望值。
+PlayMode官方XML已完成16 passed后，MCP测试工具job仍残留running且progress=0；状态快照保存为PlayModeToolStatusBeforeCleanup.json，已用clear_stuck清理工具状态。该残留不算测试失败，也不构成一次额外重跑；以官方XML为准。SmoothFlightTurn/Console.json最后0 error/0 warning。
+最新SmoothFlightTurn/ReleaseState.json读数2026-10-19T03:19:07.3726694Z：Play/compiling/updating=false，唯一场景Assets/Scenes/Shelter.unity且dirty=true，无PrefabStage；Drone Prefab Missing Script=0、四转子、vision引用及上述参数读回正确，物理根旋转(0,0,0)，timeScale=1、runInBackground=false。Shelter在请求场景切换前出现dirty，manage_scene拒绝切换；未丢弃、保存或重载该场景，原样保留用户未保存工作。该状态替代第十节clean EnemyTest的历史状态。
+本轮没有新增实际Game动画视频或原生键鼠验收。此前中文/英文/墙截图仅证明当时画面，不能证明本次平滑前倾和转身观感；此前原生F10/Tab不响应、其他原生组合/两按钮未逐项验收、Windows构建未做的边界继续保留。完整结果另见SmoothFlightTurn/Result.txt；EditorCoordination.txt已追加2026-10-19 03:20 UTC释放。009本轮代码/测试工作结束，无继续Assets写入或Editor操作排队；后续切场景应先妥善处理现有Shelter未保存修改。
+
+14. 2026-10-19 主程追加：模型绑定视野与状态呼吸灯（已完成）
+用户已确认：警戒对应Search；Search橙色、Chase红色，均呼吸，不增加新AI状态。
+Drone.prefab：Visual/VisionOrigin局部坐标(0,.135,-.326)、Y90；DroneVision.visionOrigin绑定此锚点，directionDegrees=0。显示Mesh和真实Collider一起跟随模型的转向与前倾；Controller先更新模型再做检测，避免两套旋转不同步。编辑器帮助文字已同步。
+根节点DroneStatusLight.targetLight引用用户已有Visual/Point Light，巡逻沿用原蓝色。Inspector可调整breathingDuration（默认2秒）、min/maxIntensityMultiplier（.35/1）及Search/Chase颜色。保留原点灯intensity8、range.3、位置、阴影与enabled；不应在同一灯上再挂LightFlicker竞争亮度。爆炸随Visual隐藏；禁用效果恢复原色/强度；下一轮包括效果保持禁用时均正确恢复。
+代码继续无namespace、普通字段/方法、现有枚举状态机，不新增框架。DroneStatusLight参考用户ARPG的Update+Mathf.Sin表现方式。
+验证：实际Prefab18秒3357帧采样，模型/视野旋转差0、位置差<=.00001，前倾到20度；实际发现/失去目标分别进入Chase/Search并按原色/红/橙呼吸。Unity Enemy EditMode27/27、PlayMode22/22，0失败0跳过；最终Console0错误0警告。
+证据：Docs/Verification/Enemy/VisionLightUpdate/Result.txt、ActualPrefabSamples.csv、ActualPrefabChecks.txt、EditMode-27.json、PlayMode-22.json、FinalState.json。
+场景：保留EnemyTest和Ruins文件、原Prefab GUID及Drone_A点灯range.1/位置等实例覆盖。Shelter初始dirty已saveAsCopy备份；外部随后停止Play并保存为clean，root保留最新磁盘版本，TestRunner后hash一致。最终停在Shelter/Edit/clean。
+维护：不删除或重生成现存Drone.prefab。EnemyTestSceneBuilder有已有Prefab保护；其缺失Prefab时的新建分支仍是用户手工灯光/模型调整之前的旧默认配置，并非当前Prefab的完整复刻。
+
+15. 2026-10-19 视锥保持水平、仅追击接触自毁（最新用户规则，覆盖第14节的前倾同步）
+VisionOrigin继续提供机头位置；有DroneController时视锥旋转只取物理根世界旋转×平滑FacingRotation，不继承模型前倾，美术校正不重复叠加。当前directionDegrees=0。模型仍可前倾；显示扇形和真实MeshCollider都保持水平并随左右yaw一致转向。
+DroneController.CanExplodeOnContact统一检查Chase、IsRunning、重入锁和有效玩家。蓝灯Patrol与橙灯Search不能因接触自毁/伤害；红灯Chase才允许。Overlap、Collision和MoveTowards SphereCast都受此规则约束。灯光颜色仅反映状态，不作为伤害逻辑的输入。
+验证：Enemy EditMode27/27，PlayMode24/24，0失败/0跳过；新增非追击接触与Sweep无伤覆盖，原自爆相关测试显式进入Chase避免假通过。实际EnemyTest在1920×1080采样206帧，模型最大倾斜19.991°、视锥方向Y分量0、水平朝向误差0；有截图证据。测试用临时路线/速度/检测屏蔽均只存在于Play，退出后还原。
+Prefab、材质、灯配置、EnemyTest/Shelter/Ruins与GUID未修改；最终EnemyTest/Edit/clean，Console0错误0警告，timeScale1/runInBackgroundfalse。证据：Docs/Verification/Enemy/LevelVisionChaseOnly/Result.txt。
+
+16. 2026-10-19 独立Alert警戒积累、红色视锥填充与策划巡逻配置（已交付）
+本轮覆盖旧“发现立即Chase”和“警戒等于Search”；第15节水平视锥、模型前倾隔离、Chase专属自毁与原灯光配置继续保留。新增Alert枚举值5，旧编号不变；DroneAlertState只观察和更新Controller唯一AlertProgress，悬停、渐增/渐退、重获续积、满值Chase、退0原巡逻索引。配置asset明确保存2秒/2秒默认，可Inspector调；退出/新轮/禁用清理，同轮及重复活动状态不清余量。
+新增DroneAlertState.cs与DroneAlertTests.cs；修改Controller/Patrol/Search/StatusLight/ConfigSO、DroneConfig.asset、EnemyText.asset、EnemyTestDriver、EnemyTestSceneBuilder、DroneBehaviourTests、DroneStatusLightTests、EnemySceneIntegrationTests，共14份009文件。已有12文件及.meta先真实备份，全部GUID保留；详细路径见Integration/DeployedManifest.json，备份位于Integration/Before。视觉文件由视觉聊天先独占完成，本轮没有覆盖它们。两份明确释放记录已读取，05:38UTC在干净Shelter接手。方法签名、材质/shader及视觉专项证据见Effects_DroneAlertFill.txt。
+巡逻原本已支持public Transform[] patrolPoints；这次补中文Inspector说明、选中时路线点/连线/编号，验证移动场景Transform与调整数组顺序即时生效、双机独立、按序循环、空引用安全及Alert退0继续非首点。具体策划操作见第九节。无新路线框架，不重建Prefab/场景。保留旧速度/停留配置、玩家规则及用户Point Light实例覆盖。
+
+16.1 实际自动化结果
+Unity MCP完整Enemy EditMode34/34、PlayMode37/37，失败0、跳过0，共71项。完整TestRunner结果及逐项记录为Integration/EditMode-Full.json、PlayMode-Full.json。新增7项视觉、8项Alert、3项巡逻配置、2项场景集成；原51项保留，真实发现用例经过Alert等待到满，旧明确伤害专项可单独置Chase。整合两次完整任务均正常完成，无整合失败重跑或stale-job清理。
+新回归覆盖真实发现悬停渐增、墙/掩体/失效与销毁目标渐退、余量续积、退0恢复非0巡逻索引、Alert真实接触无伤至自然满格、Search重获、每机逻辑与MPB独立、同轮/重复ChangeState保余量、新轮/停用/销毁清理、空/重排/移动/循环路线，以及F10两次语言切换期间一机积累一机退条。原水平视锥、平滑飞行、四桨、呼吸灯、背包/拖拽/搜刮受击链及轮次全部纳入本轮回归。
+
+16.2 实际画面与限制
+Integration/ActualAlert-20261019T054033401Z/四张PNG均1920×1080，已逐张查看：01为真实Alert0%橙色；02约50.099%机头红/外侧橙；03实体墙遮挡后退至24.937%、扇形在墙前裁断；04移墙后从余量再积满，真实Chase全红。HUD同步警戒百分比与追击状态。SamplesAndResult.json有550条采样，生命始终3、视野方向Y=0、逻辑/MPB进度误差0，无异常清理；Chase退出Alert将进度清0，但SetTint使全扇形红色。
+该探针没有修改AlertProgress或强制Alert/Chase，使用真实Scene对象与自然感知。运行时临时克隆配置只把移动速度设0、保留2秒积累/消退，API定位玩家/无人机，增加临时墙，暂禁原CinemachineBrain以固定真实MainCamera的正交取景；另机仅为画面隔离暂禁，双机独立由自动化另行证明。取景/输入/配置/姿态/timeScale/background已恢复，随后退出一次性Play丢弃临时轮次和物体；没有保存场景、修改永久相机配置或录制视频。此为API辅助画面，不是原生键鼠操作；正常Cinemachine接线由原场景回归保持验证。
+没有新增原生键盘或Windows构建验收；历史原生F10/Tab限制不宣称解决。主程后续连续场景探针是单独验收，尚不计入本记录。
+
+16.3 完整性、诊断与释放
+Integration/Integrity.json：12项受保护文件全部不变，含Drone/Cover Prefab、EnemyTest、Bootstrap/Shelter/Ruins、FBX及固定Z/前倾/掩体原脚本；12个已有.meta不变，14个部署文件匹配审查稿，新脚本.meta齐全。原材质GUID3791f5303dc69fa479f6b053e4a02622、_Cull2、资源进度0正确。真实场景Drone_A点灯range.1、Drone_B range.3仍保留；Prefab灯range.3/intensity8及原位置未改。
+导入时一次MCP WebSocket连接警告保存在Console-AfterCompile.json；空路线回归按LogAssert预期发出3条配置警告，保存在Console-ExpectedRouteWarnings.json。一次只读MCP代码因Object歧义在内存编译阶段失败，使用UnityEngine.Object后查询成功；非工程源码编译失败。本轮未主动清Console，正常Play的Clear-on-Play生效；FinalConsole.json为0错误0警告。
+ReleaseState.json于2026-10-19T05:41:26.3999582Z：唯一EnemyTest、dirty=false，Play/paused/changing/compiling/updating=false，无PrefabStage，timeScale1，Application/PlayerSettings.runInBackground均false，1920×1080。Scene与Drone Prefab Missing Scripts0，4个有效转子、VisionOrigin、配置、shader及Alert文本齐全。探针和自动刷新持有标志均false。
+009所有Assets写入、Editor操作、测试、截图及回调已结束，无排队工作。EditorCoordination.txt追加明确释放，允许主程接手连续场景复验。完整结果与解释见Integration/Result.txt。本交接与Result文档写入不触发Unity操作。
+
+16.4 主程独立验收完成（2026-10-19 05:44 UTC）
+原EnemyTest/1920×1080/原2秒参数执行真实场景连续探针，无强制状态/进度、无改移动速度/相机。2551条采样，警戒位置漂移0；约50%→墙遮挡24.833%→重现25.131%续条→退0沿原第二点(12,2.4,0)巡逻。运行期移动点位与重排数组均驱动实际移动；Alert身体重叠0.12秒无伤，第二次发现约2.002514秒后自然Chase，再接触仅造成一次3→2生命变化，自毁后0.3秒无重复伤害。五张实际截图已逐张复核。
+主程读回完整71项自动测试通过；额外场景探针不计作TestRunner测试数。API定位/冻结玩家、临时遮挡及另机隔离明确属于受控验收，未新增原生键鼠或构建验收。
+已退出Play，唯一EnemyTest且clean，timeScale1/backgroundfalse，Console0错误0警告，8项原资产哈希保持。最终完整记录：Docs/Verification/Enemy/AlertFill/RootAcceptance/Result.txt。所有回调结束，Editor由主程释放。

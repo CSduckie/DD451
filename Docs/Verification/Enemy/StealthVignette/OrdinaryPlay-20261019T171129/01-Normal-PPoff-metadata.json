@@ -1,0 +1,268 @@
+{
+  "status": "PASS",
+  "reason": "Complete PNG1920x1080 with target-camera stack snapshot; visual review still required.",
+  "captureMethod": "ScreenCapture.CaptureScreenshot, supersize1, ordinary Play Game framebuffer",
+  "png": "E:/DD451/Docs/Verification/Enemy/StealthVignette/OrdinaryPlay-20261019T171129\\01-Normal-PPoff-1920x1080.png",
+  "requestedFrame": 9867,
+  "utc": "2026-10-19T17:11:33.3951895Z",
+  "callbacksRemoved": true,
+  "restoredRunInBackground": true,
+  "sample": {
+    "samplePoint": "Target formal camera endCameraRendering, after URP UpdateVolumeFramework; read-only stack",
+    "frame": 9867,
+    "stage": "Exploring",
+    "round": 1,
+    "settledRound": 0,
+    "scene": "Assets/Scenes/Ruins.unity",
+    "screen": [
+      1920,
+      1080
+    ],
+    "player": {
+      "id": -4572394,
+      "scene": "Assets/Scenes/Ruins.unity",
+      "position": [
+        -12.0229435,
+        1.1920929E-07,
+        0.0
+      ],
+      "health": 2
+    },
+    "camera": {
+      "id": -4576994,
+      "name": "OutputCamera",
+      "scene": "Assets/Scenes/Ruins.unity",
+      "pixelWidth": 1920,
+      "pixelHeight": 1080,
+      "position": [
+        -11.0,
+        2.5,
+        -12.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "fov": 50.0,
+      "orthographic": false,
+      "orthographicSize": 6.0,
+      "clearFlags": "Skybox",
+      "postProcessing": false,
+      "volumeMask": 1,
+      "volumeUpdate": "UsePipelineSettings",
+      "perFrameVolumeUpdate": true,
+      "cameraVolumeStackIsNull": true,
+      "binderError": null
+    },
+    "environment": {
+      "skybox": "Assets/Art/Materials/Environment/ShelterNightSkybox.mat",
+      "skyboxGuid": "8ea61fa5552419d4fbbc16241b881895",
+      "fog": false,
+      "ambientIntensity": 1.0,
+      "reflectionIntensity": 1.0
+    },
+    "effectiveStack": {
+      "color": {
+        "active": false,
+        "exposure": 0.0,
+        "contrast": 0.0,
+        "saturation": 0.0,
+        "hue": 0.0,
+        "filter": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "bloom": {
+        "active": false,
+        "intensity": 0.0,
+        "threshold": 1.0
+      },
+      "tone": {
+        "active": false,
+        "mode": "None"
+      },
+      "vignette": {
+        "active": false,
+        "intensity": 0.0
+      },
+      "whiteBalance": {
+        "active": false,
+        "temperature": 0.0,
+        "tint": 0.0
+      }
+    },
+    "volumes": [
+      {
+        "name": "RuinsPostProcessing",
+        "scene": "Assets/Scenes/Ruins.unity",
+        "enabled": true,
+        "global": true,
+        "weight": 1.0,
+        "priority": 0.0,
+        "layer": 0,
+        "inCameraMask": true,
+        "profile": "Assets/Settings/Effects/RuinsPostProcessingProfile.asset",
+        "profileGuid": "a176412a7f2d47b4b99c3f0e13403cf6"
+      },
+      {
+        "name": "StealthVignette",
+        "scene": "Assets/Scenes/Ruins.unity",
+        "enabled": true,
+        "global": true,
+        "weight": 0.0,
+        "priority": 10.0,
+        "layer": 0,
+        "inCameraMask": true,
+        "profile": "",
+        "profileGuid": ""
+      }
+    ],
+    "fillValidation": {
+      "gameTime": 61.0709076,
+      "playerBounds": [
+        {
+          "name": "CapsulePlaceholder",
+          "id": -4572402,
+          "mask": 3,
+          "screenCorners": [
+            [
+              817.9469,
+              290.423828,
+              11.6
+            ],
+            [
+              897.811157,
+              290.423828,
+              11.6
+            ],
+            [
+              817.9469,
+              490.084778,
+              11.6
+            ],
+            [
+              897.811157,
+              490.084778,
+              11.6
+            ],
+            [
+              827.1116,
+              306.5255,
+              12.4
+            ],
+            [
+              901.8233,
+              306.5255,
+              12.4
+            ],
+            [
+              827.1116,
+              493.3051,
+              12.4
+            ],
+            [
+              901.8233,
+              493.3051,
+              12.4
+            ]
+          ]
+        },
+        {
+          "name": "FacingMarker",
+          "id": -4572410,
+          "mask": 3,
+          "screenCorners": [
+            [
+              883.6805,
+              422.052155,
+              11.88
+            ],
+            [
+              914.8733,
+              422.052155,
+              11.88
+            ],
+            [
+              883.6805,
+              433.749451,
+              11.88
+            ],
+            [
+              914.8733,
+              433.749451,
+              11.88
+            ],
+            [
+              885.1918,
+              424.387756,
+              12.12
+            ],
+            [
+              915.766846,
+              424.387756,
+              12.12
+            ],
+            [
+              885.1918,
+              435.8534,
+              12.12
+            ],
+            [
+              915.766846,
+              435.8534,
+              12.12
+            ]
+          ]
+        }
+      ],
+      "lights": [
+        {
+          "name": "PlayerFillLight",
+          "id": -4572420,
+          "enabled": true,
+          "intensity": 1.2,
+          "color": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "range": 4.5,
+          "position": [
+            -12.0229435,
+            1.10000014,
+            -2.0
+          ],
+          "mask": 2,
+          "urpMask": 2,
+          "shadows": "None"
+        },
+        {
+          "name": "Directional Light",
+          "id": 796068,
+          "enabled": true,
+          "intensity": 1.2,
+          "color": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "range": 10.0,
+          "position": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "mask": 1,
+          "urpMask": 1,
+          "shadows": "None"
+        }
+      ],
+      "nonPlayerDedicatedReceivers": []
+    }
+  }
+}

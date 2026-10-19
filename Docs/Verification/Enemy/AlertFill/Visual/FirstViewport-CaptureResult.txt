@@ -1,0 +1,8 @@
+Fill-000.png;progress=0.00000;time=0.50488;resolution=1920x1080
+Fill-050.png;progress=0.50000;time=3.50034;resolution=1920x1080
+Fill-100.png;progress=1.00000;time=6.50269;resolution=1920x1080
+Retreat-025.png;progress=0.25000;time=9.50157;resolution=1920x1080
+Retreat-000.png;progress=0.00000;time=11.50180;resolution=1920x1080
+Complete=True
+Duration=12.2012
+CameraUnmodified=True;RuntimeOnly=True;AIAlertNotIntegrated=True

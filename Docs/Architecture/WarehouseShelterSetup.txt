@@ -1,0 +1,249 @@
+MyPrecious P0 — 05独立仓库、庇护所EV与首次免费扩容
+
+2026-10-18 / Dispatch v18 / 05A快捷转移已完成代码、测试源码与整合静态审查，未发现阻断项；本轮只编辑文件，未操作Unity、编译、启动测试或主动刷新资产，运行验证待07。交接与接口详见Docs/Handoffs/05A_WarehouseQuickTransfer_Handoff.txt。A25覆盖旧06B返箱自动归位规则，普通拖拽与快捷找空位必须分开。
+当前显示基准为1920×1080、cellSize/gap/padding=66/4/6、scale=1；20列内容宽1408。正式场景由GameFlowResponsiveLayout将仓库viewport设为1430宽，20列完整可见且只纵滚，20×20→20×24只向下增行、不缩格。07A已同步WarehouseTest演示场景与Builder至1920、66/4/6，并有普通Play记录；不能继续把演示入口说成旧布局。最新依赖证据为Docs/Handoffs/07A_GridIntegration_Handoff.txt和Docs/Verification/GridLootAcceptance/Report.txt。本轮05A没有重跑这些验证。
+本轮已新增WarehouseUIController.QuickTransferRequested（Func<string,bool>）与TryQuickTransfer(string instanceId)，由06绑定完成跨容器提交及反馈；仓库仅验证本地打开、庇护所权限、真实物品/摆放和交互冲突。WarehouseManager.TryFindSpaceForExternal(string instanceId, bool preferredRotated, out Vector2Int cell, out bool rotated)只读查找，按y后x从左上遍历，当前方向全无位且canRotate允许时才试另一方向。手势失败也被消费，不能转成同次普通拖拽。UI不提前Claim；06先查询，再在完整提交内申请占用并重新校验。找位失败输出cell=(-1,-1)、rotated=preferredRotated；尺寸可放但无完整空矩形为Overlap，所有允许方向均超尺寸为OutOfBounds。
+05A实际修改6个Assets源码与2份Docs；WarehouseGrid、WarehouseGridTests、WarehouseView保持原样。新增EditMode 12个方法/19个案例，静态枚举预计总49个案例（Grid12+Shelter37）；PlayMode新增5项、预计总12项。上述是源码数量，不是执行成绩；静态审查记录为Docs/Verification/QuickTransfer/05A/StaticReview.json，未产生本轮运行报告或截图。
+已静态核对普通背包↔仓库链：06 ItemTransferUIBridge分别在预览与松手调用目标View.TryScreenToCell，以鼠标格减来源DragGrabOffset，使用来源PreviewRotated；Coordinator收到明确x/y/rotated并复验，没有自动找位回退。本轮不会为快捷操作重写这条正确路径。旧06B背包返箱在整个viewport自动选位且按原始宽高，属06本轮修改范围，05只报告不越界修改。
+WarehouseTextEntries的warehouse.controls生成源本轮追加Ctrl+左键提示；共享WarehouseText.asset未改，07统一更新该现有键并保留其他表项。以下保留05旧职责/接线与历次验证，旧52/3/8、42.65、926宽viewport和双尺寸成绩只表示对应历史配置，不是当前66/4/6基准，更不是本轮05A测试通过证明。
+
+以下为05纵向扩容交付及历史验证记录（其中“本轮”指该历史交付轮次）：
+版本：2026-10-18 / Dispatch v11后续规则修订 / 仅向下扩容30+7+7通过、双尺寸几何与截图完成
+工程：E:/DD451。以下均为工程相对路径。
+本文保留现有代码职责和接入方式，并记录最新升级规则及实际验收边界；实际执行的编译、自动测试、Game输入与截图结果以Docs/Handoffs/05_Handoff.txt为准，不把操作步骤当作验收证据。
+最新规则：首次升级只向下增加行数，默认20×20→20×24，共480格、新增80格；目标宽度必须等于当前宽度，目标高度必须严格增加。同一viewport和显示参数下，已有格子及物品显示尺寸不得因升级改变。
+本轮状态：04明确释放Editor后，主执行者已导入7个候选文件，并修复WarehouseTest场景的重复模块和依赖接线，共涉及8个Assets文件。EditMode实际30/30通过，800×600/1920×1080 PlayMode各7/7通过，全部0失败、0跳过。1920成绩依据Unity官方XML，MCP丢回调后的孤立running状态另存诊断。固定1920升级前后几何及三张双尺寸原始截图已取得，证明同viewport下旧格子/物品尺寸保持；Editor已恢复BackpackTest干净场景并完成七份受保护文件复核，主执行者已明确交还04，最后的MCP连接警告单独记录。
+此前已保存的UI调整包括右侧大面板、只上下滚动、全列按可见宽度适配和4:3响应布局。此前24×24配置回归为EditMode 28/28、800×600 PlayMode 7/7、1920×1080 PlayMode 7/7，全部0失败、0跳过；中英升级/确认截图与Windows构建已完成，独立程序2560×1440下通过一个原生拖拽落点的视觉验证。上述测试、截图及独立EXE属于此前配置，不证明本轮20×24规则已通过。R仍未验、F10工具调用仍未通过，不扩大为所有物理键鼠验收通过。
+
+一、权威数据与模块边界
+
+01的ItemManager保存唯一一份ItemInstance：稳定身份、Owner、ContainerId、IsRetained、使用次数和唯一剧情物品找回记录。
+05的WarehouseManager只保存WarehouseGrid摆放与当前宽高；每条WarehousePlacement引用01同一ItemInstance，保存X、Y和Rotated。它不复制物品身份，不记录另一份保有状态，不拥有EV账本。
+WarehousePlacement的属性只读；GetPlacements返回只读集合快照。移动成功时替换对应记录，旧快照仍表示原坐标和朝向。Item本身仍是01权威对象，读取其归属或使用次数得到当前状态。
+ShelterManager保存CurrentEv显示缓存和IsUpgradeActivated首次激活标记。当前EV可降低，已经激活的标记不会跟着撤销。
+仓库格子在Warehouse内独立实现，不调用BackpackGrid，不继承共同格子基类，也没有GridContainer或通用转移框架。
+两个运行模块都挂在既有GameBootstrap场景实例下，由00的入口负责常驻。05没有额外DontDestroyOnLoad根、磁盘存档、角色控制器、背包实现或新轮次流程。
+
+二、代码与资源位置
+
+Assets/Scripts/Warehouse/ScriptableObject/WarehouseConfigSO.cs：初始宽高，默认20×20。
+Assets/Scripts/Warehouse/RuntimeData/WarehousePlacement.cs：不可变摆放记录。
+Assets/Scripts/Warehouse/Logic/WarehouseGrid.cs：独立矩形校验、放置、移动、移除和扩容；WarehouseResult也在此文件。
+Assets/Scripts/Warehouse/MonoBehaviour/WarehouseManager.cs：运行布局、存活入口解析、庇护所上下文、交互占用、真实遗弃与完整通知。
+Assets/Scripts/Warehouse/MonoBehaviour/WarehouseUIController.cs：开关、局部拖拽预览、R旋转、取消和确认目标。
+Assets/Scripts/Warehouse/MonoBehaviour/WarehouseView.cs：可滚动格子、物品视图、预览、详情、确认框与本地化文字。
+Assets/Scripts/Warehouse/MonoBehaviour/WarehouseItemView.cs：单件物品UGUI指针回调，转交本仓库控制器。
+Assets/Scripts/Warehouse/MyPrecious.Warehouse.asmdef：引用真实Items、Bootstrap、Localization、Input System、TMP及UGUI，不引用Shelter或Backpack。
+
+Assets/Scripts/Shelter/ScriptableObject/ShelterUpgradeSO.cs：requiredEv与目标宽高；不重复保存初始尺寸。
+Assets/Scripts/Shelter/MonoBehaviour/ShelterManager.cs：从01重算EV、首次升级校验、激活标记与界面通知。
+Assets/Scripts/Shelter/MonoBehaviour/ShelterView.cs：EV、当前与目标容量、免费升级按钮、资格和结果文字。
+Assets/Scripts/Shelter/MyPrecious.Shelter.asmdef：引用Warehouse及实际依赖；Warehouse不反向引用Shelter。
+新增自有C#均无namespace；asmdef的rootNamespace为空。
+
+配置：
+Assets/Data/Warehouse/WarehouseConfig.asset
+Assets/Data/ShelterUpgrades/FirstWarehouseUpgrade.asset
+Assets/Data/Localization/Warehouse/WarehouseText.asset
+Assets/Data/Localization/Shelter/ShelterText.asset
+
+运行模块与UI预制体：
+Assets/Prefabs/Warehouse/WarehouseModule.prefab
+Assets/Prefabs/Shelter/ShelterModule.prefab
+Assets/Prefabs/UI/Warehouse/WarehousePanel.prefab
+Assets/Prefabs/UI/Warehouse/WarehouseCell.prefab
+Assets/Prefabs/UI/Warehouse/WarehouseItem.prefab
+Assets/Prefabs/UI/Warehouse/AbandonConfirmPanel.prefab
+Assets/Prefabs/UI/Shelter/ShelterPanel.prefab
+
+专用验证场景：Assets/Scenes/Tests/Warehouse/WarehouseTest.unity。
+测试初始化：Assets/Tests/Warehouse/TestDoubles/WarehouseTestDriver.cs。
+资源搭建器：Assets/Tests/Warehouse/Editor/WarehouseTestSceneBuilder.cs及WarehouseTextEntries.cs。
+菜单Tools/MyPrecious/Create Warehouse Test Assets只创建缺少的05资源，保留已有资源与GUID；不会Apply共享Prefab，也不改Build Settings。本轮Builder已通过GetComponentInChildren(true)复用Bootstrap内现有ItemModule/LocalizationModule，缺失时才创建，语言表用Contains去重。运行搭建器前须停止Play并保留当前场景的未保存改动。已有生成资源不会因为再次运行菜单自动覆盖。
+菜单Tools/MyPrecious/Apply Warehouse Vertical Layout用于更新已经存在的05自有WarehousePanel/ShelterPanel、warehouse.controls文字和WarehouseTest场景override，保留GUID、模块接线和其他任务资源。4:3响应式锚点仅写入05场景实例的面板根、Scroll、Viewport、纵条和底部详情/按钮；共享WarehousePanel.prefab维持原top-left锚点，避免破坏06只覆盖尺寸位置的现有实例。该操作已实际应用并保存；06 LootTest场景哈希未变化。
+
+三、Inspector和正式场景接线
+
+1. 同一个GameBootstrap场景实例下只保留真实ItemModule、LocalizationModule、WarehouseModule与ShelterModule各一份。当前Bootstrap已经内置Item/Localization，必须复用，缺失时才建。不要改共享Bootstrap的脚本或Prefab内容，也不要把场景直连引用接到额外模块、同时让Resolve读取另一份。
+2. WarehouseManager.config引用WarehouseConfig.asset，itemManager引用该入口下真实ItemManager；containerId维持稳定的shelter-warehouse。
+3. ShelterManager.itemManager引用同一ItemManager，warehouseManager引用该WarehouseManager，firstUpgrade引用FirstWarehouseUpgrade.asset。
+4. WarehouseUIController是场景对象，填写view、inputActions及可选manager/localization引用。测试使用Assets/Input/GameInputActions.inputactions。控制器保持在WarehousePanel外，关闭面板不会把控制器一起销毁；它也不通过Tab打开仓库。
+5. WarehouseView.panelRoot为面板根；scrollRect.content与gridRoot指向Content，viewport指向可视区域，itemRoot是与Content一起上下滚动的物品层。ScrollRect.horizontal=false、vertical=true，只保留纵向滚动条。cellPrefab引用WarehouseCell的Image，itemPrefab引用WarehouseItemView。preview是raycastTarget=false的Image。
+6. 按现有Prefab接齐标题、容量、详情、提示、关闭、遗弃、取消拖拽，以及确认框标题/正文/确认/取消按钮。底部详情区域为660×76，文字采用紧凑排版，右侧有独立纵向滚动条；详情滚动和仓库格子滚动互不代替。所有TMP使用Assets/Art/Fonts/Localization/NotoSansCJKsc-Regular SDF.asset。
+7. ShelterView接真实ShelterManager、LocalizationManager、WarehouseUIController、所有TMP与两个按钮。Upgrade按钮只调用ShelterView.Upgrade；打开仓库按钮只调用OpenWarehouse。Prefab脚本在启用时添加按钮回调，Inspector不要重复添加相同业务调用。
+8. 当前正式与07A已更新的演示场景以1920×1080为参考，Screen Space Overlay、GraphicRaycaster和CanvasScaler沿用现有接线；本轮不新增小屏适配。当前仓库运行viewport宽1430、20列内容宽1408、66/4/6且scale=1。旧1280参考、984×680面板和926宽viewport属于下方历史证据，不应用它们覆盖07A场景。仅保留一个EventSystem，挂InputSystemUIInputModule，引用原输入资源的UI/Point、Click、RightClick、MiddleClick、ScrollWheel、Navigate、Submit、Cancel；05A不修改输入资产、场景或Prefab。
+9. 唯一LocalizationModule场景实例的tables在进入Play前加入WarehouseText.asset与ShelterText.asset，保留原有通用表与物品目录、避免重复表；本轮05场景已合并为六张表并统一UI引用。不能运行中追加后期待Initialize重建字典，也不能Apply到03共享Prefab。
+10. 08/09在实际进入允许整理的场景时调用warehouse.SetShelterContext(true, shelterScene)，退出时用同一个Scene调用false。不要把DontDestroyOnLoad场景作为权限来源，也不要用Player.IsPrepared替代庇护所权限。测试场景由WarehouseTestDriver明确提供该上下文。
+
+四、尺寸与格子规则
+
+初始宽高只在WarehouseConfigSO.width/height维护，默认20×20，共400格。必须为正数；非正方形配置同样使用独立的宽高。
+在停止运行后改初始配置，再开启新的完整运行才能验证新的初始仓库。正在运行时改SO、重开UI或重复Initialize不会缩仓、扩仓或清空摆放。
+FirstWarehouseUpgrade.requiredEv保持7；当前targetWidth=20、targetHeight=24，对应默认20×20扩至20×24，共480格，新增底部4行/80格。代码与资源已导入，EditMode已通过；原24×24/576格仅保留为此前配置和历史证据，不再是当前升级默认规则。
+首次升级在Shelter层要求targetWidth等于当前Warehouse.Width、targetHeight严格大于当前Warehouse.Height，且所有已有摆放仍合法；改宽、等高和减高均拒绝。初始宽高仍可配置，但对应升级目标必须保持该运行仓库的宽度。WarehouseGrid的通用TryExpand仍负责非缩小扩容与布局合法性，不把Shelter的一次性玩法限制扩散到格子核心。代码不会通过删物品、自动重排或暂存队列强行满足升级。
+
+格子左上角是(0,0)，X向右、Y向下。原始占格读取ItemDataSO.width、height；Rotated=true交换宽高，canRotate=false拒绝旋转，不写回SO。
+WarehouseGrid使用List和矩形相交检查，按真实空矩形判断，不能用总剩余面积代替。边界比较使用long，极大坐标不会因int加法溢出变合法。
+CanPlace/CanMove只查询；TryAdd/TryMove通过全部检查才修改。重复实例、非正尺寸、越界、重叠与旋转权限失败均保留原布局。移动仅忽略自己的旧矩形。
+TryExpand先完成所有校验再更新Width/Height，不替换任何已有Placement。Manager还会核对已有摆放属于真实登记实例、本仓库Storage及ContainerId。
+
+五、拖拽、滚动与生命周期
+
+BeginItemDrag记录稳定实例、原Placement、朝向和抓取格偏移，申请本仓库的局部交互占用。真实旧占格和01归属一直保留；View仅绘制绿色/红色半透明预览。
+每次拖拽有递增token。UpdateDrag与EndDrag必须携带当前token；CancelDrag清零后，迟到的OnEndDrag不能再次提交。
+R由控制器Clone既有Player/RotateItem动作，只在本控制器有效拖拽期间改变预览朝向。05只启停和释放自己的动作，不启停共享Action Map，不接管Tab、F10或物品治疗。
+松手时再次确认管理权限、交互占用、同一个权威实例、Owner/ContainerId、原摆放未被更改、可见目标格及矩形合法性，随后Manager.TryMove再次校验并提交。
+越界、重叠、缝隙、关闭界面、控制器停用/销毁/换绑、应用失焦或暂停都会取消未提交预览。未由06接管的面板外松手同样取消；05本地逻辑不会自行丢地、转背包或生成世界物品。06已交付跨界面回调与自己的测试记录；05不据此冒称自己另行完成转移联验。
+确认框和拖拽共享本仓库一个明确占用；HasPendingInteraction使首次升级在未结束操作时返回Busy。Claim/Release通过ContextChanged刷新资格按钮。上下文换到另一场景会清占用，旧控制器检测到失去OwnsInteraction时取消预览和确认。
+04与05各自只处理自己的拖拽。06接入双向转移时必须保证一次拖拽只有一个活动来源及一份旋转预览；05没有建立全局拖拽或输入框架。
+
+WarehouseView当前cellSize/gap/padding为66/4/6；cellSize仍是显示上限，实际格子边长读取EffectiveCellSize，按(viewport实际宽度－左右padding－列间gap)/仓库列数计算，并不超过cellSize，不由行数决定。当前1920基准下viewport宽1430，20列内容宽1408，实际单格保持66，步长70；1×2/2×2/2×3矩形分别为66×136、136×136、136×206。升级前后宽度不变，仅内容高度1408→1688，不缩小旧格和物品。原52/3/8及926宽下42.65为旧配置测量，下方原始证据保留；本轮05A不得把该历史值当成当前显示规格，也不新增其他分辨率要求。
+最新要求只上下滚动查看远端行。LockHorizontalScrolling会关闭横向滚动、隐藏遗留水平滚动条、清横向速度，并把Content的横向偏移归零。不能使用横向滚动补偿过窄面板；应调整右侧大面板和viewport宽度，使所有列仍可辨认和操作。
+TryScreenToCell先刷新实际几何，检查viewport及EventSystem最上层命中，避免穿过遮挡面板提交；随后用RectTransformUtility.ScreenPointToLocalPointInRectangle转换滚动后的Content坐标，减去实际rect边缘与padding，最后除以EffectiveCellSize+gap。边距和格缝不是合法目标。物品矩形、抓取偏移和预览使用同一个EffectiveCellSize，不能按Inspector的cellSize上限反算落点。
+View.LateUpdate在面板可见时比较几何尺寸，只在窗口、viewport宽度、仓库宽高或显示参数改变时重排。Controller.LateUpdate只在有效拖拽时重算鼠标落点，因此指针不动但滚动或窗口变化时也会更新预览。CanvasScaler缩放交给RectTransform转换处理，不使用固定世界深度。
+窗口变化会复用并重排已有格子Image和ItemView；本轮20×20扩到20×24只在底部补足新增80个格子，不销毁重建原400格，不移动原Placement。稳定帧不重建格子。纵向滚动条不得在升级时通过AutoHideAndExpandViewport改变viewport宽度，避免间接缩放；现有接线使用固定预留纵条。双尺寸PlayMode已验证原400格与已有ItemView的对象、局部位置和矩形尺寸保持，并通过新增底部行拖放与全列指针命中；固定1920几何另有原始记录。切语言只RefreshText，不重建正在拖拽的ItemView。
+
+六、EV来源和刷新时机
+
+ShelterManager.RefreshEv逐项读取ItemManager.GetInstances()，对Definition有效、IsRetained为true、Owner仍为World/Container/Backpack/Storage的实例累加Definition.ev。同一登记表实例只计一次。
+已保有布娃娃EV5和医疗包EV2即为7，即使两者都留在背包也成立；未保有的新战利品不计EV。05不因入仓而TrySetRetained(true)。
+临时丢地只改Owner为World，01尚未取消保有，因此不能仅因落地扣EV。真正死亡、遗弃、撤离遗留由01.RecordLoss清除保有；Consumed、Lost和PendingRecovery不贡献EV。
+CurrentEv是上次显示缓存，不是累计账本；没有AddEV或SpendEV。重复通知、容器变化、重开面板和语言切换不会增加EV。
+
+目前01没有ItemsChanged/ItemUsed事件。实际刷新入口为：
+- ShelterView.Bind/Open在打开或重绑时调用RefreshEv；打开仓库按钮也刷新一次。
+- WarehouseManager完成移动/遗弃/显式完整通知后，Shelter订阅Warehouse.Changed；OnWarehouseChanged先CalculateEv写入缓存，再发一次Shelter通知。
+- TryUpgrade在提交前再次RefreshEv，不能只相信上次按钮状态。
+- 后续04完成使用、06完整转移、08损失/撤离保有结算之后，由08/09协调器明确调用ShelterManager.RefreshEv。
+
+不能让04反向引用Shelter制造循环依赖；不要求01补事件总线。没有每帧复制GetInstances列表的EV轮询。
+未交付模块的通知接入是待联验事项。测试驱动直接设置样本保有或测试中调用RefreshEv，不代表真实08结算或整条通知链已经完成。
+
+七、首次免费升级的完整顺序
+
+ShelterManager.TryUpgrade返回ShelterUpgradeResult：Success、NotReady、NotInShelter、AlreadyActivated、InsufficientEv、InvalidConfiguration、Busy。
+方法内部解析有效依赖、重算EV，并检查当前明确的庇护所权限、首次尚未激活、EV门槛、升级配置、仓库合法性及没有拖拽/确认占用。当前要求目标宽度等于当前宽度且高度严格增长，资格查询和提交沿用同一校验入口；本轮EditMode已验证非法目标与非默认宽度。Shelter.Initialize会拒绝已停用组件；GetUpgradeAvailability也重新核对依赖有效性，但仅读EV缓存，不复制物品登记表。Button.interactable仅是显示提示，不替代方法检查。
+成功顺序是：完整校验 → WarehouseManager.TryExpand静默扩容 → IsUpgradeActivated=true → Warehouse.NotifyChanged → Shelter的OnWarehouseChanged重算并统一通知。升级方法不再另发一遍相同的Shelter通知。
+底层TryExpand不提前广播；监听者第一次看到成功时，尺寸和激活标记已一致。通知期间重入写操作被Busy拒绝，但CanExpand等只读查询仍能为UI显示最终资格。
+升级不调用TryUseItem、RecordLoss或TrySetRetained，不扣EV、不扣物品。身份、归属、摆放、朝向、使用次数与保有状态全部保持。
+未升级时EV7降到2会失去资格，重新达到7后可手动升级；已升级后EV降到2或0，尺寸和激活标记保持，重复点击返回AlreadyActivated。
+Warehouse与Shelter用本次运行状态保存结果；重复Initialize、重新打开UI、普通场景切换不重置。新完整运行会通过SubsystemRegistration的session区分重新初始化，P0没有跨退出重启的磁盘持久化。
+
+八、确认遗弃与唯一找回
+
+选中仓库已有物品后点遗弃，控制器先取消拖拽，再保存PendingAbandonInstanceId并显示确认。确认身份是稳定实例ID，不依赖图标对象。
+取消、关闭、换绑、失焦或场景权限失效只清临时目标，不修改归属、摆放或EV。切语言只按相同ID重绘正文，不更换目标、不确认遗弃。
+确认时先检查界面权限和本控制器占用，并清空本次确认资格，避免双击重复执行；Manager随后重新检查真实登记、Storage归属、ContainerId及合法摆放。
+Manager调用ItemManager.RecordLoss(instanceId, ItemLossReason.ShelterAbandonment)。失败返回LossRejected且原摆放不变；成功后按已验证ID移除仓库摆放，再统一Changed。
+RecordLoss成功时Owner已经变为Lost或PendingRecovery，因此布局清理不能再次要求Owner==Storage。通知观察到的是完整结果，不依赖UI回调补第二次删除。
+EV由Shelter从权威记录重新求和，不额外手动减一次。布娃娃遗弃后EV7→2，已升级尺寸仍保留。
+唯一身份和OriginalSpawnPointId由01保留，下轮资格在其RecoveryRound中记录；05不创建替代实例、不立即生成地图物品。06/08后续负责真正下轮原点生成与流程联验。
+
+九、06可调用的实际少量接口
+
+WarehouseManager.Resolve()：只从存活且启用的GameBootstrap.Instance下取得有效仓库，避开待销毁重复入口。
+bool Initialize(ItemManager source)：首次建立运行格子；同运行再次传同一来源保留布局，换另一份物品登记表返回false。
+属性：bool IsReady；int Width/Height；string ContainerId；ItemManager Items；bool IsManagementAllowed；bool HasPendingInteraction。
+IReadOnlyList<WarehousePlacement> GetPlacements()。
+bool TryGetPlacement(string instanceId, out WarehousePlacement placement)。
+WarehouseResult TryGetStoredItem(string instanceId, out ItemInstance item)：检查真实登记、Storage、本ContainerId与合法摆放。
+WarehouseResult CanMove(string instanceId, int x, int y, bool rotated)：庇护所内只读预览。
+WarehouseResult TryMove(string instanceId, int x, int y, bool rotated)：完整校验后移动并Changed。
+WarehouseResult TryAbandon(string instanceId)：确认入口调用，真实损失成功后清布局并Changed。
+WarehouseResult TryFindSpaceForExternal(string instanceId, bool preferredRotated, out Vector2Int cell, out bool rotated)：05A新增只读查找。先检查IsReady、IsManagementAllowed和busy/HasPendingInteraction，再沿用真实实例/归属/定义/既有布局校验；首选方向完整按y后x扫描，必要且允许旋转时再查另一方向。查询不写布局、身份、EV或占用，不发通知；06必须在Claim前查询，提交前仍需复验。完整返回语义见05A交接。
+
+以下入口不改01归属/保有，也不发通知，供06在同步协调中使用：
+WarehouseResult CanPlaceExternal(string instanceId, int x, int y, bool rotated)。
+WarehouseResult TryAddPlacement(string instanceId, int x, int y, bool rotated)。
+WarehouseResult TryRemovePlacement(string instanceId, out WarehousePlacement removed)。
+WarehouseResult TryRestorePlacement(WarehousePlacement placement)。
+
+CanPlaceExternal/TryAddPlacement允许本仓库尚无记录的活动World/Container/Backpack实例，以及本containerId的Storage实例。它们拒绝重复加入、其他Storage容器和Consumed/Lost/PendingRecovery。
+TryRemovePlacement有意不再检查Owner，允许06完成归属变更或08记损后清旧摆放。TryRestorePlacement重新检查原实例、坐标与冲突，不覆盖已有记录，也不恢复01归属。
+06先校验来源和目标，再协调两边布局与ItemManager.TrySetOwner；失败使用保留的原Placement及来源状态恢复。只有全部数据一致后调用void NotifyChanged()。单独TrySetOwner或加入目标摆放不代表转移完成。
+外部静默布局入口本身不要求庇护所上下文，因为场景和跨来源许可由调用它的06/08协调器负责。它们不是绕过拾取或转移授权的公开UI操作。
+
+上下文与局部交互：
+void SetShelterContext(bool allowed, UnityEngine.SceneManagement.Scene ownerScene)。
+bool TryClaimInteraction(UnityEngine.Object owner)。
+bool OwnsInteraction(UnityEngine.Object owner)。
+void ReleaseInteraction(UnityEngine.Object owner)。
+event Action Changed；event Action ContextChanged。
+
+扩容低层：WarehouseResult CanExpand(int width, int height)；WarehouseResult TryExpand(int width, int height)。它们不保存首次激活，正式升级应调用ShelterManager.TryUpgrade；只有Shelter完成激活标记后才NotifyChanged。
+WarehouseResult实际值：Success、NotReady、InvalidConfiguration、NotFound、WrongOwner、WrongContainer、MissingPlacement、DuplicateInstance、RotationNotAllowed、OutOfBounds、Overlap、Busy、NotInShelter、LossRejected。
+
+06已交付实现，并向WarehouseUIController接入以下真实扩展点；05保留这些协作改动，不能把06的交付和测试当成自己另行完成的转移联验：
+Func<bool> CanBeginDrag { get; set; }；Action<int, Vector2, Camera> DragUpdated { get; set; }；Func<int, Vector2, Camera, bool> ExternalDropRequested { get; set; }。
+event Action Closing；event Action DragCancelled；只读DragToken与DragGrabOffset；bool IsDragValid(int token)。
+05A新增Func<string, bool> QuickTransferRequested { get; set; }与bool TryQuickTransfer(string instanceId)，由06绑定并返回真实业务结果；本地同步防重入、不预占交互。左右Ctrl仅在左键PointerDown锁定，Click先清手势再发一次请求；失败同样消费，跨拖拽阈值的Ctrl手势不请求，普通拖拽途中按Ctrl不转换。Bind（含同源）、Close、布局/上下文改变、CancelDrag、失焦/暂停和停用会清未完成手势，拒绝迟到释放。
+回调由06单一协调者接线；仓库继续负责自己来源的预览、R和本地重排，06承担完整跨容器提交及失败恢复。新增回调存在不等于05已验收双向转移。
+最新只读核实：此前发现Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs共用ValidateRequest无条件要求player.IsPrepared、误拒绝未准备探索的庇护所仓库↔背包转移。06已在代码中修正：TransferContainers两次检查均调用ValidateRequest(requestIsValid, false)，共用方法通过requiresExplorationPlayer=true默认参数仅为探索请求要求玩家已准备；庇护所仍检查Warehouse.IsManagementAllowed、交互占用和当前UI请求，存在玩家时仍检查启用、存活及开包状态。05没有调用ResetForExploration绕过，也没有修改06代码。此处确认源码修正，05尚未执行该路径的跨容器联验；默认未绑定06回调的本地整理边界不变。
+
+十、03语言接入与09正式集成
+
+WarehouseText/ShelterText沿用LocalizationTableSO.entries以及key/chinese/english，业务前缀分别warehouse.、shelter.。通用F10提示复用common.language.toggle_hint。
+物品名称和描述只查询ItemDataSO.nameKey/descriptionKey；唯一可编辑中英译文仍在01物品SO中，05表不复制译文。
+动态EV、格数、升级结果和确认正文用LocalizationManager.GetText/FormatText与编号占位符。上次结果保存稳定key/枚举和必要数值快照，不永久缓存最终中文字符串。
+WarehouseView和ShelterView配对订阅/解除LanguageChanged；关闭重开后立即使用当前语言。03拥有唯一F10输入，05没有第二个切语言监听者。
+09必须在正式启动前把05两张表加入初始存活LocalizationModule场景实例；字典已初始化之后，换场景中的重复模块不能热注册新表。
+09提供场景内WarehouseUIController、View、EventSystem和明确权限入口；常驻模块保留布局和升级，场景UI可销毁再重绑。旧场景卸载会清自身管理权限，探索场景不能继承允许整理。
+05没有因满仓禁止出发、强制入仓、强制清包、待结算队列或强制整理确认。撤离即结算、玩家死亡、出发补血与轮次由08实现。
+
+十一、验证场景和检查边界
+
+本轮仅增行修订已导入并取得EditMode作业3afdf7a769dd44978064edef0cad727d实际30/30通过，0失败、0跳过，0.3266675秒。完整证据Docs/Verification/Warehouse/VerticalUpgrade_EditMode.json已核对，覆盖宽度变化/等高/减高拒绝、非默认宽度仅增行、20×24免费升级与物品身份/摆放保留、EV下降保留升级等边界。后文历史28/28与双尺寸各7/7、旧截图、设置hash和独立EXE均是此前24×24配置的证据，不作为本轮成绩；历史段中的“最终”“本轮”均指其当时验证轮次。
+本轮800×600 PlayMode作业e741629343c84a9bb364bcc69b57a31d实际7/7通过，0失败、0跳过，1.6890644秒，完整结果为Docs/Verification/Warehouse/VerticalUpgrade_PlayMode_800.json。1920×1080对应MCP作业2db8f16b15854d46b8fda8a19b9ec885跨域重载丢失回调并停在running/0项/result为空，MCP状态不是通过证据；Unity官方原始XML记录7/7通过，0失败、0跳过，2.5350997秒，UTC 2026-10-18 20:07:14Z至20:07:17Z，已复制为VerticalUpgrade_PlayMode_1920.xml。确认Editor非Play、无活跃TestRunner且is_running=false后才clear_stuck，孤立状态说明另存VerticalUpgrade_PlayMode_1920_McpStatus.json。
+本轮双尺寸七项测试验证既有拖拽/R/F10、取消/确认、上下文与重载边界，新增20×24/480格、仅底部80格、原400格和ItemView对象/局部位置/尺寸保持，以及新增行UGUI拖放、全列指针命中、故意横偏移归零和缩窄viewport后的映射。输入使用InputSystem队列，经真实InputAction/EventSystem处理，不等同于原生OS拖拽或键盘；模拟失焦不等同真实窗口切换。
+本轮另修复必要场景接线：共享GameBootstrap.prefab已有Item/Localization，旧WarehouseTest仍各加一份；仓库/庇护所直连额外Items，UI直连额外六表Localization，而Resolve可能读取继承的四表实例。主执行者已保留继承的唯一模块、合并六张表、重绑四处依赖，仅删除场景added overrides；场景保存clean，不改共享Bootstrap或03代码。Builder同步复用与去重，PlayMode的LoadScene新增包括inactive对象在内的模块唯一性、引用一致性与面板边界断言，双尺寸均已通过。七个导入文件的当时hash记录在VerticalUpgradeApplied.json，随后场景修复不包含在该七项清单中。
+本轮固定1920×1080、顶端滚动位置下，通过已绑定按钮的UnityEvent触发升级，VerticalUpgrade_Geometry.json记录20×20→20×24，单格42.65不变，grid/viewport宽926不变，grid高926→1108.6001；三个物品instance id/view id、局部坐标与rect尺寸均相同，布娃娃仍88.3×133.950012。以上为Canvas局部单位，按钮事件触发不记为原生点击。800×600检查viewport926×692、cell42.65、Content X=0且horizontal=false。Docs/Architecture/05_VerticalUpgrade_1920_Before.png、05_VerticalUpgrade_1920_After.png和05_VerticalUpgrade_800_After.png为未编辑的Unity ScreenCapture原始输出；截图记录时Console为0错误、0警告。本轮没有重建Windows EXE，原生R/F10边界仍保留。
+本轮最终恢复已核对：BackpackTest加载且clean，Editor非Play/编译/更新，Game preset 7、非最大化；运行EditorSettings为false/None，磁盘Enabled=1、Options=0，SHA256仍为32D6A9BE4C9AA9795A96BD951820A2D9BE1BFEFAB82ED05A5DB111AF0863938F。ProjectSettings、EditorSettings、EditorBuildSettings、GameInputActions、共享GameBootstrap、LootTest、BackpackTest七份受保护文件均匹配本轮实际接手基线，未需写回，详见Docs/Verification/Warehouse/VerticalUpgrade_SettingsReview.json；不与04之前的旧快照混用。VerticalUpgradeFinalAssets.json保存本轮八份实际修改Assets最终hash，均已复核匹配且meta存在；WarehouseTest为77EB45D0E36226D7570E529FEC47E70FF289BF5A67988F6A991DF5FF89562E5D。三张新截图已由主执行者逐一目视检查。停止Play后域重载重连新增一条“MCP WebSocket not initialised”警告，最后业务/编译错误为0，不能声称交还前0警告。主执行者已明确发送释放消息、将Editor及Assets写入权交还04，最终状态见VerticalUpgrade_EditorReleased.json；05_Handoff另有全文备份和hash核对。
+
+WarehouseTestDriver只在01实例数量为0且05布局也为空时创建样本，不在每次OnEnable补发。场景重载沿用常驻实例和当前摆放，不重置升级。
+干净样本：已保有布娃娃在仓库(0,0)，已保有医疗包为01的Backpack归属，未保有食物在(3,0)，未保有电池在(6,0)。初始EV=7。测试驱动显式TrySetRetained模拟已成功带回，生产仓库没有这项默认行为。
+医疗包只证明“已保有背包归属物品也计EV”的01数据规则；本场景没有真实04背包格子，不得称为实际背包转仓通过。
+本次已读取Docs/Handoffs/04_Handoff.txt及06_Handoff.txt。04的16项EditMode、左右布局8/8 PlayMode是其既有交接记录，不能当作05成绩。06最新明确已交付70项EditMode、1280×720和800×600各19项PlayMode通过，原生OS拖拽仍保留未验收边界；这属于06报告的独立证据，05未另行执行该双向转移联验。08完整流程不在05验收范围。
+
+EditMode测试文件：Assets/Tests/Warehouse/EditMode/WarehouseGridTests.cs、WarehouseShelterTests.cs。
+覆盖矩形/非方形/碎片空位、失败不变、EV权威求和、EV6/7、陈旧按钮重算、免费扩容与原数据保留、非法目标、权限/依赖/交互占用、EV下降保留升级、真实RecordLoss与原子通知等边界。
+PlayMode测试：Assets/Tests/Warehouse/PlayMode/WarehouseIntegrationTests.cs，配合真实预制体及专用场景检查生命周期与UI。此前配置最后一次EditMode作业34628df6ddb04c7dbe883beed7db03f1为28/28通过，0.2099605秒；800×600 PlayMode作业278beaf47be9499b82db25b0bad54b9f为7/7通过，0.789647秒；1920×1080 PlayMode作业4e8380a13aa2435796e407f9f945dce3为7/7通过，1.2267363秒，均0失败、0跳过。真实完整结果分别保存为05_EditModeResults.json、05_PlayMode_800x600.json、05_PlayMode_1920x1080.json，05_PlayModeResults.json汇总该轮双尺寸结果，均在Docs/Architecture下；不回填成20×24修订的运行结果。
+历史0项启动/停滞记录不计测试成绩：早先域重载期间的作业停在0项，根因未证实；本次首次Edit启动请求又被启动状态拒绝，未执行用例，确认Editor空闲后才成功重试。它们不是测试断言失败，也不影响上述随后实际完成的结果；旧版7/7记录保留在05_Handoff作为历史。
+
+本轮20×24规则的Game检查仍应分别记录输入来源；以下项目已有上文所列自动/几何证据，但不据此将全部项目标成原生鼠标键盘通过：
+1. 实际鼠标从物品不同格抓取，拖到合法位置并R旋转后松手；越界、重叠、格缝与面板外松手不改原摆放。
+2. 上下滚动到远端行，确认全列始终在可见宽度内、横向偏移固定为0；拖拽期间滚动及调整窗口，至少两种Game窗口尺寸检查EffectiveCellSize、落点与图标一致。默认扩容前后均为20列，保留原400个格子对象，只在底部新增80个；在同一viewport下分别记录升级前后的格子与物品矩形尺寸，确认没有缩小。
+3. 拖拽或确认框打开时升级不可执行；取消后恢复资格。确认取消无副作用，重复关闭与迟到松手不提交。
+4. 手动升级20×20→20×24，共480格，EV仍为7；重复点击不再扩容。确认遗弃布娃娃后EV=2且仍为20×24，身份在01进入PendingRecovery。
+5. F10中文→英文→中文，检查EV、尺寸、详情、确认、按钮和结果全部刷新；坐标、朝向、保有和次数不变。
+6. 同运行重载场景后布局、实例、尺寸、激活标记与语言保留；临时拖拽和确认消失，测试物品不补发。新完整运行从配置初始状态开始。
+
+以下保留此前24×24配置的原生工具、截图、设置恢复与构建证据：
+原生工具点击选择物品与点击升级已成功。末次800×600、已升级24×24的普通Play复验中，Sky.click选中Food；Sky.scroll以scrollY=600滚至末行，Content Y=233.999939、verticalNormalizedPosition=0；继续发送scrollX=600，Content X和horizontalNormalizedPosition仍为0。原生纵向滚动和横向禁止已有实际通过记录。
+同次Sky.drag尝试把Food从(3,0)拖到空格后，位置仍为(3,0)、末态DragToken=0；F10注入后仍为English。末态DragToken=0不能单独证明拖拽没有开始，正常EndDrag也会清零，因此该历史快照只说明终态没有变化，不据此判定开始阶段或业务失败。
+随后默认配置1280×720的被动记录保存在Docs/Verification/Warehouse/NativeToolDiagnostic.json；只观察native Keyboard/Mouse，focus=true。Sky.click选中Doll成功；Sky.drag的left down和目标position同在Dynamic frame 4089到达，frame 4095松开，Doll仍在(0,0)，独立递增字段nextDragToken仍为0。结合时序与该字段，只能判断本次工具注入没有在来源物品上开始有效拖拽，不外推成物理鼠标缺陷。F10与r均未捕获native Keyboard事件，语言仍为Chinese，键盘未送达原因未定。
+工具没有已文档化的保持鼠标拖拽同时按R接口，因此没有伪造该操作。用户暂不方便手工操作，尚无真实用户输入记录；这轮Editor工具诊断没有完成拖拽、R、F10验收，后续独立程序的单次拖拽结果另列。已通过的自动输入测试使用InputSystem队列、真实InputAction、InputSystemUIInputModule和EventSystem，说明这条运行输入链执行成功，但不等于物理鼠标拖拽或原生OS键盘验收。
+最终截图已保存并目视检查：1920×1080的05_Game_1920_Chinese.png显示中文初始20×20，05_Game_1920_English.png显示英文升级24×24，两条旧路径已替换为最终图；800×600的05_Game_800_Chinese_Upgraded.png、05_Game_800_Chinese_Confirm.png、05_Game_800_English_Upgraded.png、05_Game_800_English_Confirm.png显示4:3升级状态和中英确认框。以上均位于Docs/Architecture，中文确认截图不再是待办。05_Game_1366_English_Upgraded.png保留为之前过程图。曾检查的可疑列像素均为RGB(38,50,64)，与格子底色一致，没有证据记录为缺行/缺列缺陷。截图与队列输入测试不代替物理鼠标拖拽验收。
+静态审计记录：05所列78个Assets文件（含.meta）缺meta为0；此前全Assets GUID分组无重复，新增Warehouse/Shelter及测试无namespace或BackpackGrid/GridContainer匹配，asmdef无反向依赖或06依赖。最终释放前复核05自有Assets仍为78个、缺meta=0，Warehouse/Shelter源码仍无上述引用，最终六张新截图均存在且已检查。05_ProtectedBaseline是较早交接快照：当时只有其他协作修改的AgentPrompts中06至10、Acceptance、ProjectRules及README不同，受保护脚本、共享Prefab、Input、Packages和ProjectSettings哈希一致；其后04曾将EditorSettings options改为1，该历史值不是本轮最终交还状态。
+双尺寸回归后当轮Editor已停止Play，无测试/编译运行，Assets/Scenes/Tests/Loot/LootTest.unity干净，Game预设索引7且非最大化，Console为0错误、0警告，并已正式释放给04。Enter Play Mode设置恢复为enabled=false、options=None；TestRunner留下磁盘m_EnterPlayModeOptions=1后，主执行者只将此字段恢复为0。EditorSettings.asset的SHA256为32D6A9BE4C9AA9795A96BD951820A2D9BE1BFEFAB82ED05A5DB111AF0863938F，与当轮接手前一致；LootTest.unity的SHA256为D1165E952CA93EC219F476B6250AD3DF992765F46EB6E3F369AA5C7E1F6DD04B，也未变化。04后续释放后05又进行了上面的默认配置被动输入诊断，此处保留的是先前真实交还记录，不将它冒充所有后续时点状态。
+WarehousePanel.prefab保存时包含滚动状态序列化变化，文件哈希有变化；全部锚点仍保持原top-left，4:3纵向响应锚点只属于05场景实例override。ShelterPanel.prefab未变化。本轮末次验证没有修改运行生产代码，不能把Prefab锚点未改写成Prefab字节完全未改。
+本说明不宣称真实双向转移、撤离结算、下轮生成、完整死亡流程或Windows完整试玩已通过。自动测试、工具方法调用与真实Game键鼠操作应在交接中分开写。
+临时Windows构建已由主执行者读回实际BuildReport：Succeeded、0 errors，输出为Builds/WarehouseNativeQA/WarehouseQA.exe，随后已在2560×1440真实运行WarehouseTest场景。构建成功与运行键鼠验收、Windows完整P0试玩分别记录。
+构建设置已恢复，证据为Docs/Verification/Warehouse/BuildSettingsRestore.json。只撤销preloadedAssets和Standalone m_BuildTargetBatching插入项，候选字节SHA256先核对完全匹配构建前基线，随后才写回。ProjectSettings.asset恢复为883568C7519C8C83808FEE8A39259427D8E2127D7CBF10ADE97CA42903711F1D；JSON中的projectSettingsBefore是恢复操作前的构建后状态。EditorSettings、EditorBuildSettings与GameInputActions的哈希也与相应基线一致，完整值列于05_Handoff。复核时Editor非Play、非编译、非构建，BackpackTest场景干净，GetPreloadedAssets为空。
+独立程序证据为Docs/Verification/Warehouse/StandaloneNativeResults.json。sky.drag不传screenshotId，从屏幕(675,295)至(900,750)，Doll可见落点由(0,0)变为(3,6)、占格仍为2×3；稳定画面显示“摆放已更新。”、EV7、24×24。Docs/Architecture/05_Standalone_2560_Chinese_Drag.jpg已保存并目视检查，为2560×1440、231413字节的原始JPEG，仅更正扩展名，没有编辑像素。只确认一个原生拖拽的视觉落点，未安装独立Player实例ID探针，不能据此宣称全套拖拽、身份和失败边界均原生验收通过。
+此前一次带screenshotId拖至屏幕(1440,675)显示“请在可见仓库格子内摆放。”且位置不变。代码与布局推算支持目标落格缝：2560×1440、24列时x=1440位于1434.9167与1440.9167之间；WarehouseView.TryScreenToCell拒绝格缝，EndDrag复验释放位置后不提交。未读取Player实际几何，因此这是有依据的解释而非绝对归因，不归咎screenshotId或事件过快，未由此发现必须修复的坐标或EndDrag缺陷。独立程序中F10两次工具调用后稳定画面仍为中文，F10未通过；该Player未记录原始Keyboard事件，不能假定与Editor未送达原因相同。R因工具不能按文档保持鼠标按住同时按键而未验，未以合成旋转冒充原生输入。剩余R/F10、真实失焦和更完整的原生交互矩阵继续保留边界。
+Alt_L+F4退出成功，Player.log记录Input Shutdown和清理，窗口列表确认QA窗口已不存在。独立程序退出后上述四份设置哈希再验均与构建前相应基线一致。Editor已释放给04，04收到后完成自己的小改动并再次声明释放；这些后续协作不记为05修改或测试。
+
+十二、参考代码与答辩说明
+
+已读取参考仓库源码后选择复用形式：
+CardGame（本机E:/Portfolio-Card-Clone，核实HEAD 57eabac0f946f21ef00b489e83c1c133905ea673）：
+- Assets/Scripts/GameBoard/UIGridController.cs：行列创建格子表现的循环形式；删除敌人、特殊格、固定列数和世界坐标业务。
+- Assets/Scripts/Cards/MonoBehaviour/CardDragHandler.cs：UGUI Begin/Drag/End三段回调；改为RectTransform局部预览、稳定实例和token，不搬卡牌效果、DOTween或全局拖拽单例。
+- Assets/Scripts/UI/PlayerUI/GamePlayPanel.cs：明确按条件赋值Button.interactable；不从UI文字反向解析业务数值。
+- Assets/Scripts/Items/MonoBehaviour/ItemTemplet.cs：持有配置引用并明确刷新TMP文字。
+2DArpg-Portfolio（E:/Portfolio-Clone，核实HEAD c601c36f95efdd4d67327489f9edb58412aa54b4）：Assets/Scripts/UI/PlayerUI/PlayerUI.cs，查询权威数据刷新UI及事件订阅形式；05完整解除自己订阅，未照搬原文件遗漏解绑的部分。
+LiDarProject（E:/Portfolio-LiDar，核实HEAD 7d691ab14ff69a85cf6be7b91cc910139205507f）是用户许可参考仓库，本任务没有宣称从其中搬入完整仓库或免费扩容实现。
+04仅用于了解真实物品与摆放接口习惯，仓库格子核心独立保留在Warehouse中。未修改参考仓库，也未发现可直接搬入的完整仓库/免费升级系统。
+
+答辩时可以这样说明：
+“仓库独立保存物品摆放。EV从物品模块的已保有记录重新求和，不靠收到几次事件来加分。EV够7后手动扩容，成功才保存升级标记，所以以后EV下降也不会缩仓。语言变化只重绘文字，不再执行升级或遗弃。”

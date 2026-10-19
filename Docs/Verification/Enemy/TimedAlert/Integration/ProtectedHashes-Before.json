@@ -1,0 +1,47 @@
+[
+  {
+    "Algorithm": "SHA256",
+    "Hash": "D7E0920CDFA8672E661583D7AB551683E6EC85CC8A8BD8803B72C503CA6A56A5",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Ruins.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "71BD0E68CE9B34EF682661D60BCD36605007FE6FFE66D8FD09D1A56542A66594",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Ruins.unity.meta"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "9063DB1C2FD9EFBB83A120531BCA35644BE835D203A68EC49FBB1B8306526500",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Bootstrap.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "F4A36F7B10057621E7CBD4FB013C6D30EB92BE94FBF245786AC2E8C388F892B8",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Shelter.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "AA62E8EDC69AC0C08F7F4F8FA6DE3AD0425A0DDFB7FC344B85D20C7D40242200",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Tests\\Enemy\\EnemyTest.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "3DBF48088A9FC82470A4E5DFB056A8E962002B23CED19F883FB23A23891114EB",
+    "Path": "E:\\DD451\\Assets\\Prefabs\\Enemy\\Drone\\Drone.prefab"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "7373C79FC9230FA996B140D761A8E06DE02E78D0803E5FA2FDAF064B771E4603",
+    "Path": "E:\\DD451\\Assets\\Prefabs\\Enemy\\Drone\\Drone.prefab.meta"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "EBA65D068F20AD4AEB5AEA8B6985F4AE43A1F7D1CD092E35F6ECFABE06A5CE27",
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\MonoBehaviour\\DroneFlightVisual.cs"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "F70D62D4DEFA7AFE38F9F66B43A2CDA08C4740E641F9FD7274D08388E148C17C",
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Stealth\\MonoBehaviour\\CoverArea.cs"
+  }
+]

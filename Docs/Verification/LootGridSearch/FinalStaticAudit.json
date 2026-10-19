@@ -1,0 +1,60 @@
+{
+  "files": [
+    {
+      "Path": "E:\\DD451\\Assets\\Scripts\\Loot\\RuntimeData\\LootSourceState.cs",
+      "Hash": "E2DB668B622FBF09E4C7C0595129F38CBA0A06326A86A0BB00E639477D7BDCC7"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Scripts\\Loot\\MonoBehaviour\\LootView.cs",
+      "Hash": "8BF37ED633B3F6B8B25F60AC58D827F2D6C793B98BCCD21AACD9FEA53B298593"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Scripts\\Loot\\MonoBehaviour\\LootItemView.cs",
+      "Hash": "B615273E53BE3CD8FC73C1020BB929F098258FA2E368412E98BDD1D6408D7F75"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Tests\\Loot\\Editor\\LootTestSceneBuilder.cs",
+      "Hash": "CF2EB9D2B3B51A1532B534E5AE2EC7C2B0F09DCD840EDC0DA4B597E1757898F8"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Tests\\Loot\\Editor\\LootTextEntries.cs",
+      "Hash": "CC5C180026B81998248999EEF15AC0F2ACDEDEA1CE9E18F70547A5D25355EECE"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Tests\\Loot\\EditMode\\LootGridLayoutTests.cs",
+      "Hash": "E022A3B3CD354FD2DD5894D0F37F549701D1A8AA79B128500C15438EE8C733FA"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Tests\\Loot\\PlayMode\\LootGridSearchTests.cs",
+      "Hash": "9FA981BF94E2BCEB9666DA83466935FCB3B785EA87E4BBEBE762BB44C10F5239"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Tests\\Loot\\PlayMode\\LootIntegrationTests.cs",
+      "Hash": "F95C89712BA383E7BAA29CAA90CEE039589069A2679E18DF696848025452DF98"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Tests\\Loot\\PlayMode\\LootReturnTests.cs",
+      "Hash": "F10C074573C236587CBDAA721C1897CC89AB5F98BC8F563DAEEB8CE24B295BE7"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Prefabs\\UI\\Loot\\LootPanel.prefab",
+      "Hash": "6DC9F9DFDF12F221DF242B662E715D66766041BA6A75CD001087ABC86E891D14"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Prefabs\\UI\\Loot\\LootItem.prefab",
+      "Hash": "9C5492F163AB7A6887D536A736E160C93D7CFC19EEFAA22398702AABA9B6B96D"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Data\\Localization\\Loot\\LootText.asset",
+      "Hash": "A9BB0B1923CF34B559AF1145408F14C85303E3773EB1DD0D372BDA38790C8981"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Scenes\\Tests\\Loot\\LootTest.unity",
+      "Hash": "8F2B9278A0951D13B42E7E63EA05B2A0640F5F887730E45F937AD469A320E547"
+    }
+  ],
+  "protectedTotal": 92,
+  "protectedChanged": [],
+  "namespaceCount": 0,
+  "missingMeta": []
+}

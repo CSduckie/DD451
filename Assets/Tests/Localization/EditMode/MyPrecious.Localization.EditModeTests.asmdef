@@ -1,0 +1,11 @@
+{
+    "name": "MyPrecious.Localization.EditModeTests",
+    "rootNamespace": "",
+    "references": [
+        "MyPrecious.Localization",
+        "MyPrecious.Items"
+    ],
+    "includePlatforms": ["Editor"],
+    "autoReferenced": false,
+    "optionalUnityReferences": ["TestAssemblies"]
+}

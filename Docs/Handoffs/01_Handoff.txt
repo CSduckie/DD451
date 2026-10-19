@@ -1,0 +1,131 @@
+MyPrecious P0 — 01号任务交接
+版本：2026-10-18 / Dispatch v6 / Lean 01
+项目根目录：E:/DD451；以下均为项目相对路径。
+
+1. 实际实现及边界
+
+基于00精简入口新增普通物品组件，完成可编辑定义、独立实例、身份/归属/保有/次数管理、唯一物品丢失及下轮找回数据、一次性地图出现许可和可组合的SO治疗效果。未恢复BootstrapRuntime、IBootstrapModule、IItemAuthority、服务注册或通用事务框架。
+示例定义、效果和ItemModule引用已配置；ItemsTest已用真实Prefab完成常驻接线，缺失脚本0。Unity编译通过，EditMode 43/43与最终PlayMode 3/3实际通过，均0失败/0跳过；测试相机补齐URP附加数据后的最终PlayMode复跑、工具恢复情况及原生XML证据见第6节。
+01只保存物品数据，不实现真实玩家、背包/仓库格子、箱子概率/搜索、地图生成/拾取/转移、EV总账、撤离死亡流程、正式UI、语言管理器或磁盘存档。真实跨模块联测尚未进行。
+
+2. 新增文件与职责
+
+生产脚本：
+- Assets/Scripts/Items/ScriptableObject/ItemDataSO.cs：定义字段、双语文本与配置校验。
+- Assets/Scripts/Items/ScriptableObject/ItemLibrarySO.cs：ItemLibraryEntry列表、定义查找及目录重复标识校验。
+- Assets/Scripts/Items/ScriptableObject/Effects/ItemEffectSO.cs：单一Execute入口。
+- Assets/Scripts/Items/ScriptableObject/Effects/HealEffectSO.cs：固定量/回满两种配置，同一脚本支持组合。
+- Assets/Scripts/Items/RuntimeData/ItemInstance.cs：独立实例；同文件声明ItemOwner、ItemLossReason、ItemUseResult。
+- Assets/Scripts/Items/MonoBehaviour/ItemManager.cs：统一登记、读写、使用、丢失、跨轮刷新与地图许可。
+- Assets/Scripts/Utilities/Contracts/Player/IHealthTarget.cs：仅生命读取与同步治疗能力，初始维护者01、后续消费者/实现者02。
+
+资源与接线：
+- Assets/Data/Items/Doll.asset
+- Assets/Data/Items/Medkit.asset
+- Assets/Data/Items/Food.asset
+- Assets/Data/Items/Battery.asset
+- Assets/Data/Items/ItemLibrary.asset
+- Assets/Data/ItemEffects/HealFull.asset
+- Assets/Data/ItemEffects/HealOne.asset
+- Assets/Prefabs/Items/ItemModule.prefab：ItemManager与定义目录引用。
+- Assets/Scenes/Tests/Items/ItemsTest.unity：已接线的模块验证场景，真实ItemModule Prefab位于GameBootstrap Prefab实例下。
+
+测试：
+- Assets/Tests/Items/EditMode/ItemsEditModeTests.cs：身份、隔离、使用条件、效果组合、找回、轮次和配置校验。
+- Assets/Tests/Items/EditMode/UnsupportedItemEffectSO.cs：证明未知效果在执行前被拒绝的测试类型。
+- Assets/Tests/Items/PlayMode/ItemsPlayModeTests.cs：真实Prefab/场景重载保留数据、测试场景初始化、Unity已销毁治疗目标。
+- Assets/Tests/Items/TestDoubles/ItemsTestHealth.cs：测试生命对象，非02玩家。
+- Assets/Tests/Items/TestDoubles/ItemsTestDriver.cs：测试场景面板与明确调用，非正式初始化或UI。
+
+必要程序集：
+- Assets/Scripts/Items/MyPrecious.Items.asmdef
+- Assets/Scripts/Utilities/Contracts/Player/MyPrecious.Health.asmdef
+- Assets/Tests/Items/EditMode/MyPrecious.Items.EditModeTests.asmdef
+- Assets/Tests/Items/PlayMode/MyPrecious.Items.PlayModeTests.asmdef
+- Assets/Tests/Items/TestDoubles/MyPrecious.Items.TestDoubles.asmdef
+这些asmdef让Unity测试能直接引用生产组件及小型生命边界，并把测试替身与生产代码分开；不是业务框架。rootNamespace均为空，不新增第三方包。
+
+说明文档：Docs/Architecture/ItemsSetup.txt、Docs/Handoffs/01_Handoff.txt。
+验证记录：Docs/Architecture/01_EditModeResults.xml、Docs/Architecture/01_PlayModeResults.xml、Docs/Architecture/01_ItemsTest.png；Docs/Architecture/01_ValidationResults.json汇总运行和最终文件审计证据；Docs/Architecture/01_AssetValidation.json保存Unity实际资产/引用检查结果。工具异常过程见本报告第6节。
+新增Unity资产及其所属目录维护对应.meta；最终GUID和共享文件保护审计集中记录于第6节。已有有效.meta、共享Bootstrap、Tests/Base、正式场景、Packages与ProjectSettings不属于本次业务改动范围，不回滚已有用户改动。Assets/Scripts/Items/Transfers未修改。
+
+3. 实际源码复用记录
+
+CardGame：本机 E:/Portfolio-Card-Clone，origin https://github.com/CSduckie/CardGame.git，HEAD 57eabac0f946f21ef00b489e83c1c133905ea673。
+- Assets/Scripts/Items/ScriptableObject/ItemDataSO.cs：原文件只有public itemName和CreateAssetMenu；复用简单SO/Inspector形式，补充稳定ID、规格、双语、唯一/使用和效果字段。原项目没有完整实例管理，不能把本次功能归为原本已有。
+- Assets/Scripts/Items/ScriptableObject/ItemLibrarySO.cs：保留List<ItemLibraryEntry> itemLibraryList与Entry.itemData的熟悉配置形式，增加查找和校验；不再用它存玩家运行库存。
+- Assets/Scripts/Cards/ScriptableObject/CardDataSO.cs：复用effects列表引用资源的方式。
+- Assets/Scripts/Cards/MonoBehaviour/Card.cs：复用CardPlacedEffect中foreach调用Execute的思路。原Card依赖棋盘、UI、Tween、卡牌回合和死亡事件，只抽取配置到执行的关系，不搬完整组件。
+- Assets/Scripts/Card Effects/Effect.cs：保留ScriptableObject抽象执行入口，将Card参数改为IHealthTarget，移除ExecuteOnTurnEnd/ExecuteOnDestroy/ExecuteOnOtherCardsDie，不保留空生命周期。
+- Assets/Scripts/Managers/ItemManager.cs：参考明确方法和简单集合写法；原AddNewCardToLibrary写SO列表并按定义引用去重，不适合两份相同食物。本项目改成按实例ID登记及独立唯一索引，无运行数据写SO。
+
+2DArpg-Portfolio：本机 E:/Portfolio-Clone，origin https://github.com/CSduckie/2DArpg-Portfolio.git，HEAD c601c36f95efdd4d67327489f9edb58412aa54b4。
+- Assets/Scripts/Player/CharacterStats.cs：参考GetCurrentHealth/GetMaxHP和onHealthChanged的生命归属/查询形式。
+- Assets/Scripts/Player/PlayerStats.cs：参考Heal的封顶治疗和C#变化通知思路。原方法同时涉及技能治疗量、失衡、能量、PlayerController和2D受击；01不复制属性/战斗系统，不维护第二份HP。当前用int生命边界，真实通知仍归02或后续完整操作协调者。
+上述参考文件已读取，按统一换行核对的内容与所列HEAD一致；这不是对整个参考仓库工作区干净状态的证明。未修改参考仓库。LiDarProject没有本次必须复用的物品/治疗片段，未为凑复用搬入依赖。
+
+4. 示例定义与配置
+
+四份定义都有可读中英文名称/描述和items.<id>.name、items.<id>.description稳定键，03未交付前不建立第二份文案。
+Doll：definitionId=doll，uniqueId=story.doll，2×3，EV5，不可使用。
+Medkit：definitionId=medkit，uniqueId=story.medkit，2×2，EV2，HealFull，每轮1次，使用保留。
+Food：definitionId=food，非唯一，2×2，EV0，HealOne，成功后消耗指定实例。
+Battery：definitionId=battery，非唯一，1×2，EV0，P0不可使用。
+所有示例允许旋转；概率依次0.35/0.35/0.75/0.5，搜索秒数2/2/1/1，均为可调整的测试默认值。
+新建资源菜单、校验、普通/唯一实例调用片段和完整签名见ItemsSetup.txt，不需要03代码才能编译。
+
+5. 实际公开接口与状态规则
+
+ItemManager公开字段/属性：ItemLibrarySO itemLibrary；int CurrentRound { get; private set; }；int InstanceCount { get; }。
+bool TryCreateInstance(ItemDataSO definition, ItemOwner owner, string containerId, string sourceId, string originalSpawnPointId, out ItemInstance instance)
+bool TryGetInstance(string instanceId, out ItemInstance instance)
+bool IsUniqueRegistered(string uniqueId)
+bool TryGetUniqueInstance(string uniqueId, out ItemInstance instance)
+List<ItemInstance> GetInstances()
+bool TrySetOwner(string instanceId, ItemOwner owner, string containerId)
+bool TrySetRetained(string instanceId, bool isRetained)
+bool BeginRound(int round)
+bool RecordLoss(string instanceId, ItemLossReason reason)
+List<ItemInstance> GetRecoverableItems()
+bool TryClaimUniqueSpawn(string instanceId, string spawnPointId)
+ItemUseResult TryUseItem(string instanceId, IHealthTarget target)
+
+IHealthTarget精确签名：int CurrentHealth { get; }；int MaxHealth { get; }；void Heal(int amount)。治疗必须同步、封顶、不复活，不能由事件异常中断完成；02提供真实HP。ItemEffectSO只声明abstract void Execute(IHealthTarget target)。
+定义、目录与HealEffectSO均有bool TryValidate(out string error)；目录有ItemDataSO FindDefinition(string definitionId)。实例公开读取身份、定义、归属、来源/容器、保有、次数与轮次、原点、找回资格、最近损失原因和地图许可状态，修改统一通过ItemManager。
+
+字典用于“按ID直接找到同一件物品”，不是另一个服务系统；集合查询返回副本防止外部删除登记。SO定义与实例分开，所以用掉foodA不会影响foodB或Food.asset。
+唯一登记跨World/Container/Backpack/Storage一致；PendingRecovery仍保留唯一索引。查询只返回原实例；首次或找回地图出现还需TryClaimUniqueSpawn的单次许可。OriginalSpawnPointId使用“地图/点位”稳定字符串，不保存Transform。06先解析原地图点位和Prefab，确认可创建再领取；同轮不找回，下轮用同一InstanceId且不再抽掉落概率。
+临时落地只改归属，不立即登记丢失。06/08确认三种真实损失后才RecordLoss；普通物品Lost不会恢复。TrySetOwner拒绝从PendingRecovery/Consumed/Lost直接移回背包。
+医疗包成功不改变身份、归属或保有；食物成功只消耗该实例。多个有效治疗按列表执行，前项回满后后项跳过，整次只计一次。空/未知/无效效果先统一拒绝；满血、非背包或失效目标不扣次。使用期间写操作被阻止，避免生命回调重入重复消费；本轮额度只由更大的BeginRound刷新。
+没有UI事件驱动第二次业务。04/06将真实布局校验、01使用与成功后的布局移除放入同一同步完整操作，最终一致后通知显示。当前不存在真实容器，尚未验证这一集成保证。
+
+6. 本轮验证证据
+
+以下均为本轮实际执行结果，不沿用00成绩。
+Unity 6000.2.12f1编译通过。
+EditMode：43/43通过，0失败，0跳过，原生XML时长0.3002669秒；证据Docs/Architecture/01_EditModeResults.xml，根test-run的result=Passed。
+EditMode工具过程：首轮job_id=bfbb29cbca824e96935d50dbd5178df9完成，但域重载后工具结果载荷丢失；重跑job_id=a4d9a6c4c8b5469d99c3c2b779a98a19的工具报告初始化超时，Unity仍继续执行完43项并输出上述原生XML。因此通过结论来自Unity实际结果文件，不把工具超时解释成测试失败，也不伪称工具返回了完整成功载荷。
+PlayMode初次结果：job_id=1e65d92a7e9a4fedb305b557973a2fec，3/3通过，0失败，0跳过，时长0.5469283秒。相机修正后的最终复跑job_id=95de5c0cac2b4aa785eabe8d44302e98：Unity原生XML确认3/3通过、0失败、0跳过，时长9.2653054秒，开始时间2026-10-18 07:15:57Z。工具报告120秒初始化超时，但Unity仍完成运行；最终证据已复制为Docs/Architecture/01_PlayModeResults.xml，三条test-case均为Passed，不以工具超时标记替代真实测试结果。
+ItemsTest场景已创建并接线真实GameBootstrap和ItemModule Prefab，缺失脚本0。MCP进入Play实查：只有一个ItemManager，位于DontDestroyOnLoad，保存3个实例；医疗包首次Success，受伤后第二次RoundLimitReached；食物成功回复到5/5；医疗包仍是同一InstanceId，UsesThisRound=1。截图Docs/Architecture/01_ItemsTest.png已保存并目视检查，测试面板可读，显示HP5/5、医疗包次数1、Food A=Consumed、Food B=Backpack；未进行真人试玩。
+Console记录按阶段说明：较早一次检查为错误0/警告0；后续人工场景渲染发现URP缺少AdditionalCameraData警告，仅给ItemsTest相机补上UniversalAdditionalCameraData。域重载/截图阶段还记录过MCP WebSocket连接错误与原生d3d12 fence(258)信息，均不是C#编译错误。不声称整个验证过程中Console始终为0。
+静态检查：本模块12份自有C#无namespace、无行尾空白；git diff --check退出码0。Git对工作区文件给出的LF/CRLF提示不代表差异检查失败。
+最终资产审计：缺失.meta=0、重复GUID=0，Assets内80个GUID全部唯一。58份受保护文件的哈希与任务开始时完全一致，覆盖Input、Bootstrap、Tests/Base、BaseTest、SampleScene、Packages、ProjectSettings和AgentPrompts。测试工具曾临时修改EnterPlayMode选项，结束后已恢复，EditorSettings文件哈希与原始值相同。
+最终资产实查：4份定义与目录校验通过；Inspector序列化字段可访问，ItemModule恰有1个ItemManager且目录引用正确；ItemsTest缺失脚本0且URP相机组件存在。详细机器证据为Docs/Architecture/01_AssetValidation.json及01_ValidationResults.json。检查后已退出Play，恢复原Assets/Scenes/SampleScene.unity，场景未变脏。D3D12原生等待警告在本机验证中出现过，未更改项目图形设置来掩盖它。
+
+EditMode实际执行覆盖：独立食物/SO不污染、各归属唯一登记、查询不发地图许可、三种丢失与下轮单次找回、临时落地、医疗包和食物使用、满血/非背包/目标无效、跨轮与界面/文本查询不刷新、支持/不支持组合、配置错误/重复标识、运行时改身份拒绝。
+PlayMode实际执行覆盖：真实GameBootstrap+ItemModule跨BaseTest/ItemsTest加载卸载保留同一管理器与次数；ItemsTest重复加载不补充食物；已Destroy的Unity生命对象不消费。
+打开方式：Unity 6000.2.12f1打开Assets/Scenes/Tests/Items/ItemsTest.unity；运行后使用测试面板或ItemsTestDriver右键测试项。场景只模拟物品调用，不是02角色联测。自动测试从Test Runner干净场景运行，避免已有用户入口导致保护性跳过。
+
+未执行的整合验证：真实背包占格及消耗布局一致、真实地图首次/找回生成及失败恢复、玩家生命联测、EV显示/结算、正式F10切换、完整Windows试玩构建及真人试玩；相应模块尚未接入。01的单次许可不等于已经完成地图GameObject生成；06仍需在领取后生成失败及同场景重载恢复表现时保证一致，不能重复申请新身份。
+
+7. 后续最小接入信息
+
+02：实现IHealthTarget，保持唯一真实HP；自己的生命事件完成后安全通知，避免治疗回调中修改效果SO；每轮出发满血由02/08安排。测试ItemsTestHealth不能替代正式玩家。
+03：读取稳定文本键与双语内容，统一迁移后只保留一个文案来源；把ItemUseResult映射提示。语言选择不能改身份/次数。
+04：背包保存实例ID和格子，真实占格成功后由协调调用设置Backpack归属；消耗成功按同一ID移除布局，完整操作后再刷新。
+05：仓库保存实例ID和布局；读Definition.ev/IsRetained计算保有价值；转仓不改身份和保有，不另建EV总账到01。
+06：负责来源/容器ID、跨场景稳定原点、生成概率/搜索、地图表现及转移协调；唯一查询与许可分开；先准备地图/Prefab再领取；重载既有世界表现仍用同一身份，确保同时至多一份表现。
+08：唯一推动递增轮次；撤离后设置新战利品保有，死亡/遗弃/遗留时确定实际损失后调用RecordLoss；不要通过重开UI刷新轮次。
+09：正式入口只挂一份ItemModule到现有常驻GameBootstrap；不复制第二个物品全局入口。当前01测试场景接线不修改共享Bootstrap资源。
+
+停止Play即结束本次内存数据。没有磁盘恢复、任意效果回滚或跨容器通用事务承诺，后续按真实协作需求补齐明确操作即可。

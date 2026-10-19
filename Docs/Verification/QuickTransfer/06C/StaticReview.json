@@ -1,0 +1,178 @@
+{
+  "Task": "06C",
+  "RecordedAt": "2026-10-18T19:52:32.8854820-04:00",
+  "Status": "READY_FOR_INTEGRATION-source-only-not-compiled-not-tested",
+  "UnityOperated": false,
+  "Compiled": false,
+  "TestsExecuted": false,
+  "StaticChecks": "Read APIs, call sites, transaction/rollback and input lifecycles; git diff --no-index --check across 16 source baselines reported only LF/CRLF warnings, no whitespace errors. This is not compilation.",
+  "SourceCaseCounts": {
+    "Generation": 17,
+    "GridLayout": 34,
+    "EditMode": 122,
+    "PlayMode": 36,
+    "SourceState": 43,
+    "ItemTransfer": 28
+  },
+  "BaselineProvenance": "14 actual pre-edit source copies; LootView and LootTestSceneBuilder reconstructed by reversing this task patches; see Baselines/LootUIBaselineNotes.txt.",
+  "Files": [
+    {
+      "Path": "Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs",
+      "Baseline": "Docs/Verification/QuickTransfer/06C/Baselines/Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs",
+      "BaselineKind": "actual-pre-edit-copy",
+      "BaselineSHA256": "50BFF07C9EEF9BBC7A9E71CADD16B5B152A1144DD40080A18DB040CD14E552C1",
+      "CurrentSHA256": "C9547E96908FF577ADA647AC5387A9070A3E16789E006B4C7F393131567839C5",
+      "MetaPresent": true,
+      "NamespaceDeclarations": 0
+    },
+    {
+      "Path": "Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferUIBridge.cs",
+      "Baseline": "Docs/Verification/QuickTransfer/06C/Baselines/Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferUIBridge.cs",
+      "BaselineKind": "actual-pre-edit-copy",
+      "BaselineSHA256": "E62729BAAE2BEA61930A69B665AE84C803BEA7D144B12DDF63D19B4B1AC05A5B",
+      "CurrentSHA256": "32139B77CAA90173A02019B5039D6288DAB13EB07D111960F07875520CC840E1",
+      "MetaPresent": true,
+      "NamespaceDeclarations": 0
+    },
+    {
+      "Path": "Assets/Scripts/Loot/MonoBehaviour/LootItemView.cs",
+      "Baseline": "Docs/Verification/QuickTransfer/06C/Baselines/Assets/Scripts/Loot/MonoBehaviour/LootItemView.cs",
+      "BaselineKind": "actual-pre-edit-copy",
+      "BaselineSHA256": "B615273E53BE3CD8FC73C1020BB929F098258FA2E368412E98BDD1D6408D7F75",
+      "CurrentSHA256": "49CBCBB182C3CF5D7AB7D8A6BA7ED7C6ADF35757CE916D0610C208CEBBC3D605",
+      "MetaPresent": true,
+      "NamespaceDeclarations": 0
+    },
+    {
+      "Path": "Assets/Scripts/Loot/MonoBehaviour/LootRuntimeManager.cs",
+      "Baseline": "Docs/Verification/QuickTransfer/06C/Baselines/Assets/Scripts/Loot/MonoBehaviour/LootRuntimeManager.cs",
+      "BaselineKind": "actual-pre-edit-copy",
+      "BaselineSHA256": "65407DABF0ED6C99FC051DDD7DE980070FE4F35538503E656AD63452A38544DC",
+      "CurrentSHA256": "89540F0B9C1BA5CBAC6441D951F20A46D877370DBE2F9C9B5ACB1A7A7F7D79AE",
+      "MetaPresent": true,
+      "NamespaceDeclarations": 0
+    },
+    {
+      "Path": "Assets/Scripts/Loot/MonoBehaviour/LootUIController.cs",
+      "Baseline": "Docs/Verification/QuickTransfer/06C/Baselines/Assets/Scripts/Loot/MonoBehaviour/LootUIController.cs",
+      "BaselineKind": "actual-pre-edit-copy",
+      "BaselineSHA256": "C865ABAFD04825E9FED8991553143B1CEEC2A2B03C36CE7745525D8B30094BF4",
+      "CurrentSHA256": "6F160C9D9B2351C30F9C8E48C097A4FE8A278F424CBF1417B4655D2C83E53D6B",
+      "MetaPresent": true,
+      "NamespaceDeclarations": 0
+    },
+    {
+      "Path": "Assets/Scripts/Loot/MonoBehaviour/LootView.cs",
+      "Baseline": "Docs/Verification/QuickTransfer/06C/Baselines/Assets/Scripts/Loot/MonoBehaviour/LootView.cs",
+      "BaselineKind": "reconstructed-by-reversing-own-patch",
+      "BaselineSHA256": "D317DD1B2A3C797C6DB32E3191513196C7EDED45AA3796F48B5E8A2ACB5D2A23",
+      "CurrentSHA256": "0C1A8CD5089506AD3AAD18F8E80B3911FF6369AACD4994C9C56BC4E9AF87F4B4",
+      "MetaPresent": true,
+      "NamespaceDeclarations": 0
+    },
+    {
+      "Path": "Assets/Scripts/Loot/RuntimeData/LootSourceState.cs",
+      "Baseline": "Docs/Verification/QuickTransfer/06C/Baselines/Assets/Scripts/Loot/RuntimeData/LootSourceState.cs",
+      "BaselineKind": "actual-pre-edit-copy",
+      "BaselineSHA256": "C2C5270E991DCB5D6E2BCA34A6156B0584F1EE2C8FE2649A9C9EB2B3FF63C69F",
+      "CurrentSHA256": "62D036C684AF8736FB770771CFF4E5B4CF212EC0BE9C0B4257D7B60FE5F19591",
+      "MetaPresent": true,
+      "NamespaceDeclarations": 0
+    },
+    {
+      "Path": "Assets/Tests/Loot/EditMode/LootGridLayoutTests.cs",
+      "Baseline": "Docs/Verification/QuickTransfer/06C/Baselines/Assets/Tests/Loot/EditMode/LootGridLayoutTests.cs",
+      "BaselineKind": "actual-pre-edit-copy",
+      "BaselineSHA256": "29B0E4C92FF2075C7CE0A51EBF1CCD388BBADDD9801E07A90300A11353A31CE5",
+      "CurrentSHA256": "A6F2CC8AF606D479E8A5A8CC550FC787C27227BC2249EF8F5DC937DBB5DE6407",
+      "MetaPresent": true,
+      "NamespaceDeclarations": 0
+    },
+    {
+      "Path": "Assets/Tests/Loot/EditMode/LootSourceStateTests.cs",
+      "Baseline": "Docs/Verification/QuickTransfer/06C/Baselines/Assets/Tests/Loot/EditMode/LootSourceStateTests.cs",
+      "BaselineKind": "actual-pre-edit-copy",
+      "BaselineSHA256": "08217B523BD1DDD31ADB63A3AE9761CC6A069A27375256CC8553E9831C3182AF",
+      "CurrentSHA256": "EDE5343C5C6C2E860957C3D8CF8BC2735A2A113E850E70D759F1F613F2790E99",
+      "MetaPresent": true,
+      "NamespaceDeclarations": 0
+    },
+    {
+      "Path": "Assets/Tests/Loot/Editor/LootTestSceneBuilder.cs",
+      "Baseline": "Docs/Verification/QuickTransfer/06C/Baselines/Assets/Tests/Loot/Editor/LootTestSceneBuilder.cs",
+      "BaselineKind": "reconstructed-by-reversing-own-patch",
+      "BaselineSHA256": "D34A8B268AB7580BFFFE804D4F684BB5BF8874F67C69F0335D098662ACA7C4D4",
+      "CurrentSHA256": "6631A6DCA821FEF39610C64CF31F5BF047B0B5A7CD6131B73EA356EB40492454",
+      "MetaPresent": true,
+      "NamespaceDeclarations": 0
+    },
+    {
+      "Path": "Assets/Tests/Loot/Editor/LootTextEntries.cs",
+      "Baseline": "Docs/Verification/QuickTransfer/06C/Baselines/Assets/Tests/Loot/Editor/LootTextEntries.cs",
+      "BaselineKind": "actual-pre-edit-copy",
+      "BaselineSHA256": "9B9CFF1A49EE3F031A0377014F26E71F09E86E34B5D1B5313EABDCA9BA2A73B9",
+      "CurrentSHA256": "10570D6CE429FB1A543C7C814CD3D554FCE6469B010E9042367F4FA285E74D40",
+      "MetaPresent": true,
+      "NamespaceDeclarations": 0
+    },
+    {
+      "Path": "Assets/Tests/Loot/PlayMode/LootGridSearchTests.cs",
+      "Baseline": "Docs/Verification/QuickTransfer/06C/Baselines/Assets/Tests/Loot/PlayMode/LootGridSearchTests.cs",
+      "BaselineKind": "actual-pre-edit-copy",
+      "BaselineSHA256": "447F22556D3B5B3C961F3A8C732AF49380B6B177ADFF8D4CCFC8833EA33BEC3D",
+      "CurrentSHA256": "9FAE981912E383680EE4448A7EB9DB6FAC8B7C47B04B6E696E61AE4FF5576658",
+      "MetaPresent": true,
+      "NamespaceDeclarations": 0
+    },
+    {
+      "Path": "Assets/Tests/Loot/PlayMode/LootIntegrationTests.cs",
+      "Baseline": "Docs/Verification/QuickTransfer/06C/Baselines/Assets/Tests/Loot/PlayMode/LootIntegrationTests.cs",
+      "BaselineKind": "actual-pre-edit-copy",
+      "BaselineSHA256": "F95C89712BA383E7BAA29CAA90CEE039589069A2679E18DF696848025452DF98",
+      "CurrentSHA256": "8232DE91530537697D50A8F1CE09F78A43DBB925BE4DC2204AB1F7CF6DC4BD39",
+      "MetaPresent": true,
+      "NamespaceDeclarations": 0
+    },
+    {
+      "Path": "Assets/Tests/Loot/PlayMode/LootReturnTests.cs",
+      "Baseline": "Docs/Verification/QuickTransfer/06C/Baselines/Assets/Tests/Loot/PlayMode/LootReturnTests.cs",
+      "BaselineKind": "actual-pre-edit-copy",
+      "BaselineSHA256": "587E3B02C6BFFB12429FB31A4D9C61288388281A76220B7B24D67E7FF71FFFB4",
+      "CurrentSHA256": "B64DD08D8710782D1C9442338458D017778FDDC0B53B9809B2F78E536B1DCDEE",
+      "MetaPresent": true,
+      "NamespaceDeclarations": 0
+    },
+    {
+      "Path": "Assets/Tests/Loot/PlayMode/LootUIRegressionTests.cs",
+      "Baseline": "Docs/Verification/QuickTransfer/06C/Baselines/Assets/Tests/Loot/PlayMode/LootUIRegressionTests.cs",
+      "BaselineKind": "actual-pre-edit-copy",
+      "BaselineSHA256": "D1A11993703246A9682D3E1FB24340CF877BBFB06FAC4FA92FC6C3DC7D852DE8",
+      "CurrentSHA256": "10984CC348794BFE59462CC7AB63F1223128D60F342954D64BCC0363D57F45DA",
+      "MetaPresent": true,
+      "NamespaceDeclarations": 0
+    },
+    {
+      "Path": "Assets/Tests/Loot/TestDoubles/RejectingItemTransferCoordinator.cs",
+      "Baseline": "Docs/Verification/QuickTransfer/06C/Baselines/Assets/Tests/Loot/TestDoubles/RejectingItemTransferCoordinator.cs",
+      "BaselineKind": "actual-pre-edit-copy",
+      "BaselineSHA256": "37CE81E707755930D78839A110B587EFB6B7A3922E6F6110C7A1933980832F86",
+      "CurrentSHA256": "3C327F75FA1D7B674B9B686B07C198938FC524BC551B5679766C2AE8F6D8F3EA",
+      "MetaPresent": true,
+      "NamespaceDeclarations": 0
+    }
+  ],
+  "Dependencies": [
+    {
+      "Path": "Docs/Handoffs/04A_BackpackQuickTransfer_Handoff.txt",
+      "SHA256": "5819BBB5DD355002920AAA4D05C659179BCAA5F2D60E1AEFEC414994EC824430",
+      "FinalLine": "READY_FOR_INTEGRATION；04A代码及测试已就绪，未操作Unity，运行验证待07",
+      "ReadAndConnected": true
+    },
+    {
+      "Path": "Docs/Handoffs/05A_WarehouseQuickTransfer_Handoff.txt",
+      "SHA256": "01E00CA7E37612BF7E5B172BA4652E03AB869B1D7081602C137E226363D53BFE",
+      "FinalLine": "READY_FOR_INTEGRATION；05A代码及测试已就绪，未操作Unity，运行验证待07",
+      "ReadAndConnected": true
+    }
+  ]
+}

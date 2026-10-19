@@ -1,0 +1,626 @@
+{
+  "utc": "2026-10-18T23:22:24.5724600Z",
+  "frame": 4046,
+  "width": 1920,
+  "height": 1080,
+  "timeScale": 1.0,
+  "stage": "Exploring",
+  "round": 1,
+  "error": "",
+  "backpacks": [
+    {
+      "scene": "Assets/Scenes/Ruins.unity",
+      "cellSize": 66.0,
+      "gap": 4.0,
+      "padding": 6.0,
+      "grid": {
+        "active": true,
+        "rect": [
+          60.0,
+          570.0,
+          288.0,
+          288.0
+        ],
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "count": 16,
+        "first": [
+          66.0,
+          786.0,
+          66.0,
+          66.0
+        ],
+        "next": [
+          136.0,
+          786.0,
+          66.0,
+          66.0
+        ],
+        "cells": [
+          {
+            "name": "Cell_0_0",
+            "rect": [
+              66.0,
+              786.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_0",
+            "rect": [
+              136.0,
+              786.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_0",
+            "rect": [
+              206.0,
+              786.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_0",
+            "rect": [
+              276.0,
+              786.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_1",
+            "rect": [
+              66.0,
+              716.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_1",
+            "rect": [
+              136.0,
+              716.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_1",
+            "rect": [
+              206.0,
+              716.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_1",
+            "rect": [
+              276.0,
+              716.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_2",
+            "rect": [
+              66.0,
+              646.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_2",
+            "rect": [
+              136.0,
+              646.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_2",
+            "rect": [
+              206.0,
+              646.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_2",
+            "rect": [
+              276.0,
+              646.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_3",
+            "rect": [
+              66.0,
+              576.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_3",
+            "rect": [
+              136.0,
+              576.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_3",
+            "rect": [
+              206.0,
+              576.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_3",
+            "rect": [
+              276.0,
+              576.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          }
+        ]
+      },
+      "preview": [
+        60.0,
+        792.0,
+        66.0,
+        66.0
+      ]
+    }
+  ],
+  "warehouses": [],
+  "loot": [
+    {
+      "scene": "Assets/Scenes/Ruins.unity",
+      "IsOpen": true,
+      "SessionToken": 1,
+      "FeedbackKey": "loot.return_hint",
+      "source": "ruins01/root-grid-a",
+      "search": "item-0",
+      "elapsed": 4.03648567,
+      "columns": 6,
+      "rows": 4,
+      "cellSize": 66.0,
+      "gap": 4.0,
+      "padding": 6.0,
+      "grid": {
+        "active": true,
+        "rect": [
+          1432.0,
+          528.0,
+          428.0,
+          288.0
+        ],
+        "scale": [
+          1.0,
+          1.0
+        ],
+        "count": 24,
+        "first": [
+          1438.0,
+          744.0,
+          66.0,
+          66.0
+        ],
+        "next": [
+          1508.0,
+          744.0,
+          66.0,
+          66.0
+        ],
+        "cells": [
+          {
+            "name": "Cell_0_0",
+            "rect": [
+              1438.0,
+              744.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_0",
+            "rect": [
+              1508.0,
+              744.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_0",
+            "rect": [
+              1578.0,
+              744.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_0",
+            "rect": [
+              1648.0,
+              744.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_4_0",
+            "rect": [
+              1718.0,
+              744.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_5_0",
+            "rect": [
+              1788.0,
+              744.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_1",
+            "rect": [
+              1438.0,
+              674.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_1",
+            "rect": [
+              1508.0,
+              674.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_1",
+            "rect": [
+              1578.0,
+              674.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_1",
+            "rect": [
+              1648.0,
+              674.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_4_1",
+            "rect": [
+              1718.0,
+              674.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_5_1",
+            "rect": [
+              1788.0,
+              674.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_2",
+            "rect": [
+              1438.0,
+              604.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_2",
+            "rect": [
+              1508.0,
+              604.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_2",
+            "rect": [
+              1578.0,
+              604.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_2",
+            "rect": [
+              1648.0,
+              604.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_4_2",
+            "rect": [
+              1718.0,
+              604.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_5_2",
+            "rect": [
+              1788.0,
+              604.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_0_3",
+            "rect": [
+              1438.0,
+              534.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_1_3",
+            "rect": [
+              1508.0,
+              534.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_2_3",
+            "rect": [
+              1578.0,
+              534.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_3_3",
+            "rect": [
+              1648.0,
+              534.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_4_3",
+            "rect": [
+              1718.0,
+              534.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          },
+          {
+            "name": "Cell_5_3",
+            "rect": [
+              1788.0,
+              534.0,
+              66.0,
+              66.0
+            ],
+            "raycast": false
+          }
+        ]
+      },
+      "entries": [
+        {
+          "EntryId": "item-0",
+          "InstanceId": "90ad2818e14244739c2a799e2f26a6c9",
+          "Revealed": false,
+          "Taken": false,
+          "LayoutX": 0,
+          "LayoutY": 0,
+          "LayoutWidth": 1,
+          "LayoutHeight": 1,
+          "rect": [
+            1438.0,
+            744.0,
+            66.0,
+            66.0
+          ],
+          "name": "",
+          "description": "",
+          "status": "",
+          "icon": false,
+          "itemActive": true,
+          "countdownAlignment": "Center",
+          "countdownActive": true,
+          "countdown": "8.0 秒",
+          "countdownRect": [
+            1442.0,
+            761.0,
+            58.0,
+            32.0
+          ]
+        },
+        {
+          "EntryId": "item-1",
+          "InstanceId": "6f05ec4477734b979711dd406a065958",
+          "Revealed": false,
+          "Taken": false,
+          "LayoutX": 1,
+          "LayoutY": 0,
+          "LayoutWidth": 1,
+          "LayoutHeight": 2,
+          "rect": [
+            1508.0,
+            674.0,
+            66.0,
+            136.0
+          ],
+          "name": "",
+          "description": "",
+          "status": "",
+          "icon": false,
+          "itemActive": true,
+          "countdownAlignment": "Center",
+          "countdownActive": false,
+          "countdown": "",
+          "countdownRect": [
+            1512.0,
+            726.0,
+            58.0,
+            32.0
+          ]
+        },
+        {
+          "EntryId": "item-2",
+          "InstanceId": "996c9601a9664add845299c14985494e",
+          "Revealed": false,
+          "Taken": false,
+          "LayoutX": 2,
+          "LayoutY": 0,
+          "LayoutWidth": 2,
+          "LayoutHeight": 2,
+          "rect": [
+            1578.0,
+            674.0,
+            136.0,
+            136.0
+          ],
+          "name": "",
+          "description": "",
+          "status": "",
+          "icon": false,
+          "itemActive": true,
+          "countdownAlignment": "Center",
+          "countdownActive": false,
+          "countdown": "",
+          "countdownRect": [
+            1582.0,
+            726.0,
+            128.0,
+            32.0
+          ]
+        },
+        {
+          "EntryId": "item-3",
+          "InstanceId": "d653ca7380084395be012497157cd84e",
+          "Revealed": false,
+          "Taken": false,
+          "LayoutX": 4,
+          "LayoutY": 0,
+          "LayoutWidth": 2,
+          "LayoutHeight": 3,
+          "rect": [
+            1718.0,
+            604.0,
+            136.0,
+            206.0
+          ],
+          "name": "",
+          "description": "",
+          "status": "",
+          "icon": false,
+          "itemActive": true,
+          "countdownAlignment": "Center",
+          "countdownActive": false,
+          "countdown": "",
+          "countdownRect": [
+            1722.0,
+            691.0,
+            128.0,
+            32.0
+          ]
+        }
+      ]
+    }
+  ],
+  "cameras": [
+    {
+      "name": "OutputCamera",
+      "scene": "Assets/Scenes/Ruins.unity",
+      "enabled": true
+    }
+  ]
+}

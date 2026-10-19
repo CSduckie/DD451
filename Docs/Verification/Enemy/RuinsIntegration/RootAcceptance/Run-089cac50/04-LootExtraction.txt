@@ -1,0 +1,1 @@
+PASS: Naturally revealed doll/d992c2107a884ed88c189a7acc39358e transferred by real coordinator; actual PlayerInteraction.TryInteract started formal return. Wait for Shelter next.

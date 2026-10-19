@@ -1,0 +1,41 @@
+主程独立验收完成：无人机警戒填充与策划巡逻点配置
+最终观察：2026-10-19 05:44:44 UTC。
+
+工作交接
+小任务（负责各种视觉效果）已交付DroneVision径向UV、逐区域红色填充Shader、原材质接线及专项验证。
+任务009 Ai潜行已交付独立Alert状态、积累/消退、悬停、状态呼吸灯联动、双语、巡逻点Inspector说明与Gizmos。
+009完整Enemy自动测试EditMode34/34、PlayMode37/37，共71项，无失败/跳过。根聊天读取其结果，未在没有代码变更时重复跑同一套件。
+
+主程独立场景验证
+通过Unity MCP正常启动原EnemyTest，在1920×1080和原始2秒填满/2秒消退配置下执行Preparation/RunScenario.cs。
+使用原Drone_B、真实玩家、真实Collider/视野/状态机和物理接触，不调用ChangeState、UpdateAlertProgress或写AlertProgress。
+临时定位并冻结真实玩家、禁用另机以隔离、插入遮挡墙，以及运行期间修改巡逻点/数组均是验收辅助；未改速度、计时配置、相机或生产资产。
+Scenario-2613fad1/Samples.csv包含2551条采样，覆盖13.62538游戏秒；Result.txt保存逐阶段断言。
+
+通过项目
+1. 从实际巡逻中自然发现玩家进入Alert；警戒物理位置最大漂移0，FlightVelocity为0，生命保持3。
+2. 进度达到约50.198%时，截图显示机头红色、外侧橙色，顶部显示警戒50%。视锥保持水平，模型可独立回正。
+3. 插入真实遮挡墙后正常消退至24.833%；未追击，物理位置不变，可见扇形在墙前截断。
+4. 去除遮挡后首条增长样本为25.131%，从剩余量继续到50.020%，没有重置到0。
+5. 玩家离开范围后退到0回Patrol；原目标仍是第二巡逻点(12,2.4,0)，随后实际向该点移动。
+6. 移动当前巡逻点、交换数组顺序都使实际移动方向及公共目标一起变化；退出Play后原场景点位恢复。每机持有独立数组。
+7. 第二次真实发现进入Alert后，实际身体重叠持续至少0.12秒，不伤害、不自毁。
+8. 本次Alert从15.421486到17.424游戏秒才自然进入Chase，约2.002514秒；全扇形及状态灯变红，实际开始追击移动。
+9. Chase真实接触后仅自毁一次，生命3→2；继续观察0.3秒没有二次伤害，模型、视锥与灯光隐藏。
+
+画面复核
+主程亲自查看Scenario-2613fad1的01-AlertHalf、02-OccludedQuarter、03-ResumedHalf、04-NaturalChase、05-ExplosionCleanup五张1920×1080截图。
+红橙分区、遮挡截断、续条后半满、Chase全红与自毁后的清理均符合要求。
+另外复核视觉聊天的0/50/100及退25/0截图。静态截图不能作为动态无闪烁视频的证明，本轮未录制视频。
+
+策划配置方法
+打开EnemyTest，选Drone_A或Drone_B场景实例，在DroneController的Patrol Points数组指定巡逻点Transform，数组顺序即循环路线顺序。
+现有点位分别在Drone_A_PatrolPoints和Drone_B_PatrolPoints下；移动X/Y调整路线，Z始终投影到本机出生平面。
+可以新增空GameObject作为点，拖入本机数组；应配置场景实例，Prefab资产不能保存场景Transform引用。
+选中无人机并打开Gizmos可查看路线及编号。速度/到点停留/警戒填满与消退秒数在DroneConfig资源调整；多机共享Config时共享这些数值，巡逻路线仍各自独立。
+
+结束状态及边界
+正常退出Play，EnemyTest唯一场景且clean，无PrefabStage，不编译/更新；Time.timeScale=1，Application和PlayerSettings.runInBackground=false，临时回调全部结束。
+FinalConsole.json：0错误、0警告。Integrity.json：8项场景/Prefab/材质/配置/EditorSettings基线哈希全部一致，未保存运行期试验内容。
+最终状态见FinalState.json；数字分段见PhaseSummary.json。没有新生产代码修复需要提交，也没有新增原生键鼠或Windows构建验收。本轮是实际场景、API辅助条件布置的独立验收。
+导出元数据时第一次直接序列化Vector3导致工具内JSON循环引用错误；改为x/y/z后成功。该只读导出问题不属于游戏异常，未修改场景或资产。

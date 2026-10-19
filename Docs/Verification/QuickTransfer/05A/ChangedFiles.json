@@ -1,0 +1,50 @@
+[
+  {
+    "path": "Assets/Scripts/Warehouse/MonoBehaviour/WarehouseItemView.cs",
+    "beforeBackup": "Docs\\Verification\\QuickTransfer\\05A\\Before\\Assets\\Scripts\\Warehouse\\MonoBehaviour\\WarehouseItemView.cs",
+    "beforeSha256": "3742CB0A94E0D6CA8E77450110170B8C0086BCABD8404E0F5E3689C419747E90",
+    "finalSha256": "F449993F02A8ED09880970B6D754C251DEAFE3233FD3EC4986398BFA9DB29EA4"
+  },
+  {
+    "path": "Assets/Scripts/Warehouse/MonoBehaviour/WarehouseUIController.cs",
+    "beforeBackup": "Docs\\Verification\\QuickTransfer\\05A\\Before\\Assets\\Scripts\\Warehouse\\MonoBehaviour\\WarehouseUIController.cs",
+    "beforeSha256": "14E636760868501C0085B398CAE1204E845B317280123ECEE194D4E15FCFA6DA",
+    "finalSha256": "164E43B452B8442E03F800A17439376776088E25E058278AB215CE353AC88CEA"
+  },
+  {
+    "path": "Assets/Scripts/Warehouse/MonoBehaviour/WarehouseManager.cs",
+    "beforeBackup": "Docs\\Verification\\QuickTransfer\\05A\\Before\\Assets\\Scripts\\Warehouse\\MonoBehaviour\\WarehouseManager.cs",
+    "beforeSha256": "B3B975AD6BE0754D5F4DCA21A760F14473B7EA7C2E2B2D90D999C225460B5443",
+    "finalSha256": "9E29F1B66D4C14E4F9D24EB4D42499906C867B933EF43504E39418DBA592D19B"
+  },
+  {
+    "path": "Assets/Tests/Warehouse/EditMode/WarehouseShelterTests.cs",
+    "beforeBackup": "Docs\\Verification\\QuickTransfer\\05A\\Before\\Assets\\Tests\\Warehouse\\EditMode\\WarehouseShelterTests.cs",
+    "beforeSha256": "CC3DF2EF944CC16161A61F68E481A8C4C3EB3BBAC639483131FC39B32C124446",
+    "finalSha256": "9ED12164B1DFFAC0224C86C6E739B874C14C07F2A8919043B9DA21FB45686E4E"
+  },
+  {
+    "path": "Assets/Tests/Warehouse/PlayMode/WarehouseIntegrationTests.cs",
+    "beforeBackup": "Docs\\Verification\\QuickTransfer\\05A\\Before\\Assets\\Tests\\Warehouse\\PlayMode\\WarehouseIntegrationTests.cs",
+    "beforeSha256": "E1742C0A5346D905F9C352524450A146E2FCE9BC3E72E45F9CD9BCBED832E084",
+    "finalSha256": "669672320E5A4157CB5C67D83A0CBD5DF66E2C096B298D7D689950ADFD3892BF"
+  },
+  {
+    "path": "Assets/Tests/Warehouse/Editor/WarehouseTextEntries.cs",
+    "beforeBackup": "Docs\\Verification\\QuickTransfer\\05A\\Before\\Assets\\Tests\\Warehouse\\Editor\\WarehouseTextEntries.cs",
+    "beforeSha256": "9C4AE51A849F6A81A4FA4596197A1492842F8B980A1F4C0F02FF885F1D53EBE5",
+    "finalSha256": "4631DFB38AEE5484CFCFBB71A1CB30E58B35BF5C89BEA6C95E24E4D4A8463EF9"
+  },
+  {
+    "path": "Docs/Architecture/WarehouseShelterSetup.txt",
+    "beforeBackup": "Docs\\Verification\\QuickTransfer\\05A\\Before\\Docs\\Architecture\\WarehouseShelterSetup.txt",
+    "beforeSha256": "8630DA716F5315656D621AB210E72A978439DDFD9FAD51632747895C5FF147E6",
+    "finalSha256": "419F04C8BBEBA2F6EF361A6422A9CC76E270A7C2201642CAB5215BDF42150A2B"
+  },
+  {
+    "path": "Docs/Handoffs/05A_WarehouseQuickTransfer_Handoff.txt",
+    "beforeBackup": null,
+    "beforeSha256": null,
+    "finalSha256": "01E00CA7E37612BF7E5B172BA4652E03AB869B1D7081602C137E226363D53BFE"
+  }
+]

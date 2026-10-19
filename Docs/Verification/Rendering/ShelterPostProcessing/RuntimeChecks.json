@@ -1,0 +1,14 @@
+{
+  "stage": "Shelter",
+  "round": 1,
+  "settled": 1,
+  "player": -3709458,
+  "health": 2,
+  "bindingsValid": true,
+  "error": null,
+  "missingScripts": 0,
+  "activeCameras": 1,
+  "storageOpen": true,
+  "backpackOpen": true,
+  "capture": "PASS: Complete PNG1920x1080 with target-camera stack snapshot; visual review still required."
+}

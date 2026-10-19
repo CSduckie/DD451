@@ -1,0 +1,13 @@
+2026-10-19 — Level vision and chase-only contact explosion
+
+Latest user rules supersede the previous full-model-tilt vision behavior:
+1. VisionOrigin still follows the model nose position. Direction uses controller root rotation times its shared smooth FacingRotation, excluding model flight lean/art correction. directionDegrees remains0 in the maintained prefab. Visible fan and physical trigger MeshCollider share the same pose. Standalone geometry tools without a controller retain explicit anchor/SetHeading behavior.
+2. Only Chase can explode on player contact. The authoritative state is CurrentState, not a Light RGB value. CanExplodeOnContact is reused by direct contact API, overlap/collision paths, movement SphereCast and the private explosion method. Patrol/Search still collide physically but cause no contact damage/self-destruction. Existing red Chase and orange Search breathing remain unchanged.
+
+Tests:Enemy EditMode27/27 and PlayMode24/24,0 failed/0 skipped. Added non-chase actual contact and movement sweep cases; same contact/sweep after switching to Chase explodes only once. Updated old fixtures to enter Chase explicitly so invalid-player/thin-wall/distant-call/invulnerability/reentry tests retain their previous meaning. Model-lean test now proves nearly20 degree lean with level sight, shared smooth yaw, same-frame player detection/wall occlusion and new-round reset.
+
+Actual saved EnemyTest runtime visual check:1920x1080;206 sampled frames, maximum model lean19.991 degrees, fan vertical-direction component0, heading error0, nose-position error<=.00001. LevelVision-1920x1080.png visually confirms the tilted model and level fan. For this controlled screenshot only, runtime patrol speed/chase speed and route were adjusted and player detection masked; those settings were not saved. This screenshot is not a native input or chase acceptance claim; real state/contact behaviors were verified by the passing PlayMode cases.
+
+No prefab, material, scene, GUID or light settings changed this turn. Drone.prefab, EnemyTest, Shelter and Ruins SHA256 remain identical to BeforeHashes. Final Editor:EnemyTest, Edit, clean; timeScale1, runInBackgroundfalse; Console0 errors/0 warnings.
+
+Changed runtime code:DroneVision.cs, DroneController.cs and DroneConfigSO.cs Inspector header. Editor explanation and affected test assertions updated. No new framework, interfaces or namespace.

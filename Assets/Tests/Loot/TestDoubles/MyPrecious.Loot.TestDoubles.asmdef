@@ -1,0 +1,7 @@
+{
+    "name": "MyPrecious.Loot.TestDoubles",
+    "rootNamespace": "",
+    "references": ["MyPrecious.Loot", "MyPrecious.Items", "MyPrecious.Backpack", "MyPrecious.Warehouse", "MyPrecious.Shelter", "MyPrecious.Player", "MyPrecious.Interaction", "MyPrecious.Localization", "MyPrecious.Bootstrap", "MyPrecious.Health", "MyPrecious.Player.TestDoubles", "Unity.InputSystem", "Unity.TextMeshPro", "Unity.ugui"],
+    "autoReferenced": false,
+    "optionalUnityReferences": ["TestAssemblies"]
+}

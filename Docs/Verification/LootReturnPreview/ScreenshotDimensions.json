@@ -1,0 +1,44 @@
+[
+  {
+    "Name": "AfterFix-ChineseDragging-Queued.png",
+    "Width": 1920,
+    "Height": 1080,
+    "SHA256": "2B66A50891892865951E5F031BF6EBBF583897C956F9B94DFC58074F531063F9"
+  },
+  {
+    "Name": "AfterFix-ChineseReleased-Queued.png",
+    "Width": 1920,
+    "Height": 1080,
+    "SHA256": "699A63DC0ABAF6B5FC0BA44A704277F1E1125AB5E6228ABB39EA061FF44964B6"
+  },
+  {
+    "Name": "AfterFix-EnglishDragging-Queued.png",
+    "Width": 1920,
+    "Height": 1080,
+    "SHA256": "7F43576FB188F885D1B598A75B24DACE362065869B0AC83CA5B166129B366C0E"
+  },
+  {
+    "Name": "AfterFix-EnglishReleased-Queued.png",
+    "Width": 1920,
+    "Height": 1080,
+    "SHA256": "86E7916C9704956E371BD22F54FD2780016E4D8B26C6A06D5A5CF2723993D65A"
+  },
+  {
+    "Name": "BeforeFix-AfterRelease-Queued.png",
+    "Width": 1920,
+    "Height": 1080,
+    "SHA256": "ABE5500D3AFAAE7EC8DD33AB55A5D97A57C10066D29F8E4EA2BFAF6F5A6E292C"
+  },
+  {
+    "Name": "BeforeFix-ChineseDragging-Queued.png",
+    "Width": 1920,
+    "Height": 1080,
+    "SHA256": "890B38259ADE4B9BCFBD16223C06B97515E036CC7EF403B282705EE2F69C16F5"
+  },
+  {
+    "Name": "UserReported.png",
+    "Width": 2308,
+    "Height": 1084,
+    "SHA256": "CDBDAC4ED448EDA438E8B40D096BDF6802E2522878750482B00618AA0135D346"
+  }
+]

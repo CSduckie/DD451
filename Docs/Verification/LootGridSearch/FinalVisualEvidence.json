@@ -1,0 +1,175 @@
+{
+  "kind": "Normal Play screenshots using API-created runtime sample; not physical keyboard/mouse proof",
+  "resolution": [
+    1920,
+    1080
+  ],
+  "scene": "Assets/Scenes/Tests/Loot/LootTest.unity",
+  "setup": "Four runtime-only cloned item definitions (1x1,1x2,2x2,2x3; search seconds 30,90,20,15), real bound LootBox/source and existing managers; no saved item definition edits.",
+  "actions": "Partial search image used AdvanceSearch(30f) and NotifySourceChanged; English used LocalizationManager.SetLanguage. Ordinary Update continued between captures. API readouts precede screenshot frame and may differ by a fraction of a second.",
+  "imagesInspected": [
+    "ChineseUnknown-API.png",
+    "ChinesePartial-API.png",
+    "EnglishPartial-API.png"
+  ],
+  "unknown": {
+    "opened": true,
+    "screen": [
+      1920,
+      1080
+    ],
+    "timeScale": 1,
+    "canvasScale": 1,
+    "lootCell": 66,
+    "backpackCell": 66,
+    "gap": 4,
+    "padding": 6,
+    "feedbackHeight": 56,
+    "entries": [
+      {
+        "EntryId": "visual-0",
+        "InstanceId": "c3e4ec5ccc084bd7a128dd07e58f1b94",
+        "LayoutX": 0,
+        "LayoutY": 0,
+        "LayoutWidth": 1,
+        "LayoutHeight": 1,
+        "Revealed": false,
+        "Taken": false
+      },
+      {
+        "EntryId": "visual-1",
+        "InstanceId": "1c669dab3363498197178473347cedf2",
+        "LayoutX": 1,
+        "LayoutY": 0,
+        "LayoutWidth": 1,
+        "LayoutHeight": 2,
+        "Revealed": false,
+        "Taken": false
+      },
+      {
+        "EntryId": "visual-2",
+        "InstanceId": "8cbe2168e65c4271befcca6299f26018",
+        "LayoutX": 2,
+        "LayoutY": 0,
+        "LayoutWidth": 2,
+        "LayoutHeight": 2,
+        "Revealed": false,
+        "Taken": false
+      },
+      {
+        "EntryId": "visual-3",
+        "InstanceId": "fa946cdff46244b38aca99771ad6af7c",
+        "LayoutX": 4,
+        "LayoutY": 0,
+        "LayoutWidth": 2,
+        "LayoutHeight": 3,
+        "Revealed": false,
+        "Taken": false
+      }
+    ]
+  },
+  "partial": {
+    "screen": [
+      1920,
+      1080
+    ],
+    "search": "visual-1",
+    "elapsed": 7.658806,
+    "entries": [
+      {
+        "EntryId": "visual-0",
+        "InstanceId": "c3e4ec5ccc084bd7a128dd07e58f1b94",
+        "LayoutX": 0,
+        "LayoutY": 0,
+        "LayoutWidth": 1,
+        "LayoutHeight": 1,
+        "Revealed": true,
+        "Taken": false
+      },
+      {
+        "EntryId": "visual-1",
+        "InstanceId": "1c669dab3363498197178473347cedf2",
+        "LayoutX": 1,
+        "LayoutY": 0,
+        "LayoutWidth": 1,
+        "LayoutHeight": 2,
+        "Revealed": false,
+        "Taken": false
+      },
+      {
+        "EntryId": "visual-2",
+        "InstanceId": "8cbe2168e65c4271befcca6299f26018",
+        "LayoutX": 2,
+        "LayoutY": 0,
+        "LayoutWidth": 2,
+        "LayoutHeight": 2,
+        "Revealed": false,
+        "Taken": false
+      },
+      {
+        "EntryId": "visual-3",
+        "InstanceId": "fa946cdff46244b38aca99771ad6af7c",
+        "LayoutX": 4,
+        "LayoutY": 0,
+        "LayoutWidth": 2,
+        "LayoutHeight": 3,
+        "Revealed": false,
+        "Taken": false
+      }
+    ]
+  },
+  "english": {
+    "screen": [
+      1920,
+      1080
+    ],
+    "language": "English",
+    "search": "visual-1",
+    "elapsed": 17.98984,
+    "texts": [
+      {
+        "name": "Title",
+        "text": "Loot source",
+        "overflow": false,
+        "preferred": 39.1,
+        "height": 40
+      },
+      {
+        "name": "Label",
+        "text": "Close source",
+        "overflow": false,
+        "preferred": 24.62,
+        "height": 32
+      },
+      {
+        "name": "Status",
+        "text": "Searching",
+        "overflow": false,
+        "preferred": 26.07,
+        "height": 56
+      },
+      {
+        "name": "Name",
+        "text": "Battery",
+        "overflow": false,
+        "preferred": 22.74,
+        "height": 54
+      },
+      {
+        "name": "Countdown",
+        "text": "72.0 s",
+        "overflow": false,
+        "preferred": 31.86,
+        "height": 32
+      },
+      {
+        "name": "Feedback",
+        "text": "Drag revealed items to your backpack; return items to this grid.",
+        "overflow": false,
+        "preferred": 49.24,
+        "height": 56
+      }
+    ]
+  },
+  "limits": "No final all-revealed screenshot retained. All-revealed/zero-second/empty-source behavior is covered by final automated tests. New grid physical input and formal scene integration have not been accepted."
+}

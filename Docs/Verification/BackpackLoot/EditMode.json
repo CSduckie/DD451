@@ -1,0 +1,44 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"success\":true,\"message\":\"Test job status retrieved.\",\"error\":null,\"data\":{\"job_id\":\"935fdcbf881447a292c6c84b5c111f39\",\"status\":\"succeeded\",\"mode\":\"EditMode\",\"started_unix_ms\":1792351349802,\"finished_unix_ms\":1792351352973,\"last_update_unix_ms\":1792351352973,\"progress\":{\"completed\":70,\"total\":70,\"current_test_full_name\":null,\"current_test_started_unix_ms\":1792351352845,\"last_finished_test_full_name\":\"LootSourceStateTests.UniqueReturnedToAnotherBoxRecoversAtItsOriginalBoxNextRound\",\"last_finished_unix_ms\":1792351352846,\"stuck_suspected\":false,\"editor_is_focused\":false,\"run_in_background\":null,\"focus_nudge_attempts\":null,\"focus_nudge_limit\":null,\"focus_nudge_status\":null,\"blocked_reason\":null,\"failures_so_far\":[],\"failures_capped\":false},\"error\":null,\"result\":null},\"hint\":null}"
+    }
+  ],
+  "structuredContent": {
+    "result": {
+      "success": true,
+      "message": "Test job status retrieved.",
+      "error": null,
+      "data": {
+        "job_id": "935fdcbf881447a292c6c84b5c111f39",
+        "status": "succeeded",
+        "mode": "EditMode",
+        "started_unix_ms": 1792351349802,
+        "finished_unix_ms": 1792351352973,
+        "last_update_unix_ms": 1792351352973,
+        "progress": {
+          "completed": 70,
+          "total": 70,
+          "current_test_full_name": null,
+          "current_test_started_unix_ms": 1792351352845,
+          "last_finished_test_full_name": "LootSourceStateTests.UniqueReturnedToAnotherBoxRecoversAtItsOriginalBoxNextRound",
+          "last_finished_unix_ms": 1792351352846,
+          "stuck_suspected": false,
+          "editor_is_focused": false,
+          "run_in_background": null,
+          "focus_nudge_attempts": null,
+          "focus_nudge_limit": null,
+          "focus_nudge_status": null,
+          "blocked_reason": null,
+          "failures_so_far": [],
+          "failures_capped": false
+        },
+        "error": null,
+        "result": null
+      },
+      "hint": null
+    }
+  },
+  "isError": false
+}

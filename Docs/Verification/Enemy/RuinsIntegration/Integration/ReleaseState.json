@@ -1,0 +1,41 @@
+{
+  "utc": "2026-10-19T06:16:05.8652239Z",
+  "play": false,
+  "changing": false,
+  "paused": false,
+  "compiling": false,
+  "updating": false,
+  "scenes": [
+    {
+      "path": "Assets/Scenes/Bootstrap.unity",
+      "isDirty": false,
+      "isLoaded": true
+    }
+  ],
+  "prefabStage": false,
+  "background": false,
+  "playerSettingsBackground": false,
+  "timeScale": 1.0,
+  "graphics": "Direct3D11",
+  "screen": [
+    1920,
+    1080
+  ],
+  "enterPlayModeOptionsEnabled": true,
+  "enterPlayModeOptions": "DisableDomainReload",
+  "observer": false,
+  "patrolCapture": false,
+  "inputDevices": [
+    {
+      "name": "Keyboard",
+      "enabled": true,
+      "native": true
+    },
+    {
+      "name": "Mouse",
+      "enabled": true,
+      "native": true
+    }
+  ],
+  "testArtifacts": []
+}

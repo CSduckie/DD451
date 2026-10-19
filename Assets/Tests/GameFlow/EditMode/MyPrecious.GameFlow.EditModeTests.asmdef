@@ -1,0 +1,8 @@
+{
+    "name": "MyPrecious.GameFlow.EditModeTests",
+    "rootNamespace": "",
+    "references": ["MyPrecious.GameFlow", "MyPrecious.Bootstrap", "MyPrecious.Items", "MyPrecious.Backpack", "MyPrecious.Warehouse", "MyPrecious.Shelter", "MyPrecious.Loot", "MyPrecious.Player", "MyPrecious.Interaction", "MyPrecious.Health", "MyPrecious.StateMachine.Contracts", "MyPrecious.Localization", "Unity.Cinemachine", "Unity.InputSystem", "Unity.TextMeshPro", "Unity.ugui"],
+    "includePlatforms": ["Editor"],
+    "optionalUnityReferences": ["TestAssemblies"],
+    "autoReferenced": false
+}

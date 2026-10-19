@@ -1,0 +1,357 @@
+[
+  {
+    "viewport": {
+      "alpha": 0,
+      "raycast": true,
+      "mask": true,
+      "width": 428,
+      "height": 584,
+      "scroll": true,
+      "horizontal": false,
+      "vertical": true,
+      "normalized": 0
+    },
+    "utc": "2026-10-19T00:00:08.4225626Z",
+    "stage": "Exploring",
+    "round": 1,
+    "screen": [
+      1920,
+      1080
+    ],
+    "language": "Chinese",
+    "grids": [
+      {
+        "owner": "PlayerInventory",
+        "name": "Grid",
+        "count": 16,
+        "width": 288,
+        "height": 288,
+        "scale": "(1.00, 1.00, 1.00)",
+        "firstCell": {
+          "width": 66,
+          "height": 66,
+          "raycast": false
+        }
+      },
+      {
+        "owner": "Content",
+        "name": "Grid",
+        "count": 24,
+        "width": 428,
+        "height": 288,
+        "scale": "(1.00, 1.00, 1.00)",
+        "firstCell": {
+          "width": 66,
+          "height": 66,
+          "raycast": false
+        }
+      }
+    ],
+    "cameras": [
+      {
+        "name": "OutputCamera",
+        "scene": "Ruins",
+        "brain": true
+      }
+    ],
+    "listeners": 1,
+    "events": 1,
+    "cameraFollowsPlayer": true,
+    "clips": [],
+    "sourceEntries": [
+      {
+        "EntryId": "doll",
+        "InstanceId": "a15d39fbe6924e81b43a3fae5f93bcf8",
+        "Revealed": true,
+        "Taken": false,
+        "LayoutX": 0,
+        "LayoutY": 0,
+        "LayoutWidth": 2,
+        "LayoutHeight": 3,
+        "LayoutRotated": false
+      },
+      {
+        "EntryId": "medkit",
+        "InstanceId": "68f71fe5d745467b92e31536f73a42c0",
+        "Revealed": true,
+        "Taken": false,
+        "LayoutX": 2,
+        "LayoutY": 0,
+        "LayoutWidth": 2,
+        "LayoutHeight": 2,
+        "LayoutRotated": false
+      }
+    ],
+    "backpack": 0,
+    "warehouse": 0,
+    "ev": 0
+  },
+  {
+    "viewport": {
+      "alpha": 0,
+      "raycast": true,
+      "mask": true,
+      "width": 428,
+      "height": 584,
+      "scroll": true,
+      "horizontal": false,
+      "vertical": true,
+      "normalized": 0
+    },
+    "utc": "2026-10-19T00:00:36.0498024Z",
+    "stage": "Exploring",
+    "round": 1,
+    "screen": [
+      1920,
+      1080
+    ],
+    "language": "Chinese",
+    "grids": [
+      {
+        "owner": "PlayerInventory",
+        "name": "Grid",
+        "count": 16,
+        "width": 288,
+        "height": 288,
+        "scale": "(1.00, 1.00, 1.00)",
+        "firstCell": {
+          "width": 66,
+          "height": 66,
+          "raycast": false
+        }
+      },
+      {
+        "owner": "Content",
+        "name": "Grid",
+        "count": 12,
+        "width": 288,
+        "height": 218,
+        "scale": "(1.00, 1.00, 1.00)",
+        "firstCell": {
+          "width": 66,
+          "height": 66,
+          "raycast": false
+        }
+      }
+    ],
+    "cameras": [
+      {
+        "name": "OutputCamera",
+        "scene": "Ruins",
+        "brain": true
+      }
+    ],
+    "listeners": 1,
+    "events": 1,
+    "cameraFollowsPlayer": true,
+    "clips": [],
+    "sourceEntries": [],
+    "backpack": 1,
+    "warehouse": 0,
+    "ev": 0
+  },
+  {
+    "viewport": {
+      "alpha": 0,
+      "raycast": true,
+      "mask": true,
+      "width": 428,
+      "height": 584,
+      "scroll": true,
+      "horizontal": false,
+      "vertical": true,
+      "normalized": 0
+    },
+    "utc": "2026-10-19T00:01:14.4203008Z",
+    "stage": "Exploring",
+    "round": 1,
+    "screen": [
+      1920,
+      1080
+    ],
+    "language": "English",
+    "grids": [
+      {
+        "owner": "PlayerInventory",
+        "name": "Grid",
+        "count": 16,
+        "width": 288,
+        "height": 288,
+        "scale": "(1.00, 1.00, 1.00)",
+        "firstCell": {
+          "width": 66,
+          "height": 66,
+          "raycast": false
+        }
+      },
+      {
+        "owner": "Content",
+        "name": "Grid",
+        "count": 84,
+        "width": 428,
+        "height": 988,
+        "scale": "(1.00, 1.00, 1.00)",
+        "firstCell": {
+          "width": 66,
+          "height": 66,
+          "raycast": false
+        }
+      }
+    ],
+    "cameras": [
+      {
+        "name": "OutputCamera",
+        "scene": "Ruins",
+        "brain": true
+      }
+    ],
+    "listeners": 1,
+    "events": 1,
+    "cameraFollowsPlayer": true,
+    "clips": [],
+    "sourceEntries": [
+      {
+        "EntryId": "returned-68f71fe5d745467b92e31536f73a42c0",
+        "InstanceId": "68f71fe5d745467b92e31536f73a42c0",
+        "Revealed": true,
+        "Taken": false,
+        "LayoutX": 4,
+        "LayoutY": 12,
+        "LayoutWidth": 2,
+        "LayoutHeight": 2,
+        "LayoutRotated": false
+      }
+    ],
+    "backpack": 0,
+    "warehouse": 0,
+    "ev": 0
+  },
+  {
+    "viewport": {
+      "alpha": 0,
+      "raycast": true,
+      "mask": true,
+      "width": 428,
+      "height": 584,
+      "scroll": true,
+      "horizontal": false,
+      "vertical": true,
+      "normalized": 0
+    },
+    "utc": "2026-10-19T00:01:59.5725945Z",
+    "stage": "Shelter",
+    "round": 1,
+    "screen": [
+      1920,
+      1080
+    ],
+    "language": "Chinese",
+    "grids": [
+      {
+        "owner": "PlayerInventory",
+        "name": "Grid",
+        "count": 16,
+        "width": 288,
+        "height": 288,
+        "scale": "(1.00, 1.00, 1.00)",
+        "firstCell": {
+          "width": 66,
+          "height": 66,
+          "raycast": false
+        }
+      },
+      {
+        "owner": "Viewport",
+        "name": "Content",
+        "count": 400,
+        "width": 1408,
+        "height": 1408,
+        "scale": "(1.00, 1.00, 1.00)",
+        "firstCell": {
+          "width": 66,
+          "height": 66,
+          "raycast": false
+        }
+      }
+    ],
+    "cameras": [
+      {
+        "name": "OutputCamera",
+        "scene": "Shelter",
+        "brain": true
+      }
+    ],
+    "listeners": 1,
+    "events": 1,
+    "cameraFollowsPlayer": true,
+    "clips": [],
+    "sourceEntries": [],
+    "backpack": 0,
+    "warehouse": 2,
+    "ev": 7
+  },
+  {
+    "viewport": {
+      "alpha": 0,
+      "raycast": true,
+      "mask": true,
+      "width": 428,
+      "height": 584,
+      "scroll": true,
+      "horizontal": false,
+      "vertical": true,
+      "normalized": 0
+    },
+    "utc": "2026-10-19T00:02:26.7248521Z",
+    "stage": "Shelter",
+    "round": 1,
+    "screen": [
+      1920,
+      1080
+    ],
+    "language": "English",
+    "grids": [
+      {
+        "owner": "PlayerInventory",
+        "name": "Grid",
+        "count": 16,
+        "width": 288,
+        "height": 288,
+        "scale": "(1.00, 1.00, 1.00)",
+        "firstCell": {
+          "width": 66,
+          "height": 66,
+          "raycast": false
+        }
+      },
+      {
+        "owner": "Viewport",
+        "name": "Content",
+        "count": 480,
+        "width": 1408,
+        "height": 1688,
+        "scale": "(1.00, 1.00, 1.00)",
+        "firstCell": {
+          "width": 66,
+          "height": 66,
+          "raycast": false
+        }
+      }
+    ],
+    "cameras": [
+      {
+        "name": "OutputCamera",
+        "scene": "Shelter",
+        "brain": true
+      }
+    ],
+    "listeners": 1,
+    "events": 1,
+    "cameraFollowsPlayer": true,
+    "clips": [],
+    "sourceEntries": [],
+    "backpack": 0,
+    "warehouse": 2,
+    "ev": 7
+  }
+]

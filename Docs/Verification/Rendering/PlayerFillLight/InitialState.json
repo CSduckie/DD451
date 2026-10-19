@@ -1,0 +1,15 @@
+{
+  "scenes": [
+    {
+      "path": "Assets/Scenes/Bootstrap.unity",
+      "dirty": false
+    }
+  ],
+  "tests": false,
+  "quality": "PC",
+  "pipeline": "Assets/Settings/PC_RPAsset.asset",
+  "useRenderingLayers": true,
+  "lightProperty": "UnityEngine.RenderingLayerMask",
+  "nameMethod": "Boolean TrySetRenderingLayerName(Int32, System.String)",
+  "prefabGuid": "4a37e015a99af1948851c34d90ec57de"
+}

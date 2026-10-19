@@ -1,0 +1,30 @@
+你继续负责「任务009 Ai潜行」，接手新增09I“草丛潜行相机暗角”任务并实施。用户在主程本轮的原话：“下发一个任务给任务009，并且允许009和Shelter氛围工作通信。要求：玩家在草丛中潜行时有一个相机暗角的效果。可以使用后处理来做”。
+
+通信授权与分工
+用户已明确授权009与你协作的「Shelter 昏暗氛围与后处理」直接双向沟通本任务：该聊天threadId=01a15334-7b5a-7560-8640-548971112548，hostId=local。允许发送实现约定、参数/接入讨论、Editor交接、问题与验收结果；不需要再向用户确认这项通信。你为主责，负责潜行状态接入、最小实现及最终验收；氛围聊天协助URP/Volume参数、现有氛围兼容和视觉审查。不要各做一套实现，先明确谁改哪些文件。
+共享项目E:/DD451，同一Unity：一次只允许一方操作Editor、修改共享Assets/ProjectSettings或运行测试。先读Docs/Verification/Enemy/EditorCoordination.txt及最新两个聊天交接。最新已观察到PLAYER FILL LIGHT EXPLICIT EDITOR RELEASE，但接手仍须fresh检查，不把旧记录当实时状态。按约定写明占用和释放；独立只读/Docs工作可并行。
+
+功能
+1. 触发依据直接复用Assets/Scripts/Enemy/Stealth/MonoBehaviour/CoverArea.cs中的CoverArea.IsHidden(player)：草丛范围内且蹲伏，才渐入相机暗角。草丛内站立、草丛外蹲伏都不触发；不改原隐藏/无人机探测规则，不以是否正在被敌人追击作为条件。
+2. 使用URP后处理Vignette实现边缘压暗，画面中心/角色、交互和UI保持可读；不用全屏纯黑遮罩或降低全局曝光替代。进出隐藏做短暂平滑过渡，强度、柔和度、过渡速度在Inspector可配置；先采用轻度黑色暗角和约0.2秒渐变作为可调初值，不当成用户锁定参数。
+3. 离开草丛或站起恢复该相机原有正常后处理。死亡、切场景、组件禁用、解绑玩家时可靠清除本次潜行效果；死亡回Shelter、再次出发不残留、不重复创建Volume。两个重叠掩体之间移动不闪烁，背包打开仍按真实蹲伏/隐藏状态工作，不能因UI切换另算潜行。
+4. 原有Shelter/Ruins色调、曝光、Bloom、玩家专属补光、浮尘和编辑态相机预览保留。不要写入共享Profile的运行时值导致磁盘污染；用项目中能读懂的简单方式隔离本次Vignette及生命周期。只操作自己负责的参数，不复位整个Volume/Profile。
+5. 必须核实实际OutputCamera的PP开关与Volume Mask。只读现状：Ruins继承共享PlayerCamera.prefab的PP=0；Shelter实例PP=1。开启Ruins后处理时要检查默认/全局Volume是否附带改变正常画面。当前磁盘DefaultVolumeProfile的Tonemapping/Vignette已是0，与旧交接可能不同；Shelter颜色参数也有后续变化，必须保留接手时最新值，不按旧方案回滚。不要为开启一项效果全局改变所有测试scene/相机。
+6. 复用当前正式玩家与每scene已有Cinemachine/OutputCamera，无新Camera、无第二个角色、无新状态机/事件总线/后处理管理框架。最多用一个职责清楚的小组件将隐藏状态映射到Vignette；直接方法或简单Update足够，不做每帧全场景搜索或动态创建对象。保持简单、中文注释、英文文件名、不写namespace，满足作品集能读懂、修改和答辩的要求。
+7. 不顺带修改AI警戒/追击/接触爆炸、死亡清算、玩家碰撞、巡逻路线；若视觉对照需要冻结时间，注意补光交接已记录既有无人机在timeScale=0时的SmoothDamp NaN问题，避免误判为本任务造成，不在此任务扩大AI修复。
+
+建议具体目录
+- 最小状态→表现组件：Assets/Scripts/Enemy/Stealth/MonoBehaviour/PlayerStealthVignette.cs，或你与氛围聊天确认的现有合适Effects目录；若改位置必须在交接写明。先核实现有asmdef，必要时仅添加URP所需引用，不制造循环依赖。
+- 独立配置Profile如需创建：Assets/Settings/Effects/StealthVignetteProfile.asset；目录/资源用英文。其他必要基础Profile由你们按实际兼容性最小调整，不提前造配置框架。
+- 接入现有Assets/Scenes/Ruins.unity的正式表现根/相机；EnemyTest仅在确有验证需要时最小配置。对Assets/Prefabs/Player/PlayerCamera.prefab或Shelter的更改先与氛围聊天对齐影响范围。保留scene/Prefab的GUID与用户摆放，不运行Builder重建地图。
+- 相关行为测试如需：Assets/Tests/Enemy/PlayMode/PlayerStealthVignetteTests.cs，只验证关键生命周期/状态转换，不镜像实现或展开无关全量回归。
+- 证据：Docs/Verification/Enemy/StealthVignette/。
+- 交接：Docs/Handoffs/09I_StealthVignette_Handoff.txt。
+
+验收
+A. Bootstrap→Shelter→Ruins，实际Game1920×1080依次检查：草丛外蹲伏无新增暗角，草丛内站立无新增暗角，草丛内蹲伏平滑出现，离开/站起平滑恢复；与CoverArea.IsHidden一致。
+B. 草丛边缘、重叠掩体、打开关闭背包不闪烁或错误退出。中心角色和背包文字/格子仍清楚。
+C. 触发暗角时死亡回Shelter、正常撤离、再次出发，均无残留或重复Volume/Camera；不回退007完成的死亡流程或玩家补光。
+D. 保留同机位正常/潜行/退出后的1920截图与状态记录。正常画面不因开启PP意外重调色；Shelter原Profile、补光和浮尘不被改坏。标明API辅助与原生键鼠区别，不把静态参数当视觉验收。
+E. Console无本任务新增异常，必要的关键测试通过，保存重载验证；如有真实限制明确报告。
+交付实际修改文件、参数如何调、与氛围聊天的分工、测试与截图证据，并释放Editor。用户已授权执行，不停在方案。

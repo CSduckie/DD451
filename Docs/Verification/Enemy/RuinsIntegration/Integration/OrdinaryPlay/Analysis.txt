@@ -1,0 +1,21 @@
+07E普通Play数字复核（2026-10-19；仅Docs分析，不操作Unity）
+来源：Samples.json，共11072条、11072个唯一帧号，覆盖游戏时间73.232277秒。
+
+轮次1：None=1，Patrol=399，Alert=444，Chase=252，Explode=3576，Search=0；Patrol首末观察位移=3.600012；自毁后采样3576、复活样本0。
+轮次2：None=1，Patrol=394，Alert=432，Chase=252，Explode=1095，Search=0；Patrol首末观察位移=3.600012；自毁后采样1095、复活样本0。
+
+两轮首次观察无人机均为Departing/玩家锁定/敌人轮次0/None/未运行；首次运行均由正式流程进入Patrol，轮次与GameFlow、PlayerHealth、Loot一致。
+两轮出生位置均保留(-3.34101677,2.39236856,-0.382937431)。Round2Patrol独立记录从原出生点移动到(-3.94096851,2.39982629,-0.382937431)，位移0.5999981，原巡逻1(-12,2.5,0)、巡逻2(1,2.5,0)完整。
+
+健康变化共3次：两次3→2均在Exploring且同帧已观察到Explode；下一轮准备产生一次2→3。每轮自毁后记录的生命保持2，未见重复伤害或复活。
+Exploring共6840条，轮次不一致=0、玩家仍锁定=0、玩家Scene非Ruins=0。Shelter共4220条，玩家所属场景中的无人机样本=0。
+场景结论限于玩家所属Scene；observer没有全局扫描所有已加载场景。其他Scene启动隔离由新增自动化测试证明。
+
+事件记录：本轮doll与medkit来源转移均Success；回家两件转仓均Success，背包0、仓库2、EV7、健康2。第二轮撤离后仍为这两件相同实例ID、EV7、健康2，settled=2。
+两轮观察到的完整状态顺序均为None→Patrol→Alert→Patrol→Alert→Chase→Explode，包含一次早期警戒后返回巡逻，不能简写为从未退警戒的单次发现。普通Play中无人机先自毁，随后进行搜刮/撤离/存仓；这证明风险与物品循环在同一会话衔接，不是活敌人同时攻击时搜索/拖拽的专项验收。
+
+正式结果：PlayMode-50-Final.xml为50/50，失败0跳过0（Enemy37+GameFlow13）；EditMode-11-Final.xml为11/11，失败0跳过0。EditMode MCP job曾误报initialization timeout，但官方XML实际完成，保留这一区别。
+ObserverFinished.json记录callbacksRemoved=true、restoredBackground=false；root报告普通Play已退出、observer与patrolcapture均清理。最终Editor状态以root的ReleaseState/正式交接为准。
+
+方式与限制：API定位玩家并触发实际交互/转移；没有原生OS键鼠证明。没有逐机BeginRound、强制ChangeState或镜头改动；状态由正式GameFlow与真实感知产生。没有Windows构建验收。关键PNG由root查看，本分析不冒充独立画面复核。
+完整逐轮首次状态、转换帧、健康变化及输入文件SHA256见Analysis.json。

@@ -1,0 +1,35 @@
+07F GameFlowDeathReturnTests API/时序只读复核
+日期：2026-10-19（America/New_York）
+状态：只修改 Staging 测试文本；未导入、未编译、未运行、未操作 Unity。
+复核后草稿 SHA256：25AC334212D7C296495D4D1BC8E589136A35DE27B7FFF86198D6291CAC54D403
+
+已修复的确定假失败
+首个用例把 medkit 移入仓库时没有传 requestIsValid。
+ItemTransferCoordinator.cs:287 ValidateRequest 对 null 始终返回 StaleRequest（即使目标格与双方归属都合法）。
+已改为捕获实际 home.backpackUI.InputSession，校验双方面板仍打开且 session 未变的只读回调；不是恒 true，也不绕过 UI 会话检查。
+
+已强化的夹具边界（不宣称原 Instantiate 一定浅复制）
+- 概率夹具从 Instantiate(SO) 改为 CreateInstance<LootTableSO>，逐项 new LootTableEntry 复制标量字段与只读 ItemDataSO 引用。
+  因而原 SO 的 list/entry 概率不会被写入；无需依赖 Unity 对内嵌可序列化类的 clone 行为。
+- 在修改运行时表前断言 box.State 还未 Generated，避免“生成已完成才改概率”导致随机 food 缺失被误报为死亡返回错误。
+- 三个故障用例各加明确的 GameFlow Warning LogAssert.Expect；未忽略任意错误，未加入 LogAssert.ignoreFailingMessages。
+
+sceneLoaded 时序结论
+LoadBootstrap 在发起 Bootstrap additive 加载前订阅 PrepareRuntimeTestScene；LootRuntimeManager.OnEnable 在 Bootstrap 实例创建时才订阅自己的 OnSceneLoaded。
+因此本 fixture 的 Ruins sceneLoaded 回调排在 LootRuntimeManager 的回调前。当前 LootBox prefab 的 runtimeManager 初始为空，OnEnable 不会抢先 TryBind；Start 在 sceneLoaded 之后。
+前述 Generated 断言会暴露未来场景改动或初始化顺序变化，不会悄悄继续依赖 50% 原概率。
+死亡后的观察 handler 则是在运行中追加；它在 Loot handler 之后观察 Shelter，但关闭轮次 guard 已阻止旧 Ruins 认领，仍可证明加载当时清算完成。
+
+搜索、拖拽、真实 API 复核
+- TakeBoxItem("medkit", false) 每次按下一个未揭示物品的真实 searchSeconds 推进，只搜到 medkit；当前正式 MinimumLoopLoot 表顺序 doll/medkit/food，food 搜索时长 1 秒。CloseSessions 会把 food 未完成进度归零，随后 OpenFormalBox + 0.1 秒确实保持正在搜索。
+- BeginItemDrag 使用背包中已有 medkit、打开的背包与有效 manager；Vector2.zero 可以形成非法落点预览，但不妨碍开始拖拽。此用例验证取消，不声称坐标是有效投放目标。
+- 死亡调用同一帧内，GameFlow 只锁/关闭并 yield 下一帧后清算；因此 stale EndDrag 后 medkit 仍是 Backpack，下一帧才变 PendingRecovery 的断言与草稿实现一致。
+- 背包 TryUseItem 对 dead PlayerHealth 返回 BackpackResult.Success + ItemUseResult.InvalidTarget，断言正确；不存在把无效使用当业务成功的误判。
+- OpenFormalBox 的定位沿用现有 MinimumLoopSceneTests 的真实 TriggerBox minX/capsule extents 公式，不改用户场景或模型。当前场景范围仍须运行时验证，不把静态检查当实际可达证据。
+- 背包 4×4 下 doll 2×3 与 medkit/food 2×2 可在左右两栏共存；battery EV=0，medkit EV=2，doll EV=5，因此首轮 EV7、死亡后 EV2 的夹具预期与当前资源一致。
+- API 方法、InputSession getter、GameFlow PlayMode asmdef 的 Enemy/UGUI 引用存在；新增 Regex 在标准 System 库中。
+
+尚待真实运行确认
+- 新文件导入编译、完整 6 项 PlayMode 实际结果、普通成功撤离回归。
+- 所有用例都主动禁用测试实例无人机，证明 TakeDamage 流程，不证明自然无人机接触或原生键鼠。
+- 预览坐标不代替 UI 布局画面验收；本审查没有操作 Editor。

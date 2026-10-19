@@ -1,0 +1,69 @@
+你负责 MyPrecious 项目中小型、独立的表现效果代码。本聊天作为“表现效果维护”聊天，按我之后逐项提出的需求工作，不要自行扩展开发范围。
+
+项目位置：E:/DD451。
+这是我的作品集兼毕业设计，实现必须让我能读懂、修改并在答辩时解释。
+
+一、先了解已经完成的工作
+主程序已通过 Unity MCP 新增灯光间歇闪烁功能：
+- 脚本：Assets/Scripts/Effects/MonoBehaviour/LightFlicker.cs。
+- 已修改的现有预制体：Assets/Prefabs/灯光.prefab。
+- 使用场景：Assets/Scenes/Shelter.unity，当前有“灯光”和“灯光 (1)”两个实例。
+- 预制体根对象挂 LightFlicker，targetLight 指向子对象“光照”的实时 Spot Light。
+- 默认正常照明间隔 3～8 秒，每轮随机闪灭 2～4 次；暗 0.05～0.15 秒，亮 0.08～0.2 秒，暗时亮度倍率 0。
+- 只改变目标 Light 的 intensity，正常亮度取自启用效果时的灯光参数；原灯光颜色、Range、角度、阴影与 enabled 状态保留。
+- 禁用脚本或灯具时停止协程、恢复原亮度；再次启用重新开始。
+- 当前版本只处理实际灯光，不处理灯管材质 Emission；以后如果我提出同步发光材质，再按需加入。
+- 交接：Docs/Handoffs/Effects_LightFlicker.txt。
+- 验证：Docs/Verification/LightFlicker/。
+首次接手先读取上述实际文件与验证记录、核对预制体引用。功能已经存在，不要重新创建另一套，也不要直接覆盖重做。发现实际缺陷就在原实现上修复；核对完毕后说明现状，等待我提出下一项表现需求。
+
+二、代码风格与复用依据
+先阅读 Docs/AgentPrompts/ProjectRules.txt，遵循用户最新要求。
+参考仓库：https://github.com/CSduckie/2DArpg-Portfolio。
+本机参考克隆：E:/Portfolio-Clone；本次已核实版本 c601c36f95efdd4d67327489f9edb58412aa54b4。
+这次主要参考：
+- Assets/Scripts/Enemy/Elites/Shielder/ShielderSprite.cs：短暂闪烁后恢复的协程模式。
+- Assets/Scripts/Dialogue/Dialogue.cs：保存与停止 Coroutine 句柄的写法。
+参考代码可以修改复用，但必须先读真实源码，交接时写明来源和修改原因，不改参考仓库本身，不照搬无关战斗依赖。
+
+所有新增自有 C#：
+- 不写 namespace，保留正常 using。
+- 4 空格缩进，类和方法大括号另起行；类型/方法 PascalCase，字段/局部变量 camelCase。
+- 优先普通 MonoBehaviour、清楚的字段、简单方法和必要协程。
+- Inspector 用简短中文 Header/Tooltip 解释策划需要调整的参数。
+- 不为小效果引入 Manager、单例、事件总线、状态机、基类体系、SO 配置框架、泛型框架或新 asmdef。
+- 不提前创建用不到的接口；Utilities/Contracts/ 只在确实有共享契约时使用。
+- 公共基础测试目录继续保持 Assets/Tests/Base/，不重新命名。
+
+三、文件存放位置
+- 小型表现脚本：Assets/Scripts/Effects/MonoBehaviour/，一个具体效果一个清楚的文件名。
+- 后续新增自有表现预制体：Assets/Prefabs/Effects/。
+- 后续确需新建的表现专用材质：Assets/Art/Materials/Effects/。
+- 当前已经存在的 Assets/Prefabs/灯光.prefab 原位维护，保留 .meta/GUID，不擅自移动或改名。
+- 真有必要新增的专项测试：Assets/Tests/Effects/；若不需要测试代码，就用 Unity 实际操作验证，不为了凑数量创建测试框架。
+- 只有需要独立演示场景时才创建 Assets/Scenes/Tests/Effects/。
+- 交接：Docs/Handoffs/Effects_<具体效果名>.txt。
+- 验证记录：Docs/Verification/Effects/<具体效果名>/；现有灯光验证继续保留原目录。
+只创建实际用到的目录。每次开始修改前，先列出具体文件路径与职责。
+
+四、接入与协作要求
+- 使用项目 Unity MCP，先检查当前场景、Play 状态、编译状态和已有组件，再操作。
+- 项目是 3D 模型制作的严格横版游戏，玩家 X 左右、Y 跳跃、Z 固定，摄像机使用 Cinemachine。表现效果不要改变这些玩法规则。
+- 默认按 1920×1080、16:9 验收；本模块不增加多分辨率框架。
+- 未来若增加玩家可见文字，接入已有中英双语系统，默认中文，F10 切换；Inspector 注释不属于游戏 UI 翻译。
+- 修改可复用预制体，并验证场景实例真实继承；避免只修改 Play 临时对象。
+- 保留场景中的未保存用户修改，不重新生成或覆盖整个 Shelter，不擅自切场景、清空 Console、调整全局光照。
+- 多个聊天共享 Unity。需要进入 Play 或切换场景前，核对是否有其他聊天占用，串行使用编辑器。
+- 不直接修改 Synty/BrokenVector 原始预制体来加入业务脚本；使用项目自己的灯具包装。
+- 如果以后同步材质闪烁，不直接改 sharedMaterial，避免所有实例一起闪和污染资源；采用最简单的实例隔离方式，并解释和清理生命周期。
+- 不重置全局随机种子；不关闭挂载闪烁协程的根对象来制造闪灭。
+- 不添加本需求以外的音效、交互、烘焙、Bloom 或电力管理系统。
+
+五、灯光效果验收标准
+1. 两盏实例各自正常亮一段时间，随机短暂闪灭几次后恢复，不是持续匀速闪灯。
+2. Inspector 中可调间隔、次数、暗亮时间与暗时倍率，启用前配置的原始亮度得到保留。
+3. 闪灭过程中禁用组件、禁用整个灯具，均停止协程并恢复亮度；再次启用正常运行，不叠加协程、不越闪越暗。
+4. 原本关闭的 Light 不被效果强行打开；缺失或销毁目标不产生空引用异常。
+5. 不改变其他灯、玩家、相机、交互和 UI。
+6. Console 没有该功能产生的编译错误、运行异常或持续刷屏。
+7. 交付明确写出实际修改、Unity 接线、参数调整方法、已经完成的验证及尚未验证的项目，不把源码检查当成真实画面验收。

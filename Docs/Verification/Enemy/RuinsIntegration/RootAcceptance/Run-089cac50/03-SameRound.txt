@@ -1,0 +1,1 @@
+PASS: Actual TryBeginExplorationEnemies(currentRound) returned success; after0.3 game seconds the same instance remained exploded, hidden, stationary and harmless.

@@ -1,0 +1,816 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="29" result="Failed(Child)" total="29" passed="10" failed="19" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-18 19:53:19Z" end-time="2026-10-18 19:53:33Z" duration="13.8016386">
+  <test-suite type="TestSuite" id="1093" name="DD451Demo" fullname="DD451Demo" runstate="Runnable" testcasecount="71" result="Failed" site="Child" start-time="2026-10-18 19:53:19Z" end-time="2026-10-18 19:53:33Z" duration="13.801639" total="29" passed="10" failed="19" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1012" name="MyPrecious.Backpack.PlayModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.Backpack.PlayModeTests.dll" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-10-18 19:53:19Z" end-time="2026-10-18 19:53:30Z" duration="11.256550" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="48276" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1001" name="BackpackIntegrationTests" fullname="BackpackIntegrationTests" classname="BackpackIntegrationTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-10-18 19:53:19Z" end-time="2026-10-18 19:53:30Z" duration="11.250571" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1005" name="DamageCancelsBeforeLateReleaseAndDeathLeavesItemsForFlowCoordinator" fullname="BackpackIntegrationTests.DamageCancelsBeforeLateReleaseAndDeathLeavesItemsForFlowCoordinator" methodname="DamageCancelsBeforeLateReleaseAndDeathLeavesItemsForFlowCoordinator" classname="BackpackIntegrationTests" runstate="Runnable" seed="41935876" result="Passed" start-time="2026-10-18 19:53:19Z" end-time="2026-10-18 19:53:21Z" duration="1.967028" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1009" name="DestroyingBoundExplorationPlayerClosesAndCancelsWithoutChangingItems" fullname="BackpackIntegrationTests.DestroyingBoundExplorationPlayerClosesAndCancelsWithoutChangingItems" methodname="DestroyingBoundExplorationPlayerClosesAndCancelsWithoutChangingItems" classname="BackpackIntegrationTests" runstate="Runnable" seed="763060164" result="Passed" start-time="2026-10-18 19:53:21Z" end-time="2026-10-18 19:53:21Z" duration="0.127661" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1008" name="ExternalPreviewAndShelterContextNeverTransferOwnershipOrLeaveOldPlayerLocked" fullname="BackpackIntegrationTests.ExternalPreviewAndShelterContextNeverTransferOwnershipOrLeaveOldPlayerLocked" methodname="ExternalPreviewAndShelterContextNeverTransferOwnershipOrLeaveOldPlayerLocked" classname="BackpackIntegrationTests" runstate="Runnable" seed="529692686" result="Passed" start-time="2026-10-18 19:53:21Z" end-time="2026-10-18 19:53:22Z" duration="0.379968" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1011" name="OpenBackpackPreservesCrouchAndAllowsWorldTimeAndGravity" fullname="BackpackIntegrationTests.OpenBackpackPreservesCrouchAndAllowsWorldTimeAndGravity" methodname="OpenBackpackPreservesCrouchAndAllowsWorldTimeAndGravity" classname="BackpackIntegrationTests" runstate="Runnable" seed="1327539929" result="Passed" start-time="2026-10-18 19:53:22Z" end-time="2026-10-18 19:53:23Z" duration="1.428653" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1010" name="QueuedCloseButtonAndSimulatedFocusLossCancelPreviewAndIgnoreLateRelease" fullname="BackpackIntegrationTests.QueuedCloseButtonAndSimulatedFocusLossCancelPreviewAndIgnoreLateRelease" methodname="QueuedCloseButtonAndSimulatedFocusLossCancelPreviewAndIgnoreLateRelease" classname="BackpackIntegrationTests" runstate="Runnable" seed="791030683" result="Passed" start-time="2026-10-18 19:53:23Z" end-time="2026-10-18 19:53:27Z" duration="3.930351" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1003" name="QueuedPointerDragKeyboardRotationAndF10PreservePreviewUntilRelease" fullname="BackpackIntegrationTests.QueuedPointerDragKeyboardRotationAndF10PreservePreviewUntilRelease" methodname="QueuedPointerDragKeyboardRotationAndF10PreservePreviewUntilRelease" classname="BackpackIntegrationTests" runstate="Runnable" seed="712521787" result="Passed" start-time="2026-10-18 19:53:27Z" end-time="2026-10-18 19:53:28Z" duration="0.449986" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[Backpack pointer/UI verification at 1280 x 720
+]]></output>
+        </test-case>
+        <test-case id="1007" name="ReloadKeepsPlacementsConsumedFoodMedkitUseAndLanguageWhileCancellingPreview" fullname="BackpackIntegrationTests.ReloadKeepsPlacementsConsumedFoodMedkitUseAndLanguageWhileCancellingPreview" methodname="ReloadKeepsPlacementsConsumedFoodMedkitUseAndLanguageWhileCancellingPreview" classname="BackpackIntegrationTests" runstate="Runnable" seed="1124905244" result="Passed" start-time="2026-10-18 19:53:28Z" end-time="2026-10-18 19:53:28Z" duration="0.696355" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1006" name="RightClickUsesExactlyOneRealItemAndFullHealthDoesNotFreeCells" fullname="BackpackIntegrationTests.RightClickUsesExactlyOneRealItemAndFullHealthDoesNotFreeCells" methodname="RightClickUsesExactlyOneRealItemAndFullHealthDoesNotFreeCells" classname="BackpackIntegrationTests" runstate="Runnable" seed="1134383885" result="Passed" start-time="2026-10-18 19:53:28Z" end-time="2026-10-18 19:53:30Z" duration="1.680855" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1002" name="SharedModulesResolveBackpackTextAndF10RefreshesUiWithoutChangingItems" fullname="BackpackIntegrationTests.SharedModulesResolveBackpackTextAndF10RefreshesUiWithoutChangingItems" methodname="SharedModulesResolveBackpackTextAndF10RefreshesUiWithoutChangingItems" classname="BackpackIntegrationTests" runstate="Runnable" seed="969393116" result="Passed" start-time="2026-10-18 19:53:30Z" end-time="2026-10-18 19:53:30Z" duration="0.223678" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1004" name="StandaloneBackpackHidesDisconnectedSourceAndConfirmsDiscardWithoutLootRuntime" fullname="BackpackIntegrationTests.StandaloneBackpackHidesDisconnectedSourceAndConfirmsDiscardWithoutLootRuntime" methodname="StandaloneBackpackHidesDisconnectedSourceAndConfirmsDiscardWithoutLootRuntime" classname="BackpackIntegrationTests" runstate="Runnable" seed="405636044" result="Passed" start-time="2026-10-18 19:53:30Z" end-time="2026-10-18 19:53:30Z" duration="0.311632" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+    </test-suite>
+    <test-suite type="Assembly" id="1051" name="MyPrecious.Loot.PlayModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.Loot.PlayModeTests.dll" runstate="Runnable" testcasecount="19" result="Failed" site="Child" start-time="2026-10-18 19:53:30Z" end-time="2026-10-18 19:53:33Z" duration="2.448385" total="19" passed="0" failed="19" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="48276" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestFixture" id="1031" name="LootIntegrationTests" fullname="LootIntegrationTests" classname="LootIntegrationTests" runstate="Runnable" testcasecount="19" result="Failed" site="Child" start-time="2026-10-18 19:53:30Z" end-time="2026-10-18 19:53:33Z" duration="2.442900" total="19" passed="0" failed="19" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-case id="1039" name="ActualDistanceAndObstructionInterruptSearchWhileUiLockDoesNot" fullname="LootIntegrationTests.ActualDistanceAndObstructionInterruptSearchWhileUiLockDoesNot" methodname="ActualDistanceAndObstructionInterruptSearchWhileUiLockDoesNot" classname="LootIntegrationTests" runstate="Runnable" seed="1909028764" result="Failed" start-time="2026-10-18 19:53:30Z" end-time="2026-10-18 19:53:31Z" duration="0.180588" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[Unhandled log message: '[Error] LootTest: LootTest module initialization failed.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+            <stack-trace><![CDATA[LootTestDriver:Fail (string) (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:242)
+LootTestDriver:Start () (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:47)
+
+]]></stack-trace>
+          </failure>
+          <output><![CDATA[Localization：找不到 key 'backpack.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.language_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.disconnected'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.abandon'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel_drag'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm_title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_found'，请检查 'LocalizationModule' 的语言表和物品目录。
+LootTest: LootTest module initialization failed.
+Localization：找不到 key 'warehouse.size'，请检查 'LocalizationModule' 的语言表和物品目录。
+]]></output>
+        </test-case>
+        <test-case id="1050" name="ClosingEndsSourceAndPreviewBeforeReleasingBackpackControl" fullname="LootIntegrationTests.ClosingEndsSourceAndPreviewBeforeReleasingBackpackControl" methodname="ClosingEndsSourceAndPreviewBeforeReleasingBackpackControl" classname="LootIntegrationTests" runstate="Runnable" seed="33748449" result="Failed" start-time="2026-10-18 19:53:31Z" end-time="2026-10-18 19:53:31Z" duration="0.152123" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[Unhandled log message: '[Error] LootTest: LootTest module initialization failed.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+            <stack-trace><![CDATA[LootTestDriver:Fail (string) (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:242)
+LootTestDriver:Start () (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:47)
+
+]]></stack-trace>
+          </failure>
+          <output><![CDATA[Localization：找不到 key 'backpack.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.language_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.disconnected'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.abandon'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel_drag'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm_title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_found'，请检查 'LocalizationModule' 的语言表和物品目录。
+LootTest: LootTest module initialization failed.
+Localization：找不到 key 'warehouse.size'，请检查 'LocalizationModule' 的语言表和物品目录。
+]]></output>
+        </test-case>
+        <test-case id="1048" name="ExistingRightClickStillRejectsFullHealthAndUsesOneRealFoodAfterDamage" fullname="LootIntegrationTests.ExistingRightClickStillRejectsFullHealthAndUsesOneRealFoodAfterDamage" methodname="ExistingRightClickStillRejectsFullHealthAndUsesOneRealFoodAfterDamage" classname="LootIntegrationTests" runstate="Runnable" seed="710187102" result="Failed" start-time="2026-10-18 19:53:31Z" end-time="2026-10-18 19:53:31Z" duration="0.162370" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[Unhandled log message: '[Error] LootTest: LootTest module initialization failed.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+            <stack-trace><![CDATA[LootTestDriver:Fail (string) (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:242)
+LootTestDriver:Start () (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:47)
+
+]]></stack-trace>
+          </failure>
+          <output><![CDATA[Localization：找不到 key 'backpack.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.language_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.disconnected'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.abandon'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel_drag'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm_title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_found'，请检查 'LocalizationModule' 的语言表和物品目录。
+LootTest: LootTest module initialization failed.
+Localization：找不到 key 'warehouse.size'，请检查 'LocalizationModule' 的语言表和物品目录。
+]]></output>
+        </test-case>
+        <test-case id="1049" name="GroundPointerCancelAndFullBackpackKeepTheSameVisibleSource" fullname="LootIntegrationTests.GroundPointerCancelAndFullBackpackKeepTheSameVisibleSource" methodname="GroundPointerCancelAndFullBackpackKeepTheSameVisibleSource" classname="LootIntegrationTests" runstate="Runnable" seed="1236765597" result="Failed" start-time="2026-10-18 19:53:31Z" end-time="2026-10-18 19:53:31Z" duration="0.101476" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[Unhandled log message: '[Error] LootTest: LootTest module initialization failed.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+            <stack-trace><![CDATA[LootTestDriver:Fail (string) (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:242)
+LootTestDriver:Start () (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:47)
+
+]]></stack-trace>
+          </failure>
+          <output><![CDATA[Localization：找不到 key 'backpack.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.language_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.disconnected'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.abandon'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel_drag'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm_title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_found'，请检查 'LocalizationModule' 的语言表和物品目录。
+LootTest: LootTest module initialization failed.
+Localization：找不到 key 'warehouse.size'，请检查 'LocalizationModule' 的语言表和物品目录。
+]]></output>
+        </test-case>
+        <test-case id="1047" name="QueuedBackpackAndWarehousePointerReordersStillUseTheirOwnGridAndOneR" fullname="LootIntegrationTests.QueuedBackpackAndWarehousePointerReordersStillUseTheirOwnGridAndOneR" methodname="QueuedBackpackAndWarehousePointerReordersStillUseTheirOwnGridAndOneR" classname="LootIntegrationTests" runstate="Runnable" seed="2144589080" result="Failed" start-time="2026-10-18 19:53:31Z" end-time="2026-10-18 19:53:31Z" duration="0.105046" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[Unhandled log message: '[Error] LootTest: LootTest module initialization failed.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+            <stack-trace><![CDATA[LootTestDriver:Fail (string) (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:242)
+LootTestDriver:Start () (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:47)
+
+]]></stack-trace>
+          </failure>
+          <output><![CDATA[Localization：找不到 key 'backpack.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.language_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.disconnected'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.abandon'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel_drag'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm_title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_found'，请检查 'LocalizationModule' 的语言表和物品目录。
+LootTest: LootTest module initialization failed.
+Localization：找不到 key 'warehouse.size'，请检查 'LocalizationModule' 的语言表和物品目录。
+]]></output>
+        </test-case>
+        <test-case id="1040" name="QueuedBoxRoundTripReusesEntryIdentityAndKeepsTheNextSearch" fullname="LootIntegrationTests.QueuedBoxRoundTripReusesEntryIdentityAndKeepsTheNextSearch" methodname="QueuedBoxRoundTripReusesEntryIdentityAndKeepsTheNextSearch" classname="LootIntegrationTests" runstate="Runnable" seed="1399940634" result="Failed" start-time="2026-10-18 19:53:31Z" end-time="2026-10-18 19:53:31Z" duration="0.114341" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[Unhandled log message: '[Error] LootTest: LootTest module initialization failed.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+            <stack-trace><![CDATA[LootTestDriver:Fail (string) (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:242)
+LootTestDriver:Start () (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:47)
+
+]]></stack-trace>
+          </failure>
+          <output><![CDATA[Localization：找不到 key 'backpack.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.language_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.disconnected'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.abandon'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel_drag'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm_title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_found'，请检查 'LocalizationModule' 的语言表和物品目录。
+LootTest: LootTest module initialization failed.
+Localization：找不到 key 'warehouse.size'，请检查 'LocalizationModule' 的语言表和物品目录。
+]]></output>
+        </test-case>
+        <test-case id="1046" name="QueuedCrossPreviewCancelledByClaimNotificationReleasesWarehouseAndAllowsNextDrag" fullname="LootIntegrationTests.QueuedCrossPreviewCancelledByClaimNotificationReleasesWarehouseAndAllowsNextDrag" methodname="QueuedCrossPreviewCancelledByClaimNotificationReleasesWarehouseAndAllowsNextDrag" classname="LootIntegrationTests" runstate="Runnable" seed="739398693" result="Failed" start-time="2026-10-18 19:53:31Z" end-time="2026-10-18 19:53:31Z" duration="0.146591" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[Unhandled log message: '[Error] LootTest: LootTest module initialization failed.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+            <stack-trace><![CDATA[LootTestDriver:Fail (string) (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:242)
+LootTestDriver:Start () (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:47)
+
+]]></stack-trace>
+          </failure>
+          <output><![CDATA[Localization：找不到 key 'backpack.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.language_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.disconnected'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.abandon'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel_drag'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm_title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_found'，请检查 'LocalizationModule' 的语言表和物品目录。
+LootTest: LootTest module initialization failed.
+Localization：找不到 key 'warehouse.size'，请检查 'LocalizationModule' 的语言表和物品目录。
+]]></output>
+        </test-case>
+        <test-case id="1043" name="QueuedDamageCancelsValidBoxPickupAndLateTokenCannotAffectNextDrag" fullname="LootIntegrationTests.QueuedDamageCancelsValidBoxPickupAndLateTokenCannotAffectNextDrag" methodname="QueuedDamageCancelsValidBoxPickupAndLateTokenCannotAffectNextDrag" classname="LootIntegrationTests" runstate="Runnable" seed="684931275" result="Failed" start-time="2026-10-18 19:53:31Z" end-time="2026-10-18 19:53:32Z" duration="0.104928" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[Unhandled log message: '[Error] LootTest: LootTest module initialization failed.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+            <stack-trace><![CDATA[LootTestDriver:Fail (string) (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:242)
+LootTestDriver:Start () (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:47)
+
+]]></stack-trace>
+          </failure>
+          <output><![CDATA[Localization：找不到 key 'backpack.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.language_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.disconnected'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.abandon'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel_drag'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm_title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_found'，请检查 'LocalizationModule' 的语言表和物品目录。
+LootTest: LootTest module initialization failed.
+Localization：找不到 key 'warehouse.size'，请检查 'LocalizationModule' 的语言表和物品目录。
+]]></output>
+        </test-case>
+        <test-case id="1042" name="QueuedDamageCancelsValidBoxReturnAndLateTokenCannotAffectNextDrag" fullname="LootIntegrationTests.QueuedDamageCancelsValidBoxReturnAndLateTokenCannotAffectNextDrag" methodname="QueuedDamageCancelsValidBoxReturnAndLateTokenCannotAffectNextDrag" classname="LootIntegrationTests" runstate="Runnable" seed="68883255" result="Failed" start-time="2026-10-18 19:53:32Z" end-time="2026-10-18 19:53:32Z" duration="0.101304" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[Unhandled log message: '[Error] LootTest: LootTest module initialization failed.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+            <stack-trace><![CDATA[LootTestDriver:Fail (string) (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:242)
+LootTestDriver:Start () (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:47)
+
+]]></stack-trace>
+          </failure>
+          <output><![CDATA[Localization：找不到 key 'backpack.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.language_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.disconnected'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.abandon'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel_drag'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm_title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_found'，请检查 'LocalizationModule' 的语言表和物品目录。
+LootTest: LootTest module initialization failed.
+Localization：找不到 key 'warehouse.size'，请检查 'LocalizationModule' 的语言表和物品目录。
+]]></output>
+        </test-case>
+        <test-case id="1035" name="QueuedDiscardConfirmationCancelsTranslatesAndDestroysOrdinaryItemExactlyOnce" fullname="LootIntegrationTests.QueuedDiscardConfirmationCancelsTranslatesAndDestroysOrdinaryItemExactlyOnce" methodname="QueuedDiscardConfirmationCancelsTranslatesAndDestroysOrdinaryItemExactlyOnce" classname="LootIntegrationTests" runstate="Runnable" seed="630110488" result="Failed" start-time="2026-10-18 19:53:32Z" end-time="2026-10-18 19:53:32Z" duration="0.106941" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[Unhandled log message: '[Error] LootTest: LootTest module initialization failed.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+            <stack-trace><![CDATA[LootTestDriver:Fail (string) (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:242)
+LootTestDriver:Start () (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:47)
+
+]]></stack-trace>
+          </failure>
+          <output><![CDATA[Localization：找不到 key 'backpack.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.language_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.disconnected'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.abandon'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel_drag'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm_title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_found'，请检查 'LocalizationModule' 的语言表和物品目录。
+LootTest: LootTest module initialization failed.
+Localization：找不到 key 'warehouse.size'，请检查 'LocalizationModule' 的语言表和物品目录。
+]]></output>
+        </test-case>
+        <test-case id="1033" name="QueuedEOpensSearchDespiteClearedCurrentTargetAndHiddenEntryCannotTransfer" fullname="LootIntegrationTests.QueuedEOpensSearchDespiteClearedCurrentTargetAndHiddenEntryCannotTransfer" methodname="QueuedEOpensSearchDespiteClearedCurrentTargetAndHiddenEntryCannotTransfer" classname="LootIntegrationTests" runstate="Runnable" seed="804039923" result="Failed" start-time="2026-10-18 19:53:32Z" end-time="2026-10-18 19:53:32Z" duration="0.101634" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[Unhandled log message: '[Error] LootTest: LootTest module initialization failed.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+            <stack-trace><![CDATA[LootTestDriver:Fail (string) (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:242)
+LootTestDriver:Start () (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:47)
+
+]]></stack-trace>
+          </failure>
+          <output><![CDATA[Localization：找不到 key 'backpack.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.language_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.disconnected'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.abandon'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel_drag'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm_title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_found'，请检查 'LocalizationModule' 的语言表和物品目录。
+LootTest: LootTest module initialization failed.
+Localization：找不到 key 'warehouse.size'，请检查 'LocalizationModule' 的语言表和物品目录。
+]]></output>
+        </test-case>
+        <test-case id="1032" name="QueuedPointerTransfersBothWaysAndSingleRPreserveIdentityAndEv" fullname="LootIntegrationTests.QueuedPointerTransfersBothWaysAndSingleRPreserveIdentityAndEv" methodname="QueuedPointerTransfersBothWaysAndSingleRPreserveIdentityAndEv" classname="LootIntegrationTests" runstate="Runnable" seed="1325393745" result="Failed" start-time="2026-10-18 19:53:32Z" end-time="2026-10-18 19:53:32Z" duration="0.120948" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[Unhandled log message: '[Error] LootTest: LootTest module initialization failed.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+            <stack-trace><![CDATA[LootTestDriver:Fail (string) (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:242)
+LootTestDriver:Start () (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:47)
+
+]]></stack-trace>
+          </failure>
+          <output><![CDATA[Localization：找不到 key 'backpack.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.language_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.disconnected'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.abandon'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel_drag'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm_title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_found'，请检查 'LocalizationModule' 的语言表和物品目录。
+LootTest: LootTest module initialization failed.
+Localization：找不到 key 'warehouse.size'，请检查 'LocalizationModule' 的语言表和物品目录。
+]]></output>
+        </test-case>
+        <test-case id="1044" name="QueuedReturnRequiresTopmostListAndOldSessionCannotCommitAfterReopen" fullname="LootIntegrationTests.QueuedReturnRequiresTopmostListAndOldSessionCannotCommitAfterReopen" methodname="QueuedReturnRequiresTopmostListAndOldSessionCannotCommitAfterReopen" classname="LootIntegrationTests" runstate="Runnable" seed="2115000560" result="Failed" start-time="2026-10-18 19:53:32Z" end-time="2026-10-18 19:53:32Z" duration="0.095363" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[Unhandled log message: '[Error] LootTest: LootTest module initialization failed.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+            <stack-trace><![CDATA[LootTestDriver:Fail (string) (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:242)
+LootTestDriver:Start () (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:47)
+
+]]></stack-trace>
+          </failure>
+          <output><![CDATA[Localization：找不到 key 'backpack.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.language_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.disconnected'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.abandon'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel_drag'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm_title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_found'，请检查 'LocalizationModule' 的语言表和物品目录。
+LootTest: LootTest module initialization failed.
+Localization：找不到 key 'warehouse.size'，请检查 'LocalizationModule' 的语言表和物品目录。
+]]></output>
+        </test-case>
+        <test-case id="1038" name="QueuedUniqueDiscardReturnsToItsOriginalBoxNextRoundEvenAtZeroProbability" fullname="LootIntegrationTests.QueuedUniqueDiscardReturnsToItsOriginalBoxNextRoundEvenAtZeroProbability" methodname="QueuedUniqueDiscardReturnsToItsOriginalBoxNextRoundEvenAtZeroProbability" classname="LootIntegrationTests" runstate="Runnable" seed="686766354" result="Failed" start-time="2026-10-18 19:53:32Z" end-time="2026-10-18 19:53:32Z" duration="0.100545" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[Unhandled log message: '[Error] LootTest: LootTest module initialization failed.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+            <stack-trace><![CDATA[LootTestDriver:Fail (string) (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:242)
+LootTestDriver:Start () (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:47)
+
+]]></stack-trace>
+          </failure>
+          <output><![CDATA[Localization：找不到 key 'backpack.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.language_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.disconnected'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.abandon'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel_drag'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm_title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_found'，请检查 'LocalizationModule' 的语言表和物品目录。
+LootTest: LootTest module initialization failed.
+Localization：找不到 key 'warehouse.size'，请检查 'LocalizationModule' 的语言表和物品目录。
+]]></output>
+        </test-case>
+        <test-case id="1041" name="QueuedUnrelatedBackpackItemAppendsRevealedEntryToAnEmptyBox" fullname="LootIntegrationTests.QueuedUnrelatedBackpackItemAppendsRevealedEntryToAnEmptyBox" methodname="QueuedUnrelatedBackpackItemAppendsRevealedEntryToAnEmptyBox" classname="LootIntegrationTests" runstate="Runnable" seed="1266207058" result="Failed" start-time="2026-10-18 19:53:32Z" end-time="2026-10-18 19:53:32Z" duration="0.093384" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[Unhandled log message: '[Error] LootTest: LootTest module initialization failed.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+            <stack-trace><![CDATA[LootTestDriver:Fail (string) (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:242)
+LootTestDriver:Start () (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:47)
+
+]]></stack-trace>
+          </failure>
+          <output><![CDATA[Localization：找不到 key 'backpack.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.language_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.disconnected'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.abandon'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel_drag'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm_title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_found'，请检查 'LocalizationModule' 的语言表和物品目录。
+LootTest: LootTest module initialization failed.
+Localization：找不到 key 'warehouse.size'，请检查 'LocalizationModule' 的语言表和物品目录。
+]]></output>
+        </test-case>
+        <test-case id="1045" name="QueuedWheelScrollRevealsLastLootDragAndMovesTheRealWarehouseViewport" fullname="LootIntegrationTests.QueuedWheelScrollRevealsLastLootDragAndMovesTheRealWarehouseViewport" methodname="QueuedWheelScrollRevealsLastLootDragAndMovesTheRealWarehouseViewport" classname="LootIntegrationTests" runstate="Runnable" seed="794632125" result="Failed" start-time="2026-10-18 19:53:32Z" end-time="2026-10-18 19:53:32Z" duration="0.089082" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[Unhandled log message: '[Error] LootTest: LootTest module initialization failed.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+            <stack-trace><![CDATA[LootTestDriver:Fail (string) (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:242)
+LootTestDriver:Start () (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:47)
+
+]]></stack-trace>
+          </failure>
+          <output><![CDATA[Localization：找不到 key 'backpack.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.language_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.disconnected'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.abandon'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel_drag'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm_title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_found'，请检查 'LocalizationModule' 的语言表和物品目录。
+LootTest: LootTest module initialization failed.
+Localization：找不到 key 'warehouse.size'，请检查 'LocalizationModule' 的语言表和物品目录。
+]]></output>
+        </test-case>
+        <test-case id="1036" name="RealDamageCancelsDiscardAndOldTokensCannotConfirmOrCancelANewerTarget" fullname="LootIntegrationTests.RealDamageCancelsDiscardAndOldTokensCannotConfirmOrCancelANewerTarget" methodname="RealDamageCancelsDiscardAndOldTokensCannotConfirmOrCancelANewerTarget" classname="LootIntegrationTests" runstate="Runnable" seed="197585755" result="Failed" start-time="2026-10-18 19:53:32Z" end-time="2026-10-18 19:53:32Z" duration="0.097236" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[Unhandled log message: '[Error] LootTest: LootTest module initialization failed.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+            <stack-trace><![CDATA[LootTestDriver:Fail (string) (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:242)
+LootTestDriver:Start () (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:47)
+
+]]></stack-trace>
+          </failure>
+          <output><![CDATA[Localization：找不到 key 'backpack.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.language_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.disconnected'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.abandon'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel_drag'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm_title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_found'，请检查 'LocalizationModule' 的语言表和物品目录。
+LootTest: LootTest module initialization failed.
+Localization：找不到 key 'warehouse.size'，请检查 'LocalizationModule' 的语言表和物品目录。
+]]></output>
+        </test-case>
+        <test-case id="1037" name="ReloadKeepsGeneratedSourcesAndDiscardedOrdinaryItemsHaveNoGroundPresentation" fullname="LootIntegrationTests.ReloadKeepsGeneratedSourcesAndDiscardedOrdinaryItemsHaveNoGroundPresentation" methodname="ReloadKeepsGeneratedSourcesAndDiscardedOrdinaryItemsHaveNoGroundPresentation" classname="LootIntegrationTests" runstate="Runnable" seed="498342566" result="Failed" start-time="2026-10-18 19:53:32Z" end-time="2026-10-18 19:53:33Z" duration="0.197652" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[Unhandled log message: '[Error] LootTest: LootTest module initialization failed.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+            <stack-trace><![CDATA[LootTestDriver:Fail (string) (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:242)
+LootTestDriver:Start () (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:47)
+
+]]></stack-trace>
+          </failure>
+          <output><![CDATA[Localization：找不到 key 'backpack.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.language_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.disconnected'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.abandon'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel_drag'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm_title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_found'，请检查 'LocalizationModule' 的语言表和物品目录。
+LootTest: LootTest module initialization failed.
+Localization：找不到 key 'warehouse.size'，请检查 'LocalizationModule' 的语言表和物品目录。
+]]></output>
+        </test-case>
+        <test-case id="1034" name="RevealedEntryPointerPickupContinuesNextSearchAndDamageCancelsLateRelease" fullname="LootIntegrationTests.RevealedEntryPointerPickupContinuesNextSearchAndDamageCancelsLateRelease" methodname="RevealedEntryPointerPickupContinuesNextSearchAndDamageCancelsLateRelease" classname="LootIntegrationTests" runstate="Runnable" seed="1843358721" result="Failed" start-time="2026-10-18 19:53:33Z" end-time="2026-10-18 19:53:33Z" duration="0.263495" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[Unhandled log message: '[Error] LootTest: LootTest module initialization failed.'. Use UnityEngine.TestTools.LogAssert.Expect]]></message>
+            <stack-trace><![CDATA[LootTestDriver:Fail (string) (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:242)
+LootTestDriver:Start () (at Assets/Tests/Loot/TestDoubles/LootTestDriver.cs:47)
+
+]]></stack-trace>
+          </failure>
+          <output><![CDATA[Localization：找不到 key 'backpack.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.language_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.loot.disconnected'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'backpack.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.close'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.controls'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.abandon'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel_drag'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_ready'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.select_hint'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm_title'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.confirm'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.cancel'，请检查 'LocalizationModule' 的语言表和物品目录。
+Localization：找不到 key 'warehouse.result.not_found'，请检查 'LocalizationModule' 的语言表和物品目录。
+LootTest: LootTest module initialization failed.
+Localization：找不到 key 'warehouse.size'，请检查 'LocalizationModule' 的语言表和物品目录。
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/cs200/AppData/LocalLow/DefaultCompany/DD451Demo\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -1,0 +1,31 @@
+09I 氛围兼容只读审查（Shelter氛围聊天）
+日期：2026-10-19。分工：009独占全部Unity/Assets，实现与最终验收；本聊天仅本地源码/资源、Docs和落盘图片审查。没有操作Editor或修改生产文件。
+
+确认的当前基线
+- 全局默认Assets/Settings/DefaultVolumeProfile.asset(guid ab09877e2e707104187f6f83e2f62510)主要调色中性：曝光/对比/饱和/白平衡0、白色滤镜、ToneNone、Bloom0、Vignette0；DOF/Grain/MotionBlur/色散/畸变等有效关键参数0或None。
+- 必须区分quality default：PC_RPAsset.asset:95 m_VolumeProfile仍指Assets/Settings/SampleSceneProfile.asset(guid10fc4df2da32a41aaa32d77bc913491c)，active ToneNeutral1、Bloom intensity.25、Vignette intensity.2。其MotionBlur虽强度.6但active0，不应误列为当前激活模糊。
+- 上项由009提醒后独立核实，明确修正先前只审全局默认文件所产生的不完整结论。CurrentConfigurationSnapshot.json仅是所列文件的磁盘观察，不可把它当成有效Volume stack或相机运行态。
+- 本地包UniversalRenderPipeline.cs:254 VolumeManager.Initialize(globalDefaultProfile, asset.volumeProfile)；Core VolumeManager.cs:510-511先global后quality应用默认；Update约734行ReplaceData之后再按场景Volume排序混合。
+- Ruins当前没有直接Volume组件或OutputCamera后处理实例override；共享PlayerCamera的URP PP0、VolumeMask1。最终应由009检查运行时相机和栈，不能只用YAML代替。
+- Shelter相机PP1；最新局部Profile ColorAdjustments为曝光-.2/对比8/颜色滤镜灰RGB.7578583，Bloom .1/threshold1及既有tint保留，ToneNone/Vignette0。这个灰色滤镜是后续用户状态，绝不能按早期交接还原成白色。
+- PC管线HDR1、ColorGradingMode0(LDR)、LUT32，Forward+与既有SSAO保留。即便所有Volume参数中性，PP0→1仍须检查色彩转换/查找表与高亮区域；不可预先声称像素零差。
+
+建议已与009对齐
+1. Ruins既有presentationRoot下常驻一个全局中性base Volume，weight1、priority低于潜行层，仅override Tone mode=None、Bloom intensity0、Vignette intensity0。该Volume用于抵消quality默认Profile的三项，其他参数不动。
+2. 单独高priority潜行Volume只包含Vignette；可调初值黑色、center(.5,.5)、intensity.22、smoothness.45、rounded=false、约.2秒渐入/出。该值是待实际画面判断的初值，不是视觉验收结论。
+3. 控制高层Volume.weight0→1。weight0会跳过本层而恢复真实base；不要把基底和潜行一起乘weight，否则退出时会重新露出quality默认暗角/Bloom。
+4. 仅修改私有运行时Vignette数据或weight，不能写sharedProfile资产；保留原组件原值与销毁/禁用清理。死亡/无绑定/换场景应立即清掉本次权重；正常站起/离开走短渐变。
+5. 现有cameraBinder.player已由GameFlowSceneBindings绑定；用明确引用避免每帧搜索或新增GameFlow事件框架。组件/Volume随Ruins presentationRoot启停，继续遵循既有单相机与场景切换。
+6. 不建议手写camera.volumeStack。VolumeManager.Update会重置并重新混合数据，手动stack引入执行顺序、更新模式与资源清理复杂度；两个含义明确的Inspector Volume更易维护。
+7. InventoryCanvas与GameFlowHUD的根Canvas为ScreenSpaceOverlay(renderMode0)，它们不应被场景后处理压暗；场景内DiscardConfirmation记录renderMode2且属于UI层次，仍需实际打开对应UI检查，不能只凭根Canvas推断所有UI均已通过。
+
+待009提供的真实画面（本文件不先行宣称通过）
+- 同机位原Ruins PP0，启用PP+中性base+潜行weight0，确认通常画面没有明显改色/截断；尽可能同相位或标出动态区域。
+- 草丛外蹲伏、草丛内站立、草丛内蹲伏稳定、站起/离开恢复；提供实际IsHidden、weight和有效Vignette栈。
+- 草丛隐藏时打开背包，核查中心角色、文字和格子可读，确认UI切换本身不改变真实隐藏。
+- 从暗角状态死亡回Shelter/再次出发/正常撤离：无残留或重复Volume，Shelter曝光/滤镜/Bloom/玩家灯/浮尘保持；以最新资源hash和运行态为准。
+- 捕获实际1920×1080 Game，不以Scene或参数截图代替；标注API定位/合成输入和实际输出帧。
+- 避免timeScale0引起既有无人机SmoothDamp NaN；如采用Editor暂停或单帧辅助，记录真实方法，不把暂停对照宣称为自然时间动态行为。
+
+附属审查报告：UrpShaderNotes.txt（子agent只读包源码）。后续实际图片审查另写VisualReview，不覆盖009最终交接。
+

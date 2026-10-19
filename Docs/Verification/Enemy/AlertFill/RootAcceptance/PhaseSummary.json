@@ -1,0 +1,189 @@
+[
+  {
+    "Phase": "0",
+    "Samples": 1318,
+    "FirstTime": "4.26268244",
+    "LastTime": "11.2822266",
+    "FirstState": "Patrol",
+    "LastState": "Patrol",
+    "FirstProgress": "0",
+    "LastProgress": "0",
+    "Health": "3"
+  },
+  {
+    "Phase": "1",
+    "Samples": 1,
+    "FirstTime": "11.2882118",
+    "LastTime": "11.2882118",
+    "FirstState": "Alert",
+    "LastState": "Alert",
+    "FirstProgress": "0",
+    "LastProgress": "0",
+    "Health": "3"
+  },
+  {
+    "Phase": "10",
+    "Samples": 1,
+    "FirstTime": "15.4214859",
+    "LastTime": "15.4214859",
+    "FirstState": "Alert",
+    "LastState": "Alert",
+    "FirstProgress": "0",
+    "LastProgress": "0",
+    "Health": "3"
+  },
+  {
+    "Phase": "11",
+    "Samples": 186,
+    "FirstTime": "15.4269009",
+    "LastTime": "16.42207",
+    "FirstState": "Alert",
+    "LastState": "Alert",
+    "FirstProgress": "0.00270729885",
+    "LastProgress": "0.5002915",
+    "Health": "3"
+  },
+  {
+    "Phase": "12",
+    "Samples": 23,
+    "FirstTime": "16.42734",
+    "LastTime": "16.54462",
+    "FirstState": "Alert",
+    "LastState": "Alert",
+    "FirstProgress": "0.502926767",
+    "LastProgress": "0.5615674",
+    "Health": "3"
+  },
+  {
+    "Phase": "13",
+    "Samples": 164,
+    "FirstTime": "16.549799",
+    "LastTime": "17.424",
+    "FirstState": "Alert",
+    "LastState": "Chase",
+    "FirstProgress": "0.564156353",
+    "LastProgress": "0",
+    "Health": "3"
+  },
+  {
+    "Phase": "14",
+    "Samples": 29,
+    "FirstTime": "17.4306126",
+    "LastTime": "17.5788651",
+    "FirstState": "Chase",
+    "LastState": "Chase",
+    "FirstProgress": "0",
+    "LastProgress": "0",
+    "Health": "3"
+  },
+  {
+    "Phase": "15",
+    "Samples": 1,
+    "FirstTime": "17.5844631",
+    "LastTime": "17.5844631",
+    "FirstState": "Explode",
+    "LastState": "Explode",
+    "FirstProgress": "0",
+    "LastProgress": "0",
+    "Health": "2"
+  },
+  {
+    "Phase": "16",
+    "Samples": 65,
+    "FirstTime": "17.59043",
+    "LastTime": "17.8880634",
+    "FirstState": "Explode",
+    "LastState": "Explode",
+    "FirstProgress": "0",
+    "LastProgress": "0",
+    "Health": "2"
+  },
+  {
+    "Phase": "2",
+    "Samples": 187,
+    "FirstTime": "11.293746",
+    "LastTime": "12.2921734",
+    "FirstState": "Alert",
+    "LastState": "Alert",
+    "FirstProgress": "0.00276699965",
+    "LastProgress": "0.5019808",
+    "Health": "3"
+  },
+  {
+    "Phase": "3",
+    "Samples": 92,
+    "FirstTime": "12.301095",
+    "LastTime": "12.7994719",
+    "FirstState": "Alert",
+    "LastState": "Alert",
+    "FirstProgress": "0.4975198",
+    "LastProgress": "0.248331428",
+    "Health": "3"
+  },
+  {
+    "Phase": "4",
+    "Samples": 90,
+    "FirstTime": "12.8054342",
+    "LastTime": "13.3032169",
+    "FirstState": "Alert",
+    "LastState": "Alert",
+    "FirstProgress": "0.2513126",
+    "LastProgress": "0.5002039",
+    "Health": "3"
+  },
+  {
+    "Phase": "5",
+    "Samples": 184,
+    "FirstTime": "13.309556",
+    "LastTime": "14.3079777",
+    "FirstState": "Alert",
+    "LastState": "Patrol",
+    "FirstProgress": "0.4970344",
+    "LastProgress": "0",
+    "Health": "3"
+  },
+  {
+    "Phase": "6",
+    "Samples": 37,
+    "FirstTime": "14.3141241",
+    "LastTime": "14.5091076",
+    "FirstState": "Patrol",
+    "LastState": "Patrol",
+    "FirstProgress": "0",
+    "LastProgress": "0",
+    "Health": "3"
+  },
+  {
+    "Phase": "7",
+    "Samples": 47,
+    "FirstTime": "14.5143747",
+    "LastTime": "14.7619772",
+    "FirstState": "Patrol",
+    "LastState": "Patrol",
+    "FirstProgress": "0",
+    "LastProgress": "0",
+    "Health": "3"
+  },
+  {
+    "Phase": "8",
+    "Samples": 48,
+    "FirstTime": "14.7671375",
+    "LastTime": "15.0122643",
+    "FirstState": "Patrol",
+    "LastState": "Patrol",
+    "FirstProgress": "0",
+    "LastProgress": "0",
+    "Health": "3"
+  },
+  {
+    "Phase": "9",
+    "Samples": 78,
+    "FirstTime": "15.0173025",
+    "LastTime": "15.4163952",
+    "FirstState": "Patrol",
+    "LastState": "Patrol",
+    "FirstProgress": "0",
+    "LastProgress": "0",
+    "Health": "3"
+  }
+]

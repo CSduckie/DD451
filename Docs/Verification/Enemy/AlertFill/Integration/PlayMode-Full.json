@@ -1,0 +1,380 @@
+{
+  "result": {
+    "success": true,
+    "message": "Test job status retrieved.",
+    "error": null,
+    "data": {
+      "job_id": "0c9153cf115547d2b3586a3c6ca33a4f",
+      "status": "succeeded",
+      "mode": "PlayMode",
+      "started_unix_ms": 1792388338928,
+      "finished_unix_ms": 1792388387747,
+      "last_update_unix_ms": 1792388387747,
+      "progress": {
+        "completed": 37,
+        "total": 37,
+        "current_test_full_name": null,
+        "current_test_started_unix_ms": 1792388387582,
+        "last_finished_test_full_name": "EnemySceneIntegrationTests.SceneUsesRealModelFourRotatingPropellersCinemachineAndGeneratedVision",
+        "last_finished_unix_ms": 1792388387732,
+        "stuck_suspected": false,
+        "editor_is_focused": false,
+        "run_in_background": null,
+        "focus_nudge_attempts": null,
+        "focus_nudge_limit": null,
+        "focus_nudge_status": null,
+        "blocked_reason": null,
+        "failures_so_far": [],
+        "failures_capped": false
+      },
+      "error": null,
+      "result": {
+        "mode": "PlayMode",
+        "summary": {
+          "total": 37,
+          "passed": 37,
+          "failed": 0,
+          "skipped": 0,
+          "durationSeconds": 45.5845341,
+          "resultState": "Passed"
+        },
+        "results": [
+          {
+            "name": "AlertPhysicalContactCannotDamageUntilTheFillReallyReachesChase",
+            "fullName": "DroneAlertTests.AlertPhysicalContactCannotDamageUntilTheFillReallyReachesChase",
+            "state": "Passed",
+            "durationSeconds": 1.6587933,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "EffectiveCrouchingCoverDrainsButStandingAndOpenGroundCrouchingDoNotHide",
+            "fullName": "DroneAlertTests.EffectiveCrouchingCoverDrainsButStandingAndOpenGroundCrouchingDoNotHide",
+            "state": "Passed",
+            "durationSeconds": 1.1998963,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "InvalidAndDestroyedTargetsDrainInsteadOfBypassingAlertToPatrol",
+            "fullName": "DroneAlertTests.InvalidAndDestroyedTargetsDrainInsteadOfBypassingAlertToPatrol",
+            "state": "Passed",
+            "durationSeconds": 8.1166385,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "RealDiscoveryStopsPatrolAndGraduallyFillsBeforeOneChaseTransition",
+            "fullName": "DroneAlertTests.RealDiscoveryStopsPatrolAndGraduallyFillsBeforeOneChaseTransition",
+            "state": "Passed",
+            "durationSeconds": 1.7997517,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "SameRoundKeepsProgressButNewRoundDisableAndDestroyClearIt",
+            "fullName": "DroneAlertTests.SameRoundKeepsProgressButNewRoundDisableAndDestroyClearIt",
+            "state": "Passed",
+            "durationSeconds": 2.2831798,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "SearchReacquisitionStartsAnotherUnfilledAlertBeforeChasingAgain",
+            "fullName": "DroneAlertTests.SearchReacquisitionStartsAnotherUnfilledAlertBeforeChasingAgain",
+            "state": "Passed",
+            "durationSeconds": 2.1100092,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "TwoDronesKeepTheirProgressAndFillIndependentWhileOneDecays",
+            "fullName": "DroneAlertTests.TwoDronesKeepTheirProgressAndFillIndependentWhileOneDecays",
+            "state": "Passed",
+            "durationSeconds": 1.0691083,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "WallLossDecaysResidualRefillsAndZeroResumesTheExistingRouteIndex",
+            "fullName": "DroneAlertTests.WallLossDecaysResidualRefillsAndZeroResumesTheExistingRouteIndex",
+            "state": "Passed",
+            "durationSeconds": 2.6608636,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ChaseSweepContactFinishesWithoutUsingTheUninitializedStateAgain",
+            "fullName": "DroneBehaviourTests.ChaseSweepContactFinishesWithoutUsingTheUninitializedStateAgain",
+            "state": "Passed",
+            "durationSeconds": 0.415563,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "DamageObserverDisablingControllerStillFinishesExplosionCleanup",
+            "fullName": "DroneBehaviourTests.DamageObserverDisablingControllerStillFinishesExplosionCleanup",
+            "state": "Passed",
+            "durationSeconds": 0.0382013,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "EmptyAndNullRoutesStaySafeAndAcceptPointsWithoutANewRound",
+            "fullName": "DroneBehaviourTests.EmptyAndNullRoutesStaySafeAndAcceptPointsWithoutANewRound",
+            "state": "Passed",
+            "durationSeconds": 0.4178472,
+            "message": null,
+            "stackTrace": null,
+            "output": "无人机没有有效巡逻点，将原地观察。请在DroneController配置路线。\r\n无人机没有有效巡逻点，将原地观察。请在DroneController配置路线。\r\n无人机没有有效巡逻点，将原地观察。请在DroneController配置路线。\r\n"
+          },
+          {
+            "name": "ExplodedObjectCannotReviveOnReenableOrSameRoundButNewRoundRestoresIt",
+            "fullName": "DroneBehaviourTests.ExplodedObjectCannotReviveOnReenableOrSameRoundButNewRoundRestoresIt",
+            "state": "Passed",
+            "durationSeconds": 0.0617043,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "FlightLeansGraduallyThenLevelsAtRestWithoutBobOrPeriodicSway",
+            "fullName": "DroneBehaviourTests.FlightLeansGraduallyThenLevelsAtRestWithoutBobOrPeriodicSway",
+            "state": "Passed",
+            "durationSeconds": 3.6998011,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "InvalidPlayersNeverExplodeADroneEvenWhenBodyShapesOverlap",
+            "fullName": "DroneBehaviourTests.InvalidPlayersNeverExplodeADroneEvenWhenBodyShapesOverlap",
+            "state": "Passed",
+            "durationSeconds": 0.0986346,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "LostSightKeepsOnlyTheLastSeenPositionThenSearchReturnsToPatrol",
+            "fullName": "DroneBehaviourTests.LostSightKeepsOnlyTheLastSeenPositionThenSearchReturnsToPatrol",
+            "state": "Passed",
+            "durationSeconds": 1.100052,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ObstructedLastPositionSearchWaitsAtWallThenReturnsWithoutFollowingHiddenMovement",
+            "fullName": "DroneBehaviourTests.ObstructedLastPositionSearchWaitsAtWallThenReturnsWithoutFollowingHiddenMovement",
+            "state": "Passed",
+            "durationSeconds": 0.6990065,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "OpenBackpackContactAndInvulnerableContactEachExplodeOnlyOnce",
+            "fullName": "DroneBehaviourTests.OpenBackpackContactAndInvulnerableContactEachExplodeOnlyOnce",
+            "state": "Passed",
+            "durationSeconds": 0.1189864,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "PatrolAndSearchContactsStayHarmlessUntilChaseThenExplodeOnlyOnce",
+            "fullName": "DroneBehaviourTests.PatrolAndSearchContactsStayHarmlessUntilChaseThenExplodeOnlyOnce",
+            "state": "Passed",
+            "durationSeconds": 0.1214122,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "PatrolAndSearchSweepsBlockAtPlayerWithoutDamageButChaseSweepExplodes",
+            "fullName": "DroneBehaviourTests.PatrolAndSearchSweepsBlockAtPlayerWithoutDamageButChaseSweepExplodes",
+            "state": "Passed",
+            "durationSeconds": 0.0410011,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "PatrolCyclesAuthoredArrayOrderAndSkipsNullEntries",
+            "fullName": "DroneBehaviourTests.PatrolCyclesAuthoredArrayOrderAndSkipsNullEntries",
+            "state": "Passed",
+            "durationSeconds": 1.1790447,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "PatrolUpdatesMovedAndReorderedPointsWhileOtherDroneStaysIndependent",
+            "fullName": "DroneBehaviourTests.PatrolUpdatesMovedAndReorderedPointsWhileOtherDroneStaysIndependent",
+            "state": "Passed",
+            "durationSeconds": 0.2595687,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ReenablingLivingControllerRestoresVisionAndCanAcquireAgain",
+            "fullName": "DroneBehaviourTests.ReenablingLivingControllerRestoresVisionAndCanAcquireAgain",
+            "state": "Passed",
+            "durationSeconds": 0.5260567,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "RotorAndVisualAnimationNeverRotateOrScaleThePhysicalRootOrVision",
+            "fullName": "DroneBehaviourTests.RotorAndVisualAnimationNeverRotateOrScaleThePhysicalRootOrVision",
+            "state": "Passed",
+            "durationSeconds": 0.1155693,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "SmoothYawSharesHeadingWithVisionSurvivesRebuildAndResetsOnlyForNewRound",
+            "fullName": "DroneBehaviourTests.SmoothYawSharesHeadingWithVisionSurvivesRebuildAndResetsOnlyForNewRound",
+            "state": "Passed",
+            "durationSeconds": 0.1170872,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "SphereSweepStopsAtSolidWallAndNeverMovesIntoAnotherDepthPlane",
+            "fullName": "DroneBehaviourTests.SphereSweepStopsAtSolidWallAndNeverMovesIntoAnotherDepthPlane",
+            "state": "Passed",
+            "durationSeconds": 0.8410835,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "TwoDronesPatrolTheirOwnRoutesAndExplosionDoesNotStopTheOther",
+            "fullName": "DroneBehaviourTests.TwoDronesPatrolTheirOwnRoutesAndExplosionDoesNotStopTheOther",
+            "state": "Passed",
+            "durationSeconds": 0.1813649,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ActualPatrolAlertChaseAndSearchEachKeepBreathingInTheirOwnColor",
+            "fullName": "DroneStatusLightTests.ActualPatrolAlertChaseAndSearchEachKeepBreathingInTheirOwnColor",
+            "state": "Passed",
+            "durationSeconds": 4.3355414,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "DisablingEffectAfterExplosionLeavesNextRoundLightAtAuthoredStrength",
+            "fullName": "DroneStatusLightTests.DisablingEffectAfterExplosionLeavesNextRoundLightAtAuthoredStrength",
+            "state": "Passed",
+            "durationSeconds": 0.5455336,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "DisablingRestoresAuthoredLightAndNeverEnablesAnOriginallyDisabledLight",
+            "fullName": "DroneStatusLightTests.DisablingRestoresAuthoredLightAndNeverEnablesAnOriginallyDisabledLight",
+            "state": "Passed",
+            "durationSeconds": 1.5821631,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ExplosionStaysDarkAcrossReenableAndNextRoundRestoresOriginalStrength",
+            "fullName": "DroneStatusLightTests.ExplosionStaysDarkAcrossReenableAndNextRoundRestoresOriginalStrength",
+            "state": "Passed",
+            "durationSeconds": 0.8112514,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "DetectionUsesMovedModelOriginImmediatelyBeforeLateUpdate",
+            "fullName": "DroneVisionAlignmentTests.DetectionUsesMovedModelOriginImmediatelyBeforeLateUpdate",
+            "state": "Passed",
+            "durationSeconds": 0.008827,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "VisionStaysLevelDuringModelLeanTurnAndRoundReset",
+            "fullName": "DroneVisionAlignmentTests.VisionStaysLevelDuringModelLeanTurnAndRoundReset",
+            "state": "Passed",
+            "durationSeconds": 2.0246769,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "DroneContactClosesRealBackpackCancelsQueuedDragAndInterruptsSearchWithoutItemChanges",
+            "fullName": "EnemySceneIntegrationTests.DroneContactClosesRealBackpackCancelsQueuedDragAndInterruptsSearchWithoutItemChanges",
+            "state": "Passed",
+            "durationSeconds": 1.3740143,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "QueuedF10KeepsEnemyRoundExplosionHealthAndLiveSearchSession",
+            "fullName": "EnemySceneIntegrationTests.QueuedF10KeepsEnemyRoundExplosionHealthAndLiveSearchSession",
+            "state": "Passed",
+            "durationSeconds": 0.1622906,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "QueuedF10PreservesIndependentAlertFillAndDecayOnTwoRealSceneDrones",
+            "fullName": "EnemySceneIntegrationTests.QueuedF10PreservesIndependentAlertFillAndDecayOnTwoRealSceneDrones",
+            "state": "Passed",
+            "durationSeconds": 1.5392359,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "RealSceneDetectionHoversInAlertUntilFilledBeforeEnteringChase",
+            "fullName": "EnemySceneIntegrationTests.RealSceneDetectionHoversInAlertUntilFilledBeforeEnteringChase",
+            "state": "Passed",
+            "durationSeconds": 2.0744564,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "SceneUsesRealModelFourRotatingPropellersCinemachineAndGeneratedVision",
+            "fullName": "EnemySceneIntegrationTests.SceneUsesRealModelFourRotatingPropellersCinemachineAndGeneratedVision",
+            "state": "Passed",
+            "durationSeconds": 0.1503927,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          }
+        ]
+      }
+    },
+    "hint": null
+  }
+}

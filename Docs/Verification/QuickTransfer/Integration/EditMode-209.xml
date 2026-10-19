@@ -1,0 +1,1438 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="209" result="Passed" total="209" passed="209" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-18 23:54:29Z" end-time="2026-10-18 23:54:32Z" duration="3.2764418">
+  <test-suite type="TestSuite" id="1000" name="DD451Demo" fullname="DD451Demo" runstate="Runnable" testcasecount="283" result="Passed" start-time="2026-10-18 23:54:29Z" end-time="2026-10-18 23:54:32Z" duration="3.276442" total="209" passed="209" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1048" name="MyPrecious.Backpack.EditModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.Backpack.EditModeTests.dll" runstate="Runnable" testcasecount="38" result="Passed" start-time="2026-10-18 23:54:29Z" end-time="2026-10-18 23:54:31Z" duration="2.227393" total="38" passed="38" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="48276" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestFixture" id="1002" name="BackpackGridTests" fullname="BackpackGridTests" classname="BackpackGridTests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-10-18 23:54:29Z" end-time="2026-10-18 23:54:30Z" duration="0.380442" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1003" name="DefaultConfigIsFourByFourAndInvalidGridSizesAreRejected" fullname="BackpackGridTests.DefaultConfigIsFourByFourAndInvalidGridSizesAreRejected" methodname="DefaultConfigIsFourByFourAndInvalidGridSizesAreRejected" classname="BackpackGridTests" runstate="Runnable" seed="398825628" result="Passed" start-time="2026-10-18 23:54:29Z" end-time="2026-10-18 23:54:29Z" duration="0.240749" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1006" name="DuplicateIdentityAndForbiddenRotationDoNotChangeLayout" fullname="BackpackGridTests.DuplicateIdentityAndForbiddenRotationDoNotChangeLayout" methodname="DuplicateIdentityAndForbiddenRotationDoNotChangeLayout" classname="BackpackGridTests" runstate="Runnable" seed="851451034" result="Passed" start-time="2026-10-18 23:54:30Z" end-time="2026-10-18 23:54:30Z" duration="0.002927" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1007" name="FragmentedFreeAreaCannotFitTwoByTwoRectangle" fullname="BackpackGridTests.FragmentedFreeAreaCannotFitTwoByTwoRectangle" methodname="FragmentedFreeAreaCannotFitTwoByTwoRectangle" classname="BackpackGridTests" runstate="Runnable" seed="1535932098" result="Passed" start-time="2026-10-18 23:54:30Z" end-time="2026-10-18 23:54:30Z" duration="0.000436" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1010" name="InvalidDefinitionDimensionsAreRejectedBeforeAdding" fullname="BackpackGridTests.InvalidDefinitionDimensionsAreRejectedBeforeAdding" methodname="InvalidDefinitionDimensionsAreRejectedBeforeAdding" classname="BackpackGridTests" runstate="Runnable" seed="799904626" result="Passed" start-time="2026-10-18 23:54:30Z" end-time="2026-10-18 23:54:30Z" duration="0.000229" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1005" name="MoveIgnoresOnlyItsOwnCellsAndFailedMoveKeepsBothPlacements" fullname="BackpackGridTests.MoveIgnoresOnlyItsOwnCellsAndFailedMoveKeepsBothPlacements" methodname="MoveIgnoresOnlyItsOwnCellsAndFailedMoveKeepsBothPlacements" classname="BackpackGridTests" runstate="Runnable" seed="1547256036" result="Passed" start-time="2026-10-18 23:54:30Z" end-time="2026-10-18 23:54:30Z" duration="0.000714" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1004" name="NonSquareGridChecksWholeRotatedRectangleAndExtremeCoordinates" fullname="BackpackGridTests.NonSquareGridChecksWholeRotatedRectangleAndExtremeCoordinates" methodname="NonSquareGridChecksWholeRotatedRectangleAndExtremeCoordinates" classname="BackpackGridTests" runstate="Runnable" seed="1183064943" result="Passed" start-time="2026-10-18 23:54:30Z" end-time="2026-10-18 23:54:30Z" duration="0.000368" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1008" name="PreviewQueriesCanBeAbandonedWithoutChangingLayoutOrItemState" fullname="BackpackGridTests.PreviewQueriesCanBeAbandonedWithoutChangingLayoutOrItemState" methodname="PreviewQueriesCanBeAbandonedWithoutChangingLayoutOrItemState" classname="BackpackGridTests" runstate="Runnable" seed="490537809" result="Passed" start-time="2026-10-18 23:54:30Z" end-time="2026-10-18 23:54:30Z" duration="0.000280" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1009" name="ReadOnlySnapshotsCannotMutateLayoutAndRemovalDoesNotRewriteOldSnapshot" fullname="BackpackGridTests.ReadOnlySnapshotsCannotMutateLayoutAndRemovalDoesNotRewriteOldSnapshot" methodname="ReadOnlySnapshotsCannotMutateLayoutAndRemovalDoesNotRewriteOldSnapshot" classname="BackpackGridTests" runstate="Runnable" seed="1967603873" result="Passed" start-time="2026-10-18 23:54:30Z" end-time="2026-10-18 23:54:30Z" duration="0.000727" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1011" name="TwentyCellSampleCannotAllFitSixteenCellBackpack" fullname="BackpackGridTests.TwentyCellSampleCannotAllFitSixteenCellBackpack" methodname="TwentyCellSampleCannotAllFitSixteenCellBackpack" classname="BackpackGridTests" runstate="Runnable" seed="2085114812" result="Passed" start-time="2026-10-18 23:54:30Z" end-time="2026-10-18 23:54:30Z" duration="0.000343" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1012" name="BackpackManagerTests" fullname="BackpackManagerTests" classname="BackpackManagerTests" runstate="Runnable" testcasecount="29" result="Passed" start-time="2026-10-18 23:54:30Z" end-time="2026-10-18 23:54:31Z" duration="1.839600" total="29" passed="29" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1019" name="DeadPlayerCannotUseAndBackpackDoesNotSettleDeathLoss" fullname="BackpackManagerTests.DeadPlayerCannotUseAndBackpackDoesNotSettleDeathLoss" methodname="DeadPlayerCannotUseAndBackpackDoesNotSettleDeathLoss" classname="BackpackManagerTests" runstate="Runnable" seed="1003619037" result="Passed" start-time="2026-10-18 23:54:30Z" end-time="2026-10-18 23:54:30Z" duration="0.233274" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1014" name="ExternalPreviewAndSilentLayoutEditsNeverChangeSourceOwnership" fullname="BackpackManagerTests.ExternalPreviewAndSilentLayoutEditsNeverChangeSourceOwnership" methodname="ExternalPreviewAndSilentLayoutEditsNeverChangeSourceOwnership" classname="BackpackManagerTests" runstate="Runnable" seed="1624610277" result="Passed" start-time="2026-10-18 23:54:30Z" end-time="2026-10-18 23:54:30Z" duration="0.000945" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1027" name="ExternalSpaceQueryCanRotateAnOversizedPreferredDirectionInANonSquareBackpack" fullname="BackpackManagerTests.ExternalSpaceQueryCanRotateAnOversizedPreferredDirectionInANonSquareBackpack" methodname="ExternalSpaceQueryCanRotateAnOversizedPreferredDirectionInANonSquareBackpack" classname="BackpackManagerTests" runstate="Runnable" seed="2090850220" result="Passed" start-time="2026-10-18 23:54:30Z" end-time="2026-10-18 23:54:30Z" duration="0.002952" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1028" name="ExternalSpaceQueryDoesNotRotateAnItemWithoutPermission" fullname="BackpackManagerTests.ExternalSpaceQueryDoesNotRotateAnItemWithoutPermission" methodname="ExternalSpaceQueryDoesNotRotateAnItemWithoutPermission" classname="BackpackManagerTests" runstate="Runnable" seed="1591887523" result="Passed" start-time="2026-10-18 23:54:30Z" end-time="2026-10-18 23:54:30Z" duration="0.000624" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1023" name="ExternalSpaceQueryExhaustsPreferredDirectionBeforeEarlierRotatedSpace" fullname="BackpackManagerTests.ExternalSpaceQueryExhaustsPreferredDirectionBeforeEarlierRotatedSpace" classname="BackpackManagerTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 23:54:30Z" end-time="2026-10-18 23:54:31Z" duration="1.386791" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1021" name="ExternalSpaceQueryExhaustsPreferredDirectionBeforeEarlierRotatedSpace(False,2)" fullname="BackpackManagerTests.ExternalSpaceQueryExhaustsPreferredDirectionBeforeEarlierRotatedSpace(False,2)" methodname="ExternalSpaceQueryExhaustsPreferredDirectionBeforeEarlierRotatedSpace" classname="BackpackManagerTests" runstate="Runnable" seed="1465531774" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.001708" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1022" name="ExternalSpaceQueryExhaustsPreferredDirectionBeforeEarlierRotatedSpace(True,1)" fullname="BackpackManagerTests.ExternalSpaceQueryExhaustsPreferredDirectionBeforeEarlierRotatedSpace(True,1)" methodname="ExternalSpaceQueryExhaustsPreferredDirectionBeforeEarlierRotatedSpace" classname="BackpackManagerTests" runstate="Runnable" seed="2081788196" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.000709" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1020" name="ExternalSpaceQueryFindsTheFirstCellByRowWithoutMovingExistingItems" fullname="BackpackManagerTests.ExternalSpaceQueryFindsTheFirstCellByRowWithoutMovingExistingItems" methodname="ExternalSpaceQueryFindsTheFirstCellByRowWithoutMovingExistingItems" classname="BackpackManagerTests" runstate="Runnable" seed="1169571099" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.000768" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1046" name="ExternalSpaceQueryPreservesUsedUniqueAndRetainedInstances" fullname="BackpackManagerTests.ExternalSpaceQueryPreservesUsedUniqueAndRetainedInstances" methodname="ExternalSpaceQueryPreservesUsedUniqueAndRetainedInstances" classname="BackpackManagerTests" runstate="Runnable" seed="408266078" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.002779" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1047" name="ExternalSpaceQueryRejectsBusyNotificationWithoutPublishingAnotherChange" fullname="BackpackManagerTests.ExternalSpaceQueryRejectsBusyNotificationWithoutPublishingAnotherChange" methodname="ExternalSpaceQueryRejectsBusyNotificationWithoutPublishingAnotherChange" classname="BackpackManagerTests" runstate="Runnable" seed="1822450642" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.001190" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1032" name="ExternalSpaceQueryRejectsDimensionsTooLargeInEveryDirection" fullname="BackpackManagerTests.ExternalSpaceQueryRejectsDimensionsTooLargeInEveryDirection" classname="BackpackManagerTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.152443" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1030" name="ExternalSpaceQueryRejectsDimensionsTooLargeInEveryDirection(5,2)" fullname="BackpackManagerTests.ExternalSpaceQueryRejectsDimensionsTooLargeInEveryDirection(5,2)" methodname="ExternalSpaceQueryRejectsDimensionsTooLargeInEveryDirection" classname="BackpackManagerTests" runstate="Runnable" seed="1655987403" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.001124" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1031" name="ExternalSpaceQueryRejectsDimensionsTooLargeInEveryDirection(int.MaxValue,1)" fullname="BackpackManagerTests.ExternalSpaceQueryRejectsDimensionsTooLargeInEveryDirection(int.MaxValue,1)" methodname="ExternalSpaceQueryRejectsDimensionsTooLargeInEveryDirection" classname="BackpackManagerTests" runstate="Runnable" seed="557705959" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.000567" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1029" name="ExternalSpaceQueryRejectsFullBackpackWithoutRemovingItsBlocker" fullname="BackpackManagerTests.ExternalSpaceQueryRejectsFullBackpackWithoutRemovingItsBlocker" methodname="ExternalSpaceQueryRejectsFullBackpackWithoutRemovingItsBlocker" classname="BackpackManagerTests" runstate="Runnable" seed="1033060031" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.000568" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1041" name="ExternalSpaceQueryRejectsInactiveOwnership" fullname="BackpackManagerTests.ExternalSpaceQueryRejectsInactiveOwnership" classname="BackpackManagerTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.017660" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1038" name="ExternalSpaceQueryRejectsInactiveOwnership(Lost)" fullname="BackpackManagerTests.ExternalSpaceQueryRejectsInactiveOwnership(Lost)" methodname="ExternalSpaceQueryRejectsInactiveOwnership" classname="BackpackManagerTests" runstate="Runnable" seed="1535774106" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.001859" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1039" name="ExternalSpaceQueryRejectsInactiveOwnership(PendingRecovery)" fullname="BackpackManagerTests.ExternalSpaceQueryRejectsInactiveOwnership(PendingRecovery)" methodname="ExternalSpaceQueryRejectsInactiveOwnership" classname="BackpackManagerTests" runstate="Runnable" seed="1165938076" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.000628" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1040" name="ExternalSpaceQueryRejectsInactiveOwnership(Consumed)" fullname="BackpackManagerTests.ExternalSpaceQueryRejectsInactiveOwnership(Consumed)" methodname="ExternalSpaceQueryRejectsInactiveOwnership" classname="BackpackManagerTests" runstate="Runnable" seed="59932484" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.000468" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-suite type="ParameterizedMethod" id="1045" name="ExternalSpaceQueryRejectsInvalidDefinitionDimensions" fullname="BackpackManagerTests.ExternalSpaceQueryRejectsInvalidDefinitionDimensions" classname="BackpackManagerTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.010730" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1043" name="ExternalSpaceQueryRejectsInvalidDefinitionDimensions(0)" fullname="BackpackManagerTests.ExternalSpaceQueryRejectsInvalidDefinitionDimensions(0)" methodname="ExternalSpaceQueryRejectsInvalidDefinitionDimensions" classname="BackpackManagerTests" runstate="Runnable" seed="1325269227" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.000994" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1044" name="ExternalSpaceQueryRejectsInvalidDefinitionDimensions(-1)" fullname="BackpackManagerTests.ExternalSpaceQueryRejectsInvalidDefinitionDimensions(-1)" methodname="ExternalSpaceQueryRejectsInvalidDefinitionDimensions" classname="BackpackManagerTests" runstate="Runnable" seed="1192600245" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.000429" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-suite type="ParameterizedMethod" id="1036" name="ExternalSpaceQueryRejectsMissingIdentity" fullname="BackpackManagerTests.ExternalSpaceQueryRejectsMissingIdentity" classname="BackpackManagerTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.008772" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1033" name="ExternalSpaceQueryRejectsMissingIdentity(null)" fullname="BackpackManagerTests.ExternalSpaceQueryRejectsMissingIdentity(null)" methodname="ExternalSpaceQueryRejectsMissingIdentity" classname="BackpackManagerTests" runstate="Runnable" seed="1602760260" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.001265" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1034" name="ExternalSpaceQueryRejectsMissingIdentity(&quot;&quot;)" fullname="BackpackManagerTests.ExternalSpaceQueryRejectsMissingIdentity(&quot;&quot;)" methodname="ExternalSpaceQueryRejectsMissingIdentity" classname="BackpackManagerTests" runstate="Runnable" seed="17918961" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.000601" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1035" name="ExternalSpaceQueryRejectsMissingIdentity(&quot;unknown-instance&quot;)" fullname="BackpackManagerTests.ExternalSpaceQueryRejectsMissingIdentity(&quot;unknown-instance&quot;)" methodname="ExternalSpaceQueryRejectsMissingIdentity" classname="BackpackManagerTests" runstate="Runnable" seed="1367512173" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.000469" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1037" name="ExternalSpaceQueryRejectsUninitializedManager" fullname="BackpackManagerTests.ExternalSpaceQueryRejectsUninitializedManager" methodname="ExternalSpaceQueryRejectsUninitializedManager" classname="BackpackManagerTests" runstate="Runnable" seed="2038939089" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.000684" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1042" name="ExternalSpaceQueryRejectsWrongBackpackAndDuplicatePlacement" fullname="BackpackManagerTests.ExternalSpaceQueryRejectsWrongBackpackAndDuplicatePlacement" methodname="ExternalSpaceQueryRejectsWrongBackpackAndDuplicatePlacement" classname="BackpackManagerTests" runstate="Runnable" seed="1134686020" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.000684" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1026" name="ExternalSpaceQueryUsesOtherDirectionOnlyWhenPreferredCannotFit" fullname="BackpackManagerTests.ExternalSpaceQueryUsesOtherDirectionOnlyWhenPreferredCannotFit" classname="BackpackManagerTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.008462" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1024" name="ExternalSpaceQueryUsesOtherDirectionOnlyWhenPreferredCannotFit(False)" fullname="BackpackManagerTests.ExternalSpaceQueryUsesOtherDirectionOnlyWhenPreferredCannotFit(False)" methodname="ExternalSpaceQueryUsesOtherDirectionOnlyWhenPreferredCannotFit" classname="BackpackManagerTests" runstate="Runnable" seed="2121957899" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.001136" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1025" name="ExternalSpaceQueryUsesOtherDirectionOnlyWhenPreferredCannotFit(True)" fullname="BackpackManagerTests.ExternalSpaceQueryUsesOtherDirectionOnlyWhenPreferredCannotFit(True)" methodname="ExternalSpaceQueryUsesOtherDirectionOnlyWhenPreferredCannotFit" classname="BackpackManagerTests" runstate="Runnable" seed="792214945" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.000488" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1017" name="FoodRemovesOnlyUsedInstanceBeforeNotificationAndBlocksReentry" fullname="BackpackManagerTests.FoodRemovesOnlyUsedInstanceBeforeNotificationAndBlocksReentry" methodname="FoodRemovesOnlyUsedInstanceBeforeNotificationAndBlocksReentry" classname="BackpackManagerTests" runstate="Runnable" seed="752652466" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.001265" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1016" name="FullHealthRefusesFoodAndMedkitWithoutFreeingCellsOrUsingAllowance" fullname="BackpackManagerTests.FullHealthRefusesFoodAndMedkitWithoutFreeingCellsOrUsingAllowance" methodname="FullHealthRefusesFoodAndMedkitWithoutFreeingCellsOrUsingAllowance" classname="BackpackManagerTests" runstate="Runnable" seed="1661683747" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.000729" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1018" name="MedkitRemainsInSameCellsAndSecondUseInRoundIsRejected" fullname="BackpackManagerTests.MedkitRemainsInSameCellsAndSecondUseInRoundIsRejected" methodname="MedkitRemainsInSameCellsAndSecondUseInRoundIsRejected" classname="BackpackManagerTests" runstate="Runnable" seed="513563336" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.000753" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1013" name="MoveAndUseRequireRealOwnershipContainerAndLegalMembership" fullname="BackpackManagerTests.MoveAndUseRequireRealOwnershipContainerAndLegalMembership" methodname="MoveAndUseRequireRealOwnershipContainerAndLegalMembership" classname="BackpackManagerTests" runstate="Runnable" seed="1662659246" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.000932" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1015" name="ReinitializeAndRepeatedRefreshPreserveLayoutIdentityAndRoundState" fullname="BackpackManagerTests.ReinitializeAndRepeatedRefreshPreserveLayoutIdentityAndRoundState" methodname="ReinitializeAndRepeatedRefreshPreserveLayoutIdentityAndRoundState" classname="BackpackManagerTests" runstate="Runnable" seed="2317405" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.000639" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+    </test-suite>
+    <test-suite type="Assembly" id="1277" name="MyPrecious.Loot.EditModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.Loot.EditModeTests.dll" runstate="Runnable" testcasecount="122" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:32Z" duration="0.546140" total="122" passed="122" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="48276" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestFixture" id="1129" name="ItemTransferTests" fullname="ItemTransferTests" classname="ItemTransferTests" runstate="Runnable" testcasecount="28" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:32Z" duration="0.201686" total="28" passed="28" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1130" name="BidirectionalTransferPreservesIdentityRetainedUsesAndEv" fullname="ItemTransferTests.BidirectionalTransferPreservesIdentityRetainedUsesAndEv" methodname="BidirectionalTransferPreservesIdentityRetainedUsesAndEv" classname="ItemTransferTests" runstate="Runnable" seed="638155884" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.132052" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1149" name="BoundsOverlapAndFragmentedFreeAreaKeepSource" fullname="ItemTransferTests.BoundsOverlapAndFragmentedFreeAreaKeepSource" methodname="BoundsOverlapAndFragmentedFreeAreaKeepSource" classname="ItemTransferTests" runstate="Runnable" seed="1536029270" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.000972" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1150" name="DeadOrClosedPlayerCannotUseAnOldRequest" fullname="ItemTransferTests.DeadOrClosedPlayerCannotUseAnOldRequest" methodname="DeadOrClosedPlayerCannotUseAnOldRequest" classname="ItemTransferTests" runstate="Runnable" seed="1942789647" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:31Z" duration="0.000512" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1153" name="DiscardWithoutLootRuntimePublishesCompleteStateAndRejectsReentry" fullname="ItemTransferTests.DiscardWithoutLootRuntimePublishesCompleteStateAndRejectsReentry" classname="ItemTransferTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 23:54:31Z" end-time="2026-10-18 23:54:32Z" duration="0.013961" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1151" name="DiscardWithoutLootRuntimePublishesCompleteStateAndRejectsReentry(False)" fullname="ItemTransferTests.DiscardWithoutLootRuntimePublishesCompleteStateAndRejectsReentry(False)" methodname="DiscardWithoutLootRuntimePublishesCompleteStateAndRejectsReentry" classname="ItemTransferTests" runstate="Runnable" seed="2049050234" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.003731" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1152" name="DiscardWithoutLootRuntimePublishesCompleteStateAndRejectsReentry(True)" fullname="ItemTransferTests.DiscardWithoutLootRuntimePublishesCompleteStateAndRejectsReentry(True)" methodname="DiscardWithoutLootRuntimePublishesCompleteStateAndRejectsReentry" classname="ItemTransferTests" runstate="Runnable" seed="1051873122" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000658" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1142" name="ExistingWarehouseDragClaimCanComplete" fullname="ItemTransferTests.ExistingWarehouseDragClaimCanComplete" methodname="ExistingWarehouseDragClaimCanComplete" classname="ItemTransferTests" runstate="Runnable" seed="713244044" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000550" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1140" name="FailedDisplayListenerDoesNotReportCompletedTransferAsFailure" fullname="ItemTransferTests.FailedDisplayListenerDoesNotReportCompletedTransferAsFailure" methodname="FailedDisplayListenerDoesNotReportCompletedTransferAsFailure" classname="ItemTransferTests" runstate="Runnable" seed="1626628099" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.006513" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[InvalidOperationException: 06 expected display failure
+ItemTransferTests+<>c.<FailedDisplayListenerDoesNotReportCompletedTransferAsFailure>b__14_0 (System.String id) (at Assets/Tests/Loot/EditMode/ItemTransferTests.cs:170)
+ItemTransferCoordinator+<>c__DisplayClass23_1.<NotifyCompleted>b__2 () (at Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs:329)
+ItemTransferCoordinator.SafeNotify (System.Action callback) (at Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs:335)
+UnityEngine.Debug:LogException(Exception, Object)
+ItemTransferCoordinator:SafeNotify(Action) (at Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs:336)
+ItemTransferCoordinator:NotifyCompleted(String, Boolean, Boolean, String) (at Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs:329)
+ItemTransferCoordinator:TransferContainers(Boolean, String, Int32, Int32, Boolean, Object, Func`1) (at Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs:134)
+ItemTransferCoordinator:TryBackpackToWarehouse(String, Int32, Int32, Boolean, Object, Func`1) (at Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs:39)
+ItemTransferTests:Move(Boolean, String, Int32, Int32, Boolean) (at Assets/Tests/Loot/EditMode/ItemTransferTests.cs:410)
+ItemTransferTests:FailedDisplayListenerDoesNotReportCompletedTransferAsFailure() (at Assets/Tests/Loot/EditMode/ItemTransferTests.cs:172)
+System.Reflection.MethodBase:Invoke(Object, Object[])
+NUnit.Framework.Internal.Reflect:InvokeMethod(MethodInfo, Object, Object[])
+NUnit.Framework.Internal.MethodWrapper:Invoke(Object, Object[])
+NUnit.Framework.Internal.Commands.TestMethodCommand:RunNonAsyncTestMethod(ITestExecutionContext)
+NUnit.Framework.Internal.Commands.TestMethodCommand:RunTestMethod(ITestExecutionContext)
+NUnit.Framework.Internal.Commands.TestMethodCommand:Execute(ITestExecutionContext)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions()
+
+]]></output>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1137" name="FailureAtEachCommitStepRestoresRealLayouts" fullname="ItemTransferTests.FailureAtEachCommitStepRestoresRealLayouts" classname="ItemTransferTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.011225" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1131" name="FailureAtEachCommitStepRestoresRealLayouts(True,1,Busy)" fullname="ItemTransferTests.FailureAtEachCommitStepRestoresRealLayouts(True,1,Busy)" methodname="FailureAtEachCommitStepRestoresRealLayouts" classname="ItemTransferTests" runstate="Runnable" seed="1257037974" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001974" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1132" name="FailureAtEachCommitStepRestoresRealLayouts(True,2,SourceRemovalFailed)" fullname="ItemTransferTests.FailureAtEachCommitStepRestoresRealLayouts(True,2,SourceRemovalFailed)" methodname="FailureAtEachCommitStepRestoresRealLayouts" classname="ItemTransferTests" runstate="Runnable" seed="85663771" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000600" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1133" name="FailureAtEachCommitStepRestoresRealLayouts(True,3,OwnerRejected)" fullname="ItemTransferTests.FailureAtEachCommitStepRestoresRealLayouts(True,3,OwnerRejected)" methodname="FailureAtEachCommitStepRestoresRealLayouts" classname="ItemTransferTests" runstate="Runnable" seed="1553995305" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000366" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1134" name="FailureAtEachCommitStepRestoresRealLayouts(False,1,Busy)" fullname="ItemTransferTests.FailureAtEachCommitStepRestoresRealLayouts(False,1,Busy)" methodname="FailureAtEachCommitStepRestoresRealLayouts" classname="ItemTransferTests" runstate="Runnable" seed="3587278" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000334" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1135" name="FailureAtEachCommitStepRestoresRealLayouts(False,2,SourceRemovalFailed)" fullname="ItemTransferTests.FailureAtEachCommitStepRestoresRealLayouts(False,2,SourceRemovalFailed)" methodname="FailureAtEachCommitStepRestoresRealLayouts" classname="ItemTransferTests" runstate="Runnable" seed="819383825" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000302" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1136" name="FailureAtEachCommitStepRestoresRealLayouts(False,3,OwnerRejected)" fullname="ItemTransferTests.FailureAtEachCommitStepRestoresRealLayouts(False,3,OwnerRejected)" methodname="FailureAtEachCommitStepRestoresRealLayouts" classname="ItemTransferTests" runstate="Runnable" seed="1489389167" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000402" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-suite type="ParameterizedMethod" id="1148" name="InteractionClaimNotificationCannotCommitCancelledRequest" fullname="ItemTransferTests.InteractionClaimNotificationCannotCommitCancelledRequest" classname="ItemTransferTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.008070" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1146" name="InteractionClaimNotificationCannotCommitCancelledRequest(False)" fullname="ItemTransferTests.InteractionClaimNotificationCannotCommitCancelledRequest(False)" methodname="InteractionClaimNotificationCannotCommitCancelledRequest" classname="ItemTransferTests" runstate="Runnable" seed="886716414" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001159" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1147" name="InteractionClaimNotificationCannotCommitCancelledRequest(True)" fullname="ItemTransferTests.InteractionClaimNotificationCannotCommitCancelledRequest(True)" methodname="InteractionClaimNotificationCannotCommitCancelledRequest" classname="ItemTransferTests" runstate="Runnable" seed="1827379446" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000433" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-suite type="ParameterizedMethod" id="1161" name="InvalidDiscardRequestCannotRemovePlacement" fullname="ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement" classname="ItemTransferTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.010211" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1154" name="InvalidDiscardRequestCannotRemovePlacement(&quot;missing-request&quot;,StaleRequest)" fullname="ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(&quot;missing-request&quot;,StaleRequest)" methodname="InvalidDiscardRequestCannotRemovePlacement" classname="ItemTransferTests" runstate="Runnable" seed="835051667" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001368" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1155" name="InvalidDiscardRequestCannotRemovePlacement(&quot;stale-request&quot;,StaleRequest)" fullname="ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(&quot;stale-request&quot;,StaleRequest)" methodname="InvalidDiscardRequestCannotRemovePlacement" classname="ItemTransferTests" runstate="Runnable" seed="1383539553" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000481" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1156" name="InvalidDiscardRequestCannotRemovePlacement(&quot;closed-player&quot;,NotAllowed)" fullname="ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(&quot;closed-player&quot;,NotAllowed)" methodname="InvalidDiscardRequestCannotRemovePlacement" classname="ItemTransferTests" runstate="Runnable" seed="308836560" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000321" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1157" name="InvalidDiscardRequestCannotRemovePlacement(&quot;dead-player&quot;,NotAllowed)" fullname="ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(&quot;dead-player&quot;,NotAllowed)" methodname="InvalidDiscardRequestCannotRemovePlacement" classname="ItemTransferTests" runstate="Runnable" seed="971033158" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000347" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1158" name="InvalidDiscardRequestCannotRemovePlacement(&quot;shelter&quot;,NotAllowed)" fullname="ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(&quot;shelter&quot;,NotAllowed)" methodname="InvalidDiscardRequestCannotRemovePlacement" classname="ItemTransferTests" runstate="Runnable" seed="812477354" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000311" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1159" name="InvalidDiscardRequestCannotRemovePlacement(&quot;inactive-exploration&quot;,NotAllowed)" fullname="ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(&quot;inactive-exploration&quot;,NotAllowed)" methodname="InvalidDiscardRequestCannotRemovePlacement" classname="ItemTransferTests" runstate="Runnable" seed="488644153" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000494" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1160" name="InvalidDiscardRequestCannotRemovePlacement(&quot;disabled-runtime&quot;,NotReady)" fullname="ItemTransferTests.InvalidDiscardRequestCannotRemovePlacement(&quot;disabled-runtime&quot;,NotReady)" methodname="InvalidDiscardRequestCannotRemovePlacement" classname="ItemTransferTests" runstate="Runnable" seed="1008836774" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000370" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1139" name="NotificationsOnlyReadCompleteStateAndReentryIsBusy" fullname="ItemTransferTests.NotificationsOnlyReadCompleteStateAndReentryIsBusy" methodname="NotificationsOnlyReadCompleteStateAndReentryIsBusy" classname="ItemTransferTests" runstate="Runnable" seed="248292676" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000675" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1162" name="RealItemManagerBusyRejectsDiscardAndRestoresPlacement" fullname="ItemTransferTests.RealItemManagerBusyRejectsDiscardAndRestoresPlacement" methodname="RealItemManagerBusyRejectsDiscardAndRestoresPlacement" classname="ItemTransferTests" runstate="Runnable" seed="987792557" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001105" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1138" name="RealItemManagerBusyRejectsOwnerAfterBothLayoutChangesAndRestoresThem" fullname="ItemTransferTests.RealItemManagerBusyRejectsOwnerAfterBothLayoutChangesAndRestoresThem" methodname="RealItemManagerBusyRejectsOwnerAfterBothLayoutChangesAndRestoresThem" classname="ItemTransferTests" runstate="Runnable" seed="1471655518" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000683" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1145" name="ShelterAllowsUnpreparedOrAbsentPlayerWithoutGrantingExploration" fullname="ItemTransferTests.ShelterAllowsUnpreparedOrAbsentPlayerWithoutGrantingExploration" classname="ItemTransferTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.008165" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1143" name="ShelterAllowsUnpreparedOrAbsentPlayerWithoutGrantingExploration(False)" fullname="ItemTransferTests.ShelterAllowsUnpreparedOrAbsentPlayerWithoutGrantingExploration(False)" methodname="ShelterAllowsUnpreparedOrAbsentPlayerWithoutGrantingExploration" classname="ItemTransferTests" runstate="Runnable" seed="329963701" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001181" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1144" name="ShelterAllowsUnpreparedOrAbsentPlayerWithoutGrantingExploration(True)" fullname="ItemTransferTests.ShelterAllowsUnpreparedOrAbsentPlayerWithoutGrantingExploration(True)" methodname="ShelterAllowsUnpreparedOrAbsentPlayerWithoutGrantingExploration" classname="ItemTransferTests" runstate="Runnable" seed="2036868882" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000423" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1141" name="StalePermissionAndOtherConfirmationCannotCommit" fullname="ItemTransferTests.StalePermissionAndOtherConfirmationCannotCommit" methodname="StalePermissionAndOtherConfirmationCannotCommit" classname="ItemTransferTests" runstate="Runnable" seed="772762992" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000641" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1163" name="LootGenerationTests" fullname="LootGenerationTests" classname="LootGenerationTests" runstate="Runnable" testcasecount="17" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.045547" total="17" passed="17" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="ParameterizedMethod" id="1170" name="BoundariesAreExplicit" fullname="LootGenerationTests.BoundariesAreExplicit" classname="LootGenerationTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.007051" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1164" name="BoundariesAreExplicit(0.0f,0.0f,False)" fullname="LootGenerationTests.BoundariesAreExplicit(0.0f,0.0f,False)" methodname="BoundariesAreExplicit" classname="LootGenerationTests" runstate="Runnable" seed="208586406" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000876" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1165" name="BoundariesAreExplicit(0.0f,1.0f,False)" fullname="LootGenerationTests.BoundariesAreExplicit(0.0f,1.0f,False)" methodname="BoundariesAreExplicit" classname="LootGenerationTests" runstate="Runnable" seed="252863160" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000114" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1166" name="BoundariesAreExplicit(1.0f,0.0f,True)" fullname="LootGenerationTests.BoundariesAreExplicit(1.0f,0.0f,True)" methodname="BoundariesAreExplicit" classname="LootGenerationTests" runstate="Runnable" seed="1618422186" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000066" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1167" name="BoundariesAreExplicit(1.0f,1.0f,True)" fullname="LootGenerationTests.BoundariesAreExplicit(1.0f,1.0f,True)" methodname="BoundariesAreExplicit" classname="LootGenerationTests" runstate="Runnable" seed="1806459294" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000060" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1168" name="BoundariesAreExplicit(0.5f,0.499f,True)" fullname="LootGenerationTests.BoundariesAreExplicit(0.5f,0.499f,True)" methodname="BoundariesAreExplicit" classname="LootGenerationTests" runstate="Runnable" seed="319634304" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000060" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1169" name="BoundariesAreExplicit(0.5f,0.5f,False)" fullname="LootGenerationTests.BoundariesAreExplicit(0.5f,0.5f,False)" methodname="BoundariesAreExplicit" classname="LootGenerationTests" runstate="Runnable" seed="521897849" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000058" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1183" name="ConflictingUniqueOriginIsAnErrorEvenWhenChanceIsZero" fullname="LootGenerationTests.ConflictingUniqueOriginIsAnErrorEvenWhenChanceIsZero" methodname="ConflictingUniqueOriginIsAnErrorEvenWhenChanceIsZero" classname="LootGenerationTests" runstate="Runnable" seed="1108070056" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.003594" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1175" name="DuplicateEntryIdAndNonFiniteProbabilityAreRejected" fullname="LootGenerationTests.DuplicateEntryIdAndNonFiniteProbabilityAreRejected" methodname="DuplicateEntryIdAndNonFiniteProbabilityAreRejected" classname="LootGenerationTests" runstate="Runnable" seed="120816631" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000398" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1179" name="EligibleRecoveryBypassesZeroProbabilityAndKeepsTheRegisteredIdentity" fullname="LootGenerationTests.EligibleRecoveryBypassesZeroProbabilityAndKeepsTheRegisteredIdentity" methodname="EligibleRecoveryBypassesZeroProbabilityAndKeepsTheRegisteredIdentity" classname="LootGenerationTests" runstate="Runnable" seed="251698788" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000600" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1171" name="EveryIntermediateCandidateGetsAnIndependentSampleInConfiguredOrder" fullname="LootGenerationTests.EveryIntermediateCandidateGetsAnIndependentSampleInConfiguredOrder" methodname="EveryIntermediateCandidateGetsAnIndependentSampleInConfiguredOrder" classname="LootGenerationTests" runstate="Runnable" seed="1201188661" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001503" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1182" name="ExistingUniqueAtItsSourceRemainsEligibleForRebinding" fullname="LootGenerationTests.ExistingUniqueAtItsSourceRemainsEligibleForRebinding" classname="LootGenerationTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.008432" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1180" name="ExistingUniqueAtItsSourceRemainsEligibleForRebinding(World)" fullname="LootGenerationTests.ExistingUniqueAtItsSourceRemainsEligibleForRebinding(World)" methodname="ExistingUniqueAtItsSourceRemainsEligibleForRebinding" classname="LootGenerationTests" runstate="Runnable" seed="762676047" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000929" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1181" name="ExistingUniqueAtItsSourceRemainsEligibleForRebinding(Container)" fullname="LootGenerationTests.ExistingUniqueAtItsSourceRemainsEligibleForRebinding(Container)" methodname="ExistingUniqueAtItsSourceRemainsEligibleForRebinding" classname="LootGenerationTests" runstate="Runnable" seed="1185103584" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000177" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1174" name="InvalidLaterCandidateRejectsWholeTableBeforeTakingSamples" fullname="LootGenerationTests.InvalidLaterCandidateRejectsWholeTableBeforeTakingSamples" methodname="InvalidLaterCandidateRejectsWholeTableBeforeTakingSamples" classname="LootGenerationTests" runstate="Runnable" seed="427514074" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000389" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1173" name="OverrideReplacesDefaultInsteadOfMultiplyingIt" fullname="LootGenerationTests.OverrideReplacesDefaultInsteadOfMultiplyingIt" methodname="OverrideReplacesDefaultInsteadOfMultiplyingIt" classname="LootGenerationTests" runstate="Runnable" seed="879908222" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000419" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1178" name="UniqueAlreadyCarriedOrStoredIsNotSelectedEvenAtOneHundredPercent" fullname="LootGenerationTests.UniqueAlreadyCarriedOrStoredIsNotSelectedEvenAtOneHundredPercent" classname="LootGenerationTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.012747" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1176" name="UniqueAlreadyCarriedOrStoredIsNotSelectedEvenAtOneHundredPercent(Backpack)" fullname="LootGenerationTests.UniqueAlreadyCarriedOrStoredIsNotSelectedEvenAtOneHundredPercent(Backpack)" methodname="UniqueAlreadyCarriedOrStoredIsNotSelectedEvenAtOneHundredPercent" classname="LootGenerationTests" runstate="Runnable" seed="960336628" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000839" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1177" name="UniqueAlreadyCarriedOrStoredIsNotSelectedEvenAtOneHundredPercent(Storage)" fullname="LootGenerationTests.UniqueAlreadyCarriedOrStoredIsNotSelectedEvenAtOneHundredPercent(Storage)" methodname="UniqueAlreadyCarriedOrStoredIsNotSelectedEvenAtOneHundredPercent" classname="LootGenerationTests" runstate="Runnable" seed="1094103496" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000149" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1172" name="ZeroOneAndEmptyTablesDoNotNeedRandomSamples" fullname="LootGenerationTests.ZeroOneAndEmptyTablesDoNotNeedRandomSamples" methodname="ZeroOneAndEmptyTablesDoNotNeedRandomSamples" classname="LootGenerationTests" runstate="Runnable" seed="737576696" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000551" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1184" name="LootGridLayoutTests" fullname="LootGridLayoutTests" classname="LootGridLayoutTests" runstate="Runnable" testcasecount="34" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.131180" total="34" passed="34" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1206" name="DifferentBoxesSnapshotTheirOwnSizesAndOnlyTheNextRoundUsesEditedSizes" fullname="LootGridLayoutTests.DifferentBoxesSnapshotTheirOwnSizesAndOnlyTheNextRoundUsesEditedSizes" methodname="DifferentBoxesSnapshotTheirOwnSizesAndOnlyTheNextRoundUsesEditedSizes" classname="LootGridLayoutTests" runstate="Runnable" seed="1520329669" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.014001" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1224" name="EmptyRollKeepsAllConfiguredBackgroundCellsAndStaleRoundCannotRelayout" fullname="LootGridLayoutTests.EmptyRollKeepsAllConfiguredBackgroundCellsAndStaleRoundCannotRelayout" methodname="EmptyRollKeepsAllConfiguredBackgroundCellsAndStaleRoundCannotRelayout" classname="LootGridLayoutTests" runstate="Runnable" seed="1251419429" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001503" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1214" name="EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates" fullname="LootGridLayoutTests.EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates" classname="LootGridLayoutTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.010452" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1210" name="EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates(3,1,2,2)" fullname="LootGridLayoutTests.EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates(3,1,2,2)" methodname="EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates" classname="LootGridLayoutTests" runstate="Runnable" seed="222544700" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001570" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1211" name="EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates(1,3,2,2)" fullname="LootGridLayoutTests.EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates(1,3,2,2)" methodname="EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates" classname="LootGridLayoutTests" runstate="Runnable" seed="386357452" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000429" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1212" name="EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates(2,1,2,1)" fullname="LootGridLayoutTests.EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates(2,1,2,1)" methodname="EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates" classname="LootGridLayoutTests" runstate="Runnable" seed="1124889825" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000317" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1213" name="EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates(1,2,2,2)" fullname="LootGridLayoutTests.EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates(1,2,2,2)" methodname="EveryPositiveChanceCandidateMustFitBeforeAnySceneSourceRollsOrCreates" classname="LootGridLayoutTests" runstate="Runnable" seed="415502400" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000286" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1220" name="FailedCreationKeepsItsRollAndRechecksSavedCandidatesBeforeRetrying" fullname="LootGridLayoutTests.FailedCreationKeepsItsRollAndRechecksSavedCandidatesBeforeRetrying" methodname="FailedCreationKeepsItsRollAndRechecksSavedCandidatesBeforeRetrying" classname="LootGridLayoutTests" runstate="Runnable" seed="912605683" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.003242" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1185" name="GeneratedFootprintsUseStableRowOrderWithinTheFullConfiguredGrid" fullname="LootGridLayoutTests.GeneratedFootprintsUseStableRowOrderWithinTheFullConfiguredGrid" methodname="GeneratedFootprintsUseStableRowOrderWithinTheFullConfiguredGrid" classname="LootGridLayoutTests" runstate="Runnable" seed="1410280007" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.003170" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1207" name="InterruptedSearchAndSameRoundRebindingKeepPositionsAndRevealedEntries" fullname="LootGridLayoutTests.InterruptedSearchAndSameRoundRebindingKeepPositionsAndRevealedEntries" methodname="InterruptedSearchAndSameRoundRebindingKeepPositionsAndRevealedEntries" classname="LootGridLayoutTests" runstate="Runnable" seed="1306517713" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.003220" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1218" name="InvalidGridSizeFailsBeforeAnySourceGenerates" fullname="LootGridLayoutTests.InvalidGridSizeFailsBeforeAnySourceGenerates" classname="LootGridLayoutTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.009747" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1215" name="InvalidGridSizeFailsBeforeAnySourceGenerates(0,2)" fullname="LootGridLayoutTests.InvalidGridSizeFailsBeforeAnySourceGenerates(0,2)" methodname="InvalidGridSizeFailsBeforeAnySourceGenerates" classname="LootGridLayoutTests" runstate="Runnable" seed="432734397" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000949" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1216" name="InvalidGridSizeFailsBeforeAnySourceGenerates(2,0)" fullname="LootGridLayoutTests.InvalidGridSizeFailsBeforeAnySourceGenerates(2,0)" methodname="InvalidGridSizeFailsBeforeAnySourceGenerates" classname="LootGridLayoutTests" runstate="Runnable" seed="1303194842" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000321" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1217" name="InvalidGridSizeFailsBeforeAnySourceGenerates(-1,2)" fullname="LootGridLayoutTests.InvalidGridSizeFailsBeforeAnySourceGenerates(-1,2)" methodname="InvalidGridSizeFailsBeforeAnySourceGenerates" classname="LootGridLayoutTests" runstate="Runnable" seed="91337597" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000232" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-suite type="ParameterizedMethod" id="1195" name="InvalidPreciseReturnDoesNotFallBackIntoAnotherFreeCell" fullname="LootGridLayoutTests.InvalidPreciseReturnDoesNotFallBackIntoAnotherFreeCell" classname="LootGridLayoutTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.015815" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1189" name="InvalidPreciseReturnDoesNotFallBackIntoAnotherFreeCell(0,0,False,True,Occupied)" fullname="LootGridLayoutTests.InvalidPreciseReturnDoesNotFallBackIntoAnotherFreeCell(0,0,False,True,Occupied)" methodname="InvalidPreciseReturnDoesNotFallBackIntoAnotherFreeCell" classname="LootGridLayoutTests" runstate="Runnable" seed="909717454" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.005273" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1190" name="InvalidPreciseReturnDoesNotFallBackIntoAnotherFreeCell(-1,0,False,True,OutOfBounds)" fullname="LootGridLayoutTests.InvalidPreciseReturnDoesNotFallBackIntoAnotherFreeCell(-1,0,False,True,OutOfBounds)" methodname="InvalidPreciseReturnDoesNotFallBackIntoAnotherFreeCell" classname="LootGridLayoutTests" runstate="Runnable" seed="1542775777" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001059" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1191" name="InvalidPreciseReturnDoesNotFallBackIntoAnotherFreeCell(5,3,False,True,OutOfBounds)" fullname="LootGridLayoutTests.InvalidPreciseReturnDoesNotFallBackIntoAnotherFreeCell(5,3,False,True,OutOfBounds)" methodname="InvalidPreciseReturnDoesNotFallBackIntoAnotherFreeCell" classname="LootGridLayoutTests" runstate="Runnable" seed="708800700" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000828" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1192" name="InvalidPreciseReturnDoesNotFallBackIntoAnotherFreeCell(5,2,True,True,OutOfBounds)" fullname="LootGridLayoutTests.InvalidPreciseReturnDoesNotFallBackIntoAnotherFreeCell(5,2,True,True,OutOfBounds)" methodname="InvalidPreciseReturnDoesNotFallBackIntoAnotherFreeCell" classname="LootGridLayoutTests" runstate="Runnable" seed="1004411502" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000845" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1193" name="InvalidPreciseReturnDoesNotFallBackIntoAnotherFreeCell(int.MaxValue,1,True,True,OutOfBounds)" fullname="LootGridLayoutTests.InvalidPreciseReturnDoesNotFallBackIntoAnotherFreeCell(int.MaxValue,1,True,True,OutOfBounds)" methodname="InvalidPreciseReturnDoesNotFallBackIntoAnotherFreeCell" classname="LootGridLayoutTests" runstate="Runnable" seed="1593641100" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000827" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1194" name="InvalidPreciseReturnDoesNotFallBackIntoAnotherFreeCell(4,2,True,False,InvalidRotation)" fullname="LootGridLayoutTests.InvalidPreciseReturnDoesNotFallBackIntoAnotherFreeCell(4,2,True,False,InvalidRotation)" methodname="InvalidPreciseReturnDoesNotFallBackIntoAnotherFreeCell" classname="LootGridLayoutTests" runstate="Runnable" seed="1666680711" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000821" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1225" name="NativeGroundUsesItsActualFootprintWithoutBoxCapacityOrReturnSupport" fullname="LootGridLayoutTests.NativeGroundUsesItsActualFootprintWithoutBoxCapacityOrReturnSupport" methodname="NativeGroundUsesItsActualFootprintWithoutBoxCapacityOrReturnSupport" classname="LootGridLayoutTests" runstate="Runnable" seed="488138951" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.002546" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1223" name="OverwideOrOvertallReturnsAreRejectedWithoutGrowingAnEmptyBox" fullname="LootGridLayoutTests.OverwideOrOvertallReturnsAreRejectedWithoutGrowingAnEmptyBox" classname="LootGridLayoutTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.009019" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1221" name="OverwideOrOvertallReturnsAreRejectedWithoutGrowingAnEmptyBox(3,1)" fullname="LootGridLayoutTests.OverwideOrOvertallReturnsAreRejectedWithoutGrowingAnEmptyBox(3,1)" methodname="OverwideOrOvertallReturnsAreRejectedWithoutGrowingAnEmptyBox" classname="LootGridLayoutTests" runstate="Runnable" seed="181711286" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001592" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1222" name="OverwideOrOvertallReturnsAreRejectedWithoutGrowingAnEmptyBox(1,3)" fullname="LootGridLayoutTests.OverwideOrOvertallReturnsAreRejectedWithoutGrowingAnEmptyBox(1,3)" methodname="OverwideOrOvertallReturnsAreRejectedWithoutGrowingAnEmptyBox" classname="LootGridLayoutTests" runstate="Runnable" seed="55879873" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000905" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1188" name="PreciseRotatedReturnKeepsItsFarCellAndUndoRestoresHistoricalDirection" fullname="LootGridLayoutTests.PreciseRotatedReturnKeepsItsFarCellAndUndoRestoresHistoricalDirection" methodname="PreciseRotatedReturnKeepsItsFarCellAndUndoRestoresHistoricalDirection" classname="LootGridLayoutTests" runstate="Runnable" seed="16613996" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.003349" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1205" name="SavedRotatedLayoutRejectsChangedDimensionsOrRotationPermissionWithoutRepacking" fullname="LootGridLayoutTests.SavedRotatedLayoutRejectsChangedDimensionsOrRotationPermissionWithoutRepacking" classname="LootGridLayoutTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.012148" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1203" name="SavedRotatedLayoutRejectsChangedDimensionsOrRotationPermissionWithoutRepacking(False)" fullname="LootGridLayoutTests.SavedRotatedLayoutRejectsChangedDimensionsOrRotationPermissionWithoutRepacking(False)" methodname="SavedRotatedLayoutRejectsChangedDimensionsOrRotationPermissionWithoutRepacking" classname="LootGridLayoutTests" runstate="Runnable" seed="2111574921" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001753" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1204" name="SavedRotatedLayoutRejectsChangedDimensionsOrRotationPermissionWithoutRepacking(True)" fullname="LootGridLayoutTests.SavedRotatedLayoutRejectsChangedDimensionsOrRotationPermissionWithoutRepacking(True)" methodname="SavedRotatedLayoutRejectsChangedDimensionsOrRotationPermissionWithoutRepacking" classname="LootGridLayoutTests" runstate="Runnable" seed="570843549" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000919" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1187" name="ShortcutReturnUsesFirstFreeCellInsteadOfPreferringHistoricalPosition" fullname="LootGridLayoutTests.ShortcutReturnUsesFirstFreeCellInsteadOfPreferringHistoricalPosition" methodname="ShortcutReturnUsesFirstFreeCellInsteadOfPreferringHistoricalPosition" classname="LootGridLayoutTests" runstate="Runnable" seed="1688524098" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001824" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1198" name="ShortcutSearchFinishesThePreferredDirectionBeforeTryingAnotherDirection" fullname="LootGridLayoutTests.ShortcutSearchFinishesThePreferredDirectionBeforeTryingAnotherDirection" classname="LootGridLayoutTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.010696" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1196" name="ShortcutSearchFinishesThePreferredDirectionBeforeTryingAnotherDirection(False,0,2,2,1)" fullname="LootGridLayoutTests.ShortcutSearchFinishesThePreferredDirectionBeforeTryingAnotherDirection(False,0,2,2,1)" methodname="ShortcutSearchFinishesThePreferredDirectionBeforeTryingAnotherDirection" classname="LootGridLayoutTests" runstate="Runnable" seed="1715654494" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.002214" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1197" name="ShortcutSearchFinishesThePreferredDirectionBeforeTryingAnotherDirection(True,0,1,1,2)" fullname="LootGridLayoutTests.ShortcutSearchFinishesThePreferredDirectionBeforeTryingAnotherDirection(True,0,1,1,2)" methodname="ShortcutSearchFinishesThePreferredDirectionBeforeTryingAnotherDirection" classname="LootGridLayoutTests" runstate="Runnable" seed="109402670" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001040" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-suite type="ParameterizedMethod" id="1202" name="ShortcutSearchUsesTheOtherDirectionOnlyWhenAllowedAndNeeded" fullname="LootGridLayoutTests.ShortcutSearchUsesTheOtherDirectionOnlyWhenAllowedAndNeeded" classname="LootGridLayoutTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.011562" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1199" name="ShortcutSearchUsesTheOtherDirectionOnlyWhenAllowedAndNeeded(False,True)" fullname="LootGridLayoutTests.ShortcutSearchUsesTheOtherDirectionOnlyWhenAllowedAndNeeded(False,True)" methodname="ShortcutSearchUsesTheOtherDirectionOnlyWhenAllowedAndNeeded" classname="LootGridLayoutTests" runstate="Runnable" seed="708233132" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.002116" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1200" name="ShortcutSearchUsesTheOtherDirectionOnlyWhenAllowedAndNeeded(True,True)" fullname="LootGridLayoutTests.ShortcutSearchUsesTheOtherDirectionOnlyWhenAllowedAndNeeded(True,True)" methodname="ShortcutSearchUsesTheOtherDirectionOnlyWhenAllowedAndNeeded" classname="LootGridLayoutTests" runstate="Runnable" seed="1421821355" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001009" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1201" name="ShortcutSearchUsesTheOtherDirectionOnlyWhenAllowedAndNeeded(False,False)" fullname="LootGridLayoutTests.ShortcutSearchUsesTheOtherDirectionOnlyWhenAllowedAndNeeded(False,False)" methodname="ShortcutSearchUsesTheOtherDirectionOnlyWhenAllowedAndNeeded" classname="LootGridLayoutTests" runstate="Runnable" seed="1534860762" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000889" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1209" name="SkippingFirstCandidateKeepsTheFullPlanAndLeavesItsHoleAvailableForReturns" fullname="LootGridLayoutTests.SkippingFirstCandidateKeepsTheFullPlanAndLeavesItsHoleAvailableForReturns" methodname="SkippingFirstCandidateKeepsTheFullPlanAndLeavesItsHoleAvailableForReturns" classname="LootGridLayoutTests" runstate="Runnable" seed="2022917536" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.003801" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1186" name="TakenSlotCanBeReusedAndOriginalReturnMovesOnlyTheReturningItem" fullname="LootGridLayoutTests.TakenSlotCanBeReusedAndOriginalReturnMovesOnlyTheReturningItem" methodname="TakenSlotCanBeReusedAndOriginalReturnMovesOnlyTheReturningItem" classname="LootGridLayoutTests" runstate="Runnable" seed="1130855410" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.002018" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1219" name="ZeroChanceUniqueRecoveryCannotBeClaimedIntoAnUndersizedBox" fullname="LootGridLayoutTests.ZeroChanceUniqueRecoveryCannotBeClaimedIntoAnUndersizedBox" methodname="ZeroChanceUniqueRecoveryCannotBeClaimedIntoAnUndersizedBox" classname="LootGridLayoutTests" runstate="Runnable" seed="1824087340" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001794" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1208" name="ZeroSecondEntriesAndLongFrameRevealInOrderOnlyOnceAndKeepTheirLayout" fullname="LootGridLayoutTests.ZeroSecondEntriesAndLongFrameRevealInOrderOnlyOnceAndKeepTheirLayout" methodname="ZeroSecondEntriesAndLongFrameRevealInOrderOnlyOnceAndKeepTheirLayout" classname="LootGridLayoutTests" runstate="Runnable" seed="1632061275" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001962" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1226" name="LootSourceStateTests" fullname="LootSourceStateTests" classname="LootSourceStateTests" runstate="Runnable" testcasecount="43" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.159238" total="43" passed="43" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1233" name="BusyUniqueClaimKeepsRecordUnavailableUntilSameRoundRetrySucceeds" fullname="LootSourceStateTests.BusyUniqueClaimKeepsRecordUnavailableUntilSameRoundRetrySucceeds" methodname="BusyUniqueClaimKeepsRecordUnavailableUntilSameRoundRetrySucceeds" classname="LootSourceStateTests" runstate="Runnable" seed="815338574" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.002970" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1270" name="CommittedDropCanRebuildMissingPresentationWithoutAnotherIdentityOrClaim" fullname="LootSourceStateTests.CommittedDropCanRebuildMissingPresentationWithoutAnotherIdentityOrClaim" methodname="CommittedDropCanRebuildMissingPresentationWithoutAnotherIdentityOrClaim" classname="LootSourceStateTests" runstate="Runnable" seed="538581637" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.008455" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1235" name="DisabledRuntimeMakesExistingSourceUnavailableWithoutErasingIt" fullname="LootSourceStateTests.DisabledRuntimeMakesExistingSourceUnavailableWithoutErasingIt" methodname="DisabledRuntimeMakesExistingSourceUnavailableWithoutErasingIt" classname="LootSourceStateTests" runstate="Runnable" seed="471154572" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001134" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1242" name="DiscardedUniqueWaitsUntilNextRoundAndRecoversSameIdentityAtOriginalBox" fullname="LootSourceStateTests.DiscardedUniqueWaitsUntilNextRoundAndRecoversSameIdentityAtOriginalBox" methodname="DiscardedUniqueWaitsUntilNextRoundAndRecoversSameIdentityAtOriginalBox" classname="LootSourceStateTests" runstate="Runnable" seed="509011471" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.008356" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1241" name="DiscardFailureRestoresRealBackpackWithoutCreatingWorldRecord" fullname="LootSourceStateTests.DiscardFailureRestoresRealBackpackWithoutCreatingWorldRecord" classname="LootSourceStateTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.019876" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1239" name="DiscardFailureRestoresRealBackpackWithoutCreatingWorldRecord(2,SourceRemovalFailed)" fullname="LootSourceStateTests.DiscardFailureRestoresRealBackpackWithoutCreatingWorldRecord(2,SourceRemovalFailed)" methodname="DiscardFailureRestoresRealBackpackWithoutCreatingWorldRecord" classname="LootSourceStateTests" runstate="Runnable" seed="1744108874" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.003096" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1240" name="DiscardFailureRestoresRealBackpackWithoutCreatingWorldRecord(3,OwnerRejected)" fullname="LootSourceStateTests.DiscardFailureRestoresRealBackpackWithoutCreatingWorldRecord(3,OwnerRejected)" methodname="DiscardFailureRestoresRealBackpackWithoutCreatingWorldRecord" classname="LootSourceStateTests" runstate="Runnable" seed="1680364914" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001658" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-suite type="ParameterizedMethod" id="1261" name="FailedDirectionChangeRestoresThePreviouslyRotatedTakenEntry" fullname="LootSourceStateTests.FailedDirectionChangeRestoresThePreviouslyRotatedTakenEntry" classname="LootSourceStateTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.013334" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1259" name="FailedDirectionChangeRestoresThePreviouslyRotatedTakenEntry(2,SourceRemovalFailed)" fullname="LootSourceStateTests.FailedDirectionChangeRestoresThePreviouslyRotatedTakenEntry(2,SourceRemovalFailed)" methodname="FailedDirectionChangeRestoresThePreviouslyRotatedTakenEntry" classname="LootSourceStateTests" runstate="Runnable" seed="1824579745" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.004026" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1260" name="FailedDirectionChangeRestoresThePreviouslyRotatedTakenEntry(3,OwnerRejected)" fullname="LootSourceStateTests.FailedDirectionChangeRestoresThePreviouslyRotatedTakenEntry(3,OwnerRejected)" methodname="FailedDirectionChangeRestoresThePreviouslyRotatedTakenEntry" classname="LootSourceStateTests" runstate="Runnable" seed="1007978700" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001550" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-suite type="ParameterizedMethod" id="1257" name="FailedReturnAfterTakenCellReuseRestoresHistoricalLayoutAndBackpackPlacement" fullname="LootSourceStateTests.FailedReturnAfterTakenCellReuseRestoresHistoricalLayoutAndBackpackPlacement" classname="LootSourceStateTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.012064" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1255" name="FailedReturnAfterTakenCellReuseRestoresHistoricalLayoutAndBackpackPlacement(2,SourceRemovalFailed)" fullname="LootSourceStateTests.FailedReturnAfterTakenCellReuseRestoresHistoricalLayoutAndBackpackPlacement(2,SourceRemovalFailed)" methodname="FailedReturnAfterTakenCellReuseRestoresHistoricalLayoutAndBackpackPlacement" classname="LootSourceStateTests" runstate="Runnable" seed="740679775" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.003081" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1256" name="FailedReturnAfterTakenCellReuseRestoresHistoricalLayoutAndBackpackPlacement(3,OwnerRejected)" fullname="LootSourceStateTests.FailedReturnAfterTakenCellReuseRestoresHistoricalLayoutAndBackpackPlacement(3,OwnerRejected)" methodname="FailedReturnAfterTakenCellReuseRestoresHistoricalLayoutAndBackpackPlacement" classname="LootSourceStateTests" runstate="Runnable" seed="2090873416" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001484" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1253" name="FullBoxRejectsReturnBeforeCommitWithoutChangingIdentityLayoutSearchOrNotifications" fullname="LootSourceStateTests.FullBoxRejectsReturnBeforeCommitWithoutChangingIdentityLayoutSearchOrNotifications" methodname="FullBoxRejectsReturnBeforeCommitWithoutChangingIdentityLayoutSearchOrNotifications" classname="LootSourceStateTests" runstate="Runnable" seed="619616951" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.002716" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1262" name="GroundSourceCannotReceiveBackpackReturnsThroughEitherPublicEntry" fullname="LootSourceStateTests.GroundSourceCannotReceiveBackpackReturnsThroughEitherPublicEntry" methodname="GroundSourceCannotReceiveBackpackReturnsThroughEitherPublicEntry" classname="LootSourceStateTests" runstate="Runnable" seed="662388343" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.002127" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1271" name="GroundTriggersOccupyDropSpaceButNormalRangeTriggersDoNot" fullname="LootSourceStateTests.GroundTriggersOccupyDropSpaceButNormalRangeTriggersDoNot" methodname="GroundTriggersOccupyDropSpaceButNormalRangeTriggersDoNot" classname="LootSourceStateTests" runstate="Runnable" seed="948876416" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001909" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1228" name="HiddenEntriesCannotBeMarkedTakenAndFailedTransferCanRestoreRevealedEntry" fullname="LootSourceStateTests.HiddenEntriesCannotBeMarkedTakenAndFailedTransferCanRestoreRevealedEntry" methodname="HiddenEntriesCannotBeMarkedTakenAndFailedTransferCanRestoreRevealedEntry" classname="LootSourceStateTests" runstate="Runnable" seed="911374748" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001246" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1236" name="InactiveGroundPreparationKeepsCarriedOwnershipUntilCommitAndCanBeCancelled" fullname="LootSourceStateTests.InactiveGroundPreparationKeepsCarriedOwnershipUntilCommitAndCanBeCancelled" methodname="InactiveGroundPreparationKeepsCarriedOwnershipUntilCommitAndCanBeCancelled" classname="LootSourceStateTests" runstate="Runnable" seed="1590118559" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001442" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1268" name="InvalidReturnRequestIsRejectedBeforeAnyTargetWrite" fullname="LootSourceStateTests.InvalidReturnRequestIsRejectedBeforeAnyTargetWrite" classname="LootSourceStateTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.013315" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1263" name="InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(&quot;request&quot;,StaleRequest)" fullname="LootSourceStateTests.InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(&quot;request&quot;,StaleRequest)" methodname="InvalidReturnRequestIsRejectedBeforeAnyTargetWrite" classname="LootSourceStateTests" runstate="Runnable" seed="1229030339" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.002233" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1264" name="InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(&quot;distance&quot;,Unreachable)" fullname="LootSourceStateTests.InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(&quot;distance&quot;,Unreachable)" methodname="InvalidReturnRequestIsRejectedBeforeAnyTargetWrite" classname="LootSourceStateTests" runstate="Runnable" seed="320263016" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001152" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1265" name="InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(&quot;obstruction&quot;,Unreachable)" fullname="LootSourceStateTests.InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(&quot;obstruction&quot;,Unreachable)" methodname="InvalidReturnRequestIsRejectedBeforeAnyTargetWrite" classname="LootSourceStateTests" runstate="Runnable" seed="204914873" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001193" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1266" name="InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(&quot;map&quot;,Unreachable)" fullname="LootSourceStateTests.InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(&quot;map&quot;,Unreachable)" methodname="InvalidReturnRequestIsRejectedBeforeAnyTargetWrite" classname="LootSourceStateTests" runstate="Runnable" seed="1991307891" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001084" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1267" name="InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(&quot;stale-source&quot;,SourceInvalid)" fullname="LootSourceStateTests.InvalidReturnRequestIsRejectedBeforeAnyTargetWrite(&quot;stale-source&quot;,SourceInvalid)" methodname="InvalidReturnRequestIsRejectedBeforeAnyTargetWrite" classname="LootSourceStateTests" runstate="Runnable" seed="1049872381" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001084" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1230" name="NewRoundCannotEraseUnsettledWorldItems" fullname="LootSourceStateTests.NewRoundCannotEraseUnsettledWorldItems" methodname="NewRoundCannotEraseUnsettledWorldItems" classname="LootSourceStateTests" runstate="Runnable" seed="456267498" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.002055" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1276" name="NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem" fullname="LootSourceStateTests.NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem" classname="LootSourceStateTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.010056" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1272" name="NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(float.NaN,0.03f)" fullname="LootSourceStateTests.NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(float.NaN,0.03f)" methodname="NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem" classname="LootSourceStateTests" runstate="Runnable" seed="1235439561" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001682" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1273" name="NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(float.PositiveInfinity,0.03f)" fullname="LootSourceStateTests.NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(float.PositiveInfinity,0.03f)" methodname="NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem" classname="LootSourceStateTests" runstate="Runnable" seed="1419639058" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000897" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1274" name="NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(0.18f,float.NaN)" fullname="LootSourceStateTests.NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(0.18f,float.NaN)" methodname="NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem" classname="LootSourceStateTests" runstate="Runnable" seed="1341371617" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000733" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1275" name="NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(0.18f,-1.0f)" fullname="LootSourceStateTests.NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem(0.18f,-1.0f)" methodname="NonFiniteOrNegativeDropSettingsRefuseWithoutMovingItem" classname="LootSourceStateTests" runstate="Runnable" seed="270441909" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000693" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1258" name="PreciseRotatedReturnAndPickupKeepTheRequestedRectangleAndSearchState" fullname="LootSourceStateTests.PreciseRotatedReturnAndPickupKeepTheRequestedRectangleAndSearchState" methodname="PreciseRotatedReturnAndPickupKeepTheRequestedRectangleAndSearchState" classname="LootSourceStateTests" runstate="Runnable" seed="105198194" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.002949" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1237" name="PreparedDropRechecksConfigurationBeforeOwnerCommit" fullname="LootSourceStateTests.PreparedDropRechecksConfigurationBeforeOwnerCommit" methodname="PreparedDropRechecksConfigurationBeforeOwnerCommit" classname="LootSourceStateTests" runstate="Runnable" seed="1747773268" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001156" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1252" name="ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend" fullname="LootSourceStateTests.ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend" classname="LootSourceStateTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.017929" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1246" name="ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(True,1,TargetRejected)" fullname="LootSourceStateTests.ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(True,1,TargetRejected)" methodname="ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend" classname="LootSourceStateTests" runstate="Runnable" seed="1078309567" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.003020" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1247" name="ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(True,2,SourceRemovalFailed)" fullname="LootSourceStateTests.ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(True,2,SourceRemovalFailed)" methodname="ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend" classname="LootSourceStateTests" runstate="Runnable" seed="1402531256" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001442" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1248" name="ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(True,3,OwnerRejected)" fullname="LootSourceStateTests.ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(True,3,OwnerRejected)" methodname="ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend" classname="LootSourceStateTests" runstate="Runnable" seed="245455489" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001268" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1249" name="ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(False,1,TargetRejected)" fullname="LootSourceStateTests.ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(False,1,TargetRejected)" methodname="ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend" classname="LootSourceStateTests" runstate="Runnable" seed="1425655598" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001754" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1250" name="ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(False,2,SourceRemovalFailed)" fullname="LootSourceStateTests.ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(False,2,SourceRemovalFailed)" methodname="ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend" classname="LootSourceStateTests" runstate="Runnable" seed="357733043" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001726" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1251" name="ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(False,3,OwnerRejected)" fullname="LootSourceStateTests.ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend(False,3,OwnerRejected)" methodname="ReturnFailureRestoresOldTakenEntryOrRemovesNewAppend" classname="LootSourceStateTests" runstate="Runnable" seed="124259294" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001523" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-suite type="ParameterizedMethod" id="1245" name="ReturningToBoxReusesOrAppendsOneRevealedEntryWithoutChangingSearch" fullname="LootSourceStateTests.ReturningToBoxReusesOrAppendsOneRevealedEntryWithoutChangingSearch" classname="LootSourceStateTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.010099" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1243" name="ReturningToBoxReusesOrAppendsOneRevealedEntryWithoutChangingSearch(True)" fullname="LootSourceStateTests.ReturningToBoxReusesOrAppendsOneRevealedEntryWithoutChangingSearch(True)" methodname="ReturningToBoxReusesOrAppendsOneRevealedEntryWithoutChangingSearch" classname="LootSourceStateTests" runstate="Runnable" seed="236955194" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.002870" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1244" name="ReturningToBoxReusesOrAppendsOneRevealedEntryWithoutChangingSearch(False)" fullname="LootSourceStateTests.ReturningToBoxReusesOrAppendsOneRevealedEntryWithoutChangingSearch(False)" methodname="ReturningToBoxReusesOrAppendsOneRevealedEntryWithoutChangingSearch" classname="LootSourceStateTests" runstate="Runnable" seed="1818292772" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001577" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1254" name="ReusedTakenCellMakesOriginalReturnToAnotherFreeCellWithoutMovingOtherEntries" fullname="LootSourceStateTests.ReusedTakenCellMakesOriginalReturnToAnotherFreeCellWithoutMovingOtherEntries" methodname="ReusedTakenCellMakesOriginalReturnToAnotherFreeCellWithoutMovingOtherEntries" classname="LootSourceStateTests" runstate="Runnable" seed="48849438" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.002161" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1227" name="RevealedPickupDoesNotResetTheNextSearchAndInterruptOnlyResetsUnfinishedProgress" fullname="LootSourceStateTests.RevealedPickupDoesNotResetTheNextSearchAndInterruptOnlyResetsUnfinishedProgress" methodname="RevealedPickupDoesNotResetTheNextSearchAndInterruptOnlyResetsUnfinishedProgress" classname="LootSourceStateTests" runstate="Runnable" seed="621174975" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001417" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1229" name="SameRoundPreparationAndRebindingKeepEvenAnEmptyRoll" fullname="LootSourceStateTests.SameRoundPreparationAndRebindingKeepEvenAnEmptyRoll" methodname="SameRoundPreparationAndRebindingKeepEvenAnEmptyRoll" classname="LootSourceStateTests" runstate="Runnable" seed="398796995" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001666" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1234" name="SourceBindingBetweenItemRoundAndLootPreparationDoesNotGenerateUnderOldRound" fullname="LootSourceStateTests.SourceBindingBetweenItemRoundAndLootPreparationDoesNotGenerateUnderOldRound" methodname="SourceBindingBetweenItemRoundAndLootPreparationDoesNotGenerateUnderOldRound" classname="LootSourceStateTests" runstate="Runnable" seed="783157711" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001559" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1238" name="SourcePickupOwnerFailureRestoresTakenSearchAndRealBackpackLayout" fullname="LootSourceStateTests.SourcePickupOwnerFailureRestoresTakenSearchAndRealBackpackLayout" methodname="SourcePickupOwnerFailureRestoresTakenSearchAndRealBackpackLayout" classname="LootSourceStateTests" runstate="Runnable" seed="95694843" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.002058" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1231" name="UniqueConflictIsFoundBeforeAnySourceCreatesAnInstance" fullname="LootSourceStateTests.UniqueConflictIsFoundBeforeAnySourceCreatesAnInstance" methodname="UniqueConflictIsFoundBeforeAnySourceCreatesAnInstance" classname="LootSourceStateTests" runstate="Runnable" seed="1354727386" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000708" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1232" name="UniqueRecoveryReturnsToContainerWithSameIdentityDespiteZeroProbability" fullname="LootSourceStateTests.UniqueRecoveryReturnsToContainerWithSameIdentityDespiteZeroProbability" methodname="UniqueRecoveryReturnsToContainerWithSameIdentityDespiteZeroProbability" classname="LootSourceStateTests" runstate="Runnable" seed="1979675254" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001322" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1269" name="UniqueReturnedToAnotherBoxRecoversAtItsOriginalBoxNextRound" fullname="LootSourceStateTests.UniqueReturnedToAnotherBoxRecoversAtItsOriginalBoxNextRound" methodname="UniqueReturnedToAnotherBoxRecoversAtItsOriginalBoxNextRound" classname="LootSourceStateTests" runstate="Runnable" seed="458931256" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.002651" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+    </test-suite>
+    <test-suite type="Assembly" id="1351" name="MyPrecious.Warehouse.EditModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.Warehouse.EditModeTests.dll" runstate="Runnable" testcasecount="49" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.243849" total="49" passed="49" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="48276" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestFixture" id="1293" name="WarehouseGridTests" fullname="WarehouseGridTests" classname="WarehouseGridTests" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.014878" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1294" name="DefaultConfigHasFourHundredCellsAndRejectsNonpositiveDimensions" fullname="WarehouseGridTests.DefaultConfigHasFourHundredCellsAndRejectsNonpositiveDimensions" methodname="DefaultConfigHasFourHundredCellsAndRejectsNonpositiveDimensions" classname="WarehouseGridTests" runstate="Runnable" seed="902346141" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000974" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1297" name="DuplicateInstanceForbiddenRotationAndInvalidDimensionsPreserveLayout" fullname="WarehouseGridTests.DuplicateInstanceForbiddenRotationAndInvalidDimensionsPreserveLayout" methodname="DuplicateInstanceForbiddenRotationAndInvalidDimensionsPreserveLayout" classname="WarehouseGridTests" runstate="Runnable" seed="1567319948" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000671" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1298" name="FragmentedFreeAreaDoesNotFitRectangleDespiteEnoughTotalCells" fullname="WarehouseGridTests.FragmentedFreeAreaDoesNotFitRectangleDespiteEnoughTotalCells" methodname="FragmentedFreeAreaDoesNotFitRectangleDespiteEnoughTotalCells" classname="WarehouseGridTests" runstate="Runnable" seed="1839205357" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000459" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1305" name="InvalidExpansionNeverChangesDimensionsOrPlacements" fullname="WarehouseGridTests.InvalidExpansionNeverChangesDimensionsOrPlacements" classname="WarehouseGridTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.006253" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1300" name="InvalidExpansionNeverChangesDimensionsOrPlacements(0,30)" fullname="WarehouseGridTests.InvalidExpansionNeverChangesDimensionsOrPlacements(0,30)" methodname="InvalidExpansionNeverChangesDimensionsOrPlacements" classname="WarehouseGridTests" runstate="Runnable" seed="280764403" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000890" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1301" name="InvalidExpansionNeverChangesDimensionsOrPlacements(30,-1)" fullname="WarehouseGridTests.InvalidExpansionNeverChangesDimensionsOrPlacements(30,-1)" methodname="InvalidExpansionNeverChangesDimensionsOrPlacements" classname="WarehouseGridTests" runstate="Runnable" seed="1997889882" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000148" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1302" name="InvalidExpansionNeverChangesDimensionsOrPlacements(19,30)" fullname="WarehouseGridTests.InvalidExpansionNeverChangesDimensionsOrPlacements(19,30)" methodname="InvalidExpansionNeverChangesDimensionsOrPlacements" classname="WarehouseGridTests" runstate="Runnable" seed="50955446" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000092" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1303" name="InvalidExpansionNeverChangesDimensionsOrPlacements(30,19)" fullname="WarehouseGridTests.InvalidExpansionNeverChangesDimensionsOrPlacements(30,19)" methodname="InvalidExpansionNeverChangesDimensionsOrPlacements" classname="WarehouseGridTests" runstate="Runnable" seed="674862158" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000076" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1304" name="InvalidExpansionNeverChangesDimensionsOrPlacements(20,20)" fullname="WarehouseGridTests.InvalidExpansionNeverChangesDimensionsOrPlacements(20,20)" methodname="InvalidExpansionNeverChangesDimensionsOrPlacements" classname="WarehouseGridTests" runstate="Runnable" seed="2080460444" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000072" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1296" name="MoveIgnoresOnlyOwnRectangleAndFailureKeepsEveryPlacement" fullname="WarehouseGridTests.MoveIgnoresOnlyOwnRectangleAndFailureKeepsEveryPlacement" methodname="MoveIgnoresOnlyOwnRectangleAndFailureKeepsEveryPlacement" classname="WarehouseGridTests" runstate="Runnable" seed="1944384009" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000591" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1295" name="NonSquareGridRotatesWithoutChangingDefinitionAndRejectsOverflowCoordinates" fullname="WarehouseGridTests.NonSquareGridRotatesWithoutChangingDefinitionAndRejectsOverflowCoordinates" methodname="NonSquareGridRotatesWithoutChangingDefinitionAndRejectsOverflowCoordinates" classname="WarehouseGridTests" runstate="Runnable" seed="1150420729" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000431" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1299" name="PreviewAndRemovalSnapshotsNeverModifyItemAuthority" fullname="WarehouseGridTests.PreviewAndRemovalSnapshotsNeverModifyItemAuthority" methodname="PreviewAndRemovalSnapshotsNeverModifyItemAuthority" classname="WarehouseGridTests" runstate="Runnable" seed="107261845" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000529" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1306" name="SingleAxisExpansionKeepsExactPlacementAndAddsUsableCells" fullname="WarehouseGridTests.SingleAxisExpansionKeepsExactPlacementAndAddsUsableCells" methodname="SingleAxisExpansionKeepsExactPlacementAndAddsUsableCells" classname="WarehouseGridTests" runstate="Runnable" seed="761949735" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000336" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1307" name="WarehouseShelterTests" fullname="WarehouseShelterTests" classname="WarehouseShelterTests" runstate="Runnable" testcasecount="37" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.222682" total="37" passed="37" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1323" name="ActivationSurvivesEvLossReinitializeAndConfigurationEditsDuringRun" fullname="WarehouseShelterTests.ActivationSurvivesEvLossReinitializeAndConfigurationEditsDuringRun" methodname="ActivationSurvivesEvLossReinitializeAndConfigurationEditsDuringRun" classname="WarehouseShelterTests" runstate="Runnable" seed="650706302" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.126541" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1325" name="ConfirmedAbandonmentCleansLayoutBeforeOneNotificationAndKeepsUpgrade" fullname="WarehouseShelterTests.ConfirmedAbandonmentCleansLayoutBeforeOneNotificationAndKeepsUpgrade" methodname="ConfirmedAbandonmentCleansLayoutBeforeOneNotificationAndKeepsUpgrade" classname="WarehouseShelterTests" runstate="Runnable" seed="1665956564" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000919" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1310" name="EvCountsRetainedRegistryOnceAcrossBackpackStorageAndTemporaryWorldOwner" fullname="WarehouseShelterTests.EvCountsRetainedRegistryOnceAcrossBackpackStorageAndTemporaryWorldOwner" methodname="EvCountsRetainedRegistryOnceAcrossBackpackStorageAndTemporaryWorldOwner" classname="WarehouseShelterTests" runstate="Runnable" seed="1719669834" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000519" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1311" name="EvSixCannotUpgradeAndSevenNeverAutoActivates" fullname="WarehouseShelterTests.EvSixCannotUpgradeAndSevenNeverAutoActivates" methodname="EvSixCannotUpgradeAndSevenNeverAutoActivates" classname="WarehouseShelterTests" runstate="Runnable" seed="1304527696" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000353" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1309" name="ExternalPreviewAndSilentLayoutEditsPreserveAuthorityUntilCoordinatorCommits" fullname="WarehouseShelterTests.ExternalPreviewAndSilentLayoutEditsPreserveAuthorityUntilCoordinatorCommits" methodname="ExternalPreviewAndSilentLayoutEditsPreserveAuthorityUntilCoordinatorCommits" classname="WarehouseShelterTests" runstate="Runnable" seed="2102645383" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000489" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1313" name="FreeUpgradePreservesUsedRetainedItemPlacementIdentityAndNotifiesAfterActivation" fullname="WarehouseShelterTests.FreeUpgradePreservesUsedRetainedItemPlacementIdentityAndNotifiesAfterActivation" methodname="FreeUpgradePreservesUsedRetainedItemPlacementIdentityAndNotifiesAfterActivation" classname="WarehouseShelterTests" runstate="Runnable" seed="1874364094" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.002087" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1308" name="InternalOperationsRequireContextOwnershipContainerAndRealPlacement" fullname="WarehouseShelterTests.InternalOperationsRequireContextOwnershipContainerAndRealPlacement" methodname="InternalOperationsRequireContextOwnershipContainerAndRealPlacement" classname="WarehouseShelterTests" runstate="Runnable" seed="1783328197" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000880" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1320" name="InvalidUpgradeTargetNeverWritesActivationOrChangesLayout" fullname="WarehouseShelterTests.InvalidUpgradeTargetNeverWritesActivationOrChangesLayout" classname="WarehouseShelterTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.010367" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1314" name="InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(0,24)" fullname="WarehouseShelterTests.InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(0,24)" methodname="InvalidUpgradeTargetNeverWritesActivationOrChangesLayout" classname="WarehouseShelterTests" runstate="Runnable" seed="360949851" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000837" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1315" name="InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(20,-1)" fullname="WarehouseShelterTests.InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(20,-1)" methodname="InvalidUpgradeTargetNeverWritesActivationOrChangesLayout" classname="WarehouseShelterTests" runstate="Runnable" seed="712126393" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000226" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1316" name="InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(19,30)" fullname="WarehouseShelterTests.InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(19,30)" methodname="InvalidUpgradeTargetNeverWritesActivationOrChangesLayout" classname="WarehouseShelterTests" runstate="Runnable" seed="1569921809" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000315" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1317" name="InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(20,19)" fullname="WarehouseShelterTests.InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(20,19)" methodname="InvalidUpgradeTargetNeverWritesActivationOrChangesLayout" classname="WarehouseShelterTests" runstate="Runnable" seed="1683890870" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000276" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1318" name="InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(20,20)" fullname="WarehouseShelterTests.InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(20,20)" methodname="InvalidUpgradeTargetNeverWritesActivationOrChangesLayout" classname="WarehouseShelterTests" runstate="Runnable" seed="1603871091" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000171" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1319" name="InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(24,24)" fullname="WarehouseShelterTests.InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(24,24)" methodname="InvalidUpgradeTargetNeverWritesActivationOrChangesLayout" classname="WarehouseShelterTests" runstate="Runnable" seed="1914595556" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000212" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1322" name="MissingDependenciesWrongRegistryContextAndPendingInteractionRejectUpgrade" fullname="WarehouseShelterTests.MissingDependenciesWrongRegistryContextAndPendingInteractionRejectUpgrade" methodname="MissingDependenciesWrongRegistryContextAndPendingInteractionRejectUpgrade" classname="WarehouseShelterTests" runstate="Runnable" seed="799342857" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000833" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1321" name="NonDefaultWarehouseWidthCanUpgradeOnlyByAddingRows" fullname="WarehouseShelterTests.NonDefaultWarehouseWidthCanUpgradeOnlyByAddingRows" methodname="NonDefaultWarehouseWidthCanUpgradeOnlyByAddingRows" classname="WarehouseShelterTests" runstate="Runnable" seed="203341092" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000739" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1338" name="QuickSpaceQueryDoesNotRotateForbiddenItemsOrRepairIllegalOrientation" fullname="WarehouseShelterTests.QuickSpaceQueryDoesNotRotateForbiddenItemsOrRepairIllegalOrientation" classname="WarehouseShelterTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.010820" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1336" name="QuickSpaceQueryDoesNotRotateForbiddenItemsOrRepairIllegalOrientation(False,OutOfBounds)" fullname="WarehouseShelterTests.QuickSpaceQueryDoesNotRotateForbiddenItemsOrRepairIllegalOrientation(False,OutOfBounds)" methodname="QuickSpaceQueryDoesNotRotateForbiddenItemsOrRepairIllegalOrientation" classname="WarehouseShelterTests" runstate="Runnable" seed="1664120834" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001551" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1337" name="QuickSpaceQueryDoesNotRotateForbiddenItemsOrRepairIllegalOrientation(True,RotationNotAllowed)" fullname="WarehouseShelterTests.QuickSpaceQueryDoesNotRotateForbiddenItemsOrRepairIllegalOrientation(True,RotationNotAllowed)" methodname="QuickSpaceQueryDoesNotRotateForbiddenItemsOrRepairIllegalOrientation" classname="WarehouseShelterTests" runstate="Runnable" seed="1130492955" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000349" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1349" name="QuickSpaceQueryDoesNotSkipExistingInvalidPlacementToFindAnotherCell" fullname="WarehouseShelterTests.QuickSpaceQueryDoesNotSkipExistingInvalidPlacementToFindAnotherCell" methodname="QuickSpaceQueryDoesNotSkipExistingInvalidPlacementToFindAnotherCell" classname="WarehouseShelterTests" runstate="Runnable" seed="2039732550" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000476" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1330" name="QuickSpaceQueryExhaustsPreferredOrientationBeforeTryingAlternate" fullname="WarehouseShelterTests.QuickSpaceQueryExhaustsPreferredOrientationBeforeTryingAlternate" classname="WarehouseShelterTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.008410" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1328" name="QuickSpaceQueryExhaustsPreferredOrientationBeforeTryingAlternate(False)" fullname="WarehouseShelterTests.QuickSpaceQueryExhaustsPreferredOrientationBeforeTryingAlternate(False)" methodname="QuickSpaceQueryExhaustsPreferredOrientationBeforeTryingAlternate" classname="WarehouseShelterTests" runstate="Runnable" seed="802630889" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001017" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1329" name="QuickSpaceQueryExhaustsPreferredOrientationBeforeTryingAlternate(True)" fullname="WarehouseShelterTests.QuickSpaceQueryExhaustsPreferredOrientationBeforeTryingAlternate(True)" methodname="QuickSpaceQueryExhaustsPreferredOrientationBeforeTryingAlternate" classname="WarehouseShelterTests" runstate="Runnable" seed="1858687903" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000293" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1348" name="QuickSpaceQueryKeepsExistingIdentityOwnershipAndConfigurationValidation" fullname="WarehouseShelterTests.QuickSpaceQueryKeepsExistingIdentityOwnershipAndConfigurationValidation" methodname="QuickSpaceQueryKeepsExistingIdentityOwnershipAndConfigurationValidation" classname="WarehouseShelterTests" runstate="Runnable" seed="1147453416" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000596" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1341" name="QuickSpaceQueryRejectsBothOversizedOrientationsAndPreservesOutputDefaults" fullname="WarehouseShelterTests.QuickSpaceQueryRejectsBothOversizedOrientationsAndPreservesOutputDefaults" classname="WarehouseShelterTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.006578" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1339" name="QuickSpaceQueryRejectsBothOversizedOrientationsAndPreservesOutputDefaults(False)" fullname="WarehouseShelterTests.QuickSpaceQueryRejectsBothOversizedOrientationsAndPreservesOutputDefaults(False)" methodname="QuickSpaceQueryRejectsBothOversizedOrientationsAndPreservesOutputDefaults" classname="WarehouseShelterTests" runstate="Runnable" seed="1587901150" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000633" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1340" name="QuickSpaceQueryRejectsBothOversizedOrientationsAndPreservesOutputDefaults(True)" fullname="WarehouseShelterTests.QuickSpaceQueryRejectsBothOversizedOrientationsAndPreservesOutputDefaults(True)" methodname="QuickSpaceQueryRejectsBothOversizedOrientationsAndPreservesOutputDefaults" classname="WarehouseShelterTests" runstate="Runnable" seed="1920545805" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000288" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-suite type="ParameterizedMethod" id="1344" name="QuickSpaceQueryRejectsFullOrFragmentedSpaceWithoutMutatingLayout" fullname="WarehouseShelterTests.QuickSpaceQueryRejectsFullOrFragmentedSpaceWithoutMutatingLayout" classname="WarehouseShelterTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.006619" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1342" name="QuickSpaceQueryRejectsFullOrFragmentedSpaceWithoutMutatingLayout(False)" fullname="WarehouseShelterTests.QuickSpaceQueryRejectsFullOrFragmentedSpaceWithoutMutatingLayout(False)" methodname="QuickSpaceQueryRejectsFullOrFragmentedSpaceWithoutMutatingLayout" classname="WarehouseShelterTests" runstate="Runnable" seed="88974064" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000914" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1343" name="QuickSpaceQueryRejectsFullOrFragmentedSpaceWithoutMutatingLayout(True)" fullname="WarehouseShelterTests.QuickSpaceQueryRejectsFullOrFragmentedSpaceWithoutMutatingLayout(True)" methodname="QuickSpaceQueryRejectsFullOrFragmentedSpaceWithoutMutatingLayout" classname="WarehouseShelterTests" runstate="Runnable" seed="824079482" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000531" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1346" name="QuickSpaceQueryRejectsPendingInteractionWithoutTakingOrReleasingItsClaim" fullname="WarehouseShelterTests.QuickSpaceQueryRejectsPendingInteractionWithoutTakingOrReleasingItsClaim" methodname="QuickSpaceQueryRejectsPendingInteractionWithoutTakingOrReleasingItsClaim" classname="WarehouseShelterTests" runstate="Runnable" seed="18764207" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000858" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1347" name="QuickSpaceQueryRejectsReentryDuringWarehouseNotification" fullname="WarehouseShelterTests.QuickSpaceQueryRejectsReentryDuringWarehouseNotification" methodname="QuickSpaceQueryRejectsReentryDuringWarehouseNotification" classname="WarehouseShelterTests" runstate="Runnable" seed="1077469970" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000853" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1345" name="QuickSpaceQueryRequiresReadyManagerAndShelterPermission" fullname="WarehouseShelterTests.QuickSpaceQueryRequiresReadyManagerAndShelterPermission" methodname="QuickSpaceQueryRequiresReadyManagerAndShelterPermission" classname="WarehouseShelterTests" runstate="Runnable" seed="1742095543" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000471" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1335" name="QuickSpaceQueryTriesAllowedAlternateWhenPreferredCannotFit" fullname="WarehouseShelterTests.QuickSpaceQueryTriesAllowedAlternateWhenPreferredCannotFit" classname="WarehouseShelterTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.029373" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1331" name="QuickSpaceQueryTriesAllowedAlternateWhenPreferredCannotFit(False,False)" fullname="WarehouseShelterTests.QuickSpaceQueryTriesAllowedAlternateWhenPreferredCannotFit(False,False)" methodname="QuickSpaceQueryTriesAllowedAlternateWhenPreferredCannotFit" classname="WarehouseShelterTests" runstate="Runnable" seed="1611225532" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001001" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1332" name="QuickSpaceQueryTriesAllowedAlternateWhenPreferredCannotFit(True,False)" fullname="WarehouseShelterTests.QuickSpaceQueryTriesAllowedAlternateWhenPreferredCannotFit(True,False)" methodname="QuickSpaceQueryTriesAllowedAlternateWhenPreferredCannotFit" classname="WarehouseShelterTests" runstate="Runnable" seed="1364669824" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000259" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1333" name="QuickSpaceQueryTriesAllowedAlternateWhenPreferredCannotFit(False,True)" fullname="WarehouseShelterTests.QuickSpaceQueryTriesAllowedAlternateWhenPreferredCannotFit(False,True)" methodname="QuickSpaceQueryTriesAllowedAlternateWhenPreferredCannotFit" classname="WarehouseShelterTests" runstate="Runnable" seed="1172481488" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.002141" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1334" name="QuickSpaceQueryTriesAllowedAlternateWhenPreferredCannotFit(True,True)" fullname="WarehouseShelterTests.QuickSpaceQueryTriesAllowedAlternateWhenPreferredCannotFit(True,True)" methodname="QuickSpaceQueryTriesAllowedAlternateWhenPreferredCannotFit" classname="WarehouseShelterTests" runstate="Runnable" seed="1758666282" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000464" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1350" name="QuickSpaceQueryUsesNewRowsAfterUpgradeWithoutChangingActivationOrStoredItems" fullname="WarehouseShelterTests.QuickSpaceQueryUsesNewRowsAfterUpgradeWithoutChangingActivationOrStoredItems" methodname="QuickSpaceQueryUsesNewRowsAfterUpgradeWithoutChangingActivationOrStoredItems" classname="WarehouseShelterTests" runstate="Runnable" seed="2107209975" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001121" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1327" name="QuickSpaceQueryUsesRowMajorOrderWithoutChangingRuntimeStateOrNotifying" fullname="WarehouseShelterTests.QuickSpaceQueryUsesRowMajorOrderWithoutChangingRuntimeStateOrNotifying" methodname="QuickSpaceQueryUsesRowMajorOrderWithoutChangingRuntimeStateOrNotifying" classname="WarehouseShelterTests" runstate="Runnable" seed="2100740045" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001007" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1324" name="ReinitializationDoesNotDuplicateEligibilityNotificationsAndOnlyCurrentOwnerCanReleaseBusyState" fullname="WarehouseShelterTests.ReinitializationDoesNotDuplicateEligibilityNotificationsAndOnlyCurrentOwnerCanReleaseBusyState" methodname="ReinitializationDoesNotDuplicateEligibilityNotificationsAndOnlyCurrentOwnerCanReleaseBusyState" classname="WarehouseShelterTests" runstate="Runnable" seed="1154479250" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.001278" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1326" name="RejectedAuthoritativeLossKeepsPlacementAndRetainedState" fullname="WarehouseShelterTests.RejectedAuthoritativeLossKeepsPlacementAndRetainedState" methodname="RejectedAuthoritativeLossKeepsPlacementAndRetainedState" classname="WarehouseShelterTests" runstate="Runnable" seed="1588221098" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000415" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1312" name="UpgradeRechecksAuthoritativeEvInsteadOfTrustingStaleButton" fullname="WarehouseShelterTests.UpgradeRechecksAuthoritativeEvInsteadOfTrustingStaleButton" methodname="UpgradeRechecksAuthoritativeEvInsteadOfTrustingStaleButton" classname="WarehouseShelterTests" runstate="Runnable" seed="752258413" result="Passed" start-time="2026-10-18 23:54:32Z" end-time="2026-10-18 23:54:32Z" duration="0.000393" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/cs200/AppData/LocalLow/DefaultCompany/DD451Demo\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

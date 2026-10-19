@@ -1,0 +1,6 @@
+DisabledRestore=True
+Exploded=True
+HiddenAfterExplosion=True
+NextRound=True
+DisabledNextRoundIntensity=8.000
+SameRoundRejected=True

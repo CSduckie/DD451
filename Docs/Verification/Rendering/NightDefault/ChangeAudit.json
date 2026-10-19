@@ -1,0 +1,599 @@
+{
+  "Task": "Rendering / NightDefault",
+  "CaptureStartedUtc": "2026-10-19T08:13:10.5605283Z",
+  "CaptureCompletedUtc": "2026-10-19T08:13:11.9394951Z",
+  "Method": "Read-only Assets hash and complete text comparison against retained Before copies; baseline scope is BeforeHashes.json. Docs outputs only; no Unity calls, no test reruns.",
+  "BaselineManifest": "BeforeHashes.json",
+  "BaselineCount": 17,
+  "Summary": {
+    "ExistingChangedCount": 14,
+    "ExistingUnchangedCount": 3,
+    "RetainedBeforeCopyHashMatchCount": 17,
+    "ExistingMetaUnchangedCount": 17,
+    "EntireTextMatchesOnlyAllowedTransformCount": 17,
+    "ChangedScenes": 11,
+    "SkyboxOnlyScenes": 7,
+    "SkyboxAndClearFlagsScenes": 4,
+    "ChangedBuilders": 3,
+    "AssetsSceneCount": 12,
+    "CreatedValidationSceneCountInDocs": 3,
+    "UnexpectedChanges": 0
+  },
+  "ExistingFiles": [
+    {
+      "Path": "Assets\\Scenes\\Bootstrap.unity",
+      "BaselineHash": "9063DB1C2FD9EFBB83A120531BCA35644BE835D203A68EC49FBB1B8306526500",
+      "CurrentHash": "C5E5CBACB10DA5B087420D64CA42761C2822627EFF5C160ADECE1E04DE4C9DED",
+      "RetainedBeforeCopyMatchesManifest": true,
+      "Changed": true,
+      "AllowedChanges": [
+        "RenderSettings.m_SkyboxMaterial: built-in default -> ShelterNightSkybox"
+      ],
+      "EntireTextEqualsOnlyAllowedTransform": true,
+      "MetaHash": "7949600BE4F1DD1DCA13B37C142445FE5EB3F62518153EA2BA1B725AD567F1D3",
+      "BeforeMetaHash": "7949600BE4F1DD1DCA13B37C142445FE5EB3F62518153EA2BA1B725AD567F1D3",
+      "MetaUnchanged": true,
+      "Guid": "5f45b6aa9b400474bb67369ef98f77d8",
+      "LastWriteTimeUtc": "2026-10-19T08:10:45.9463604Z",
+      "ObservedUtc": "2026-10-19T08:13:10.6783845Z",
+      "Diff": "diff --git \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Scenes\\\\Bootstrap.unity\" \"b/E:\\\\DD451\\\\Assets\\\\Scenes\\\\Bootstrap.unity\"\r\nindex 2336291..32d1743 100644\r\n--- \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Scenes\\\\Bootstrap.unity\"\r\n+++ \"b/E:\\\\DD451\\\\Assets\\\\Scenes\\\\Bootstrap.unity\"\r\n@@ -26,7 +26,7 @@ RenderSettings:\r\n   m_AmbientIntensity: 1\r\n   m_AmbientMode: 0\r\n   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}\r\n-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}\r\n+  m_SkyboxMaterial: {fileID: 2100000, guid: 8ea61fa5552419d4fbbc16241b881895, type: 2}\r\n   m_HaloStrength: 0.5\r\n   m_FlareStrength: 1\r\n   m_FlareFadeSpeed: 3"
+    },
+    {
+      "Path": "Assets\\Scenes\\Ruins.unity",
+      "BaselineHash": "C0E39DA0280F8053AD11F0DD092C3ECC1D881B98E5E49DC59DD45F2B0D3281D0",
+      "CurrentHash": "4A535E92CEA85883EAA63896A04E25CE5050954F14F84B30F6B62D256FF6742A",
+      "RetainedBeforeCopyMatchesManifest": true,
+      "Changed": true,
+      "AllowedChanges": [
+        "RenderSettings.m_SkyboxMaterial: built-in default -> ShelterNightSkybox"
+      ],
+      "EntireTextEqualsOnlyAllowedTransform": true,
+      "MetaHash": "71BD0E68CE9B34EF682661D60BCD36605007FE6FFE66D8FD09D1A56542A66594",
+      "BeforeMetaHash": "71BD0E68CE9B34EF682661D60BCD36605007FE6FFE66D8FD09D1A56542A66594",
+      "MetaUnchanged": true,
+      "Guid": "d88085f5780f0f247b04b5d152f8ad15",
+      "LastWriteTimeUtc": "2026-10-19T08:10:46.2910616Z",
+      "ObservedUtc": "2026-10-19T08:13:10.7457123Z",
+      "Diff": "diff --git \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Scenes\\\\Ruins.unity\" \"b/E:\\\\DD451\\\\Assets\\\\Scenes\\\\Ruins.unity\"\r\nindex 7a2365b..7401551 100644\r\n--- \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Scenes\\\\Ruins.unity\"\r\n+++ \"b/E:\\\\DD451\\\\Assets\\\\Scenes\\\\Ruins.unity\"\r\n@@ -26,7 +26,7 @@ RenderSettings:\r\n   m_AmbientIntensity: 1\r\n   m_AmbientMode: 0\r\n   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}\r\n-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}\r\n+  m_SkyboxMaterial: {fileID: 2100000, guid: 8ea61fa5552419d4fbbc16241b881895, type: 2}\r\n   m_HaloStrength: 0.5\r\n   m_FlareStrength: 1\r\n   m_FlareFadeSpeed: 3"
+    },
+    {
+      "Path": "Assets\\Scenes\\SampleScene.unity",
+      "BaselineHash": "AA55BCC6DD3B5E6DCFA46BD3CB0B0CF606E22B81B2ED8D9FA34D7005944201CA",
+      "CurrentHash": "27C05A6B99D302B96E43169A6EF96122CDB360AC85ABD6F0C481102B06CA2C97",
+      "RetainedBeforeCopyMatchesManifest": true,
+      "Changed": true,
+      "AllowedChanges": [
+        "RenderSettings.m_SkyboxMaterial: built-in default -> ShelterNightSkybox"
+      ],
+      "EntireTextEqualsOnlyAllowedTransform": true,
+      "MetaHash": "B5815A6B12AFAF810577BC89041C4CE46516C7CD6609693F8DB616F8E5584D80",
+      "BeforeMetaHash": "B5815A6B12AFAF810577BC89041C4CE46516C7CD6609693F8DB616F8E5584D80",
+      "MetaUnchanged": true,
+      "Guid": "99c9720ab356a0642a771bea13969a05",
+      "LastWriteTimeUtc": "2026-10-19T08:10:46.5305647Z",
+      "ObservedUtc": "2026-10-19T08:13:10.7920831Z",
+      "Diff": "diff --git \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Scenes\\\\SampleScene.unity\" \"b/E:\\\\DD451\\\\Assets\\\\Scenes\\\\SampleScene.unity\"\r\nindex 59064d1..ecc2927 100644\r\n--- \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Scenes\\\\SampleScene.unity\"\r\n+++ \"b/E:\\\\DD451\\\\Assets\\\\Scenes\\\\SampleScene.unity\"\r\n@@ -26,7 +26,7 @@ RenderSettings:\r\n   m_AmbientIntensity: 1\r\n   m_AmbientMode: 0\r\n   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}\r\n-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}\r\n+  m_SkyboxMaterial: {fileID: 2100000, guid: 8ea61fa5552419d4fbbc16241b881895, type: 2}\r\n   m_HaloStrength: 0.5\r\n   m_FlareStrength: 1\r\n   m_FlareFadeSpeed: 3"
+    },
+    {
+      "Path": "Assets\\Scenes\\Shelter.unity",
+      "BaselineHash": "D1DD18A573846182F45BDD2E8A802A6F0FFC8E044D3C1ED3F9EE1B71A7CAF46F",
+      "CurrentHash": "D1DD18A573846182F45BDD2E8A802A6F0FFC8E044D3C1ED3F9EE1B71A7CAF46F",
+      "RetainedBeforeCopyMatchesManifest": true,
+      "Changed": false,
+      "AllowedChanges": [],
+      "EntireTextEqualsOnlyAllowedTransform": true,
+      "MetaHash": "E32C6E5FFC8F10D2BB611941967203616E52F76353A7722CF717703EDD4D2889",
+      "BeforeMetaHash": "E32C6E5FFC8F10D2BB611941967203616E52F76353A7722CF717703EDD4D2889",
+      "MetaUnchanged": true,
+      "Guid": "3945e1048db64ac479e4afaa4e8cb06c",
+      "LastWriteTimeUtc": "2026-10-19T08:07:21.202518Z",
+      "ObservedUtc": "2026-10-19T08:13:10.8576307Z",
+      "Diff": ""
+    },
+    {
+      "Path": "Assets\\Scenes\\Tests\\Backpack\\BackpackTest.unity",
+      "BaselineHash": "B7DCFBCA2D59276C1308242824B49CACD323572F1944644857BDA0DE9962015E",
+      "CurrentHash": "F6CF6D92C805B1D06B1FD8DF36BF94C743A767395AC2BE15E0497EDB65DA3E40",
+      "RetainedBeforeCopyMatchesManifest": true,
+      "Changed": true,
+      "AllowedChanges": [
+        "RenderSettings.m_SkyboxMaterial: built-in default -> ShelterNightSkybox"
+      ],
+      "EntireTextEqualsOnlyAllowedTransform": true,
+      "MetaHash": "A463B4A292ED09D1C93D2F191DC7F7E68E22C3D73AF6F6933970B814A99B0A1C",
+      "BeforeMetaHash": "A463B4A292ED09D1C93D2F191DC7F7E68E22C3D73AF6F6933970B814A99B0A1C",
+      "MetaUnchanged": true,
+      "Guid": "87b217a5eaafa224e92a4989d21ecf75",
+      "LastWriteTimeUtc": "2026-10-19T08:10:46.9787009Z",
+      "ObservedUtc": "2026-10-19T08:13:10.9248947Z",
+      "Diff": "diff --git \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Scenes\\\\Tests\\\\Backpack\\\\BackpackTest.unity\" \"b/E:\\\\DD451\\\\Assets\\\\Scenes\\\\Tests\\\\Backpack\\\\BackpackTest.unity\"\r\nindex 440f15b..29234f9 100644\r\n--- \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Scenes\\\\Tests\\\\Backpack\\\\BackpackTest.unity\"\r\n+++ \"b/E:\\\\DD451\\\\Assets\\\\Scenes\\\\Tests\\\\Backpack\\\\BackpackTest.unity\"\r\n@@ -26,7 +26,7 @@ RenderSettings:\r\n   m_AmbientIntensity: 1\r\n   m_AmbientMode: 0\r\n   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}\r\n-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}\r\n+  m_SkyboxMaterial: {fileID: 2100000, guid: 8ea61fa5552419d4fbbc16241b881895, type: 2}\r\n   m_HaloStrength: 0.5\r\n   m_FlareStrength: 1\r\n   m_FlareFadeSpeed: 3"
+    },
+    {
+      "Path": "Assets\\Scenes\\Tests\\Base\\BaseTest.unity",
+      "BaselineHash": "E8AE99910E12706D13BEE7716520C2AFDE6A9F436A55E414E123CE25E442E144",
+      "CurrentHash": "79A6EAB44A3649D33DA13A6F63E9C746921DC41D0547640044D104DB3F23243B",
+      "RetainedBeforeCopyMatchesManifest": true,
+      "Changed": true,
+      "AllowedChanges": [
+        "RenderSettings.m_SkyboxMaterial: built-in default -> ShelterNightSkybox",
+        "Camera.m_ClearFlags: 2 (SolidColor) -> 1 (Skybox)"
+      ],
+      "EntireTextEqualsOnlyAllowedTransform": true,
+      "MetaHash": "DECA6E6DAE4D7947BEAD518AC73E42E3212955AB678366AEA75E18655A4877CC",
+      "BeforeMetaHash": "DECA6E6DAE4D7947BEAD518AC73E42E3212955AB678366AEA75E18655A4877CC",
+      "MetaUnchanged": true,
+      "Guid": "4c4b27528e49e824b8bab9101c1d75b9",
+      "LastWriteTimeUtc": "2026-10-19T08:10:47.2198347Z",
+      "ObservedUtc": "2026-10-19T08:13:10.970597Z",
+      "Diff": "diff --git \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Scenes\\\\Tests\\\\Base\\\\BaseTest.unity\" \"b/E:\\\\DD451\\\\Assets\\\\Scenes\\\\Tests\\\\Base\\\\BaseTest.unity\"\r\nindex 2fef231..b2ffc0c 100644\r\n--- \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Scenes\\\\Tests\\\\Base\\\\BaseTest.unity\"\r\n+++ \"b/E:\\\\DD451\\\\Assets\\\\Scenes\\\\Tests\\\\Base\\\\BaseTest.unity\"\r\n@@ -26,7 +26,7 @@ RenderSettings:\r\n   m_AmbientIntensity: 1\r\n   m_AmbientMode: 0\r\n   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}\r\n-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}\r\n+  m_SkyboxMaterial: {fileID: 2100000, guid: 8ea61fa5552419d4fbbc16241b881895, type: 2}\r\n   m_HaloStrength: 0.5\r\n   m_FlareStrength: 1\r\n   m_FlareFadeSpeed: 3\r\n@@ -339,7 +339,7 @@ Camera:\r\n   m_GameObject: {fileID: 2119988894}\r\n   m_Enabled: 1\r\n   serializedVersion: 2\r\n-  m_ClearFlags: 2\r\n+  m_ClearFlags: 1\r\n   m_BackGroundColor: {r: 0.08, g: 0.1, b: 0.14, a: 1}\r\n   m_projectionMatrixMode: 1\r\n   m_GateFitMode: 2"
+    },
+    {
+      "Path": "Assets\\Scenes\\Tests\\Enemy\\EnemyTest.unity",
+      "BaselineHash": "AA62E8EDC69AC0C08F7F4F8FA6DE3AD0425A0DDFB7FC344B85D20C7D40242200",
+      "CurrentHash": "718266BEF6D0A2B9165EA62725AA73346EAE8FA4E7F4DFB3C9F8135A7AFA6473",
+      "RetainedBeforeCopyMatchesManifest": true,
+      "Changed": true,
+      "AllowedChanges": [
+        "RenderSettings.m_SkyboxMaterial: built-in default -> ShelterNightSkybox"
+      ],
+      "EntireTextEqualsOnlyAllowedTransform": true,
+      "MetaHash": "C0A9DAB23896CA347B2C9EA4E221023A532CBF25F6279A51A02480E474543ACD",
+      "BeforeMetaHash": "C0A9DAB23896CA347B2C9EA4E221023A532CBF25F6279A51A02480E474543ACD",
+      "MetaUnchanged": true,
+      "Guid": "043cae8221be62a4b8af71b503bdf258",
+      "LastWriteTimeUtc": "2026-10-19T08:10:47.4874079Z",
+      "ObservedUtc": "2026-10-19T08:13:11.0170889Z",
+      "Diff": "diff --git \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Scenes\\\\Tests\\\\Enemy\\\\EnemyTest.unity\" \"b/E:\\\\DD451\\\\Assets\\\\Scenes\\\\Tests\\\\Enemy\\\\EnemyTest.unity\"\r\nindex 5c4de83..c33e69b 100644\r\n--- \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Scenes\\\\Tests\\\\Enemy\\\\EnemyTest.unity\"\r\n+++ \"b/E:\\\\DD451\\\\Assets\\\\Scenes\\\\Tests\\\\Enemy\\\\EnemyTest.unity\"\r\n@@ -26,7 +26,7 @@ RenderSettings:\r\n   m_AmbientIntensity: 1\r\n   m_AmbientMode: 0\r\n   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}\r\n-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}\r\n+  m_SkyboxMaterial: {fileID: 2100000, guid: 8ea61fa5552419d4fbbc16241b881895, type: 2}\r\n   m_HaloStrength: 0.5\r\n   m_FlareStrength: 1\r\n   m_FlareFadeSpeed: 3"
+    },
+    {
+      "Path": "Assets\\Scenes\\Tests\\Items\\ItemsTest.unity",
+      "BaselineHash": "2AFE8D2E3A5C641B8F675A7C3F3A070849E7B743CCC16E0280B21C28B11F7001",
+      "CurrentHash": "37ADC7525EB747CA31A0E9204D4E318D1252D42AF5EED942028FCB42A4D24E1F",
+      "RetainedBeforeCopyMatchesManifest": true,
+      "Changed": true,
+      "AllowedChanges": [
+        "RenderSettings.m_SkyboxMaterial: built-in default -> ShelterNightSkybox",
+        "Camera.m_ClearFlags: 2 (SolidColor) -> 1 (Skybox)"
+      ],
+      "EntireTextEqualsOnlyAllowedTransform": true,
+      "MetaHash": "6D25FF21E24AC19D834188B163CAEEE1821631E88305DE137CAFC972E47B8BBF",
+      "BeforeMetaHash": "6D25FF21E24AC19D834188B163CAEEE1821631E88305DE137CAFC972E47B8BBF",
+      "MetaUnchanged": true,
+      "Guid": "451d0fe10b9a9da4cad10b5852f8427c",
+      "LastWriteTimeUtc": "2026-10-19T08:10:47.7386888Z",
+      "ObservedUtc": "2026-10-19T08:13:11.0607829Z",
+      "Diff": "diff --git \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Scenes\\\\Tests\\\\Items\\\\ItemsTest.unity\" \"b/E:\\\\DD451\\\\Assets\\\\Scenes\\\\Tests\\\\Items\\\\ItemsTest.unity\"\r\nindex f23c6cd..f66bea6 100644\r\n--- \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Scenes\\\\Tests\\\\Items\\\\ItemsTest.unity\"\r\n+++ \"b/E:\\\\DD451\\\\Assets\\\\Scenes\\\\Tests\\\\Items\\\\ItemsTest.unity\"\r\n@@ -26,7 +26,7 @@ RenderSettings:\r\n   m_AmbientIntensity: 1\r\n   m_AmbientMode: 0\r\n   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}\r\n-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}\r\n+  m_SkyboxMaterial: {fileID: 2100000, guid: 8ea61fa5552419d4fbbc16241b881895, type: 2}\r\n   m_HaloStrength: 0.5\r\n   m_FlareStrength: 1\r\n   m_FlareFadeSpeed: 3\r\n@@ -551,7 +551,7 @@ Camera:\r\n   m_GameObject: {fileID: 919795101}\r\n   m_Enabled: 1\r\n   serializedVersion: 2\r\n-  m_ClearFlags: 2\r\n+  m_ClearFlags: 1\r\n   m_BackGroundColor: {r: 0.08, g: 0.1, b: 0.14, a: 1}\r\n   m_projectionMatrixMode: 1\r\n   m_GateFitMode: 2"
+    },
+    {
+      "Path": "Assets\\Scenes\\Tests\\Localization\\LocalizationTest.unity",
+      "BaselineHash": "5C6DE36F4330D5EBA0A5A0B3126B0A82A7FD3B6E08A04D9C22F0B0A65E25693A",
+      "CurrentHash": "D667F8618A9EB09A59219F6A64B47A925F96CAB63778AC51361982843FEE044A",
+      "RetainedBeforeCopyMatchesManifest": true,
+      "Changed": true,
+      "AllowedChanges": [
+        "RenderSettings.m_SkyboxMaterial: built-in default -> ShelterNightSkybox",
+        "Camera.m_ClearFlags: 2 (SolidColor) -> 1 (Skybox)"
+      ],
+      "EntireTextEqualsOnlyAllowedTransform": true,
+      "MetaHash": "3F457135A5551F76BDF1167777F2388A2028BEA90829EE37AA20740391716848",
+      "BeforeMetaHash": "3F457135A5551F76BDF1167777F2388A2028BEA90829EE37AA20740391716848",
+      "MetaUnchanged": true,
+      "Guid": "afe646b2f26f2964c821930727e09b33",
+      "LastWriteTimeUtc": "2026-10-19T08:10:47.9838855Z",
+      "ObservedUtc": "2026-10-19T08:13:11.1081835Z",
+      "Diff": "diff --git \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Scenes\\\\Tests\\\\Localization\\\\LocalizationTest.unity\" \"b/E:\\\\DD451\\\\Assets\\\\Scenes\\\\Tests\\\\Localization\\\\LocalizationTest.unity\"\r\nindex 8b00e89..b2b723d 100644\r\n--- \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Scenes\\\\Tests\\\\Localization\\\\LocalizationTest.unity\"\r\n+++ \"b/E:\\\\DD451\\\\Assets\\\\Scenes\\\\Tests\\\\Localization\\\\LocalizationTest.unity\"\r\n@@ -26,7 +26,7 @@ RenderSettings:\r\n   m_AmbientIntensity: 1\r\n   m_AmbientMode: 0\r\n   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}\r\n-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}\r\n+  m_SkyboxMaterial: {fileID: 2100000, guid: 8ea61fa5552419d4fbbc16241b881895, type: 2}\r\n   m_HaloStrength: 0.5\r\n   m_FlareStrength: 1\r\n   m_FlareFadeSpeed: 3\r\n@@ -454,7 +454,7 @@ Camera:\r\n   m_GameObject: {fileID: 682967711}\r\n   m_Enabled: 1\r\n   serializedVersion: 2\r\n-  m_ClearFlags: 2\r\n+  m_ClearFlags: 1\r\n   m_BackGroundColor: {r: 0.035, g: 0.055, b: 0.085, a: 1}\r\n   m_projectionMatrixMode: 1\r\n   m_GateFitMode: 2"
+    },
+    {
+      "Path": "Assets\\Scenes\\Tests\\Loot\\LootTest.unity",
+      "BaselineHash": "00D2F271D9BEFA5F60558324821D66632C67FF7AE71A67949F2F6C53671B107B",
+      "CurrentHash": "57470454AD62CA0D9DF21D45A42CBA67EC9E0E195FDE7B7F34A8587E76B1E002",
+      "RetainedBeforeCopyMatchesManifest": true,
+      "Changed": true,
+      "AllowedChanges": [
+        "RenderSettings.m_SkyboxMaterial: built-in default -> ShelterNightSkybox"
+      ],
+      "EntireTextEqualsOnlyAllowedTransform": true,
+      "MetaHash": "5E5BC4F24F5B7ADC037649C6F371C629B9DDEDBFEAFE8A8748A54C4DB026E088",
+      "BeforeMetaHash": "5E5BC4F24F5B7ADC037649C6F371C629B9DDEDBFEAFE8A8748A54C4DB026E088",
+      "MetaUnchanged": true,
+      "Guid": "843b4b6fc29f9dd4c985063c0a866952",
+      "LastWriteTimeUtc": "2026-10-19T08:10:48.2387958Z",
+      "ObservedUtc": "2026-10-19T08:13:11.1814084Z",
+      "Diff": "diff --git \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Scenes\\\\Tests\\\\Loot\\\\LootTest.unity\" \"b/E:\\\\DD451\\\\Assets\\\\Scenes\\\\Tests\\\\Loot\\\\LootTest.unity\"\r\nindex 1df35ea..efdc3cd 100644\r\n--- \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Scenes\\\\Tests\\\\Loot\\\\LootTest.unity\"\r\n+++ \"b/E:\\\\DD451\\\\Assets\\\\Scenes\\\\Tests\\\\Loot\\\\LootTest.unity\"\r\n@@ -26,7 +26,7 @@ RenderSettings:\r\n   m_AmbientIntensity: 1\r\n   m_AmbientMode: 0\r\n   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}\r\n-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}\r\n+  m_SkyboxMaterial: {fileID: 2100000, guid: 8ea61fa5552419d4fbbc16241b881895, type: 2}\r\n   m_HaloStrength: 0.5\r\n   m_FlareStrength: 1\r\n   m_FlareFadeSpeed: 3"
+    },
+    {
+      "Path": "Assets\\Scenes\\Tests\\Player\\PlayerTest.unity",
+      "BaselineHash": "0E2D2BCA4F2084D39EE295DD7E505119B66F75443E83A5709895B5A6C6EF6775",
+      "CurrentHash": "A1C5D86611E1F7167CD4F5194BC2034615581C7C19C5AD46CC9A774F90C4E4C1",
+      "RetainedBeforeCopyMatchesManifest": true,
+      "Changed": true,
+      "AllowedChanges": [
+        "RenderSettings.m_SkyboxMaterial: built-in default -> ShelterNightSkybox"
+      ],
+      "EntireTextEqualsOnlyAllowedTransform": true,
+      "MetaHash": "D0C8D130B39642FC141319782AC1010FF15048B0CA60BDC2B3C62413B5B94214",
+      "BeforeMetaHash": "D0C8D130B39642FC141319782AC1010FF15048B0CA60BDC2B3C62413B5B94214",
+      "MetaUnchanged": true,
+      "Guid": "f19fab496f326f04fa736f9b6f4ef0b2",
+      "LastWriteTimeUtc": "2026-10-19T08:10:48.4781393Z",
+      "ObservedUtc": "2026-10-19T08:13:11.2295786Z",
+      "Diff": "diff --git \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Scenes\\\\Tests\\\\Player\\\\PlayerTest.unity\" \"b/E:\\\\DD451\\\\Assets\\\\Scenes\\\\Tests\\\\Player\\\\PlayerTest.unity\"\r\nindex 95520c6..47be2fa 100644\r\n--- \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Scenes\\\\Tests\\\\Player\\\\PlayerTest.unity\"\r\n+++ \"b/E:\\\\DD451\\\\Assets\\\\Scenes\\\\Tests\\\\Player\\\\PlayerTest.unity\"\r\n@@ -26,7 +26,7 @@ RenderSettings:\r\n   m_AmbientIntensity: 1\r\n   m_AmbientMode: 0\r\n   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}\r\n-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}\r\n+  m_SkyboxMaterial: {fileID: 2100000, guid: 8ea61fa5552419d4fbbc16241b881895, type: 2}\r\n   m_HaloStrength: 0.5\r\n   m_FlareStrength: 1\r\n   m_FlareFadeSpeed: 3"
+    },
+    {
+      "Path": "Assets\\Scenes\\Tests\\Warehouse\\WarehouseTest.unity",
+      "BaselineHash": "B661B3E4139570A2527C6D22A84282149772959A16A952DA55979BBB8F932D87",
+      "CurrentHash": "FAC095B74374FBFCF8F3C6670889F948CA41E0500E94E1E91B0D261F588B3A8F",
+      "RetainedBeforeCopyMatchesManifest": true,
+      "Changed": true,
+      "AllowedChanges": [
+        "RenderSettings.m_SkyboxMaterial: built-in default -> ShelterNightSkybox",
+        "Camera.m_ClearFlags: 2 (SolidColor) -> 1 (Skybox)"
+      ],
+      "EntireTextEqualsOnlyAllowedTransform": true,
+      "MetaHash": "3C0706359D0390E5A253C5FD702D42E49DA5B66AC0638821C9495A623E3B79D3",
+      "BeforeMetaHash": "3C0706359D0390E5A253C5FD702D42E49DA5B66AC0638821C9495A623E3B79D3",
+      "MetaUnchanged": true,
+      "Guid": "2641f3f3e79b968428c187532dcd13ab",
+      "LastWriteTimeUtc": "2026-10-19T08:10:48.7301357Z",
+      "ObservedUtc": "2026-10-19T08:13:11.2794021Z",
+      "Diff": "diff --git \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Scenes\\\\Tests\\\\Warehouse\\\\WarehouseTest.unity\" \"b/E:\\\\DD451\\\\Assets\\\\Scenes\\\\Tests\\\\Warehouse\\\\WarehouseTest.unity\"\r\nindex aaf9ec3..1fecec2 100644\r\n--- \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Scenes\\\\Tests\\\\Warehouse\\\\WarehouseTest.unity\"\r\n+++ \"b/E:\\\\DD451\\\\Assets\\\\Scenes\\\\Tests\\\\Warehouse\\\\WarehouseTest.unity\"\r\n@@ -26,7 +26,7 @@ RenderSettings:\r\n   m_AmbientIntensity: 1\r\n   m_AmbientMode: 0\r\n   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}\r\n-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}\r\n+  m_SkyboxMaterial: {fileID: 2100000, guid: 8ea61fa5552419d4fbbc16241b881895, type: 2}\r\n   m_HaloStrength: 0.5\r\n   m_FlareStrength: 1\r\n   m_FlareFadeSpeed: 3\r\n@@ -859,7 +859,7 @@ Camera:\r\n   m_GameObject: {fileID: 611826599}\r\n   m_Enabled: 1\r\n   serializedVersion: 2\r\n-  m_ClearFlags: 2\r\n+  m_ClearFlags: 1\r\n   m_BackGroundColor: {r: 0.025, g: 0.035, b: 0.055, a: 1}\r\n   m_projectionMatrixMode: 1\r\n   m_GateFitMode: 2"
+    },
+    {
+      "Path": "Assets\\Art\\Materials\\Environment\\ShelterNightSkybox.mat",
+      "BaselineHash": "175DC252138EE95FBE84AB95A09F03256C25C0DAA4A045535AC4380789F8E688",
+      "CurrentHash": "175DC252138EE95FBE84AB95A09F03256C25C0DAA4A045535AC4380789F8E688",
+      "RetainedBeforeCopyMatchesManifest": true,
+      "Changed": false,
+      "AllowedChanges": [],
+      "EntireTextEqualsOnlyAllowedTransform": true,
+      "MetaHash": "58C02D39845D47878023A1AC1C94A944B6C809EA0D343AC97C13E27CD634DCD3",
+      "BeforeMetaHash": "58C02D39845D47878023A1AC1C94A944B6C809EA0D343AC97C13E27CD634DCD3",
+      "MetaUnchanged": true,
+      "Guid": "8ea61fa5552419d4fbbc16241b881895",
+      "LastWriteTimeUtc": "2026-10-19T07:55:41.8535359Z",
+      "ObservedUtc": "2026-10-19T08:13:11.2967744Z",
+      "Diff": ""
+    },
+    {
+      "Path": "Assets\\Prefabs\\Player\\PlayerCamera.prefab",
+      "BaselineHash": "7456EE6888DE03CFFC87AA52AA31B800867507EAF82C05A91FF850C993F0FD64",
+      "CurrentHash": "7456EE6888DE03CFFC87AA52AA31B800867507EAF82C05A91FF850C993F0FD64",
+      "RetainedBeforeCopyMatchesManifest": true,
+      "Changed": false,
+      "AllowedChanges": [],
+      "EntireTextEqualsOnlyAllowedTransform": true,
+      "MetaHash": "00EF61A4E3B2C53252818DAA239D0DA2BFE0B00C06AF9DACB14824B4AD80B5ED",
+      "BeforeMetaHash": "00EF61A4E3B2C53252818DAA239D0DA2BFE0B00C06AF9DACB14824B4AD80B5ED",
+      "MetaUnchanged": true,
+      "Guid": "3cf4a390a92e98447ada0654fb991c91",
+      "LastWriteTimeUtc": "2026-10-19T07:58:33.930053Z",
+      "ObservedUtc": "2026-10-19T08:13:11.3134927Z",
+      "Diff": ""
+    },
+    {
+      "Path": "Assets\\Tests\\Player\\Editor\\PlayerTestSceneBuilder.cs",
+      "BaselineHash": "2E61BBEA701DD6D9ED7A92CE71698C862BF9D5AD1798A7BACE5D573EDC8F04CF",
+      "CurrentHash": "211166377D3C8E082856626966A4000255BBDCD4FFE1886E45AF1DF1F8BCE87C",
+      "RetainedBeforeCopyMatchesManifest": true,
+      "Changed": true,
+      "AllowedChanges": [
+        "One CameraClearFlags.SolidColor -> CameraClearFlags.Skybox"
+      ],
+      "EntireTextEqualsOnlyAllowedTransform": true,
+      "MetaHash": "13C24D9CC0AB6109C9C13104C3B6571E187C3095D746DBA572BD00772FC0BEBC",
+      "BeforeMetaHash": "13C24D9CC0AB6109C9C13104C3B6571E187C3095D746DBA572BD00772FC0BEBC",
+      "MetaUnchanged": true,
+      "Guid": "5d296f4d964764b4ba73b41181e42ac3",
+      "LastWriteTimeUtc": "2026-10-19T08:10:13.7196388Z",
+      "ObservedUtc": "2026-10-19T08:13:11.3578169Z",
+      "Diff": "diff --git \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Tests\\\\Player\\\\Editor\\\\PlayerTestSceneBuilder.cs\" \"b/E:\\\\DD451\\\\Assets\\\\Tests\\\\Player\\\\Editor\\\\PlayerTestSceneBuilder.cs\"\r\nindex dd5d8bf..11a326b 100644\r\n--- \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Tests\\\\Player\\\\Editor\\\\PlayerTestSceneBuilder.cs\"\r\n+++ \"b/E:\\\\DD451\\\\Assets\\\\Tests\\\\Player\\\\Editor\\\\PlayerTestSceneBuilder.cs\"\r\n@@ -78,7 +78,7 @@ public static class PlayerTestSceneBuilder\r\n             camera.orthographicSize = 5f;\r\n             camera.nearClipPlane = 0.1f;\r\n             camera.farClipPlane = 100f;\r\n-            camera.clearFlags = CameraClearFlags.SolidColor;\r\n+            camera.clearFlags = CameraClearFlags.Skybox;\r\n             camera.backgroundColor = new Color(0.07f, 0.1f, 0.16f);\r\n             CinemachineBrain brain = output.AddComponent<CinemachineBrain>();\r\n             brain.UpdateMethod = CinemachineBrain.UpdateMethods.LateUpdate;"
+    },
+    {
+      "Path": "Assets\\Tests\\Warehouse\\Editor\\WarehouseTestSceneBuilder.cs",
+      "BaselineHash": "898B8E537FC687F5CD6CEFBF464E574DA7702C80DE8A262D555F5076C39958F6",
+      "CurrentHash": "9DE88F26D3465A5F9717F6FBB9EF25AAB142C3879F7385C26378FBF78D2EB7D6",
+      "RetainedBeforeCopyMatchesManifest": true,
+      "Changed": true,
+      "AllowedChanges": [
+        "One CameraClearFlags.SolidColor -> CameraClearFlags.Skybox"
+      ],
+      "EntireTextEqualsOnlyAllowedTransform": true,
+      "MetaHash": "9C37FFA7C7D15A563A212B390DE2889C6F2FE38CFFF0CA3951160863AF74AD02",
+      "BeforeMetaHash": "9C37FFA7C7D15A563A212B390DE2889C6F2FE38CFFF0CA3951160863AF74AD02",
+      "MetaUnchanged": true,
+      "Guid": "be210ed74caa69a49a19d20f204d4afe",
+      "LastWriteTimeUtc": "2026-10-19T08:10:13.7222341Z",
+      "ObservedUtc": "2026-10-19T08:13:11.4035134Z",
+      "Diff": "diff --git \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Tests\\\\Warehouse\\\\Editor\\\\WarehouseTestSceneBuilder.cs\" \"b/E:\\\\DD451\\\\Assets\\\\Tests\\\\Warehouse\\\\Editor\\\\WarehouseTestSceneBuilder.cs\"\r\nindex 3c76f31..3bae008 100644\r\n--- \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Tests\\\\Warehouse\\\\Editor\\\\WarehouseTestSceneBuilder.cs\"\r\n+++ \"b/E:\\\\DD451\\\\Assets\\\\Tests\\\\Warehouse\\\\Editor\\\\WarehouseTestSceneBuilder.cs\"\r\n@@ -268,7 +268,7 @@ public static class WarehouseTestSceneBuilder\r\n         GameObject camera = new GameObject(\"Main Camera\", typeof(Camera), typeof(UniversalAdditionalCameraData));\r\n         camera.tag = \"MainCamera\";\r\n         camera.transform.position = new Vector3(0, 0, -10);\r\n-        camera.GetComponent<Camera>().clearFlags = CameraClearFlags.SolidColor;\r\n+        camera.GetComponent<Camera>().clearFlags = CameraClearFlags.Skybox;\r\n         camera.GetComponent<Camera>().backgroundColor = new Color(0.025f, 0.035f, 0.055f);\r\n         new GameObject(\"Directional Light\", typeof(Light)).GetComponent<Light>().type = LightType.Directional;\r\n         GameObject canvasObject = new GameObject(\"WarehouseCanvas\", typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));"
+    },
+    {
+      "Path": "Assets\\Tests\\Localization\\Editor\\LocalizationTestSceneBuilder.cs",
+      "BaselineHash": "6B13B018B94337A2B8ED928F9A563F43B931D539431FEC18700895791B28C6E4",
+      "CurrentHash": "4A4522218BF8C38CCFADE421CD7253B723B2CCCD130D458CD6142ED7239FB88A",
+      "RetainedBeforeCopyMatchesManifest": true,
+      "Changed": true,
+      "AllowedChanges": [
+        "One CameraClearFlags.SolidColor -> CameraClearFlags.Skybox"
+      ],
+      "EntireTextEqualsOnlyAllowedTransform": true,
+      "MetaHash": "1C185F0C97E2A686FBE5EFFDE9BD8ADDBC9B12B3D14AE839B07B7A6CF3F52EE2",
+      "BeforeMetaHash": "1C185F0C97E2A686FBE5EFFDE9BD8ADDBC9B12B3D14AE839B07B7A6CF3F52EE2",
+      "MetaUnchanged": true,
+      "Guid": "3fbcdeb1c0925fb4bba050f8760b43df",
+      "LastWriteTimeUtc": "2026-10-19T08:10:13.7235531Z",
+      "ObservedUtc": "2026-10-19T08:13:11.4488832Z",
+      "Diff": "diff --git \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Tests\\\\Localization\\\\Editor\\\\LocalizationTestSceneBuilder.cs\" \"b/E:\\\\DD451\\\\Assets\\\\Tests\\\\Localization\\\\Editor\\\\LocalizationTestSceneBuilder.cs\"\r\nindex c8372ed..b521e2d 100644\r\n--- \"a/E:\\\\DD451\\\\Docs\\\\Verification\\\\Rendering\\\\NightDefault\\\\Before\\\\Assets\\\\Tests\\\\Localization\\\\Editor\\\\LocalizationTestSceneBuilder.cs\"\r\n+++ \"b/E:\\\\DD451\\\\Assets\\\\Tests\\\\Localization\\\\Editor\\\\LocalizationTestSceneBuilder.cs\"\r\n@@ -124,7 +124,7 @@ public static class LocalizationTestSceneBuilder\r\n             WireModule(bootstrap);\r\n             Camera camera = new GameObject(\"Main Camera\", typeof(Camera), typeof(AudioListener), typeof(UniversalAdditionalCameraData)).GetComponent<Camera>();\r\n             camera.tag = \"MainCamera\";\r\n-            camera.clearFlags = CameraClearFlags.SolidColor;\r\n+            camera.clearFlags = CameraClearFlags.Skybox;\r\n             camera.backgroundColor = new Color(0.035f, 0.055f, 0.085f);\r\n             Light light = new GameObject(\"Directional Light\").AddComponent<Light>();\r\n             light.type = LightType.Directional;"
+    }
+  ],
+  "NewAssets": [
+    {
+      "Path": "Assets\\Editor\\ProjectNightEnvironment.cs",
+      "Exists": true,
+      "Sha256": "06B0F2037299A428B39AE923131BBD3F978B1E812937F789B29379C753F5A025",
+      "LastWriteUtc": "2026-10-19T08:09:20.4565774Z",
+      "GuidLine": null,
+      "GuidMatchPaths": null
+    },
+    {
+      "Path": "Assets\\Editor\\ProjectNightEnvironment.cs.meta",
+      "Exists": true,
+      "Sha256": "527E436A7986C307E99EC25DBCFA9FDA4DAEEF06E996C2AA87B93D572EFF74FE",
+      "LastWriteUtc": "2026-10-19T08:10:15.9589966Z",
+      "GuidLine": "guid: da6e8be50a7ed08479870b03338764e3",
+      "GuidMatchPaths": "Assets\\Editor\\ProjectNightEnvironment.cs.meta"
+    },
+    {
+      "Path": "Assets\\Editor.meta",
+      "Exists": true,
+      "Sha256": "9F28839F2A7E1656CD2C8786EF9FBD714A96ABC216B6A50CA6F3FC540A50A680",
+      "LastWriteUtc": "2026-10-19T08:10:17.0617951Z",
+      "GuidLine": "guid: 9a83e6df829e4be4cbb359cdef0df0d5",
+      "GuidMatchPaths": "Assets\\Editor.meta"
+    }
+  ],
+  "AssetsSceneInventory": [
+    {
+      "Path": "Assets\\Scenes\\Bootstrap.unity",
+      "Sha256": "C5E5CBACB10DA5B087420D64CA42761C2822627EFF5C160ADECE1E04DE4C9DED",
+      "SkyboxLine": "  m_SkyboxMaterial: {fileID: 2100000, guid: 8ea61fa5552419d4fbbc16241b881895, type: 2}"
+    },
+    {
+      "Path": "Assets\\Scenes\\Ruins.unity",
+      "Sha256": "4A535E92CEA85883EAA63896A04E25CE5050954F14F84B30F6B62D256FF6742A",
+      "SkyboxLine": "  m_SkyboxMaterial: {fileID: 2100000, guid: 8ea61fa5552419d4fbbc16241b881895, type: 2}"
+    },
+    {
+      "Path": "Assets\\Scenes\\SampleScene.unity",
+      "Sha256": "27C05A6B99D302B96E43169A6EF96122CDB360AC85ABD6F0C481102B06CA2C97",
+      "SkyboxLine": "  m_SkyboxMaterial: {fileID: 2100000, guid: 8ea61fa5552419d4fbbc16241b881895, type: 2}"
+    },
+    {
+      "Path": "Assets\\Scenes\\Shelter.unity",
+      "Sha256": "D1DD18A573846182F45BDD2E8A802A6F0FFC8E044D3C1ED3F9EE1B71A7CAF46F",
+      "SkyboxLine": "  m_SkyboxMaterial: {fileID: 2100000, guid: 8ea61fa5552419d4fbbc16241b881895, type: 2}"
+    },
+    {
+      "Path": "Assets\\Scenes\\Tests\\Backpack\\BackpackTest.unity",
+      "Sha256": "F6CF6D92C805B1D06B1FD8DF36BF94C743A767395AC2BE15E0497EDB65DA3E40",
+      "SkyboxLine": "  m_SkyboxMaterial: {fileID: 2100000, guid: 8ea61fa5552419d4fbbc16241b881895, type: 2}"
+    },
+    {
+      "Path": "Assets\\Scenes\\Tests\\Base\\BaseTest.unity",
+      "Sha256": "79A6EAB44A3649D33DA13A6F63E9C746921DC41D0547640044D104DB3F23243B",
+      "SkyboxLine": "  m_SkyboxMaterial: {fileID: 2100000, guid: 8ea61fa5552419d4fbbc16241b881895, type: 2}"
+    },
+    {
+      "Path": "Assets\\Scenes\\Tests\\Enemy\\EnemyTest.unity",
+      "Sha256": "718266BEF6D0A2B9165EA62725AA73346EAE8FA4E7F4DFB3C9F8135A7AFA6473",
+      "SkyboxLine": "  m_SkyboxMaterial: {fileID: 2100000, guid: 8ea61fa5552419d4fbbc16241b881895, type: 2}"
+    },
+    {
+      "Path": "Assets\\Scenes\\Tests\\Items\\ItemsTest.unity",
+      "Sha256": "37ADC7525EB747CA31A0E9204D4E318D1252D42AF5EED942028FCB42A4D24E1F",
+      "SkyboxLine": "  m_SkyboxMaterial: {fileID: 2100000, guid: 8ea61fa5552419d4fbbc16241b881895, type: 2}"
+    },
+    {
+      "Path": "Assets\\Scenes\\Tests\\Localization\\LocalizationTest.unity",
+      "Sha256": "D667F8618A9EB09A59219F6A64B47A925F96CAB63778AC51361982843FEE044A",
+      "SkyboxLine": "  m_SkyboxMaterial: {fileID: 2100000, guid: 8ea61fa5552419d4fbbc16241b881895, type: 2}"
+    },
+    {
+      "Path": "Assets\\Scenes\\Tests\\Loot\\LootTest.unity",
+      "Sha256": "57470454AD62CA0D9DF21D45A42CBA67EC9E0E195FDE7B7F34A8587E76B1E002",
+      "SkyboxLine": "  m_SkyboxMaterial: {fileID: 2100000, guid: 8ea61fa5552419d4fbbc16241b881895, type: 2}"
+    },
+    {
+      "Path": "Assets\\Scenes\\Tests\\Player\\PlayerTest.unity",
+      "Sha256": "A1C5D86611E1F7167CD4F5194BC2034615581C7C19C5AD46CC9A774F90C4E4C1",
+      "SkyboxLine": "  m_SkyboxMaterial: {fileID: 2100000, guid: 8ea61fa5552419d4fbbc16241b881895, type: 2}"
+    },
+    {
+      "Path": "Assets\\Scenes\\Tests\\Warehouse\\WarehouseTest.unity",
+      "Sha256": "FAC095B74374FBFCF8F3C6670889F948CA41E0500E94E1E91B0D261F588B3A8F",
+      "SkyboxLine": "  m_SkyboxMaterial: {fileID: 2100000, guid: 8ea61fa5552419d4fbbc16241b881895, type: 2}"
+    }
+  ],
+  "ValidationScenesRetainedInDocs": [
+    {
+      "Path": "E:\\DD451\\Docs\\Verification\\Rendering\\NightDefault\\CreatedScenes\\NightDefault-BasicURP-Temporary.unity",
+      "Sha256": "6CDA5215BC1CEDF205BEB641B96DA80EDE28004250EDC34A6004E41D57C67DAB",
+      "MetaExists": true
+    },
+    {
+      "Path": "E:\\DD451\\Docs\\Verification\\Rendering\\NightDefault\\CreatedScenes\\NightDefault-DefaultGameObjects-Temporary.unity",
+      "Sha256": "1CE0C5D74294A46719952F980D4118F7E95C53CD937F4E3BCF39418B477718F4",
+      "MetaExists": true
+    },
+    {
+      "Path": "E:\\DD451\\Docs\\Verification\\Rendering\\NightDefault\\CreatedScenes\\NightDefault-EmptyScene-Temporary.unity",
+      "Sha256": "05B6AE3285872653728EE8074730B2B015AFBCE9FB69443588E889568BFBE11C",
+      "MetaExists": true
+    }
+  ],
+  "ExpectedSceneInventoryMatchesBaseline": true,
+  "All12ScenesReferenceNightSkybox": true,
+  "NewEditorScriptReview": "ProjectNightEnvironment subscribes only to newSceneCreated and newSceneTemplateInstantiated; guards Play transitions, invalid/unloaded scenes, preview scenes and current Prefab Stage. It loads the shared existing material, changes only RenderSettings.skybox, marks the newly created scene dirty, temporarily selects that scene and restores the previous active scene in finally. No open-scene hook, auto-save, camera, light, or layout mutation in this script.",
+  "Limits": "This is a file audit of the declared baseline and named new files. Existing unrelated work is not attributed using Git status. Saved NewSceneVerification.txt is separate runtime evidence; this audit did not run Unity.",
+  "RuntimeEnvironmentRefreshFollowup": {
+    "CaptureStartedUtc": "2026-10-19T08:14:07.5892361Z",
+    "CaptureCompletedUtc": "2026-10-19T08:14:07.8665013Z",
+    "Method": "File-only follow-up; no Unity calls, Assets writes or test reruns. Original scene diff evidence retained.",
+    "AddedAssets": [
+      {
+        "Path": "Assets\\Scripts\\Rendering\\SceneEnvironmentRefresh.cs",
+        "Sha256": "2ABBFF6B6E51D13BC1062B48F1CAB0A4EB7924E7E8A11866F50449F79D15DBBB",
+        "GuidLine": null,
+        "GuidMatchPaths": [],
+        "LastWriteUtc": "2026-10-19T08:13:28.9243357Z"
+      },
+      {
+        "Path": "Assets\\Scripts\\Rendering\\SceneEnvironmentRefresh.cs.meta",
+        "Sha256": "CF9750FCEBC02C8E08A00DAE91817D702072BF259EF590BC46312AACB28B7C0E",
+        "GuidLine": "guid: b1185fc20f15ac94e9e8cd5cfb45945a",
+        "GuidMatchPaths": [
+          "Assets\\Scripts\\Rendering\\SceneEnvironmentRefresh.cs.meta"
+        ],
+        "LastWriteUtc": "2026-10-19T08:13:29.5000119Z"
+      },
+      {
+        "Path": "Assets\\Scripts\\Rendering.meta",
+        "Sha256": "5FEC37CCEBAF249D0C4BF98CC0ACA434F642927AC6F8E9E6EC3DD65618EE79E5",
+        "GuidLine": "guid: 2c5ecabbd64fc5249bb13ec3d660037c",
+        "GuidMatchPaths": [
+          "Assets\\Scripts\\Rendering.meta"
+        ],
+        "LastWriteUtc": "2026-10-19T08:13:30.6043634Z"
+      }
+    ],
+    "ExistingFileRecheck": [
+      {
+        "Path": "Assets\\Scenes\\Bootstrap.unity",
+        "CurrentHash": "C5E5CBACB10DA5B087420D64CA42761C2822627EFF5C160ADECE1E04DE4C9DED",
+        "MetaHash": "7949600BE4F1DD1DCA13B37C142445FE5EB3F62518153EA2BA1B725AD567F1D3",
+        "MatchesPreviousAudit": true,
+        "MetaMatchesPreviousAudit": true
+      },
+      {
+        "Path": "Assets\\Scenes\\Ruins.unity",
+        "CurrentHash": "4A535E92CEA85883EAA63896A04E25CE5050954F14F84B30F6B62D256FF6742A",
+        "MetaHash": "71BD0E68CE9B34EF682661D60BCD36605007FE6FFE66D8FD09D1A56542A66594",
+        "MatchesPreviousAudit": true,
+        "MetaMatchesPreviousAudit": true
+      },
+      {
+        "Path": "Assets\\Scenes\\SampleScene.unity",
+        "CurrentHash": "27C05A6B99D302B96E43169A6EF96122CDB360AC85ABD6F0C481102B06CA2C97",
+        "MetaHash": "B5815A6B12AFAF810577BC89041C4CE46516C7CD6609693F8DB616F8E5584D80",
+        "MatchesPreviousAudit": true,
+        "MetaMatchesPreviousAudit": true
+      },
+      {
+        "Path": "Assets\\Scenes\\Shelter.unity",
+        "CurrentHash": "D1DD18A573846182F45BDD2E8A802A6F0FFC8E044D3C1ED3F9EE1B71A7CAF46F",
+        "MetaHash": "E32C6E5FFC8F10D2BB611941967203616E52F76353A7722CF717703EDD4D2889",
+        "MatchesPreviousAudit": true,
+        "MetaMatchesPreviousAudit": true
+      },
+      {
+        "Path": "Assets\\Scenes\\Tests\\Backpack\\BackpackTest.unity",
+        "CurrentHash": "F6CF6D92C805B1D06B1FD8DF36BF94C743A767395AC2BE15E0497EDB65DA3E40",
+        "MetaHash": "A463B4A292ED09D1C93D2F191DC7F7E68E22C3D73AF6F6933970B814A99B0A1C",
+        "MatchesPreviousAudit": true,
+        "MetaMatchesPreviousAudit": true
+      },
+      {
+        "Path": "Assets\\Scenes\\Tests\\Base\\BaseTest.unity",
+        "CurrentHash": "79A6EAB44A3649D33DA13A6F63E9C746921DC41D0547640044D104DB3F23243B",
+        "MetaHash": "DECA6E6DAE4D7947BEAD518AC73E42E3212955AB678366AEA75E18655A4877CC",
+        "MatchesPreviousAudit": true,
+        "MetaMatchesPreviousAudit": true
+      },
+      {
+        "Path": "Assets\\Scenes\\Tests\\Enemy\\EnemyTest.unity",
+        "CurrentHash": "718266BEF6D0A2B9165EA62725AA73346EAE8FA4E7F4DFB3C9F8135A7AFA6473",
+        "MetaHash": "C0A9DAB23896CA347B2C9EA4E221023A532CBF25F6279A51A02480E474543ACD",
+        "MatchesPreviousAudit": true,
+        "MetaMatchesPreviousAudit": true
+      },
+      {
+        "Path": "Assets\\Scenes\\Tests\\Items\\ItemsTest.unity",
+        "CurrentHash": "37ADC7525EB747CA31A0E9204D4E318D1252D42AF5EED942028FCB42A4D24E1F",
+        "MetaHash": "6D25FF21E24AC19D834188B163CAEEE1821631E88305DE137CAFC972E47B8BBF",
+        "MatchesPreviousAudit": true,
+        "MetaMatchesPreviousAudit": true
+      },
+      {
+        "Path": "Assets\\Scenes\\Tests\\Localization\\LocalizationTest.unity",
+        "CurrentHash": "D667F8618A9EB09A59219F6A64B47A925F96CAB63778AC51361982843FEE044A",
+        "MetaHash": "3F457135A5551F76BDF1167777F2388A2028BEA90829EE37AA20740391716848",
+        "MatchesPreviousAudit": true,
+        "MetaMatchesPreviousAudit": true
+      },
+      {
+        "Path": "Assets\\Scenes\\Tests\\Loot\\LootTest.unity",
+        "CurrentHash": "57470454AD62CA0D9DF21D45A42CBA67EC9E0E195FDE7B7F34A8587E76B1E002",
+        "MetaHash": "5E5BC4F24F5B7ADC037649C6F371C629B9DDEDBFEAFE8A8748A54C4DB026E088",
+        "MatchesPreviousAudit": true,
+        "MetaMatchesPreviousAudit": true
+      },
+      {
+        "Path": "Assets\\Scenes\\Tests\\Player\\PlayerTest.unity",
+        "CurrentHash": "A1C5D86611E1F7167CD4F5194BC2034615581C7C19C5AD46CC9A774F90C4E4C1",
+        "MetaHash": "D0C8D130B39642FC141319782AC1010FF15048B0CA60BDC2B3C62413B5B94214",
+        "MatchesPreviousAudit": true,
+        "MetaMatchesPreviousAudit": true
+      },
+      {
+        "Path": "Assets\\Scenes\\Tests\\Warehouse\\WarehouseTest.unity",
+        "CurrentHash": "FAC095B74374FBFCF8F3C6670889F948CA41E0500E94E1E91B0D261F588B3A8F",
+        "MetaHash": "3C0706359D0390E5A253C5FD702D42E49DA5B66AC0638821C9495A623E3B79D3",
+        "MatchesPreviousAudit": true,
+        "MetaMatchesPreviousAudit": true
+      },
+      {
+        "Path": "Assets\\Art\\Materials\\Environment\\ShelterNightSkybox.mat",
+        "CurrentHash": "175DC252138EE95FBE84AB95A09F03256C25C0DAA4A045535AC4380789F8E688",
+        "MetaHash": "58C02D39845D47878023A1AC1C94A944B6C809EA0D343AC97C13E27CD634DCD3",
+        "MatchesPreviousAudit": true,
+        "MetaMatchesPreviousAudit": true
+      },
+      {
+        "Path": "Assets\\Prefabs\\Player\\PlayerCamera.prefab",
+        "CurrentHash": "7456EE6888DE03CFFC87AA52AA31B800867507EAF82C05A91FF850C993F0FD64",
+        "MetaHash": "00EF61A4E3B2C53252818DAA239D0DA2BFE0B00C06AF9DACB14824B4AD80B5ED",
+        "MatchesPreviousAudit": true,
+        "MetaMatchesPreviousAudit": true
+      },
+      {
+        "Path": "Assets\\Tests\\Player\\Editor\\PlayerTestSceneBuilder.cs",
+        "CurrentHash": "211166377D3C8E082856626966A4000255BBDCD4FFE1886E45AF1DF1F8BCE87C",
+        "MetaHash": "13C24D9CC0AB6109C9C13104C3B6571E187C3095D746DBA572BD00772FC0BEBC",
+        "MatchesPreviousAudit": true,
+        "MetaMatchesPreviousAudit": true
+      },
+      {
+        "Path": "Assets\\Tests\\Warehouse\\Editor\\WarehouseTestSceneBuilder.cs",
+        "CurrentHash": "9DE88F26D3465A5F9717F6FBB9EF25AAB142C3879F7385C26378FBF78D2EB7D6",
+        "MetaHash": "9C37FFA7C7D15A563A212B390DE2889C6F2FE38CFFF0CA3951160863AF74AD02",
+        "MatchesPreviousAudit": true,
+        "MetaMatchesPreviousAudit": true
+      },
+      {
+        "Path": "Assets\\Tests\\Localization\\Editor\\LocalizationTestSceneBuilder.cs",
+        "CurrentHash": "4A4522218BF8C38CCFADE421CD7253B723B2CCCD130D458CD6142ED7239FB88A",
+        "MetaHash": "1C185F0C97E2A686FBE5EFFDE9BD8ADDBC9B12B3D14AE839B07B7A6CF3F52EE2",
+        "MatchesPreviousAudit": true,
+        "MetaMatchesPreviousAudit": true
+      }
+    ],
+    "ExistingContentMatchesPreviousAuditCount": 17,
+    "ExistingMetaMatchesPreviousAuditCount": 17,
+    "AssetsSceneCount": 12,
+    "StaticReview": "SceneEnvironmentRefresh runs after scene load and on activeSceneChanged. Initialize removes then adds the handler to prevent duplicate subscription with Domain Reload disabled. It calls DynamicGI.UpdateEnvironment only while playing and ambient mode is Skybox. It does not change scene skybox assignments, lights, camera settings, object layout or save scene files.",
+    "ParentReportedRuntimeObservation": {
+      "AmbientProbe00Before": 0.180283785,
+      "AmbientProbe00AfterManualUpdateEnvironment": 0.00553075,
+      "Verification": "Reported by parent after runtime inspection; not independently reproduced by this file-only audit."
+    }
+  }
+}

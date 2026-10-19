@@ -1,0 +1,1645 @@
+{
+  "repair": {
+    "materials": [
+      {
+        "path": "Assets/Art/Model/Synty/PolygonTown/Materials/Alts/PolygonTown_01_A.mat",
+        "guid": "28646867ddcf90a4989276acd313ea43",
+        "shader": "Universal Render Pipeline/Lit",
+        "supported": true,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "surface": 0,
+        "alphaClip": 1,
+        "metallic": 0,
+        "smoothness": 0.2,
+        "cull": 2,
+        "queue": 2450,
+        "zWrite": 1,
+        "emission": false,
+        "textures": [
+          {
+            "source": "_Albedo_Map",
+            "target": "_BaseMap",
+            "texture": "Assets/Art/Model/Synty/PolygonTown/Textures/Alts/PolygonTown_01_A.png",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Normal_Map",
+            "target": "_BumpMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Emission_Map",
+            "target": "_EmissionMap",
+            "texture": "Assets/Art/Model/Synty/PolygonTown/Textures/Misc/PolygonTown_01_Emissive.png",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "keywords": [
+          "_ALPHATEST_ON"
+        ]
+      },
+      {
+        "path": "Assets/Art/Model/Synty/PolygonTown/Materials/Alts/PolygonTown_01_B.mat",
+        "guid": "87afcd97595cd02479bfcfd00d66fda9",
+        "shader": "Universal Render Pipeline/Lit",
+        "supported": true,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "surface": 0,
+        "alphaClip": 1,
+        "metallic": 0,
+        "smoothness": 0.2,
+        "cull": 2,
+        "queue": 2450,
+        "zWrite": 1,
+        "emission": false,
+        "textures": [
+          {
+            "source": "_Albedo_Map",
+            "target": "_BaseMap",
+            "texture": "Assets/Art/Model/Synty/PolygonTown/Textures/Alts/PolygonTown_01_B.png",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Normal_Map",
+            "target": "_BumpMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Emission_Map",
+            "target": "_EmissionMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "keywords": [
+          "_ALPHATEST_ON"
+        ]
+      },
+      {
+        "path": "Assets/Art/Model/Synty/PolygonTown/Materials/Alts/PolygonTown_01_C.mat",
+        "guid": "bab002177b386b747b6b5085ad792f80",
+        "shader": "Universal Render Pipeline/Lit",
+        "supported": true,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "surface": 0,
+        "alphaClip": 1,
+        "metallic": 0,
+        "smoothness": 0.2,
+        "cull": 2,
+        "queue": 2450,
+        "zWrite": 1,
+        "emission": false,
+        "textures": [
+          {
+            "source": "_Albedo_Map",
+            "target": "_BaseMap",
+            "texture": "Assets/Art/Model/Synty/PolygonTown/Textures/Alts/PolygonTown_01_C.png",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Normal_Map",
+            "target": "_BumpMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Emission_Map",
+            "target": "_EmissionMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "keywords": [
+          "_ALPHATEST_ON"
+        ]
+      },
+      {
+        "path": "Assets/Art/Model/Synty/PolygonTown/Materials/Alts/PolygonTown_02_A.mat",
+        "guid": "465b43787f0dc5a4f8692f074f54c897",
+        "shader": "Universal Render Pipeline/Lit",
+        "supported": true,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "surface": 0,
+        "alphaClip": 1,
+        "metallic": 0,
+        "smoothness": 0.2,
+        "cull": 2,
+        "queue": 2450,
+        "zWrite": 1,
+        "emission": false,
+        "textures": [
+          {
+            "source": "_Albedo_Map",
+            "target": "_BaseMap",
+            "texture": "Assets/Art/Model/Synty/PolygonTown/Textures/Alts/PolygonTown_02_A.png",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Normal_Map",
+            "target": "_BumpMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Emission_Map",
+            "target": "_EmissionMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "keywords": [
+          "_ALPHATEST_ON"
+        ]
+      },
+      {
+        "path": "Assets/Art/Model/Synty/PolygonTown/Materials/Alts/PolygonTown_02_B.mat",
+        "guid": "0f9f0db6b5e12a54f950b8713ce48093",
+        "shader": "Universal Render Pipeline/Lit",
+        "supported": true,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "surface": 0,
+        "alphaClip": 1,
+        "metallic": 0,
+        "smoothness": 0.2,
+        "cull": 2,
+        "queue": 2450,
+        "zWrite": 1,
+        "emission": false,
+        "textures": [
+          {
+            "source": "_Albedo_Map",
+            "target": "_BaseMap",
+            "texture": "Assets/Art/Model/Synty/PolygonTown/Textures/Alts/PolygonTown_02_B.png",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Normal_Map",
+            "target": "_BumpMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Emission_Map",
+            "target": "_EmissionMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "keywords": [
+          "_ALPHATEST_ON"
+        ]
+      },
+      {
+        "path": "Assets/Art/Model/Synty/PolygonTown/Materials/Alts/PolygonTown_02_C.mat",
+        "guid": "cb3e8bc1d85c7f04dafa457c27f34ce2",
+        "shader": "Universal Render Pipeline/Lit",
+        "supported": true,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "surface": 0,
+        "alphaClip": 1,
+        "metallic": 0,
+        "smoothness": 0.2,
+        "cull": 2,
+        "queue": 2450,
+        "zWrite": 1,
+        "emission": false,
+        "textures": [
+          {
+            "source": "_Albedo_Map",
+            "target": "_BaseMap",
+            "texture": "Assets/Art/Model/Synty/PolygonTown/Textures/Alts/PolygonTown_02_C.png",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Normal_Map",
+            "target": "_BumpMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Emission_Map",
+            "target": "_EmissionMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "keywords": [
+          "_ALPHATEST_ON"
+        ]
+      },
+      {
+        "path": "Assets/Art/Model/Synty/PolygonTown/Materials/Alts/PolygonTown_03_A.mat",
+        "guid": "8f568d2330fd6a44b9007af8d0d0331e",
+        "shader": "Universal Render Pipeline/Lit",
+        "supported": true,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "surface": 0,
+        "alphaClip": 1,
+        "metallic": 0,
+        "smoothness": 0.2,
+        "cull": 2,
+        "queue": 2450,
+        "zWrite": 1,
+        "emission": false,
+        "textures": [
+          {
+            "source": "_Albedo_Map",
+            "target": "_BaseMap",
+            "texture": "Assets/Art/Model/Synty/PolygonTown/Textures/Alts/PolygonTown_03_A.png",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Normal_Map",
+            "target": "_BumpMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Emission_Map",
+            "target": "_EmissionMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "keywords": [
+          "_ALPHATEST_ON"
+        ]
+      },
+      {
+        "path": "Assets/Art/Model/Synty/PolygonTown/Materials/Alts/PolygonTown_03_B.mat",
+        "guid": "f483cd15cfaea5d47b707c18e7c06174",
+        "shader": "Universal Render Pipeline/Lit",
+        "supported": true,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "surface": 0,
+        "alphaClip": 1,
+        "metallic": 0,
+        "smoothness": 0.2,
+        "cull": 2,
+        "queue": 2450,
+        "zWrite": 1,
+        "emission": false,
+        "textures": [
+          {
+            "source": "_Albedo_Map",
+            "target": "_BaseMap",
+            "texture": "Assets/Art/Model/Synty/PolygonTown/Textures/Alts/PolygonTown_03_B.png",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Normal_Map",
+            "target": "_BumpMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Emission_Map",
+            "target": "_EmissionMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "keywords": [
+          "_ALPHATEST_ON"
+        ]
+      },
+      {
+        "path": "Assets/Art/Model/Synty/PolygonTown/Materials/Alts/PolygonTown_03_C.mat",
+        "guid": "1a832f41054861b428f328f5362b636f",
+        "shader": "Universal Render Pipeline/Lit",
+        "supported": true,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "surface": 0,
+        "alphaClip": 1,
+        "metallic": 0,
+        "smoothness": 0.2,
+        "cull": 2,
+        "queue": 2450,
+        "zWrite": 1,
+        "emission": false,
+        "textures": [
+          {
+            "source": "_Albedo_Map",
+            "target": "_BaseMap",
+            "texture": "Assets/Art/Model/Synty/PolygonTown/Textures/Alts/PolygonTown_03_C.png",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Normal_Map",
+            "target": "_BumpMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Emission_Map",
+            "target": "_EmissionMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "keywords": [
+          "_ALPHATEST_ON"
+        ]
+      },
+      {
+        "path": "Assets/Art/Model/Synty/PolygonTown/Materials/Alts/PolygonTown_04_A.mat",
+        "guid": "1edf9ce093a565b4f83317e55e5486a2",
+        "shader": "Universal Render Pipeline/Lit",
+        "supported": true,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "surface": 0,
+        "alphaClip": 1,
+        "metallic": 0,
+        "smoothness": 0.2,
+        "cull": 2,
+        "queue": 2450,
+        "zWrite": 1,
+        "emission": false,
+        "textures": [
+          {
+            "source": "_Albedo_Map",
+            "target": "_BaseMap",
+            "texture": "Assets/Art/Model/Synty/PolygonTown/Textures/Alts/PolygonTown_04_A.png",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Normal_Map",
+            "target": "_BumpMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Emission_Map",
+            "target": "_EmissionMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "keywords": [
+          "_ALPHATEST_ON"
+        ]
+      },
+      {
+        "path": "Assets/Art/Model/Synty/PolygonTown/Materials/Alts/PolygonTown_04_B.mat",
+        "guid": "a4e402d0af1617e4cacc1682d13b4411",
+        "shader": "Universal Render Pipeline/Lit",
+        "supported": true,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "surface": 0,
+        "alphaClip": 1,
+        "metallic": 0,
+        "smoothness": 0.2,
+        "cull": 2,
+        "queue": 2450,
+        "zWrite": 1,
+        "emission": false,
+        "textures": [
+          {
+            "source": "_Albedo_Map",
+            "target": "_BaseMap",
+            "texture": "Assets/Art/Model/Synty/PolygonTown/Textures/Alts/PolygonTown_04_B.png",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Normal_Map",
+            "target": "_BumpMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Emission_Map",
+            "target": "_EmissionMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "keywords": [
+          "_ALPHATEST_ON"
+        ]
+      },
+      {
+        "path": "Assets/Art/Model/Synty/PolygonTown/Materials/Alts/PolygonTown_04_C.mat",
+        "guid": "7f78f6690b4971247836df99a22ede8d",
+        "shader": "Universal Render Pipeline/Lit",
+        "supported": true,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "surface": 0,
+        "alphaClip": 1,
+        "metallic": 0,
+        "smoothness": 0.2,
+        "cull": 2,
+        "queue": 2450,
+        "zWrite": 1,
+        "emission": false,
+        "textures": [
+          {
+            "source": "_Albedo_Map",
+            "target": "_BaseMap",
+            "texture": "Assets/Art/Model/Synty/PolygonTown/Textures/Alts/PolygonTown_04_C.png",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Normal_Map",
+            "target": "_BumpMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Emission_Map",
+            "target": "_EmissionMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "keywords": [
+          "_ALPHATEST_ON"
+        ]
+      },
+      {
+        "path": "Assets/Art/Model/Synty/PolygonTown/Materials/Misc/Fridge_Glass_01.mat",
+        "guid": "3c9bf231ff24fe942abc78dc8a71cd86",
+        "shader": "Universal Render Pipeline/Lit",
+        "supported": true,
+        "baseColor": [
+          0.1828503,
+          0.51782167,
+          0.6544117,
+          0.503
+        ],
+        "surface": 1,
+        "alphaClip": 0,
+        "metallic": 0,
+        "smoothness": 0.5,
+        "cull": 2,
+        "queue": 3000,
+        "zWrite": 0,
+        "emission": false,
+        "textures": [
+          {
+            "source": "_Albedo_Map",
+            "target": "_BaseMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Normal_Map",
+            "target": "_BumpMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Emission_Map",
+            "target": "_EmissionMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "keywords": [
+          "_ALPHAPREMULTIPLY_ON",
+          "_SURFACE_TYPE_TRANSPARENT"
+        ]
+      },
+      {
+        "path": "Assets/Art/Model/Synty/PolygonTown/Materials/Misc/Ground_01.mat",
+        "guid": "0abcedae82ad13b49b256de7b8541398",
+        "shader": "Universal Render Pipeline/Lit",
+        "supported": true,
+        "baseColor": [
+          0.411764622,
+          0.411764622,
+          0.411764622,
+          1
+        ],
+        "surface": 0,
+        "alphaClip": 1,
+        "metallic": 0,
+        "smoothness": 0,
+        "cull": 2,
+        "queue": 2450,
+        "zWrite": 1,
+        "emission": false,
+        "textures": [
+          {
+            "source": "_Albedo_Map",
+            "target": "_BaseMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Normal_Map",
+            "target": "_BumpMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Emission_Map",
+            "target": "_EmissionMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "keywords": [
+          "_ALPHATEST_ON",
+          "_ENVIRONMENTREFLECTIONS_OFF",
+          "_SPECULARHIGHLIGHTS_OFF"
+        ],
+        "environmentReflections": 0
+      },
+      {
+        "path": "Assets/Art/Model/Synty/PolygonTown/Materials/Misc/Mirror_01.mat",
+        "guid": "aa5e7a5e08c7e494dab9084185cc7fe8",
+        "shader": "Universal Render Pipeline/Lit",
+        "supported": true,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "surface": 0,
+        "alphaClip": 1,
+        "metallic": 0,
+        "smoothness": 0.5,
+        "cull": 2,
+        "queue": 2450,
+        "zWrite": 1,
+        "emission": false,
+        "textures": [
+          {
+            "source": "_Albedo_Map",
+            "target": "_BaseMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Normal_Map",
+            "target": "_BumpMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Emission_Map",
+            "target": "_EmissionMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "keywords": [
+          "_ALPHATEST_ON"
+        ]
+      },
+      {
+        "path": "Assets/Art/Model/Synty/PolygonTown/Materials/Misc/Mirror_Glass_01.mat",
+        "guid": "98725846987b83d44987d59c480c6aa4",
+        "shader": "Universal Render Pipeline/Lit",
+        "supported": true,
+        "baseColor": [
+          1,
+          1,
+          1,
+          0.334
+        ],
+        "surface": 1,
+        "alphaClip": 0,
+        "metallic": 0.725,
+        "smoothness": 0.89,
+        "cull": 2,
+        "queue": 3000,
+        "zWrite": 0,
+        "emission": false,
+        "textures": [
+          {
+            "source": "_Albedo_Map",
+            "target": "_BaseMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Normal_Map",
+            "target": "_BumpMap",
+            "texture": "Assets/Art/Model/Synty/PolygonTown/Textures/Misc/Window_01_Normals.png",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Emission_Map",
+            "target": "_EmissionMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "keywords": [
+          "_ALPHAPREMULTIPLY_ON",
+          "_NORMALMAP",
+          "_SURFACE_TYPE_TRANSPARENT"
+        ]
+      },
+      {
+        "path": "Assets/Art/Model/Synty/PolygonTown/Materials/Misc/PolygonTown_01_A_Alt.mat",
+        "guid": "90b40a9eb4f2e8a4ca68077789ba069b",
+        "shader": "Universal Render Pipeline/Lit",
+        "supported": true,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "surface": 0,
+        "alphaClip": 1,
+        "metallic": 0,
+        "smoothness": 0.2,
+        "cull": 2,
+        "queue": 2450,
+        "zWrite": 1,
+        "emission": false,
+        "textures": [
+          {
+            "source": "_Albedo_Map",
+            "target": "_BaseMap",
+            "texture": "Assets/Art/Model/Synty/PolygonTown/Textures/Alts/PolygonTown_01_A.png",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Normal_Map",
+            "target": "_BumpMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Emission_Map",
+            "target": "_EmissionMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "keywords": [
+          "_ALPHATEST_ON"
+        ]
+      },
+      {
+        "path": "Assets/Art/Model/Synty/PolygonTown/Materials/Misc/PolygonTown_01_A_Emissive.mat",
+        "guid": "dfd1ba1b4a428cc4181ebb45dcaf2022",
+        "shader": "Universal Render Pipeline/Lit",
+        "supported": true,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "surface": 0,
+        "alphaClip": 1,
+        "metallic": 0,
+        "smoothness": 0.2,
+        "cull": 2,
+        "queue": 2450,
+        "zWrite": 1,
+        "emission": true,
+        "textures": [
+          {
+            "source": "_Albedo_Map",
+            "target": "_BaseMap",
+            "texture": "Assets/Art/Model/Synty/PolygonTown/Textures/Alts/PolygonTown_01_A.png",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Normal_Map",
+            "target": "_BumpMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Emission_Map",
+            "target": "_EmissionMap",
+            "texture": "Assets/Art/Model/Synty/PolygonTown/Textures/Misc/PolygonTown_01_Emissive.png",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "keywords": [
+          "_ALPHATEST_ON",
+          "_EMISSION"
+        ]
+      },
+      {
+        "path": "Assets/Art/Model/Synty/PolygonTown/Materials/Misc/PolygonTown_01_Glass.mat",
+        "guid": "a42d40093a06b634cb49e6bfda441946",
+        "shader": "Universal Render Pipeline/Lit",
+        "supported": true,
+        "baseColor": [
+          1,
+          1,
+          1,
+          0.503
+        ],
+        "surface": 1,
+        "alphaClip": 0,
+        "metallic": 0,
+        "smoothness": 0.5,
+        "cull": 2,
+        "queue": 3000,
+        "zWrite": 0,
+        "emission": false,
+        "textures": [
+          {
+            "source": "_Albedo_Map",
+            "target": "_BaseMap",
+            "texture": "Assets/Art/Model/Synty/PolygonTown/Textures/Alts/PolygonTown_01_A.png",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Normal_Map",
+            "target": "_BumpMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Emission_Map",
+            "target": "_EmissionMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "keywords": [
+          "_ALPHAPREMULTIPLY_ON",
+          "_SURFACE_TYPE_TRANSPARENT"
+        ]
+      },
+      {
+        "path": "Assets/Art/Model/Synty/PolygonTown/Materials/Misc/Road_01.mat",
+        "guid": "3433cc3a39062ce4e9007a2c49514db4",
+        "shader": "Universal Render Pipeline/Lit",
+        "supported": true,
+        "baseColor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "surface": 0,
+        "alphaClip": 1,
+        "metallic": 0,
+        "smoothness": 0.15,
+        "cull": 2,
+        "queue": 2450,
+        "zWrite": 1,
+        "emission": false,
+        "textures": [
+          {
+            "source": "_Albedo_Map",
+            "target": "_BaseMap",
+            "texture": "Assets/Art/Model/Synty/PolygonTown/Textures/Misc/Road_01.png",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Normal_Map",
+            "target": "_BumpMap",
+            "texture": "Assets/Art/Model/Synty/PolygonTown/Textures/Misc/Road_01_Normals.png",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Emission_Map",
+            "target": "_EmissionMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "keywords": [
+          "_ALPHATEST_ON",
+          "_NORMALMAP"
+        ]
+      },
+      {
+        "path": "Assets/Art/Model/Synty/PolygonTown/Materials/Misc/Television_Screen_01.mat",
+        "guid": "8eff857d740a5324da5dcd15b3197d3d",
+        "shader": "Universal Render Pipeline/Lit",
+        "supported": true,
+        "baseColor": [
+          0.110294051,
+          0.110294051,
+          0.110294051,
+          1
+        ],
+        "surface": 0,
+        "alphaClip": 1,
+        "metallic": 0,
+        "smoothness": 0.5,
+        "cull": 2,
+        "queue": 2450,
+        "zWrite": 1,
+        "emission": false,
+        "textures": [
+          {
+            "source": "_Albedo_Map",
+            "target": "_BaseMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Normal_Map",
+            "target": "_BumpMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Emission_Map",
+            "target": "_EmissionMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "keywords": [
+          "_ALPHATEST_ON"
+        ]
+      },
+      {
+        "path": "Assets/Art/Model/Synty/PolygonTown/Materials/Misc/Vehicle_Glass_01.mat",
+        "guid": "28d911d60eed0d64fb122f25adeed646",
+        "shader": "Universal Render Pipeline/Lit",
+        "supported": true,
+        "baseColor": [
+          0.3374242,
+          0.480140984,
+          0.580882251,
+          0.334
+        ],
+        "surface": 1,
+        "alphaClip": 0,
+        "metallic": 0.298999965,
+        "smoothness": 0.697,
+        "cull": 2,
+        "queue": 3000,
+        "zWrite": 0,
+        "emission": false,
+        "textures": [
+          {
+            "source": "_Albedo_Map",
+            "target": "_BaseMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Normal_Map",
+            "target": "_BumpMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Emission_Map",
+            "target": "_EmissionMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "keywords": [
+          "_ALPHAPREMULTIPLY_ON",
+          "_SURFACE_TYPE_TRANSPARENT"
+        ]
+      },
+      {
+        "path": "Assets/Art/Model/Synty/PolygonTown/Materials/Misc/Water_01.mat",
+        "guid": "46ea0fb1c8d02e84e83859a62e32fe9c",
+        "shader": "Universal Render Pipeline/Lit",
+        "supported": true,
+        "baseColor": [
+          0.386786252,
+          0.6653382,
+          0.7205882,
+          0.409
+        ],
+        "surface": 1,
+        "alphaClip": 0,
+        "metallic": 0,
+        "smoothness": 0,
+        "cull": 2,
+        "queue": 3000,
+        "zWrite": 0,
+        "emission": false,
+        "textures": [
+          {
+            "source": "_Albedo_Map",
+            "target": "_BaseMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Normal_Map",
+            "target": "_BumpMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Emission_Map",
+            "target": "_EmissionMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "keywords": [
+          "_ALPHAPREMULTIPLY_ON",
+          "_SURFACE_TYPE_TRANSPARENT"
+        ]
+      },
+      {
+        "path": "Assets/Art/Model/Synty/PolygonTown/Materials/Misc/Window_Glass_01.mat",
+        "guid": "3c84a5e49d07c6f44afb39cfc297aac1",
+        "shader": "Universal Render Pipeline/Lit",
+        "supported": true,
+        "baseColor": [
+          0.1828503,
+          0.51782167,
+          0.6544117,
+          0.503
+        ],
+        "surface": 1,
+        "alphaClip": 0,
+        "metallic": 0,
+        "smoothness": 0.5,
+        "cull": 2,
+        "queue": 3000,
+        "zWrite": 0,
+        "emission": false,
+        "textures": [
+          {
+            "source": "_Albedo_Map",
+            "target": "_BaseMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Normal_Map",
+            "target": "_BumpMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Emission_Map",
+            "target": "_EmissionMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "keywords": [
+          "_ALPHAPREMULTIPLY_ON",
+          "_SURFACE_TYPE_TRANSPARENT"
+        ]
+      },
+      {
+        "path": "Assets/Art/Model/Synty/PolygonTown/Materials/Misc/Window_Glass_01_Opaque.mat",
+        "guid": "e8939000b8bc72f4aa21b4c261d794db",
+        "shader": "Universal Render Pipeline/Lit",
+        "supported": true,
+        "baseColor": [
+          0.580882251,
+          0.580882251,
+          0.580882251,
+          0.503
+        ],
+        "surface": 1,
+        "alphaClip": 0,
+        "metallic": 0.251999974,
+        "smoothness": 0.608,
+        "cull": 2,
+        "queue": 3000,
+        "zWrite": 0,
+        "emission": false,
+        "textures": [
+          {
+            "source": "_Albedo_Map",
+            "target": "_BaseMap",
+            "texture": "Assets/Art/Model/Synty/PolygonTown/Textures/Misc/Window_01.png",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Normal_Map",
+            "target": "_BumpMap",
+            "texture": "Assets/Art/Model/Synty/PolygonTown/Textures/Misc/Window_01_Normals.png",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          },
+          {
+            "source": "_Emission_Map",
+            "target": "_EmissionMap",
+            "texture": "",
+            "scale": [
+              1,
+              1
+            ],
+            "offset": [
+              0,
+              0
+            ]
+          }
+        ],
+        "keywords": [
+          "_ALPHAPREMULTIPLY_ON",
+          "_NORMALMAP",
+          "_SURFACE_TYPE_TRANSPARENT"
+        ]
+      }
+    ],
+    "scene": "Assets/Scenes/Shelter.unity",
+    "dirtyBefore": true,
+    "dirtyAfter": true
+  },
+  "validation": {
+    "prefabs": 483,
+    "renderers": 613,
+    "slots": 695,
+    "issues": [],
+    "representatives": {
+      "PolygonTown_01_A": "Assets/Art/Model/Synty/PolygonTown/Prefabs/Buildings/Presets/SM_Bld_House_Preset_01.prefab",
+      "Window_Glass_01_Opaque": "Assets/Art/Model/Synty/PolygonTown/Prefabs/Buildings/Presets/SM_Bld_House_Preset_01.prefab",
+      "Window_Glass_01": "Assets/Art/Model/Synty/PolygonTown/Prefabs/Buildings/SM_Bld_Church_01.prefab",
+      "PolygonTown_01_Glass": "Assets/Art/Model/Synty/PolygonTown/Prefabs/Buildings/SM_Bld_Shop_01.prefab",
+      "Water_01": "Assets/Art/Model/Synty/PolygonTown/Prefabs/Props/SM_Prop_Bath_01.prefab",
+      "Mirror_Glass_01": "Assets/Art/Model/Synty/PolygonTown/Prefabs/Props/SM_Prop_Mirror_01.prefab",
+      "Fridge_Glass_01": "Assets/Art/Model/Synty/PolygonTown/Prefabs/Props/SM_Prop_ShopFridge_01.prefab",
+      "Television_Screen_01": "Assets/Art/Model/Synty/PolygonTown/Prefabs/Props/SM_Prop_Television_Flat_01.prefab"
+    },
+    "scene": "Assets/Scenes/Tests/Enemy/EnemyTest.unity",
+    "dirty": false,
+    "playing": true
+  },
+  "protectedAssetFiles": 3502,
+  "changedProtectedFiles": 0,
+  "consoleErrorsAndWarnings": 0
+}

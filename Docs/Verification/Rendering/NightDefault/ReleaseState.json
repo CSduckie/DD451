@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "message": "Code executed successfully.",
+  "data": {
+    "result": {
+      "observedUtc": "2026-10-19T08:15:17.4979515Z",
+      "scene": "Assets/Scenes/Bootstrap.unity",
+      "dirty": false,
+      "sceneCount": 1,
+      "playing": false,
+      "changing": false,
+      "paused": false,
+      "compiling": false,
+      "updating": false,
+      "timeScale": 1,
+      "background": false,
+      "testActive": false,
+      "captureRunning": false,
+      "prefabStage": false
+    },
+    "compiler": "codedom"
+  }
+}

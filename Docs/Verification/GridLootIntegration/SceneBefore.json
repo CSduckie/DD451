@@ -1,0 +1,51 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"success\":true,\"message\":\"Code executed successfully.\",\"data\":{\"result\":[{\"path\":\"Assets/Scenes/Shelter.unity\",\"canvas\":\"(1720.00, 960.00)\",\"lootSize\":\"(420.00, 580.00)\",\"grid\":true,\"cell\":true,\"countdown\":true,\"viewport\":\"(428.00, 584.00)\",\"boxConfigs\":[],\"camera\":true,\"cameraCount\":1,\"presentationActive\":false},{\"path\":\"Assets/Scenes/Ruins.unity\",\"canvas\":\"(1720.00, 960.00)\",\"lootSize\":\"(420.00, 580.00)\",\"grid\":true,\"cell\":true,\"countdown\":true,\"viewport\":\"(428.00, 584.00)\",\"boxConfigs\":[{\"sourceId\":\"supplies-box\",\"gridWidth\":6,\"gridHeight\":4,\"table\":\"MinimumLoopLoot\"}],\"camera\":true,\"cameraCount\":1,\"presentationActive\":false}],\"compiler\":\"codedom\"}}"
+    }
+  ],
+  "structuredContent": {
+    "success": true,
+    "message": "Code executed successfully.",
+    "data": {
+      "result": [
+        {
+          "path": "Assets/Scenes/Shelter.unity",
+          "canvas": "(1720.00, 960.00)",
+          "lootSize": "(420.00, 580.00)",
+          "grid": true,
+          "cell": true,
+          "countdown": true,
+          "viewport": "(428.00, 584.00)",
+          "boxConfigs": [],
+          "camera": true,
+          "cameraCount": 1,
+          "presentationActive": false
+        },
+        {
+          "path": "Assets/Scenes/Ruins.unity",
+          "canvas": "(1720.00, 960.00)",
+          "lootSize": "(420.00, 580.00)",
+          "grid": true,
+          "cell": true,
+          "countdown": true,
+          "viewport": "(428.00, 584.00)",
+          "boxConfigs": [
+            {
+              "sourceId": "supplies-box",
+              "gridWidth": 6,
+              "gridHeight": 4,
+              "table": "MinimumLoopLoot"
+            }
+          ],
+          "camera": true,
+          "cameraCount": 1,
+          "presentationActive": false
+        }
+      ],
+      "compiler": "codedom"
+    }
+  },
+  "isError": false
+}

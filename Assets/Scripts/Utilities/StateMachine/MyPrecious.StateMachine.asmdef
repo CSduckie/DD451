@@ -1,0 +1,8 @@
+{
+    "name": "MyPrecious.StateMachine",
+    "rootNamespace": "",
+    "references": [
+        "MyPrecious.StateMachine.Contracts"
+    ],
+    "autoReferenced": true
+}

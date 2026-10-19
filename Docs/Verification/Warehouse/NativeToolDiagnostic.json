@@ -1,0 +1,75 @@
+{
+  "purpose": "Warehouse native input verification after task 04 released the Editor",
+  "window": "1280x720",
+  "settings": "Unchanged default input/focus settings; native Keyboard and Mouse only; passive in-memory observers",
+  "actions": [
+    {
+      "type": "sky.click",
+      "at": [
+        962,
+        520
+      ],
+      "observed": "Doll selected"
+    },
+    {
+      "type": "sky.drag",
+      "from": [
+        962,
+        520
+      ],
+      "to": [
+        1393,
+        701
+      ],
+      "observed": "Doll placement remained (0,0), nextDragToken remained 0"
+    },
+    {
+      "type": "sky.press_key",
+      "key": "F10",
+      "observed": "No keyboard event captured; language remained Chinese"
+    },
+    {
+      "type": "sky.press_key",
+      "key": "r",
+      "observed": "No keyboard event captured"
+    }
+  ],
+  "evidence": {
+    "rows": [
+      "t=8.986 frame=2 update=Editor focus=True token=0 installed settings=PointersAndKeyboardsRespectGameViewFocus background=ResetAndDisableNonBackgroundDevices runInBackground=False editorWindow=GameView",
+      "t=18.356 frame=2766 update=Dynamic focus=True token=0 native#2/left value=0 enabled=True",
+      "t=18.356 frame=2766 update=Dynamic focus=True token=0 native#2/position x=330.0 y=587.0 enabled=True",
+      "t=18.388 frame=2773 update=Dynamic focus=True token=0 native#2/left value=1 enabled=True",
+      "t=18.397 frame=2774 update=Dynamic focus=True token=0 native#2/left value=0 enabled=True",
+      "t=19.345 frame=3059 update=Dynamic focus=True token=0 native#2/position x=331.0 y=588.0 enabled=True",
+      "t=19.348 frame=3060 update=Dynamic focus=True token=0 native#2/position x=332.0 y=589.0 enabled=True",
+      "t=19.351 frame=3061 update=Dynamic focus=True token=0 native#2/position x=333.0 y=591.0 enabled=True",
+      "t=19.355 frame=3062 update=Dynamic focus=True token=0 native#2/position x=334.0 y=591.0 enabled=True",
+      "t=19.358 frame=3063 update=Dynamic focus=True token=0 native#2/position x=335.0 y=592.0 enabled=True",
+      "t=19.365 frame=3065 update=Dynamic focus=True token=0 native#2/position x=336.0 y=593.0 enabled=True",
+      "t=22.754 frame=4082 update=Dynamic focus=True token=0 native#2/position x=330.0 y=587.0 enabled=True",
+      "t=22.780 frame=4089 update=Dynamic focus=True token=0 native#2/left value=1 enabled=True",
+      "t=22.780 frame=4089 update=Dynamic focus=True token=0 native#2/position x=761.0 y=406.0 enabled=True",
+      "t=22.798 frame=4095 update=Dynamic focus=True token=0 native#2/left value=0 enabled=True"
+    ],
+    "devices": [
+      {
+        "name": "Keyboard",
+        "id": 1,
+        "native": true,
+        "enabled": true,
+        "lastUpdate": 7.730753499999992
+      },
+      {
+        "name": "Mouse",
+        "id": 2,
+        "native": true,
+        "enabled": true,
+        "lastUpdate": 22.797547699999996
+      }
+    ],
+    "frame": 15633,
+    "focus": true
+  },
+  "interpretation": "For this tool drag, button-down and destination position arrived in the same frame (4089), so no drag started on the source item. This does not establish a defect in physical mouse behavior. No R/F10 event was captured; keyboard delivery failure cause remains unknown."
+}

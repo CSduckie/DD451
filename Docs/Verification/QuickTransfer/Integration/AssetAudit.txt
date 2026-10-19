@@ -1,0 +1,17 @@
+07B资产与截图只读审计
+主体观察UTC：10/19/2026 00:03:26
+EditorSettings最后磁盘复核UTC：2026-10-19T00:04:02.1854293Z
+对照：Integration/BackupManifest.json、SourceBaseline.json及Before中的实际副本。
+
+51份备份真实内容全部匹配记录哈希。
+当前7项变化：6项获准资产/测试变化，另1项获准MinimumLoopSetup.txt文档更新；未发现清单范围内非预期变化。
+6项资产/测试变化：LootPanel.prefab、BackpackText.asset、WarehouseText.asset、LootText.asset、MinimumLoopPointerTests.cs、MinimumLoopSceneTests.cs。
+153项保护源码全部未变，保护目录无新增文件；24份.meta全部未变、GUID保持。
+Bootstrap、Shelter、Ruins及BackpackTest/WarehouseTest/LootTest六张场景全部未变。
+语言表：Backpack 48→48、Warehouse 36→36、Loot 68→71；旧键无删除、无重复，原键顺序保留。
+LootPanel移除viewport黑色填充，将背景保留在实际Grid范围；透明射线、ScrollRect、Mask与既有引用保留。
+EditorSettings磁盘与Before完全相同：Enabled=1、Options=1；SHA256=D31BE15C85A31D85372564BF5EE30188A9454274C6DF8FE7A3372375A0DB98BC。
+本审计未读取Unity运行内存、未改设置。主线程最终内存恢复与释放证据另见ReleaseState.json。
+
+01—10截图均通过view_image逐张打开，均为1920×1080。未见明显中英文裁切；短箱网格下方黑色填充已消失，真实背景格和格缝保留；长箱顶部/底部、仓库20列及20×24底部画面正常。
+截图观察不等同于新的交互/实体键鼠测试，不证明命中或业务行为。本审计仅写AssetAudit.json和AssetAudit.txt，没有操作Unity或修改业务文件。

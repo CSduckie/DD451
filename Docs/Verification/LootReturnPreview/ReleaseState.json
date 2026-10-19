@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-10-18T23:21:03.0281445Z",
+  "playing": false,
+  "changing": false,
+  "compiling": false,
+  "updating": false,
+  "scene": "Assets/Scenes/Bootstrap.unity",
+  "dirty": false,
+  "background": false,
+  "playerBackground": false,
+  "gameViewIndex": 7,
+  "targetRenderSize": [
+    1920,
+    1080
+  ],
+  "devices": [
+    {
+      "name": "Keyboard",
+      "enabled": true
+    },
+    {
+      "name": "Mouse",
+      "enabled": true
+    }
+  ],
+  "note": "Observed execute_code result; trailing JavaScript .then typo affected wrapper only after Unity returned successfully. No scene save or discard was performed by this release operation."
+}

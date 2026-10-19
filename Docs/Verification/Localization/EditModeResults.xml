@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="62" result="Passed" total="62" passed="62" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.6067861">
+  <test-suite type="TestSuite" id="1000" name="DD451Demo" fullname="DD451Demo" runstate="Runnable" testcasecount="62" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.606786" total="62" passed="62" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1057" name="MyPrecious.Items.EditModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.Items.EditModeTests.dll" runstate="Runnable" testcasecount="43" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.267071" total="43" passed="43" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="48276" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestFixture" id="1002" name="ItemsEditModeTests" fullname="ItemsEditModeTests" classname="ItemsEditModeTests" runstate="Runnable" testcasecount="43" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.263152" total="43" passed="43" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="ParameterizedMethod" id="1054" name="EditingRegisteredIdentityCannotCreateAnotherInstanceOrUseTheWrongIdentity" fullname="ItemsEditModeTests.EditingRegisteredIdentityCannotCreateAnotherInstanceOrUseTheWrongIdentity" classname="ItemsEditModeTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.031278" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1051" name="EditingRegisteredIdentityCannotCreateAnotherInstanceOrUseTheWrongIdentity(&quot;definition-id&quot;)" fullname="ItemsEditModeTests.EditingRegisteredIdentityCannotCreateAnotherInstanceOrUseTheWrongIdentity(&quot;definition-id&quot;)" methodname="EditingRegisteredIdentityCannotCreateAnotherInstanceOrUseTheWrongIdentity" classname="ItemsEditModeTests" runstate="Runnable" seed="580542462" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.023396" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1052" name="EditingRegisteredIdentityCannotCreateAnotherInstanceOrUseTheWrongIdentity(&quot;unique-id&quot;)" fullname="ItemsEditModeTests.EditingRegisteredIdentityCannotCreateAnotherInstanceOrUseTheWrongIdentity(&quot;unique-id&quot;)" methodname="EditingRegisteredIdentityCannotCreateAnotherInstanceOrUseTheWrongIdentity" classname="ItemsEditModeTests" runstate="Runnable" seed="173208867" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000221" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1053" name="EditingRegisteredIdentityCannotCreateAnotherInstanceOrUseTheWrongIdentity(&quot;unique-flag&quot;)" fullname="ItemsEditModeTests.EditingRegisteredIdentityCannotCreateAnotherInstanceOrUseTheWrongIdentity(&quot;unique-flag&quot;)" methodname="EditingRegisteredIdentityCannotCreateAnotherInstanceOrUseTheWrongIdentity" classname="ItemsEditModeTests" runstate="Runnable" seed="969751403" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000097" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1056" name="FixedHealingClampsBeforeCallingTheHealthTarget" fullname="ItemsEditModeTests.FixedHealingClampsBeforeCallingTheHealthTarget" methodname="FixedHealingClampsBeforeCallingTheHealthTarget" classname="ItemsEditModeTests" runstate="Runnable" seed="227117278" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000479" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1020" name="FullHealthRejectsFoodAndMedkitWithoutConsumingOrSpendingQuota" fullname="ItemsEditModeTests.FullHealthRejectsFoodAndMedkitWithoutConsumingOrSpendingQuota" classname="ItemsEditModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.073570" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1018" name="FullHealthRejectsFoodAndMedkitWithoutConsumingOrSpendingQuota(False)" fullname="ItemsEditModeTests.FullHealthRejectsFoodAndMedkitWithoutConsumingOrSpendingQuota(False)" methodname="FullHealthRejectsFoodAndMedkitWithoutConsumingOrSpendingQuota" classname="ItemsEditModeTests" runstate="Runnable" seed="1208307099" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.001306" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1019" name="FullHealthRejectsFoodAndMedkitWithoutConsumingOrSpendingQuota(True)" fullname="ItemsEditModeTests.FullHealthRejectsFoodAndMedkitWithoutConsumingOrSpendingQuota(True)" methodname="FullHealthRejectsFoodAndMedkitWithoutConsumingOrSpendingQuota" classname="ItemsEditModeTests" runstate="Runnable" seed="1199308702" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000170" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-suite type="ParameterizedMethod" id="1024" name="HealingRequiresBackpackAndFailedOwnerCheckDoesNotSpendQuota" fullname="ItemsEditModeTests.HealingRequiresBackpackAndFailedOwnerCheckDoesNotSpendQuota" classname="ItemsEditModeTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.004439" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1021" name="HealingRequiresBackpackAndFailedOwnerCheckDoesNotSpendQuota(World)" fullname="ItemsEditModeTests.HealingRequiresBackpackAndFailedOwnerCheckDoesNotSpendQuota(World)" methodname="HealingRequiresBackpackAndFailedOwnerCheckDoesNotSpendQuota" classname="ItemsEditModeTests" runstate="Runnable" seed="545803011" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000655" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1022" name="HealingRequiresBackpackAndFailedOwnerCheckDoesNotSpendQuota(Container)" fullname="ItemsEditModeTests.HealingRequiresBackpackAndFailedOwnerCheckDoesNotSpendQuota(Container)" methodname="HealingRequiresBackpackAndFailedOwnerCheckDoesNotSpendQuota" classname="ItemsEditModeTests" runstate="Runnable" seed="751557999" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000133" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1023" name="HealingRequiresBackpackAndFailedOwnerCheckDoesNotSpendQuota(Storage)" fullname="ItemsEditModeTests.HealingRequiresBackpackAndFailedOwnerCheckDoesNotSpendQuota(Storage)" methodname="HealingRequiresBackpackAndFailedOwnerCheckDoesNotSpendQuota" classname="ItemsEditModeTests" runstate="Runnable" seed="401305845" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000085" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-suite type="ParameterizedMethod" id="1036" name="HealthTargetThatAppliesNoHealingDoesNotConsumeOrSpendQuota" fullname="ItemsEditModeTests.HealthTargetThatAppliesNoHealingDoesNotConsumeOrSpendQuota" classname="ItemsEditModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.004757" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1034" name="HealthTargetThatAppliesNoHealingDoesNotConsumeOrSpendQuota(False)" fullname="ItemsEditModeTests.HealthTargetThatAppliesNoHealingDoesNotConsumeOrSpendQuota(False)" methodname="HealthTargetThatAppliesNoHealingDoesNotConsumeOrSpendQuota" classname="ItemsEditModeTests" runstate="Runnable" seed="754024169" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000595" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1035" name="HealthTargetThatAppliesNoHealingDoesNotConsumeOrSpendQuota(True)" fullname="ItemsEditModeTests.HealthTargetThatAppliesNoHealingDoesNotConsumeOrSpendQuota(True)" methodname="HealthTargetThatAppliesNoHealingDoesNotConsumeOrSpendQuota" classname="ItemsEditModeTests" runstate="Runnable" seed="2035811694" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000123" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-suite type="ParameterizedMethod" id="1011" name="InitialUniqueMapSpawnHasOnePermitAndQueriesDoNotGrantAnother" fullname="ItemsEditModeTests.InitialUniqueMapSpawnHasOnePermitAndQueriesDoNotGrantAnother" classname="ItemsEditModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.004715" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1009" name="InitialUniqueMapSpawnHasOnePermitAndQueriesDoNotGrantAnother(World)" fullname="ItemsEditModeTests.InitialUniqueMapSpawnHasOnePermitAndQueriesDoNotGrantAnother(World)" methodname="InitialUniqueMapSpawnHasOnePermitAndQueriesDoNotGrantAnother" classname="ItemsEditModeTests" runstate="Runnable" seed="160274901" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000643" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1010" name="InitialUniqueMapSpawnHasOnePermitAndQueriesDoNotGrantAnother(Container)" fullname="ItemsEditModeTests.InitialUniqueMapSpawnHasOnePermitAndQueriesDoNotGrantAnother(Container)" methodname="InitialUniqueMapSpawnHasOnePermitAndQueriesDoNotGrantAnother" classname="ItemsEditModeTests" runstate="Runnable" seed="1844419073" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000114" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1025" name="InvalidHealthTargetsNeverMutateOrConsumeTheItem" fullname="ItemsEditModeTests.InvalidHealthTargetsNeverMutateOrConsumeTheItem" methodname="InvalidHealthTargetsNeverMutateOrConsumeTheItem" classname="ItemsEditModeTests" runstate="Runnable" seed="286779569" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000393" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1047" name="InvalidInspectorConfigurationIsReportedAndCannotCreateInstances" fullname="ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances" classname="ItemsEditModeTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.007955" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1037" name="InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(&quot;width&quot;)" fullname="ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(&quot;width&quot;)" methodname="InvalidInspectorConfigurationIsReportedAndCannotCreateInstances" classname="ItemsEditModeTests" runstate="Runnable" seed="1451636498" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.002510" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1038" name="InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(&quot;height&quot;)" fullname="ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(&quot;height&quot;)" methodname="InvalidInspectorConfigurationIsReportedAndCannotCreateInstances" classname="ItemsEditModeTests" runstate="Runnable" seed="1248327295" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000154" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1039" name="InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(&quot;search&quot;)" fullname="ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(&quot;search&quot;)" methodname="InvalidInspectorConfigurationIsReportedAndCannotCreateInstances" classname="ItemsEditModeTests" runstate="Runnable" seed="593782491" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000084" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1040" name="InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(&quot;probability-low&quot;)" fullname="ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(&quot;probability-low&quot;)" methodname="InvalidInspectorConfigurationIsReportedAndCannotCreateInstances" classname="ItemsEditModeTests" runstate="Runnable" seed="1694872340" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000080" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1041" name="InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(&quot;probability-high&quot;)" fullname="ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(&quot;probability-high&quot;)" methodname="InvalidInspectorConfigurationIsReportedAndCannotCreateInstances" classname="ItemsEditModeTests" runstate="Runnable" seed="1136688530" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000069" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1042" name="InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(&quot;probability-nan&quot;)" fullname="ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(&quot;probability-nan&quot;)" methodname="InvalidInspectorConfigurationIsReportedAndCannotCreateInstances" classname="ItemsEditModeTests" runstate="Runnable" seed="1512347183" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000066" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1043" name="InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(&quot;definition-id&quot;)" fullname="ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(&quot;definition-id&quot;)" methodname="InvalidInspectorConfigurationIsReportedAndCannotCreateInstances" classname="ItemsEditModeTests" runstate="Runnable" seed="85571142" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000195" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1044" name="InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(&quot;unique-id&quot;)" fullname="ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(&quot;unique-id&quot;)" methodname="InvalidInspectorConfigurationIsReportedAndCannotCreateInstances" classname="ItemsEditModeTests" runstate="Runnable" seed="1726138983" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000088" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1045" name="InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(&quot;negative-limit&quot;)" fullname="ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(&quot;negative-limit&quot;)" methodname="InvalidInspectorConfigurationIsReportedAndCannotCreateInstances" classname="ItemsEditModeTests" runstate="Runnable" seed="584782690" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000141" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1046" name="InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(&quot;missing-text-key&quot;)" fullname="ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(&quot;missing-text-key&quot;)" methodname="InvalidInspectorConfigurationIsReportedAndCannotCreateInstances" classname="ItemsEditModeTests" runstate="Runnable" seed="1499282531" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000128" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-suite type="ParameterizedMethod" id="1033" name="InvalidLaterEffectIsRejectedBeforeAnyEarlierHealingRuns" fullname="ItemsEditModeTests.InvalidLaterEffectIsRejectedBeforeAnyEarlierHealingRuns" classname="ItemsEditModeTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.006037" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1030" name="InvalidLaterEffectIsRejectedBeforeAnyEarlierHealingRuns(&quot;unsupported&quot;)" fullname="ItemsEditModeTests.InvalidLaterEffectIsRejectedBeforeAnyEarlierHealingRuns(&quot;unsupported&quot;)" methodname="InvalidLaterEffectIsRejectedBeforeAnyEarlierHealingRuns" classname="ItemsEditModeTests" runstate="Runnable" seed="205369879" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.001072" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1031" name="InvalidLaterEffectIsRejectedBeforeAnyEarlierHealingRuns(&quot;null&quot;)" fullname="ItemsEditModeTests.InvalidLaterEffectIsRejectedBeforeAnyEarlierHealingRuns(&quot;null&quot;)" methodname="InvalidLaterEffectIsRejectedBeforeAnyEarlierHealingRuns" classname="ItemsEditModeTests" runstate="Runnable" seed="936463640" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000128" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1032" name="InvalidLaterEffectIsRejectedBeforeAnyEarlierHealingRuns(&quot;invalid-heal&quot;)" fullname="ItemsEditModeTests.InvalidLaterEffectIsRejectedBeforeAnyEarlierHealingRuns(&quot;invalid-heal&quot;)" methodname="InvalidLaterEffectIsRejectedBeforeAnyEarlierHealingRuns" classname="ItemsEditModeTests" runstate="Runnable" seed="184156323" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000089" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-suite type="ParameterizedMethod" id="1050" name="LibraryRejectsDuplicateDefinitionOrUniqueIdentifiers" fullname="ItemsEditModeTests.LibraryRejectsDuplicateDefinitionOrUniqueIdentifiers" classname="ItemsEditModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.005663" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1048" name="LibraryRejectsDuplicateDefinitionOrUniqueIdentifiers(False)" fullname="ItemsEditModeTests.LibraryRejectsDuplicateDefinitionOrUniqueIdentifiers(False)" methodname="LibraryRejectsDuplicateDefinitionOrUniqueIdentifiers" classname="ItemsEditModeTests" runstate="Runnable" seed="648324280" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.001427" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1049" name="LibraryRejectsDuplicateDefinitionOrUniqueIdentifiers(True)" fullname="ItemsEditModeTests.LibraryRejectsDuplicateDefinitionOrUniqueIdentifiers(True)" methodname="LibraryRejectsDuplicateDefinitionOrUniqueIdentifiers" classname="ItemsEditModeTests" runstate="Runnable" seed="1332673331" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000156" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1017" name="MedkitHealsToFullKeepsIdentityAndRetentionAndRejectsSecondUse" fullname="ItemsEditModeTests.MedkitHealsToFullKeepsIdentityAndRetentionAndRejectsSecondUse" methodname="MedkitHealsToFullKeepsIdentityAndRetentionAndRejectsSecondUse" classname="ItemsEditModeTests" runstate="Runnable" seed="1552211980" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000512" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1055" name="MissingUnusableAndNotStartedRequestsReturnSpecificFailuresWithoutHealing" fullname="ItemsEditModeTests.MissingUnusableAndNotStartedRequestsReturnSpecificFailuresWithoutHealing" methodname="MissingUnusableAndNotStartedRequestsReturnSpecificFailuresWithoutHealing" classname="ItemsEditModeTests" runstate="Runnable" seed="1573173342" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000345" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1029" name="MultipleSupportedHealEffectsCountAsOneUseEvenWhenAnEarlierEffectFillsHealth" fullname="ItemsEditModeTests.MultipleSupportedHealEffectsCountAsOneUseEvenWhenAnEarlierEffectFillsHealth" classname="ItemsEditModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.005349" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1027" name="MultipleSupportedHealEffectsCountAsOneUseEvenWhenAnEarlierEffectFillsHealth(True)" fullname="ItemsEditModeTests.MultipleSupportedHealEffectsCountAsOneUseEvenWhenAnEarlierEffectFillsHealth(True)" methodname="MultipleSupportedHealEffectsCountAsOneUseEvenWhenAnEarlierEffectFillsHealth" classname="ItemsEditModeTests" runstate="Runnable" seed="1103606479" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000665" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1028" name="MultipleSupportedHealEffectsCountAsOneUseEvenWhenAnEarlierEffectFillsHealth(False)" fullname="ItemsEditModeTests.MultipleSupportedHealEffectsCountAsOneUseEvenWhenAnEarlierEffectFillsHealth(False)" methodname="MultipleSupportedHealEffectsCountAsOneUseEvenWhenAnEarlierEffectFillsHealth" classname="ItemsEditModeTests" runstate="Runnable" seed="1096820581" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000130" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1026" name="QueriesTransfersAndDisplaySelectionKeepQuotaAndOnlyNewRoundRefreshesIt" fullname="ItemsEditModeTests.QueriesTransfersAndDisplaySelectionKeepQuotaAndOnlyNewRoundRefreshesIt" methodname="QueriesTransfersAndDisplaySelectionKeepQuotaAndOnlyNewRoundRefreshesIt" classname="ItemsEditModeTests" runstate="Runnable" seed="1828941134" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000927" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1016" name="TemporaryDropRemainsPickableButOrdinaryLossNeverGetsUniqueRecovery" fullname="ItemsEditModeTests.TemporaryDropRemainsPickableButOrdinaryLossNeverGetsUniqueRecovery" methodname="TemporaryDropRemainsPickableButOrdinaryLossNeverGetsUniqueRecovery" classname="ItemsEditModeTests" runstate="Runnable" seed="1568265234" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.001265" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1003" name="TwoFoodInstancesRemainIndependentAndNeverWriteRuntimeStateIntoDefinitions" fullname="ItemsEditModeTests.TwoFoodInstancesRemainIndependentAndNeverWriteRuntimeStateIntoDefinitions" methodname="TwoFoodInstancesRemainIndependentAndNeverWriteRuntimeStateIntoDefinitions" classname="ItemsEditModeTests" runstate="Runnable" seed="1774079551" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.001078" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1015" name="UniqueLossRecoversTheSameIdentityAtOriginalPointOnceNextRound" fullname="ItemsEditModeTests.UniqueLossRecoversTheSameIdentityAtOriginalPointOnceNextRound" classname="ItemsEditModeTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.007445" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1012" name="UniqueLossRecoversTheSameIdentityAtOriginalPointOnceNextRound(ExplorationDeath)" fullname="ItemsEditModeTests.UniqueLossRecoversTheSameIdentityAtOriginalPointOnceNextRound(ExplorationDeath)" methodname="UniqueLossRecoversTheSameIdentityAtOriginalPointOnceNextRound" classname="ItemsEditModeTests" runstate="Runnable" seed="1319786778" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.001885" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1013" name="UniqueLossRecoversTheSameIdentityAtOriginalPointOnceNextRound(ShelterAbandonment)" fullname="ItemsEditModeTests.UniqueLossRecoversTheSameIdentityAtOriginalPointOnceNextRound(ShelterAbandonment)" methodname="UniqueLossRecoversTheSameIdentityAtOriginalPointOnceNextRound" classname="ItemsEditModeTests" runstate="Runnable" seed="1835627046" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000170" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1014" name="UniqueLossRecoversTheSameIdentityAtOriginalPointOnceNextRound(LeftBehindOnExtraction)" fullname="ItemsEditModeTests.UniqueLossRecoversTheSameIdentityAtOriginalPointOnceNextRound(LeftBehindOnExtraction)" methodname="UniqueLossRecoversTheSameIdentityAtOriginalPointOnceNextRound" classname="ItemsEditModeTests" runstate="Runnable" seed="186477300" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000105" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-suite type="ParameterizedMethod" id="1008" name="UniqueRegistrationRejectsDuplicatesInEveryActiveOwner" fullname="ItemsEditModeTests.UniqueRegistrationRejectsDuplicatesInEveryActiveOwner" classname="ItemsEditModeTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.005533" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1004" name="UniqueRegistrationRejectsDuplicatesInEveryActiveOwner(World)" fullname="ItemsEditModeTests.UniqueRegistrationRejectsDuplicatesInEveryActiveOwner(World)" methodname="UniqueRegistrationRejectsDuplicatesInEveryActiveOwner" classname="ItemsEditModeTests" runstate="Runnable" seed="57511969" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000658" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1005" name="UniqueRegistrationRejectsDuplicatesInEveryActiveOwner(Container)" fullname="ItemsEditModeTests.UniqueRegistrationRejectsDuplicatesInEveryActiveOwner(Container)" methodname="UniqueRegistrationRejectsDuplicatesInEveryActiveOwner" classname="ItemsEditModeTests" runstate="Runnable" seed="1932114756" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000131" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1006" name="UniqueRegistrationRejectsDuplicatesInEveryActiveOwner(Backpack)" fullname="ItemsEditModeTests.UniqueRegistrationRejectsDuplicatesInEveryActiveOwner(Backpack)" methodname="UniqueRegistrationRejectsDuplicatesInEveryActiveOwner" classname="ItemsEditModeTests" runstate="Runnable" seed="318880796" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000115" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1007" name="UniqueRegistrationRejectsDuplicatesInEveryActiveOwner(Storage)" fullname="ItemsEditModeTests.UniqueRegistrationRejectsDuplicatesInEveryActiveOwner(Storage)" methodname="UniqueRegistrationRejectsDuplicatesInEveryActiveOwner" classname="ItemsEditModeTests" runstate="Runnable" seed="1396999500" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000153" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+    <test-suite type="Assembly" id="1066" name="MyPrecious.Localization.EditModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.Localization.EditModeTests.dll" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.114323" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="48276" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestFixture" id="1058" name="LocalizationQueryTests" fullname="LocalizationQueryTests" classname="LocalizationQueryTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.111116" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1061" name="DuplicateKeyReportsBothSourcesAndKeepsFirstText" fullname="LocalizationQueryTests.DuplicateKeyReportsBothSourcesAndKeepsFirstText" methodname="DuplicateKeyReportsBothSourcesAndKeepsFirstText" classname="LocalizationQueryTests" runstate="Runnable" seed="859517047" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.003898" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[Localization：重复 key 'same'。保留 语言表 'FirstTable' 第 1 项；拒绝 语言表 'SecondTable' 第 1 项。
+]]></output>
+        </test-case>
+        <test-case id="1059" name="InitializeAndQueriesDoNotResetLanguageOrNotify" fullname="LocalizationQueryTests.InitializeAndQueriesDoNotResetLanguageOrNotify" methodname="InitializeAndQueriesDoNotResetLanguageOrNotify" classname="LocalizationQueryTests" runstate="Runnable" seed="578401682" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.001141" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1062" name="InvalidFormatOrMissingArgumentsReturnKeyAndWarnOnce" fullname="LocalizationQueryTests.InvalidFormatOrMissingArgumentsReturnKeyAndWarnOnce" methodname="InvalidFormatOrMissingArgumentsReturnKeyAndWarnOnce" classname="LocalizationQueryTests" runstate="Runnable" seed="1829242743" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.001321" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[Localization：语言表 'FormatTable' 第 1 项 的 key 'broken' (Chinese) 占位符或参数错误：Input string was not in a correct format.
+Localization：语言表 'FormatTable' 第 1 项 的 key 'broken' (English) 占位符或参数错误：Index (zero based) must be greater than or equal to zero and less than the size of the argument list.
+]]></output>
+        </test-case>
+        <test-case id="1063" name="ItemNamesAndDescriptionsComeFromOriginalDefinitionWithoutMutatingIt" fullname="LocalizationQueryTests.ItemNamesAndDescriptionsComeFromOriginalDefinitionWithoutMutatingIt" methodname="ItemNamesAndDescriptionsComeFromOriginalDefinitionWithoutMutatingIt" classname="LocalizationQueryTests" runstate="Runnable" seed="268906101" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000719" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1064" name="LanguageChangedCannotRecursivelyToggleDuringRefresh" fullname="LocalizationQueryTests.LanguageChangedCannotRecursivelyToggleDuringRefresh" methodname="LanguageChangedCannotRecursivelyToggleDuringRefresh" classname="LocalizationQueryTests" runstate="Runnable" seed="1323742796" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000359" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1060" name="MissingTranslationFallsBackAndMissingKeyIsVisibleWithoutRepeatedWarnings" fullname="LocalizationQueryTests.MissingTranslationFallsBackAndMissingKeyIsVisibleWithoutRepeatedWarnings" methodname="MissingTranslationFallsBackAndMissingKeyIsVisibleWithoutRepeatedWarnings" classname="LocalizationQueryTests" runstate="Runnable" seed="1202426806" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000949" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[Localization：语言表 'FallbackTable' 第 1 项 的 key 'greeting' 缺少 Chinese 译文，尝试另一种语言。
+Localization：找不到 key 'absent'，请检查 'LocalizationQueryTest' 的语言表和物品目录。
+]]></output>
+        </test-case>
+        <test-case id="1065" name="TableValidationIdentifiesDuplicateAndMissingTranslation" fullname="LocalizationQueryTests.TableValidationIdentifiesDuplicateAndMissingTranslation" methodname="TableValidationIdentifiesDuplicateAndMissingTranslation" classname="LocalizationQueryTests" runstate="Runnable" seed="774000466" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.001386" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+    </test-suite>
+    <test-suite type="Assembly" id="1081" name="MyPrecious.Player.EditModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.Player.EditModeTests.dll" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.123200" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="48276" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestFixture" id="1067" name="PlayerHealthTests" fullname="PlayerHealthTests" classname="PlayerHealthTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.026995" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1068" name="CreationNeedsExplicitPositiveRoundAndDoesNotReportInitialDeath" fullname="PlayerHealthTests.CreationNeedsExplicitPositiveRoundAndDoesNotReportInitialDeath" methodname="CreationNeedsExplicitPositiveRoundAndDoesNotReportInitialDeath" classname="PlayerHealthTests" runstate="Runnable" seed="569195688" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.011980" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1074" name="FailedDisplayListenerDoesNotAbortSynchronousHealingOrOtherListeners" fullname="PlayerHealthTests.FailedDisplayListenerDoesNotAbortSynchronousHealingOrOtherListeners" methodname="FailedDisplayListenerDoesNotAbortSynchronousHealingOrOtherListeners" classname="PlayerHealthTests" runstate="Runnable" seed="1164013177" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.004733" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[InvalidOperationException: observer failed
+PlayerHealthTests+<>c.<FailedDisplayListenerDoesNotAbortSynchronousHealingOrOtherListeners>b__12_0 (System.Int32 current, System.Int32 maximum) (at Assets/Tests/Player/EditMode/PlayerHealthTests.cs:185)
+PlayerHealth.NotifyHealthChanged () (at Assets/Scripts/Player/MonoBehaviour/PlayerHealth.cs:114)
+UnityEngine.Debug:LogException(Exception, Object)
+PlayerHealth:NotifyHealthChanged() (at Assets/Scripts/Player/MonoBehaviour/PlayerHealth.cs:119)
+PlayerHealth:NotifyChanges(Int32, Boolean) (at Assets/Scripts/Player/MonoBehaviour/PlayerHealth.cs:88)
+PlayerHealth:Heal(Int32) (at Assets/Scripts/Player/MonoBehaviour/PlayerHealth.cs:79)
+<>c__DisplayClass12_0:<FailedDisplayListenerDoesNotAbortSynchronousHealingOrOtherListeners>b__2() (at Assets/Tests/Player/EditMode/PlayerHealthTests.cs:189)
+NUnit.Framework.Constraints.VoidInvocationDescriptor:Invoke()
+NUnit.Framework.Constraints.ExceptionInterceptor:Intercept(Object)
+NUnit.Framework.Constraints.ThrowsNothingConstraint:ApplyTo(Object)
+NUnit.Framework.Assert:That(Object, IResolveConstraint, String, Object[])
+NUnit.Framework.Assert:That(TestDelegate, IResolveConstraint, String, Object[])
+NUnit.Framework.Assert:DoesNotThrow(TestDelegate, String, Object[])
+NUnit.Framework.Assert:DoesNotThrow(TestDelegate)
+PlayerHealthTests:FailedDisplayListenerDoesNotAbortSynchronousHealingOrOtherListeners() (at Assets/Tests/Player/EditMode/PlayerHealthTests.cs:189)
+System.Reflection.MethodBase:Invoke(Object, Object[])
+NUnit.Framework.Internal.Reflect:InvokeMethod(MethodInfo, Object, Object[])
+NUnit.Framework.Internal.MethodWrapper:Invoke(Object, Object[])
+NUnit.Framework.Internal.Commands.TestMethodCommand:RunNonAsyncTestMethod(ITestExecutionContext)
+NUnit.Framework.Internal.Commands.TestMethodCommand:RunTestMethod(ITestExecutionContext)
+NUnit.Framework.Internal.Commands.TestMethodCommand:Execute(ITestExecutionContext)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions()
+
+]]></output>
+        </test-case>
+        <test-case id="1069" name="HealingIsSynchronousClampedAndDoesNotMutateConfiguration" fullname="PlayerHealthTests.HealingIsSynchronousClampedAndDoesNotMutateConfiguration" methodname="HealingIsSynchronousClampedAndDoesNotMutateConfiguration" classname="PlayerHealthTests" runstate="Runnable" seed="1603654758" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000768" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1070" name="InvulnerabilityBlocksDamageButAllowsHealingAndIsClearedByNewRound" fullname="PlayerHealthTests.InvulnerabilityBlocksDamageButAllowsHealingAndIsClearedByNewRound" methodname="InvulnerabilityBlocksDamageButAllowsHealingAndIsClearedByNewRound" classname="PlayerHealthTests" runstate="Runnable" seed="1924681221" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000531" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1071" name="LethalDamageEstablishesDeathBeforeNotificationsAndCannotReviveNormally" fullname="PlayerHealthTests.LethalDamageEstablishesDeathBeforeNotificationsAndCannotReviveNormally" methodname="LethalDamageEstablishesDeathBeforeNotificationsAndCannotReviveNormally" classname="PlayerHealthTests" runstate="Runnable" seed="1988233599" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.001158" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1073" name="NotificationCannotReenterHealingDamageOrRoundPreparation" fullname="PlayerHealthTests.NotificationCannotReenterHealingDamageOrRoundPreparation" methodname="NotificationCannotReenterHealingDamageOrRoundPreparation" classname="PlayerHealthTests" runstate="Runnable" seed="517353324" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000764" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1072" name="OnlyNewerRoundCanHealReviveOrMovePlayerAndNotificationSeesPreparedController" fullname="PlayerHealthTests.OnlyNewerRoundCanHealReviveOrMovePlayerAndNotificationSeesPreparedController" methodname="OnlyNewerRoundCanHealReviveOrMovePlayerAndNotificationSeesPreparedController" classname="PlayerHealthTests" runstate="Runnable" seed="1367813425" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000661" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1075" name="StateMachineTests" fullname="StateMachineTests" classname="StateMachineTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.006930" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1078" name="ExplicitReentryDoesNotCreateOrInitializeAnotherState" fullname="StateMachineTests.ExplicitReentryDoesNotCreateOrInitializeAnotherState" methodname="ExplicitReentryDoesNotCreateOrInitializeAnotherState" classname="StateMachineTests" runstate="Runnable" seed="1838847726" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.001048" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1076" name="FirstEnterAndSameStateRequestHaveExactCounts" fullname="StateMachineTests.FirstEnterAndSameStateRequestHaveExactCounts" methodname="FirstEnterAndSameStateRequestHaveExactCounts" classname="StateMachineTests" runstate="Runnable" seed="682534911" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000251" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1077" name="OldExitHappensBeforeTargetCreationAndCachedStatesAreReused" fullname="StateMachineTests.OldExitHappensBeforeTargetCreationAndCachedStatesAreReused" methodname="OldExitHappensBeforeTargetCreationAndCachedStatesAreReused" classname="StateMachineTests" runstate="Runnable" seed="676545605" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000298" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1080" name="SeparateCharactersHaveIndependentCachesAndOnlyExplicitUpdatesRun" fullname="StateMachineTests.SeparateCharactersHaveIndependentCachesAndOnlyExplicitUpdatesRun" methodname="SeparateCharactersHaveIndependentCachesAndOnlyExplicitUpdatesRun" classname="StateMachineTests" runstate="Runnable" seed="516717145" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000476" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1079" name="StopBeforeStartOrRepeatedAfterUseExitsAndUninitializesOnlyOnce" fullname="StateMachineTests.StopBeforeStartOrRepeatedAfterUseExitsAndUninitializesOnlyOnce" methodname="StopBeforeStartOrRepeatedAfterUseExitsAndUninitializesOnlyOnce" classname="StateMachineTests" runstate="Runnable" seed="419511844" result="Passed" start-time="2026-10-18 18:11:45Z" end-time="2026-10-18 18:11:45Z" duration="0.000448" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/cs200/AppData/LocalLow/DefaultCompany/DD451Demo\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

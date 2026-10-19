@@ -1,0 +1,64 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"success\":true,\"message\":\"Retrieved 7 log entries.\",\"data\":[{\"type\":\"Assert\",\"message\":\"Assertion failed on expression: 'CompareApproximately(SqrMagnitude(result), 1.0F)'\",\"file\":\"Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs\",\"line\":42,\"stackTrace\":\"UnityEngine.Quaternion:Internal_FromEulerRad (UnityEngine.Vector3)\\nDroneController:get_FacingRotation () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:42)\\nDroneFlightVisual:UpdatePose () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs:37)\\nDroneController:Update () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:98)\\n\"},{\"type\":\"Assert\",\"message\":\"Assertion failed on expression: 'CompareApproximately(SqrMagnitude(result), 1.0F)'\",\"file\":\"Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs\",\"line\":42,\"stackTrace\":\"UnityEngine.Quaternion:Internal_FromEulerRad (UnityEngine.Vector3)\\nDroneController:get_FacingRotation () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:42)\\nDroneFlightVisual:UpdatePose () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs:44)\\nDroneController:Update () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:98)\\n\"},{\"type\":\"Error\",\"message\":\"transform.localRotation assign attempt for 'Visual' is not valid. Input rotation is { NaN, NaN, NaN, NaN }.\",\"file\":\"Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs\",\"line\":44,\"stackTrace\":\"UnityEngine.Transform:set_localRotation (UnityEngine.Quaternion)\\nDroneFlightVisual:UpdatePose () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs:44)\\nDroneController:Update () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:98)\\n\"},{\"type\":\"Assert\",\"message\":\"Assertion failed on expression: 'CompareApproximately(SqrMagnitude(result), 1.0F)'\",\"file\":\"Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs\",\"line\":42,\"stackTrace\":\"UnityEngine.Quaternion:Internal_FromEulerRad (UnityEngine.Vector3)\\nDroneController:get_FacingRotation () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:42)\\nDroneController:Update () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:99)\\n\"},{\"type\":\"Assert\",\"message\":\"Assertion failed on expression: 'CompareApproximately(SqrMagnitude(result), 1.0F)'\",\"file\":\"Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs\",\"line\":99,\"stackTrace\":\"UnityEngine.Quaternion:Internal_FromEulerRad (UnityEngine.Vector3)\\nDroneController:get_FacingRotation () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:42)\\nDroneVision:RefreshPose () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs:135)\\nDroneVision:SetHeading (UnityEngine.Quaternion) (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs:125)\\nDroneController:Update () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:99)\\n\"},{\"type\":\"Assert\",\"message\":\"Assertion failed on expression: 'CompareApproximately(SqrMagnitude(result), 1.0F)'\",\"file\":\"Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs\",\"line\":42,\"stackTrace\":\"UnityEngine.Quaternion:Internal_FromEulerRad (UnityEngine.Vector3)\\nDroneController:get_FacingRotation () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:42)\\nDroneVision:RefreshPose () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs:135)\\nDroneVision:FindVisiblePlayer () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs:181)\\nDroneController:ObservePlayer () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:243)\\nDronePatrolState:Update () (at Assets/Scripts/Enemy/Drone/States/DronePatrolState.cs:19)\\nDroneController:Update () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:105)\\n\"},{\"type\":\"Assert\",\"message\":\"Assertion failed on expression: 'CompareApproximately(SqrMagnitude(result), 1.0F)'\",\"file\":\"Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs\",\"line\":42,\"stackTrace\":\"UnityEngine.Quaternion:Internal_FromEulerRad (UnityEngine.Vector3)\\nDroneController:get_FacingRotation () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:42)\\nDroneVision:RefreshPose () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs:135)\\nDroneVision:LateUpdate () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs:60)\\n\"}]}"
+    }
+  ],
+  "structuredContent": {
+    "success": true,
+    "message": "Retrieved 7 log entries.",
+    "data": [
+      {
+        "type": "Assert",
+        "message": "Assertion failed on expression: 'CompareApproximately(SqrMagnitude(result), 1.0F)'",
+        "file": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs",
+        "line": 42,
+        "stackTrace": "UnityEngine.Quaternion:Internal_FromEulerRad (UnityEngine.Vector3)\nDroneController:get_FacingRotation () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:42)\nDroneFlightVisual:UpdatePose () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs:37)\nDroneController:Update () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:98)\n"
+      },
+      {
+        "type": "Assert",
+        "message": "Assertion failed on expression: 'CompareApproximately(SqrMagnitude(result), 1.0F)'",
+        "file": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs",
+        "line": 42,
+        "stackTrace": "UnityEngine.Quaternion:Internal_FromEulerRad (UnityEngine.Vector3)\nDroneController:get_FacingRotation () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:42)\nDroneFlightVisual:UpdatePose () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs:44)\nDroneController:Update () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:98)\n"
+      },
+      {
+        "type": "Error",
+        "message": "transform.localRotation assign attempt for 'Visual' is not valid. Input rotation is { NaN, NaN, NaN, NaN }.",
+        "file": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs",
+        "line": 44,
+        "stackTrace": "UnityEngine.Transform:set_localRotation (UnityEngine.Quaternion)\nDroneFlightVisual:UpdatePose () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs:44)\nDroneController:Update () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:98)\n"
+      },
+      {
+        "type": "Assert",
+        "message": "Assertion failed on expression: 'CompareApproximately(SqrMagnitude(result), 1.0F)'",
+        "file": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs",
+        "line": 42,
+        "stackTrace": "UnityEngine.Quaternion:Internal_FromEulerRad (UnityEngine.Vector3)\nDroneController:get_FacingRotation () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:42)\nDroneController:Update () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:99)\n"
+      },
+      {
+        "type": "Assert",
+        "message": "Assertion failed on expression: 'CompareApproximately(SqrMagnitude(result), 1.0F)'",
+        "file": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs",
+        "line": 99,
+        "stackTrace": "UnityEngine.Quaternion:Internal_FromEulerRad (UnityEngine.Vector3)\nDroneController:get_FacingRotation () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:42)\nDroneVision:RefreshPose () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs:135)\nDroneVision:SetHeading (UnityEngine.Quaternion) (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs:125)\nDroneController:Update () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:99)\n"
+      },
+      {
+        "type": "Assert",
+        "message": "Assertion failed on expression: 'CompareApproximately(SqrMagnitude(result), 1.0F)'",
+        "file": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs",
+        "line": 42,
+        "stackTrace": "UnityEngine.Quaternion:Internal_FromEulerRad (UnityEngine.Vector3)\nDroneController:get_FacingRotation () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:42)\nDroneVision:RefreshPose () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs:135)\nDroneVision:FindVisiblePlayer () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs:181)\nDroneController:ObservePlayer () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:243)\nDronePatrolState:Update () (at Assets/Scripts/Enemy/Drone/States/DronePatrolState.cs:19)\nDroneController:Update () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:105)\n"
+      },
+      {
+        "type": "Assert",
+        "message": "Assertion failed on expression: 'CompareApproximately(SqrMagnitude(result), 1.0F)'",
+        "file": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs",
+        "line": 42,
+        "stackTrace": "UnityEngine.Quaternion:Internal_FromEulerRad (UnityEngine.Vector3)\nDroneController:get_FacingRotation () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs:42)\nDroneVision:RefreshPose () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs:135)\nDroneVision:LateUpdate () (at Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs:60)\n"
+      }
+    ]
+  },
+  "isError": false
+}

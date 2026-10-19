@@ -1,0 +1,73 @@
+var flags = System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Static;
+System.Type manager = null;
+foreach (var assembly in System.AppDomain.CurrentDomain.GetAssemblies())
+{
+    manager = assembly.GetType("MCPForUnity.Editor.Services.TestJobManager", false);
+    if (manager != null) { break; }
+}
+if (manager == null) { return new { recovered = false, reason = "Loaded TestJobManager type not found" }; }
+var jobs = manager.GetField("Jobs", flags).GetValue(null) as System.Collections.IDictionary;
+var gate = manager.GetField("LockObj", flags).GetValue(null);
+string jobId = "3dcd77ae63ce4c9bbadd24cf6f3876ca";
+object job = null;
+lock (gate) { if (jobs != null && jobs.Contains(jobId)) { job = jobs[jobId]; } }
+if (job == null) { return new { recovered = false, reason = "Original job is no longer in memory", jobId }; }
+var jobType = job.GetType();
+var result = jobType.GetProperty("Result", flags).GetValue(job);
+if (result == null)
+{
+    return new { recovered = false, reason = "Job.Result is null in memory; domain-reload persistence intentionally excludes it. Try existing GUI cache.", jobId,
+        status = jobType.GetProperty("Status", flags).GetValue(job).ToString(),
+        completed = jobType.GetProperty("CompletedTests", flags).GetValue(job) };
+}
+string mode = (string)jobType.GetProperty("Mode", flags).GetValue(job);
+var payload = result.GetType().GetMethod("ToSerializable", flags, null, new[] { typeof(string), typeof(bool), typeof(bool) }, null)
+    .Invoke(result, new object[] { mode, true, true });
+var enemyPrefixes = new[] { "DroneAlertTests.", "DroneBehaviourTests.", "DroneStatusLightTests.", "DroneVisionAlignmentTests.", "EnemySceneIntegrationTests." };
+var enemyRows = new System.Collections.Generic.List<object>();
+int passed = 0;
+int other = 0;
+foreach (var entry in (System.Collections.IEnumerable)result.GetType().GetProperty("Results", flags).GetValue(result))
+{
+    var type = entry.GetType();
+    string fullName = (string)type.GetProperty("FullName", flags).GetValue(entry);
+    bool enemy = false;
+    foreach (string prefix in enemyPrefixes) { if (fullName != null && fullName.StartsWith(prefix, System.StringComparison.Ordinal)) { enemy = true; break; } }
+    if (!enemy) { continue; }
+    string state = (string)type.GetProperty("State", flags).GetValue(entry);
+    if (state == "Passed") { passed++; } else { other++; }
+    enemyRows.Add(new {
+        fullName, state,
+        durationSeconds = type.GetProperty("DurationSeconds", flags).GetValue(entry),
+        message = type.GetProperty("Message", flags).GetValue(entry),
+        stackTrace = type.GetProperty("StackTrace", flags).GetValue(entry),
+        output = type.GetProperty("Output", flags).GetValue(entry)
+    });
+}
+string folder = "E:/DD451/Docs/Verification/Enemy/TimedAlert/Integration";
+System.IO.Directory.CreateDirectory(folder);
+string allPath = System.IO.Path.Combine(folder, "PlayMode-53-Initial-Recovered.json");
+string enemyPath = System.IO.Path.Combine(folder, "Enemy-40-Initial-Recovered.json");
+var allReport = new {
+    source = "Original MCP TestJob.Result copied from Unity ITestResultAdaptor callbacks; not reconstructed official NUnit XML",
+    jobId,
+    jobStatus = jobType.GetProperty("Status", flags).GetValue(job).ToString(),
+    startedUnixMs = jobType.GetProperty("StartedUnixMs", flags).GetValue(job),
+    finishedUnixMs = jobType.GetProperty("FinishedUnixMs", flags).GetValue(job),
+    recoveredUtc = System.DateTime.UtcNow.ToString("O"),
+    payload
+};
+var enemyReport = new {
+    source = "Filtered original job's per-test callback results; no tests rerun",
+    jobId,
+    expected = 40,
+    actual = enemyRows.Count,
+    passed,
+    nonPassed = other,
+    verifiedFortyPassed = enemyRows.Count == 40 && passed == 40 && other == 0,
+    results = enemyRows
+};
+System.IO.File.WriteAllText(allPath, Newtonsoft.Json.JsonConvert.SerializeObject(allReport, Newtonsoft.Json.Formatting.Indented));
+System.IO.File.WriteAllText(enemyPath, Newtonsoft.Json.JsonConvert.SerializeObject(enemyReport, Newtonsoft.Json.Formatting.Indented));
+return new { recovered = true, allPath, enemyPath, enemyCount = enemyRows.Count, passed, nonPassed = other,
+    verifiedFortyPassed = enemyRows.Count == 40 && passed == 40 && other == 0 };

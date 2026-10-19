@@ -1,0 +1,46 @@
+{
+  "editor": {
+    "utc": "2026-10-18T22:47:55.8566238Z",
+    "scene": "Assets/Scenes/Bootstrap.unity",
+    "dirty": false,
+    "playing": false,
+    "changing": false,
+    "compiling": false,
+    "background": false,
+    "playOptionsEnabled": false,
+    "playOptions": "None",
+    "devices": [
+      {
+        "name": "Keyboard",
+        "native": true,
+        "enabled": true,
+        "deviceId": 1
+      },
+      {
+        "name": "Mouse",
+        "native": true,
+        "enabled": true,
+        "deviceId": 2
+      }
+    ],
+    "screen": [
+      1920,
+      1080
+    ]
+  },
+  "console": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"success\":true,\"message\":\"Retrieved 0 log entries.\",\"data\":[]}"
+      }
+    ],
+    "structuredContent": {
+      "success": true,
+      "message": "Retrieved 0 log entries.",
+      "data": []
+    },
+    "isError": false
+  },
+  "note": "Normal Play explicitly stopped; restored clean Bootstrap without saving scene; original runInBackground=false and native input devices restored."
+}

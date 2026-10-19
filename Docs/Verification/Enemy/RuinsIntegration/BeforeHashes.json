@@ -1,0 +1,30 @@
+[
+  {
+    "Path": "Assets/Scenes/Ruins.unity",
+    "Hash": "978E767934D66CF96821BF00D59DD7DF3386A75B99AA82DC0BE811CEDE4FBB3A"
+  },
+  {
+    "Path": "Assets/Scenes/Shelter.unity",
+    "Hash": "F4A36F7B10057621E7CBD4FB013C6D30EB92BE94FBF245786AC2E8C388F892B8"
+  },
+  {
+    "Path": "Assets/Scenes/Bootstrap.unity",
+    "Hash": "9063DB1C2FD9EFBB83A120531BCA35644BE835D203A68EC49FBB1B8306526500"
+  },
+  {
+    "Path": "Assets/Prefabs/Enemy/Drone/Drone.prefab",
+    "Hash": "3DBF48088A9FC82470A4E5DFB056A8E962002B23CED19F883FB23A23891114EB"
+  },
+  {
+    "Path": "Assets/Prefabs/Enemy/Drone/Drone.prefab.meta",
+    "Hash": "7373C79FC9230FA996B140D761A8E06DE02E78D0803E5FA2FDAF064B771E4603"
+  },
+  {
+    "Path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs",
+    "Hash": "5205854792E2C6794F006E772F199516C4DDDBA9BCD4D0375D84753D74175B43"
+  },
+  {
+    "Path": "Assets/Data/Enemy/Drone/DroneConfig.asset",
+    "Hash": "9AC93E385E708E3576C47DDB63FAD851190C96C26705051577F29F81F647BBEC"
+  }
+]

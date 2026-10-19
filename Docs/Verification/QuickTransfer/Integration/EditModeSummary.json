@@ -1,0 +1,31 @@
+{
+  "total": "209",
+  "passed": "209",
+  "failed": "0",
+  "start": "2026-10-18 23:54:29Z",
+  "end": "2026-10-18 23:54:32Z",
+  "duration": "3.2764418",
+  "assemblies": [
+    {
+      "name": "MyPrecious.Backpack.EditModeTests.dll",
+      "total": "38",
+      "passed": "38",
+      "failed": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "MyPrecious.Loot.EditModeTests.dll",
+      "total": "122",
+      "passed": "122",
+      "failed": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "MyPrecious.Warehouse.EditModeTests.dll",
+      "total": "49",
+      "passed": "49",
+      "failed": "0",
+      "skipped": "0"
+    }
+  ]
+}

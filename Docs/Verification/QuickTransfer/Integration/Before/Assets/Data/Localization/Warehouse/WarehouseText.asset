@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f3cd9f8c424ac5439f636ad5435f100, type: 3}
+  m_Name: WarehouseText
+  m_EditorClassIdentifier: MyPrecious.Localization::LocalizationTableSO
+  entries:
+  - key: warehouse.title
+    chinese: "\u4ED3\u5E93"
+    english: Warehouse
+  - key: warehouse.size
+    chinese: "\u5F53\u524D\u5BB9\u91CF\uFF1A{0} \xD7 {1}\uFF08{2}\u683C\uFF09"
+    english: "Capacity: {0} \xD7 {1} ({2} cells)"
+  - key: warehouse.close
+    chinese: "\u5173\u95ED"
+    english: Close
+  - key: warehouse.controls
+    chinese: "\u5DE6\u952E\u9009\u62E9 / \u62D6\u52A8\u6574\u7406 / R\u65CB\u8F6C\uFF1B\u6EDA\u8F6E\u6216\u53F3\u4FA7\u6EDA\u52A8\u6761\u4E0A\u4E0B\u67E5\u770B"
+    english: Select / drag to rearrange / R to rotate; scroll vertically with the
+      wheel or right scrollbar
+  - key: warehouse.select_hint
+    chinese: "\u9009\u62E9\u4ED3\u5E93\u7269\u54C1\u67E5\u770B\u4FE1\u606F\u3002"
+    english: Select a stored item to inspect it.
+  - key: warehouse.dimensions
+    chinese: "\u5360\u683C\uFF1A{0} \xD7 {1}"
+    english: "Footprint: {0} \xD7 {1}"
+  - key: warehouse.value
+    chinese: "\u4FDD\u6709\u4EF7\u503C\uFF1A{0} EV"
+    english: 'Retained value: {0} EV'
+  - key: warehouse.stored_use_hint
+    chinese: "\u4ED3\u5E93\u7269\u54C1\u9700\u5148\u8F6C\u5165\u80CC\u5305\u624D\u53EF\u4F7F\u7528\u3002"
+    english: Move items into the backpack before use.
+  - key: warehouse.rotatable
+    chinese: "\u53EF\u65CB\u8F6C"
+    english: Can rotate
+  - key: warehouse.fixed_orientation
+    chinese: "\u4E0D\u53EF\u65CB\u8F6C"
+    english: Cannot rotate
+  - key: warehouse.item_size
+    chinese: "{0} \xD7 {1}"
+    english: "{0} \xD7 {1}"
+  - key: warehouse.abandon
+    chinese: "\u9057\u5F03\u9009\u4E2D\u7269\u54C1"
+    english: Abandon selected
+  - key: warehouse.cancel_drag
+    chinese: "\u53D6\u6D88\u62D6\u62FD"
+    english: Cancel drag
+  - key: warehouse.ready
+    chinese: "\u53EF\u81EA\u7531\u6574\u7406\u4ED3\u5E93\u3002"
+    english: Ready to rearrange.
+  - key: warehouse.cancelled
+    chinese: "\u5DF2\u53D6\u6D88\uFF0C\u539F\u6446\u653E\u4FDD\u7559\u3002"
+    english: Cancelled; original placement kept.
+  - key: warehouse.moved
+    chinese: "\u6446\u653E\u5DF2\u66F4\u65B0\u3002"
+    english: Placement updated.
+  - key: warehouse.outside
+    chinese: "\u8BF7\u5728\u53EF\u89C1\u4ED3\u5E93\u683C\u5B50\u5185\u677E\u624B\u3002"
+    english: Release over a visible warehouse cell.
+  - key: warehouse.confirm_title
+    chinese: "\u786E\u8BA4\u9057\u5F03"
+    english: Confirm abandonment
+  - key: warehouse.confirm_body
+    chinese: "\u786E\u5B9A\u9057\u5F03\u201C{0}\u201D\uFF1F\u4FDD\u6709\u4EF7\u503C\u5C06\u5931\u53BB\uFF1B\u552F\u4E00\u5267\u60C5\u7269\u54C1\u4E0B\u8F6E\u53EF\u5728\u539F\u62FE\u53D6\u70B9\u627E\u56DE\u3002"
+    english: "Abandon \u201C{0}\u201D? Its retained value will be lost. Unique story
+      items can be recovered at their original pickup point next round."
+  - key: warehouse.confirm
+    chinese: "\u786E\u8BA4\u9057\u5F03"
+    english: Confirm abandonment
+  - key: warehouse.cancel
+    chinese: "\u53D6\u6D88"
+    english: Cancel
+  - key: warehouse.abandoned
+    chinese: "\u7269\u54C1\u5DF2\u9057\u5F03\u3002"
+    english: Item abandoned.
+  - key: warehouse.result.success
+    chinese: "\u6B64\u5904\u53EF\u4EE5\u653E\u7F6E\u3002"
+    english: This placement is valid.
+  - key: warehouse.result.not_ready
+    chinese: "\u4ED3\u5E93\u5C1A\u672A\u51C6\u5907\u597D\u3002"
+    english: Warehouse is not ready.
+  - key: warehouse.result.invalid_configuration
+    chinese: "\u4ED3\u5E93\u6216\u7269\u54C1\u914D\u7F6E\u65E0\u6548\u3002"
+    english: Invalid warehouse or item configuration.
+  - key: warehouse.result.not_found
+    chinese: "\u7269\u54C1\u5DF2\u4E0D\u5B58\u5728\u3002"
+    english: Item is no longer available.
+  - key: warehouse.result.wrong_owner
+    chinese: "\u7269\u54C1\u5DF2\u4E0D\u5728\u4ED3\u5E93\u3002"
+    english: Item is no longer in storage.
+  - key: warehouse.result.wrong_container
+    chinese: "\u7269\u54C1\u4E0D\u5C5E\u4E8E\u6B64\u4ED3\u5E93\u3002"
+    english: Item belongs to a different warehouse.
+  - key: warehouse.result.missing_placement
+    chinese: "\u4ED3\u5E93\u4E2D\u6CA1\u6709\u8BE5\u7269\u54C1\u6446\u653E\u3002"
+    english: Item has no placement in this warehouse.
+  - key: warehouse.result.duplicate_instance
+    chinese: "\u8BE5\u7269\u54C1\u5DF2\u7ECF\u5728\u4ED3\u5E93\u4E2D\u3002"
+    english: Item is already in this warehouse.
+  - key: warehouse.result.rotation_not_allowed
+    chinese: "\u6B64\u7269\u54C1\u4E0D\u53EF\u65CB\u8F6C\u3002"
+    english: This item cannot rotate.
+  - key: warehouse.result.out_of_bounds
+    chinese: "\u653E\u7F6E\u8303\u56F4\u8D85\u51FA\u4ED3\u5E93\u3002"
+    english: Placement is outside the warehouse.
+  - key: warehouse.result.overlap
+    chinese: "\u6B64\u5904\u4E0E\u5176\u4ED6\u7269\u54C1\u91CD\u53E0\u3002"
+    english: Placement overlaps another item.
+  - key: warehouse.result.busy
+    chinese: "\u8BF7\u5148\u7ED3\u675F\u62D6\u62FD\u6216\u9057\u5F03\u786E\u8BA4\u3002"
+    english: Finish the current drag or confirmation first.
+  - key: warehouse.result.not_in_shelter
+    chinese: "\u5F53\u524D\u573A\u666F\u4E0D\u5141\u8BB8\u6574\u7406\u4ED3\u5E93\u3002"
+    english: Warehouse management is unavailable here.
+  - key: warehouse.result.loss_rejected
+    chinese: "\u9057\u5F03\u672A\u5B8C\u6210\uFF0C\u539F\u7269\u54C1\u4FDD\u6301\u4E0D\u53D8\u3002"
+    english: Abandonment failed; the item was kept.

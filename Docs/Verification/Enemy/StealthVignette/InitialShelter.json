@@ -1,0 +1,10 @@
+{
+  "phase": "InitialShelter",
+  "stage": "Shelter",
+  "player": -4572394,
+  "camera": -4571730,
+  "pp": true,
+  "stealthCount": 0,
+  "fillLights": 1,
+  "sky": "ShelterNightSkybox"
+}

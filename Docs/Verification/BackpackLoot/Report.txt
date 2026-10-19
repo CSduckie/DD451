@@ -1,0 +1,65 @@
+04 独立联测：背包与搜刮容器双向拖拽、受击取消
+日期：2026-10-18（America/New_York）
+工程：E:/DD451；Unity 6000.2.12f1；真实场景 Assets/Scenes/Tests/Loot/LootTest.unity。
+
+结论
+本轮自动化联测通过：70项EditMode，1280×720和800×600各19项PlayMode，全部0失败、0跳过。
+在已执行路径中，背包→搜刮容器、搜刮容器→背包、旋转预览中非致死受击、迟到松手、旧拖拽回调、成功后重复提交均未造成物品丢失或复制。
+原生OS鼠标拖拽和键盘验收仍有证据缺口。本结论限于真实InputSystem/UGUI队列输入及相关数据事务回归，不等同于真人鼠标试玩通过。
+
+接入与修改范围
+06新增返箱接入已完成；05明确释放Editor后，04独立执行本次测试，未沿用06成绩充当本轮成绩。
+左侧是04独立背包格子，右侧是06真实搜刮来源列表。右侧保存条目和搜索状态，不是仓库格子；没有虚构箱子格子容量。
+仅修改 Assets/Tests/Loot/PlayMode/LootReturnTests.cs 的两个既有受击用例；没有新增生产功能、重写模块、改动正式资源或新建重复测试。
+两项加强测试保持原名：
+- LootIntegrationTests.QueuedDamageCancelsValidBoxReturnAndLateTokenCannotAffectNextDrag
+- LootIntegrationTests.QueuedDamageCancelsValidBoxPickupAndLateTokenCannotAffectNextDrag
+在合法目标预览中，真实排队R按键使预览旋转且token不变，然后调用测试Driver的DamageOne，经真实PlayerHealth产生有效非致命伤害。确认HP实际减1、未死亡、背包与搜刮来源关闭、预览清理。
+取消前后比较全部实例、Owner/ContainerId、背包/仓库坐标和旋转、源条目Taken/Revealed快照，确认原状态保留。迟到释放无效；重开后的新拖拽不受旧token影响。
+新拖拽经真实UGUI松手成功后，再调用同一新token的结束回调及排队发送重复释放，确认状态不再改变。
+终态还检查总实例数不变、同ID在01仅一个实例且SameAs原对象、源条目唯一、双方恰一处有效持有、目标ContainerId和占格一致、仓库无旁生占格。拾取方向另确认取消的旋转不会泄漏到新拖拽。
+
+本轮证据
+1. EditMode：70/70，0失败、0跳过，0.3750725秒。
+   纽约时间15:22:32；官方XML时间2026-10-18 19:22:32Z。
+   MCP job：935fdcbf881447a292c6c84b5c111f39。
+   EditMode.xml 是完整官方结果；EditMode.json 保存MCP成功状态，result字段为空，不把它说成完整用例明细。
+2. PlayMode 1280×720：19/19，0失败、0跳过，13.7603635秒。
+   纽约时间15:23:28—15:23:42；官方XML时间19:23:28—19:23:42Z。
+   MCP job：e7e880a21e11486da9dade11107d18cc。
+   PlayMode-1280x720.xml 是完整官方结果。MCP未收到完成回调，状态仍显示0项running；核实新XML全部通过、TestRunnerApi.IsRunActive=false且Editor已停止后，仅清理遗留MCP任务，未重跑伪造成绩。
+   PlayMode-1280x720-McpStatus.json 如实保留这个工具状态异常。
+3. PlayMode 800×600：19/19，0失败、0跳过，12.7226125秒。
+   纽约时间15:24:16—15:24:29；官方XML时间19:24:16—19:24:29Z。
+   MCP job：1435455e35f94f9c8eda79c962c01b72。
+   PlayMode-800x600.xml 与 .json 均保留，JSON包含19项完整通过明细。
+运行前分别读回GameView目标尺寸为1280×720、800×600；普通Play复查也读回对应Screen.width/height。
+
+覆盖和证据边界
+- 真实箱子往返复用原条目/身份、空箱接收外来背包物品、其他条目继续搜索。
+- 两个方向合法预览中真实R旋转后受击取消；旧token迟到、新token成功、成功新token重复结束以及重复释放。
+- 来源隐藏、满包/重叠、不可达/遮挡、关闭再开会话、被覆盖的返箱目标等拒绝路径；拒绝时保留原状态。
+- 致命伤取消与死亡限制、地面拾放、同轮重载和唯一物品找回；背包/仓库原有拖拽和滚轮链路也随19项套件回归。
+- EditMode包括目标添加/源移除/归属提交故障回滚、真实01拒绝、重复提交、通知时完整状态与重入拒绝。
+- 快照包括InstanceId、DefinitionId、UniqueId、SourceId、OriginalSpawnPointId、UseRound、UsesThisRound、IsRetained、RecoveryRound、LastLossReason、Owner、ContainerId、SpawnClaimed、实例总数、EV及双方全部占格；源条目核对EntryId/InstanceId/Revealed/Taken。
+- 搜索本身继续计时，受击关闭会重置未完成项；没有错误要求计时在正常帧推进期间不变。源全快照在同步阶段比较，跨帧允许其他条目正常揭示。
+- 指针与R/F10经InputSystem.QueueStateEvent→真实InputAction→InputSystemUIInputModule→UGUI。伤害使用真实Health入口；迟到/重复回调还以控制器公开方法构造精确边界。这些均明确区别于原生OS操作。
+
+普通Play原生复查
+使用computer-use/Sky，保持默认PointersAndKeyboardsRespectGameViewFocus与ResetAndDisableNonBackgroundDevices；未更改后台更新或输入策略。
+只有native Keyboard(deviceId=1)和Mouse(deviceId=2)，均enabled；读取时Application/EventSystem焦点为true，EditorWindow为GameView。
+800×600：原生点击电池成功选中并显示详情。E未开箱，因此为检查拖拽使用TryOpenSource安排初态，不把此安排计为原生开箱成功。
+随后返箱drag分别带/不带screenshotId，均未出现nextDragToken递增（仍0），物品归属及位置未变。原生F10未切换语言。
+1280×720：从已揭示来源条目拖向合法背包空格，nextDragToken仍0；目标物仍Owner=Container、Taken=false，实例总数仍11。
+完整拖拽结束后的DragToken=0本身是正常清理，因此本轮以私有nextDragToken前后值、SelectedInstanceId、FeedbackKey和物品终态共同判断，不单靠活动token下结论。
+鼠标读数在拖拽后仍为(398,206.5)，F10之后Keyboard.lastUpdateTime未变；尚未定位确切原因，不能据此断言生产背包代码有故障。
+Native-800x600.json、Native-1280x720.json保留实际读回值。
+Loot-800x600.png、Loot-1280x720.png已实际查看，用于左右布局和可读性证据，不代表原生拖放成功。
+
+结束状态与后续
+已停止Play，无测试/编译/更新任务，LootTest.unity无未保存场景改动；Game预设7、非最大化；运行EnterPlayModeOptions=false/None，默认输入策略。
+最终Console为0错误、0警告。FinalEditor.json保存交接时运行状态。
+测试Runner改写的EditorSettings磁盘值已精确恢复接手前SHA256：32D6A9BE4C9AA9795A96BD951820A2D9BE1BFEFAB82ED05A5DB111AF0863938F。
+ProtectedBefore.json与ProtectedAfter.json：353项生产源码/Prefab/配置/Input/Packages/ProjectSettings/06场景文件全部与接手前相同。
+Editor已明确释放给05，05将按其用户指令继续原生拖拽/R/F10排查。04本轮联测已结束；自动跟进在报告完成后停用。
+本轮不含正式敌人、完整死亡结算、Windows独立构建或真人试玩验收。

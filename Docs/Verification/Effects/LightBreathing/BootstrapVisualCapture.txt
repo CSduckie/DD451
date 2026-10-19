@@ -1,0 +1,6 @@
+Bootstrap-High.png;seconds=0.6887;lamp=灯光;intensity=49.508220
+Bootstrap-Dark.png;seconds=1.0376;lamp=灯光;intensity=0.000000
+Bootstrap-Low.png;seconds=2.6823;lamp=灯光;intensity=32.981720
+Captures(high,low,dark)=True,True,True
+DurationSeconds=15.001
+Resolution=1920x1080

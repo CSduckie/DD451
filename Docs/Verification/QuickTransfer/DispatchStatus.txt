@@ -1,0 +1,29 @@
+2026-10-18 主程任务下发记录
+来源：用户明确要求Ctrl+左键快捷转移、普通拖拽跟随鼠标、移除容器格子下方黑框，并自动下发各负责模块。
+
+已通过send_message_to_thread成功下发，随后wait_threads确认四个聊天都已接收并处于active：
+任务004背包系统
+线程01a15037-49ef-7001-b980-51ca45397f36；本轮01a1515e-663b-7160-ba11-bd54d3cc11f2。
+文件04A_BackpackQuickTransfer.txt：背包快捷入口、独立只读找位。
+
+任务005仓库系统
+线程01a1503d-1e5c-7ee1-a5e6-5cf539308823；本轮01a1515e-6cc8-7db2-b7a8-a6d72e6eab12。
+文件05A_WarehouseQuickTransfer.txt：仓库快捷入口、独立只读找位、现有鼠标坐标回归。
+
+任务006物品拾取与移动
+线程01a15049-cb4a-77a2-9b33-662461f28a02；本轮01a1515e-74e4-7b93-a32c-15fe3976ecc2。
+文件06C_QuickTransferPrecisePlacement.txt：跨模块完整转移、箱子鼠标坐标放置、去黑框。
+
+任务007串联游戏流程
+线程01a15055-8e2c-7320-bd46-7e6b95d60ece；本轮01a1515e-82dc-7a00-ac1d-d224ea84eaf6。
+文件07B_QuickTransferIntegration.txt：只读等待04A/05A/06C READY交接后接手唯一Unity操作、正式接入与1920验收。
+
+四者都已在开工说明中确认自己的范围及07统一运行约束。
+本记录仅证明任务已发送并接收，不代表功能完成或新版测试通过。
+“自动整理”本轮执行默认值：仅当前物品找空位，不重排原物；如用户调整，更新A25和四任务。
+最新规范Docs/AgentPrompts/QuickTransfer_Dispatch.txt；截图UserRequest.png。
+
+后续协调进展（2026-10-18）
+04A已补BeginExternalPreview(instanceId, rotated, grabOffset)实际依赖并最终READY；05A最终READY；06C最终READY且BeginLootDrag已接重载，旧调用清理新重入token的静态风险已由06补修并增加回归。
+主程读取三份实际交接及源码调用后确认依赖齐全，007的当前回合已开始统一整合。04/05/06未运行Unity测试，READY仅是可集成状态。
+007保持唯一Editor操作者；主程及其审查子代理仅只读核查。后续以07B实际结果更新，不以源码预计数量冒称通过。

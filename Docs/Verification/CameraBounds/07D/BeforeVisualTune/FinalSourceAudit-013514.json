@@ -1,0 +1,22 @@
+{
+  "utc": "2026-10-19T01:35:14.6281555Z",
+  "scopeCount": 318,
+  "changes": [
+    {
+      "path": "Assets/Tests\\Player\\PlayMode\\PlayerIntegrationTests.cs",
+      "before": "2A4C28202B9EADBD23E356BE8F51EFA136A5AAFFEFC3098A70F1BF49C45E22BD",
+      "current": "CC762A7302669EF6D1627A7FBEF198617586740C3C4D1FA895583BAD033249C2"
+    },
+    {
+      "path": "Assets/Scripts\\Player\\MonoBehaviour\\PlayerCameraTargetBinder.cs",
+      "before": "D7CAEA52177CB3BBDED93261631AC499B3F472A4148ED9B6A8ED5ECE2249E51F",
+      "current": "6B22550363A1E47C78BFC22507BC298E7D576C6590FD805BFA3BDC9B487E645D"
+    },
+    {
+      "path": "Assets/Scripts\\Interaction\\MonoBehaviour\\PlayerInteraction.cs",
+      "before": "41F7587D4574534671F3C0BC733C6326E7E0604AD34B622E473E89FCB275CC94",
+      "current": "187C638EF6504C5D603E5A58A552FDA7B222D735FFC5CA0B80E34D48488AC873"
+    }
+  ],
+  "note": "Only three post-freeze integration repairs changed: own-body lazy cache; loading-phase camera binding; existing Player scene reload regression assertions."
+}

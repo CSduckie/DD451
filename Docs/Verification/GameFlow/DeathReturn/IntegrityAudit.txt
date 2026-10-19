@@ -1,0 +1,33 @@
+07F independent integrity audit
+UTC: 2026-10-19T08:57:12.2428473Z
+Result: PASS_WITH_DOCUMENTED_SCOPE
+Filesystem-only audit; no Unity calls, no Assets writes.
+
+Baseline: Before/Hashes.json, all 707 recorded files compared by SHA256.
+699 unchanged; 8 expected modifications; 0 missing; 0 unexpected modifications.
+2 expected additions: GameFlowDeathReturnTests.cs and its .meta. Total 9 code/table/test/builder files plus new test meta.
+Current Data/Prefabs/Scenes/Scripts/Tests/ProjectSettings enumeration found no other additions.
+12 formal scenes, 31 project prefabs, all 25 ProjectSettings files and remaining Data configuration match the baseline.
+Recorded ShelterNightSkybox.mat, ShelterScreenDust.mat and dust material meta match.
+Scope limit: Art contains 3886 files absent from this baseline. Their prior bytes cannot be established by this audit.
+
+Expected modified paths:
+Assets/Data/Localization/GameFlow/GameFlowText.asset
+Assets/Tests/GameFlow/PlayMode/PlayerSceneTransitionTests.cs
+Assets/Tests/GameFlow/Editor/MinimumLoopSceneBuilder.cs
+Assets/Scripts/GameFlow/RuntimeData/GameFlowStage.cs
+Assets/Scripts/GameFlow/MonoBehaviour/GameFlowManager.cs
+Assets/Scripts/Player/MonoBehaviour/PlayerHealth.cs
+Assets/Scripts/Player/MonoBehaviour/PlayerController.cs
+Assets/Scripts/Loot/MonoBehaviour/LootRuntimeManager.cs
+
+Official XML independently parsed: PlayMode 10/10, PlayMode 54/54, EditMode 161/161; 0 failed/skipped. Actual test-case counts match totals.
+Ordinary Run-2a22615e: all 13 cross-file checks passed. Real TakeDamage accepted once, repeat death/extraction rejected; UI closed synchronously.
+Round 2 same player revived with HP3, backpack empty, EV7 to EV2, stored medkit same ID at (3,4), rotated, warehouse20x24 and upgrade preserved.
+Observer frames: 7975 death accepted; 7976 inventory/EV cleared and loot closed; 7978 Shelter first observed loaded; 7979 Shelter unlocked.
+Round 3 begins only on next departure, HP3; four fresh drones in Patrol/current round. Same unique doll ID and origin appears once and is naturally searched/reacquired.
+Observer: 9985 frame samples, 0 missed frames, 10 inventory snapshots, stopped at180s and removed callbacks; background restored. Round3 is covered by separate08/09/10 JSON.
+CN/EN screenshot PNG headers independently show1920x1080; this auditor did not visually review pixels.
+Evidence is ordinary Play driven by API positioning/body freeze/real interaction/search/transfer, NOT native keyboard/mouse evidence.
+The initial CS1061/test dispatch failure history remains recorded and is not counted as a pass.
+Full hashes, XML fixture counts and ordinary evidence checks are in IntegrityAudit.json.

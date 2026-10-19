@@ -1,0 +1,12 @@
+{
+  "runId": "20261019T084904154Z",
+  "startedUtc": "2026-10-19T08:49:04.1546012Z",
+  "output": "E:/DD451/Docs/Verification/GameFlow/DeathReturn/OrdinaryPlay/Observer-20261019T084904154Z",
+  "limitSeconds": 180,
+  "originalRunInBackground": false,
+  "runningKey": "07F.ObserverRunning",
+  "cancelKey": "07F.ObserverCancel",
+  "phaseKey": "07F.ObserverPhase",
+  "cancelInstruction": "SessionState.SetBool(\"07F.ObserverCancel\", true); then wait for ObserverFinished.json.",
+  "purpose": "Read-only evidence sampler; no gameplay actions or native-input claim."
+}

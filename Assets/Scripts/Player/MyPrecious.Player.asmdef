@@ -1,0 +1,6 @@
+{
+    "name": "MyPrecious.Player",
+    "rootNamespace": "",
+    "references": ["MyPrecious.Health", "MyPrecious.StateMachine", "MyPrecious.StateMachine.Contracts", "MyPrecious.Interaction", "Unity.InputSystem", "Unity.Cinemachine"],
+    "autoReferenced": true
+}

@@ -1,0 +1,76 @@
+{
+  "result": {
+    "success": true,
+    "message": "Test job status retrieved.",
+    "error": null,
+    "data": {
+      "job_id": "3dcd77ae63ce4c9bbadd24cf6f3876ca",
+      "status": "failed",
+      "mode": "PlayMode",
+      "started_unix_ms": 1792391952105,
+      "finished_unix_ms": 1792392000611,
+      "last_update_unix_ms": 1792392000611,
+      "progress": {
+        "completed": 53,
+        "total": 53,
+        "current_test_full_name": null,
+        "current_test_started_unix_ms": 1792392000474,
+        "last_finished_test_full_name": "RuinsEnemyIntegrationTests.TwoFormalDeparturesStartPatrolWithTheAuthoredSpawnRouteAndSharedRound",
+        "last_finished_unix_ms": 1792392000595,
+        "stuck_suspected": false,
+        "editor_is_focused": false,
+        "run_in_background": null,
+        "focus_nudge_attempts": null,
+        "focus_nudge_limit": null,
+        "focus_nudge_status": null,
+        "blocked_reason": null,
+        "failures_so_far": [
+          {
+            "full_name": "MinimumLoopPointerTests.FormalSearchPickupExtractionAndBidirectionalStorageUseQueuedPointers",
+            "message": "  SuppliesBox: mapId/sourceId为空、不稳定或重复。\r\n  Expected: not equal to Failed\r\n  But was:  Failed\r\n"
+          },
+          {
+            "full_name": "MinimumLoopSceneTests.BootstrapStartsEmptyAtRoundZeroAndTwoTransitionsKeepOnePlayer",
+            "message": "SuppliesBox: mapId/sourceId为空、不稳定或重复。"
+          },
+          {
+            "full_name": "MinimumLoopSceneTests.FullWarehouseAllowsReturnAndAnotherDepartureWithoutMovingCarriedLoot",
+            "message": "SuppliesBox (1): mapId/sourceId为空、不稳定或重复。"
+          },
+          {
+            "full_name": "MinimumLoopSceneTests.LoadedTargetBindingFailureRetriesTheSameSceneAndAllocatedRound",
+            "message": "SuppliesBox (1): mapId/sourceId为空、不稳定或重复。"
+          },
+          {
+            "full_name": "MinimumLoopSceneTests.ReturnLoadFailurePreservesWorldItemsAndRetrySettlesOnlyOnce",
+            "message": "SuppliesBox (1): mapId/sourceId为空、不稳定或重复。"
+          },
+          {
+            "full_name": "MinimumLoopSceneTests.UsedMedkitAndHealthSurviveReturnAndUiReopenUntilTheNextDeparture",
+            "message": "SuppliesBox (1): mapId/sourceId为空、不稳定或重复。"
+          },
+          {
+            "full_name": "RuinsEnemyIntegrationTests.BindingFailureLeavesEnemiesUnstartedAndRetryUsesTheAllocatedRound",
+            "message": "  SuppliesBox (1): mapId/sourceId为空、不稳定或重复。\r\n  Expected: Exploring\r\n  But was:  Failed\r\n"
+          },
+          {
+            "full_name": "RuinsEnemyIntegrationTests.InvalidEnemyConfigurationFailsBeforeAnyStartupAndRetryKeepsOneRound",
+            "message": "Expected log did not appear: [Warning] Regex: GameFlow: 探索无人机缺少配置或轮次超前"
+          },
+          {
+            "full_name": "RuinsEnemyIntegrationTests.RebindingPreservesNaturalAlertAndExplosionUntilTheNextRealDeparture",
+            "message": "  SuppliesBox: mapId/sourceId为空、不稳定或重复。\r\n  Expected: Exploring\r\n  But was:  Failed\r\n"
+          },
+          {
+            "full_name": "RuinsEnemyIntegrationTests.TwoFormalDeparturesStartPatrolWithTheAuthoredSpawnRouteAndSharedRound",
+            "message": "  SuppliesBox (1): mapId/sourceId为空、不稳定或重复。\r\n  Expected: Exploring\r\n  But was:  Failed\r\n"
+          }
+        ],
+        "failures_capped": false
+      },
+      "error": null,
+      "result": null
+    },
+    "hint": null
+  }
+}

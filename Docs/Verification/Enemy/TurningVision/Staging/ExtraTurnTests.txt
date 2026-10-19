@@ -1,0 +1,166 @@
+    // Paste these methods inside the existing DroneTurningVisionTests class.
+    // Real prefab geometry is unchanged; only the runtime turn duration is slowed for sampling.
+    [UnityTest]
+    public IEnumerator StationaryPlayerIsSweptIntoRightToLeftTurnAtAnIntermediateHeading()
+    {
+        yield return CheckStationaryPlayerSweptIntoTurn(1, false);
+    }
+
+    [UnityTest]
+    public IEnumerator StationaryPlayerIsSweptIntoLeftToRightTurnAtAnIntermediateHeading()
+    {
+        yield return CheckStationaryPlayerSweptIntoTurn(-1, false);
+    }
+
+    [UnityTest]
+    public IEnumerator StationaryPlayerIsSweptIntoRightToLeftTurnNearItsEnd()
+    {
+        yield return CheckStationaryPlayerSweptIntoTurn(1, true);
+    }
+
+    [UnityTest]
+    public IEnumerator StationaryPlayerIsSweptIntoLeftToRightTurnNearItsEnd()
+    {
+        yield return CheckStationaryPlayerSweptIntoTurn(-1, true);
+    }
+
+    private IEnumerator CheckStationaryPlayerSweptIntoTurn(int initialFacing, bool nearEnd)
+    {
+        DroneController drone = CreateDrone(initialFacing);
+        drone.turnSmoothTime = 0.6f;
+        // VisionOrigin is about 0.326m forward and 0.135m high on the real prefab.
+        // These fixed XY positions enter its existing 2m-thick, 90-degree volume at different yaw angles.
+        // The nearer case stays clear of the player's real capsule; neither case demands visibility at 90 degrees.
+        Vector3 center = origin + new Vector3(-initialFacing * (nearEnd ? 3f : 1.1f), nearEnd ? 1f : 0.135f, 0f);
+        PlayerController player = CreatePlayer(center);
+        CapsuleCollider capsule = player.GetComponent<CapsuleCollider>();
+        DroneVision vision = drone.vision;
+        Quaternion initialHeading = drone.FacingRotation;
+        Vector3 stationaryCenter = capsule.bounds.center;
+        Vector3 stationaryDrone = drone.Body.position;
+        int health = player.health.CurrentHealth;
+        var trace = new List<string> { "phase,time,frame,yaw,turnProgress,rangeDistance,contains,state,target,remaining,playerX,playerY,playerZ" };
+        System.Action<string> record = phase =>
+        {
+            Vector3 currentCenter = capsule.bounds.center;
+            // Passive sampling: do not call perception APIs that may RefreshPose/SyncTransforms.
+            float rangeDistance = Vector3.Distance(vision.RangeCollider.ClosestPoint(currentCenter), currentCenter);
+            trace.Add(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                "{0},{1:F5},{2},{3:F3},{4:F3},{5:F5},{6},{7},{8},{9:F4},{10:F4},{11:F4},{12:F4}",
+                phase, Time.time, Time.frameCount, drone.FacingRotation.eulerAngles.y,
+                Quaternion.Angle(initialHeading, drone.FacingRotation), rangeDistance, rangeDistance <= 0.001f,
+                drone.CurrentState, drone.Target == player, drone.AlertSecondsRemaining,
+                currentCenter.x, currentCenter.y, currentCenter.z));
+        };
+        try
+        {
+            Assert.That(vision.playerMask.value, Is.Not.Zero, "Natural perception must stay enabled.");
+            Assert.That(vision.RangeCollider.enabled && vision.RangeCollider.convex && vision.RangeCollider.isTrigger, Is.True);
+            Assert.That(stationaryCenter.z, Is.EqualTo(0f).Within(0.0001f), "The real player must remain in the world XY plane.");
+            Assert.That(vision.CanSee(player), Is.False);
+            Assert.That(Vector3.Distance(vision.RangeCollider.ClosestPoint(stationaryCenter), stationaryCenter), Is.GreaterThan(0.01f),
+                "The stationary player must start outside the actual collider, not already visible.");
+            float bodyClearance = Vector3.Distance(capsule.ClosestPoint(drone.Body.position), drone.Body.position)
+                - drone.GetComponent<SphereCollider>().radius;
+            Assert.That(bodyClearance, Is.GreaterThan(0.35f), "This is a vision test, with a real physical gap beyond the drone body.");
+            record("initial");
+
+            bool enteredRange = false;
+            bool discovered = false;
+            float firstRangeYaw = float.NaN;
+            float firstRangeProgress = float.NaN;
+            Quaternion discoveryHeading = Quaternion.identity;
+            float discoveryStarted = 0f;
+            float firstRemaining = 0f;
+            float deadline = Time.realtimeSinceStartup + 4f;
+            while (!discovered && Time.realtimeSinceStartup < deadline)
+            {
+                yield return null;
+                record("sweep");
+                Assert.That(drone.CurrentState, Is.Not.EqualTo(DroneState.Search),
+                    "A short Alert followed by Search is still a failure even if the test missed the Alert sample.");
+                Assert.That(Vector3.Distance(capsule.bounds.center, stationaryCenter), Is.LessThan(0.001f));
+                Assert.That(Vector3.Distance(drone.Body.position, stationaryDrone), Is.LessThan(0.002f));
+                Vector3 currentCenter = capsule.bounds.center;
+                bool contained = (vision.RangeCollider.ClosestPoint(currentCenter) - currentCenter).sqrMagnitude <= 0.000001f;
+                if (!enteredRange && contained)
+                {
+                    enteredRange = true;
+                    firstRangeYaw = drone.FacingRotation.eulerAngles.y;
+                    firstRangeProgress = Quaternion.Angle(initialHeading, drone.FacingRotation);
+                    // The subsequent natural Alert/Target is the evidence of production perception.
+                }
+                if (drone.CurrentState == DroneState.Alert)
+                {
+                    Assert.That(enteredRange, Is.True, "Natural discovery must be supported by real range containment.");
+                    discovered = true;
+                    discoveryHeading = drone.FacingRotation;
+                    discoveryStarted = Time.time;
+                    firstRemaining = drone.AlertSecondsRemaining;
+                }
+                else
+                {
+                    Assert.That(drone.CurrentState, Is.EqualTo(DroneState.Patrol), "A stationary sweep must naturally pass through discovery Alert before Chase.");
+                }
+            }
+            TestContext.WriteLine(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                "Stationary sweep initialFacing={0}, nearEnd={1}, firstRangeYaw={2:F3}, turnProgress={3:F3}, center={4}",
+                initialFacing, nearEnd, firstRangeYaw, firstRangeProgress, stationaryCenter));
+            Assert.That(enteredRange && discovered, Is.True, "The rotating real volume must eventually discover this stationary player.");
+            Assert.That(firstRangeProgress, nearEnd ? Is.InRange(150f, 179f) : Is.InRange(100f, 145f),
+                "The two placements must exercise distinct, valid portions of the natural turn.");
+            Assert.That(drone.Target, Is.SameAs(player));
+            Assert.That(drone.IsCoverAlert, Is.False);
+            Assert.That(firstRemaining, Is.GreaterThan(0.35f).And.LessThanOrEqualTo(0.5f));
+
+            float previousRemaining = firstRemaining;
+            deadline = Time.realtimeSinceStartup + 2f;
+            while (drone.CurrentState == DroneState.Alert && Time.realtimeSinceStartup < deadline)
+            {
+                Assert.That(Quaternion.Angle(discoveryHeading, drone.FacingRotation), Is.LessThan(0.05f),
+                    "Discovery must hold the heading that actually saw the player instead of continuing the old patrol turn.");
+                Assert.That(drone.Target, Is.SameAs(player));
+                Assert.That(drone.IsCoverAlert, Is.False);
+                Assert.That(drone.AlertSecondsRemaining, Is.InRange(0f, previousRemaining + 0.0001f));
+                previousRemaining = drone.AlertSecondsRemaining;
+                Assert.That((vision.RangeCollider.ClosestPoint(capsule.bounds.center) - capsule.bounds.center).sqrMagnitude, Is.LessThanOrEqualTo(0.000001f));
+                Assert.That(Vector3.Distance(capsule.bounds.center, stationaryCenter), Is.LessThan(0.001f));
+                Assert.That(Vector3.Distance(drone.Body.position, stationaryDrone), Is.LessThan(0.002f));
+                Assert.That(drone.HasExploded, Is.False);
+                Assert.That(player.health.CurrentHealth, Is.EqualTo(health));
+                yield return null;
+                record("discovery");
+                Assert.That(drone.CurrentState, Is.Not.EqualTo(DroneState.Search), "No discovery-to-search interruption is allowed for this stationary visible target.");
+            }
+            Assert.That(drone.CurrentState, Is.EqualTo(DroneState.Chase));
+            Assert.That(Time.time - discoveryStarted, Is.GreaterThanOrEqualTo(firstRemaining - Time.deltaTime - 0.02f),
+                "The configured half-second discovery countdown must finish before Chase.");
+            Assert.That(drone.Target, Is.SameAs(player));
+            for (int i = 0; i < 2; i++)
+            {
+                yield return new WaitForFixedUpdate();
+                record("chase-fixed");
+                Assert.That(drone.CurrentState, Is.EqualTo(DroneState.Chase));
+                Assert.That(drone.Target, Is.SameAs(player));
+                yield return null;
+                record("chase-update");
+                Assert.That(drone.CurrentState, Is.EqualTo(DroneState.Chase), "Resuming the smooth turn must not immediately drop the discovered target.");
+                Assert.That(drone.Target, Is.SameAs(player));
+                Assert.That((vision.RangeCollider.ClosestPoint(capsule.bounds.center) - capsule.bounds.center).sqrMagnitude, Is.LessThanOrEqualTo(0.000001f));
+                Assert.That(vision.RangeCollider.enabled, Is.True);
+                Assert.That(vision.GetComponent<MeshRenderer>().enabled, Is.False);
+                Assert.That(Vector3.Distance(capsule.bounds.center, stationaryCenter), Is.LessThan(0.001f));
+                Assert.That(drone.HasExploded, Is.False);
+                Assert.That(player.health.CurrentHealth, Is.EqualTo(health));
+            }
+        }
+        finally
+        {
+            string folder = Path.Combine(Directory.GetParent(Application.dataPath).FullName, "Docs/Verification/Enemy/TurningVision");
+            Directory.CreateDirectory(folder);
+            string filename = "StationaryTurn-" + initialFacing + (nearEnd ? "-End-" : "-Middle-")
+                + System.DateTime.UtcNow.ToString("yyyyMMddTHHmmssfff") + ".csv";
+            File.WriteAllLines(Path.Combine(folder, filename), trace);
+            TestContext.WriteLine(filename);
+        }
+    }

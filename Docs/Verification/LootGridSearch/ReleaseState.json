@@ -1,0 +1,46 @@
+{
+  "editor": {
+    "utc": "2026-10-18T22:33:02.9175183Z",
+    "playing": false,
+    "changing": false,
+    "compiling": false,
+    "scene": "Assets/Scenes/Bootstrap.unity",
+    "dirty": false,
+    "background": false,
+    "playOptionsEnabled": false,
+    "playOptions": "None",
+    "devices": [
+      {
+        "name": "Keyboard",
+        "deviceId": 1,
+        "enabled": true,
+        "native": true
+      },
+      {
+        "name": "Mouse",
+        "deviceId": 2,
+        "enabled": true,
+        "native": true
+      }
+    ],
+    "screen": [
+      1920,
+      1080
+    ]
+  },
+  "console": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"success\":true,\"message\":\"Retrieved 0 log entries.\",\"data\":[]}"
+      }
+    ],
+    "structuredContent": {
+      "success": true,
+      "message": "Retrieved 0 log entries.",
+      "data": []
+    },
+    "isError": false
+  },
+  "note": "Actual editor was already stopped at release inspection; clean Bootstrap restored, runInBackground false. No scene saved on restore. Source and protected files checked separately in ReleaseHashCheck.json."
+}

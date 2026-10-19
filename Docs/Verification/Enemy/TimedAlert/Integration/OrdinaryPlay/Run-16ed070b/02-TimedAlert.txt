@@ -1,0 +1,9 @@
+Formal Bootstrap->Shelter->TryDepart->Ruins at1920x1080/timeScale1.
+Public player RelocateWithinRun plus queued C on a probe-owned InputSystem Keyboard; not native keyboard input.
+No AI ChangeState/BeginRound/timer writes; no route, cover, config, camera or scene edits.
+Selected drone=Drone#-2986868; cover=CoverArea#-2988002
+PASS shared formal round and actual route motion; player now stands in the existing cover.
+FAIL: discovery-alert: Expected Chase with hidden renderer and working CanSee.
+Discovery max hover drift=0; cover max drift=0
+Callback removed, probe keyboard removed, player position/body flags and background setting restored. No native input claim.
+Not covered here: ordinary wall Search, same-physics-step hidden contact, natural explosion/next formal round. Retain automated acceptance for these.

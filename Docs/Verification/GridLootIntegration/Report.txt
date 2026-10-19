@@ -1,0 +1,23 @@
+07A 正式箱格接入验证
+2026-10-18，Unity 6000.2.12f1，1920×1080；当前范围遵循Dispatch v17。
+
+结果与入口
+打开Assets/Scenes/Bootstrap.unity运行。本次修复正式LootPanel旧420×580根覆盖，改为484×808；正式及演示生成器同步1920和66/4/6。BackpackTest额外修正丢弃按钮移出面板及提示贴底的问题；最终图BackpackTestFixed-API.png，早期BackpackTest-API.png保留为修复前证据。
+正式PlayMode 6/6通过，0失败/跳过；官方XML为FormalPlayModeResults.xml，22:53:34Z—22:53:44Z。MCP任务状态滞后已单独保存并清理，以官方XML判定通过。两条预期失败路径日志由用例验证，不计作未解释异常；普通Play与最终Console均0错误/警告。
+最后一次代码修改仅BackpackTest生成器的面板/按钮/提示几何，随后重新编译和实际Play查看成功。正式6项结果对应的正式逻辑未再修改，不重复扩大模块测试。
+
+普通Play与截图
+VisualEvidence.json保留8张正式场景截图的实际读数；全部1920×1080并已打开查看。Shelter中英文、Ruins未知中文/完成英文/返箱英文、升级后英文、第二轮英文、4×3空箱英文。
+背包16格、仓库400→480格、正式箱24格、临时4×3箱12格；实际背景单元66×66、根scale1。正式指针测试另检查步长70、padding6及1×2/2×2/2×3物品、拖拽预览和旋转后3×2。仓库viewport1430、仅纵滚，升级不缩格。
+普通Play通过真实公开API完成箱→包→箱、包↔仓库、20×20→20×24，第二次出发与撤离后round2、bag1/warehouse1/EV7。IntegrationEvidence.json记录真实提交结果；不是拖动临时画面。临时4×3空箱为运行时API夹具，退出Play后移除，未保存资产。
+未知与完成画面由正常Update自然搜索取得，本次普通Play没有调用AdvanceSearch。完整逐件推进、F10及关闭重开断言属于正式队列测试与06A模块证据；原生键鼠未新增验收，不能用旧NativeInputFollowup代替新版箱格验收。
+
+演示与证据边界
+BackpackTest实际16格66，WarehouseTest实际66、viewport1430；两者Canvas1920、scale1，截图已查看。LootTest读回66/4/6、1920及背包实际66，没有重新执行其完整业务。早期IntegrationEvidence legacy的count为root.childCount，Warehouse的401含400背景Image和1个Item根，不代表401格；正式背景计数已按直接子Image筛选。
+固定容量超限、满箱拒绝/零通知、空洞复用、唯一找回、受击、迟到token等完整回归沿用06A最终105/105与27/27：Docs/Verification/LootGridSearch/FixedCapacity/。本次不冒称重跑，也不把模块成绩加入正式6项。
+IntegrationEvidence中的savedSceneAudit是停Play序列化读数。Shelter仓库旧viewport sizeDelta=926由现有GameFlowResponsiveLayout在运行时调整到1430；实际截图/运行读数和正式测试为准，未将序列化sizeDelta误作屏幕宽度。正式两地图保存的相机父节点停用，流程启用后输出Camera、AudioListener、EventSystem各1且跟随同一玩家。
+
+收尾
+ProtectedAfter.json核对97个保护文件与接手06A最终版本时一致。正式相机/容器核心、搜索与转移逻辑未改。当前项目已有其它模块未提交变更，本次未清理或回滚。
+ReleaseState.json：23:01:39.9468189Z已停止Play，Bootstrap dirty=false，非编译/更新；Application及PlayerSettings.runInBackground恢复false，原生Keyboard/Mouse启用，Console0error/warning。
+007已释放Unity。原生完整多轮、Windows构建、敌人和完整死亡流程未在本次宣称通过；主程可接手独立验收。操作与调参见Docs/Handoffs/07A_GridIntegration_Handoff.txt。

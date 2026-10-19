@@ -1,0 +1,310 @@
+[
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone.meta",
+    "Hash": "E87D66F471DAC34A978943C4154BFADE436DF661A39779559521D788C9F1E533"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\MyPrecious.Enemy.asmdef",
+    "Hash": "C8E0969EA0402FE2EC920B3CF4E0ACB80697C2BB81BFE78174B35DE735AFC630"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\MyPrecious.Enemy.asmdef.meta",
+    "Hash": "C9AB429708B4FECAB9DC1E9B09C9699A49AC8C11C6BEB040A377BC971A3B3E41"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Stealth.meta",
+    "Hash": "90E6EE8E91E926D83358501FC47C2D7551CCF0F10BEFE2B3E7D3D6DBCB9DC728"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\MonoBehaviour.meta",
+    "Hash": "F45D9AE96F04155BB82BF8C2E57E5EE90AFE6B3139DD835B4BE0031B763F2CE4"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\ScriptableObject.meta",
+    "Hash": "3EF2C70E4596C28653B353647FEB0B8E6E0FA3A4FBA192780CD21837C4CE9448"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\States.meta",
+    "Hash": "D474F3DC9F81A46965728FB1A2649BB2207E9A248AE6732320C38708726EF2D9"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\MonoBehaviour\\DroneController.cs",
+    "Hash": "02EAD3EAE3330A52C4C6D467FD85DE237BE00FB0F8F76F7891B633AB1763A165"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\MonoBehaviour\\DroneController.cs.meta",
+    "Hash": "E20128ABB1EAD818FC20A49DD9120C7C5B97A4ADB7D028FFA7A251E45E32AEEB"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\MonoBehaviour\\DroneFlightVisual.cs",
+    "Hash": "EBA65D068F20AD4AEB5AEA8B6985F4AE43A1F7D1CD092E35F6ECFABE06A5CE27"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\MonoBehaviour\\DroneFlightVisual.cs.meta",
+    "Hash": "B0F129DCC8127D55CBD574D65A8A3BB8BA5100184661184FF46C3CA076905C43"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\MonoBehaviour\\DroneStatusLight.cs",
+    "Hash": "3FAB8B54AEF78C3A919B79335D938E19CA560DD516C03876029E67DB12CDE20D"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\MonoBehaviour\\DroneStatusLight.cs.meta",
+    "Hash": "6DA0307653A5DFA41782EF957F131A54E042D35054D7CF3D1A5E8AC426A9CD6A"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\MonoBehaviour\\DroneVision.cs",
+    "Hash": "90E6B1341B0993133C93DA34EAF290F2FF63F44E354D013B6A7FCEC8239EF6D0"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\MonoBehaviour\\DroneVision.cs.meta",
+    "Hash": "8C684DB24C4693A940C4525A27CD10F27CB7BF7836BC05C9BE30488F7684873C"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\ScriptableObject\\DroneConfigSO.cs",
+    "Hash": "A6DF3669973B010263BE7C9B63157264E4986280DF26F325ACCF76594EC02365"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\ScriptableObject\\DroneConfigSO.cs.meta",
+    "Hash": "D344F2B071910590BEB40D6C7DC28045D99FC79939DE5BABF34FBABF680598B7"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\States\\DroneChaseState.cs",
+    "Hash": "EC3E2FC014CD9C9E0191B1CE80F74A77E4DB482F7159FB7A04E4C0CEDB9FDC82"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\States\\DroneChaseState.cs.meta",
+    "Hash": "AA9BDD96D8C7FB3966C5B98AA9BAECC69D314150A9B76EF08D2909955EDB0409"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\States\\DroneExplodeState.cs",
+    "Hash": "11CBBE19B35D6F0AB8DC169A86B721A8941F28038A492E9A2E72755CFB4E7410"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\States\\DroneExplodeState.cs.meta",
+    "Hash": "94CFD1B0FF284571C70C5FA5D7C3C210BA705DD268BCB34CBB47FB0CA52CD7EC"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\States\\DronePatrolState.cs",
+    "Hash": "05AE171A58F4095A0F0D8447ECAB9B5319817BAEFC4BBBBB5F59F2A651A11859"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\States\\DronePatrolState.cs.meta",
+    "Hash": "B1E7871D7E926424B915D6077224ADA5CF86496EE475EECA3C45522C0C418686"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\States\\DroneSearchState.cs",
+    "Hash": "A8AF4D2E236DEE0C9207BD0016AFEEA2B9150649C3C0F0986BFDC47D1FBC5DF7"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\States\\DroneSearchState.cs.meta",
+    "Hash": "913E19270631C4094335932887BAAFE6812A8B539F132B9198E4D4A926D17C41"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\States\\DroneStateBase.cs",
+    "Hash": "FCD19A78094570856E71189BF3EA3192F119067CEA4D9919F7E15E320B68311D"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\States\\DroneStateBase.cs.meta",
+    "Hash": "1B8C8DE8934FBEC34F8A59EF401A558F50836D9693B75072C9D04BD4B522AF97"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Stealth\\MonoBehaviour.meta",
+    "Hash": "0292B3EC04203BBD3D1775D6DC82B8591526C3E47E4606A902C25BB1D97F120C"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Stealth\\MonoBehaviour\\CoverArea.cs",
+    "Hash": "F70D62D4DEFA7AFE38F9F66B43A2CDA08C4740E641F9FD7274D08388E148C17C"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Stealth\\MonoBehaviour\\CoverArea.cs.meta",
+    "Hash": "7AF0750B4D6A3EE51C77557F289268E2B43E66C8627C43131D312D2A4DAD71E5"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\EditMode.meta",
+    "Hash": "DAF806F5558D50146479E49457B34AFE52A0CA0EB74A7EEEE0B45E1E341CDEF2"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\Editor.meta",
+    "Hash": "A40A57371C79FA74CEAE4D53BC909A91C8E28D5C02023A1B80643B763679DFF6"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\PlayMode.meta",
+    "Hash": "68529303CEA820E964764E3279EC3BE17E335A2EA38A8EF516A09811A403FE1E"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\EditMode\\CoverAreaTests.cs",
+    "Hash": "C3E474F18138E3760C728B5415ACC488A4FB0E90E1D26591B55C909AE7A19DE9"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\EditMode\\CoverAreaTests.cs.meta",
+    "Hash": "29346FCD33CDDB372FD86177B851DAE3A58F50169498189AB6C62BD9B2493C49"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\EditMode\\DroneRoundTests.cs",
+    "Hash": "DCFAA96A91481E94082348DD2B29D56FFC4FD403B186369362F513C98BDA2C01"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\EditMode\\DroneRoundTests.cs.meta",
+    "Hash": "4F6BA918AD7E0455376DC75BF1E1D19D3A42E3DE6149F464D8B9F0FCE9490B1A"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\EditMode\\DroneVisionGeometryTests.cs",
+    "Hash": "E04FC27612A7F839146CFA658EF087A2AF813C94A3912B36866625AA94FF3BA7"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\EditMode\\DroneVisionGeometryTests.cs.meta",
+    "Hash": "739DFDAAE76211B462048B1BD9ED638FAB972E546CB46AE9A9C24156D7AB50DB"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\EditMode\\MyPrecious.Enemy.EditModeTests.asmdef",
+    "Hash": "0538F94DB3E050FCB2359188CC277FBA113EA1ABC394994901413C7A3898DA75"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\EditMode\\MyPrecious.Enemy.EditModeTests.asmdef.meta",
+    "Hash": "C0D9C9BAA3E026B6600A29F4FBB183D9B8081A72BBC607CE718A12CD2C5D9955"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\Editor\\DroneVisionEditor.cs",
+    "Hash": "97BB601CB5CBCB92F6DEED370DF75B35C4006873A4D7E9DB05FB8AB0C2280B2F"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\Editor\\DroneVisionEditor.cs.meta",
+    "Hash": "815659D60199361196D9C359D3DC9FF0B52E8F073BCBFEBEFCD65D6F25C7F9CB"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\Editor\\EnemyTestSceneBuilder.cs",
+    "Hash": "3F8E5167226FEA7847F7501AAF36FD3FD03EAD7D61D290976D3FAA6414ACD74F"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\Editor\\EnemyTestSceneBuilder.cs.meta",
+    "Hash": "F4C8630C9A1EF6E8CC7A74CE5A6549DAB578F7D06D9ACE59E38114591621D97A"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\Editor\\MyPrecious.Enemy.Editor.asmdef",
+    "Hash": "82DCA64818DB5B3340A4CFB12490EB1C13A659EDFA74F4D3B8BB901893A6DEC6"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\Editor\\MyPrecious.Enemy.Editor.asmdef.meta",
+    "Hash": "76EDE87CC1844581E6FD64DF5AB456318BE37519AF4405B871FEC5E5E61C4D75"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\PlayMode\\DroneBehaviourTests.cs",
+    "Hash": "AF0BEFCF0F690CC538C35D9BB24A71821804684E019968C34F80FB7EAD2D776A"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\PlayMode\\DroneBehaviourTests.cs.meta",
+    "Hash": "48698F9B8E57A7BD8E61E9D44B0012BB154AEAF03F097323A0F154DAB48E2D84"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\PlayMode\\DroneStatusLightTests.cs",
+    "Hash": "7AE950FCDC6C3945762AC87C78E3A2BDA578B0F08E957752ED7A93EF540B1DF1"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\PlayMode\\DroneStatusLightTests.cs.meta",
+    "Hash": "9B085958422BA0326BA3FA5E45711F6A079854B463D131377F75E94E08727387"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\PlayMode\\DroneVisionAlignmentTests.cs",
+    "Hash": "BE0F505373C56B86B295C2A10D6EDA3DDB96EF6856A9B20C220314E71500F46C"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\PlayMode\\DroneVisionAlignmentTests.cs.meta",
+    "Hash": "EAF4F0F20E683F3469463009B2449E032877FBC16D3C6F626A925642ABB94FA3"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\PlayMode\\EnemySceneIntegrationTests.cs",
+    "Hash": "F7E0E75ABDC26388B51C372D590B7DE36BD5BF5AC65C48F63C398030138AF587"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\PlayMode\\EnemySceneIntegrationTests.cs.meta",
+    "Hash": "F6C20305ED8336D10672263785AC1DED8225A9CDC56141C4E3D77E85C682DAA5"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\PlayMode\\MyPrecious.Enemy.PlayModeTests.asmdef",
+    "Hash": "44F8951DA2554990D1E4111ABC2E381BA75175F126923978D959A492ECB0933E"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\PlayMode\\MyPrecious.Enemy.PlayModeTests.asmdef.meta",
+    "Hash": "DF7F9167A2E5010F1F8CCD02EC61B6D48A695A7932CA3118D50277E2EA6D7336"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\PlayMode\\Runtime.meta",
+    "Hash": "02B10C2B124118C0E8EC5B1E7D28CBC9BF83814320F728B22EE639A544FE36D2"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\PlayMode\\Runtime\\EnemyTestDriver.cs",
+    "Hash": "C27B43862443BE5B5E1C0A741311EC7D6DE9CEC607958A90627746C4CC4B1FA9"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\PlayMode\\Runtime\\EnemyTestDriver.cs.meta",
+    "Hash": "962F676265BA5AABF197BF7885111869C8AFFFEA83D21F3069DFB89057961E8D"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\PlayMode\\Runtime\\MyPrecious.Enemy.TestSupport.asmdef",
+    "Hash": "19AB0AFEC22AAAE3B5098B46D9AF5EF6177CDDD6D4C0683ACD5D62F185B0D046"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\PlayMode\\Runtime\\MyPrecious.Enemy.TestSupport.asmdef.meta",
+    "Hash": "95013BA81650DEA3DAFA43BFBEA44493D4B582C283BE7DE71DDCD6B3BA33D984"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Prefabs\\Enemy\\Drone.meta",
+    "Hash": "8F08231C9DDFDADDEEB6E669C5AE96AC53993BF3CD6F6626E4DBDB5AFEC3B68C"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Prefabs\\Enemy\\Stealth.meta",
+    "Hash": "F56B48828F1691CEAC02CC4270DA607C309A1EA291B745804D193413BCF02251"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Prefabs\\Enemy\\Drone\\Drone.prefab",
+    "Hash": "3DBF48088A9FC82470A4E5DFB056A8E962002B23CED19F883FB23A23891114EB"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Prefabs\\Enemy\\Drone\\Drone.prefab.meta",
+    "Hash": "7373C79FC9230FA996B140D761A8E06DE02E78D0803E5FA2FDAF064B771E4603"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Prefabs\\Enemy\\Stealth\\CoverArea.prefab",
+    "Hash": "82DD2D5FB33B8164234CC51062CF929D874E43630E0E65693421C09DD3912330"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Prefabs\\Enemy\\Stealth\\CoverArea.prefab.meta",
+    "Hash": "F88D986910C3B8F5F21D0DBCE4352032B46569BFBC1D6D295BC5598E3916FF3B"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Data\\Enemy\\Drone.meta",
+    "Hash": "E770FF6251AF7AC45DD23AF775BB5D28B7B76912C45185B23BB1DD6B957E3AE4"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Data\\Enemy\\Drone\\DroneConfig.asset",
+    "Hash": "EC43D5D9FE2811A51FA6E461CE44CFC9806D4CE8075D2C3CC23BE1D3DBC4DB1D"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Data\\Enemy\\Drone\\DroneConfig.asset.meta",
+    "Hash": "654217017F81C7135E3FD1BB0CC247733B40C3A52145F6A415441AE19876A493"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Art\\Materials\\Enemy\\DroneVision.mat",
+    "Hash": "8A5FF85B00D79F481EB92BC8522505DFD135741C3A14B23629B9D4FB3D45A49B"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Art\\Materials\\Enemy\\DroneVision.mat.meta",
+    "Hash": "B14479829C3AD1FBC11CC838BBA8D5482B579FA6E591BEDEAD7D3B0F2CCC88B9"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scenes\\Tests\\Enemy\\EnemyTest.unity",
+    "Hash": "AA62E8EDC69AC0C08F7F4F8FA6DE3AD0425A0DDFB7FC344B85D20C7D40242200"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scenes\\Shelter.unity",
+    "Hash": "F4A36F7B10057621E7CBD4FB013C6D30EB92BE94FBF245786AC2E8C388F892B8"
+  },
+  {
+    "Path": "E:\\DD451\\Assets\\Scenes\\Ruins.unity",
+    "Hash": "A440DBD94EBAA2C3AB4DCCCEFE3B94E8F84C2388664C7B95D2606F0E214A77E1"
+  },
+  {
+    "Path": "E:\\DD451\\ProjectSettings\\EditorSettings.asset",
+    "Hash": "D31BE15C85A31D85372564BF5EE30188A9454274C6DF8FE7A3372375A0DB98BC"
+  }
+]

@@ -1,0 +1,76 @@
+09F 最终场景与掉落保护审计
+审计时间 UTC: 2026-10-19T06:50:33.8600667Z
+范围：仅文件只读审计。没有 Unity 调用、Assets 写入、Refresh、Play 或测试重跑；仅写本证据文件。
+
+一、授权后基线 AuthorizedSceneAndLootHashes.json
+  MATCH: E:\DD451\Assets\Scenes\Ruins.unity
+    SHA256=C7DEA594DA3809BFDC02C959B9019EE0AB2EF2A0436849765C0D97152F4C8744
+  MATCH: E:\DD451\Assets\Scenes\Ruins.unity.meta
+    SHA256=71BD0E68CE9B34EF682661D60BCD36605007FE6FFE66D8FD09D1A56542A66594
+  MATCH: E:\DD451\Assets\Data\LootTables\RuinsExtraSuppliesLoot.asset
+    SHA256=958FDF2170FF091DABBA5A71FA125CDD77768DF4D001EA825C69990ECEA4328B
+  MATCH: E:\DD451\Assets\Data\LootTables\RuinsExtraSuppliesLoot.asset.meta
+    SHA256=5A0F3A26BC095D63BC82BB7BB122AB23AF1C52D921962786311FB640C6A777A0
+  MATCH: E:\DD451\Assets\Data\LootTables\MinimumLoopLoot.asset
+    SHA256=E0321CE611653F75DFF9058F7ED7C581D25D3DF81F7AE27EB3FF29942604FCBE
+  MATCH: E:\DD451\Assets\Data\LootTables\MinimumLoopLoot.asset.meta
+    SHA256=E58998A095FC75856FD77E5FF1F833C89E317E8C8E9822D10CD42DCEA0B3F18F
+授权后基线匹配：6/6
+
+二、原保护基线 ProtectedHashes-Before.json
+  AUTHORIZED_RUINS_EXCEPTION: E:\DD451\Assets\Scenes\Ruins.unity
+    SHA256=C7DEA594DA3809BFDC02C959B9019EE0AB2EF2A0436849765C0D97152F4C8744
+    OriginalBaseline=D7E0920CDFA8672E661583D7AB551683E6EC85CC8A8BD8803B72C503CA6A56A5
+  MATCH: E:\DD451\Assets\Scenes\Ruins.unity.meta
+    SHA256=71BD0E68CE9B34EF682661D60BCD36605007FE6FFE66D8FD09D1A56542A66594
+  MATCH: E:\DD451\Assets\Scenes\Bootstrap.unity
+    SHA256=9063DB1C2FD9EFBB83A120531BCA35644BE835D203A68EC49FBB1B8306526500
+  MATCH: E:\DD451\Assets\Scenes\Shelter.unity
+    SHA256=F4A36F7B10057621E7CBD4FB013C6D30EB92BE94FBF245786AC2E8C388F892B8
+  MATCH: E:\DD451\Assets\Scenes\Tests\Enemy\EnemyTest.unity
+    SHA256=AA62E8EDC69AC0C08F7F4F8FA6DE3AD0425A0DDFB7FC344B85D20C7D40242200
+  MATCH: E:\DD451\Assets\Prefabs\Enemy\Drone\Drone.prefab
+    SHA256=3DBF48088A9FC82470A4E5DFB056A8E962002B23CED19F883FB23A23891114EB
+  MATCH: E:\DD451\Assets\Prefabs\Enemy\Drone\Drone.prefab.meta
+    SHA256=7373C79FC9230FA996B140D761A8E06DE02E78D0803E5FA2FDAF064B771E4603
+  MATCH: E:\DD451\Assets\Scripts\Enemy\Drone\MonoBehaviour\DroneFlightVisual.cs
+    SHA256=EBA65D068F20AD4AEB5AEA8B6985F4AE43A1F7D1CD092E35F6ECFABE06A5CE27
+  MATCH: E:\DD451\Assets\Scripts\Enemy\Stealth\MonoBehaviour\CoverArea.cs
+    SHA256=F70D62D4DEFA7AFE38F9F66B43A2CDA08C4740E641F9FD7274D08388E148C17C
+排除获授权变更的 Ruins.unity 后匹配：8/8。Ruins.unity.meta 未变。
+
+三、新箱及原表
+- Ruins 场景 PrefabInstance 102226935：SuppliesBox (1)，mapId=ruins01，sourceId=supplies-box-2（场景中恰好一次）。
+- 新箱 lootTable GUID=87867702eb2621645ad5181cdc743f31，解析到 Assets/Data/LootTables/RuinsExtraSuppliesLoot.asset（场景中恰好一次引用）。
+- 新表只有一个 entryId=food；Item GUID=ae650d3ae712a714f85823dde14576b0，解析到 Assets/Data/Items/Food.asset。
+- useDefaultProbability=0，overrideProbability=0.5。LootTableEntry.Probability 在该配置下使用 overrideProbability，所以有效概率为 50%，不会采用 Food 默认 75%。
+- 新表没有 doll 或 medkit 条目。
+- 原箱 PrefabInstance 1144893707：SuppliesBox，sourceId=supplies-box，仍引用 MinimumLoopLoot GUID=785c9af382ea5224b89ade017fc5429c。
+- MinimumLoopLoot 仍为 doll 100%、medkit 100%、food 50%。当前原表及.meta SHA256 与 Integration/Before/MinimumLoopLoot.asset[.meta] 完全一致。
+- doll GUID=80f09a905aa61ce45905811cdcc3a722 对应 Doll.asset，isUnique=1，uniqueId=story.doll。
+- medkit GUID=b21623eecd3606d4aa6239855e3dace6 对应 Medkit.asset，isUnique=1，uniqueId=story.medkit。
+- 两个原有唯一物品仍保留在原表中，新箱不重复配置其发放原点。本结论为静态引用/配置审计，不冒充本次运行时掉落试验。
+
+四、三架无人机及场景布局
+采用已有授权修复前副本 Integration/Before/BeforeAuthorizedSourceIdFix-Ruins.unity 作为最新布局比较基线，而不是把更早只有两机的初始场景归责到本次变更。
+对当前 Ruins 文本仅反向替换 supplies-box-2 -> supplies-box 和新表 GUID -> 原表 GUID，归一化 CRLF 后与该副本完全相等；每个反向替换目标在当前场景恰好出现一次。因此，除这两个授权属性值外，所有场景文本、三机父节点/位置/路线引用/旋转/比例、巡逻点及其他布局均保持该副本原样。
+三个 Drone PrefabInstance 均引用受保护 Drone.prefab GUID=3acb978eb0ce9c94e83684187c6f274d；Prefab及.meta哈希保持不变。
+
+1. 无人机组1 / Drone，PrefabInstance=329648425，父 Transform=112689826。
+   父节点位置(0,0,0)，旋转单位四元数，比例(1,1,1)。
+   出生世界位置(-3.3410168,2.3923686,-0.38293743)。
+   路线顺序：Transform 1166412924 -> 304680241。
+   路线世界点：(-10,2.5,0) -> (0,2.5,0)。
+2. 无人机组2 / Drone，PrefabInstance=1470710930，父 Transform=312945048。
+   父节点位置(32,2.5,0)，旋转单位四元数，比例(1,1,1)。
+   出生世界位置(28.6589832,4.8923686,-0.38293743)。
+   路线顺序：Transform 1526870389 -> 1529810153。
+   路线世界点：(19.5,5,0) -> (40,5,0)。
+3. 无人机组2 (1) / Drone，PrefabInstance=1940670892，父 Transform=562733608。
+   父节点位置(56.5,0.5,0)，旋转单位四元数，比例(1,1,1)。
+   出生世界位置(53.1589832,2.8923686,-0.38293743)。
+   路线顺序：Transform 1535864985 -> 832735245。
+   路线世界点：(44,3,0) -> (64.5,3,0)。
+世界位置由已验证的父节点单位旋转/比例及序列化局部坐标相加计算；不是本次 Unity 实时 Transform 读取。三机共享局部出生位置(-3.3410168,2.3923686,-0.38293743)，各自父节点与路线引用不同。
+
+结论：PASS（文件静态保护审计）。授权后 6/6、旧保护清单排除 Ruins 后 8/8；新箱仅 Food 50%，原表与两个唯一物品配置保留；三个无人机和最新授权前布局保留。本审计未重跑任何测试。

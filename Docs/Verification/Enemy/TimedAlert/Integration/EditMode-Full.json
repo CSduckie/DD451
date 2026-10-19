@@ -1,0 +1,452 @@
+{
+  "result": {
+    "success": true,
+    "message": "Test job status retrieved.",
+    "error": null,
+    "data": {
+      "job_id": "c56fee6215b54df98fddbd34e3f7d3a5",
+      "status": "succeeded",
+      "mode": "EditMode",
+      "started_unix_ms": 1792391942616,
+      "finished_unix_ms": 1792391946043,
+      "last_update_unix_ms": 1792391946043,
+      "progress": {
+        "completed": 45,
+        "total": 45,
+        "current_test_full_name": null,
+        "current_test_started_unix_ms": 1792391945912,
+        "last_finished_test_full_name": "PlayerFlowEntryTests.SceneLockSurvivesFirstPreparationBackpackClosingAndNewRoundReset",
+        "last_finished_unix_ms": 1792391945912,
+        "stuck_suspected": false,
+        "editor_is_focused": false,
+        "run_in_background": null,
+        "focus_nudge_attempts": null,
+        "focus_nudge_limit": null,
+        "focus_nudge_status": null,
+        "blocked_reason": null,
+        "failures_so_far": [],
+        "failures_capped": false
+      },
+      "error": null,
+      "result": {
+        "mode": "EditMode",
+        "summary": {
+          "total": 45,
+          "passed": 45,
+          "failed": 0,
+          "skipped": 0,
+          "durationSeconds": 0.4480571,
+          "resultState": "Passed"
+        },
+        "results": [
+          {
+            "name": "AnyEnabledBodyColliderCanOverlapButTriggersAndInactiveChildrenCannotHide",
+            "fullName": "CoverAreaTests.AnyEnabledBodyColliderCanOverlapButTriggersAndInactiveChildrenCannotHide",
+            "state": "Passed",
+            "durationSeconds": 0.0181197,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "DisabledColliderAndInactiveCoverStopHidingWithoutAnExitCallback",
+            "fullName": "CoverAreaTests.DisabledColliderAndInactiveCoverStopHidingWithoutAnExitCallback",
+            "state": "Passed",
+            "durationSeconds": 0.0007408,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden(0)",
+            "fullName": "CoverAreaTests.DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden(0)",
+            "state": "Passed",
+            "durationSeconds": 0.0009922,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden(1)",
+            "fullName": "CoverAreaTests.DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden(1)",
+            "state": "Passed",
+            "durationSeconds": 0.0003706,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden(2)",
+            "fullName": "CoverAreaTests.DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden(2)",
+            "state": "Passed",
+            "durationSeconds": 0.0009024,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden(3)",
+            "fullName": "CoverAreaTests.DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden(3)",
+            "state": "Passed",
+            "durationSeconds": 0.0004681,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "LeavingOneOverlappingCoverKeepsTheOtherUntilItIsDisabledOrDestroyed",
+            "fullName": "CoverAreaTests.LeavingOneOverlappingCoverKeepsTheOtherUntilItIsDisabledOrDestroyed",
+            "state": "Passed",
+            "durationSeconds": 0.0011829,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "MovingOutsideAndBackUsesCurrentShapesWithoutWaitingForTriggerCallbacks",
+            "fullName": "CoverAreaTests.MovingOutsideAndBackUsesCurrentShapesWithoutWaitingForTriggerCallbacks",
+            "state": "Passed",
+            "durationSeconds": 0.0005431,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "OnlyCrouchingInsideCoverIsHiddenAndOpenBackpackKeepsTheRule",
+            "fullName": "CoverAreaTests.OnlyCrouchingInsideCoverIsHiddenAndOpenBackpackKeepsTheRule",
+            "state": "Passed",
+            "durationSeconds": 0.0005487,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "RotatedVolumeUsesItsBoxShapeAndDepthInsteadOfAnAxisAlignedBoundsCheck",
+            "fullName": "CoverAreaTests.RotatedVolumeUsesItsBoxShapeAndDepthInsteadOfAnAxisAlignedBoundsCheck",
+            "state": "Passed",
+            "durationSeconds": 0.0008475,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "RuntimeStaticResetRestoresExistingActiveCoversWithoutKeepingDestroyedOnes",
+            "fullName": "CoverAreaTests.RuntimeStaticResetRestoresExistingActiveCoversWithoutKeepingDestroyedOnes",
+            "state": "Passed",
+            "durationSeconds": 0.0006258,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "UnpreparedNullAndDestroyedPlayersHaveNoRetainedHiddenState",
+            "fullName": "CoverAreaTests.UnpreparedNullAndDestroyedPlayersHaveNoRetainedHiddenState",
+            "state": "Passed",
+            "durationSeconds": 0.0006417,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "AThinSolidWallDoesNotTurnNearContactIntoAnExplosion",
+            "fullName": "DroneRoundTests.AThinSolidWallDoesNotTurnNearContactIntoAnExplosion",
+            "state": "Passed",
+            "durationSeconds": 0.0086867,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "DamageObserverCannotReenterContactOrAdvanceRoundAndDistantApiCallDoesNothing",
+            "fullName": "DroneRoundTests.DamageObserverCannotReenterContactOrAdvanceRoundAndDistantApiCallDoesNothing",
+            "state": "Passed",
+            "durationSeconds": 0.0018058,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ExplosionSurvivesSameRoundAndReenableButANewRoundRestoresBodyAndVisual",
+            "fullName": "DroneRoundTests.ExplosionSurvivesSameRoundAndReenableButANewRoundRestoresBodyAndVisual",
+            "state": "Passed",
+            "durationSeconds": 0.001825,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "NonPositiveSameAndOlderRoundsCannotResetAMovedLivingDrone",
+            "fullName": "DroneRoundTests.NonPositiveSameAndOlderRoundsCannotResetAMovedLivingDrone",
+            "state": "Passed",
+            "durationSeconds": 0.0005134,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ColliderControlsAngleRadiusAndThicknessAndStaysLegal",
+            "fullName": "DroneVisionGeometryTests.ColliderControlsAngleRadiusAndThicknessAndStaysLegal",
+            "state": "Passed",
+            "durationSeconds": 0.0046229,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "DifferentDepthNarrowWallClipsBothDetectionAndDisplayAcrossFullThickness",
+            "fullName": "DroneVisionGeometryTests.DifferentDepthNarrowWallClipsBothDetectionAndDisplayAcrossFullThickness",
+            "state": "Passed",
+            "durationSeconds": 0.0041617,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "DisableClearsDetectionAndReenableRebuildsTransientMeshes",
+            "fullName": "DroneVisionGeometryTests.DisableClearsDetectionAndReenableRebuildsTransientMeshes",
+            "state": "Passed",
+            "durationSeconds": 0.00396,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "FacingMirrorsHorizontalDirectionAndKeepsUpwardPitch",
+            "fullName": "DroneVisionGeometryTests.FacingMirrorsHorizontalDirectionAndKeepsUpwardPitch",
+            "state": "Passed",
+            "durationSeconds": 0.0012857,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "MainBodyCenterDecidesRangeAndBackpackDoesNotHidePlayer",
+            "fullName": "DroneVisionGeometryTests.MainBodyCenterDecidesRangeAndBackpackDoesNotHidePlayer",
+            "state": "Passed",
+            "durationSeconds": 0.0017593,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ManualColliderToggleSynchronizesDetectionAndDisplayWithoutRebuilding",
+            "fullName": "DroneVisionGeometryTests.ManualColliderToggleSynchronizesDetectionAndDisplayWithoutRebuilding",
+            "state": "Passed",
+            "durationSeconds": 0.0014175,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "OriginInsideWallCannotDetectThroughIt",
+            "fullName": "DroneVisionGeometryTests.OriginInsideWallCannotDetectThroughIt",
+            "state": "Passed",
+            "durationSeconds": 0.0016168,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "SolidWallBlocksPlayerAndClipsVisibleMesh",
+            "fullName": "DroneVisionGeometryTests.SolidWallBlocksPlayerAndClipsVisibleMesh",
+            "state": "Passed",
+            "durationSeconds": 0.0022954,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "WallAtAnotherDepthOfOriginBlocksTheWholeVisibleFan",
+            "fullName": "DroneVisionGeometryTests.WallAtAnotherDepthOfOriginBlocksTheWholeVisibleFan",
+            "state": "Passed",
+            "durationSeconds": 0.001141,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "YawHeadingRotatesActualRangeAndKeepsWallClippingAligned(45.0f)",
+            "fullName": "DroneVisionGeometryTests.YawHeadingRotatesActualRangeAndKeepsWallClippingAligned(45.0f)",
+            "state": "Passed",
+            "durationSeconds": 0.0032341,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "YawHeadingRotatesActualRangeAndKeepsWallClippingAligned(90.0f)",
+            "fullName": "DroneVisionGeometryTests.YawHeadingRotatesActualRangeAndKeepsWallClippingAligned(90.0f)",
+            "state": "Passed",
+            "durationSeconds": 0.0014455,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ClearAndReenableKeepRequestedDisplayWithoutRevivingDisabledDetection",
+            "fullName": "DroneVisionViewTests.ClearAndReenableKeepRequestedDisplayWithoutRevivingDisabledDetection",
+            "state": "Passed",
+            "durationSeconds": 0.0016601,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "PureTintClearsOldMaterialFillWithoutChangingSharedMaterial",
+            "fullName": "DroneVisionViewTests.PureTintClearsOldMaterialFillWithoutChangingSharedMaterial",
+            "state": "Passed",
+            "durationSeconds": 0.0022647,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "RebuildKeepsHiddenViewAndActiveRange",
+            "fullName": "DroneVisionViewTests.RebuildKeepsHiddenViewAndActiveRange",
+            "state": "Passed",
+            "durationSeconds": 0.0008176,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "SharedMaterialInstancesKeepIndependentTintAndVisibility",
+            "fullName": "DroneVisionViewTests.SharedMaterialInstancesKeepIndependentTintAndVisibility",
+            "state": "Passed",
+            "durationSeconds": 0.0012205,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ViewVisibilityDoesNotChangeGeometryOrDetection(False)",
+            "fullName": "DroneVisionViewTests.ViewVisibilityDoesNotChangeGeometryOrDetection(False)",
+            "state": "Passed",
+            "durationSeconds": 0.001761,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ViewVisibilityDoesNotChangeGeometryOrDetection(True)",
+            "fullName": "DroneVisionViewTests.ViewVisibilityDoesNotChangeGeometryOrDetection(True)",
+            "state": "Passed",
+            "durationSeconds": 0.000936,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "WallClippedFanHasNormalizedRadialUvsAndOneSurface",
+            "fullName": "DroneVisionViewTests.WallClippedFanHasNormalizedRadialUvsAndOneSurface",
+            "state": "Passed",
+            "durationSeconds": 0.0027391,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "CarriedUniqueIsNotDuplicatedWhenNextRoundRebindsTheOriginalSource",
+            "fullName": "GameFlowSettlementTests.CarriedUniqueIsNotDuplicatedWhenNextRoundRebindsTheOriginalSource",
+            "state": "Passed",
+            "durationSeconds": 0.0231135,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ExtractionRetainsLayoutIdentityAndUsageAndPublishesOnlyCompleteState",
+            "fullName": "GameFlowSettlementTests.ExtractionRetainsLayoutIdentityAndUsageAndPublishesOnlyCompleteState",
+            "state": "Passed",
+            "durationSeconds": 0.004157,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "InvalidLaterPlacementRejectsAllChangesAndCanRetryAfterRepair",
+            "fullName": "GameFlowSettlementTests.InvalidLaterPlacementRejectsAllChangesAndCanRetryAfterRepair",
+            "state": "Passed",
+            "durationSeconds": 0.0018442,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "LeftUniqueRecoversTheSameIdentityNextRoundWhileOrdinaryGetsNewIdentity",
+            "fullName": "GameFlowSettlementTests.LeftUniqueRecoversTheSameIdentityNextRoundWhileOrdinaryGetsNewIdentity",
+            "state": "Passed",
+            "durationSeconds": 0.0020345,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "OrphanBackpackOwnerCannotSilentlyBypassSettlementValidation",
+            "fullName": "GameFlowSettlementTests.OrphanBackpackOwnerCannotSilentlyBypassSettlementValidation",
+            "state": "Passed",
+            "durationSeconds": 0.0010227,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "RoundOverflowIsRejectedBeforeAnyRetainedOrLossMutation",
+            "fullName": "GameFlowSettlementTests.RoundOverflowIsRejectedBeforeAnyRetainedOrLossMutation",
+            "state": "Passed",
+            "durationSeconds": 0.0009166,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "DeadPlayerCanRelocateButUnlockAndFirstShelterEntryCannotReviveIt",
+            "fullName": "PlayerFlowEntryTests.DeadPlayerCanRelocateButUnlockAndFirstShelterEntryCannotReviveIt",
+            "state": "Passed",
+            "durationSeconds": 0.0011717,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "FirstShelterPreparationKeepsRoundZeroAndCannotRefillExistingPlayer",
+            "fullName": "PlayerFlowEntryTests.FirstShelterPreparationKeepsRoundZeroAndCannotRefillExistingPlayer",
+            "state": "Passed",
+            "durationSeconds": 0.0010116,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "InvalidPositionAndUnpreparedRelocationDoNotChangePreparationOrRound",
+            "fullName": "PlayerFlowEntryTests.InvalidPositionAndUnpreparedRelocationDoNotChangePreparationOrRound",
+            "state": "Passed",
+            "durationSeconds": 0.0003804,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "RelocationPreservesHealthRoundAndInvulnerabilityWithoutHealthNotification",
+            "fullName": "PlayerFlowEntryTests.RelocationPreservesHealthRoundAndInvulnerabilityWithoutHealthNotification",
+            "state": "Passed",
+            "durationSeconds": 0.0007003,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "SceneLockSurvivesFirstPreparationBackpackClosingAndNewRoundReset",
+            "fullName": "PlayerFlowEntryTests.SceneLockSurvivesFirstPreparationBackpackClosingAndNewRoundReset",
+            "state": "Passed",
+            "durationSeconds": 0.0010869,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          }
+        ]
+      }
+    },
+    "hint": null
+  }
+}

@@ -1,0 +1,86 @@
+07C / 07D 最终文档与保护审计更新清单（准备稿，不是验收/释放记录）
+观察UTC：2026-10-19 01:48:11—01:48:40。
+范围：只读源码、Docs及磁盘hash；仅写本准备稿。未操作Unity、未修改Assets、Architecture、EditorCoordination或既有证据。
+当前主程正在恢复DX11新进程及MCP，最终运行和视觉证据尚待产生。PID85336/Bootstrap非Play为主程实时报告，本只读审计没有独立读取Unity进程或状态。
+
+1. 现在可以确认的事实
+
+- 07C/07D两个Handoff与RegressionCoverage已正确保留Edit149/149、首轮Play85/85含41次正常加载相机warning、修复后DX12 84/85/唯一fence258失败、正常加载warning归零且新增Player重载实际Follow断言通过。状态仍DRAFT/PENDING_FINAL_VALIDATION。
+- 原生两轮未完成；07B的04混合左右键/Ctrl用例失败仍未解决。当前85项没有Backpack/Warehouse PlayMode，不能关闭旧04问题。
+- 07C/PlayMode-85-Final.xml目前仍是01:20:07Z初始运行，SHA256 AAC20506A8849D8907674986A9D6F72F92A0FD899791E14CA0B1E2164C8CB26B，与Initial一致；名字Final不构成新的最终结果。
+- SerializedAssetAudit.json覆盖56项。本次56份Before仍全部匹配AssetBackupManifest；当前相对Before仍恰好11项允许变化，相对01:17语义审计的currentSha256新增漂移为0。ProjectSettings.asset=7E8D7317565EE7C2DC4832BE2E3DBB806F616CCAA34BE60E4211996413A3D19D；EditorSettings.asset=D31BE15C85A31D85372564BF5EE30188A9454274C6DF8FE7A3372375A0DB98BC，均已恢复Before。
+- 当前FinalAssetHashAudit.json是01:38:12.201Z的中途快照，里面的ProjectSettings临时漂移已不代表当前磁盘。不要删掉该历史事实，也不要把旧快照当最终恢复失败。
+- SourceFreeze.json的318项重算仅3项变化，且均与FinalSourceAudit.json记录的修复后hash相同：PlayerInteraction、PlayerCameraTargetBinder、PlayerIntegrationTests；未发现第四项漂移。
+
+2. 收尾证据一旦产生，按以下顺序更新
+
+A. 保留旧Initial、DX12及InterruptedRerun原件。DX11完整XML应以自己的实际start/end、Graphics API证据、SHA256、叶节点计数、failure、每case日志审计，不把旧Final改名当新结果；确认成功后才替换Final指向或新增明确DX11文件。
+B. RegressionCoverage增加独立DX11结果节，保留前七节历史；核对正常模块加载无相机warning，6条故障诊断仍属于故意配置用例，新增Player加载/重载断言仍实跑。若有失败按原状记录，不预写85/85。
+C. 有效1920图片逐张实际查看，记录场景、语言、范围内外、相机边界/Brain输出、帧时刻与输入性质。Shelter-Storage-Range-CN-1920.png为旧无效黑底采集，不算通过；新的Final图片不能仅按文件存在判断有效。queued/API/native分别说明。
+D. 末次退出Play后记录ReleaseState：实际UTC、唯一路径及loaded/dirty、Play/changing/compile/updating、PrefabStage、当前Graphics API/临时启动参数、Application与PlayerSettings.runInBackground、Enter Play Mode选项、真实键鼠与合成设备/临时对象/临时表、Console及未关闭问题。测试前clean状态不是最终release。
+E. 对56资产再做hash审计；对318冻结源码复核允许3项修复。若出现新变化先实际diff，不整文件恢复用户资产或设置。
+F. 更新07C/07D两份Handoff：填最终XML/视觉/实际释放；去除仅已关闭事项的PENDING，原生未完成与04旧失败保留。完成范围不足时写部分完成，不改成所有验收通过。
+G. 最后由root在EditorCoordination追加明确release及未解事项，009才可按既定队列进入Assets/Editor工作。当前文件仍无release且要求等待，符合正在集成的状态。
+
+3. 重启叙述需要修正，不能沿用首次尝试
+
+RestartRetry.txt确认EditorApplication.OpenProject对同一工程的首次尝试没有重启，原PID48276/Direct3D12仍在；deferred exit也未运行。随后root于01:41:04.937Z在重新确认clean后调用graceful EditorApplication.Exit，再以正常Unity CLI及-force-d3d11重开；新PID85336为root实时报告。
+两份Handoff和RegressionCoverage第7节目前还写“OpenProject同工程临时参数重启”，这是当时root报告的计划/尝试，最终必须改为上述实际顺序。仍明确没有改Project graphics API配置。不要把InterruptedRerun的domain reload归因窗口焦点、用户或哪个聊天写文件；日志不提供这种证明。
+
+4. Architecture待root更新的准确范围（本稿不写这些文件）
+
+MinimumLoopSetup.txt：
+- 当前第3—7行首段仍称07B为现行、三正式场景/业务本轮未改且Unity已释放；为07C/D增加新的最前状态段，旧07B/07A保留为明确历史，不能迁用旧release。
+- 第29、61—72行附近补SceneBindings的ValidateBounds和五场景实际独立几何、显式Trigger/可选锚点。Shelter用户Storage scale4.6/Y-90/模型/材质和PlayerTest背景Z0.02必须保留；builder默认坐标不冒充用户当前场景。
+- 第42—47行说明已保存场景本轮原位升级；未来helper不是再次运行Build重建现有资产的授权。不得运行旧Player builder覆盖透视镜头。
+- 第92/102行补激活顺序：当前玩家移入目标scene，环境/Bounds启用，Bind，再presentation；失败/回滚保留本scene边界引用。原结算/轮次/物品职责不改。
+- 第170行等旧“当前已完成/已释放”汇总应标历史；新的测试、图形失败、暂态修复、视觉/native边界及最新release以本轮证据为准。
+
+PlayerSetup.txt：
+- 第14行旧背景目标Z4改为当前保存场景Z0.02；第22行加旧PlayerTest生成器不可用于现有资产迁移。
+- 第35行扩展Binder职责；第129—140行更新显式interactionTrigger/interactionPoint/TryGetInteractionTrigger及CanReachTarget/CanReachWorldPoint。旧OverlapSphere、最近Collider点和根Z裁剪说明已不适用于目标交互；身体bounds OverlapBox粗筛+ComputePenetration精确重叠，锚点排序/射线遮墙。radius2/depth0.65仅世界点/丢放，UI锁与空间检查分开。
+- 第148行增加Confiner3D；第151—153行当前镜头应写透视FOV50、distance12、Z-12、Damping(.25,.2,0)、ScreenPosition(0,.13)，而非旧正交Size5/ScreenY-.12/投影待定。用Bounds调允许相机中心，不保证透视画面四边。
+- 第155—157行补Binder.confiner、唯一native BoundingVolume、本scene静态Box trigger、shared prefab null、SlowingDistance0.5、ValidateBounds/LastBoundsError、加载暂缓及范围几何变化重置。Binder为Update/DefaultExecutionOrder(-100)，不是旧LateUpdate；第149行Brain的LateUpdate正确，应保留。
+- 第194、218行同步范围/相机原理；旧02成绩与新07C/D证据分开，不据文档改写模块历史交接。
+
+TransfersLootSetup.txt：
+- 第130—147行已正确描述06D Trigger与落点分离，不需重写业务。
+- 第182—186行“06没有运行/由07待执行”可保留为06提交历史，但需补07已实际原位升级及证据链接；不能误引导再跑布局/Build。
+- 第187—190行补未来LootTest builder独立CameraBounds（0,4,-12）/size(24.1,3,2)和现有场景的同scene引用；实际验收仍由07最终证据限定。
+- 第206行的07A/06C等待描述标历史，用本轮handoff指向更新，不以旧105/29/6替代本轮成绩。
+
+Contracts.txt、IntegrationChecklist.txt是旧00弃用说明，无范围/镜头参数冲突；如需改只加现行02A/02B/06D/07C/D索引，不恢复旧框架清单。ModuleOwnership也属旧00历史，不为本次扩大改写。
+
+5. FinalAssetHashAudit可复用方法
+
+仓库内只找到FinalAssetHashAudit.json结果，未发现同名独立ps1/py/js脚本；现有比对可直接复用下面只读PowerShell。三个不同基线不要混淆：
+1) AssetBackupManifest.json.path/backup/sha256：验证56份真实Before未损坏；当前相对它应有11项授权资产变化，不应要求0。
+2) SerializedAssetAudit.json.files[].currentSha256：是原位迁移已经逐字段审过的56项结果；最终比较它预期0新增漂移，才可继承已有96个旧Collider/模型块及849条override保护结论。
+3) SourceFreeze.json：318项集成冻结源码/meta；允许的3项修复后值来自07D/FinalSourceAudit.json.changes[].current，不混入资产清单。
+
+可在最终退出/恢复后从E:/DD451执行（仅输出JSON，不写任何文件）：
+
+$baseline = Get-Content -LiteralPath 'Docs/Verification/TriggerInteraction/07C/SerializedAssetAudit.json' -Raw | ConvertFrom-Json
+$manifest = Get-Content -LiteralPath 'Docs/Verification/TriggerInteraction/07C/AssetBackupManifest.json' -Raw | ConvertFrom-Json
+$rows = @(foreach ($entry in $manifest) {
+    $known = @($baseline.files | Where-Object path -eq $entry.path)
+    if ($known.Count -ne 1) { throw "Missing or duplicate semantic baseline: $($entry.path)" }
+    $current = (Get-FileHash -LiteralPath $entry.path -Algorithm SHA256).Hash
+    $backup = (Get-FileHash -LiteralPath $entry.backup -Algorithm SHA256).Hash
+    [pscustomobject]@{
+        path = $entry.path
+        backupValid = ($backup -eq $entry.sha256)
+        changedFromBefore = ($current -ne $entry.sha256)
+        changedSinceSemanticAudit = ($current -ne $known[0].currentSha256)
+        currentHash = $current
+    }
+})
+[pscustomobject]@{
+    utc = [DateTime]::UtcNow.ToString('o')
+    files = $rows.Count
+    invalidBackups = @($rows | Where-Object { -not $_.backupValid })
+    changedFromBefore = @($rows | Where-Object changedFromBefore)
+    changedSinceSemanticAudit = @($rows | Where-Object changedSinceSemanticAudit)
+} | ConvertTo-Json -Depth 5
+
+若写最终结果，写Docs下新的带阶段/UTC文件，或先保留01:38中途快照后更新FinalAssetHashAudit.json；绝不覆写Before、manifest、语义审计原件。若有新资产diff，需逐字段审查后才能补新的语义基线，不能直接把current hash更新成基线掩盖变化。磁盘相同只证明保存内容；编辑器dirty/运行设置/Graphics API仍必须root实时采样。

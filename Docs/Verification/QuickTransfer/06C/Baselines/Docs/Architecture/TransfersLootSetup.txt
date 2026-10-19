@@ -1,0 +1,198 @@
+MyPrecious P0 — 06物品转移、地面拾取与06A箱格逐件搜索
+版本：2026-10-18 / ProjectRules Dispatch v17 / 06A固定容量追加
+工程：E:/DD451。下列路径相对工程根；本文件描述实现与接线，不作测试完成证明。06历史验证见Docs/Handoffs/06_Handoff.txt；06A验证、未完成项与Editor释放状态由Docs/Handoffs/06A_LootGridSearch_Handoff.txt另行记录。
+
+一、职责和文件
+
+01 ItemManager唯一保存身份、Owner/ContainerId、SourceId、OriginalSpawnPointId、次数、保有与找回资格。
+04 BackpackManager/BackpackGrid保存背包布局；05 WarehouseManager/WarehouseGrid保存仓库布局，两套格子算法独立保留。
+06不建立第二张身份表、不手动增减EV、不推进正式轮次。
+操作范围包括背包与仓库双向转移、背包与当前打开箱子双向转移、地面拾取及明确按钮确认丢弃。
+箱子仍以Entries保存本轮条目，06A按每个LootBox的宽×高实行固定容量，显示所有背景单元格与物品占格轮廓；不新增箱内手动整理或旋转规则。放回箱子不要求玩家指定坐标/朝向，自动检查合法空位；背包与仓库仍各自检查完整矩形占格。
+
+Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs：同步转移、最后归属提交、失败恢复、完整通知。
+Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferUIBridge.cs：接04/05基础回调，协调一个来源与另一个目标预览、来源拖入、放回当前箱格区域及明确丢弃确认。
+Assets/Scripts/Items/Transfers/RuntimeData/ItemTransferResult.cs：明确结果枚举，ResultKey映射transfer.<枚举名>。
+Assets/Scripts/Loot/ScriptableObject/LootTableSO.cs：Inspector候选列表与配置校验；LootTableEntry同文件。
+Assets/Scripts/Loot/Logic/LootGenerator.cs：按每项独立概率选择；测试可传Func<float>取得可重复样本，没有随机服务框架。
+Assets/Scripts/Loot/RuntimeData/LootSourceState.cs：本轮来源、容量快照、稳定条目、已揭示/已取走、搜索计时与布局坐标；身份只引用01的实例ID。该类提供有限边界的预排与返还空位检查，EnsureLayout校验保存位置；没有新增通用容器核心。
+Assets/Scripts/Loot/MonoBehaviour/LootRuntimeManager.cs：常驻本轮记录、稳定来源绑定、唯一找回和场景表现重建；保留的落点准备辅助不属于当前背包丢弃流程。
+Assets/Scripts/Items/Transfers/MonoBehaviour/DiscardConfirmationButton.cs：确认/取消按钮记录指针按下时的确认token，拒绝旧提示迟到的松手。
+Assets/Scripts/Loot/MonoBehaviour/LootBox.cs、GroundItem.cs：继承02的Interactable。E依然由02处理。
+Assets/Scripts/Loot/MonoBehaviour/LootUIController.cs：一次打开会话、逐件搜索和关闭中断。
+Assets/Scripts/Loot/MonoBehaviour/LootView.cs、LootItemView.cs：箱格定位、未知中性轮廓、当前物品中心倒计时、揭示内容、状态反馈及UGUI指针回调。
+MyPrecious.Loot.asmdef与Transfers/MyPrecious.Loot.asmref把06放进同一程序集；01/04/05不引用06，没有逆向循环。
+
+二、真实转移的顺序
+
+Coordinator字段接同一个ItemManager、BackpackManager、WarehouseManager、ShelterManager、LootRuntimeManager及当前真实PlayerController。
+运行中Initialize从存活GameBootstrap下解析管理器，UI Bridge在提交前同步04当前绑定的player。
+公开方法：
+TryBackpackToWarehouse(instanceId,x,y,rotated,interactionOwner,requestIsValid)
+TryWarehouseToBackpack(instanceId,x,y,rotated,interactionOwner,requestIsValid)
+TrySourceToBackpack(source,entryId,x,y,rotated,requestIsValid)
+TryBackpackToSource(source,instanceId,requestIsValid)
+TryDiscardFromBackpack(instanceId,requestIsValid)
+TryDropFromBackpack(instanceId,requestIsValid)：兼容旧调用，直接转调TryDiscardFromBackpack，语义同为丢弃
+均返回ItemTransferResult。requestIsValid是当前拖拽token/来源会话或丢弃确认快照的只读检查；缺少检查或检查失效返回StaleRequest。显示确认由UI Bridge负责，Coordinator不自行弹窗，也不把旧Drop方法当成免确认入口。
+探索拾取/放回箱子/丢弃重新核对真实玩家已准备、存活且开包；庇护所转仓遵循04规则，允许未准备或无场景玩家整理，但仍需05真实权限和有效UI请求，存在的玩家必须存活且开包。
+开包时CanAct=false是正常状态，不用CanAct拒绝这些探索操作，也不为转仓调用ResetForExploration。
+
+跨仓顺序：
+1. 检查本次请求、同一01数据源、真实来源归属和摆放、目标格、IsManagementAllowed及交互占用。
+2. 交互申请的同步通知可能取消UI，因此在首个静默写入前再次检查请求/玩家；保存不可变原摆放，目标TryAddPlacement静默添加。
+3. 来源TryRemovePlacement静默移除。
+4. 最后01.TrySetOwner。SourceId、原点、次数和IsRetained不修改。
+5. 两边/01一致后NotifyChanged，来源通知及ShelterManager.RefreshEv，再发Completed。
+
+目标添加失败：来源完全未动。
+来源移除失败：移除新目标；失败返回SourceRemovalFailed或RollbackFailed。
+归属提交失败：移除新目标，TryRestorePlacement恢复原来源的坐标和朝向；检查两个返回值。
+箱内/地面转入相同步骤，来源用静默Taken标记，失败恢复Taken；揭示与另一项搜索进度不改。
+
+背包放回当前箱子：
+1. 核对当前轮次、同一个已登记source、探索许可、真实LootBox绑定/距离/遮挡，以及背包中的同一01实例和原摆放。地面来源不接受此操作。
+2. TryValidateReturnTarget检查目标，CanAcceptReturnedItem只读预检容量，无合法空位返回Occupied。AddToSource调用TryAddReturnedItem再次检查并静默准备条目；背包原摆放仍保留，不能仅依赖UI预览判断。
+3. 目标若已有同InstanceId且Taken=true的条目，复用原EntryId，优先原位；原位已被占用则寻找其它合法格，否则拒绝。已有未取走条目拒绝重复。新条目使用returned-<InstanceId>，不改静态LootTable。Taken历史记录不占用容量，当前箱内物品不重排。
+4. 放回条目Revealed=true。原箱、其他箱子、空表箱或已取空箱均使用同一条目接收规则；不重新搜索玩家已持有的物品，不重抽箱子结果。
+5. 静默RemoveFromBackpack，再最后CommitOwner(Container,source.SourceId)。成功后通知背包/来源、刷新EV并发Completed。
+目标拒绝时背包未动、不发成功通知。来源移除失败时TryUndoReturnedItem撤销目标：新追加的条目删除，复用的旧条目恢复Taken=true及本次返还前的历史位置/揭示状态。
+归属失败时同样撤销目标，并用保存的BackpackPlacement恢复原坐标/朝向；每项恢复返回值都检查。两条失败路径都不清当前搜索进度。
+复用的Taken条目来自已揭示物品的成功取走，因此放回失败仍保留原来的已揭示状态；不会把另一个物品的已取走槽位换成新身份。
+
+整个同步方法没有await、动画等待或中途UI通知，busy一直覆盖完成通知，重入被拒绝。
+显示通知异常单独记录，不把已提交的数据伪报为未发生；通知只读取状态，不承担补交业务。
+Coordinator的protected virtual提交点为AddToBackpack、AddToWarehouse、RemoveFromBackpack、RemoveFromWarehouse、CommitOwner、CommitLoss和AddToSource，用于故障测试拒绝具体一步；没有容器基类或事务对象层级。
+
+三、04/05最小UI接入
+
+BackpackUIController与WarehouseUIController只新增基础型单回调CanBeginDrag、DragUpdated、ExternalDropRequested，以及Closing/DragCancelled通知、只读token/来源校验入口。
+ExternalDropRequested是唯一提交回调，返回是否处理；不把一次提交广播给多个监听者。
+EndDrag先在仍有效的token内调用外部提交，之后才取消预览；迟到回调无法使用下一次拖拽的资格。
+普通包内/仓库内移动仍走原TryMove。BackpackItemView停用会取消自己的token，BackpackView目标命中增加最上层遮挡检查。
+04的关闭通知在恢复玩家控制前结束06来源会话；06监听者只清会话，不递归Close背包。
+有效受击与死亡仍由04已有NonLethalDamaged/Died订阅触发，06不重复订阅伤害。
+一次跨界面操作只有活动来源控制器IsDragging，只有来源响应R；背包/仓库目标只调用自己的ShowPreview和CanPlaceExternal，不开启第二份旋转输入。
+仓库来源复用WarehouseUIController的独占交互；背包转仓由Bridge申请占用。另一个确认遗弃/升级不被绕过。
+背包丢弃使用明确按钮并显示后果确认；拖出窗口仍只取消拖拽。05仓库遗弃继续由05负责。确认期间禁止另起拖拽/使用；关闭、受击或旧token不能提交，F10仅刷新文字。
+放回箱子命中LootView.TryHitReturnTarget：只接受当前打开的非地面来源箱格viewport及其子项，并要求它是EventSystem射线的最上层目标。
+空箱格区域也是合法目标；标题、关闭按钮、状态区、滚动条、被其他窗口遮住的位置都不是放回区域。目标只显示有效/无效底色，不启动另一份格子拖拽。
+LootView.viewport可显式指定，也可从contentRoot所属ScrollRect解析；returnTarget可指定预览底色Image，未指定时使用viewport的Image。
+背包的一次拖拽首次命中箱格时，Bridge固定returnDragToken、returnSource与returnSession。之后鼠标离开箱格、关闭/重开来源或切到另一箱，只清预览颜色，不用新会话替换这次拖拽保存的目标资格。
+放回松手必须同时满足原背包token仍有效、固定来源/会话仍匹配；旧拖拽不能借新打开的箱子提交，失败返回StaleRequest且物品留包。
+来源窗口关闭不强迫取消04仍有效的包内重排；玩家可继续移回包内。取消这次拖拽后，下一次新token才可重新绑定箱子目标。
+E属于02；Tab、R与背包使用属于04/05原活动来源；F10只属于03。
+
+四、掉落表、稳定来源、箱格展示和搜索
+
+LootTableSO每项：entryId、item、useDefaultProbability、overrideProbability。每项就是一件物品，不是权重池。
+开启默认就读ItemDataSO.defaultSpawnProbability，否则只读overrideProbability，二者不相乘。
+0直接排除，1直接命中，其余每项独立sample<probability；多个可同时命中，结果也可为空。
+按配置顺序保存命中项。空表与空结果也标Generated，同轮重开、取空、切语言、重载不会重抽。
+空引用、非法值、重复entryId/来源ID和唯一物品冲突原点在生成前校验并报告可定位错误。
+搜索秒数、占格和物品文本键始终读01定义，不在掉落表重复维护。
+
+mapId/sourceId/entryId各自是不含斜线的稳定片段，例如ruins01/bedroom-box/medkit。
+SourceKey为mapId/sourceId，唯一OriginalSpawnPointId为SourceKey/entryId。不要用InstanceID、显示名称或数组下标生成稳定原点。
+同一场景来源ID不得重复。ValidateSceneSources在生成前检查所有来源，包括0%唯一候选，不能靠遍历顺序抢占原点。
+returned-<InstanceId>只标识本轮人工放回条目，不是新生成原点，也不加入掉落表或uniqueOrigins。原物品的SourceId与OriginalSpawnPointId保持不变。
+
+打开先成功打开04背包，再建立source+target+interaction+sessionToken会话。只为本轮真正生成且尚未取走的条目显示物品矩形，未抽中的候选不占展示位置。
+每个LootBox的Inspector提供gridWidth、gridHeight，示例默认6×4。LootRuntimeManager首次为本轮来源创建状态时写入GridWidth/GridHeight快照；同轮重绑不重新读尺寸或重排，下轮重新读取。共享LootTableSO只负责候选，同一表可供不同尺寸的箱子。
+生成前检查概率>0的所有候选按表顺序能放入固定宽高；唯一找回和本轮已保存的抽取结果也须在创建/认领实例前完成布局检查。命中项复用全候选的预排坐标，避免子集重新first-fit导致有效配置随机放不下；未命中项不生成、不保存占位，其空格可接收返还。配置失败带SourceKey/条目原因报错，不部分生成、不重抽已保存结果、不少生成或扩容。
+LootSourceState.EnsureLayout(ItemManager)按Entries稳定顺序，采用从上到下、同行从左到右的确定性空位安排。LootEntryState保存HasLayout、LayoutX、LayoutY、LayoutWidth、LayoutHeight；箱子LayoutColumns/LayoutRows等于配置快照。物品尺寸来自01定义，不保存第二份归属。
+当前箱内物品位置在揭示、切语言、关闭重开及同轮场景重载时保持。Taken记录保留历史矩形供返还优先选位，但不再预约空间；外来物可以复用空格。原箱返还原位已占则另寻合法格，不能移动当前仍在箱内的物品。
+LootView不再提供全局columns；cellSize=66、gap=4、padding=6。Grid背景节点位于contentRoot第一层最底部，cellPrefab隐藏模板实例化全部宽×高单元格；空箱、取走后的空格仍可见，背景全部raycastTarget=false，不根据身份或揭示状态变色。
+六列含边距宽428，四行高288。多格外框为列数×66+(列数-1)×4，纵向同式，例如1×2为66×136、2×3为136×206。内容尺寸来自固定容量，不按物品数量自动增行/扩列，不缩格。
+配置的容器比viewport宽或高时以滚动查看，宽容器显示loot.wide_hint并启用横条；物品比容器本身宽/高则配置失败或返还拒绝。两条滚动条均用AutoHide而非AutoHideAndExpandViewport，避免滚动条改变格子区域宽度。地面单物来源按实际物品大小显示，不套用箱子容量。
+
+AdvanceSearch(Time.deltaTime,ItemManager)沿已生成Entries顺序逐件推进，完成后揭示并自动继续下一项；0秒和长帧通过有限遍历处理，每项只揭示一次。搜完仅代表识别完成，不自动装入背包。
+未知物品只显示真实占格大小的中性四边轮廓，不显示名称、图标、描述、价值、稀有度颜色或使用信息，也不提供悬停/选中详情。拖拽未知项不会取得物品token，可转交ScrollRect滚动；正式转入方法仍再次拒绝未揭示条目。
+只有SearchEntryId对应的当前物品显示countdownText，内容取max(0,searchSeconds-SearchElapsed)，中文为“2.3 秒”、英文为“2.3 s”。文字位于整个多格矩形的几何中心，完成揭示后清除，不在每个物品UI另建计时器。
+揭示后原位显示本地化名称及现有统一图标/色块；01当前没有物品图标配置，不新增图标权威表。已揭示条目可以先拖走；取走只改Taken，不删除运行条目，不影响下一件正在搜索的计时。
+放回旧条目或追加已揭示条目不修改SearchEntryId/SearchElapsed；搜索继续当前未完成物品。失败撤销仅操作本次目标条目，不重排已有条目。空箱和全部识别分别显示双语loot.empty/loot.complete状态。
+关闭来源/背包、受击、死亡、切换来源、距离/遮挡失效、场景卸载、换绑、停用及失焦结束会话。
+中断保留已生成/已揭示，只清当前未完成计时；重新打开从该物品完整时长开始。
+取消单件拖拽只取消预览，不等于关闭搜索；语言变化只刷新文字，不结束会话。
+
+LootView保留panelRoot/contentRoot/itemPrefab、标题/状态/反馈/关闭引用及viewport/returnTarget，新增Inspector字段columns/cellSize/gap/padding。contentRoot以左上角为原点手动定位；旧VerticalLayoutGroup/ContentSizeFitter不再决定布局。progressText/progressBar引用保留兼容，但全局进度显示隐藏。
+LootItemView保留background/icon/nameText/descriptionText/statusText，新增TMP_Text countdownText和Image[] outline（四条1px边框）。background透明时仍接收指针；轮廓、名称、图标和倒计时raycastTarget=false。nameText在物品内边距6范围居中，18号、最低12自动缩字和省略；descriptionText/statusText清空并隐藏，不再按长描述拉高一行。
+countdownText左右拉伸、垂直中心，边距4、高32，12—22自动缩字且不换行。名称、倒计时及状态由03刷新，F10不重抽、不改变坐标、身份、揭示状态或计时。
+
+PlayerInteraction只增CanReachTarget/CanReachWorldPoint只读空间查询，复用原3D距离、深度和遮挡，允许UI锁期间查询。
+持续搜索不依赖CanAct或CurrentTarget，也不授予E权限；正式E逻辑保持原有输入限制。
+
+五、背包丢弃与地图原生地面物品
+
+2026-10-18用户最新规则覆盖旧临时丢地：普通物品确认后Owner=Lost，永久不可拾取；唯一物品Owner=PendingRecovery，RecoveryRound=CurrentRound+1，下一轮具备资格时在OriginalSpawnPointId恢复同一InstanceId/UniqueId。本轮不能捡回，确认不会自行推进轮次。
+TryDiscardFromBackpack保存真实摆放并静默移除，最后CommitLoss调用01.RecordLoss(instanceId,ItemLossReason.BackpackDiscard)。记损拒绝则恢复原坐标/朝向，成功后统一通知背包、刷新EV并发Completed。01清空ContainerId、取消IsRetained/SpawnClaimed并记录损失原因；SourceId、OriginalSpawnPointId和本轮使用次数不变。
+提交及通知期间busy防重入；不创建GroundItem或新来源，不依赖地面、落点或表现Prefab。来源移除失败返回SourceRemovalFailed；记损失败恢复成功返回OwnerRejected，恢复失败返回RollbackFailed。
+独立04场景允许没有LootRuntime，但仍要求真实玩家存活、已准备且开包。接入06时额外核对Runtime启用和探索上下文；05处于仓库管理权限时不允许背包丢弃。旧TryDropFromBackpack为兼容调用转调丢弃，不保留旧临时地面拾回行为。
+ItemTransferUIBridge.DropSelected仅打开确认，不立即移除物品；ConfirmDiscard(token)才提交，CancelDiscard(token)保留物品。Bridge保存本次token、同一实例、玩家、背包/01/Coordinator/Runtime引用、地图、当前活动场景、轮次和摆放快照；确认时再次核对仍选中同一物品、位置/朝向不变且确认面板/按钮仍匹配。
+关闭、受击、失焦、暂停、停用、换绑或快照失效清除资格；清理先撤销token再隐藏面板。每次确认/取消监听捕获自己的token，DiscardConfirmationButton还要求左键按下与点击属于同一次确认，旧提示的迟到回调或松手不能作用于新提示。
+BackpackDiscardUIBuilder.Attach搭建丢弃按钮与模态确认表现，供BackpackTest、LootTest和MinimumLoop构建器复用，并将确认/取消按钮接成DiscardConfirmationButton、绑定同一个Bridge。Bridge需要discardPanel、discardTitleText、discardMessageText、confirmDiscardText、cancelDiscardText、confirmDiscardButton和cancelDiscardButton；缺少确认UI只显示不可用反馈，不能跳过确认。
+按钮/标题/后果/确认/取消/结果使用LootText中的loot.discard系列中英文本键；后果包含当前物品本地化名称，普通物品提示永久销毁且不能再拾取，唯一物品提示下一轮原拾取点找回且本轮不能再拾取。F10只刷新同一确认的文字，不提交、不改变token或重新选物品。
+GroundItem仍用于地图预置物品和唯一地面原点恢复。场景卸载只解除表现绑定，不记损；同一实例最多一份有效表现。LootRuntime的TryPrepareDrop、CanCommitPreparedDrop、CommitPreparedDrop和CancelPreparedDrop保留为历史底层能力；其安全落点、预准备及动态表现重建不再是背包用户流程，当前丢弃入口不调用它们。
+
+六、唯一物品与08/09入口
+
+首次生成前验证来源/原点/表现。唯一物品TryCreateInstance后还必须TryClaimUniqueSpawn；查询到已有实例不是生成许可。
+已有背包/仓库/其他有效来源的唯一物品不复制。仍在原来源的实例恢复原记录。
+唯一物品从原箱A取出再放进箱B，只改变当前ContainerId；A的旧条目仍为Taken，B引用同一个实例且已经揭示，不领取新的唯一生成许可。
+同轮重载保留B的运行条目和当前归属，不把它送回A，也不因新增条目缺少静态Candidate而补造物品。
+若08将B中遗留物记损，下一轮清理旧运行条目后按原点A找回；B不会把上一轮人工放回当成下一轮补货。
+新轮的GetRecoverableItems按OriginalSpawnPointId接回同一InstanceId/UniqueId，优先于普通概率（0%也能找回）。
+01找回许可先把Owner设为World；箱子来源随后TrySetOwner(Container,SourceKey)，两者一致才开放搜索/拾取。
+许可领取后的失败保留条目实例ID与已选结果，同轮重试只补登记/归属/表现，不再抽取或领取，不滥用RecordLoss。
+
+08正式流程顺序：
+1. 关闭当前UI会话并选定真实损失集合；GetRemainingWorldItems返回06尚在世界/箱内的实例供08决策。
+2. 按死亡/撤离遗留等语义调用01.RecordLoss；携带物布局清理由正式流程协调；需要保留的已携带战利品在成功撤离时设IsRetained。
+3. 调用01.BeginRound(newRound)以及02.ResetForExploration；只有08拥有正式轮次推进。
+4. 调用LootRuntimeManager.PrepareRound(items.CurrentRound,out error)。同轮复用；新轮若还有未结算World/Container实例则拒绝清空。
+5. 场景组件BindBox/BindGround，SetExplorationContext(mapId,true)明确探索许可；离开时false。
+6. 场景重载由存活Runtime重新绑定来源并RebuildSceneRepresentations；UI重绑存活模块和当前玩家。
+
+GetRemainingWorldItems也包含人工放回箱子的尚未取走实例，按实例ID去重。普通放回不改变次数、IsRetained或EV；死亡/撤离遗留是否记损继续由08决定。
+
+仓库权限只能由08/09用warehouse.SetShelterContext(allowed,scene)给予，06转移不会自行授予。
+LootModule挂在GameBootstrap实例下随入口常驻。UI、玩家、箱子和地面表现属于各场景，可重建。
+09接所有正式Prefab与语言表，保持一个EventSystem、一套真实输入、一份常驻管理器。06不替代正式地图/撤离/死亡结算。
+
+七、资源和测试场景
+
+菜单Tools/MyPrecious/Create Loot Test Assets（LootTestSceneBuilder.Build）在停止Play且场景已保存时构建06资产。
+Build仅补缺失资产；已有06场景/Prefab保留。共享01—05 Prefab仅实例化，场景覆盖不Apply回原资源。
+06A现有资产升级分成两个明确入口，均拒绝Play中执行或任何已打开场景尚未保存：
+1. Tools/MyPrecious/Upgrade Loot Grid UI → LootTestSceneBuilder.UpgradeGridUI()：LoadPrefabContents原位更新LootPanel.prefab与LootItem.prefab，保留资产GUID及既有引用，补齐LootText.asset的06A键，不改正式场景。移除旧列表布局组件，保留并隐藏旧进度引用，接好四边轮廓、中心倒计时与横/纵滚动条。
+2. Tools/MyPrecious/Upgrade Loot Test Layout → LootTestSceneBuilder.UpgradeTestScene()：只处理Assets/Scenes/Tests/Loot/LootTest.unity；未加载时Additive打开，保存后关闭本次打开的场景并恢复原活动场景。保持现有GameObject、Bootstrap/共享模块和业务引用，仅更新测试显示布局、格子显示参数及Canvas。
+建议先UpgradeGridUI再UpgradeTestScene。场景中的旧LootPanel根矩形覆盖必须单独更新，不能以Prefab已升级推断场景根尺寸自动变更。
+新建LootTest场景时，Builder先复用GameBootstrap实例中已有的ItemManager和LocalizationManager，只在缺少时补建对应模块，避免当前Bootstrap已包含它们时重复实例化；Backpack、Warehouse、Shelter和Loot模块仍按构建器接入同一个ItemManager。语言表追加到所复用的LocalizationManager.tables，保留原表。
+资源：Assets/Data/LootTables/Zero.asset、Guaranteed.asset、Mixed.asset、Empty.asset、Unique.asset。
+Assets/Data/Localization/Loot/LootText.asset；Assets/Prefabs/Loot/LootModule.prefab、LootBox.prefab、GroundItem.prefab；Assets/Prefabs/UI/Loot/LootPanel.prefab、LootItem.prefab。
+测试场景：Assets/Scenes/Tests/Loot/LootTest.unity，真实01—06、3D玩家/Cinemachine、地面/墙/伤害源、背包与仓库UI。
+测试Canvas以1920×1080为当前开发与验收基准，按宽匹配；此尺寸下Canvas单位与屏幕像素一致，不以旧800/1280适配作为06A目标。
+左侧背包PlayerInventory为(24,132)、360×580；Grid和Items是同级节点，均位于(36,62)，4×4总尺寸288×288。仓库为(408,132)、1488×720，viewport宽1430，66/4/6的20列总宽1408可完整显示且只纵向滚动。
+LootPanel右上锚点(-24,-132)，484×808；状态区(20,64)、428×56，viewport(20,132)、428×584，底部横条(20,720)、428×12，反馈区(20,744)、444×56。默认六列无横向溢出，横条隐藏；测试状态与底部说明避免覆盖操作区。
+LootTestDriver明确模拟08上下文和轮次；按钮及T切探索/庇护所，H/K测试真实伤害，不监听E/Tab/R/F10。
+干净启动种子使用真实物品与真实布局；同轮重载不会补发样本。新轮按钮先结算遗留再开始下一轮，不能当成正式08完成。
+基础测试仍留Assets/Tests/Base，06测试都在Assets/Tests/Loot。
+
+LootText在进入Play前加入场景内存活LocalizationModule.tables，保留03/04/05表，避免运行中追加无效。
+所有TMP复用NotoSansCJKsc-Regular SDF；物品名称和描述只查询nameKey/descriptionKey。
+06A箱格不显示物品描述；已揭示名称只查询nameKey，原物品描述仍由已有背包/仓库详情读取，不复制译文。箱格尺寸来自展示占格，不随文字长短或语言改变；不再使用旧纵向条目的动态文字高度。
+LootTextEntries.Fill增加loot.countdown、loot.wide_hint、loot.layout_invalid、loot.return_full，并更新loot.return_hint为箱格操作说明，保留其他现有文本。容量不足悬停显示loot.return_full，实际提交拒绝映射transfer.Occupied。全局loot.progress键保留兼容但不显示。
+06B返箱预览通过LootRuntimeManager.TryGetReturnedItemPosition只读查询现有自动选位，仍优先原位、占用时另寻空位；箱内使用物品配置的原始宽高，不跟随背包R旋转。LootView在Content下绘制目标占格四边外框，内部透明、所有边不接收射线；原viewport与背景格颜色不变，预览随内容滚动和裁剪。整个合法viewport（含网格下方空白）仍接收自动返箱。满箱或失效目标不显示绿色占格。
+返箱悬停由ItemTransferUIBridge同步写入背包与来源提示；离开仅清理仍属于该预览的提示，让当前目标反馈和提交结果保留。成功/失败先清预览再写结果；关闭来源同时撤销对应返箱拖拽，取消、Tab、受击与场景关闭沿既有生命周期清理，旧token不能提交重开会话或新拖拽。实际归属变化仍由原Coordinator复验并提交。
+结果保存枚举/key，进度保存数值；F10换语言重新格式化，包括上条反馈，不重新执行业务。
+
+07A已由007完成正式接入：MinimumLoopSceneBuilder与GameFlowResponsiveLayout使用新版484×808搜刮根框，1920×1080正式Ruins位置为(1412,132)，并更新共享测试场景布局。实际交接与正式6/6基线见Docs/Handoffs/07A_GridIntegration_Handoff.txt。06B仅修改共享运行脚本和06测试，不改正式场景、Builder、Prefab或格子核心；正式独立复核由主程接续。
+
+参考链保持原实现来源：E:/Portfolio-Card-Clone/Assets/Scripts/Cards/MonoBehaviour/CardDragHandler.cs的UGUI Begin/Drag/End生命周期，以及Assets/Scripts/Items/MonoBehaviour/ItemTemplet.cs的配置引用与明确刷新TMP形式。06A继续使用已经适配的LootItemView→LootUIController→ItemTransferUIBridge链、稳定token与提交前保留来源；不重新搬入DOTween、卡牌业务或全局事件框架，参考仓库不修改。
+
+答辩说明：
+“01保存物品是谁和属于哪里；04、05分别保存格子。
+06先检查目标，再静默调整双方，最后改归属，失败就按原记录恢复。
+箱子每轮只抽一次，展示位置稳定，中心倒计时依次揭示物品；
+关闭时已发现的保留，正在搜索的重新计时。”
+

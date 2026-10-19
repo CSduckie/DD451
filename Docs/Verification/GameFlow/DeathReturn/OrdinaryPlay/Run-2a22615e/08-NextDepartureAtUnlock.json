@@ -1,0 +1,39 @@
+{
+  "stage": "Exploring",
+  "round": 3,
+  "health": 3,
+  "playerRound": 3,
+  "playerId": -4276422,
+  "lootRound": 3,
+  "closedRound": 2,
+  "drones": [
+    {
+      "id": -4296770,
+      "state": "Patrol",
+      "round": 3,
+      "exploded": false,
+      "running": true
+    },
+    {
+      "id": -4295562,
+      "state": "Patrol",
+      "round": 3,
+      "exploded": false,
+      "running": true
+    },
+    {
+      "id": -4296332,
+      "state": "Patrol",
+      "round": 3,
+      "exploded": false,
+      "running": true
+    },
+    {
+      "id": -4297192,
+      "state": "Patrol",
+      "round": 3,
+      "exploded": false,
+      "running": true
+    }
+  ]
+}

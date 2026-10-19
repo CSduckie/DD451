@@ -1,0 +1,38 @@
+{
+  "success": true,
+  "message": "Code executed successfully.",
+  "data": {
+    "result": {
+      "scene": "Assets/Scenes/Shelter.unity",
+      "dirty": false,
+      "playing": false,
+      "compiling": false,
+      "updating": false,
+      "runInBackground": false,
+      "timeScale": 1,
+      "screenWidth": 1920,
+      "screenHeight": 1080,
+      "effects": [
+        {
+          "name": "灯光 (1)",
+          "enabled": true,
+          "active": true,
+          "target": "光照",
+          "intensity": 50,
+          "lightEnabled": true,
+          "sourcePath": "Assets/Prefabs/灯光.prefab"
+        },
+        {
+          "name": "灯光",
+          "enabled": true,
+          "active": true,
+          "target": "光照",
+          "intensity": 50,
+          "lightEnabled": true,
+          "sourcePath": "Assets/Prefabs/灯光.prefab"
+        }
+      ]
+    },
+    "compiler": "codedom"
+  }
+}

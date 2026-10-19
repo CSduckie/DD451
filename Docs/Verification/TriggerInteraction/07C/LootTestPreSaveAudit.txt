@@ -1,0 +1,51 @@
+LootTest 07C 保存前只读审计
+观察UTC：2026-10-19T01:02:47.5292939Z；工程 E:/DD451。
+范围：读取磁盘场景、Prefab覆盖、源文件与历史证据；未操作Unity，未保存或重建任何Assets。
+
+当前原件及历史来源
+Assets/Scenes/Tests/Loot/LootTest.unity：233426 bytes。
+SHA256：5138DE1660AB2F068CBC58FADE1A6BCA739BB6BD958AFF5449FF7555CBF870C4。
+.meta：155 bytes；SHA256：5E5BC4F24F5B7ADC037649C6F371C629B9DDEDBFEAFE8A8748A54C4DB026E088。
+Scene GUID：843b4b6fc29f9dd4c985063c0a866952。
+scene与meta均同Docs/Verification/QuickTransfer/Integration/Before/下对应真实内容逐字节一致；当前没有07B之后的磁盘场景漂移。
+本次任务未另建场景备份。07C实际保存前仍应将当时scene与meta复制到本轮Before并验证hash，不覆盖历史备份，也不能用本报告代替实际内容备份或dirty内存检查。
+
+可追溯与不可追溯边界
+1. 06A_LootGridSearch_Handoff.txt记录Upgrade Loot Grid UI及Upgrade Loot Test Layout已执行：1920、66/4/6、固定容量、格子视图及大面板属于此前升级范围；07A仅复核LootTest，没有再次升级其业务。
+2. LootReturnPreview/ProtectedBefore.json记录较早scene哈希8F2B9278A0951D13B42E7E63EA05B2A0640F5F887730E45F937AD469A320E547；ProtectedAudit.json记录After为当前5138DE...。
+3. GridLootAcceptance/Report.txt第六节明确记录TestRunner曾重新保存LootTest，只有旧哈希而无可确认旧原件。可以溯源保存事件，但不能恢复逐字段差异，也不能声称每项差异均由测试、用户、某聊天或TMP重序列化产生。
+4. 06C_QuickTransferPrecisePlacement_Handoff.txt声明06C仅改源码/测试/文档，未改场景、Prefab或语言asset。06C的LootView.cs与LootTestSceneBuilder.cs比较基线由反向撤销该轮patch重建；它们不是原始字节备份，更不是LootTest场景恢复源。依据Baselines/LootUIBaselineNotes.txt。
+5. 07B实际Before及AssetAudit均保存/核验了5138DE...版本。07B对黑色背景的修复在共享LootPanel.prefab，当前scene没有背景Image颜色覆盖；场景文件不变也可以继承该修复。
+6. 无证据把下列既存UI内部覆盖逐项归属到具体操作者；它们在07B真实快照已存在，应保留并仅修改07C/07D必需的接线，不整文件reset/checkout/rebuild。
+
+当前对象与接线核对
+235个序列化文档、17个PrefabInstance；所有不带GUID的非零本地fileID均可解析，无null m_Script。
+未发现ReturnPreview、运行Cell_x_y、Clone、RootGrid命名对象持久化。静态YAML核对不能代替Unity展开嵌套Prefab后的运行验证。
+17实例包括Bootstrap、Backpack/Warehouse/Shelter/Loot模块、Player、PlayerCamera、Backpack/Warehouse/Loot面板、5箱及2地面物。
+5箱均引用LootBox.prefab，mapId继承loot-test，容量继承6x4，无scale/Collider/容量覆盖；y=.43,z=0：
+- Box_Guaranteed：sourceId=guaranteed，x=-6.8，lootTable继承Guaranteed。
+- Box_Zero：sourceId=zero，x=-3.3000002，lootTable=Zero。
+- Box_Mixed：sourceId=mixed，x=.19999981，lootTable=Mixed。
+- Box_Empty：sourceId=empty，x=3.6999998，lootTable=Empty。
+- Box_Unique：sourceId=unique-doll，x=7.2，lootTable=Unique。
+2地面物均引用GroundItem.prefab，mapId=loot-test，无scale/Collider覆盖；y=.2,z=0：medical-origin位于x=-11.4，initialItem为医疗包；ground-battery位于x=-9.3，initialItem为电池。
+7来源均绑定同一LootUIController fileID2015569327与LootRuntimeManager fileID186240632，sourceId唯一。
+LootUI绑定BackpackUI452905145、runtime186240632、Bridge1319101219、LootView1832414692与Localization2116280728；Bridge反向引用同一LootUI并引用BackpackUI/WarehouseUI726247425与Coordinator2075275915。
+Coordinator/Driver引用同一Player186749198、ItemManager2116280729、Backpack1886313594、Warehouse1088488834、Shelter893505242、LootRuntime186240632；Driver包含相应三UI及coordinator引用。
+Bootstrap语言表包含Loot/Backpack/Warehouse/Shelter已有GUID引用；未发现需要因07C重建语言表或物品来源的理由。
+
+当前显示与Prefab覆盖：保留项
+Canvas参考1920x1080、matchWidthOrHeight=0。Warehouse根(408,132)/1488x720、viewport1430x440；Loot根右上(-24,-132)/484x808；Backpack的PlayerInventory顶边132。符合此前大格布局升级范围。
+Backpack有Details.height=0、Handle.anchorMax=(0,0)、旧LootContainerPreview禁用；新增子对象为已有DiscardConfirmation与DiscardItem。
+Warehouse有详情text.height=0、部分Handle.anchorMax=(0,0)等内部覆盖。
+Loot有Content.height=0、两Scrollbar Handle.anchorMax=(0,0)、EntriesHorizontalScrollbar.active=1覆盖；没有Scene层的Grid、scroll mask、背景颜色或source业务引用改写。不能仅据这些值断定损坏或认定TestRunner是具体字段来源。
+PlayerCamera保留OutputCamera位置(-4,2.8048797,-12)、FOV50覆盖；绑定本场景Player，未覆盖投影/Composer距离。世界地板44x1x4、墙(12,1.5,0)/.5x3x2、伤害区(10,.2,0)和移动展示物(-8,3.4,1)与既有Builder职责一致。
+
+未来CameraBounds创建缺口（源码读取快照，非本报告实施）
+02B真实接口：binder.confiner、native confiner.BoundingVolume、binder.ValidateBounds(out string error)。没有升级helper；交接在本次重读时由READY变为SOURCE_IN_REVIEW，最终接入状态由主线程重新确认。
+01:04Z再次核对02B交接已恢复READY_FOR_INTEGRATION；06D及源码释放状态仍由主线程统一核实。
+BackpackTestSceneBuilder.CreateScene在原416-418行实例化相机后仅赋player；LootTestSceneBuilder.CreateScene在本次最新591行起，625-627行同样仅赋player。Loot源码仍由06编辑，行号可能移动。
+最小未来接入是在每个新场景创建处添加静态独立CameraBounds BoxCollider trigger，赋已有SideFollow上的Confiner3D及binder.confiner，记录confiner场景override并调用ValidateBounds；保留现有镜头，不Apply场景volume到共享Prefab。
+建议Backpack中心(0,4,-12)/size(8.1,3,2)，Loot中心(0,4,-12)/size(24.1,3,2)，只是1920初值建议。不要运行旧PlayerTest全量生成器，也不因补未来生成路径重建当前已保存测试场景。
+
+结论：当前LootTest未相对07B实际原件发生新漂移，来源/UI本地接线静态可解析；更早保存事件已溯源，但逐字段差异及操作者归属不可恢复。保留当前实际内容，在全部依赖READY/源码释放且用户dirty内容妥善保护后，主线程仅进行必要TriggerBox与CameraBounds接线及真实验证。

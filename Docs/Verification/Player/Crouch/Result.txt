@@ -1,0 +1,7 @@
+PASS — 2026-10-19
+PlayMode job b5683bea5f474ca083f0e264e69e13f8
+18 passed / 0 failed / 0 skipped. Official XML: PlayMode.xml.
+5 new crouch collider tests + 13 existing player movement/jump tests.
+Source and behavior handoff: Docs/Handoffs/02C_CrouchCollider_Handoff.txt.
+Player prefab and three formal scenes unchanged: ProtectedAfter.json.
+Final Bootstrap clean/Edit, Console 0 errors/0 warnings; no runtime helpers remain.

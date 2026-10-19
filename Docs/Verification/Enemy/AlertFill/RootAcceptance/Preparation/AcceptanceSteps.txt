@@ -1,0 +1,45 @@
+Root independent acceptance preparation — read-only review, not an acceptance result.
+Prepared from AIStaging on 2026-10-19. Do not run until both owners finish and release Unity.
+Do not copy these probe snippets to Assets. They are statements for Unity MCP execute_code.
+
+Scene and baseline
+1. Use the actual EnemyTest scene, 1920x1080 Game view. Confirm Editor ownership and clean scene handling first.
+2. Start Play normally; wait for EnemyTestDriver.IsReady. Use the real Drone_B and real driver.player.
+3. Confirm runtime config alertFillSeconds == 2 and alertDecaySeconds == 2. Do not shorten the production timings.
+4. Temporarily deactivate only Drone_A. Keep its previous active flag for cleanup. Do not disable Drone_B, its vision, player eligibility, or any cover/obstacle to force discovery.
+5. Move the player out of Drone_B's actual vision, keep its Rigidbody kinematic to prevent falling during this controlled fixture. The player remains enabled/prepared/alive with no scene-transition lock.
+6. Let Drone_B naturally start travelling toward patrolPoints[1]. Require TryGetPatrolPoint to equal that point, and keep at least ~1 metre from the endpoint. Record the public target and Body.position. This matters: checking only index0 would not reveal an incorrect route restart.
+
+Actual discovery and half-fill
+7. Execute MovePlayerIntoView.cs while paused if already paused. It only positions the real player and returns vision.CanSee; it never calls ObservePlayer, ChangeState or UpdateAlertProgress.
+8. Arm ArmPauseAtThreshold.cs with stopState="Alert", rising=true, stopProgress=0.5 and a unique label. It resumes normal time and records each frame until it pauses itself near 50%.
+9. Check recorded progression is positive and approximately deltaGameTime/2, within two rendered frames or 0.05 progress. Body displacement during Alert should be <=0.005m and FlightVelocity near zero. The real CurrentState must be Alert, Target must be the player, and health must be unchanged.
+10. Capture the 1920x1080 Game view. Verify orange unfilled area plus spatial red fill at ~50%, horizontal cone, and orange breathing point light. A whole-cone red/orange lerp alone does not satisfy fill.
+
+Actual loss, decay and continuation
+11. While paused at ~50%, introduce a runtime BoxCollider wall halfway between vision origin and player's capsule centre (non-trigger, layer included in obstructionMask). A thickness ~0.3m, height3m, depth3m is sufficient for this fixture. Use a visible cube if a wall screenshot is desired; do not edit shared material values. Confirm vision.CanSee(player)==false.
+12. Arm stopState="Alert", rising=false, stopProgress=0.25. Capture at ~25%. Confirm Target is null, LastKnownPosition has not followed a hidden player's move, progress decreased instead of snapping to zero, and the drone stayed put.
+13. Remove/deactivate only this temporary wall. Confirm the unchanged player becomes visible. Arm rising=true at0.5. Verify the very next positive sample starts from the existing ~0.25, not zero, then rises at the same rate. Capture the resumed fill if useful.
+14. Also test actual out-of-range loss: move the player farther ahead than radius+2 in the same Z plane, confirm CanSee=false, then arm stopState="Patrol". At the first Patrol sample, progress should be0. Immediately compare TryGetPatrolPoint with the recorded point1. Do not call BeginRound between these checks. Resume briefly with player still outside to verify the drone moves toward that same route point.
+    Patrol configuration extension: after this has passed, keep the player outside vision and retain references/positions of both real patrol points. At runtime move the currently indexed point1 by a clear offset such as(+2,+1,0); TryGetPatrolPoint must immediately reflect that position and observed movement must head toward it. Then reverse the two entries in the runtime patrolPoints array; the unchanged current index should now resolve to the other waypoint and movement should follow that target. Record both the array data and actual motion. Restore runtime array/point values, or stop Play, afterwards. Do not change the authored scene or reset the round just to make the checks pass. If009's final configuration API changes, adapt to its final public fields after deployment rather than assuming this preparation is authoritative.
+15. Cover is a separate optional regression: use a real CoverArea overlap and player.SetCrouching(true), then keep IsBackpackOpen true to retain crouch. Assert CoverArea.IsHidden before treating the result as a cover test; simply calling SetCrouching without a real overlap is insufficient. Restore player pose/UI flags afterwards.
+
+Contact gate and full Chase
+16. Reintroduce the player normally, again using actual AI observation. For an Alert contact pulse, start paused around0.5, save the visible player position, then place its capsule centre at drone.vision.transform.position + horizontalFacing*0.15. Confirm Physics.ComputePenetration of the actual drone SphereCollider and player CapsuleCollider, and confirm CurrentState remains Alert before resuming.
+17. Allow only ~0.1 game seconds, then pause and restore the saved visible player position. Use a frame callback rather than two latency-heavy MCP calls. The overlap/sweep gameplay code must leave health unchanged and HasExploded=false. A direct TryExplode returning false is useful supplemental evidence, not a substitute for letting real physics run.
+18. Keep the player visible at2.5m, arm stopState="Chase". Record the last Alert samples nearing1 followed naturally by Chase; do not call ChangeState. Capture full red cone and red point light, then resume briefly and show real movement toward the target.
+19. Important current implementation detail: ChangeState clears AlertProgress, including entry to Chase. Thus Chase can report0. Verify the prior Alert history and Chase state/full-red display; do not demand AlertProgress==1 after the transition.
+20. To test actual Chase contact, pause immediately on Chase, place the player's capsule centre just0.15m ahead of vision origin (inside real overlapping body volumes), verify it is still visible, then resume physics. Expect HasExploded=true, one health decrement only, visual/vision inactive, no remaining point-light illumination. Keep sampling briefly to prove no second hit. Avoid placing the player behind the vision origin: that may legitimately turn Chase into Search before contact.
+
+Cleanup and reporting
+21. Remove all temporary wall objects, unsubscribe monitor callbacks, restore Time.timeScale, player body/pose flags and other drone activation, then stop Play. Do not save runtime fixture changes or overwrite user edits.
+22. ArmPauseAtThreshold has a60-second emergency resume after each screenshot pause and an8-second approach timeout. Prefer explicit immediate resume after each screenshot. A new arm replaces an older monitor using a SessionState token.
+    CancelMonitorAndResume.cs explicitly invalidates the token and restores normal speed; the old delegate detaches on the next Editor update. Play exit/missing objects, approach timeout and callback exceptions also remove the observer and restore Time.timeScale. SessionState key MyPrecious.RootAlertAcceptance.Status distinguishes armed/paused/resumed/timeout/error. Always inspect the unique CSV path returned by this arm rather than accidentally accepting a previous checkpoint.
+23. Keep sampled CSV with screenshots. Distinguish actual scene/physics/API-assisted positions from native keyboard movement testing. Do not call these probes Unity TestRunner passes.
+
+Code review notes
+- AIStaging has real Alert, progress via actual ObservePlayer, no Alert MoveTowards, and invalid-target fast-return excludes Alert.
+- State switching does not reset patrolIndex. Alert0 returns through DronePatrolState, which resets its wait timer but preserves route target.
+- Search rediscovers through Alert and starts a new accumulation from0; same Alert loss/reacquisition retains the remainder.
+- Changes to default config are staged only at preparation time. Formal Assets did not yet contain Alert when first reviewed.
+- Visual integration must ensure SetTint clears previous fill and Clear clears it on disable; otherwise stale fill could survive Alert→Patrol or a new round. This remains a visual-agent integration check.

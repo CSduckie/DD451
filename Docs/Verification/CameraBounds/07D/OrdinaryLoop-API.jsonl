@@ -1,0 +1,4 @@
+{"mode":"API with real loot session validation","doll":"Success","medkit":"Success","bag":2,"ids":["c085fab6bd1e41d79394653947d98371","ce51d66e132045858cf9fd898cb9e83a"]}
+{"stage":"Shelter","round":1,"settled":1,"transfers":["Success","Success"],"bag":0,"warehouse":2}
+{"stage":"Exploring","round":2,"bag":0,"warehouse":2,"ids":["c085fab6bd1e41d79394653947d98371","ce51d66e132045858cf9fd898cb9e83a"]}
+{"stage":"Shelter","round":2,"settled":2,"bag":0,"warehouse":2}

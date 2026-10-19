@@ -1,0 +1,130 @@
+MyPrecious P0 — 02号玩家模块交接
+版本：2026-10-18 / Dispatch v8 / Lean 02
+项目根目录：E:/DD451。本文记录本次实现与实际验证，不能替代后续模块联验。
+
+2026-10-18追加修订：按用户2DARPG复现移动手感，并加入jump buffer与土狼时间
+
+本次增量修改原PlayerController、PlayerInputReader、PlayerConfigSO、PlayerJumpState、PlayerStateBase及既有PlayerConfig.asset，没有第二套控制器。
+来源仍是E:/Portfolio-Clone，HEAD c601c36f95efdd4d67327489f9edb58412aa54b4；核实原PlayerController.UpdateVelocity/FallSpeedLimit、PlayerBetterJump和实际Player.prefab参数。
+水平沿用0.9次幂加减速，moveSpeed5、acceleration20、deceleration30；反向仍用加速参数，松键用减速参数，地面与空中一致。本项目改用FixedUpdate积分并限制末步过冲，不承诺不同帧率与2D/3D碰撞下逐帧轨迹完全相同。
+垂直沿用jumpSpeed13、gravityScale3.5、fallMultiplier2.5、lowJumpMultiplier3、maxFallSpeed12。BetterJump额外重力采用加法，未误乘基础3.5倍率。按住Space跳高、提前释放跳低。
+新增jumpBufferSeconds0.12与coyoteTimeSeconds0.12，均在PlayerConfig.asset可调，0关闭。按下即记录时间；提前松键不取消有效buffer；起跳立即消费buffer和土狼资格，不支持空中二连跳。开关背包、死亡、停用及新轮次清理旧请求。
+起跳统一由Controller.FixedUpdate探地后执行，再经枚举/泛型进入Jump；具体状态继续负责横移、动画及落地/下落转移，每回调仍只转发一次状态更新。
+
+本次验证：Unity 6000.2.12f1编译通过；EditMode 55/55（玩家12+物品43），PlayMode 26/26（玩家23+物品3），0失败、0跳过。
+EditMode job fc77745afe6d4b559b73c2c808ea8c9e，0.5016091秒；PlayMode job f0b23c246fd3433eb6b8fd437dc4e32a，27.8500995秒。
+原生证据：Docs/Architecture/02_Movement_EditModeResults.xml、02_Movement_PlayModeResults.xml。
+新增PlayerJumpGraceTests五项覆盖落地buffer、过期、土狼窗、禁止二连跳和锁/死亡/重启清理；PlayerReferenceMovementTests三项覆盖非线性加减速/空中反向、长短跳轨迹及真实物理下落限速。
+旧集成测试显式保留jumpSpeed6与普通重力以维持原场景验证条件；新轨迹测试独立使用13/3.5/2.5/3/12真实默认参数。
+首轮后台测试因Game View无焦点导致所有键盘用例无输入，12通过/11失败；修复测试环境后完整重跑通过。测试只克隆临时InputSettings并允许后台输入，结束后恢复原引用、焦点策略和runInBackground，未修改游戏输入设置。
+本次开始时PlayerTest场景为未保存状态；测试前保留副本，结束后恢复原场景路径及未保存标记。临时Assets副本已清理，Temp/PlayerMovement保留恢复副本；未覆盖原场景文件。EditorSettings恢复到本次开始时快照。
+本次没有新增Packages、修改参考仓库或重新生成预制体/场景；参数接入既有配置。尚未进行用户主观手感确认或正式模型动画联验。
+保护文件核验：100份快照中99份SHA256一致。PlayerTest.unity在并行编辑期间已发生变化，因此保留现有版本，未为匹配旧哈希回退场景；本次保存的场景副本与测试前磁盘版本一致。其他输入、Bootstrap/Items/Interaction/Utilities、预制体、ProjectSettings与Packages快照一致。
+
+以下为首次交付记录；其中18项PlayMode结果与jumpSpeed7是追加修订前状态，当前运动与验证以上述追加修订为准。
+
+一、交付结果
+
+完成修改复用的共用代码状态机、3D横版玩家Idle/Move/Jump/Fall/Crouch/Die、唯一真实HP与01治疗接入、背包控制限制、最小E交互、Cinemachine侧向跟随、实际预制体与白盒场景。
+当前使用可视胶囊及朝向标记，没有Animator/动画Clip；PlayAnimation入口安全保留。正式模型与真实动画联验待资源接入。
+Unity 6000.2.12f1编译通过。EditMode本轮55/55，最终PlayMode18/18，均0失败、0跳过；包括重新执行01的43项EditMode与3项PlayMode回归。另实际运行PlayerTest并检查画面、平台运动及真实物品使用。
+退出Play后已恢复任务开始时的Assets/Scenes/Tests/Items/ItemsTest.unity，场景未变脏。不是此前交接提到的SampleScene；以本次进入时的实际Editor状态为准。
+
+二、具体文件
+
+完整逐文件清单：Docs/Architecture/02_FileInventory.txt；所有对应.meta已保留或生成。
+生产共用代码：
+- Assets/Scripts/Utilities/StateMachine/StateBase.cs、StateMachine.cs、MyPrecious.StateMachine.asmdef。
+- Assets/Scripts/Utilities/Contracts/StateMachine/IStateMachineOwner.cs、MyPrecious.StateMachine.Contracts.asmdef。
+玩家生产代码：
+- Assets/Scripts/Player/MonoBehaviour/PlayerController.cs、PlayerInputReader.cs、PlayerHealth.cs、PlayerCameraTargetBinder.cs。
+- Assets/Scripts/Player/ScriptableObject/PlayerConfigSO.cs、Assets/Scripts/Player/MyPrecious.Player.asmdef。
+- Assets/Scripts/Player/States/PlayerStateBase.cs、PlayerIdleState.cs、PlayerMoveState.cs、PlayerJumpState.cs、PlayerFallState.cs、PlayerCrouchState.cs、PlayerDieState.cs。
+交互生产代码：
+- Assets/Scripts/Interaction/MonoBehaviour/Interactable.cs、PlayerInteraction.cs、Assets/Scripts/Interaction/MyPrecious.Interaction.asmdef。
+资源：
+- Assets/Data/Player/PlayerConfig.asset。
+- Assets/Prefabs/Player/Player.prefab、PlayerCamera.prefab。
+- Assets/Art/Materials/Player/PlayerTeal.mat、WhiteboxGround.mat、TestTarget.mat、TestDamage.mat、PlayerFrictionless.physicMaterial。
+- Assets/Scenes/Tests/Player/PlayerTest.unity。
+测试代码全部位于Assets/Tests/Player：EditMode状态机/生命测试，PlayMode物品/运动/交互测试，TestDoubles中的PlayerTestDriver、PlayerTestDamageSource、PlayerTestInteractable，以及Editor中的一次性PlayerTestSceneBuilder。没有移动或改写Tests/Base或Tests/Items。
+没有创建空模型/动画/语言目录，没有第二套Controller、物品管理器或全局入口。
+
+接入和答辩说明：Docs/Architecture/PlayerSetup.txt。
+证据：Docs/Architecture/02_ValidationResults.json、02_PlayModeResults.xml、02_PlayerTest_Unprepared.png、02_PlayerTest_Prepared.png、02_PlayerTest_Prepared-1.png。
+
+三、真实源码复用
+
+仓库：https://github.com/CSduckie/2DArpg-Portfolio；本机E:/Portfolio-Clone；HEAD c601c36f95efdd4d67327489f9edb58412aa54b4。
+实际读取并按统一换行核对下列12份工作区文件与HEAD内容一致：FrameWork/StateMachine/StateBase.cs、StateMachine.cs；FrameWork/Mono/MonoManager.cs；Player/PlayerController.cs、CharacterStats.cs、PlayerStats.cs；Player/States/下的PlayerStateBase、PlayerIdleState、PlayerMoveState、PlayerJumpState、PlayerFallState、PlayerDieState。未修改参考仓库。
+StateBase保留Init/UnInit/Enter/Exit/Update/FixedUpdate/LateUpdate。StateMachine保留泛型ChangeState<T>和Dictionary缓存、小型宿主接口、当前状态查询；修复切换成功返回true、同状态默认不重入、Stop幂等。
+切换仍是旧Exit → 取得/创建目标并Init → 设置当前状态 → 新Enter。宿主接口从原文件拆出，未扩成生命周期框架。
+移除MonoManager所有注册/注销；Controller自己的Update、FixedUpdate各转发一次当前状态，不补调新状态Update。没有需要状态LateUpdate的功能，因此未增加无用途转发。
+Controller保留枚举switch调用具体泛型状态，状态Enter调用PlayAnimation；运动与检测换成3D刚体/物理查询，输入换成当前Input System，转身放在表现子对象。
+生命参考CharacterStats查询、PlayerStats封顶治疗和C#变化通知；移除技能、能量、失衡、战斗、击退和2D依赖，没有整包迁入FrameWork、Singleton、MonoManager或NavMeshPlus。
+
+四、预制体、配置与相机
+
+Player逻辑根脚底为原点，缩放(1,1,1)。根只有一个Rigidbody和一个CapsuleCollider，胶囊Center(0,1,0)、Height2、Radius0.4；锁Z与全部旋转，使用Interpolate。表现胶囊和方向标记均无Collider。
+CapsulePlaceholder负责可视压低和转身；CameraTarget为逻辑根直接子对象，位置(0,1.3,0)，不随表现旋转或缩放。
+PlayerConfig试玩默认：moveSpeed5、crouchSpeed2、jumpSpeed7、planeZ0、HP3、受伤无敌0.5秒。地面SphereCast距离0.12、半径0.25、最小法线Y0.65；排除自身和Trigger，侧墙不算地面。详细Inspector说明见PlayerSetup。
+按住C蹲伏、松开恢复；先站立再跳。只缩表现，不缩实体碰撞体，因此本轮不支持钻低矮通道，也没有起身穿顶问题。
+真实场景运行发现默认物理摩擦会在贴平台侧面起跳时消耗Y速度。已给玩家胶囊接PlayerFrictionless物理材质：静/动摩擦0、Minimum组合、弹性0，并补真实平台回归；不是用Transform强行抬玩家。
+输入引用现有Assets/Input/GameInputActions.inputactions，GUID 052faaac586de48259a63d0c4782560b。仅Clone四个动作运行实例，只启用Keyboard&Mouse组，不改资源、不关闭共享动作表。Move取X；Jump/Interact缓存按下，消费一次；Update读快照，FixedUpdate写物理。
+
+Cinemachine实际版本3.1.7。PlayerCamera根挂小型Binder，OutputCamera含Camera、唯一AudioListener、URP附加相机数据、CinemachineBrain；SideFollow含CinemachineCamera与PositionComposer。
+Brain/混合均LateUpdate，与刚体插值配合。白盒默认正交Size5、距离12、阻尼(0.25,0.2,0)、屏幕位置(0,-0.12)、无DeadZone；最终投影/倾角/构图尚未确认。
+场景已把Binder.player和Follow接到Player/CameraTarget。新玩家调用Bind(newPlayer)；新轮次位置变化通过Teleported通知OnTargetObjectWarped并清PreviousStateIsValid，避免从旧位置长距离拖镜头。目标销毁/相机停用时清理绑定和订阅。
+正常相机Transform完全由Cinemachine驱动，没有并行手写跟随。配置依据本机3.1.7源码与官方说明：https://docs.unity3d.com/Packages/com.unity.cinemachine@3.1/manual/CinemachinePositionComposer.html 。
+
+包改动相对于本任务开始的文件快照：manifest只新增com.unity.cinemachine=3.1.7；lock只新增Cinemachine3.1.7、其依赖Splines2.8.2、Settings Manager2.1.0。原有依赖条目均未改变。Input System保持1.14.2，不把已有用户包改动计入本次升级。
+
+五、公开入口与协作边界
+
+PlayerController：
+- bool ResetForExploration(int roundId, Vector3 spawnPosition)：只接受更大的正数轮次，建立HP/输入/姿态/速度/出生Z/状态；同轮旧轮返回false。首次创建不自动准备，未准备HP0不发死亡。
+- void SetBackpackOpen(bool)：清请求并限制主动操作，保持打开时的站/蹲姿态，保留重力/落地/受伤/死亡。关包不能解除IsDead限制。
+- void SetInteractionUiBlocked(bool)：其他UI仅占用世界交互时使用。
+- bool ChangeState(PlayerState)、PlayAnimation(string,float)、Position、FacingDirection(+1/-1)、IsCrouching、IsGrounded、IsPrepared、IsDead、CanAct、CurrentState、Body。
+- event Action<Vector3> Teleported：相机瞬移通知。
+PlayerHealth：精确实现现有IHealthTarget的int CurrentHealth、int MaxHealth、void Heal(int)。公开bool TakeDamage(int)，IsPrepared/IsDead/CurrentRound。
+事件HealthChanged(int current,int max)、NonLethalDamaged(int actualDamage)、Died()。先落实生命/死亡限制再通知；死亡仅一次。治疗同步封顶，非正数无效，死亡不复活，无敌不阻止治疗。
+每个显示订阅者异常局部捕获并记录，其他通知继续，01的计次不被中断；生命回调期间拒绝重入伤害/治疗/新轮次。外部只通过Controller准备新轮次，不独立重置Health。
+Interactable：PromptKey、CanInteract(PlayerInteraction)、Interact(PlayerInteraction)。PlayerInteraction：CurrentTarget/CurrentPromptKey、RefreshTarget、TryInteract、SetInputBlocked。
+选最近合法Collider表面的目标，同距离按实例ID，目标多个Collider去重；限制目标根Z差，实体遮挡阻止交互；按E执行前同步物理并再验证范围、启用、销毁、CanInteract。目标不自行监听E。
+
+04：监听非致命通知，完成自己的关闭背包/取消拖拽后SetBackpackOpen(false)。本场景仅模拟玩家侧关包，不宣称拖拽回滚已接入。
+06：继承Interactable接箱子/拾取业务，不重复监听E、不复制HP/物品数据。
+07：复用同一StateMachine代码，每个敌人new独立实例和缓存；读取玩家位置/朝向/蹲伏，调用TakeDamage。蹲伏不等于隐藏，掩体/视野属于07。
+08：提供并协调同一递增轮次给玩家ResetForExploration及01.BeginRound；02不自行调用BeginRound、加载场景、清物品或自动复活。新玩家显式Bind相机。
+09：接HUD/提示UI，保留一套输出Camera/AudioListener与真实入口。03尚未接入，稳定文本键与中英文示例写在PlayerSetup，不重复创建语言系统。
+
+六、运行步骤和实际证据
+
+1. 打开Assets/Scenes/Tests/Player/PlayerTest.unity进入Play。
+2. 点击Prepare next round才得到3HP并可操作；A/D或方向键、Space、按住C、E。右侧平台可跳上再走下，红色条为测试伤害Trigger，黄块为纯计数交互目标，灰色背景物在Z4。
+3. 面板模拟背包、受伤、医疗包及两份食物；交互次数在目标组件Inspector读取。所有这些都是测试UI，不是正式背包/HUD。
+4. 新轮次按钮由测试驱动把相同编号传给玩家与真实01，不在OnEnable/场景加载时递增；不会补发已消耗食物。
+5. Test Runner可运行MyPrecious.Player.EditModeTests、MyPrecious.Player.PlayModeTests及对应Items两组回归，PlayMode需干净测试运行环境，避免破坏用户正在进行的会话。
+
+EditMode：job a21d0900e1d04dafa5a17beedcbe614c，55通过/0失败/0跳过，0.5087791秒。玩家12项（状态机5、生命/轮次7）+真实01回归43项。结果来自本轮MCP返回的完整Passed汇总，已记入02_ValidationResults.json；未伪造原生EditMode XML（Unity统一输出文件随后被PlayMode覆盖）。
+最终PlayMode：job c59a822b225e49168ca3a0e12285fbe9，18通过/0失败/0跳过，15.8245019秒；原生XML保存为02_PlayModeResults.xml。玩家15项（真实物品/生命4、交互6、运动/输入/相机5）+01回归3项。
+自动测试覆盖：切换顺序/返回值/缓存隔离/Stop幂等，HP与死亡及无敌/通知异常/轮次重入；真实医疗包和两食物的成功及失败消费；真Keyboard事件的左右/蹲伏/一次跳跃/E、锁与重新启用；3D碰撞/Z约束、贴边短按跳上平台/离边Fall/落地；Cinemachine实际输出跟随/跳跃/转身不绕行/瞬移/销毁与重绑；真实PlayerTest重载不自动准备或补食物。
+三轮PlayMode运行分别为16/16、补E后17/17、物理材质修复加平台回归后18/18；最终以18项结果为准。
+
+PlayerTest运行实查（MCP工具驱动，不是真人试玩）：
+- 初始Prepared=false、HP0、玩家/物品Round0，真实GameBootstrap、ItemManager、输出Camera、AudioListener各1；Brain.ActiveVirtualCamera=SideFollow。
+- 显式准备后HP3；非致命受伤通过模拟04关闭背包。医疗包首次Success，同轮再次RoundLimitReached；Food A=Success/Consumed，Food B仍Backpack，实例总数3。
+- 修复摩擦后场景采样记录玩家从(1,0,0)起跳至(2.250,2.269,0)，相机同步移至(2.142,2.304,-12)；走出平台后状态Fall/Y速度为负，最后(5.413,0,0)落地Idle，Z始终0。平台稳定落台由新增物理测试另作连续3帧断言。
+- 截图已目视检查，胶囊、朝向标记、背景、目标、平台和测试面板可见；这些画面使用实际Cinemachine输出。
+一次临时场景探测脚本误把InputSystem.GetDevice的usage参数当name，造成探针空设备异常；已移除该临时回调，改为直接持有新建设备并确保清理。不是生产组件异常；最终检查没有遗留探针回调、Console错误或警告。
+
+七、资产保护与未执行事项
+
+最终资产检查缺失脚本0、缺失.meta0、重复GUID0（Assets内142个GUID）。Player GUID=4a37e015a99af1948851c34d90ec57de，PlayerCamera GUID=3cf4a390a92e98447ada0654fb991c91。
+101份任务前受保护文件按SHA256核对：共享输入、00/01代码/接口/预制体/测试、旧测试场景、SampleScene、ProjectSettings及AgentPrompts保留。测试工具临时改变的EnterPlayMode选项恢复到原文件；没有保存运行时参数到配置SO。
+新增自有C#无namespace，无2D世界物理或旧MonoManager更新注册；asmdef rootNamespace为空；git diff --check通过。既有未提交改动未回滚，未改正式Build Settings。
+当前已交付可独立运行的胶囊玩家模块；不包含正式模型/Animator/Clip、动画资源实播、真实拖拽回滚、敌人视野/真实接触伤害、流程场景切换/物品损失、正式HUD与F10语言切换。
+上述未接入模块列为待联合验证；白盒测试驱动不等于它们完成。未执行真人手感试玩、完整Windows构建或完整P0流程验收。
+
+答辩时从PlayerSetup第十二节对应具体代码解释：Controller管角色协调，StateMachine管缓存/切换，State管行为；泛型沿用熟悉源码，更新由各角色负责；CrossFade能直接选状态但仍需要真实动画资源；物理根锁XY玩法平面，模型单独表现；输入与物理分帧；关包不清死亡；HP归玩家，次数/消耗归物品。更换正式模型只接表现与动画资源，不重写运动/生命。

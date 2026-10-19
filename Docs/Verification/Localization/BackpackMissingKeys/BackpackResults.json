@@ -1,0 +1,73 @@
+{
+  "Source": "Unity native TestResults.xml from concurrent Backpack + Loot run",
+  "StartUtc": "2026-10-18 19:53:19Z",
+  "EndUtc": "2026-10-18 19:53:33Z",
+  "BackpackTotal": 10,
+  "BackpackPassed": 10,
+  "BackpackFailed": 0,
+  "CombinedTotal": "29",
+  "CombinedPassed": "10",
+  "CombinedFailed": "19",
+  "Cases": [
+    {
+      "Name": "BackpackIntegrationTests.DamageCancelsBeforeLateReleaseAndDeathLeavesItemsForFlowCoordinator",
+      "Result": "Passed",
+      "Duration": "1.967028",
+      "Output": null
+    },
+    {
+      "Name": "BackpackIntegrationTests.DestroyingBoundExplorationPlayerClosesAndCancelsWithoutChangingItems",
+      "Result": "Passed",
+      "Duration": "0.127661",
+      "Output": null
+    },
+    {
+      "Name": "BackpackIntegrationTests.ExternalPreviewAndShelterContextNeverTransferOwnershipOrLeaveOldPlayerLocked",
+      "Result": "Passed",
+      "Duration": "0.379968",
+      "Output": null
+    },
+    {
+      "Name": "BackpackIntegrationTests.OpenBackpackPreservesCrouchAndAllowsWorldTimeAndGravity",
+      "Result": "Passed",
+      "Duration": "1.428653",
+      "Output": null
+    },
+    {
+      "Name": "BackpackIntegrationTests.QueuedCloseButtonAndSimulatedFocusLossCancelPreviewAndIgnoreLateRelease",
+      "Result": "Passed",
+      "Duration": "3.930351",
+      "Output": null
+    },
+    {
+      "Name": "BackpackIntegrationTests.QueuedPointerDragKeyboardRotationAndF10PreservePreviewUntilRelease",
+      "Result": "Passed",
+      "Duration": "0.449986",
+      "Output": "Backpack pointer/UI verification at 1280 x 720\n"
+    },
+    {
+      "Name": "BackpackIntegrationTests.ReloadKeepsPlacementsConsumedFoodMedkitUseAndLanguageWhileCancellingPreview",
+      "Result": "Passed",
+      "Duration": "0.696355",
+      "Output": null
+    },
+    {
+      "Name": "BackpackIntegrationTests.RightClickUsesExactlyOneRealItemAndFullHealthDoesNotFreeCells",
+      "Result": "Passed",
+      "Duration": "1.680855",
+      "Output": null
+    },
+    {
+      "Name": "BackpackIntegrationTests.SharedModulesResolveBackpackTextAndF10RefreshesUiWithoutChangingItems",
+      "Result": "Passed",
+      "Duration": "0.223678",
+      "Output": null
+    },
+    {
+      "Name": "BackpackIntegrationTests.StandaloneBackpackHidesDisconnectedSourceAndConfirmsDiscardWithoutLootRuntime",
+      "Result": "Passed",
+      "Duration": "0.311632",
+      "Output": null
+    }
+  ]
+}

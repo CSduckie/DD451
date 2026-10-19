@@ -1,0 +1,14 @@
+{
+  "player": -4310918,
+  "light": -4310944,
+  "parent": "Player",
+  "intensity": 1.2,
+  "range": 4.5,
+  "mask": 2,
+  "urpMask": 2,
+  "position": "(0.00, 1.10, -2.00)",
+  "rendererMasks": [
+    3,
+    3
+  ]
+}

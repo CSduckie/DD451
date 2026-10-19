@@ -1,0 +1,30 @@
+07F read-only observer draft
+Status: Docs staging only; not executed or compiled. No Assets changes or Unity operations.
+
+Run only after the 07F scripts have compiled, because the method body directly reads the proposed public LootRuntimeManager.ClosedRound property. It intentionally has no reflection fallback and does not reference outdated DroneController.AlertProgress fields from older observer evidence.
+
+Input: ordinary Play, Game 1920x1080. Paste Observer.cs.txt as the Unity MCP execute_code method body with standard UnityEngine/UnityEditor/System.Linq imports.
+Output: E:/DD451/Docs/Verification/GameFlow/DeathReturn/OrdinaryPlay/Observer-<UTC unique timestamp>/
+- ObserverStarted.json: paths, original runInBackground, session keys and purpose.
+- Samples.json: lightweight per-observed-frame samples plus inventory revisions.
+- ObserverFinished.json: finish reason, duration/counts/errors, callback removal, runInBackground restoration and running flag.
+
+SessionState keys
+- 07F.ObserverRunning: prevents starting a second observer while one is active.
+- 07F.ObserverCancel: set true to request cleanup on the next Editor callback.
+- 07F.ObserverPhase: optional descriptive label, read only by observer. It does not change gameplay.
+- 07F.ObserverOutput: records the new evidence folder for external readback.
+
+Scope
+Reads flow stage/feedback/error/current/settled round; same-player instance/health/round/position/scene/lock/CanAct; displayed EV and independent retained-item EV sum; full items/owners/retained/loss/recovery/use counts and original identity; backpack/warehouse placements and dimensions; upgrade state; loot prepared/closed/active/remaining identities; open/drag/search UI state; every loaded scene's drone IDs/states/rounds/positions; active runtime object counts and screen dimensions.
+
+Each sample references an inventoryRevision. Full item and placement value snapshots are stored only when their serialized contents change; continuous drone movement and search time do not generate copies of the full inventory. No Unity objects or live ItemInstance references are serialized.
+
+Lifecycle
+At most 180 seconds of Editor wall time, checked before frame deduplication even when Play is paused. Normal exit Play, assembly reload, explicit cancel, sampling exception or time limit all remove the three callbacks and restore the original runInBackground before saving results. A stalled Editor cannot execute callbacks at the deadline; elapsed time is recorded honestly when it resumes. Abrupt process termination cannot guarantee an end file.
+
+Evidence limits
+EditorApplication.update observes each available Time.frameCount once; it is not proof that every rendered frame or every within-frame transient state was sampled. Missing frame numbers and duplicate Editor ticks are recorded. Ordinary API-assisted gameplay must be labelled independently; this observer generates no input, interaction, scene load, damage, teleport, screenshots, state changes, EV refresh, item operations, or reflection writes and cannot establish native keyboard/mouse acceptance.
+
+Implementation review only
+No runtime results are claimed. Prior to use, compile 07F, inspect the first-sample return result, then verify ObserverFinished.json and false running flag before releasing Editor. Samples may be empty if the observer errors at first observation; errors are preserved rather than counted as successful evidence.

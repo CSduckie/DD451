@@ -1,0 +1,60 @@
+07F 死亡/转场竞态独立审查
+2026-10-19。仅只读Assets与Docs暂存；未改生产草稿、未操作Unity、未执行测试。
+
+审查基线SHA256
+GameFlowManager.cs 48EAF2E09EE8611F5E08027E741875C1EB037B2561D744C5A804D56FFD2F6ED7
+GameFlowStage.cs C83264E09897C06F54208B5553AE7D345950D449C5CD9936B12056021989E638
+GameFlowSceneBindings.cs 7F498E295BB468789D74A00EF94674422BBDA9D73A71546FDEB0D558AF291CC3
+PlayerHealth.cs BA4393EF8D0047B60D89DE67C84A9C20739974DCC6A550533AA80C20DFDFC7E7
+
+结论：支持主程提出的最小序列规则
+把既有PlayerController.IsSceneTransitionBlocked同时作为PlayerHealth.TakeDamage的拒绝条件。只补生命入口这一道明确检查；不改09G伤害/接触/发现、不添取消框架或并行返回流程。现有GameFlow.StartTransition先同步锁玩家再关UI、通知、启动协程，已具备明确先后边界。
+
+该选择优于收到Died后去取消正在异步Load Shelter的Returning协程。现有Returning先LoadTarget再TrySettleExtraction，Unity已发出的LoadSceneAsync无法靠StopCoroutine撤回。如果仍允许锁定期TakeDamage，想在“Shelter已经开始加载”后倒推满足“死亡损失必须先于加载”并不可行，只能承认并处理已加载未激活目标等例外。新的生命入口防护直接使这个矛盾在合法公开伤害入口上不可达，无需重写既有成功撤离时序。
+
+明确同帧规则
+1. 真实致命TakeDamage先执行：Health在通知前先置HP=0、IsDead=true并HandleDeath进入Die。即使HealthChanged监听者先尝试TryExtract，CanStartAction也会因IsDead拒绝。Died处理器再同步记录DeathReturning并持有场景锁、关背包/搜刮/拖拽。本轮只能进入死亡结果。
+2. TryExtract先被接受：StartTransition在任何异步等待前同步持有场景锁。之后同帧、LoadTarget等待、Settle、迁移或UnloadPrevious期间的TakeDamage均返回false，HP/无敌截止时间/事件不变。本轮只能沿Returning成功撤离或原Returning失败Retry，不能同时产生死亡结果。
+3. TryDepart先被接受同理。Items.BeginRound早于Player.ResetForExploration的短暂轮次差异不再会被合法TakeDamage打断，因此不需要为了假定死亡而增加Health轮次、重新开一轮或允许第0轮“探索死亡恢复”。
+4. Failed阶段继续保留流程锁。原Departing/Returning/DeathReturning失败都只能Retry同一个pendingStage与同一轮，不能在失败等待期间接受新的伤害、出发或撤离。
+5. 同一死亡通知/接触在IsDead或锁下重复，直接拒绝或忽略。Died处理器必须先去重，再启动唯一的死亡协程；不能因已有transitionRunning就把真实首次死亡静默丢弃。按本规则首次真实Died应发生在Exploring；非法反射调用/手动篡改IsDead不能当成公开入口竞态证明。
+
+Health最小实现注意
+- 在任何CurrentHealth、nextDamageTime、IsDead写入和Notify之前检查同GameObject的PlayerController.IsSceneTransitionBlocked。
+- 使用TryGetComponent取得controller；可以复用到后面的HandleDeath，或采用不同局部变量名，避免同一方法内再次out声明同名controller导致C#作用域冲突。当前主程草稿使用transitionPlayer与controller两个明确名称。
+- 没有Controller的独立PlayerHealth仍沿用原逻辑；不要强制新增依赖或场景查找。
+- 必须只检查场景锁，不能用!CanAct、IsBackpackOpen、interactionUiBlocked或Body.isKinematic替代。开包仍可能受伤是R07；背包锁不能获得免伤。
+- 这是所有合法伤害源共享的切场景保护，不是只修测试。生产目前唯一TakeDamage调用来自DroneController，DroneController.CanTarget原本已检查同一锁，因此正常无人机玩法没有新增免伤窗口。
+- 不在本任务顺带改变Heal、伤害无敌时间或09G自毁判断。
+
+DeathReturning的顺序
+1. Died回调同步：确认受绑定的真实Player、正在探索的本轮和未处理标记；立即锁定并关会话。
+2. 协程第一段yield return null。StartCoroutine会同步跑到第一个yield；只有下一帧才已离开Health.isNotifying和可能引发死亡的转移/使用回调栈。
+3. 重新检查模块/轮次/转移稳定性，捕获真实已完成的背包和世界来源状态；记录全部携带物死亡损失及本轮遗留来源结算，移除对应布局，清来源状态、刷新EV。仓库/已激活升级保留。
+4. 死亡清算全部成功之后才调用LoadTarget(Shelter)。清算失败时不得发起新的Shelter加载、不得复活、不得卸载尚有未结算来源的Ruins。
+5. 加载/接线完成后迁移同一玩家，调用显式RecoverAfterDeathInShelter，保持场景锁；结束旧图卸载与UI接线后才解除锁。普通Returning仍仅RelocateWithinRun，不因新入口而回血。
+
+Retry边界
+- 清算前失败：保留原地图与锁，修复后Retry仍为DeathReturning、同一轮；不能调用BeginRound或TryExtract。
+- 部分RecordLoss成功后失败：保留原捕获集合及已完成索引。成功的项不可再次RecordLoss；01会拒绝Lost/PendingRecovery，不能把这种拒绝当作需要重新生成。每一项的布局清理也需按已完成进度续办。
+- 死亡清算完成、Load失败：保存已完成标记/settledRound，本次Retry只继续加载/准备，不重复扣EV、重建物品或重置恢复轮次。
+- 目标已加载但接线失败：复用同一个目标scene handle，保持其业务/表现关闭；不要叠加第二份Shelter。原场景没有未结算来源后才允许卸载。
+- 玩家已恢复后后续准备/卸载失败：再次Retry应按实际IsDead选择恢复或仅RelocateWithinRun；严格恢复入口对已存活返回false不能导致再次经济清算。保留锁，恢复完毕之前不对外开放仓库/出发。
+- 原Returning失败：保留原有carry/left快照和retainedCount/lostCount；新的场景锁伤害拒绝让该分支不必转型为死亡结算，保留现有成功撤离重试测试意图。
+- 原Departing失败：保留已分配departureRound，Retry不增加轮次；新生命入口拒绝失败期伤害，不需创建额外“取消出发且死亡”的清算路线。
+- 解锁应是成功步骤最后的明确动作。现有协程在SetSceneTransitionBlocked(false)后才写最终Stage/transitionRunning；当前RefreshInteraction/状态入口没有真实伤害调用，因此不会与Unity物理回调并行。实现时不要在解锁与最终阶段发布之间插入yield或可执行伤害的回调；若重排阶段发布，防止新Died开启流程后旧协程又覆盖它的Stage。
+
+验证建议
+1. 非致命与致命伤害在场景锁下均false；健康值/无敌截止的外部行为/HealthChanged/NonLethalDamaged/Died计数不变，解除锁后合法伤害立即正常。
+2. TakeDamage lethal→TryExtract：死亡true、TryExtract false；次帧死亡清算完成前Shelter加载请求尚未出现；只发生一次死亡损失。
+3. TryExtract→TakeDamage lethal：TryExtract true、TakeDamage false；Returning加载期间重复伤害均false，成功回Shelter保留原伤势和背包物，无死亡清算。
+4. TryDepart/Failed原Retry等待期间重复TakeDamage false；后续Round仍按原测试各推进一次，不出现playerHealth=0轮死亡恢复问题。
+5. 开背包/拖拽/搜索而没有场景锁时，伤害仍true且触发既有关闭；不能把“所有操作锁”误当成切场景保护。
+6. 注入死亡清算部分失败、Shelter加载失败与接线失败，检查上述索引/身份/EV和唯一Player/Camera/AudioListener/EventSystem不变。
+
+明确需要更新的现有测试
+Assets/Tests/GameFlow/PlayMode/PlayerSceneTransitionTests.cs
+NewRoundWhileLockedStaysFrozenAndDeathIsPreservedOnReturn目前在持锁时直接TakeDamage(100)并期待死亡，与新增明确规则冲突。应先断言持锁伤害拒绝且未发死亡通知，再短暂解锁后真实致命伤害，重新持锁，然后保留其原RelocateWithinRun不复活、禁用/启用不复活、解锁仍Die的断言。不能删除原验证意图或改为直接赋值IsDead。
+只读扫描未发现其他现有测试明确要求场景锁期间能受伤；仍需运行适当Player/GameFlow回归验证这一判断。
+
+此文档取代本次较早提出的“Returning加载完成后转死亡分支”备选建议。主程随后已将TakeDamage锁检查加入Player/PlayerHealth.cs.txt草稿，Player/SourceHashes.json记录源与草稿hash；对应旧测试修正及两个新增恢复边界测试位于Tests/PlayerSceneTransitionTests.cs.txt，合计4项，仅暂存未应用。所有结论仍需真实编译/测试证据，不能以本审查视为验收通过。

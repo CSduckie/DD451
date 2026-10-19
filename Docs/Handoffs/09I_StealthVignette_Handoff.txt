@@ -1,0 +1,47 @@
+09I 草丛潜行相机暗角交接 — 2026-10-19
+
+交付结果
+Ruins正式相机已接入轻度URP Vignette。直接复用CoverArea.IsHidden(player)：草外蹲伏/草内站立没有暗角，草内真实蹲伏渐入，站起或离开渐退。重叠掩体和背包保持真实隐藏状态；死亡、解绑、无效玩家、跨场景在下一次LateUpdate清零，组件禁用在OnDisable同步清零。不是在TakeDamage同步调用内部清零。死亡返回Shelter、正常撤离、再次出发均没有残留或重复效果。
+
+配置与实现
+Ruins/ScenePresentation/StealthVignette：PlayerStealthVignette引用既有PlayerCameraTargetBinder。Inspector可调intensity=.22、smoothness=.45、transitionSeconds=.2；黑色、中心(.5,.5)、rounded=false。约.2秒是默认，不是锁定值。Volume为Global、priority10、初始weight0，sharedProfile为空。Awake只创建一次私有运行时Profile/Vignette；OnDestroy显式清理两者，不写磁盘共享Profile。没有新增Camera、玩家、管理器或每帧全场景查找；不修改AI隐藏、发现、转身或接触爆炸规则。
+Ruins/ScenePresentation/RuinsPostProcessing：Global、priority0、weight1，引用Assets/Settings/Effects/RuinsPostProcessingProfile.asset，仅覆盖Tonemapping=None、Bloom.intensity=0、Vignette.intensity=0。此基底保持weight1，潜行只渐变上层weight。Ruins OutputCamera本地覆盖PP=true，Volume Mask=1；未改共享PlayerCamera.prefab或其它场景相机。
+原因：当前全局DefaultVolumeProfile虽为中性，但PC_RPAsset仍引用SampleSceneProfile，其quality默认ToneNeutral/Bloom.25/Vignette.2会在开启PP后生效。本场景中性基底防止普通画面被该默认重新调色。未改PC/global/shared Profile。运行时私有Profile不能在退出Play后Inspector里作为磁盘资产寻找。
+
+实际修改文件（既有3项、新增7项含meta）
+修改 Assets/Scenes/Ruins.unity
+修改 Assets/Scripts/Enemy/MyPrecious.Enemy.asmdef
+修改 Assets/Tests/Enemy/PlayMode/MyPrecious.Enemy.PlayModeTests.asmdef
+新增 Assets/Scripts/Enemy/Stealth/MonoBehaviour/PlayerStealthVignette.cs及.meta
+新增 Assets/Tests/Enemy/PlayMode/PlayerStealthVignetteTests.cs及.meta
+新增 Assets/Settings/Effects.meta
+新增 Assets/Settings/Effects/RuinsPostProcessingProfile.asset及.meta
+两个asmdef只增加Core.Runtime和Universal.Runtime引用。Ruins只增加两个Volume物体及一个效果组件、ScenePresentation的两个child、原OutputCamera的PP覆盖；未重建scene或运行Builder。
+
+实际Game验收
+证据根目录 Docs/Verification/Enemy/StealthVignette/。
+OrdinaryPlay-20261019T171129/01-Normal-PPoff-1920x1080.png与02-Normal-PPon-Neutral-1920x1080.png：实际ScreenCapture，同相机/位置/灯配置/玩家。为对照，运行时临时停用4机和LightFlicker，未保存；时间仍正常推进，非冻结同一时刻。开启中性PP后没有肉眼明显重调色/额外Bloom/常驻暗角。不是逐像素完全一致：最大通道差2/255，平均绝对RGB差.60807/255；细节见AtmosphereReview/NormalPpPixelAudit。不能仅凭两张图证明全部差异精确来自量化。
+OrdinaryPlay/Probe-ebaa8dc9/的4张实际1920×1080图及Result.json：API定位、InputSystem排队C、真实BackpackUI开关。10阶段1307个渲染帧均timeScale1；草外蹲伏与草内站立weight0；5段进退单调且有31–40个中间采样，约.200653–.204616秒；重叠掩体与背包开关384采样weight1。没有每帧强设姿态。正式玩家插值保持原配置；测试夹具的无插值设置不用于此实景探针。
+正常站立00与退出02全图RGB完全一致；潜行01与背包03在背包面板外1,820,416像素完全一致。边缘渐暗而中心/箱体/玩家露出头顶和UI可读；蹲伏身体被既有不透明绿色草丛占位体遮挡，不能宣称全身可见。截图是实际端点画面，连续记录证明渐变数值；未录制或声称观看完整运动视频。
+原执行探针Staging/RuntimeProbe.cs SHA256 C81CCFD827056484A36C606C3BF513B538A93E3CEE30EA137557E5A013485CDA；输入设备、临时掩体、原掩体启用、后台配置和回调均已清理，cleanupErrors为空。Probe自身disabledDroneCount=0，因为root在探针前已临时禁用4机，不能把两者混淆。
+
+生命周期与兼容
+OrdinaryPlay-20261019T171129/Lifecycle.jsonl记录：round1隐藏weight1/.22，实际PlayerHealth.TakeDamage(MaxHealth)进入既有07F死亡返回；返回Shelter同玩家-4572394、health3、相机1、补光灯1、潜行组件/Profile均0、Vignette0。TakeDamage同步返回时weight仍1，后续LateUpdate/禁用负责清理。
+round2进入Ruins为新组件/私有Profile各1、weight0，再次隐藏到1/.22后正常TryExtract撤离，Shelter组件/Profile0、weight0；round3再出发又仅各1且weight0。同玩家/单相机/单补光灯保持，重载后原无人机恢复活动。流程使用公开API辅助，不冒称原生键鼠。
+03-DeathReturn-Shelter-1920x1080.png已直接查看。当前Shelter曝光-.2、对比8、灰滤镜RGB.7578583、Bloom.1及浮尘/玩家补光保留，没有恢复旧白色滤镜方案。既有07F死亡、02C胶囊、09F/G/H AI、用户场景布局和巡逻均未作生产修改。
+
+自动化与诊断历史
+最终PlayMode-6-Final.xml：2026-10-19 17:23:49–17:23:54 UTC，6/6通过、0失败、0跳过。覆盖真实掩体/渐变/站起离开、重叠和背包、死亡与下一轮、解绑/禁用/未准备、跨场景、私有Profile复用与销毁且不污染其它Volume。未扩跑无关全量测试。
+测试源码最终SHA256 60C7231A999E524AF999D96185C015E8FC8BFBB008F2B8260B215E21FFF034F0；最终XML SHA256 B34B8347C11A6C28F64CBB19D740480E8F18BDC2F3012A8D6755DF7F5764739D。
+保留真实历史：PlayMode-6-First.xml为4/6；只加Describe的PlayMode-2-Diagnostic.xml为原失败2/2；自然输入同步后PlayMode-6-NaturalInput.xml为5/6；最后固定测试刚体关闭不必要插值后原6组通过。夹具移除手动InputSystem.Update，改等自然输入Reader确认，再设一次姿态；固定kinematic实例不使用正式角色Interpolate。所有产品断言保留，生产源码未因这些失败改动。末次失败时协程观察hidden/pose/input均true，缺少当时LateUpdate逐阶段trace，不能断言已精确复现插值回旧位置或认定首轮均由同一原因。详见FixtureFailureDiagnosis.txt。
+SavedReload.json：从磁盘重新打开Ruins，clean，MissingScripts0，唯一效果、Binder引用、.22/.45/.2、weight0、基底weight1及唯一OutputCamera PPtrue/mask1均正确，再返回Bootstrap。
+
+文件完整性
+Integrity.json/.txt：4639基线文件中4635不变、3项预期修改、1项另列Drone.prefab差异；2405/2405既有meta不变。7个预期新文件的引用有效且GUID唯一。移除Ruins声明新增YAML/children/PP覆盖可逐字节恢复接手基线，证明其余布局/灯/路线/RenderSettings未漂移。其余11scene、Player、Shelter当前Profile、PC/global/quality配置、既有Enemy源码、07F、dust、25ProjectSettings保持。
+明确例外：Drone.prefab在17:08:58 UTC变化，只有一个Transform的localRotation/EulerHint(0,-181.2,0)及DroneVision.directionDegrees 0→-24，非009本任务写入；具体作者/原因未知。保留当前内容，未回滚，不宣称所有Prefab不变。另81个既有TextMesh Pro文件未纳入初始基线，mtime为2023–2025，不能算本任务新增，也不作历史哈希结论。
+
+分工、最终状态与边界
+依用户明确授权，009与“Shelter 昏暗氛围与后处理”双向协作。009独占Assets/Editor、实现/测试/实景/清理；氛围聊天只读URP/配置/截图并写AtmosphereReview，未做第二套实现。其最终VisualReview通过，默认参数保留，全部协助结束。
+ReleaseState.json于2026-10-19T17:24:59.293646Z：唯一Bootstrap clean/Edit；Play/changing/paused/compiling/updating/PrefabStage及实际TestRunner均false；capture/probe false、辅助对象0、效果/Profile0。唯一原生Keyboard id1 enabled，合成设备已移除；timeScale1，Application及PlayerSettings.runInBackground=false；Direct3D11/DisableDomainReload保留。FinalConsole.json为0错误0警告。
+全程09I普通运行保持timeScale1，未重触既有无人机零delta暂停问题，也未将该旧问题扩为本次AI修改。没有新增原生键鼠、Windows构建、任意分辨率或任意帧率验证声明。
+009所有Assets写入、Unity/Play/TestRunner、截图/探针/输入回调已结束，无排队操作；在EditorCoordination.txt追加明确释放。后续接手先fresh检查，不凭本历史快照直接覆盖用户当前编辑。

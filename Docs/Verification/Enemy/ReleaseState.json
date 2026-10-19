@@ -1,0 +1,57 @@
+{
+  "success": true,
+  "message": "Code executed successfully.",
+  "data": {
+    "result": {
+      "utc": "2026-10-19T02:19:26.4017352Z",
+      "playing": false,
+      "paused": false,
+      "compiling": false,
+      "updating": false,
+      "scene": "Assets/Scenes/Tests/Enemy/EnemyTest.unity",
+      "dirty": false,
+      "sceneCount": 1,
+      "prefabStage": false,
+      "missingScripts": 0,
+      "prefabs": [
+        {
+          "path": "Assets/Prefabs/Enemy/Drone/Drone.prefab",
+          "missingScripts": 0
+        },
+        {
+          "path": "Assets/Prefabs/Enemy/Stealth/CoverArea.prefab",
+          "missingScripts": 0
+        }
+      ],
+      "driverWired": true,
+      "drones": [
+        {
+          "name": "Drone_A",
+          "config": true,
+          "visual": true,
+          "vision": true,
+          "mesh": true,
+          "rotors": 4,
+          "allRotors": true,
+          "patrolPoints": 2,
+          "position": "(-6.00, 2.40, 0.00)"
+        },
+        {
+          "name": "Drone_B",
+          "config": true,
+          "visual": true,
+          "vision": true,
+          "mesh": true,
+          "rotors": 4,
+          "allRotors": true,
+          "patrolPoints": 2,
+          "position": "(6.00, 2.40, 0.00)"
+        }
+      ],
+      "scale": 1,
+      "background": false,
+      "graphics": "Direct3D11"
+    },
+    "compiler": "codedom"
+  }
+}

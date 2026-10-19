@@ -1,0 +1,31 @@
+{
+  "success": true,
+  "message": "Code executed successfully.",
+  "data": {
+    "result": {
+      "utc": "2026-10-19T05:36:50.3759622Z",
+      "scene": "Assets/Scenes/Shelter.unity",
+      "sceneCount": 1,
+      "dirty": false,
+      "playing": false,
+      "changing": false,
+      "compiling": false,
+      "updating": false,
+      "prefabStage": null,
+      "runInBackground": false,
+      "playerSettingsRunInBackground": false,
+      "timeScale": 1,
+      "enterPlayModeOptionsEnabled": true,
+      "enterPlayModeOptions": "DisableDomainReload",
+      "temporaryWallPresent": false,
+      "materialGuid": "3791f5303dc69fa479f6b053e4a02622",
+      "shader": "MyPrecious/DroneVision",
+      "shaderSupported": true,
+      "shaderErrors": false,
+      "materialProgress": 0,
+      "cull": 2,
+      "drones": []
+    },
+    "compiler": "codedom"
+  }
+}

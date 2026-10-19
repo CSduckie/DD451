@@ -1,0 +1,36 @@
+{
+  "systemCount": 2,
+  "missingScripts": 0,
+  "scripts": 0,
+  "cameras": 0,
+  "colliders": 0,
+  "localPosition": "(0.00, 0.00, 4.00)",
+  "systems": [
+    {
+      "name": "FineDust",
+      "localPosition": "(0.00, 0.00, 0.00)",
+      "playOnAwake": true,
+      "prewarm": true,
+      "local": "Local",
+      "autoSeed": true,
+      "rate": 10.0,
+      "maxParticles": 220,
+      "material": "Assets/Art/Materials/Environment/ShelterScreenDust.mat",
+      "shaderSupported": true,
+      "texture": "Default-Particle"
+    },
+    {
+      "name": "ForegroundMotes",
+      "localPosition": "(0.00, 0.00, -1.00)",
+      "playOnAwake": true,
+      "prewarm": true,
+      "local": "Local",
+      "autoSeed": true,
+      "rate": 2.2,
+      "maxParticles": 64,
+      "material": "Assets/Art/Materials/Environment/ShelterScreenDust.mat",
+      "shaderSupported": true,
+      "texture": "Default-Particle"
+    }
+  ]
+}

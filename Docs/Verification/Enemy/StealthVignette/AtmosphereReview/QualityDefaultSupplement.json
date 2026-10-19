@@ -1,0 +1,11 @@
+{
+  "utc": "2026-10-19T17:09:29.6237329Z",
+  "path": "Assets/Settings/SampleSceneProfile.asset",
+  "sha256": "A8677D4BAC051D24CAA11CD622E39F968155EE277BFCE132274F1DE225692FE9",
+  "PCReferenceLine95": "guid: 10fc4df2da32a41aaa32d77bc913491c",
+  "activeToneMode": 1,
+  "activeBloomIntensity": 0.25,
+  "activeVignetteIntensity": 0.2,
+  "motionBlurActive": false,
+  "scope": "Supplement to CurrentConfigurationSnapshot: quality default overrides global default. Read-only disk evidence, not runtime stack."
+}

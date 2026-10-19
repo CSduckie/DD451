@@ -1,0 +1,14 @@
+{
+  "saved": true,
+  "scene": "Assets/Scenes/Shelter.unity",
+  "profile": "Assets/Scenes/Shelter/Global Volume Profile.asset",
+  "guid": "76ef7695bb051d746bed768237e73e75",
+  "exposure": -0.2,
+  "contrast": 8.0,
+  "saturation": 0.0,
+  "tone": "None",
+  "vignette": 0.0,
+  "bloom": 0.1,
+  "threshold": 1.0,
+  "pp": true
+}

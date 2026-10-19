@@ -1,0 +1,10 @@
+{
+  "status": "staging_only_not_compiled",
+  "sourcePath": "Assets/Scripts/Loot/MonoBehaviour/LootRuntimeManager.cs",
+  "sourceSha256": "CE117E98A24316C53F59C82A53AB4D7B32B068E67247031AD9880ECD50129C33",
+  "sourceMetaSha256": "A46CC2E0A176A9C0688E93758AC5201BA018B7FCCDF2CC823BFEA08475867562",
+  "draftPath": "Docs/Verification/GameFlow/DeathReturn/Staging/Loot/LootRuntimeManager.cs.txt",
+  "draftSha256": "3381021C8A2CD6265458DE8C09CD84659E64B32CB0D0C294AEAD93F5686432BE",
+  "assetsChanged": false,
+  "unityAccessed": false
+}

@@ -1,0 +1,26 @@
+07C integration repair — actual evidence
+Project: E:/DD451; 2026-10-19 UTC.
+
+Initial official EditMode XML: EditMode-149-Initial.xml, 01:13:32Z–01:13:34Z.
+149 executed: 116 passed / 33 failed / 0 skipped. GameFlow 10/11, Loot 106/138.
+MCP job dd9eb435f9ab45e580f5eee84df5b348 separately reported initialization timeout,
+but Unity actually ran and wrote the official XML. The timeout is not the assertion result.
+
+Failure groups: 24 Unreachable, 1 pickup reach assertion, 8 first-drop reach assertions.
+PlayerInteraction cached ownRigidbody only in Awake. EditMode fixtures create a real
+PlayerController/Capsule/Rigidbody and invoke public APIs without MonoBehaviour.Awake.
+IsOwnCollider consequently excluded the real attached body; world-point ray checks could
+also treat the player's capsule as an obstruction. No range or obstruction relaxation needed.
+An isolated temporary-scene diagnostic observed cacheBefore=false, target reach=false;
+invoking Awake changed target reach to true without moving body/target or changing range.
+Independent source/geometry review confirmed the near drop candidates are within 2m and
+their volume does not overlap the body/floor; there was no second common geometry defect.
+
+Minimal integration repair: resolve GetComponentInParent<Rigidbody>() when the cache is null
+at PrepareSpatialQuery and CanReachWorldPoint. The 02A contract and production geometry remain.
+Actual prior PlayerInteraction.cs and meta copied to this run's Before before editing.
+This is a 07 integration repair to the frozen 02 source; original ownership remains 02.
+
+Final official EditMode XML: EditMode-149-Final.xml, 01:16:58Z–01:17:00Z.
+149/149 passed, 0 failed/skipped. MCP job 28310c47b27e4a909fa2aa5ab4f227c2 also succeeded.
+PlayMode and native acceptance are separate and were still pending at this record.

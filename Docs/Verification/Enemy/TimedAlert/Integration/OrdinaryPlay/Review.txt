@@ -1,0 +1,38 @@
+09F 普通 Play 独立证据审查
+审查对象：Run-a8f4c7af 的01-Departure.txt、02-TimedAlert.txt、02-TimedAlert.csv及六张PNG；同时保留并对照Run-16ed070b首次失败证据。
+本次只读取磁盘文件和图片，未操作Unity、未运行或调整探针、未修改Assets。仅新增本审查记录。
+
+结论
+Run-a8f4c7af在已记录范围内通过。报告结果为PASS，CSV已完整记录到恢复巡逻后的实际位移，并非提前取消形成的部分记录。六张截图均为1920×1080，实际画面与相应状态/Renderer记录相符。该结论限于下面列出的流程，不代替全部Enemy/GameFlow回归或原生键鼠验收。
+
+计时、机身与感知证据
+- CSV共1538条逐帧记录，游戏时间6.61198854至17.0452843，跨度10.43329576秒，记录轮次为1。
+- 首次发现：frame1200、t=13.8040075进入非cover Alert，remaining=0.5；frame1274、t=14.3094454进入Chase，间隔0.5054379秒。74条首次Alert样本中位置完全相同(-8.677467,2.42195535,-0.382937431)，speed始终0，CanSee=true，站立玩家Hidden=false。
+- 两段Chase共23条样本，全部Renderer=false、CanSee=true、visionActive/visionEnabled/rangeEnabled=true；最高移动速度3.00000024。由此证明本次追击确实只隐藏扇形画面，真实感知仍有效，机身仍可追击移动。
+- 第一次草丛隐藏：frame1286、t=14.4212818进入cover Alert，remaining=2。随后至t=14.8775759共61条草丛警戒样本，真实Hidden=true、CanSee=false、Renderer=true，位置固定(-8.348101,2.276634,-0.382937431)，speed=0。计时降到1.543706，未因持续Hidden重置。
+- 真实再发现：移出草丛的辅助定位发生于上一条样本t=14.8775759之后；下一条frame1347、t=14.8856945已为Chase，CanSee=true、Hidden=false、Renderer=false。采样间隔0.0081186秒，一帧内恢复追击，没有新增0.5秒警戒。此处证明的是采样分辨率内的立即切换，不声称测得零延迟。
+- 第二次完整隐藏：frame1358、t=14.9972639进入cover Alert、remaining=2；frame1654、t=16.9987183回Patrol，间隔2.0014544秒。296条该段Alert样本位置完全相同(-8.048203,2.2844708,-0.382937431)，speed始终0，Hidden=true、CanSee=false。三个警戒区段的倒计时均无向上跳变。
+- 返回巡逻后，frame1655速度1.5，最终frame1656速度1.50000012；从切Patrol的位置到最终位置移动约0.0899995米。整个run的Z始终为-0.382937431，没有出生点跳回。原路线当前点保留的证据来自报告中前后TryGetPatrolPoint坐标相等的断言通过；CSV未记录内部数组索引，不把这一结果夸大为从CSV独立重建了索引值。
+- 同轮正式初始化：报告记录两次bindings.Activate + TryBeginExplorationEnemies(currentRound)同步检查通过，分别保留首次Alert剩余0.347629845秒、cover Alert剩余1.79870164秒及状态/位置/Target。CSV中对应倒计时连续下降，与未重置相符。
+- 全部1538样本health=3，exploded=false，旧fill=0。首次/草丛警戒灯RGB均(1,0.5,0)，Chase均(1,0.05,0.02)。完整草丛两秒内灯强度2.80000687至7.99997663，支持橙灯持续呼吸，而不是仅换静态颜色。
+
+逐图视觉检查（PNG头部独立核实全部为1920×1080）
+1. 02-Discovery-Orange-1920.png：实际Ruins HUD、无人机、站立玩家与现有绿色草丛同屏；橙色扇形完整可辨，未出现红色渐进填充，生命3/3。
+2. 03-First-Chase-NoFan-1920.png：无人机及站立玩家仍在画面，机头灯为红色；原扇形区域消失，与Chase Renderer=false相符，生命3/3。
+3. 04-Cover-Orange-1920.png：玩家蹲伏后仅顶部露出草丛，橙色视锥重新出现，机头橙灯可辨，生命3/3。
+4. 05-Rediscovered-Chase-NoFan-1920.png：玩家处在草丛外的辅助定位位置，镜头随玩家变化；红灯无人机可见而视锥消失。玩家悬空来自探针的公开定位/kinematic夹具，不能把这张截图描述为玩家原生行走离开草丛。
+5. 06-Cover-FullTimeout-1920.png：回到原草丛并蹲伏，橙色扇形恢复，无红色填充，生命3/3。
+6. 07-Returned-Patrol-1920.png：玩家继续留在草丛中；无人机视锥和灯转回蓝色，随后CSV已有实际巡逻位移。截图本身只是一帧，不单独证明两秒时长或持续运动。
+截图能清楚区分警戒/追击/巡逻表现，未见缺图、错误尺寸或扇形在追击截图残留。墙遮挡裁剪与几何边界不由这组六图重新证明。
+
+首次失败Run-16ed070b：保留，不能改写为通过
+- 原始TXT、CSV及02-Discovery-Orange-1920.png保持不变。
+- CSV可确认：t=15.9164743首次进入Alert、remaining=0.5；t=16.051302转为Search，间隔0.1348277秒。最后一条CanSee=false、Target=false，机身仍固定(-10.7339115,1.93117034,-0.382937431)，最后可见位置(-5.5,1.02,-0.382937431)保留，生命3、未爆炸。
+- 原始截图显示玩家接近可见扇形外缘。原探针假定首次Alert期间会始终可见；实际感知变为不可见后进入Search，因而触发“预期Chase”的夹具断言失败。它不是“0.5秒到期却没有追击”的证据，因为失去可见性发生在计时尚未结束时。
+- 该CSV没有记录逐帧visionOrigin、模型旋转、胶囊中心到视野边界距离或遮挡结果细项，故不能仅凭本run把具体几何原因确定为“模型回正导致超半径”，也不能据此排除所有其它边界因素。
+- 后续仅在探针phase0增加转向完成、真实RangeCollider包含草丛中心、机头距离小于radius×0.65后才放入玩家，作为持续可见场景的可靠夹具。成功run不能反向补齐失败run未记录的原因细节。
+
+操作与覆盖边界
+依据运行报告/探针，正式流程由Bootstrap→Shelter→flow.TryDepart→Ruins完成；定位使用Player.RelocateWithinRun，并临时将真实玩家刚体设为kinematic；蹲伏使用探针拥有的InputSystem Keyboard排队C事件，经真实PlayerInputReader/状态机处理。未调用AI ChangeState、BeginRound或计时写入，未改AI路线/配置/掩体/相机。该方式属于API及输入系统辅助验收，不是原生键盘鼠标操作证据。
+报告说明回调、临时Keyboard已移除，玩家位置/刚体标志/runInBackground已恢复；本审查未调用Unity查询最终Editor现场。
+本run未验证真实身体重叠的同物理帧保护、普通墙Search的全部行为、死亡/禁用/切场景锁、自然一次伤害、爆炸后的同轮重初始化或下一正式轮次。相关结论应引用本轮专门自动化结果，不从本run的无伤害状态推断。

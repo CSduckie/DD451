@@ -1,0 +1,16 @@
+009 飞行动画追加调整 — 2026-10-18 America/New_York
+
+用户要求：飞行时增加简单摇晃，螺旋桨旋转再快一些。
+修改范围：DroneFlightVisual.cs、Drone.prefab。原始内容及.meta已备份到本目录Before/，BeforeHashes.json记录修改前哈希；两个.meta未变，GUID保留。
+
+效果：在速度决定的前倾上叠加周期旋转摇晃，swayDegrees=4；周期与上下浮动错开四分之一相位。幅度随速度缩放，只作用于Visual，停留时摇晃减为0，桨叶仍转。
+转速900→2400度/秒，约2.67倍；movingBobHeight 0.035→0.07；bobFrequency 2→1.4 Hz；tiltDegrees仍6。巡逻速度为追击一半时，旋转摇晃峰值约2度。所有参数可在DroneFlightVisual组件调整。
+脚本默认值和现有Prefab同时更新；EnemyTest两架实例无这些字段override，直接继承。Builder使用脚本默认值，无需改动。未修改原FBX、模型节点、物理根、视野、AI逻辑或正式场景文件。
+
+验证：Unity导入编译成功；实际AssetDatabase读回Prefab为2400/.07/1.4/4、4个转子。复跑已有2项相关PlayMode测试，2/2通过、0失败/跳过，官方XML为PlayMode-2.xml：
+- DroneBehaviourTests.RotorAndVisualAnimationNeverRotateOrScaleThePhysicalRootOrVision
+- EnemySceneIntegrationTests.SceneUsesRealModelFourRotatingPropellersCinemachineAndGeneratedVision
+第一项验证物理根/视野不随模型动画变化及停用恢复，但夹具转速固定360，不能证明2400；第二项加载实际EnemyTest并验证四个真实FBX转子运动。2400配置由实际Prefab读回确认。本次没有新增测试，也没有重新跑原39项全套；没有录制动画视频或新增原生键鼠验收。
+
+导入期间出现一条MCP WebSocket is not initialised连接警告；两项测试结束后的Console读数0 error/0 warning，无业务编译错误。
+测试前停止Play后的Shelter为clean；测试后Shelter被标为dirty，来源未判定。为保留可能的用户修改，未保存、重载或切换它，也未覆盖正式Shelter磁盘文件。最终Editor维持停止状态；准确读数见ReleaseState.json。没有009 Assets写入或Editor操作排队。

@@ -1,0 +1,19 @@
+Shelter Screen Dust - evidence audit
+Read-only audit; no Unity operation or Assets change. Original PNGs unchanged.
+
+Natural motion gameTime interval: 3.016218 s; camera and root local transform unchanged.
+FineDust: 161 -> 158 particles; 127 same-seed survivors; all moved, remaining lifetime decreased, and start lifetime stayed unchanged. No duplicate seeds.
+Local displacement min/mean/max: 0.030816 / 0.200792 / 0.341807; mean lifetime decrease 3.035955 s; maximum mismatch from gameTime 0.019745 s.
+ForegroundMotes: 28 -> 28 particles; 22 same-seed survivors; all moved, remaining lifetime decreased, and start lifetime stayed unchanged. No duplicate seeds.
+Local displacement min/mean/max: 0.016438 / 0.121748 / 0.222645; mean lifetime decrease 3.035956 s; maximum mismatch from gameTime 0.019743 s.
+The approximately 0.01974 s discrepancy is one-frame scale; these samples prove natural motion/lifetime advancement, not exact subframe synchronization.
+
+Images: 1920x1080; changed pixels 10959 (0.5285%); over2/255 0.04364%; over8/255 0.02218%.
+Mean absolute RGB difference 0.0062/255; signed mean 0.002311/255; meanRGB 22.094947 -> 22.097258.
+Encoded RGB metrics are not physical luminance. Changes are sparse/local rather than a full-screen gray veil.
+Both original images visually inspected: sparse warm dust specks; player, box/container shapes and HUD text remain readable; no square particle cards observed.
+Ordinary Play ScreenCapture framebuffer capture. Metadata camera/player/environment/effective stack snapshots match. Individual Light intensity/phase was not recorded; this audit does not independently certify identical light phase.
+
+Protected SHA256: 10/10 pass. Shelter/Ruins use newer SceneCameraPreview/DeliveredHashes.json; other8 use ProtectedBefore.json.
+This report verifies saved motion, image and hash evidence only; not native keyboard input, transition cleanup, frame timings, or final Editor release.
+Audit.json contains complete statistics and hashes.

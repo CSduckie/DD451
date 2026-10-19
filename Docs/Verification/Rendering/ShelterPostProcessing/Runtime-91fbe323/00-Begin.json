@@ -1,0 +1,9 @@
+{
+  "status": "FORMAL_BOOTSTRAP_REACHED_SHELTER",
+  "playerId": -3697936,
+  "stage": "Shelter",
+  "round": 0,
+  "playerScene": "Assets/Scenes/Shelter.unity",
+  "directory": "E:/DD451/Docs/Verification/Rendering/ShelterPostProcessing/Runtime-91fbe323",
+  "verificationMethod": "Ordinary Play; later positioning and interaction use public API, not physical keyboard/mouse."
+}

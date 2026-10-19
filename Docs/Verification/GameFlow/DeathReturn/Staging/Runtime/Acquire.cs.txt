@@ -1,0 +1,97 @@
+// Ordinary Play: real Trigger/PlayerInteraction, natural search updates and real transfer API.
+// Positions and temporarily freezes the player at the selected box; does not alter enemies or source data.
+var flow = UnityEngine.Object.FindFirstObjectByType<GameFlowManager>();
+string directory = SessionState.GetString("07F.Directory", "");
+string label = SessionState.GetString("07F.AcquireLabel", "Acquire");
+string[] requested = SessionState.GetString("07F.AcquireItems", "doll,medkit").Split(',');
+string sourceId = SessionState.GetString("07F.AcquireSource", "supplies-box");
+if (!EditorApplication.isPlaying || EditorApplication.isPaused || flow == null || flow.Stage != GameFlowStage.Exploring
+    || !System.IO.Directory.Exists(directory) || SessionState.GetBool("07F.AcquireRunning", false))
+    throw new Exception("Need stable exploration and no other acquisition probe.");
+var player = flow.Player;
+var scene = player.gameObject.scene;
+var bindings = UnityEngine.Object.FindObjectsByType<GameFlowSceneBindings>(FindObjectsSortMode.None).Single(b => b.gameObject.scene == scene);
+var box = UnityEngine.Object.FindObjectsByType<LootBox>(FindObjectsSortMode.None).Single(b => b.gameObject.scene == scene && b.sourceId == sourceId);
+var before = player.Position;
+bool kinematic = player.Body.isKinematic;
+bool background = Application.runInBackground;
+var acquired = new System.Collections.Generic.List<object>();
+var remaining = new System.Collections.Generic.HashSet<string>(requested);
+var rows = new System.Collections.Generic.List<object>();
+bool finished = false;
+double started = EditorApplication.timeSinceStartup;
+int frame = -1;
+EditorApplication.CallbackFunction observer = null;
+System.Action<string,string> finish = (status,reason) =>
+{
+    if (finished) return;
+    finished = true;
+    EditorApplication.update -= observer;
+    Application.runInBackground = background;
+    SessionState.SetBool("07F.AcquireRunning", false);
+    SessionState.SetString("07F.AcquireResult", status + ": " + reason);
+    if (bindings != null) bindings.CloseSessions();
+    if (player != null && player.IsPrepared && !player.IsDead && !player.IsSceneTransitionBlocked && player.gameObject.scene == scene)
+    {
+        player.RelocateWithinRun(before);
+        player.Body.isKinematic = kinematic;
+    }
+    System.IO.File.WriteAllText(directory + "/" + label + ".json", Newtonsoft.Json.JsonConvert.SerializeObject(new
+    { status = status, reason = reason, method = "API positioning/body freeze; real interaction, natural search, validated item transfer; no native keyboard claim",
+        round = flow == null ? -1 : flow.CurrentRound, acquired = acquired, samples = rows, callbacksRemoved = true }, Newtonsoft.Json.Formatting.Indented));
+};
+observer = () =>
+{
+    try
+    {
+        if (!EditorApplication.isPlaying || flow == null || player == null || box == null || flow.Stage != GameFlowStage.Exploring)
+            throw new Exception("Play/exploration ended during natural search.");
+        if (EditorApplication.timeSinceStartup - started > 25) throw new Exception("Natural search exceeded25s.");
+        if (SessionState.GetBool("07F.AcquireCancel", false)) { finish("CANCELLED", "Requested"); return; }
+        if (frame == Time.frameCount) return;
+        frame = Time.frameCount;
+        int token = bindings.lootUI.SessionToken;
+        if (!bindings.lootUI.IsSessionValid(token, box.State)) throw new Exception("Real source UI session became invalid.");
+        rows.Add(new{frame=frame,time=Time.time,entry=box.State.SearchEntryId,elapsed=box.State.SearchElapsed,health=player.health.CurrentHealth});
+        foreach (string id in remaining.ToArray())
+        {
+            LootEntryState entry;
+            if (!box.State.TryGetEntry(id, out entry)) throw new Exception("Requested item did not spawn: " + id);
+            if (!entry.Revealed) continue;
+            ItemInstance item;
+            if (!flow.Items.TryGetInstance(entry.InstanceId,out item)) throw new Exception("Missing registered item");
+            Vector2Int cell;bool rotated;
+            if (flow.Backpack.TryFindSpaceForExternal(item.InstanceId,false,out cell,out rotated)!=BackpackResult.Success)
+                throw new Exception("No backpack room");
+            var result=flow.Transfers.TrySourceToBackpack(box.State,id,cell.x,cell.y,rotated,
+                () => bindings.lootUI.IsSessionValid(token,box.State));
+            if(result!=ItemTransferResult.Success) throw new Exception("Transfer rejected: "+result);
+            acquired.Add(new{id=item.InstanceId,definition=item.DefinitionId,owner=item.Owner.ToString(),retained=item.IsRetained,origin=item.OriginalSpawnPointId});
+            remaining.Remove(id);
+        }
+        if (remaining.Count==0) finish("PASS", "All requested items naturally revealed and acquired.");
+    }
+    catch(Exception e){finish("FAIL",e.Message);}
+};
+try
+{
+    bindings.CloseSessions();
+    BoxCollider trigger;
+    if(!box.TryGetInteractionTrigger(out trigger)) throw new Exception("Missing real TriggerBox");
+    var capsule=player.GetComponent<CapsuleCollider>();
+    Vector3 position=trigger.bounds.center-(capsule.bounds.center-player.Body.position);
+    position.z=player.config.planeZ;
+    if(!player.RelocateWithinRun(position))throw new Exception("Relocation rejected");
+    player.Body.isKinematic=true;
+    Physics.SyncTransforms();player.interaction.RefreshTarget();
+    if(!player.interaction.CanReachTarget(box)||player.interaction.CurrentTarget!=box||!player.interaction.TryInteract())
+        throw new Exception("Actual Trigger/obstruction/PlayerInteraction rejected box");
+    if(!bindings.lootUI.IsOpen)throw new Exception("Source UI did not open");
+    SessionState.SetBool("07F.AcquireCancel",false);
+    SessionState.SetBool("07F.AcquireRunning",true);
+    SessionState.SetString("07F.AcquireResult","RUNNING");
+    Application.runInBackground=true;
+    EditorApplication.update+=observer;
+}
+catch(Exception e){finish("FAIL",e.Message);}
+return new{running=!finished,label=label,resultKey="07F.AcquireResult"};

@@ -1,0 +1,2977 @@
+{
+  "capturedUtc": "2026-10-19T09:01:19.9680562Z",
+  "files": [
+    {
+      "path": "Assets/Art/Materials/Enemy.meta",
+      "sha256": "6391D5C44024EED9FB8D4F1C58B6090FF7B5540EA6C51B5EC766BE079A58941D"
+    },
+    {
+      "path": "Assets/Art/Materials/Enemy/DroneVision.mat",
+      "sha256": "4535371ED6236C24E50D231CEF6192093C4251AA53B9D5590D1AC01D949A3676"
+    },
+    {
+      "path": "Assets/Art/Materials/Enemy/DroneVision.mat.meta",
+      "sha256": "B14479829C3AD1FBC11CC838BBA8D5482B579FA6E591BEDEAD7D3B0F2CCC88B9"
+    },
+    {
+      "path": "Assets/Art/Materials/Environment.meta",
+      "sha256": "0A78F4BC02CC279B0B8F81429A25D54D582959557EEE453452D4484E4BC66A5F"
+    },
+    {
+      "path": "Assets/Art/Materials/Environment/ShelterNightSkybox.mat",
+      "sha256": "175DC252138EE95FBE84AB95A09F03256C25C0DAA4A045535AC4380789F8E688"
+    },
+    {
+      "path": "Assets/Art/Materials/Environment/ShelterNightSkybox.mat.meta",
+      "sha256": "58C02D39845D47878023A1AC1C94A944B6C809EA0D343AC97C13E27CD634DCD3"
+    },
+    {
+      "path": "Assets/Art/Materials/Environment/ShelterScreenDust.mat",
+      "sha256": "A49FE189BDF88FF2CB91F4A8AF37B62614AA4EFDFB4DBE86872285B97EB0B5C5"
+    },
+    {
+      "path": "Assets/Art/Materials/Environment/ShelterScreenDust.mat.meta",
+      "sha256": "02DC3217D1F597472BE8107BEE0987156DD3565CC8E446DA848147246017C312"
+    },
+    {
+      "path": "Assets/Art/Materials/Player.meta",
+      "sha256": "131F3037D6EB2408BBC99F64C4826E0D5775742A60918A384645773DA9228C46"
+    },
+    {
+      "path": "Assets/Art/Materials/Player/PlayerFrictionless.physicMaterial",
+      "sha256": "1667F8C008626E9D56F9BAE60E18096B33443766EEE5802593101A94220BFAE5"
+    },
+    {
+      "path": "Assets/Art/Materials/Player/PlayerFrictionless.physicMaterial.meta",
+      "sha256": "078A9F2058C16A927A9418360A0F386CA49ABC7491741665BE802C5E268C28A0"
+    },
+    {
+      "path": "Assets/Art/Materials/Player/PlayerTeal.mat",
+      "sha256": "B73780B2DA183B45AC4E84CA50226A9A8DCFD1D7CC26DD8515D82888910EEEAF"
+    },
+    {
+      "path": "Assets/Art/Materials/Player/PlayerTeal.mat.meta",
+      "sha256": "6D3B0820899A3511E087D95D0562A6039359AD3B0DD612825F06FD3A3E8AA4CE"
+    },
+    {
+      "path": "Assets/Art/Materials/Player/TestDamage.mat",
+      "sha256": "AA088D50328DE85749D7F1F3E19BC37B8C3C2FF4BA6257D1C610A4C6F4927CEE"
+    },
+    {
+      "path": "Assets/Art/Materials/Player/TestDamage.mat.meta",
+      "sha256": "4FC65C5B2945D3796F168E5A9045E403BDDA8953F82C0DD22D24AAD430551492"
+    },
+    {
+      "path": "Assets/Art/Materials/Player/TestTarget 1.mat",
+      "sha256": "AA7824C96037128D28534ED1094A3C4E1191F5A98A4FDA66EE65671217DF6025"
+    },
+    {
+      "path": "Assets/Art/Materials/Player/TestTarget 1.mat.meta",
+      "sha256": "A7597D40857AFD46685EA534C923F5EF2F236B10337C8754C1AD958A9C5C83D7"
+    },
+    {
+      "path": "Assets/Art/Materials/Player/TestTarget.mat",
+      "sha256": "FEA63B6D54716C417A1FA9E74FD4F17C20D9EFD4F586DE0C327352DB4CF7DEF8"
+    },
+    {
+      "path": "Assets/Art/Materials/Player/TestTarget.mat.meta",
+      "sha256": "0C41981086A79B409A1A6AF1C630FDCD7E6720511EF8B65BC6BE9270C1E73CCB"
+    },
+    {
+      "path": "Assets/Art/Materials/Player/WhiteboxGround.mat",
+      "sha256": "B12270CCDA3FD6DDC03E8B72581418DB6FDF2DF8420D240F60885B568C18ED11"
+    },
+    {
+      "path": "Assets/Art/Materials/Player/WhiteboxGround.mat.meta",
+      "sha256": "21AA9AF8F130570777123A79A81104008FBC85FB6F416D25FCE4F0DB8616082A"
+    },
+    {
+      "path": "Assets/Data/Backpack.meta",
+      "sha256": "82E1F1476CEA729774ABAA84EFE2A7A549681C24FA33F81DE9852BB847BC6DFD"
+    },
+    {
+      "path": "Assets/Data/Backpack/BackpackConfig.asset",
+      "sha256": "FB926D8C845B8D10D97D90748A6600B783270ECA2A116FA5BE00B212CB329AB3"
+    },
+    {
+      "path": "Assets/Data/Backpack/BackpackConfig.asset.meta",
+      "sha256": "520F8CFC94B88E375F7EDA7E0B8DE733B332B68CFA15D343154A16FA4A9F07A3"
+    },
+    {
+      "path": "Assets/Data/Enemy.meta",
+      "sha256": "338C448AC295816BB9AAE065BCB3BA65ADD759CC7FB53AE94B828353484EED02"
+    },
+    {
+      "path": "Assets/Data/Enemy/Drone.meta",
+      "sha256": "E770FF6251AF7AC45DD23AF775BB5D28B7B76912C45185B23BB1DD6B957E3AE4"
+    },
+    {
+      "path": "Assets/Data/Enemy/Drone/DroneConfig.asset",
+      "sha256": "B464BF0F53EAAFF0C09A58BE3D306BC9CF34C6AAED871B691E6D9DF9DE71AD91"
+    },
+    {
+      "path": "Assets/Data/Enemy/Drone/DroneConfig.asset.meta",
+      "sha256": "654217017F81C7135E3FD1BB0CC247733B40C3A52145F6A415441AE19876A493"
+    },
+    {
+      "path": "Assets/Data/ItemEffects.meta",
+      "sha256": "8A265998A13A077807988C12F20E316BEE77C24360E72E439851EC516E401FFD"
+    },
+    {
+      "path": "Assets/Data/ItemEffects/HealFull.asset",
+      "sha256": "8CB5076B57F5B0615F596BD566A184F7A004E3319F417D03A8E91CD8641D3C8E"
+    },
+    {
+      "path": "Assets/Data/ItemEffects/HealFull.asset.meta",
+      "sha256": "65DD3DBF174F7D59B6308A459A1A44B8D9DDE69FFF6D1652860796D7D45433A8"
+    },
+    {
+      "path": "Assets/Data/ItemEffects/HealOne.asset",
+      "sha256": "4F2BB8C557DFD7E41FD43D65D0744C4A1EDFFC577308ABA05E8CD638493C5888"
+    },
+    {
+      "path": "Assets/Data/ItemEffects/HealOne.asset.meta",
+      "sha256": "A8ABD99B3681D7AFB238FD79384034517FA98DD3F0BC5C29E431573A178B575D"
+    },
+    {
+      "path": "Assets/Data/Items.meta",
+      "sha256": "475D6BE684C23E2CFB656345FE2BFE30908A42E9584EADEADC816A1B877CEA93"
+    },
+    {
+      "path": "Assets/Data/Items/Battery.asset",
+      "sha256": "F47A0DDC97C594EBB81A21FA4FC8683D5B1D6FCAD28CF3D1AA23B6D2C74D1ACD"
+    },
+    {
+      "path": "Assets/Data/Items/Battery.asset.meta",
+      "sha256": "BC2C92D6A68B8AC2ED7F349881474CC50DE4C50D370C3DBF91E544572F135F66"
+    },
+    {
+      "path": "Assets/Data/Items/Doll.asset",
+      "sha256": "59375058099954E5F98840E2989BA6CF1B33CDF28BB848C37EB58ED394A016E7"
+    },
+    {
+      "path": "Assets/Data/Items/Doll.asset.meta",
+      "sha256": "E3270C367DFB61A8C897BADCD48CD5960E8640DB8AEE0DED8314D420FAA9B37E"
+    },
+    {
+      "path": "Assets/Data/Items/Food.asset",
+      "sha256": "902A0F45DC74324FF3B37EC1B1B7B66E797D9344C52A191293FD225C03D99E09"
+    },
+    {
+      "path": "Assets/Data/Items/Food.asset.meta",
+      "sha256": "A6D15A98DA925E4C2FFB802B10CA34DDF9C81E2ACAD457018AAFED9A2EB18EBB"
+    },
+    {
+      "path": "Assets/Data/Items/ItemLibrary.asset",
+      "sha256": "25F8965B915275CCF892A83BAA57A271E800BC68B70F68212D077B1295350186"
+    },
+    {
+      "path": "Assets/Data/Items/ItemLibrary.asset.meta",
+      "sha256": "2D059773AEA00D1D7C5B3A9FA922BB26C0367C7CCA30A15FB8D16E4692F3FB01"
+    },
+    {
+      "path": "Assets/Data/Items/Medkit.asset",
+      "sha256": "B252DBB0B15478290D4C14BA0109AFA88C57F76B1CE7345A4E7C4A472EFEDB95"
+    },
+    {
+      "path": "Assets/Data/Items/Medkit.asset.meta",
+      "sha256": "F58FB649D37790D11DA0E8CF2455155CE4F8568E6327E934A640B694C6F6EACF"
+    },
+    {
+      "path": "Assets/Data/Localization.meta",
+      "sha256": "EB0DAAD471670E46B6146DAE0BC136687814F364F450197C43C4EFE2371B87C2"
+    },
+    {
+      "path": "Assets/Data/Localization/Backpack.meta",
+      "sha256": "11491E023564566B98D60E576E098ED414C453F101A7CDEF451E87B7FB41F7A7"
+    },
+    {
+      "path": "Assets/Data/Localization/Backpack/BackpackText.asset",
+      "sha256": "010889BD9D2CDA5CFC86819A1C377E45E7850508E433A7C0EF6B139A7FC77DEB"
+    },
+    {
+      "path": "Assets/Data/Localization/Backpack/BackpackText.asset.meta",
+      "sha256": "D4472F096C7BD5F8122D1E14DD3CA1D0B15A8DD636291F855596E62BB5A3C365"
+    },
+    {
+      "path": "Assets/Data/Localization/Common.meta",
+      "sha256": "E805041B9C6212497F7319D35F632C74F2575C1465B371AE2D1EB6B1C0925CE0"
+    },
+    {
+      "path": "Assets/Data/Localization/Common/CommonText.asset",
+      "sha256": "5192A83B49C2AD4B03DF63A2E46DF956AAD09169933E00335E9002D8A090AB9E"
+    },
+    {
+      "path": "Assets/Data/Localization/Common/CommonText.asset.meta",
+      "sha256": "F1901174B999A19EB94F41D624A9B9AF718BED461B43EB7AB2CF468ECEB9A39E"
+    },
+    {
+      "path": "Assets/Data/Localization/Enemy.meta",
+      "sha256": "313C51F8621F9BE6A4605A8DD215E9AC7B639E0239BE27DB15A19384DCDF2414"
+    },
+    {
+      "path": "Assets/Data/Localization/Enemy/EnemyText.asset",
+      "sha256": "AFB7A8F19AD97DFDFBB1FE86E87D986AA9A0EB50CDDBD50D4F70B4E14E853E24"
+    },
+    {
+      "path": "Assets/Data/Localization/Enemy/EnemyText.asset.meta",
+      "sha256": "D92F592EF4AB2B8F309C6F8506F7909FAC3D73ACCD9F8AED4EBFC096649BC5B7"
+    },
+    {
+      "path": "Assets/Data/Localization/GameFlow.meta",
+      "sha256": "0518E7BA7BB0EEC2EA6480CDAF12FE9DC55F49E11D8670B003EE6E35C784DDCF"
+    },
+    {
+      "path": "Assets/Data/Localization/GameFlow/GameFlowText.asset",
+      "sha256": "C58EA003135D2A16A5190110B7D22BFB35B0ABD2CC753572BF7867D30076A474"
+    },
+    {
+      "path": "Assets/Data/Localization/GameFlow/GameFlowText.asset.meta",
+      "sha256": "2844A9C6762537FBC37A19B5077F0EA8F5209F439178979A7B53B2ED25C49F75"
+    },
+    {
+      "path": "Assets/Data/Localization/Items.meta",
+      "sha256": "1C388D840675C1E4083FCCFC69807F49925F03CD11668403034C3299F9FE0ED5"
+    },
+    {
+      "path": "Assets/Data/Localization/Items/ItemMessages.asset",
+      "sha256": "294C6B4D98D0E99A415900628C0016941FB46CDB982E7A38BA8912BBC60F7FAC"
+    },
+    {
+      "path": "Assets/Data/Localization/Items/ItemMessages.asset.meta",
+      "sha256": "1B3D9ECFFA835C7D7BFF29EE2D54475FFF3A42D411A959E4FFE29BF62AA474AA"
+    },
+    {
+      "path": "Assets/Data/Localization/Loot.meta",
+      "sha256": "45F3B6E4C9AE229428ACCC41F71A071D291FE356EF7B5FF26931C967CAE4B0C0"
+    },
+    {
+      "path": "Assets/Data/Localization/Loot/LootText.asset",
+      "sha256": "B48D8B0A59F22D1E3FCBBF3B1494CC2D839484A7408EB8F04E13497326D9DE7C"
+    },
+    {
+      "path": "Assets/Data/Localization/Loot/LootText.asset.meta",
+      "sha256": "06B4B4C5DB02FEC079C38017FD7937B0D6514AA102FFFA2587FF31AE36B49043"
+    },
+    {
+      "path": "Assets/Data/Localization/Player.meta",
+      "sha256": "15F7E07727FB6EAD3C6E383B15673A37A876C5674F41CEF66AB0257D769E75F5"
+    },
+    {
+      "path": "Assets/Data/Localization/Player/PlayerText.asset",
+      "sha256": "6B1ACA620AFB9760864530126D9DBF4AD4E4C3230B83AEBAAE548526142BC204"
+    },
+    {
+      "path": "Assets/Data/Localization/Player/PlayerText.asset.meta",
+      "sha256": "308B6DEEBB1CB340865C7E078F2E7E1DCB80AB5D4D2F4F1B2D38717961C8CBFE"
+    },
+    {
+      "path": "Assets/Data/Localization/Shelter.meta",
+      "sha256": "5BF22C637307C4A5E4708205B8750531D66C146D581C20DD6574E07BD7BE4CA1"
+    },
+    {
+      "path": "Assets/Data/Localization/Shelter/ShelterText.asset",
+      "sha256": "F6EB082E6FCDCA8DB0B0110065E97F98D49B8E88AE847E027D6A7679C9797865"
+    },
+    {
+      "path": "Assets/Data/Localization/Shelter/ShelterText.asset.meta",
+      "sha256": "01ACA486AA996EF627189DE204708AAC0A060A7C0C967E9B5C9410E64B6D9BDB"
+    },
+    {
+      "path": "Assets/Data/Localization/Tests.meta",
+      "sha256": "8A4B359DB8C8314AE2A88597B75292C87D7FA050068D8152EBF1747C022519DD"
+    },
+    {
+      "path": "Assets/Data/Localization/Tests/TestPanelText.asset",
+      "sha256": "50F1A7D9BBE4860241040B9113C36AFB2F3F5A85661C082203F2C72F539E918C"
+    },
+    {
+      "path": "Assets/Data/Localization/Tests/TestPanelText.asset.meta",
+      "sha256": "DBC706C87C149CB016F9FC439368C1C31AE959EBE005DD3EB8F81002DA25FFDE"
+    },
+    {
+      "path": "Assets/Data/Localization/Warehouse.meta",
+      "sha256": "7BD4A93DBE76655FB8B9731FB505B05D5E02A9A66054645AE24EBFAE0A5DF87C"
+    },
+    {
+      "path": "Assets/Data/Localization/Warehouse/WarehouseText.asset",
+      "sha256": "3A0222D278C56E720EC895069DE3BB47EC416A7534F330E8BDCBE9E62F14807D"
+    },
+    {
+      "path": "Assets/Data/Localization/Warehouse/WarehouseText.asset.meta",
+      "sha256": "D6BA1237DA67CC24DA66B4160E12382B102B4218F35429821F1C65027136736F"
+    },
+    {
+      "path": "Assets/Data/LootTables.meta",
+      "sha256": "2D3702CE48B5B83006605FDE5481683BDCB770D2F26719F0B77C89F054134B6E"
+    },
+    {
+      "path": "Assets/Data/LootTables/Empty.asset",
+      "sha256": "1F6AFACA763E802469BA816065BDFA337BE33E351E6219D7BC25C49D2F8BBB52"
+    },
+    {
+      "path": "Assets/Data/LootTables/Empty.asset.meta",
+      "sha256": "334CC23069A577F49AB031692FA59530E4E601F6561D89D12AEDA89CD33E4FAD"
+    },
+    {
+      "path": "Assets/Data/LootTables/Guaranteed.asset",
+      "sha256": "E2D4EDEFA2F2B01268F866F3428745C454F1ED247767903DFFD41248CCAFDCF9"
+    },
+    {
+      "path": "Assets/Data/LootTables/Guaranteed.asset.meta",
+      "sha256": "DBFEE06F89A3A3805E942E9358F7733D6BB75EB49B7A35E5F563CD762525F931"
+    },
+    {
+      "path": "Assets/Data/LootTables/MinimumLoopLoot.asset",
+      "sha256": "E0321CE611653F75DFF9058F7ED7C581D25D3DF81F7AE27EB3FF29942604FCBE"
+    },
+    {
+      "path": "Assets/Data/LootTables/MinimumLoopLoot.asset.meta",
+      "sha256": "E58998A095FC75856FD77E5FF1F833C89E317E8C8E9822D10CD42DCEA0B3F18F"
+    },
+    {
+      "path": "Assets/Data/LootTables/Mixed.asset",
+      "sha256": "BF87DD8C93AC8E3AF854DCF3E8EEFFFF9F1A8F7F3649A3BC03D36BE4DDB00ADE"
+    },
+    {
+      "path": "Assets/Data/LootTables/Mixed.asset.meta",
+      "sha256": "9208D4C21DD1947104DB7A5BA184A38F0C9F0E7ED69FA0A7C978776DB8C953C1"
+    },
+    {
+      "path": "Assets/Data/LootTables/RuinsExtraSuppliesLoot.asset",
+      "sha256": "8C49DF3E3888663E90C1075BDEB951B216C281CD99A1DC7D8985ED386491368D"
+    },
+    {
+      "path": "Assets/Data/LootTables/RuinsExtraSuppliesLoot.asset.meta",
+      "sha256": "5A0F3A26BC095D63BC82BB7BB122AB23AF1C52D921962786311FB640C6A777A0"
+    },
+    {
+      "path": "Assets/Data/LootTables/Unique.asset",
+      "sha256": "4CCFA51CD79CA39E485260A4663F4330A4A81085E947ABE6D20DD5E917789628"
+    },
+    {
+      "path": "Assets/Data/LootTables/Unique.asset.meta",
+      "sha256": "997396FC213503DE0B56D95AA92210D9DFF55E71C4AA3036075BE81F5A58B98C"
+    },
+    {
+      "path": "Assets/Data/LootTables/Zero.asset",
+      "sha256": "5DE0823D169514173BD5140B8F29EB87BA6946C25A0B4460B511F55F38657E87"
+    },
+    {
+      "path": "Assets/Data/LootTables/Zero.asset.meta",
+      "sha256": "68871CEFC169E6C2D900C2F93A3F1D20E2A54EC96F6773BB51C422BA028470F3"
+    },
+    {
+      "path": "Assets/Data/Player.meta",
+      "sha256": "170A64EDA6608A6997EA22CDD629BC6D5490036E681EB57F393AA98CDF4C87FC"
+    },
+    {
+      "path": "Assets/Data/Player/PlayerConfig.asset",
+      "sha256": "C06C5554C7FE3EA95BC11A839EDFCFB6E69BA490BE88C105500A3F581D04AADC"
+    },
+    {
+      "path": "Assets/Data/Player/PlayerConfig.asset.meta",
+      "sha256": "2E415331D492D9DD357F3CBB5C13FBB85D572CC9EF1F77884B3F32761B0DBDA4"
+    },
+    {
+      "path": "Assets/Data/ShelterUpgrades.meta",
+      "sha256": "014E7ED8A9E67D77DE0F312395819D0F0B0B3E00A6199E4B2D116F8D9E67D58B"
+    },
+    {
+      "path": "Assets/Data/ShelterUpgrades/FirstWarehouseUpgrade.asset",
+      "sha256": "59664B391FABB4FEA78433BB37E05E0B5CD233E21145DB0A98F6DB69D331D980"
+    },
+    {
+      "path": "Assets/Data/ShelterUpgrades/FirstWarehouseUpgrade.asset.meta",
+      "sha256": "022FC86297AEC649DC419BF1889B5AA747EE3DFDC074AB5E7E35B2FCB9DF6B9E"
+    },
+    {
+      "path": "Assets/Data/Warehouse.meta",
+      "sha256": "99BFBC279C857ADE27D9A9A022D856BA50B86C6677903FCCCB2276BC94052244"
+    },
+    {
+      "path": "Assets/Data/Warehouse/WarehouseConfig.asset",
+      "sha256": "D9694CD7E31F7324BFF752285208BFA0C86E915F446C99D684E6E4E58BB6029F"
+    },
+    {
+      "path": "Assets/Data/Warehouse/WarehouseConfig.asset.meta",
+      "sha256": "203F37713076D091B2D678616E3693092BA24825EF1089CFAD65BFC268841F81"
+    },
+    {
+      "path": "Assets/Prefabs/Backpack.meta",
+      "sha256": "682F0B9EFFEC3DFEEEC7546671F44E7D2B351F886C10A42D75BD9222BAC3F4AA"
+    },
+    {
+      "path": "Assets/Prefabs/Backpack/BackpackModule.prefab",
+      "sha256": "B1FB3F521E21B36A9A292F9CC3B58A2FF44F8870D510189AC91870C1EB78A3CF"
+    },
+    {
+      "path": "Assets/Prefabs/Backpack/BackpackModule.prefab.meta",
+      "sha256": "924FB0F2DB29A2ACD924F4A254080F16713E25BA0E4D625A770AA0D056645216"
+    },
+    {
+      "path": "Assets/Prefabs/Bootstrap.meta",
+      "sha256": "0ED699194A27DB462C6FCA10FA12317F4C84D5AC64283A65EC06926258468C03"
+    },
+    {
+      "path": "Assets/Prefabs/Bootstrap/GameBootstrap.prefab",
+      "sha256": "DCD6755E7A8A4A572AE20FFEF8C860CBFE3492708FE3E9F1C4E118B12980D7ED"
+    },
+    {
+      "path": "Assets/Prefabs/Bootstrap/GameBootstrap.prefab.meta",
+      "sha256": "B4BD8F1494CA2FBA631A7BE66D220963B9B2FFE0A63E9174E4F91EAA210A1D69"
+    },
+    {
+      "path": "Assets/Prefabs/Enemy.meta",
+      "sha256": "8344049DA2695E488CCD533A620C09B2EC9FE3CBC1CB9BCD5F023F911A4D1690"
+    },
+    {
+      "path": "Assets/Prefabs/Enemy/Drone.meta",
+      "sha256": "8F08231C9DDFDADDEEB6E669C5AE96AC53993BF3CD6F6626E4DBDB5AFEC3B68C"
+    },
+    {
+      "path": "Assets/Prefabs/Enemy/Drone/Drone.prefab",
+      "sha256": "016CE442E758223004A406B7FBD546585A1A71E6678BDE3276B8DAC6D69B1262"
+    },
+    {
+      "path": "Assets/Prefabs/Enemy/Drone/Drone.prefab.meta",
+      "sha256": "7373C79FC9230FA996B140D761A8E06DE02E78D0803E5FA2FDAF064B771E4603"
+    },
+    {
+      "path": "Assets/Prefabs/Enemy/Stealth.meta",
+      "sha256": "F56B48828F1691CEAC02CC4270DA607C309A1EA291B745804D193413BCF02251"
+    },
+    {
+      "path": "Assets/Prefabs/Enemy/Stealth/CoverArea.prefab",
+      "sha256": "5D8C238BF9C48520EB8350C5714120CD9920B4FEB963325B6B9123D24AA8B233"
+    },
+    {
+      "path": "Assets/Prefabs/Enemy/Stealth/CoverArea.prefab.meta",
+      "sha256": "F88D986910C3B8F5F21D0DBCE4352032B46569BFBC1D6D295BC5598E3916FF3B"
+    },
+    {
+      "path": "Assets/Prefabs/GameFlow.meta",
+      "sha256": "84640F4C65828CE50F4001CCACE2894B9C47BA1B10ED05FA18F967C76AA357E8"
+    },
+    {
+      "path": "Assets/Prefabs/GameFlow/DeparturePoint.prefab",
+      "sha256": "39A55E3518C15AD33DB6D5DD19D52A3B71BB2B6FEB11AEA055701D3F4E4801E7"
+    },
+    {
+      "path": "Assets/Prefabs/GameFlow/DeparturePoint.prefab.meta",
+      "sha256": "C492E3286D58DA5277DC0B25E13623777387322BA9709CE24C42B20B30E97379"
+    },
+    {
+      "path": "Assets/Prefabs/GameFlow/ExtractionPoint.prefab",
+      "sha256": "8EC0C4E4B7BC8354399EC701AD5557F79CE881B4B1D608CF284D4E0B003A2168"
+    },
+    {
+      "path": "Assets/Prefabs/GameFlow/ExtractionPoint.prefab.meta",
+      "sha256": "573AAE6467FFB5678AC61B557BBC711F80417E1A018A4665CAD9970589109B9F"
+    },
+    {
+      "path": "Assets/Prefabs/GameFlow/GameFlowModule.prefab",
+      "sha256": "534B5DFB7B11C7D852D1EEB86673EEA276938D48AD8BD6CE5C06951EE193506D"
+    },
+    {
+      "path": "Assets/Prefabs/GameFlow/GameFlowModule.prefab.meta",
+      "sha256": "8EC05C35DBCA535F8DDC636B1BCAB6AFC1F4770F56ECA7035E4B925A79A7257F"
+    },
+    {
+      "path": "Assets/Prefabs/GameFlow/ShelterStoragePoint.prefab",
+      "sha256": "BA3CDDBE44BFCF8BB9A619B8438B0F41EBF4584A71423A7BFFA9C8D3A9C90AEF"
+    },
+    {
+      "path": "Assets/Prefabs/GameFlow/ShelterStoragePoint.prefab.meta",
+      "sha256": "30998742C1B296DEF9FED2689732BAF7129E329231B4A99CA1E8EBFB9BD83D01"
+    },
+    {
+      "path": "Assets/Prefabs/Items.meta",
+      "sha256": "9C100306EFBC44947E0A37E0B6C14CC93B0BDFDA9E9DA6183DB450537882430A"
+    },
+    {
+      "path": "Assets/Prefabs/Items/ItemModule.prefab",
+      "sha256": "9EC22B5B8A254E34C037E0A938BC27157080DB6A2B70C68FC0AAE1D1A5DDF352"
+    },
+    {
+      "path": "Assets/Prefabs/Items/ItemModule.prefab.meta",
+      "sha256": "A3421DC2E1153498F125AF75D5614E2E51DD2E1323F773A82030231B518CBEC1"
+    },
+    {
+      "path": "Assets/Prefabs/Localization.meta",
+      "sha256": "11088B1F18C2DA62DA04DC3AA5FC94BF0B04896709B6DB0BCA405BE021ECB4D8"
+    },
+    {
+      "path": "Assets/Prefabs/Localization/LocalizationModule.prefab",
+      "sha256": "85FED05A65A304601F663A9F1476F10061FDFF3CA933146FD55935B37802ED14"
+    },
+    {
+      "path": "Assets/Prefabs/Localization/LocalizationModule.prefab.meta",
+      "sha256": "F7D7A818BCC8264048166C9183C7714457821579DF86C43E27ADA3E740B9B068"
+    },
+    {
+      "path": "Assets/Prefabs/Loot.meta",
+      "sha256": "C82DB3E859A15DA576F15B81EBB7FD779F01A44EA0CFC250D921F09A15F58D71"
+    },
+    {
+      "path": "Assets/Prefabs/Loot/GroundItem.prefab",
+      "sha256": "0E1070ED28A779E5227A551DFA2571675B5582AAB838A4C8F2E850952207DF19"
+    },
+    {
+      "path": "Assets/Prefabs/Loot/GroundItem.prefab.meta",
+      "sha256": "BA35A9EC779F24057C7B608303DE67DDBE4424E992211DBFB767A1DFE6AC4984"
+    },
+    {
+      "path": "Assets/Prefabs/Loot/LootBox.prefab",
+      "sha256": "61E6C21BC8B15A9721A7FEB3CAF7DDEC94AA87311E8C6A808177ED974B7C852B"
+    },
+    {
+      "path": "Assets/Prefabs/Loot/LootBox.prefab.meta",
+      "sha256": "EFB9036D5152C2106CABE3EC546C3FD6D929C2C93E1BD53BFB92EAAE961B587E"
+    },
+    {
+      "path": "Assets/Prefabs/Loot/LootModule.prefab",
+      "sha256": "AB8B0A4B1B72168E704F306B712C77B5BBD5766702276538927F5010D9C920BB"
+    },
+    {
+      "path": "Assets/Prefabs/Loot/LootModule.prefab.meta",
+      "sha256": "0BD5F17187FAA8AF76309ED8BB593B31F423239499C381F579356479822C2AA0"
+    },
+    {
+      "path": "Assets/Prefabs/Player.meta",
+      "sha256": "0BAB4165A436E0F7C26E874E26AD952E5FD82F89C367764A486DC76700E15DBD"
+    },
+    {
+      "path": "Assets/Prefabs/Player/Player.prefab",
+      "sha256": "4AED52ADAA549D2B20E85B4815A170D32B8E902B83C8A983494ED83B57AC249F"
+    },
+    {
+      "path": "Assets/Prefabs/Player/Player.prefab.meta",
+      "sha256": "8D9BCC138A9726DFEC7BE742328E3BA00A885D5AA3DBAEBD18FACE1E3A3FC678"
+    },
+    {
+      "path": "Assets/Prefabs/Player/PlayerCamera.prefab",
+      "sha256": "7456EE6888DE03CFFC87AA52AA31B800867507EAF82C05A91FF850C993F0FD64"
+    },
+    {
+      "path": "Assets/Prefabs/Player/PlayerCamera.prefab.meta",
+      "sha256": "00EF61A4E3B2C53252818DAA239D0DA2BFE0B00C06AF9DACB14824B4AD80B5ED"
+    },
+    {
+      "path": "Assets/Prefabs/Shelter.meta",
+      "sha256": "2501CFB7978A80589373E12BECE1894652F8246D3C5A9577551FA109144ED08E"
+    },
+    {
+      "path": "Assets/Prefabs/Shelter/ShelterModule.prefab",
+      "sha256": "EBE6C49D90A72293DBF4467753ECBDD082C5E4D1989FA25643741A39DFC75AD8"
+    },
+    {
+      "path": "Assets/Prefabs/Shelter/ShelterModule.prefab.meta",
+      "sha256": "AE6BA1E553DE175D6C968F9D9CBB13F2797C8830A5541D9E4D6FB53755F5117B"
+    },
+    {
+      "path": "Assets/Prefabs/Shelter/ShelterScreenDust.prefab",
+      "sha256": "89BC3A6A2C9792FBDFB42A63B9DE70E3C4172A1EB7BDD444BAC98ED4622BE04C"
+    },
+    {
+      "path": "Assets/Prefabs/Shelter/ShelterScreenDust.prefab.meta",
+      "sha256": "9971AFDEBE0D610B831554DBACF98028BBDC68EB21889CF920A8CDE3A6B49847"
+    },
+    {
+      "path": "Assets/Prefabs/UI.meta",
+      "sha256": "4D5C5C89EFD9CD97A155141519000C03C52CC0D97029F948FA1B4E2E892643CF"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Backpack.meta",
+      "sha256": "7FD6F181A55A3BF257685C2F04519DF4C8493C1AEE5F4239207E5266E814A4AC"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Backpack/BackpackCell.prefab",
+      "sha256": "615BA51846E73D0B5B32ED23F742606F4947EA521876A5386941A05EB93BCF6C"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Backpack/BackpackCell.prefab.meta",
+      "sha256": "48B1C42944196A837AC7AC3EC02E1AD0E9F3FB64BFD75206E4DCC33F9EB6E28F"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Backpack/BackpackItem.prefab",
+      "sha256": "1C53182223A50BA32988F38AFA208D15EB67111062C7BEF8BA29D8F8C52E464E"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Backpack/BackpackItem.prefab.meta",
+      "sha256": "90DB0C0D1E62A0B0F7EF647A226A7996B1B8DEACD02F61419472E255F041B7DF"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Backpack/BackpackPanel.prefab",
+      "sha256": "1B3BA833438E4B72BE3149B761543EB9DF43276E828F06E77F901880F69B2F05"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Backpack/BackpackPanel.prefab.meta",
+      "sha256": "73E2BCC597A7F8F783E65D4D22025417B6EF9C9A94F8E44880264E371B52636F"
+    },
+    {
+      "path": "Assets/Prefabs/UI/GameFlow.meta",
+      "sha256": "FDF88F1C995B5442CA1F1528E17A32CD2949EB2134B166D48D1F7C4127A967E5"
+    },
+    {
+      "path": "Assets/Prefabs/UI/GameFlow/GameFlowHUD.prefab",
+      "sha256": "B6C42D626CDABFDC9BAEB65B4FC188841E29FB63DA2368AB650C3067DD4CBC43"
+    },
+    {
+      "path": "Assets/Prefabs/UI/GameFlow/GameFlowHUD.prefab.meta",
+      "sha256": "63BE11031187E1072D0BC149649D2977C4FDE041FDF2EC092285C021D2C5EE8D"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Localization.meta",
+      "sha256": "7F6C7651AFF4372407AA5ED3DAF4116DC77EC2AB0B3708A93C89AE3B2528591F"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Localization/LocalizedText.prefab",
+      "sha256": "5B4A16C5A280205D6D46B1D6453092CD4BDF88DD25B16E60B087E573EE6DA70A"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Localization/LocalizedText.prefab.meta",
+      "sha256": "C10BB4469A63439A5CFA0DEC8C797EC1F3F9CF9C3D8622C1097BBE19D563AD14"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Loot.meta",
+      "sha256": "2926A1FBBDA092E5DCBBB76CF9D5691D619CC94689CA9F4AF9D99C55DF38134F"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Loot/LootItem.prefab",
+      "sha256": "9C5492F163AB7A6887D536A736E160C93D7CFC19EEFAA22398702AABA9B6B96D"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Loot/LootItem.prefab.meta",
+      "sha256": "08DE35C3841E354D0E807F3EF7CBAC1FE4FC37BEDEE4508D004EBEDD9F52F2AC"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Loot/LootPanel.prefab",
+      "sha256": "99E0739C61B56A87F3A7C4C0F84EFD8C3736FA6243F0DAA029F7EC844921A085"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Loot/LootPanel.prefab.meta",
+      "sha256": "984B59ADF5CBD5464382E7D4D0270603AD8F98163E9FB38E85B24FE15F4B2455"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Shelter.meta",
+      "sha256": "535E9923AEC5220455DC2C91FB28C5646241E3750534BCDBFB643FFC4B46A80B"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Shelter/ShelterPanel.prefab",
+      "sha256": "BCD38D3C6DEE7AD8012BD99921C79F2BFEF71C3C1E6E7A1A2B31DF140819D7C1"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Shelter/ShelterPanel.prefab.meta",
+      "sha256": "5666ADE7FCA77FEB7C36CA1B310E39A6FCED8831FDF2224F53602F50B043154D"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Warehouse.meta",
+      "sha256": "BA785A0CF74AF26E72478CF2B4DBDF3A9658895E3177492D1E4F3ADF2B1D7944"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Warehouse/AbandonConfirmPanel.prefab",
+      "sha256": "F996593F3ECB119FEAA6D7654B19CFD4CC995333DE86F59766A13E3651A0A52B"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Warehouse/AbandonConfirmPanel.prefab.meta",
+      "sha256": "FAAC59011DC6E09DA4FC1EB0134364A62FC05CCA36F4202EE4F63CDDC6DBD79A"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Warehouse/WarehouseCell.prefab",
+      "sha256": "F7517B33F2E82DF582AFF73F40365F48AA67283CE83155976243C1BE58D25A5A"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Warehouse/WarehouseCell.prefab.meta",
+      "sha256": "A8216604253A3D540D3F5BB945EBA7A49BCEEDEFDC4131DEA2059F57B02957CB"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Warehouse/WarehouseItem.prefab",
+      "sha256": "612C306A0027FB408BF302C3FA10E9ACC30DA2391BE7F30FEE480D31DA2289C4"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Warehouse/WarehouseItem.prefab.meta",
+      "sha256": "8DF4CE3E704BDC6711D974B8B16EF9A304E3CB990B6797B6D3D04E804C16648A"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Warehouse/WarehousePanel.prefab",
+      "sha256": "22AC3F93B7811C8250B393733EDED77346DDB5FCA5B968059130B83942DBBF37"
+    },
+    {
+      "path": "Assets/Prefabs/UI/Warehouse/WarehousePanel.prefab.meta",
+      "sha256": "F2F8E492FFAB546B95EF8F50D46FEE2F373EF9A217BEE819059950D56F2FB6D1"
+    },
+    {
+      "path": "Assets/Prefabs/Warehouse.meta",
+      "sha256": "F3A87B2DD1A64F5814194CF95827CE6329FBE9FC47D81551E96C231C6BE1E404"
+    },
+    {
+      "path": "Assets/Prefabs/Warehouse/WarehouseModule.prefab",
+      "sha256": "FF6FE186C500AC4BD82DCB364E571CB0A736044BFEC0A947006C266617570DB1"
+    },
+    {
+      "path": "Assets/Prefabs/Warehouse/WarehouseModule.prefab.meta",
+      "sha256": "14103060E201D25CEACC3620CB5DAAE463EDB17F1AAA45369963644309A6C5EE"
+    },
+    {
+      "path": "Assets/Prefabs/灯光.prefab",
+      "sha256": "404A78EE1338EF99C087C82C3F6AF4727E05E2E4081309727B16D6A7DB1DF782"
+    },
+    {
+      "path": "Assets/Prefabs/灯光.prefab.meta",
+      "sha256": "FE6073FFD9442E862DA0F0360AB378AE2DE1AE18F551F79224DE8C4D94818511"
+    },
+    {
+      "path": "Assets/Scenes/Bootstrap.unity",
+      "sha256": "C5E5CBACB10DA5B087420D64CA42761C2822627EFF5C160ADECE1E04DE4C9DED"
+    },
+    {
+      "path": "Assets/Scenes/Bootstrap.unity.meta",
+      "sha256": "7949600BE4F1DD1DCA13B37C142445FE5EB3F62518153EA2BA1B725AD567F1D3"
+    },
+    {
+      "path": "Assets/Scenes/Ruins.unity",
+      "sha256": "A227EAA4EDB308BFC891FBD9C0D02B5901D1C1E53F762B589481ABD612638511"
+    },
+    {
+      "path": "Assets/Scenes/Ruins.unity.meta",
+      "sha256": "71BD0E68CE9B34EF682661D60BCD36605007FE6FFE66D8FD09D1A56542A66594"
+    },
+    {
+      "path": "Assets/Scenes/SampleScene.unity",
+      "sha256": "27C05A6B99D302B96E43169A6EF96122CDB360AC85ABD6F0C481102B06CA2C97"
+    },
+    {
+      "path": "Assets/Scenes/SampleScene.unity.meta",
+      "sha256": "B5815A6B12AFAF810577BC89041C4CE46516C7CD6609693F8DB616F8E5584D80"
+    },
+    {
+      "path": "Assets/Scenes/Shelter.meta",
+      "sha256": "166118BE3DDEE09B33DC192F5723E75FD1B579F1B61DA33CB69336EE07419566"
+    },
+    {
+      "path": "Assets/Scenes/Shelter.unity",
+      "sha256": "9A6F3DDE347095ACE30FC0F77F0E7D54160D0879316D2882360282A0EE77EBCD"
+    },
+    {
+      "path": "Assets/Scenes/Shelter.unity.meta",
+      "sha256": "E32C6E5FFC8F10D2BB611941967203616E52F76353A7722CF717703EDD4D2889"
+    },
+    {
+      "path": "Assets/Scenes/Shelter/Global Volume Profile.asset",
+      "sha256": "92BD722219978A1A68056ECBB2D200A3B706312197C160AD1C757710B14FB1DD"
+    },
+    {
+      "path": "Assets/Scenes/Shelter/Global Volume Profile.asset.meta",
+      "sha256": "F90FCD52F6D97601CAF89BFAE74BE3E6826E9D8B837AC394F305BE23999FE07E"
+    },
+    {
+      "path": "Assets/Scenes/Tests.meta",
+      "sha256": "6E0C9AC4C451EC4BC3AD05F32FDB2BC1340517A3144C20B31B96677D499853A1"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Backpack.meta",
+      "sha256": "0ABDD7FCA8D0A3797A99915E59C17548F9861A800E7B4CF6D1E37FFB0B824143"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Backpack/BackpackTest.unity",
+      "sha256": "F6CF6D92C805B1D06B1FD8DF36BF94C743A767395AC2BE15E0497EDB65DA3E40"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Backpack/BackpackTest.unity.meta",
+      "sha256": "A463B4A292ED09D1C93D2F191DC7F7E68E22C3D73AF6F6933970B814A99B0A1C"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Base.meta",
+      "sha256": "2BBA6F0208D3935395AC01F971D8B6EFFC76DB08B098F8BBC260CCDF6A9B062E"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Base/BaseTest.unity",
+      "sha256": "79A6EAB44A3649D33DA13A6F63E9C746921DC41D0547640044D104DB3F23243B"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Base/BaseTest.unity.meta",
+      "sha256": "DECA6E6DAE4D7947BEAD518AC73E42E3212955AB678366AEA75E18655A4877CC"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Enemy.meta",
+      "sha256": "76F2249999CA78FE5CBE0DD3E64F3B528CC28F8D6A48C09A71F71F1CF07B9A2F"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Enemy/EnemyTest.unity",
+      "sha256": "718266BEF6D0A2B9165EA62725AA73346EAE8FA4E7F4DFB3C9F8135A7AFA6473"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Enemy/EnemyTest.unity.meta",
+      "sha256": "C0A9DAB23896CA347B2C9EA4E221023A532CBF25F6279A51A02480E474543ACD"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Items.meta",
+      "sha256": "2B7E58589D1694D1AC0B4655F7EF0CC48E35DF82E0EDA3B47519A94A0DCF3816"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Items/ItemsTest.unity",
+      "sha256": "37ADC7525EB747CA31A0E9204D4E318D1252D42AF5EED942028FCB42A4D24E1F"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Items/ItemsTest.unity.meta",
+      "sha256": "6D25FF21E24AC19D834188B163CAEEE1821631E88305DE137CAFC972E47B8BBF"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Localization.meta",
+      "sha256": "67F743104B1F7CA3993454431152DFE450979D75F8409273ACB986531D39DD59"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Localization/LocalizationTest.unity",
+      "sha256": "D667F8618A9EB09A59219F6A64B47A925F96CAB63778AC51361982843FEE044A"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Localization/LocalizationTest.unity.meta",
+      "sha256": "3F457135A5551F76BDF1167777F2388A2028BEA90829EE37AA20740391716848"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Loot.meta",
+      "sha256": "6FA755528185A669CA5E3BE4E774539CF613B1884F37764DA8044ECD38CEDB52"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Loot/LootTest.unity",
+      "sha256": "57470454AD62CA0D9DF21D45A42CBA67EC9E0E195FDE7B7F34A8587E76B1E002"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Loot/LootTest.unity.meta",
+      "sha256": "5E5BC4F24F5B7ADC037649C6F371C629B9DDEDBFEAFE8A8748A54C4DB026E088"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Player.meta",
+      "sha256": "435C621C5159C9D0E20D86AB98BD6EB2519AB84F070C64715FBC5B98591BD204"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Player/PlayerTest.unity",
+      "sha256": "A1C5D86611E1F7167CD4F5194BC2034615581C7C19C5AD46CC9A774F90C4E4C1"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Player/PlayerTest.unity.meta",
+      "sha256": "D0C8D130B39642FC141319782AC1010FF15048B0CA60BDC2B3C62413B5B94214"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Warehouse.meta",
+      "sha256": "9DC96E4BD22FB0979E434FEFB75C1D2A3813A43D7D9D6145B53BD5C5D918ACA2"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Warehouse/WarehouseTest.unity",
+      "sha256": "FAC095B74374FBFCF8F3C6670889F948CA41E0500E94E1E91B0D261F588B3A8F"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Warehouse/WarehouseTest.unity.meta",
+      "sha256": "3C0706359D0390E5A253C5FD702D42E49DA5B66AC0638821C9495A623E3B79D3"
+    },
+    {
+      "path": "Assets/Scripts/Backpack.meta",
+      "sha256": "46A93C51FD2EB5C787AF135A358F3107E70C4E362F2F0A3635AADBE275874FE3"
+    },
+    {
+      "path": "Assets/Scripts/Backpack/Logic.meta",
+      "sha256": "87776AB0066CEF377F4C2C1A495095A63F2465D7F6C35145927FC0BFE39CEFEB"
+    },
+    {
+      "path": "Assets/Scripts/Backpack/Logic/BackpackGrid.cs",
+      "sha256": "1B1698A898C3D66B3AE9163DF11626F3F9562007A69E517A6C53E5ECDF7B7C4C"
+    },
+    {
+      "path": "Assets/Scripts/Backpack/Logic/BackpackGrid.cs.meta",
+      "sha256": "94716257B8698D6B76CA38AAB43BB216E490FE9BF3A5CB538208618C0203493B"
+    },
+    {
+      "path": "Assets/Scripts/Backpack/MonoBehaviour.meta",
+      "sha256": "5522B0A379372BC0EB45E742E16A8C8C23B9F7880D2ABE6B3684A3537111588F"
+    },
+    {
+      "path": "Assets/Scripts/Backpack/MonoBehaviour/BackpackItemView.cs",
+      "sha256": "07237A8A8033DBF49E4DDF36A53B92B14D80052FEC6E0E136F2DDE431A732A55"
+    },
+    {
+      "path": "Assets/Scripts/Backpack/MonoBehaviour/BackpackItemView.cs.meta",
+      "sha256": "B195C1C9DD5168E15D5E71531C98D8CD29640158D842DF4E926E1DBE51596F05"
+    },
+    {
+      "path": "Assets/Scripts/Backpack/MonoBehaviour/BackpackManager.cs",
+      "sha256": "346BAC713BFC45DE0E99F0DFFF29F7E6A5EE2C20D4335E4427147019A1F627CA"
+    },
+    {
+      "path": "Assets/Scripts/Backpack/MonoBehaviour/BackpackManager.cs.meta",
+      "sha256": "A936088D617156F048691208E40059EE4497C5A917474D192959F5236E226572"
+    },
+    {
+      "path": "Assets/Scripts/Backpack/MonoBehaviour/BackpackUIController.cs",
+      "sha256": "8978D707CDB5EAA4268A4F5DA28B2287C8432B6D01CA4FFD2CB87BB210F6E234"
+    },
+    {
+      "path": "Assets/Scripts/Backpack/MonoBehaviour/BackpackUIController.cs.meta",
+      "sha256": "B27BF9E1E9311E98FA920E05522227C90D62EFED32D4DF04B037ECB87C1E266C"
+    },
+    {
+      "path": "Assets/Scripts/Backpack/MonoBehaviour/BackpackView.cs",
+      "sha256": "78DF08DAB1D99F63CE598C170F3EAD0B33F700CE377F9CC6DE8A83DEB54C1085"
+    },
+    {
+      "path": "Assets/Scripts/Backpack/MonoBehaviour/BackpackView.cs.meta",
+      "sha256": "306718602B4328BCE993AA8A6C606BAFF40AAA614D3E5FA3BF0101C3C2277CC4"
+    },
+    {
+      "path": "Assets/Scripts/Backpack/MyPrecious.Backpack.asmdef",
+      "sha256": "F22471C465993EFB33137DB275E5468225F6CE416C44956E7164E372CD6B01AD"
+    },
+    {
+      "path": "Assets/Scripts/Backpack/MyPrecious.Backpack.asmdef.meta",
+      "sha256": "1B8DA6C5B7DFABBC390E950B31D87DD8BFC2D8B4A29D38B8D68E5A6758AFDEAA"
+    },
+    {
+      "path": "Assets/Scripts/Backpack/RuntimeData.meta",
+      "sha256": "4A507DC548190CEF9CB384128B27E8725F8ED4BAC9D16204915D4B48CE510CA5"
+    },
+    {
+      "path": "Assets/Scripts/Backpack/RuntimeData/BackpackPlacement.cs",
+      "sha256": "0B8610E100752D87CAEA1838BE23576750AC84549976EEE14FEE3DFA33D36AF7"
+    },
+    {
+      "path": "Assets/Scripts/Backpack/RuntimeData/BackpackPlacement.cs.meta",
+      "sha256": "EBBBF1149CE64F38B42380758B4DE313EB39227B0055B975D187268CB878E292"
+    },
+    {
+      "path": "Assets/Scripts/Backpack/ScriptableObject.meta",
+      "sha256": "4DD7B37AC2CB20545C27DB91BCB8EBFA62138C86A50D9E849FFE46E34375D709"
+    },
+    {
+      "path": "Assets/Scripts/Backpack/ScriptableObject/BackpackConfigSO.cs",
+      "sha256": "371A9A1047E29C1AF12FB247AD9CE56005A4BAC03B9E52A78760F1439495C2D4"
+    },
+    {
+      "path": "Assets/Scripts/Backpack/ScriptableObject/BackpackConfigSO.cs.meta",
+      "sha256": "B5950223EA5FF8B03474F3B9D92FA01624A8C82B833B0762D700B733DAAF1751"
+    },
+    {
+      "path": "Assets/Scripts/Bootstrap.meta",
+      "sha256": "5E9B2D72850AD0EC226B8B9C6C8144F976A9DDB38AFFD8054EA59915B471DC5D"
+    },
+    {
+      "path": "Assets/Scripts/Bootstrap/MonoBehaviour.meta",
+      "sha256": "8293214AB5A7B1EC4F668E911799D8950D3105B279C6720736D2CE2ED73264EF"
+    },
+    {
+      "path": "Assets/Scripts/Bootstrap/MonoBehaviour/GameBootstrap.cs",
+      "sha256": "306034A23BB8CBE9BE79B5D7A05A8A80F39FF239631CCA9AF782623624BE3CB7"
+    },
+    {
+      "path": "Assets/Scripts/Bootstrap/MonoBehaviour/GameBootstrap.cs.meta",
+      "sha256": "19AC78D93615DD3D40CB1D9906AC9EA2A4456B748E670111984B5AD079C09466"
+    },
+    {
+      "path": "Assets/Scripts/Bootstrap/MyPrecious.Bootstrap.asmdef",
+      "sha256": "67FA7FC8EEF531F20C378F1DC316CD51439F428E646CC489A89ADAFFC9A43A8D"
+    },
+    {
+      "path": "Assets/Scripts/Bootstrap/MyPrecious.Bootstrap.asmdef.meta",
+      "sha256": "F883D80CC021D29AF9E6AA2CD920D4C83955AC6F41F160FB71D83373422232E4"
+    },
+    {
+      "path": "Assets/Scripts/Effects.meta",
+      "sha256": "BA9A4FD967065730CD3C62333CEC2378D97EDC7479BDA4F63276BF83E1975872"
+    },
+    {
+      "path": "Assets/Scripts/Effects/MonoBehaviour.meta",
+      "sha256": "B7CB54FF030B807DE2A4DA6DD7CB40BFC4005676A8CDBCD44B1638B9D9AFFFFF"
+    },
+    {
+      "path": "Assets/Scripts/Effects/MonoBehaviour/LightFlicker.cs",
+      "sha256": "FFCB0F069DE0BC1B147050CE18614AB8819B33B49E537DA7A5D813EEBF911004"
+    },
+    {
+      "path": "Assets/Scripts/Effects/MonoBehaviour/LightFlicker.cs.meta",
+      "sha256": "EEDA49B91F5D276816D867031E207AD615F1B503A1FCB11DDDA13D4664150473"
+    },
+    {
+      "path": "Assets/Scripts/Enemy.meta",
+      "sha256": "2ED8C18A50677DDB4998D841FBA7CDA8987CA9ED63B3D7E3391BAB98BC3B91E6"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone.meta",
+      "sha256": "E87D66F471DAC34A978943C4154BFADE436DF661A39779559521D788C9F1E533"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour.meta",
+      "sha256": "F45D9AE96F04155BB82BF8C2E57E5EE90AFE6B3139DD835B4BE0031B763F2CE4"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs",
+      "sha256": "CEFDBA4C3422B22C1C45DFFE7DDCF70EFEFF599C2EDB3C3B3BD4C786375B8588"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs.meta",
+      "sha256": "E20128ABB1EAD818FC20A49DD9120C7C5B97A4ADB7D028FFA7A251E45E32AEEB"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs",
+      "sha256": "EBA65D068F20AD4AEB5AEA8B6985F4AE43A1F7D1CD092E35F6ECFABE06A5CE27"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs.meta",
+      "sha256": "B0F129DCC8127D55CBD574D65A8A3BB8BA5100184661184FF46C3CA076905C43"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneStatusLight.cs",
+      "sha256": "9E1A018A6FEB940D3837A8F20AD370A28C4E0A11A8C17FD3B906800333FE1AEF"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneStatusLight.cs.meta",
+      "sha256": "6DA0307653A5DFA41782EF957F131A54E042D35054D7CF3D1A5E8AC426A9CD6A"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs",
+      "sha256": "17C7BCE9799DC9B3B45E6300D01D5B03BC61108A4EAD4934E1507D3643B68ED2"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs.meta",
+      "sha256": "8C684DB24C4693A940C4525A27CD10F27CB7BF7836BC05C9BE30488F7684873C"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/ScriptableObject.meta",
+      "sha256": "3EF2C70E4596C28653B353647FEB0B8E6E0FA3A4FBA192780CD21837C4CE9448"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/ScriptableObject/DroneConfigSO.cs",
+      "sha256": "B557556359825650B9A9EA1046165E3EE3D1A98CDF794FB2A3BA4E1AD64B6CED"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/ScriptableObject/DroneConfigSO.cs.meta",
+      "sha256": "D344F2B071910590BEB40D6C7DC28045D99FC79939DE5BABF34FBABF680598B7"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States.meta",
+      "sha256": "D474F3DC9F81A46965728FB1A2649BB2207E9A248AE6732320C38708726EF2D9"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneAlertState.cs",
+      "sha256": "62A1935E52555C7E80406CCE11772953381292EEACBAB363CBA24461956136E7"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneAlertState.cs.meta",
+      "sha256": "E913406808DF569D43CCDD331B10A1E63B9BCCD459B483C4097A7FCE26B504DA"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneChaseState.cs",
+      "sha256": "D095731C5B202C4116D674630A562029FE648A36D005D476DEB575D4E43DED2D"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneChaseState.cs.meta",
+      "sha256": "AA9BDD96D8C7FB3966C5B98AA9BAECC69D314150A9B76EF08D2909955EDB0409"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneExplodeState.cs",
+      "sha256": "11CBBE19B35D6F0AB8DC169A86B721A8941F28038A492E9A2E72755CFB4E7410"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneExplodeState.cs.meta",
+      "sha256": "94CFD1B0FF284571C70C5FA5D7C3C210BA705DD268BCB34CBB47FB0CA52CD7EC"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DronePatrolState.cs",
+      "sha256": "880DDF2B727D755FD628DBFFC34BFD5CF2875FB88C49464B19C92AE8CE460D7A"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DronePatrolState.cs.meta",
+      "sha256": "B1E7871D7E926424B915D6077224ADA5CF86496EE475EECA3C45522C0C418686"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneSearchState.cs",
+      "sha256": "C62A431EBB14DB0E5148E335FF10328B944C5E0B58FEE032ED59E68D0F66F6B9"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneSearchState.cs.meta",
+      "sha256": "913E19270631C4094335932887BAAFE6812A8B539F132B9198E4D4A926D17C41"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneStateBase.cs",
+      "sha256": "FCD19A78094570856E71189BF3EA3192F119067CEA4D9919F7E15E320B68311D"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneStateBase.cs.meta",
+      "sha256": "1B8C8DE8934FBEC34F8A59EF401A558F50836D9693B75072C9D04BD4B522AF97"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/MyPrecious.Enemy.asmdef",
+      "sha256": "C8E0969EA0402FE2EC920B3CF4E0ACB80697C2BB81BFE78174B35DE735AFC630"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/MyPrecious.Enemy.asmdef.meta",
+      "sha256": "C9AB429708B4FECAB9DC1E9B09C9699A49AC8C11C6BEB040A377BC971A3B3E41"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Stealth.meta",
+      "sha256": "90E6EE8E91E926D83358501FC47C2D7551CCF0F10BEFE2B3E7D3D6DBCB9DC728"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Stealth/MonoBehaviour.meta",
+      "sha256": "0292B3EC04203BBD3D1775D6DC82B8591526C3E47E4606A902C25BB1D97F120C"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Stealth/MonoBehaviour/CoverArea.cs",
+      "sha256": "F70D62D4DEFA7AFE38F9F66B43A2CDA08C4740E641F9FD7274D08388E148C17C"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Stealth/MonoBehaviour/CoverArea.cs.meta",
+      "sha256": "7AF0750B4D6A3EE51C77557F289268E2B43E66C8627C43131D312D2A4DAD71E5"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow.meta",
+      "sha256": "ADAF7591E59E11012668058D08D13984A7104DF26ED134D0E5EA18AF2F459535"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour.meta",
+      "sha256": "B4178CFCA1515D332C1C4116D64BEC8414651098B4BCC2826F3607FC105AC5BC"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowHUD.cs",
+      "sha256": "E430481D146E43846C767C18207638A6F5876CD13797062BB599FAD5E6DB3D54"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowHUD.cs.meta",
+      "sha256": "A18D743BD728AEC91B9173803931DA868D7BBF2D75F9E7F53E9B3DB5DD6AF07A"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowInteractable.cs",
+      "sha256": "4C8299AF84C7B66CC616888C8591ECEE7067F19745E7F7A23EA3DF3B1C24E252"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowInteractable.cs.meta",
+      "sha256": "2E80D49A7094FF09990AA028765AF705294A02D186ADD74D2BF2C60C1C1D1BA9"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowManager.cs",
+      "sha256": "699DFB6872B9FD0FD55401B289120BD05D900766031D97D18D3146ED63B2D7A5"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowManager.cs.meta",
+      "sha256": "21A1565C8D783501970235437F5E1008A56DBDA0CBF2A732CD583349D83028C1"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowResponsiveLayout.cs",
+      "sha256": "1FBE48CB7822F2D66B0CC6316993F812D461A4A06AC899842A84F9F46CF63297"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowResponsiveLayout.cs.meta",
+      "sha256": "5743EA9E789266047BDD9DD66F826826D04D93F7E626692358AA6B8CA6BBBAF1"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowSceneBindings.cs",
+      "sha256": "7F498E295BB468789D74A00EF94674422BBDA9D73A71546FDEB0D558AF291CC3"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowSceneBindings.cs.meta",
+      "sha256": "C32B9975E96E68B2D4384B8998FB1ED59280DBBCD71A2477AEF343A02CD9998B"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MyPrecious.GameFlow.asmdef",
+      "sha256": "4E8289B1297C0C67A4B14C84A4E6FAFC59EFC31F287DAC518724C525F3F0743B"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MyPrecious.GameFlow.asmdef.meta",
+      "sha256": "82A43613D9838D5E6B82EBE99F7C3ACE59EF4A1DBC12E90014DE8170814EF6A9"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/RuntimeData.meta",
+      "sha256": "56A337591969CCA43051ADD76B90E3B2F092121E6CB3BE732930DF1251BC4EFA"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/RuntimeData/GameFlowStage.cs",
+      "sha256": "305D46A05C05703CB9DFAE870CC22CAA285E6BE89781886122F3BC0FEADDD3B0"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/RuntimeData/GameFlowStage.cs.meta",
+      "sha256": "49C0E63941304D5336BF15338E56EDD78622DD2572CB02E5EEFCDE863E2C6DDC"
+    },
+    {
+      "path": "Assets/Scripts/Interaction.meta",
+      "sha256": "A9581BF04671916B6374A6AF55C4EEABF6E0D672F9F217A0D72EBD5D9F5927B7"
+    },
+    {
+      "path": "Assets/Scripts/Interaction/MonoBehaviour.meta",
+      "sha256": "3371B90DD6616ED5295609792022D434287BC6D442CDE0492E8120C01EB85CB5"
+    },
+    {
+      "path": "Assets/Scripts/Interaction/MonoBehaviour/Interactable.cs",
+      "sha256": "102DD32455397788C3474CBCFF3B1D8F298458E09CEE7618410B2C395B132AB6"
+    },
+    {
+      "path": "Assets/Scripts/Interaction/MonoBehaviour/Interactable.cs.meta",
+      "sha256": "4FFB7247EFCF33A7D73F33490FDC0A95D1CC2C704951A089847B57828C495A1D"
+    },
+    {
+      "path": "Assets/Scripts/Interaction/MonoBehaviour/PlayerInteraction.cs",
+      "sha256": "187C638EF6504C5D603E5A58A552FDA7B222D735FFC5CA0B80E34D48488AC873"
+    },
+    {
+      "path": "Assets/Scripts/Interaction/MonoBehaviour/PlayerInteraction.cs.meta",
+      "sha256": "580E00B9A84099300D82A42A2E09C37505770CBCD5D1683D8AE088A962CD4BE7"
+    },
+    {
+      "path": "Assets/Scripts/Interaction/MyPrecious.Interaction.asmdef",
+      "sha256": "DAB81AB8AC1522658511AC92D8B7D0E704F1184E6FCF9DAF7A0EB90C407CF4B7"
+    },
+    {
+      "path": "Assets/Scripts/Interaction/MyPrecious.Interaction.asmdef.meta",
+      "sha256": "8CC10A54FF01FE762F71FEDBBAFDF306D5710B365DC8A9BA1E9F5A07D529A603"
+    },
+    {
+      "path": "Assets/Scripts/Items.meta",
+      "sha256": "8EBB72C1EE3E2DB6CF16E13FB17970C639FE86D7231EDDDB627B0BDD01B8F8D5"
+    },
+    {
+      "path": "Assets/Scripts/Items/MonoBehaviour.meta",
+      "sha256": "185673331FC9C0B447715F4B5D9656879DBBF8006F71DC77E371880ACB772EE3"
+    },
+    {
+      "path": "Assets/Scripts/Items/MonoBehaviour/ItemManager.cs",
+      "sha256": "1F65B8FFE2857C3DFDAEF71E78D1D39A55BE3479079AA77A75D9E6C7EB2D6281"
+    },
+    {
+      "path": "Assets/Scripts/Items/MonoBehaviour/ItemManager.cs.meta",
+      "sha256": "DBEF94D5D1EC6FD4D10A76F4E994582FD292CCE696C271A630CB8AED39192394"
+    },
+    {
+      "path": "Assets/Scripts/Items/MyPrecious.Items.asmdef",
+      "sha256": "894CD67ACC8E5ED189ED68F36421C463C3D74B310143BE9E3C879B2F55D10BD9"
+    },
+    {
+      "path": "Assets/Scripts/Items/MyPrecious.Items.asmdef.meta",
+      "sha256": "CB1F28FE988EAC6D50E46E90FF69497E4B8BEDF755F5AD5263FBB53E86755E37"
+    },
+    {
+      "path": "Assets/Scripts/Items/RuntimeData.meta",
+      "sha256": "708454723C548724C9C5F8B60EAE17E33F568659887C58685708CFD88BFC1E37"
+    },
+    {
+      "path": "Assets/Scripts/Items/RuntimeData/ItemInstance.cs",
+      "sha256": "591CBC63AC69B260B5347790C3E6F21D10EF88BC16C67BCA203521586FE5DBBE"
+    },
+    {
+      "path": "Assets/Scripts/Items/RuntimeData/ItemInstance.cs.meta",
+      "sha256": "F501D5E334FC2E638EA0FE0E2AF69E83F96B23CED1FF687EEF2FE74964531022"
+    },
+    {
+      "path": "Assets/Scripts/Items/ScriptableObject.meta",
+      "sha256": "134EE7DDCB014A0CEE83A9D5B96274000EE67EC34EE20DF9962BA2EFB9FE8B35"
+    },
+    {
+      "path": "Assets/Scripts/Items/ScriptableObject/Effects.meta",
+      "sha256": "8A5024BB568D7251FA04050752148D2434EC2A03F634AEEC4E3A9595CCBF0F20"
+    },
+    {
+      "path": "Assets/Scripts/Items/ScriptableObject/Effects/HealEffectSO.cs",
+      "sha256": "A5B084616ADB53A579D2FE5568871A45C171C1AAD5C3797B1A47409E30ACAC71"
+    },
+    {
+      "path": "Assets/Scripts/Items/ScriptableObject/Effects/HealEffectSO.cs.meta",
+      "sha256": "73458047076FDBD066178CB26960E717C126104EE089705A311ABFE263ACE8C6"
+    },
+    {
+      "path": "Assets/Scripts/Items/ScriptableObject/Effects/ItemEffectSO.cs",
+      "sha256": "598BFED4A91BB7C94419557474EA2B3AF5085BA7F77C4A91B4D69838071CEFCC"
+    },
+    {
+      "path": "Assets/Scripts/Items/ScriptableObject/Effects/ItemEffectSO.cs.meta",
+      "sha256": "A323888AE476224B77F23465986DA29D9E4D65BCEB6E7B653967D9285571F310"
+    },
+    {
+      "path": "Assets/Scripts/Items/ScriptableObject/ItemDataSO.cs",
+      "sha256": "8F9F1ACA3C2FDAAEB94D4C55721E5B6B1E937CE1377CAD563EA52E463C1876AA"
+    },
+    {
+      "path": "Assets/Scripts/Items/ScriptableObject/ItemDataSO.cs.meta",
+      "sha256": "05471E57CBBDFDB0D9C21FFF7F84F10BB49351EE00E3FC2453461A177A639893"
+    },
+    {
+      "path": "Assets/Scripts/Items/ScriptableObject/ItemLibrarySO.cs",
+      "sha256": "F6F67A6088DB81771F03B7287973C871F84341192074C1FCA500189736660F0F"
+    },
+    {
+      "path": "Assets/Scripts/Items/ScriptableObject/ItemLibrarySO.cs.meta",
+      "sha256": "1F1B952908A247B55582BBD23FE9A1AB9CC70FAA1BE04F93B57D9395C0CE986A"
+    },
+    {
+      "path": "Assets/Scripts/Items/Transfers.meta",
+      "sha256": "1C0FD64FBB0741A083544C6091532021C89F67B3A065B8F14AFB8499574DE030"
+    },
+    {
+      "path": "Assets/Scripts/Items/Transfers/MonoBehaviour.meta",
+      "sha256": "5BE1951FB6826CF6ADF11774B62F0DE09F2CBEE87F942058BD11F4A725339524"
+    },
+    {
+      "path": "Assets/Scripts/Items/Transfers/MonoBehaviour/DiscardConfirmationButton.cs",
+      "sha256": "6683C61EC93BF3D0CB4FA8D5B3CAE18563691E521FCFA7DB6A5F9F5A178F93FE"
+    },
+    {
+      "path": "Assets/Scripts/Items/Transfers/MonoBehaviour/DiscardConfirmationButton.cs.meta",
+      "sha256": "7B0FD490CD0D962A2163AA2A7CE29EC5C36288E6A62FCD00310B7831EF0A6BCE"
+    },
+    {
+      "path": "Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs",
+      "sha256": "C9547E96908FF577ADA647AC5387A9070A3E16789E006B4C7F393131567839C5"
+    },
+    {
+      "path": "Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs.meta",
+      "sha256": "D54E6EBC879D63C48EEBCBBDF9FC46E4050BE069CCB6A2DD5FE1096A08EA0692"
+    },
+    {
+      "path": "Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferUIBridge.cs",
+      "sha256": "32139B77CAA90173A02019B5039D6288DAB13EB07D111960F07875520CC840E1"
+    },
+    {
+      "path": "Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferUIBridge.cs.meta",
+      "sha256": "81916BB6477BC665DDB3C93F74ECF5920A5FDF03ACF2295ED340E3B0FBB55788"
+    },
+    {
+      "path": "Assets/Scripts/Items/Transfers/MyPrecious.Loot.asmref",
+      "sha256": "D9F1713B70C256FA5FB58B9F8100E5AA81F8EA64F45B2A58C82407710DC41B95"
+    },
+    {
+      "path": "Assets/Scripts/Items/Transfers/MyPrecious.Loot.asmref.meta",
+      "sha256": "A5A80811F31D188EACA12958A1B63E6D05F9B09A42E7307A28C3756439F4E5F0"
+    },
+    {
+      "path": "Assets/Scripts/Items/Transfers/RuntimeData.meta",
+      "sha256": "92E9F4DAB2913068E5395E37B98A8D7B5E437F6EC09BCC6180031B99D39C726A"
+    },
+    {
+      "path": "Assets/Scripts/Items/Transfers/RuntimeData/ItemTransferResult.cs",
+      "sha256": "74A03379447AE32D687528CD977402EAA29B5097A23C76B941460393EB16A457"
+    },
+    {
+      "path": "Assets/Scripts/Items/Transfers/RuntimeData/ItemTransferResult.cs.meta",
+      "sha256": "9CE695D98F14A324FB774D166C96A6D7A5C1E32741349F2201BD1747650087C2"
+    },
+    {
+      "path": "Assets/Scripts/Localization.meta",
+      "sha256": "AE45E76FBF176040A6460A1D467765A127E3CEAEBEBDB68896A2576EB5319A05"
+    },
+    {
+      "path": "Assets/Scripts/Localization/MonoBehaviour.meta",
+      "sha256": "7AEACD462D1EBD9C966F372038BBD458CBECF475D9FC40206241165F0CA50A3D"
+    },
+    {
+      "path": "Assets/Scripts/Localization/MonoBehaviour/LocalizationManager.cs",
+      "sha256": "DFB6E3D0222AA463F826DA2B7D5D1BC6CE163E5F006515FEC4847AD0ADFE7AA9"
+    },
+    {
+      "path": "Assets/Scripts/Localization/MonoBehaviour/LocalizationManager.cs.meta",
+      "sha256": "59F6796C613B2CAC0CB5F3F9FD14A752CA48A59EDB5233C792C0097DDF09ED55"
+    },
+    {
+      "path": "Assets/Scripts/Localization/MonoBehaviour/LocalizedText.cs",
+      "sha256": "3994BED3CE9A06E8DCF36C6F123B0CABE8CED250D95334895BF920EF4D49C3E2"
+    },
+    {
+      "path": "Assets/Scripts/Localization/MonoBehaviour/LocalizedText.cs.meta",
+      "sha256": "48A0EFBC594E0D3AF00E0947903901D3B81D391B7047EEE23D70A94C9BF5A005"
+    },
+    {
+      "path": "Assets/Scripts/Localization/MyPrecious.Localization.asmdef",
+      "sha256": "CB31E0B247938B08E86F2344A3C294BDBC28960EADE62371E214878E94FAFA6B"
+    },
+    {
+      "path": "Assets/Scripts/Localization/MyPrecious.Localization.asmdef.meta",
+      "sha256": "3FD9BEAF39A2476EE15CD45FDD3CB6A3E97E663EEBD21A32A8760743CF2F5617"
+    },
+    {
+      "path": "Assets/Scripts/Localization/RuntimeData.meta",
+      "sha256": "7F958326BEAC9FB56C3EEF83F350E6AE826914C809664DAB9860542BFAB1389E"
+    },
+    {
+      "path": "Assets/Scripts/Localization/RuntimeData/GameLanguage.cs",
+      "sha256": "3164117F7CBFB597371ADEF76171A219CACC723274A74C87ADFBBE5578D27215"
+    },
+    {
+      "path": "Assets/Scripts/Localization/RuntimeData/GameLanguage.cs.meta",
+      "sha256": "E969CB17CD7A932E165AD013E6833F4F41200AE282A32FA847AAF5FFD847D6A2"
+    },
+    {
+      "path": "Assets/Scripts/Localization/ScriptableObject.meta",
+      "sha256": "D3D462484258FBAAEF6FC835BCCA15ECE9A697AFAA219DFC4F96007676DB3A73"
+    },
+    {
+      "path": "Assets/Scripts/Localization/ScriptableObject/LocalizationTableSO.cs",
+      "sha256": "F1C657B25C3A8B9AA89FA31054DDC7806997859C7FB3406C00EE669A7D16629D"
+    },
+    {
+      "path": "Assets/Scripts/Localization/ScriptableObject/LocalizationTableSO.cs.meta",
+      "sha256": "3917E9052859EB3FA2328C18C1B688BA9133251E076C0EB6472A4F4EE5EE9453"
+    },
+    {
+      "path": "Assets/Scripts/Loot.meta",
+      "sha256": "FDC85FE21F5B4E9797D5F967E4A3FD17B596CE6BC5ED7F15FDE5E7AE314BFC6D"
+    },
+    {
+      "path": "Assets/Scripts/Loot/Logic.meta",
+      "sha256": "829D2507ACFEE94F2573DEC76C0865773FC9731717471DDE09FB15633F3FA527"
+    },
+    {
+      "path": "Assets/Scripts/Loot/Logic/LootGenerator.cs",
+      "sha256": "464CA24D9C56635F4F3C3984C7260B3E8E4B3E4E240CE76E2E72B175B3D56159"
+    },
+    {
+      "path": "Assets/Scripts/Loot/Logic/LootGenerator.cs.meta",
+      "sha256": "F4DD7B4233981310EBD97E9BB5C221004483DC95028D053C930869A99E4629AE"
+    },
+    {
+      "path": "Assets/Scripts/Loot/MonoBehaviour.meta",
+      "sha256": "2D0EB847EA6473845862BBBB14EC20D65638E3309CFCEBF3738E784CA2B2FB97"
+    },
+    {
+      "path": "Assets/Scripts/Loot/MonoBehaviour/GroundItem.cs",
+      "sha256": "E836FAC4009734849EA541C18E3D5F6539717F5E27493C144FD66087FE76614A"
+    },
+    {
+      "path": "Assets/Scripts/Loot/MonoBehaviour/GroundItem.cs.meta",
+      "sha256": "870BFF8C0F020CD4C6188488600CC7740F4AE542ADA8FF90A1C164795FEE0B1E"
+    },
+    {
+      "path": "Assets/Scripts/Loot/MonoBehaviour/LootBox.cs",
+      "sha256": "DDA90A45F23C28B4EE0C17B1A3A01C842D642B5D2775D2C17829A054E6A70D47"
+    },
+    {
+      "path": "Assets/Scripts/Loot/MonoBehaviour/LootBox.cs.meta",
+      "sha256": "8FF7C756D17DC019CF0E231E81A0EC962B927C763E6E0C87DC20D4BC13BFFFCB"
+    },
+    {
+      "path": "Assets/Scripts/Loot/MonoBehaviour/LootItemView.cs",
+      "sha256": "49CBCBB182C3CF5D7AB7D8A6BA7ED7C6ADF35757CE916D0610C208CEBBC3D605"
+    },
+    {
+      "path": "Assets/Scripts/Loot/MonoBehaviour/LootItemView.cs.meta",
+      "sha256": "5132E7587325520191FC8207F7E6E85DB6651E0CF207E0AC90A1D1938091C82F"
+    },
+    {
+      "path": "Assets/Scripts/Loot/MonoBehaviour/LootRuntimeManager.cs",
+      "sha256": "3381021C8A2CD6265458DE8C09CD84659E64B32CB0D0C294AEAD93F5686432BE"
+    },
+    {
+      "path": "Assets/Scripts/Loot/MonoBehaviour/LootRuntimeManager.cs.meta",
+      "sha256": "A46CC2E0A176A9C0688E93758AC5201BA018B7FCCDF2CC823BFEA08475867562"
+    },
+    {
+      "path": "Assets/Scripts/Loot/MonoBehaviour/LootUIController.cs",
+      "sha256": "6F160C9D9B2351C30F9C8E48C097A4FE8A278F424CBF1417B4655D2C83E53D6B"
+    },
+    {
+      "path": "Assets/Scripts/Loot/MonoBehaviour/LootUIController.cs.meta",
+      "sha256": "BFE551C0649172B2DDC1C241A4506108744553995F221AE1CF95570A578F0DBF"
+    },
+    {
+      "path": "Assets/Scripts/Loot/MonoBehaviour/LootView.cs",
+      "sha256": "0C1A8CD5089506AD3AAD18F8E80B3911FF6369AACD4994C9C56BC4E9AF87F4B4"
+    },
+    {
+      "path": "Assets/Scripts/Loot/MonoBehaviour/LootView.cs.meta",
+      "sha256": "A660ACC632C5591DC77218B4ACF78621F38A628E823F585C410564DDC6A88CB9"
+    },
+    {
+      "path": "Assets/Scripts/Loot/MyPrecious.Loot.asmdef",
+      "sha256": "ED685BD41E71196D7486E0DB4EC03F860883E9A0CCCDB30296AAAAF0B5C5A9C4"
+    },
+    {
+      "path": "Assets/Scripts/Loot/MyPrecious.Loot.asmdef.meta",
+      "sha256": "2AC8BB978035DAA34838433885E32B05DDDC49A17D6D111563368009664ED7B1"
+    },
+    {
+      "path": "Assets/Scripts/Loot/RuntimeData.meta",
+      "sha256": "381E5621A76AA74396D5F2422B20B6FDD67AEDE7D4004F5230C25312B11903F2"
+    },
+    {
+      "path": "Assets/Scripts/Loot/RuntimeData/LootSourceState.cs",
+      "sha256": "62D036C684AF8736FB770771CFF4E5B4CF212EC0BE9C0B4257D7B60FE5F19591"
+    },
+    {
+      "path": "Assets/Scripts/Loot/RuntimeData/LootSourceState.cs.meta",
+      "sha256": "6F1AC280C50CA1FFF3DCCBB48BE609D4F395D5F24E01BFB72322EE2F8C12BF78"
+    },
+    {
+      "path": "Assets/Scripts/Loot/ScriptableObject.meta",
+      "sha256": "2A1D5077AE86F681B5039F1BA7749B2F5BB68CFEB2A07336527D96E9E65B7C25"
+    },
+    {
+      "path": "Assets/Scripts/Loot/ScriptableObject/LootTableSO.cs",
+      "sha256": "D99EC3D7036B874740A7D1AB6E742BA0B092D580BF4FFC5DFB2108060B364070"
+    },
+    {
+      "path": "Assets/Scripts/Loot/ScriptableObject/LootTableSO.cs.meta",
+      "sha256": "FC5246F65F2E1333913A45BC8DE881FAA38EF8581661BD43BFDA16D3F864FCCA"
+    },
+    {
+      "path": "Assets/Scripts/Player.meta",
+      "sha256": "B9E4679D6A777E12646CC6DB1C0D2FEEE6CA7E087525C86CFDA0FB08B142A0C4"
+    },
+    {
+      "path": "Assets/Scripts/Player/MonoBehaviour.meta",
+      "sha256": "77B05140A386394C787F27AE9D0DC51AB993CAA8AE41FCD5591A988E5EA76C53"
+    },
+    {
+      "path": "Assets/Scripts/Player/MonoBehaviour/PlayerCameraTargetBinder.cs",
+      "sha256": "6B22550363A1E47C78BFC22507BC298E7D576C6590FD805BFA3BDC9B487E645D"
+    },
+    {
+      "path": "Assets/Scripts/Player/MonoBehaviour/PlayerCameraTargetBinder.cs.meta",
+      "sha256": "558EEB9ABA476071D647E2453589CFD14F93F222F36D3887F49B743FDEC26E43"
+    },
+    {
+      "path": "Assets/Scripts/Player/MonoBehaviour/PlayerController.cs",
+      "sha256": "51739D9D003C39FA019E8298D80AF9EA4603BDEE614618F1E868657D7285AE75"
+    },
+    {
+      "path": "Assets/Scripts/Player/MonoBehaviour/PlayerController.cs.meta",
+      "sha256": "0B5FEA6846A4B29EC967E8079017965E11B2D1BC9E34380646FB41F0DD451C70"
+    },
+    {
+      "path": "Assets/Scripts/Player/MonoBehaviour/PlayerHealth.cs",
+      "sha256": "6DD8768FF1A310E42A0ED4CF32EDF9967D3DE21524773929B58082FDB3B8B5D0"
+    },
+    {
+      "path": "Assets/Scripts/Player/MonoBehaviour/PlayerHealth.cs.meta",
+      "sha256": "E6C690279C48FFB221C5DB309418E86E2FACF87254AC03A9BFAD34834A974726"
+    },
+    {
+      "path": "Assets/Scripts/Player/MonoBehaviour/PlayerInputReader.cs",
+      "sha256": "60ABAC95E76AFD6F1C8A68A9CC42FEC722B926C3844CC783064D5DF369C22E1A"
+    },
+    {
+      "path": "Assets/Scripts/Player/MonoBehaviour/PlayerInputReader.cs.meta",
+      "sha256": "B702360FCE4A4F41678F95B10C706EA6D05A06DE0A3B0783AF8318F31FA4D411"
+    },
+    {
+      "path": "Assets/Scripts/Player/MyPrecious.Player.asmdef",
+      "sha256": "7B17E653C24ACAEE06DC0CF1B4C512294B91DDB9319EEF6D5A348B049649A776"
+    },
+    {
+      "path": "Assets/Scripts/Player/MyPrecious.Player.asmdef.meta",
+      "sha256": "D3DE5F573A7FC0839688D5F830C6B98A4EC380255B590787FE3D41554B3B4E64"
+    },
+    {
+      "path": "Assets/Scripts/Player/ScriptableObject.meta",
+      "sha256": "5ED7F3E64927E6981C869B1C17DB540BEF8BB3C233647A964B64CB2ADAE44A8A"
+    },
+    {
+      "path": "Assets/Scripts/Player/ScriptableObject/PlayerConfigSO.cs",
+      "sha256": "868FD217FECB535E2E718470C15428D59ABE6ABA7308E92065F80836C7168F77"
+    },
+    {
+      "path": "Assets/Scripts/Player/ScriptableObject/PlayerConfigSO.cs.meta",
+      "sha256": "D540EE1DF684E6F4B8D989BF80214B6623B40014CDA9CCB0017473F32D01CD95"
+    },
+    {
+      "path": "Assets/Scripts/Player/States.meta",
+      "sha256": "2C918243921BAE9BD22E266410BEE14BC68EF18A25A1FCA59C807EC2F90CC43B"
+    },
+    {
+      "path": "Assets/Scripts/Player/States/PlayerCrouchState.cs",
+      "sha256": "BC92B93A64E261C4A6EF8A424CAF88BC63E737C38DB358E4C63EF4FC02748943"
+    },
+    {
+      "path": "Assets/Scripts/Player/States/PlayerCrouchState.cs.meta",
+      "sha256": "F4B45EAE1E85A4F5F6F91844C18FDCD3863C11D58EF685F313F43497F2402A9F"
+    },
+    {
+      "path": "Assets/Scripts/Player/States/PlayerDieState.cs",
+      "sha256": "4F5F5688C488AE98E7C9B381AC67901807E212FBB406829A74B60041ECCF0B09"
+    },
+    {
+      "path": "Assets/Scripts/Player/States/PlayerDieState.cs.meta",
+      "sha256": "9921F316B857273B6324A1E730578AF9E18FAC47FFC18A6CE3DD0E4BC24C28DE"
+    },
+    {
+      "path": "Assets/Scripts/Player/States/PlayerFallState.cs",
+      "sha256": "0D276B1A989BB1401DDDEB4B457F38DE5FCD6E5D38D008EB8ECAA5F181FEAED4"
+    },
+    {
+      "path": "Assets/Scripts/Player/States/PlayerFallState.cs.meta",
+      "sha256": "4511A83FF1D64BC5DE55F807A18FF533E28AAE20A9EAD3F40095A0DDAF73410C"
+    },
+    {
+      "path": "Assets/Scripts/Player/States/PlayerIdleState.cs",
+      "sha256": "3C3E19235E4838FCD605E6A420140B13269A36449B4DB70F76020EEA7AE2E773"
+    },
+    {
+      "path": "Assets/Scripts/Player/States/PlayerIdleState.cs.meta",
+      "sha256": "96D48590BADCC08803A1E863194EC5A9DF2121D3D4CEA65AB0025E62F73B2F08"
+    },
+    {
+      "path": "Assets/Scripts/Player/States/PlayerJumpState.cs",
+      "sha256": "721B613966A937C3379A34A997BC6724CA540C1B08600190709DBAD2F9178677"
+    },
+    {
+      "path": "Assets/Scripts/Player/States/PlayerJumpState.cs.meta",
+      "sha256": "7F4B8EE0C426BB911CF75CE7750286714CAE2DA7E910A1A3DD2522A290BE2087"
+    },
+    {
+      "path": "Assets/Scripts/Player/States/PlayerMoveState.cs",
+      "sha256": "302ED1600DFE5A821BDCCC07A04EDAB52AA92FD4BAD49625A2CE3761E8EBAD6C"
+    },
+    {
+      "path": "Assets/Scripts/Player/States/PlayerMoveState.cs.meta",
+      "sha256": "DEDC5543C3EB8D924669DC00B5458DF84516667FF0F1CC2986559D280F43863F"
+    },
+    {
+      "path": "Assets/Scripts/Player/States/PlayerStateBase.cs",
+      "sha256": "E809FD169BB8251DF0A9E3A8A079D6799DFD8AACD842E8F7272A8F1CBCDBB615"
+    },
+    {
+      "path": "Assets/Scripts/Player/States/PlayerStateBase.cs.meta",
+      "sha256": "30E98D09A68972A830A6CA841ABEE422437E42A29B6A82AFB89CE99E2F18E800"
+    },
+    {
+      "path": "Assets/Scripts/Rendering.meta",
+      "sha256": "5FEC37CCEBAF249D0C4BF98CC0ACA434F642927AC6F8E9E6EC3DD65618EE79E5"
+    },
+    {
+      "path": "Assets/Scripts/Rendering/SceneEnvironmentRefresh.cs",
+      "sha256": "2ABBFF6B6E51D13BC1062B48F1CAB0A4EB7924E7E8A11866F50449F79D15DBBB"
+    },
+    {
+      "path": "Assets/Scripts/Rendering/SceneEnvironmentRefresh.cs.meta",
+      "sha256": "CF9750FCEBC02C8E08A00DAE91817D702072BF259EF590BC46312AACB28B7C0E"
+    },
+    {
+      "path": "Assets/Scripts/Shelter.meta",
+      "sha256": "4D158BDE4B80E20E970148538DAE6462A51390E4994C82E5E9EB08AF6DD67893"
+    },
+    {
+      "path": "Assets/Scripts/Shelter/MonoBehaviour.meta",
+      "sha256": "5237434BBACAD6BF81244093B09C45F382FF0A585974B0ED4658D5311F404D29"
+    },
+    {
+      "path": "Assets/Scripts/Shelter/MonoBehaviour/ShelterManager.cs",
+      "sha256": "EFEB8DF51F7EA301A4A369C8D420EB08A829FD0DB06FD1FC3511CCDED5C4665A"
+    },
+    {
+      "path": "Assets/Scripts/Shelter/MonoBehaviour/ShelterManager.cs.meta",
+      "sha256": "BF4FE4C35A315B11856EF384824C27D8E1CF8667A04BE5326FAF3477FE198B9F"
+    },
+    {
+      "path": "Assets/Scripts/Shelter/MonoBehaviour/ShelterView.cs",
+      "sha256": "04F5BB28322F37237ECA2DF9AB8817480DEADEB75B50AB3B9A0A5CAD4E8D5288"
+    },
+    {
+      "path": "Assets/Scripts/Shelter/MonoBehaviour/ShelterView.cs.meta",
+      "sha256": "AB9371742D61B9161F6A95A5588D48A47F59849941F8A7E29ECF7BA905C4B18B"
+    },
+    {
+      "path": "Assets/Scripts/Shelter/MyPrecious.Shelter.asmdef",
+      "sha256": "1A7049ED0ABFFE7360DE332C164E4AC0D823E183477937ABF6F559BBB0823956"
+    },
+    {
+      "path": "Assets/Scripts/Shelter/MyPrecious.Shelter.asmdef.meta",
+      "sha256": "BCEB852F777B264E3CD87A02CF6546F2650615674BAC8A3A0A1DB4EA2C83346C"
+    },
+    {
+      "path": "Assets/Scripts/Shelter/ScriptableObject.meta",
+      "sha256": "E0D519D39843BD112CD268E8013B6208C832AADF66F1FE1685B518CB6330ED67"
+    },
+    {
+      "path": "Assets/Scripts/Shelter/ScriptableObject/ShelterUpgradeSO.cs",
+      "sha256": "CB560644918F15A1A45AF8A9D00DF7A33E06D9BFCE4362220FA58FE42324C510"
+    },
+    {
+      "path": "Assets/Scripts/Shelter/ScriptableObject/ShelterUpgradeSO.cs.meta",
+      "sha256": "56167944903E1F7F70E062727473F54663322BA3F8644206451CAF7A7D36F812"
+    },
+    {
+      "path": "Assets/Scripts/Utilities.meta",
+      "sha256": "7318AD59C3E4543DD95AD7E384FA59E80122F98C06AB568C5139EF1634AE06F7"
+    },
+    {
+      "path": "Assets/Scripts/Utilities/Contracts.meta",
+      "sha256": "E34F24135C83BE91D0415F5E350A93E94841DABF270210232700B325C0BD0083"
+    },
+    {
+      "path": "Assets/Scripts/Utilities/Contracts/Player.meta",
+      "sha256": "B21E3DA08D783BD609843264439F1CCA6D3EA10DFC6E52B26E0407A25CE9AC9B"
+    },
+    {
+      "path": "Assets/Scripts/Utilities/Contracts/Player/IHealthTarget.cs",
+      "sha256": "820D12046354504F53404127E364804A1C601CBBE0FD6C45478ADCC90EC3096A"
+    },
+    {
+      "path": "Assets/Scripts/Utilities/Contracts/Player/IHealthTarget.cs.meta",
+      "sha256": "26C3F6155EDE25C35F8B132F4132CFAC8B7C28C32E92530B622C456EE3B917F7"
+    },
+    {
+      "path": "Assets/Scripts/Utilities/Contracts/Player/MyPrecious.Health.asmdef",
+      "sha256": "94A9A9C81FE15BF2F48481D1FAB8478F00163E77A6933CEC97D665E95D499DCB"
+    },
+    {
+      "path": "Assets/Scripts/Utilities/Contracts/Player/MyPrecious.Health.asmdef.meta",
+      "sha256": "6F98388424AAFA61C1FA91931B2219F96A08A17568C046E4A70C719388209EE7"
+    },
+    {
+      "path": "Assets/Scripts/Utilities/Contracts/StateMachine.meta",
+      "sha256": "C474552CB0F6DC706AFDAF941A50D34C0C43C6E8031DBAC3809CA03D6EEC09D0"
+    },
+    {
+      "path": "Assets/Scripts/Utilities/Contracts/StateMachine/IStateMachineOwner.cs",
+      "sha256": "A2E95A08020C9CA2D28CB8BA5198272F458F46832237A291F0DBB2860FB7C393"
+    },
+    {
+      "path": "Assets/Scripts/Utilities/Contracts/StateMachine/IStateMachineOwner.cs.meta",
+      "sha256": "C8DEB1A91CCD1BAE65E0B1DF6E9BE9BB2107CA533C134BD347E257D970295EA4"
+    },
+    {
+      "path": "Assets/Scripts/Utilities/Contracts/StateMachine/MyPrecious.StateMachine.Contracts.asmdef",
+      "sha256": "E6E97C399DD816FCAF071A3EC569822DD370CAB91FE62718050DB900BEB17A50"
+    },
+    {
+      "path": "Assets/Scripts/Utilities/Contracts/StateMachine/MyPrecious.StateMachine.Contracts.asmdef.meta",
+      "sha256": "F0A18B9F48B84D72303857F80B1A244F21D2C0C1F7A3A575E864C527D3D8704C"
+    },
+    {
+      "path": "Assets/Scripts/Utilities/StateMachine.meta",
+      "sha256": "ABD4771B25758EA8763E268FF344EA20F7C4B6ED52754E1105274F3D765506B3"
+    },
+    {
+      "path": "Assets/Scripts/Utilities/StateMachine/MyPrecious.StateMachine.asmdef",
+      "sha256": "968A5A848CC4A4FF7AC5A7FBBBD8724417DC89ABEC9F3380DD69D1BDB002D4AD"
+    },
+    {
+      "path": "Assets/Scripts/Utilities/StateMachine/MyPrecious.StateMachine.asmdef.meta",
+      "sha256": "8AAB6AB0C82362557747FC76CAA98B98710A1C1A4385FB98DBC66566E21CCE67"
+    },
+    {
+      "path": "Assets/Scripts/Utilities/StateMachine/StateBase.cs",
+      "sha256": "C5662176CCB1E957DDC369F1C090DB0051BB54EBD35F3ABEEEA59FD38B7B610D"
+    },
+    {
+      "path": "Assets/Scripts/Utilities/StateMachine/StateBase.cs.meta",
+      "sha256": "4CA60354B6D2FCCDCAE76CED557569DD1875B8A409013C202882EAEBD1DE984A"
+    },
+    {
+      "path": "Assets/Scripts/Utilities/StateMachine/StateMachine.cs",
+      "sha256": "610D012DF4356330012A070A35729DCD82A06BBAEABB2B06D5D77EDFC40E6D1C"
+    },
+    {
+      "path": "Assets/Scripts/Utilities/StateMachine/StateMachine.cs.meta",
+      "sha256": "D4FBA0C1030295EE11F097A800705DF1D768E9FED833282017C8BD7D29C26D13"
+    },
+    {
+      "path": "Assets/Scripts/Warehouse.meta",
+      "sha256": "63CD007AD7DE752E8107884C9AB229462DFE6DFC8A9D7800A30D71F71CBCBC98"
+    },
+    {
+      "path": "Assets/Scripts/Warehouse/Logic.meta",
+      "sha256": "B1013D191C8F77F729A9A2A66E94851EAF451DAA43EA6BEC9270A15359376CF7"
+    },
+    {
+      "path": "Assets/Scripts/Warehouse/Logic/WarehouseGrid.cs",
+      "sha256": "4C6AF21C851DEAE7C4C2BFE68E3CFE92AC69FCA6FE839C047A661613D36FD932"
+    },
+    {
+      "path": "Assets/Scripts/Warehouse/Logic/WarehouseGrid.cs.meta",
+      "sha256": "B6F7374D2CCD2809AEBF9C4DE860494B666D9E9F2BB51401CD692EA3F62C7C3A"
+    },
+    {
+      "path": "Assets/Scripts/Warehouse/MonoBehaviour.meta",
+      "sha256": "6D400DC94581611E8669E26CFA1E548D4A43E817830CB9FFC3D8CA85569C140F"
+    },
+    {
+      "path": "Assets/Scripts/Warehouse/MonoBehaviour/WarehouseItemView.cs",
+      "sha256": "F449993F02A8ED09880970B6D754C251DEAFE3233FD3EC4986398BFA9DB29EA4"
+    },
+    {
+      "path": "Assets/Scripts/Warehouse/MonoBehaviour/WarehouseItemView.cs.meta",
+      "sha256": "A1D52810BF4F5B85FCD7C15AF48DB1C966DA3AA72473D3C530E580BEA08CDA3F"
+    },
+    {
+      "path": "Assets/Scripts/Warehouse/MonoBehaviour/WarehouseManager.cs",
+      "sha256": "9E29F1B66D4C14E4F9D24EB4D42499906C867B933EF43504E39418DBA592D19B"
+    },
+    {
+      "path": "Assets/Scripts/Warehouse/MonoBehaviour/WarehouseManager.cs.meta",
+      "sha256": "0875F187CB87497BB3DE78E46AE34C9B43466736D985D95397800656966118BF"
+    },
+    {
+      "path": "Assets/Scripts/Warehouse/MonoBehaviour/WarehouseUIController.cs",
+      "sha256": "164E43B452B8442E03F800A17439376776088E25E058278AB215CE353AC88CEA"
+    },
+    {
+      "path": "Assets/Scripts/Warehouse/MonoBehaviour/WarehouseUIController.cs.meta",
+      "sha256": "1DEA5F2E4E993CBBCF3E7E8E1B30557AB69134584BBDCF54A4DD6A8562B21AD9"
+    },
+    {
+      "path": "Assets/Scripts/Warehouse/MonoBehaviour/WarehouseView.cs",
+      "sha256": "D0CC1A5797E777E1B4A3C333B80423EDA1F87F0E1B14F40F6ED5689990657388"
+    },
+    {
+      "path": "Assets/Scripts/Warehouse/MonoBehaviour/WarehouseView.cs.meta",
+      "sha256": "1E57DE89201800047C3F21192CB5C65CE0DC07DD63CBEDD9C3EBEAD4D1E5CA89"
+    },
+    {
+      "path": "Assets/Scripts/Warehouse/MyPrecious.Warehouse.asmdef",
+      "sha256": "F66A9E129FC45D46D08A2C1F28E0485050CBCEF0FABEE5EFAC547BFE66AE0994"
+    },
+    {
+      "path": "Assets/Scripts/Warehouse/MyPrecious.Warehouse.asmdef.meta",
+      "sha256": "C7EA5FC37B95819B1726BD99D449D2EAD1E7457A51FD144C817F583538DF9C88"
+    },
+    {
+      "path": "Assets/Scripts/Warehouse/RuntimeData.meta",
+      "sha256": "AD2DA31B01D8D95F8DDC771BC4A4BA24CB6D3F14C6939863A05C7347F6782A92"
+    },
+    {
+      "path": "Assets/Scripts/Warehouse/RuntimeData/WarehousePlacement.cs",
+      "sha256": "E6E5AECC52B629AD955AE76698AE5EA9633B77A15FCD79076AD1A45482B3BC52"
+    },
+    {
+      "path": "Assets/Scripts/Warehouse/RuntimeData/WarehousePlacement.cs.meta",
+      "sha256": "C37947AAFFC8B2536AF5F52C8A64E0D9FD9658E86F5BD6EDDA01DC3C690AAD91"
+    },
+    {
+      "path": "Assets/Scripts/Warehouse/ScriptableObject.meta",
+      "sha256": "3001974C6C6CE0B5D2BDCF8EAA7B652BBA8F4DD3E73F5A7379AAA078AE588A71"
+    },
+    {
+      "path": "Assets/Scripts/Warehouse/ScriptableObject/WarehouseConfigSO.cs",
+      "sha256": "D6BB2273BACABCEF1D0602DBA022D94EDC2838563C11E2C627AB8C4C2025D8C5"
+    },
+    {
+      "path": "Assets/Scripts/Warehouse/ScriptableObject/WarehouseConfigSO.cs.meta",
+      "sha256": "C873791A68186C25D6D91A5AC219934001F611CCB5EA6FD6A0F2EDE918E6E381"
+    },
+    {
+      "path": "Assets/Settings/DefaultVolumeProfile.asset",
+      "sha256": "3A6F825E8D07FE8B9F3B52E7D4E2DFA0E22C555B22335ADB19F0ECC66DFA38DD"
+    },
+    {
+      "path": "Assets/Settings/DefaultVolumeProfile.asset.meta",
+      "sha256": "EFBCB026CEE6B8E32FDF27018C06B0515296A6CCBB43969E792FEA270310700A"
+    },
+    {
+      "path": "Assets/Settings/Mobile_Renderer.asset",
+      "sha256": "AA93274C9521FA941170BECEC9E87C5FA36B8587EEFD5EEB5C0EED0D1D4B1DBE"
+    },
+    {
+      "path": "Assets/Settings/Mobile_Renderer.asset.meta",
+      "sha256": "A148EE2B4987B05B8FF7AE5F9BF84916184F77AEFDDC821DCEB551F5A69F8179"
+    },
+    {
+      "path": "Assets/Settings/Mobile_RPAsset.asset",
+      "sha256": "077B30C366EE79C2B0906284297C3433C470B59A7BCA563801901512D6CABF64"
+    },
+    {
+      "path": "Assets/Settings/Mobile_RPAsset.asset.meta",
+      "sha256": "53EA46647712C615FD1A3F2E0DDDFA8559EEEDC649E9A1DBF93FF913DE28544C"
+    },
+    {
+      "path": "Assets/Settings/PC_Renderer.asset",
+      "sha256": "3D0B01D8DED3327263B6690BE128A3DE58D17C514943AE42FE743A3E084A9C79"
+    },
+    {
+      "path": "Assets/Settings/PC_Renderer.asset.meta",
+      "sha256": "B5DF8DDB2708C6ED4C133A5FF9EE95A75CC20E4EE3ED6181366A61AEDBAF31EC"
+    },
+    {
+      "path": "Assets/Settings/PC_RPAsset.asset",
+      "sha256": "F29BDA2174AB75CA4EEBE64B4C2153AF6E09965408548E5E2586DE101E876D32"
+    },
+    {
+      "path": "Assets/Settings/PC_RPAsset.asset.meta",
+      "sha256": "BB469B9B6F318E9E9BED29C3B2E73E79371C04743C6F95DD6603941F1CD3E53E"
+    },
+    {
+      "path": "Assets/Settings/SampleSceneProfile.asset",
+      "sha256": "A8677D4BAC051D24CAA11CD622E39F968155EE277BFCE132274F1DE225692FE9"
+    },
+    {
+      "path": "Assets/Settings/SampleSceneProfile.asset.meta",
+      "sha256": "2E23ABC214069F0ADBF2B2207F1DB54BE7876629EC2A3681D0F4AA5B61622EF0"
+    },
+    {
+      "path": "Assets/Settings/UniversalRenderPipelineGlobalSettings.asset",
+      "sha256": "67958644BADB14C610D6EBB26689EA980E32A0F1A140B7DCE3A0E515B1A878B9"
+    },
+    {
+      "path": "Assets/Settings/UniversalRenderPipelineGlobalSettings.asset.meta",
+      "sha256": "F61661D8BC8DBE531DAF09F6211EF978C7BA145C9207C8E76524396AE0722D7C"
+    },
+    {
+      "path": "Assets/Tests/Backpack.meta",
+      "sha256": "827980885FA4ADCA50FD6E60632B642E57C3A0CB94FCDE6A1D0132E5E960E288"
+    },
+    {
+      "path": "Assets/Tests/Backpack/EditMode.meta",
+      "sha256": "3B52F89359BE1C5EBAD38A7594FED856E1679DB76B24D18D26F13B4F9065FF14"
+    },
+    {
+      "path": "Assets/Tests/Backpack/EditMode/BackpackGridTests.cs",
+      "sha256": "5BE018504B6D587C2609675DEF2BE5886C05E5F4508E3F4CAE004D6753366DB0"
+    },
+    {
+      "path": "Assets/Tests/Backpack/EditMode/BackpackGridTests.cs.meta",
+      "sha256": "74BED911927F179F4F896B9E0932BA01DAC92C5DA69BECE50148CDA33E1FFB27"
+    },
+    {
+      "path": "Assets/Tests/Backpack/EditMode/BackpackManagerTests.cs",
+      "sha256": "D82A1FD259938BCCC13180E7B61D76CF267B3FD7817B62667416D0AA25DFE700"
+    },
+    {
+      "path": "Assets/Tests/Backpack/EditMode/BackpackManagerTests.cs.meta",
+      "sha256": "3CBEE1AFE6D02CEACAC1D061E6F39DF413D5AAF42EF737B52BCC16B536192D69"
+    },
+    {
+      "path": "Assets/Tests/Backpack/EditMode/MyPrecious.Backpack.EditModeTests.asmdef",
+      "sha256": "3E879874DA2DBD07D921F4EB42D4A273843C9B8C945BA769A437FADF4AFDF8E8"
+    },
+    {
+      "path": "Assets/Tests/Backpack/EditMode/MyPrecious.Backpack.EditModeTests.asmdef.meta",
+      "sha256": "B3DA0F3EF5C9EF800C7E476C9E50F101DF4C7F4F99350F3A75DAA4E45A0D8A70"
+    },
+    {
+      "path": "Assets/Tests/Backpack/Editor.meta",
+      "sha256": "9501C95AA32AB31DA87975892F9F7A8D9F65A9160481FCC4074BB5669BE2847E"
+    },
+    {
+      "path": "Assets/Tests/Backpack/Editor/BackpackTestSceneBuilder.cs",
+      "sha256": "1DFEBC20757EDDE952F313E16072D534D6221F259CDE9DB7FA0032E81E98B730"
+    },
+    {
+      "path": "Assets/Tests/Backpack/Editor/BackpackTestSceneBuilder.cs.meta",
+      "sha256": "2EB1D244DFC19C4B6E483A24FDA710EF9C772EE6FA17BA6049E97C49B0B290D2"
+    },
+    {
+      "path": "Assets/Tests/Backpack/Editor/BackpackTextEntries.cs",
+      "sha256": "C0D56577B5A949AFFBB41C3B107A50F53BA099D9F69384DEDB132083250F82E6"
+    },
+    {
+      "path": "Assets/Tests/Backpack/Editor/BackpackTextEntries.cs.meta",
+      "sha256": "461856B6FF8A2A76D65B2F88734EBECC66AB194FB95ED4C0080CC71922DDCD25"
+    },
+    {
+      "path": "Assets/Tests/Backpack/Editor/MyPrecious.Backpack.Editor.asmdef",
+      "sha256": "B93BA73ED02CC866FFF5C2A35ABDBCF0A08D87D32BBE7D5EAC0D94F700D1DA70"
+    },
+    {
+      "path": "Assets/Tests/Backpack/Editor/MyPrecious.Backpack.Editor.asmdef.meta",
+      "sha256": "87D4D81E095F91B028B86A1F67D58AEAFEFDA1A32F85D4865910B6C823CEEBF0"
+    },
+    {
+      "path": "Assets/Tests/Backpack/PlayMode.meta",
+      "sha256": "2F241E4A8E3C6283FAAD2F0D62B00F16547325605051A274F647EAFC48E2C63B"
+    },
+    {
+      "path": "Assets/Tests/Backpack/PlayMode/BackpackIntegrationTests.cs",
+      "sha256": "BF029F5AA50D4A45811DBB3BD1199E4CEE7D3A14F17A3297E64E912579FEB63C"
+    },
+    {
+      "path": "Assets/Tests/Backpack/PlayMode/BackpackIntegrationTests.cs.meta",
+      "sha256": "5C9F7BEEF89E0979EC0BC91A49D066C2FFAF9D56B31641D814E7311A18816E30"
+    },
+    {
+      "path": "Assets/Tests/Backpack/PlayMode/MyPrecious.Backpack.PlayModeTests.asmdef",
+      "sha256": "51AEC02F6CBE2792123326EB0E9282CD5E0740A09DF8F2A576DADC87377F41D0"
+    },
+    {
+      "path": "Assets/Tests/Backpack/PlayMode/MyPrecious.Backpack.PlayModeTests.asmdef.meta",
+      "sha256": "0641C255C9B425EC6B08EB1E5B9EF59D5C8522E1701619CB877D2EE2A49562F8"
+    },
+    {
+      "path": "Assets/Tests/Backpack/TestDoubles.meta",
+      "sha256": "9666A05C768502B75F3223BD1CF5B439962F23B11B5EB10394ED8F0A64EA9160"
+    },
+    {
+      "path": "Assets/Tests/Backpack/TestDoubles/BackpackTestDriver.cs",
+      "sha256": "DF9ADFF16E80AE00CD0434B0631480744CA9ED171958554330D18B2D33E3D970"
+    },
+    {
+      "path": "Assets/Tests/Backpack/TestDoubles/BackpackTestDriver.cs.meta",
+      "sha256": "A83418F6306D73F302CC50E401F05E46F12F0EF6CDC1D6CC8DA4CB5F351EEAF4"
+    },
+    {
+      "path": "Assets/Tests/Backpack/TestDoubles/MyPrecious.Backpack.TestDoubles.asmdef",
+      "sha256": "AA390CF040EC16A4368ABF7C8CD353D4FC074B875683E33535A234331B9AE99A"
+    },
+    {
+      "path": "Assets/Tests/Backpack/TestDoubles/MyPrecious.Backpack.TestDoubles.asmdef.meta",
+      "sha256": "CDA6A43F19BA5A1B952568FF02A7D44B59E8DEFBC0E4EB2870A5F7F6D689849F"
+    },
+    {
+      "path": "Assets/Tests/Base.meta",
+      "sha256": "8783260777590F0B939A116F575FFD3E115914B74D4BC136C8BCCCC5788C7310"
+    },
+    {
+      "path": "Assets/Tests/Base/PlayMode.meta",
+      "sha256": "EBECFB2A7EF7B6434A80D4B25800F557AB68972389C3839937A601A05B70FF60"
+    },
+    {
+      "path": "Assets/Tests/Base/PlayMode/GameBootstrapTests.cs",
+      "sha256": "90DBFB61919201A7A72C3F4A898F42D4DAC25693B7A9C9746799720CADCC6F99"
+    },
+    {
+      "path": "Assets/Tests/Base/PlayMode/GameBootstrapTests.cs.meta",
+      "sha256": "4B5B586D67C54E822A1AD99EC09B7C051B752CC0BD6E4FEEC68D3968ACBA6D45"
+    },
+    {
+      "path": "Assets/Tests/Base/PlayMode/MyPrecious.Base.PlayModeTests.asmdef",
+      "sha256": "C1F6DE9BDA2558D823BF56F9034EFBEB923E6CFC8C4134E0642CF4E7E6231725"
+    },
+    {
+      "path": "Assets/Tests/Base/PlayMode/MyPrecious.Base.PlayModeTests.asmdef.meta",
+      "sha256": "DC0236DFF958E393C9259B9AA28E7FE99D0D74651FBE33BA1414E84EEE5831C1"
+    },
+    {
+      "path": "Assets/Tests/Enemy.meta",
+      "sha256": "23920346A0153A0F56AC4335B67E5FDF508D186908DC5CAD6DC63054FFE74247"
+    },
+    {
+      "path": "Assets/Tests/Enemy/EditMode.meta",
+      "sha256": "DAF806F5558D50146479E49457B34AFE52A0CA0EB74A7EEEE0B45E1E341CDEF2"
+    },
+    {
+      "path": "Assets/Tests/Enemy/EditMode/CoverAreaTests.cs",
+      "sha256": "C3E474F18138E3760C728B5415ACC488A4FB0E90E1D26591B55C909AE7A19DE9"
+    },
+    {
+      "path": "Assets/Tests/Enemy/EditMode/CoverAreaTests.cs.meta",
+      "sha256": "29346FCD33CDDB372FD86177B851DAE3A58F50169498189AB6C62BD9B2493C49"
+    },
+    {
+      "path": "Assets/Tests/Enemy/EditMode/DroneRoundTests.cs",
+      "sha256": "DCFAA96A91481E94082348DD2B29D56FFC4FD403B186369362F513C98BDA2C01"
+    },
+    {
+      "path": "Assets/Tests/Enemy/EditMode/DroneRoundTests.cs.meta",
+      "sha256": "4F6BA918AD7E0455376DC75BF1E1D19D3A42E3DE6149F464D8B9F0FCE9490B1A"
+    },
+    {
+      "path": "Assets/Tests/Enemy/EditMode/DroneVisionGeometryTests.cs",
+      "sha256": "E04FC27612A7F839146CFA658EF087A2AF813C94A3912B36866625AA94FF3BA7"
+    },
+    {
+      "path": "Assets/Tests/Enemy/EditMode/DroneVisionGeometryTests.cs.meta",
+      "sha256": "739DFDAAE76211B462048B1BD9ED638FAB972E546CB46AE9A9C24156D7AB50DB"
+    },
+    {
+      "path": "Assets/Tests/Enemy/EditMode/DroneVisionViewTests.cs",
+      "sha256": "262281D3C4D004D9E41FC0EE7615D5676D07A1476BF39A2BE018C4DB2916E1CC"
+    },
+    {
+      "path": "Assets/Tests/Enemy/EditMode/DroneVisionViewTests.cs.meta",
+      "sha256": "73F322978BEB5BE85591F0178CF5EDC876255044FB7B98DD8EEF6C7ED61BB139"
+    },
+    {
+      "path": "Assets/Tests/Enemy/EditMode/MyPrecious.Enemy.EditModeTests.asmdef",
+      "sha256": "0538F94DB3E050FCB2359188CC277FBA113EA1ABC394994901413C7A3898DA75"
+    },
+    {
+      "path": "Assets/Tests/Enemy/EditMode/MyPrecious.Enemy.EditModeTests.asmdef.meta",
+      "sha256": "C0D9C9BAA3E026B6600A29F4FBB183D9B8081A72BBC607CE718A12CD2C5D9955"
+    },
+    {
+      "path": "Assets/Tests/Enemy/Editor.meta",
+      "sha256": "A40A57371C79FA74CEAE4D53BC909A91C8E28D5C02023A1B80643B763679DFF6"
+    },
+    {
+      "path": "Assets/Tests/Enemy/Editor/DroneVisionEditor.cs",
+      "sha256": "720637272D457DB9F2772E7B4C0DE3F218C33FDEC86D273E5BCFCF53E5C37C19"
+    },
+    {
+      "path": "Assets/Tests/Enemy/Editor/DroneVisionEditor.cs.meta",
+      "sha256": "815659D60199361196D9C359D3DC9FF0B52E8F073BCBFEBEFCD65D6F25C7F9CB"
+    },
+    {
+      "path": "Assets/Tests/Enemy/Editor/EnemyTestSceneBuilder.cs",
+      "sha256": "74D2B40E409E535CFC7485AE378D22DFEE49F1AD3CEAD81D38E0D1E78A27D2E7"
+    },
+    {
+      "path": "Assets/Tests/Enemy/Editor/EnemyTestSceneBuilder.cs.meta",
+      "sha256": "F4C8630C9A1EF6E8CC7A74CE5A6549DAB578F7D06D9ACE59E38114591621D97A"
+    },
+    {
+      "path": "Assets/Tests/Enemy/Editor/MyPrecious.Enemy.Editor.asmdef",
+      "sha256": "82DCA64818DB5B3340A4CFB12490EB1C13A659EDFA74F4D3B8BB901893A6DEC6"
+    },
+    {
+      "path": "Assets/Tests/Enemy/Editor/MyPrecious.Enemy.Editor.asmdef.meta",
+      "sha256": "76EDE87CC1844581E6FD64DF5AB456318BE37519AF4405B871FEC5E5E61C4D75"
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode.meta",
+      "sha256": "68529303CEA820E964764E3279EC3BE17E335A2EA38A8EF516A09811A403FE1E"
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/DroneAlertTests.cs",
+      "sha256": "23C97D6B34E74A0D4B5E1C647AB2CDD00571C26C2B29A571AE63ED26D1613930"
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/DroneAlertTests.cs.meta",
+      "sha256": "F65421AF9E211CB3143798F5A1E40B27D853FEBBFBA508ABF7018AA8839F0951"
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/DroneBehaviourTests.cs",
+      "sha256": "9C229925C4ECBFA0547E7A643133BC700AA88DEC3D548327AEE0C9DB09DCA9F7"
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/DroneBehaviourTests.cs.meta",
+      "sha256": "48698F9B8E57A7BD8E61E9D44B0012BB154AEAF03F097323A0F154DAB48E2D84"
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/DroneStatusLightTests.cs",
+      "sha256": "2E070DB47AF00AFA1907D0DFA531809DFDE8490663E94328FCE55C632F5238F6"
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/DroneStatusLightTests.cs.meta",
+      "sha256": "9B085958422BA0326BA3FA5E45711F6A079854B463D131377F75E94E08727387"
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/DroneTurningVisionTests.cs",
+      "sha256": "EB07D1752E849AE1E04445201EE0BFCADCC960174599763D72FEC12C7E7D781E"
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/DroneTurningVisionTests.cs.meta",
+      "sha256": "87922A969B14C82B2305550CE6E8EBEF819A9A50C9686867ECCCB422B8CA79C1"
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/DroneVisionAlignmentTests.cs",
+      "sha256": "BE0F505373C56B86B295C2A10D6EDA3DDB96EF6856A9B20C220314E71500F46C"
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/DroneVisionAlignmentTests.cs.meta",
+      "sha256": "EAF4F0F20E683F3469463009B2449E032877FBC16D3C6F626A925642ABB94FA3"
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/EnemySceneIntegrationTests.cs",
+      "sha256": "2848DF273A6757C72EE57A15DD20F2043AFD52BF8176FAB04B037E2E56A998FB"
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/EnemySceneIntegrationTests.cs.meta",
+      "sha256": "F6C20305ED8336D10672263785AC1DED8225A9CDC56141C4E3D77E85C682DAA5"
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/MyPrecious.Enemy.PlayModeTests.asmdef",
+      "sha256": "44F8951DA2554990D1E4111ABC2E381BA75175F126923978D959A492ECB0933E"
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/MyPrecious.Enemy.PlayModeTests.asmdef.meta",
+      "sha256": "DF7F9167A2E5010F1F8CCD02EC61B6D48A695A7932CA3118D50277E2EA6D7336"
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/Runtime.meta",
+      "sha256": "02B10C2B124118C0E8EC5B1E7D28CBC9BF83814320F728B22EE639A544FE36D2"
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/Runtime/EnemyTestDriver.cs",
+      "sha256": "C27B43862443BE5B5E1C0A741311EC7D6DE9CEC607958A90627746C4CC4B1FA9"
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/Runtime/EnemyTestDriver.cs.meta",
+      "sha256": "962F676265BA5AABF197BF7885111869C8AFFFEA83D21F3069DFB89057961E8D"
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/Runtime/MyPrecious.Enemy.TestSupport.asmdef",
+      "sha256": "19AB0AFEC22AAAE3B5098B46D9AF5EF6177CDDD6D4C0683ACD5D62F185B0D046"
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/Runtime/MyPrecious.Enemy.TestSupport.asmdef.meta",
+      "sha256": "95013BA81650DEA3DAFA43BFBEA44493D4B582C283BE7DE71DDCD6B3BA33D984"
+    },
+    {
+      "path": "Assets/Tests/GameFlow.meta",
+      "sha256": "98780A46E6632283C799F8613532BC385B9466CAD0BDC95DDE12D7689A131E19"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/EditMode.meta",
+      "sha256": "F069EF07B57CF20F40E6DAA359981DAB259F427095EF012F744F2E9297396B9D"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/EditMode/GameFlowSettlementTests.cs",
+      "sha256": "E90226AC85B0D59A79FD887D549244C41278B53DFBEA27CF7EFB7BB3ACE8BC66"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/EditMode/GameFlowSettlementTests.cs.meta",
+      "sha256": "3DC9B7E0A2DF1D5F07B8EBF56DFDD1B76ED2A89B3A37C7583319D595603156CA"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/EditMode/MyPrecious.GameFlow.EditModeTests.asmdef",
+      "sha256": "B0F4F7112F2700AD2DC591D9EA90048D1D0824DF8BA74C67BEDF88B094A43AB5"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/EditMode/MyPrecious.GameFlow.EditModeTests.asmdef.meta",
+      "sha256": "C8A1E2DAF7E41DEB436CCC848F700920BCDADF87CEC81A972A08E22957153852"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/EditMode/PlayerFlowEntryTests.cs",
+      "sha256": "A50FB589B9635E29A15A6A712A3958969EAA2EEBEBA431883703615164EB8E37"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/EditMode/PlayerFlowEntryTests.cs.meta",
+      "sha256": "BC3EDC47E7EFBBBFF34D020EA5BA64CC205E05254DAD472643083F4E0E8CB9A6"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/Editor.meta",
+      "sha256": "581956A0C58EBD43A01D5CC5F44E638090042FA03E307FF28A8057C69E156A4A"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/Editor/MinimumLoopSceneBuilder.cs",
+      "sha256": "E1E6622D3DF5B3B88DC82A59A3529E9DF4FABAA085AECB0738682DA506BBFE6E"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/Editor/MinimumLoopSceneBuilder.cs.meta",
+      "sha256": "7E71CB6AD8C3D687066784A87B3A7730862B40FB9D428127EDD00202FEBD615D"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/Editor/MyPrecious.GameFlow.Editor.asmdef",
+      "sha256": "21FEAE601D7EBDB86D06E563B35AD8611D905A193B85B468D7597631EC6DB25A"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/Editor/MyPrecious.GameFlow.Editor.asmdef.meta",
+      "sha256": "6BEA4798862507666BFDE1BAA64DF3AD079C03B9E64A3CE97F90B64B9F3E0C85"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode.meta",
+      "sha256": "4A9ECED44F7364AE60A6A6BBD6489D9C74D1ACD7F4BDBB305634C982AC8C5129"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/GameFlowDeathReturnTests.cs",
+      "sha256": "45154B2F6B68592B188C1E2D2BB61E9AFFF595346935F4C8D83409AB76B49D60"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/GameFlowDeathReturnTests.cs.meta",
+      "sha256": "31F95471C33A79C36530A43ECE5C8CA5BDC2CB85265CB97C63969946AC088ACA"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/MinimumLoopPointerTests.cs",
+      "sha256": "8F0ABE5F72C646A8D6C0C6DCBD3E36867803027E170BA10B96880B3B5222B3FA"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/MinimumLoopPointerTests.cs.meta",
+      "sha256": "02C1BF78211F827FB820D7CC44C1C9D475F6BB4D3C343B4B7AF4CE718DFC7E8E"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/MinimumLoopSceneTests.cs",
+      "sha256": "3452C45C9B0829FD941B5C8D411359F15B560BE27A58B22A859E5AE738A0EA87"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/MinimumLoopSceneTests.cs.meta",
+      "sha256": "1449BA777F82101A78D0938304C4A061B3AED94E45A16DA693577399E820A625"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/MyPrecious.GameFlow.PlayModeTests.asmdef",
+      "sha256": "CCFC2A022BF2F73DA3BF9B01C449AA00699AAFCE0F256CBD7AE43A08C7758E85"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/MyPrecious.GameFlow.PlayModeTests.asmdef.meta",
+      "sha256": "826DF15D6AF0E99619717CF3BBEC4991E7DE06A5D00CC904A43A93E26FA2CE3C"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/PlayerSceneTransitionTests.cs",
+      "sha256": "981351B81E1D0F3D3ACE2AF0C27080C51B586179FAC5A9D353F1E1E442D7801B"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/PlayerSceneTransitionTests.cs.meta",
+      "sha256": "00743DA567CF0FD83791E00838E17FF8EFC91E0764DA9973566D9FDD38E11856"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/RuinsEnemyIntegrationTests.cs",
+      "sha256": "A8C07E1835171A9DBD62DA3DF8345840D1769850EC11E3A594273EB72D782428"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/RuinsEnemyIntegrationTests.cs.meta",
+      "sha256": "FFA8BB80A31983712545CF2D0D9C6BD55EA0870B6F0FB1BC1D634582964120FE"
+    },
+    {
+      "path": "Assets/Tests/Items.meta",
+      "sha256": "7C9FFAC3CA8315E0B829EC8FB22063817033FD3DE9A5A4AE52CB11B4A5405229"
+    },
+    {
+      "path": "Assets/Tests/Items/EditMode.meta",
+      "sha256": "58912D1198B4C91373332564ABBB65A09175C270927AE7F200E75726AA004460"
+    },
+    {
+      "path": "Assets/Tests/Items/EditMode/ItemsEditModeTests.cs",
+      "sha256": "93CBCB9F419810ADD62492736034425A1E9FD4DE533BC7197A326739CD3BDED5"
+    },
+    {
+      "path": "Assets/Tests/Items/EditMode/ItemsEditModeTests.cs.meta",
+      "sha256": "BEC6D2B8B972D489D274C85B9ADDBA26D722075BEE553892AAB68355E7ED5A65"
+    },
+    {
+      "path": "Assets/Tests/Items/EditMode/MyPrecious.Items.EditModeTests.asmdef",
+      "sha256": "347C33C8255927AEB48F702D17E187202831C80E3DAD4796ADC2DAEE55A2FE43"
+    },
+    {
+      "path": "Assets/Tests/Items/EditMode/MyPrecious.Items.EditModeTests.asmdef.meta",
+      "sha256": "CF5A5CA632387C69468B3FD4356197C715BD976E9A20793C7F07B517A1674E27"
+    },
+    {
+      "path": "Assets/Tests/Items/EditMode/UnsupportedItemEffectSO.cs",
+      "sha256": "7FDD255BEB6382E0E2A27A514C14F86D759A7905A97D9838667CAEDB89843DDE"
+    },
+    {
+      "path": "Assets/Tests/Items/EditMode/UnsupportedItemEffectSO.cs.meta",
+      "sha256": "1D4616204905020189921B0A343A33FDBEE8DCE01B60045F3E8D8D7A865299FD"
+    },
+    {
+      "path": "Assets/Tests/Items/PlayMode.meta",
+      "sha256": "0B1D867137A470F2290071826C5E053CA5FA629D42D8456997C2016C174CFE5A"
+    },
+    {
+      "path": "Assets/Tests/Items/PlayMode/ItemsPlayModeTests.cs",
+      "sha256": "6381D8A98A323F54A9FBB594606B638283D0286E39F392A3FB9A53AE93028429"
+    },
+    {
+      "path": "Assets/Tests/Items/PlayMode/ItemsPlayModeTests.cs.meta",
+      "sha256": "261AFAE0CB85E8D610F47C7E89D2BED3488E37BADF0965F411512A180FC942DB"
+    },
+    {
+      "path": "Assets/Tests/Items/PlayMode/MyPrecious.Items.PlayModeTests.asmdef",
+      "sha256": "ECFAB7D36046A31DFE70A78D566E45ECFBFF82F9429EA157B23E27C54D085468"
+    },
+    {
+      "path": "Assets/Tests/Items/PlayMode/MyPrecious.Items.PlayModeTests.asmdef.meta",
+      "sha256": "26130B702671466ECA26B5A20C4A740881310590C9102B5B25733ECE73B670F7"
+    },
+    {
+      "path": "Assets/Tests/Items/TestDoubles.meta",
+      "sha256": "E70F13FF5A2729400A7D8B69C8EA6E92E97EC1837EB07E0ABF83ECE528F7C40E"
+    },
+    {
+      "path": "Assets/Tests/Items/TestDoubles/ItemsTestDriver.cs",
+      "sha256": "C925B1A479E6E054E6FE77B7221EAF213FDDE374A945761BF6D2C5094ED50376"
+    },
+    {
+      "path": "Assets/Tests/Items/TestDoubles/ItemsTestDriver.cs.meta",
+      "sha256": "7F91B13CE04BB98DE72AE9E094AFF748A5749C9DC21BB6E65D347249C0E707A9"
+    },
+    {
+      "path": "Assets/Tests/Items/TestDoubles/ItemsTestHealth.cs",
+      "sha256": "0291094FF9C0876562932C963C8D5B6DC29EB6FEAD104B2BF75C7E4F4A0F5658"
+    },
+    {
+      "path": "Assets/Tests/Items/TestDoubles/ItemsTestHealth.cs.meta",
+      "sha256": "0B0DC1E4C38D74AA5FCEDFC8119129B142DD319CECF662CE3B12E62576148823"
+    },
+    {
+      "path": "Assets/Tests/Items/TestDoubles/MyPrecious.Items.TestDoubles.asmdef",
+      "sha256": "688766A86708461C0378AC16B118A73CF4E1AAB23E6E7069D9DDF09F199ADB42"
+    },
+    {
+      "path": "Assets/Tests/Items/TestDoubles/MyPrecious.Items.TestDoubles.asmdef.meta",
+      "sha256": "BCB8AE05DB21C07966389640E20CB2EF0B9FCF93556C73A119F336BF33257148"
+    },
+    {
+      "path": "Assets/Tests/Localization.meta",
+      "sha256": "C69F4B709716543062724A9C232DBE966A381F0BC38C1AEFE278F705E8391401"
+    },
+    {
+      "path": "Assets/Tests/Localization/EditMode.meta",
+      "sha256": "9AA590317A09F353D4F71B0B8C271FD667A2DEDF5C9F099EE59DBC081BFC60F7"
+    },
+    {
+      "path": "Assets/Tests/Localization/EditMode/LocalizationQueryTests.cs",
+      "sha256": "1391229F2F8BEDBD7069E0596B061FE8916BD36130A3842C1C68BD1AFEA42955"
+    },
+    {
+      "path": "Assets/Tests/Localization/EditMode/LocalizationQueryTests.cs.meta",
+      "sha256": "5EBF565CDBE1839FDA27304B04B33E2F66A9AABBC1E2D3930C811455E53EACE7"
+    },
+    {
+      "path": "Assets/Tests/Localization/EditMode/MyPrecious.Localization.EditModeTests.asmdef",
+      "sha256": "B7127F652CDAE2EF62637B964608D3B53E5D073A773A040579DD4A775BA9D948"
+    },
+    {
+      "path": "Assets/Tests/Localization/EditMode/MyPrecious.Localization.EditModeTests.asmdef.meta",
+      "sha256": "BE2CEC0758E9883A7A43C122E5F28EBB1F3B30CB0C2F9237EE824CE385977907"
+    },
+    {
+      "path": "Assets/Tests/Localization/Editor.meta",
+      "sha256": "F5698DCE500A7319939DA32A3EB98197458BB9D9DCE8067D9CBDF7B186DDDCC4"
+    },
+    {
+      "path": "Assets/Tests/Localization/Editor/LocalizationTestSceneBuilder.cs",
+      "sha256": "4A4522218BF8C38CCFADE421CD7253B723B2CCCD130D458CD6142ED7239FB88A"
+    },
+    {
+      "path": "Assets/Tests/Localization/Editor/LocalizationTestSceneBuilder.cs.meta",
+      "sha256": "1C185F0C97E2A686FBE5EFFDE9BD8ADDBC9B12B3D14AE839B07B7A6CF3F52EE2"
+    },
+    {
+      "path": "Assets/Tests/Localization/Editor/MyPrecious.Localization.Editor.asmdef",
+      "sha256": "6C1481154BBAC09E84D34814D5541304FBD0DFAD05A7D2339562C57DB0FE616B"
+    },
+    {
+      "path": "Assets/Tests/Localization/Editor/MyPrecious.Localization.Editor.asmdef.meta",
+      "sha256": "EEE5D8BB63CB713229E2F34686AF9049BC00BBE7747125D4105A0F3ABAD761CC"
+    },
+    {
+      "path": "Assets/Tests/Localization/PlayMode.meta",
+      "sha256": "7487A41D83A9033E5C3038647FFB3290F6D1461CB0439E2E32FDEFCD18B87ABE"
+    },
+    {
+      "path": "Assets/Tests/Localization/PlayMode/LocalizationIntegrationTests.cs",
+      "sha256": "379B7B9A77B8A7745468D12A32EB59F66FE0E4EB945909D281018C6DCC6E4B48"
+    },
+    {
+      "path": "Assets/Tests/Localization/PlayMode/LocalizationIntegrationTests.cs.meta",
+      "sha256": "FF1F4973E47A7A20978D39E21A6D8507540B1DE1B28D97E360B7A3327A7109A6"
+    },
+    {
+      "path": "Assets/Tests/Localization/PlayMode/MyPrecious.Localization.PlayModeTests.asmdef",
+      "sha256": "AE6355BE612CB956DF9DE8010D491E89B815DB9CF5D16E63D8D16F7C8BA24BFB"
+    },
+    {
+      "path": "Assets/Tests/Localization/PlayMode/MyPrecious.Localization.PlayModeTests.asmdef.meta",
+      "sha256": "357C24E2BB3D1C5ECF027094FC95480A3A610F9270E7F0D5986D163A89F2C102"
+    },
+    {
+      "path": "Assets/Tests/Localization/TestDoubles.meta",
+      "sha256": "455829A0E6BDEBA2B9E1E9BAB206F9D8B70E36B2C5055C23D975B8BF8FEE29B2"
+    },
+    {
+      "path": "Assets/Tests/Localization/TestDoubles/LocalizationTestDriver.cs",
+      "sha256": "40D0B94F12D2C085D00DF30BBE85F3ED38E067ACCC9C6CBD0D1D30BD5D45C400"
+    },
+    {
+      "path": "Assets/Tests/Localization/TestDoubles/LocalizationTestDriver.cs.meta",
+      "sha256": "CCC8C9D30025F0F33D11C6BB66D8E4A754291ED26A9A86BD7EA5395D2A9780B2"
+    },
+    {
+      "path": "Assets/Tests/Localization/TestDoubles/MyPrecious.Localization.TestDoubles.asmdef",
+      "sha256": "8A49E634303194076288A5A0159E9EF6FCFD7C13790822D63CE1D52F5E43AF33"
+    },
+    {
+      "path": "Assets/Tests/Localization/TestDoubles/MyPrecious.Localization.TestDoubles.asmdef.meta",
+      "sha256": "0D00B9B52208C366B5FCE8A707C0AB4E7CEC18389020539D10AC701A3538DCBF"
+    },
+    {
+      "path": "Assets/Tests/Loot.meta",
+      "sha256": "996DD4B220FB58023FD04796E27ACED2179FA0BC96D5D9D63A25B5208E64E685"
+    },
+    {
+      "path": "Assets/Tests/Loot/EditMode.meta",
+      "sha256": "917DE3808E7DBE356068FD3F9C5317EC1590B4CC9190CB77502F5C7EED440879"
+    },
+    {
+      "path": "Assets/Tests/Loot/EditMode/ItemTransferTests.cs",
+      "sha256": "FC6E81A22132DD649D476A4C826EC7E15F5EAD1851CE15F8C5060B2954572B21"
+    },
+    {
+      "path": "Assets/Tests/Loot/EditMode/ItemTransferTests.cs.meta",
+      "sha256": "353C76E5E3306B1FBB5D381FE48724C7D7431E12082BA13256260C9C95AFF278"
+    },
+    {
+      "path": "Assets/Tests/Loot/EditMode/LootGenerationTests.cs",
+      "sha256": "7BCFD4757A922AA39E7135C50DBB508505C5977FF7D57C4C86EC3C8F82655335"
+    },
+    {
+      "path": "Assets/Tests/Loot/EditMode/LootGenerationTests.cs.meta",
+      "sha256": "947E00E7FEE7FF9667E25371094BD7D591D5FA2166B69C177564A87CB7DB0F2A"
+    },
+    {
+      "path": "Assets/Tests/Loot/EditMode/LootGridLayoutTests.cs",
+      "sha256": "93181BC35FEF5C4022EF609CE6DD18BDD7A53F010EAC2B479142FC011DDD10A2"
+    },
+    {
+      "path": "Assets/Tests/Loot/EditMode/LootGridLayoutTests.cs.meta",
+      "sha256": "823C2AB10AD7E18901E4A1D63D7D0B911E9067303A6498C970A199B4AAE65A4A"
+    },
+    {
+      "path": "Assets/Tests/Loot/EditMode/LootSourceStateTests.cs",
+      "sha256": "766072DDC67D032AEAE8CAEF0644343091A125D9779A38B0F9F511998D589311"
+    },
+    {
+      "path": "Assets/Tests/Loot/EditMode/LootSourceStateTests.cs.meta",
+      "sha256": "FE18745035B44416514B77734E82B5F95948895C936318CEA2895AE1AABA21AB"
+    },
+    {
+      "path": "Assets/Tests/Loot/EditMode/MyPrecious.Loot.EditModeTests.asmdef",
+      "sha256": "2A314CAA94EB9D2A721AAD21C7A6245F9029FF98944CCD6428B124228AAC00E2"
+    },
+    {
+      "path": "Assets/Tests/Loot/EditMode/MyPrecious.Loot.EditModeTests.asmdef.meta",
+      "sha256": "FADD76F89B74582F8266CC38C28395790BCE82518B663A3699927FBF601CA287"
+    },
+    {
+      "path": "Assets/Tests/Loot/Editor.meta",
+      "sha256": "FE9863E0CEF4B15224A60BF2AFF8F8E03A6E68C7FCCC9C92DCCB2531B052EDC1"
+    },
+    {
+      "path": "Assets/Tests/Loot/Editor/BackpackDiscardUIBuilder.cs",
+      "sha256": "85E0862CEFBB54F80575E8FCA778345E81A5A86BF0B693932E2E4318B8098584"
+    },
+    {
+      "path": "Assets/Tests/Loot/Editor/BackpackDiscardUIBuilder.cs.meta",
+      "sha256": "771F32273CC84F623D97518D0DB474D28DBC34D270CBD45426D2C0B15436C89A"
+    },
+    {
+      "path": "Assets/Tests/Loot/Editor/LootTestSceneBuilder.cs",
+      "sha256": "CA13B4286B83C0EFCDFD62ACA15CD0EAD3E2D27B493870B5727177B7FC63536E"
+    },
+    {
+      "path": "Assets/Tests/Loot/Editor/LootTestSceneBuilder.cs.meta",
+      "sha256": "99AF570E49061E5568A0089E9937B9FDA8EDE9D7F021EFC55C6E214FAD582DD4"
+    },
+    {
+      "path": "Assets/Tests/Loot/Editor/LootTextEntries.cs",
+      "sha256": "10570D6CE429FB1A543C7C814CD3D554FCE6469B010E9042367F4FA285E74D40"
+    },
+    {
+      "path": "Assets/Tests/Loot/Editor/LootTextEntries.cs.meta",
+      "sha256": "7AE9E125C8B67906DB84F1BE576B21D9E111675C85BA5349AEDF70B8BE91A50A"
+    },
+    {
+      "path": "Assets/Tests/Loot/Editor/MyPrecious.Loot.Editor.asmdef",
+      "sha256": "99611B7CEFE2035B2D2168ACC0994DBAC26D1CD30107C276AD66177D1CEF962B"
+    },
+    {
+      "path": "Assets/Tests/Loot/Editor/MyPrecious.Loot.Editor.asmdef.meta",
+      "sha256": "95D0B677A402210B2E43C436A9D4E736DB1DA45CCFB6A4E38E848684A770A62F"
+    },
+    {
+      "path": "Assets/Tests/Loot/PlayMode.meta",
+      "sha256": "9A83E35E55DE7543436211274BD5FC288E84D06B0596F45E3C81276D8E670FBB"
+    },
+    {
+      "path": "Assets/Tests/Loot/PlayMode/LootGridSearchTests.cs",
+      "sha256": "F1B6A99A83E0838DB61BBDDF0F0E4F14043C5E1FBA065606D8DA2FF8B26F36FE"
+    },
+    {
+      "path": "Assets/Tests/Loot/PlayMode/LootGridSearchTests.cs.meta",
+      "sha256": "FA0451194525D94837F5F15284DB12137543264BEAEF50D63B656FD52123EEEE"
+    },
+    {
+      "path": "Assets/Tests/Loot/PlayMode/LootIntegrationTests.cs",
+      "sha256": "C76A6D25276144C8A1E420B7698DC3E3CFE9066E05E7D668981573F7A352662D"
+    },
+    {
+      "path": "Assets/Tests/Loot/PlayMode/LootIntegrationTests.cs.meta",
+      "sha256": "01CB7E50CA1896371FCCA915A12D6B0F16DB0EA36D185BF3E94AC3DACAC66C36"
+    },
+    {
+      "path": "Assets/Tests/Loot/PlayMode/LootReturnTests.cs",
+      "sha256": "B64DD08D8710782D1C9442338458D017778FDDC0B53B9809B2F78E536B1DCDEE"
+    },
+    {
+      "path": "Assets/Tests/Loot/PlayMode/LootReturnTests.cs.meta",
+      "sha256": "08893FA1BF7CED076123376ECF9FBBBFE05686DDC825DDCC9BF20AE9445F993C"
+    },
+    {
+      "path": "Assets/Tests/Loot/PlayMode/LootUIRegressionTests.cs",
+      "sha256": "D2928910CE3AC23D3732036DA24B20FA24F3746244FE6C5981BBB4A7FF19F32B"
+    },
+    {
+      "path": "Assets/Tests/Loot/PlayMode/LootUIRegressionTests.cs.meta",
+      "sha256": "6015C0E8080927A0501C6B153D01732597EC59A5E53008196AF1B94046F5D1E1"
+    },
+    {
+      "path": "Assets/Tests/Loot/PlayMode/MyPrecious.Loot.PlayModeTests.asmdef",
+      "sha256": "90E2DDC6480913189792599E80F95DFC564B60AC7C8AEE436FBC178D5378C814"
+    },
+    {
+      "path": "Assets/Tests/Loot/PlayMode/MyPrecious.Loot.PlayModeTests.asmdef.meta",
+      "sha256": "6B81974B284112EE535F8258ABB3E433B6652A3C605FC8A48110891C0AFDA555"
+    },
+    {
+      "path": "Assets/Tests/Loot/TestDoubles.meta",
+      "sha256": "30E21314C7A96C884E763AAB69D4D2832A055BC91D39D77C79810A04D9CA5BBB"
+    },
+    {
+      "path": "Assets/Tests/Loot/TestDoubles/LootTestDriver.cs",
+      "sha256": "8BFD481AB4F8EBD310AFF779324B6F4C9CF38AC9E276D852D26C22759D935055"
+    },
+    {
+      "path": "Assets/Tests/Loot/TestDoubles/LootTestDriver.cs.meta",
+      "sha256": "1E15144ABF375FFCFA99663E20B85035755541C8B98EC40ADDE3111619A480CD"
+    },
+    {
+      "path": "Assets/Tests/Loot/TestDoubles/MyPrecious.Loot.TestDoubles.asmdef",
+      "sha256": "AF3F46012962E4829717CB4CB3B92A90D6D02241B92A7A34E837B1C4FC78080C"
+    },
+    {
+      "path": "Assets/Tests/Loot/TestDoubles/MyPrecious.Loot.TestDoubles.asmdef.meta",
+      "sha256": "917EEDE5C8D6714103856F612328C86C7F73E7B13E24C98E793B82310AB5D9D6"
+    },
+    {
+      "path": "Assets/Tests/Loot/TestDoubles/RejectingItemTransferCoordinator.cs",
+      "sha256": "3C327F75FA1D7B674B9B686B07C198938FC524BC551B5679766C2AE8F6D8F3EA"
+    },
+    {
+      "path": "Assets/Tests/Loot/TestDoubles/RejectingItemTransferCoordinator.cs.meta",
+      "sha256": "54E21016B581A449A5A478EBC16FCD8A39957E3596FA3AF9E273F340B711697A"
+    },
+    {
+      "path": "Assets/Tests/Player.meta",
+      "sha256": "8F2349347158F9FC39C00497D02C534DE40FF701919BE6B739A1BA067EA10737"
+    },
+    {
+      "path": "Assets/Tests/Player/EditMode.meta",
+      "sha256": "C2A2616D782ADCAEB30AADEEDAA8DCDA821B6954D14D42D0132E21FB9F31A827"
+    },
+    {
+      "path": "Assets/Tests/Player/EditMode/MyPrecious.Player.EditModeTests.asmdef",
+      "sha256": "E297EB227C2F003929CF25B89611F8E16C90FA82AC8AD1CF759FE6E013AD4FDA"
+    },
+    {
+      "path": "Assets/Tests/Player/EditMode/MyPrecious.Player.EditModeTests.asmdef.meta",
+      "sha256": "1DBADD4227260069C60A5199FD6EA60A9FF5626B22622036020663AE67CCDEC8"
+    },
+    {
+      "path": "Assets/Tests/Player/EditMode/PlayerHealthTests.cs",
+      "sha256": "E971728EAF3AC23291470CAEDB6273F314E325DB21366F809DC4B04DB8ABDC98"
+    },
+    {
+      "path": "Assets/Tests/Player/EditMode/PlayerHealthTests.cs.meta",
+      "sha256": "612A17D6D4EE9930C2D3326D231EE1619F9EA5FD857757FD522C584EA41D4799"
+    },
+    {
+      "path": "Assets/Tests/Player/EditMode/StateMachineTests.cs",
+      "sha256": "2DE94CCFAF763CDFBDEAF8E8C201A3D195B9CF9B58C3328AB52B143B38E930DA"
+    },
+    {
+      "path": "Assets/Tests/Player/EditMode/StateMachineTests.cs.meta",
+      "sha256": "560D5B09603972C330B21662079DF9F5940447AFE157FC7D6E11CEB27632280A"
+    },
+    {
+      "path": "Assets/Tests/Player/Editor.meta",
+      "sha256": "53F88A1FD20101D952F3148F4E428EFF028C07C5FBF51356F67BE36F88CB63F3"
+    },
+    {
+      "path": "Assets/Tests/Player/Editor/MyPrecious.Player.EditorTests.asmdef",
+      "sha256": "33B42E52778B1E3C4355F23E0DE4F54A258673DBE1700C1290D28A9ED59C5542"
+    },
+    {
+      "path": "Assets/Tests/Player/Editor/MyPrecious.Player.EditorTests.asmdef.meta",
+      "sha256": "FAEF366676070182560794543D0BBEEACFE40BCF524013EAB2467E2AB4958C17"
+    },
+    {
+      "path": "Assets/Tests/Player/Editor/PlayerTestSceneBuilder.cs",
+      "sha256": "211166377D3C8E082856626966A4000255BBDCD4FFE1886E45AF1DF1F8BCE87C"
+    },
+    {
+      "path": "Assets/Tests/Player/Editor/PlayerTestSceneBuilder.cs.meta",
+      "sha256": "13C24D9CC0AB6109C9C13104C3B6571E187C3095D746DBA572BD00772FC0BEBC"
+    },
+    {
+      "path": "Assets/Tests/Player/PlayMode.meta",
+      "sha256": "ECB60AA6A7D6E4580AA948FD7F532A482140965CCEEB9C7FCA1F9EF79A41AC70"
+    },
+    {
+      "path": "Assets/Tests/Player/PlayMode/MyPrecious.Player.PlayModeTests.asmdef",
+      "sha256": "7A069C4F103F5F1447FDBE085B26915FC5935D87612E16D63B204251AE829571"
+    },
+    {
+      "path": "Assets/Tests/Player/PlayMode/MyPrecious.Player.PlayModeTests.asmdef.meta",
+      "sha256": "951B00579CEDDE718B81182817EB425138BFF16E20BBC3E8D69612A0FF6F84CD"
+    },
+    {
+      "path": "Assets/Tests/Player/PlayMode/PlayerCameraBoundsTests.cs",
+      "sha256": "1363334313BF7A535EC558E8E4219C1862749F0B604387DABBBC63241A551D02"
+    },
+    {
+      "path": "Assets/Tests/Player/PlayMode/PlayerCameraBoundsTests.cs.meta",
+      "sha256": "8C3C0C0701DDFFA632F6FE9223CB942F86C0D66D74455DCF32031ADEA5080318"
+    },
+    {
+      "path": "Assets/Tests/Player/PlayMode/PlayerCrouchColliderTests.cs",
+      "sha256": "50A380B5BA82FF1956001E9E747DB38A8246FCBBAFE47C949C6365D6625FECFD"
+    },
+    {
+      "path": "Assets/Tests/Player/PlayMode/PlayerCrouchColliderTests.cs.meta",
+      "sha256": "2DBC0A4AC4B5D83429A4A0E37C66219DE753435D22C8022A440259619541AD38"
+    },
+    {
+      "path": "Assets/Tests/Player/PlayMode/PlayerIntegrationTests.cs",
+      "sha256": "CC762A7302669EF6D1627A7FBEF198617586740C3C4D1FA895583BAD033249C2"
+    },
+    {
+      "path": "Assets/Tests/Player/PlayMode/PlayerIntegrationTests.cs.meta",
+      "sha256": "5F5FFFBFBDF2A02DF950CD9FDC4A3D2AB100FE5158387906CD768E726B3EC433"
+    },
+    {
+      "path": "Assets/Tests/Player/PlayMode/PlayerInteractionTests.cs",
+      "sha256": "566B231ED235F6805BFB162AD80CF2D26F40A44A54B87FABB65D202DFD88A0D0"
+    },
+    {
+      "path": "Assets/Tests/Player/PlayMode/PlayerInteractionTests.cs.meta",
+      "sha256": "041853A223D1A319890F99651D4BAF60D9D30940FC3B8967B4AF8A21FF9EAB85"
+    },
+    {
+      "path": "Assets/Tests/Player/PlayMode/PlayerJumpGraceTests.cs",
+      "sha256": "DB1AC76D0CFB5938D69F54A84247D8958000998ECDDD031F912684637AA3D541"
+    },
+    {
+      "path": "Assets/Tests/Player/PlayMode/PlayerJumpGraceTests.cs.meta",
+      "sha256": "D187EE69BDD649273AC0C81AF5783C15F6C5BAA88CE75BD136CE130BC7388AAE"
+    },
+    {
+      "path": "Assets/Tests/Player/PlayMode/PlayerMovementTests.cs",
+      "sha256": "B238CA561C894DB70F6A10B847D5ECB2532FF08D0DFB65D6BD162A1F19004F29"
+    },
+    {
+      "path": "Assets/Tests/Player/PlayMode/PlayerMovementTests.cs.meta",
+      "sha256": "FB6EE44C3806A688A785A07FA7B22BF164EE9451D80D1056952606FD403CDB0F"
+    },
+    {
+      "path": "Assets/Tests/Player/PlayMode/PlayerReferenceMovementTests.cs",
+      "sha256": "11449D2D6A4C52B21ABAC55E021B4B033E5A1B46FCAF832C477AAEB7C50AB850"
+    },
+    {
+      "path": "Assets/Tests/Player/PlayMode/PlayerReferenceMovementTests.cs.meta",
+      "sha256": "91D464591923EB1EB09CBB02B45CC98420466364602D2083DD443593ED7852BD"
+    },
+    {
+      "path": "Assets/Tests/Player/PlayMode/PlayerTriggerInteractionTests.cs",
+      "sha256": "17C1D0C07D4089FB0A40F6D11BA2C2DA95DC2CFCAECF07D4A283610A1F3BCA7F"
+    },
+    {
+      "path": "Assets/Tests/Player/PlayMode/PlayerTriggerInteractionTests.cs.meta",
+      "sha256": "4F87672339C8270CD5C16B60C0A1CE4C33AC9C44D26315D7A2F2F7C76989D1B3"
+    },
+    {
+      "path": "Assets/Tests/Player/TestDoubles.meta",
+      "sha256": "090B6C8DA7EE695B024C7322551E3ADC03A56C58A728FA004EC23FB3079D5D8C"
+    },
+    {
+      "path": "Assets/Tests/Player/TestDoubles/MyPrecious.Player.TestDoubles.asmdef",
+      "sha256": "15D237439DC0822B4D71D527A675DD502833C34AC695521240AF048D18F3FDED"
+    },
+    {
+      "path": "Assets/Tests/Player/TestDoubles/MyPrecious.Player.TestDoubles.asmdef.meta",
+      "sha256": "9E7D0CDBD49C168E2DAA9B8F97430D49EEB9CC22CE9923446DB53AF8E9CA2E47"
+    },
+    {
+      "path": "Assets/Tests/Player/TestDoubles/PlayerTestDamageSource.cs",
+      "sha256": "58B5ED0D32F5E0BD4E933036830DCEDB07AC3786E6D1BCD5A3DA0E243BCB73FE"
+    },
+    {
+      "path": "Assets/Tests/Player/TestDoubles/PlayerTestDamageSource.cs.meta",
+      "sha256": "E742C198A905B872737E1E875EB4B9ED66751231D61F6681857CDBD3334B9E75"
+    },
+    {
+      "path": "Assets/Tests/Player/TestDoubles/PlayerTestDriver.cs",
+      "sha256": "210290571B7E67872FF82DB9CD678A3AE65337A28A415363BA11F07BB934E25F"
+    },
+    {
+      "path": "Assets/Tests/Player/TestDoubles/PlayerTestDriver.cs.meta",
+      "sha256": "05E89710F79133C7AE18C936261BA42F13303ADB292CB8F6FC5060BB290911A0"
+    },
+    {
+      "path": "Assets/Tests/Player/TestDoubles/PlayerTestInteractable.cs",
+      "sha256": "5ABA01D3211896CB455E009D87808DB24971A199FDCA6E5DD5222BB0F32F0502"
+    },
+    {
+      "path": "Assets/Tests/Player/TestDoubles/PlayerTestInteractable.cs.meta",
+      "sha256": "5A4B6434F34E2C9A926F76A00E894630E5A53B75B4CA3719F0F1A71A297D348A"
+    },
+    {
+      "path": "Assets/Tests/Warehouse.meta",
+      "sha256": "053ADCEBE4720B615A4F3006363E9AF0C6FF276D293CD6F78C525935C3E1A5BE"
+    },
+    {
+      "path": "Assets/Tests/Warehouse/EditMode.meta",
+      "sha256": "59843854A6154C08D8967778F64BE0789A93B2E14E5E0B3B542E13A3B479A190"
+    },
+    {
+      "path": "Assets/Tests/Warehouse/EditMode/MyPrecious.Warehouse.EditModeTests.asmdef",
+      "sha256": "48830613BA38DA4793B30E9D95269806C5BD482C80C9FF05F76683CCB1CD29AA"
+    },
+    {
+      "path": "Assets/Tests/Warehouse/EditMode/MyPrecious.Warehouse.EditModeTests.asmdef.meta",
+      "sha256": "C8BD4846EC057DBAEC22C7E6085D2A5B965E121F20650E3B2AE1434AA3D0A59A"
+    },
+    {
+      "path": "Assets/Tests/Warehouse/EditMode/WarehouseGridTests.cs",
+      "sha256": "AAA90744E941E1D2C94FE56CF2381383DE59D1440D4D9AABEA639CD7A875063C"
+    },
+    {
+      "path": "Assets/Tests/Warehouse/EditMode/WarehouseGridTests.cs.meta",
+      "sha256": "FEA39205B4FD5CA644A86A167C8D2ECD5B238A463BD78ABB45C3BF6715E3E0BD"
+    },
+    {
+      "path": "Assets/Tests/Warehouse/EditMode/WarehouseShelterTests.cs",
+      "sha256": "9ED12164B1DFFAC0224C86C6E739B874C14C07F2A8919043B9DA21FB45686E4E"
+    },
+    {
+      "path": "Assets/Tests/Warehouse/EditMode/WarehouseShelterTests.cs.meta",
+      "sha256": "57632DEA99926D438C46D5FFA9F1C121312479E5062E8392FE806BED7FCAEE69"
+    },
+    {
+      "path": "Assets/Tests/Warehouse/Editor.meta",
+      "sha256": "AA92BCCCF51AF39B5C5E9A2E8C1862AFDB158BC2336688E0F8584E10C2FA49EF"
+    },
+    {
+      "path": "Assets/Tests/Warehouse/Editor/MyPrecious.Warehouse.Editor.asmdef",
+      "sha256": "7FAB2A984AA101EC84E39D295952302B58E73DDD382362EEEEED9D038178990E"
+    },
+    {
+      "path": "Assets/Tests/Warehouse/Editor/MyPrecious.Warehouse.Editor.asmdef.meta",
+      "sha256": "C124C36FF763832D4049244ED2BAB220EDF60B27162E16763F0B692EC5614E07"
+    },
+    {
+      "path": "Assets/Tests/Warehouse/Editor/WarehouseTestSceneBuilder.cs",
+      "sha256": "9DE88F26D3465A5F9717F6FBB9EF25AAB142C3879F7385C26378FBF78D2EB7D6"
+    },
+    {
+      "path": "Assets/Tests/Warehouse/Editor/WarehouseTestSceneBuilder.cs.meta",
+      "sha256": "9C37FFA7C7D15A563A212B390DE2889C6F2FE38CFFF0CA3951160863AF74AD02"
+    },
+    {
+      "path": "Assets/Tests/Warehouse/Editor/WarehouseTextEntries.cs",
+      "sha256": "4631DFB38AEE5484CFCFBB71A1CB30E58B35BF5C89BEA6C95E24E4D4A8463EF9"
+    },
+    {
+      "path": "Assets/Tests/Warehouse/Editor/WarehouseTextEntries.cs.meta",
+      "sha256": "90F74EABECD4DB15AAFE549708F77DFC45259E5C1AF0A32B317F5BE6ADCFC01B"
+    },
+    {
+      "path": "Assets/Tests/Warehouse/PlayMode.meta",
+      "sha256": "41820D38402388F5A6F574EA874BB9F553FF4AF9E03D54D26981AEB451800849"
+    },
+    {
+      "path": "Assets/Tests/Warehouse/PlayMode/MyPrecious.Warehouse.PlayModeTests.asmdef",
+      "sha256": "B24C2896BF510B739E29952F8C78CDFC4BA3C173DB4F6FC80334B591CCF7C6D8"
+    },
+    {
+      "path": "Assets/Tests/Warehouse/PlayMode/MyPrecious.Warehouse.PlayModeTests.asmdef.meta",
+      "sha256": "FB4A7D563DEEC8A7E7482489F7264BF6F610CC56D6A4F46839C24A01651D830E"
+    },
+    {
+      "path": "Assets/Tests/Warehouse/PlayMode/WarehouseIntegrationTests.cs",
+      "sha256": "669672320E5A4157CB5C67D83A0CBD5DF66E2C096B298D7D689950ADFD3892BF"
+    },
+    {
+      "path": "Assets/Tests/Warehouse/PlayMode/WarehouseIntegrationTests.cs.meta",
+      "sha256": "54A2CC16AB38A28F94F500E1D969FB15A67590830CD82EB361BB3FF923CD4122"
+    },
+    {
+      "path": "Assets/Tests/Warehouse/TestDoubles.meta",
+      "sha256": "18BEDE449A9B3829E90769C8D31C93C7E052ED7116D5A39CFAFFD5A62A4FB140"
+    },
+    {
+      "path": "Assets/Tests/Warehouse/TestDoubles/MyPrecious.Warehouse.TestDoubles.asmdef",
+      "sha256": "E49CF2403AE8CC6B31617643EACF54786AB47C8A361D109056EF2CCCC7FA6D83"
+    },
+    {
+      "path": "Assets/Tests/Warehouse/TestDoubles/MyPrecious.Warehouse.TestDoubles.asmdef.meta",
+      "sha256": "5A892F7C25B63FE5CB46F3CF923A8147C5E7FD94ACE168FC6954A6EC6FFDE5DB"
+    },
+    {
+      "path": "Assets/Tests/Warehouse/TestDoubles/WarehouseTestDriver.cs",
+      "sha256": "F12ED8C947E6972374720357D54F50A44E3D93B57DF7E12D20C532A15F0B4DBC"
+    },
+    {
+      "path": "Assets/Tests/Warehouse/TestDoubles/WarehouseTestDriver.cs.meta",
+      "sha256": "FE3D0D03EA527597C61C6F1189476190198FE54AB2763A88BE034D6EC229795B"
+    },
+    {
+      "path": "Packages/manifest.json",
+      "sha256": "C1C8F6AF0C64F3AF470E39F74EA52DF8FE34E29397969E5DABF179EFE6D6F975"
+    },
+    {
+      "path": "Packages/packages-lock.json",
+      "sha256": "E5F988394040532A2EE0FDC360B57B5E063484FB81EA36D2C7EC4E7A347557F6"
+    },
+    {
+      "path": "ProjectSettings/AudioManager.asset",
+      "sha256": "AEEDEB3243F07B61DBBE854AA08B5EF6F0B5274DD9852AD9F6129DDE3E105A31"
+    },
+    {
+      "path": "ProjectSettings/ClusterInputManager.asset",
+      "sha256": "40E65DD214BF254955D2C8829CA8CE2130FD3510485560CE012E9A1DDD93E623"
+    },
+    {
+      "path": "ProjectSettings/DynamicsManager.asset",
+      "sha256": "B7C9A9DC08B98990109D4346F68745E15E238DE400F96C583E53E1C83C743A78"
+    },
+    {
+      "path": "ProjectSettings/EditorBuildSettings.asset",
+      "sha256": "3C427C97606B0BAC66B2C132AFC4796F46A8EBE2011C912964729F0D8F6552BB"
+    },
+    {
+      "path": "ProjectSettings/EditorSettings.asset",
+      "sha256": "D31BE15C85A31D85372564BF5EE30188A9454274C6DF8FE7A3372375A0DB98BC"
+    },
+    {
+      "path": "ProjectSettings/GraphicsSettings.asset",
+      "sha256": "56C816BD980CA4B9C5A33F5EF233BCAEA6C08505A1AF65AC5E5E633CE8BAD6FE"
+    },
+    {
+      "path": "ProjectSettings/InputManager.asset",
+      "sha256": "7A1BB836A1008D26D0860D143E9D9DF7CA41731D30A72901B518063819C62DF2"
+    },
+    {
+      "path": "ProjectSettings/MemorySettings.asset",
+      "sha256": "1E8379A461B10AE09F3F696911088C16875D63E87ED5F2D95DF9E1892703F9FD"
+    },
+    {
+      "path": "ProjectSettings/MultiplayerManager.asset",
+      "sha256": "ABA89FD1A1DDAD182727AD82727E536D27372E90328A8196DA2A4560398983DD"
+    },
+    {
+      "path": "ProjectSettings/NavMeshAreas.asset",
+      "sha256": "80106CFA7E6181A1928B142C075F3E510D527441E3D79BC83590E4AC91E7CD66"
+    },
+    {
+      "path": "ProjectSettings/PackageManagerSettings.asset",
+      "sha256": "A7DABBA589ABE7FC2B45BD3D3FBA3FE9BE97043492703F716DA2D9131C13A807"
+    },
+    {
+      "path": "ProjectSettings/Physics2DSettings.asset",
+      "sha256": "E3CBDBF0BE15244B7B67D2F07BDB8E8981911C11A8C7FE8035F5261272FEC658"
+    },
+    {
+      "path": "ProjectSettings/PresetManager.asset",
+      "sha256": "29C125923FE6E29F90190D4FCE1C82D660E7051546E2C9D02908D18C9CF2436C"
+    },
+    {
+      "path": "ProjectSettings/ProjectSettings.asset",
+      "sha256": "7E8D7317565EE7C2DC4832BE2E3DBB806F616CCAA34BE60E4211996413A3D19D"
+    },
+    {
+      "path": "ProjectSettings/ProjectVersion.txt",
+      "sha256": "A700781C44C17ECD6F7316C959B0055F4D5D08C4A2B5A6981E5947D8BB0F1994"
+    },
+    {
+      "path": "ProjectSettings/QualitySettings.asset",
+      "sha256": "6814D6CC3EB850DD7D2A069A8B17BA9F7591DEBA8B1758A855978BD9C8627643"
+    },
+    {
+      "path": "ProjectSettings/SceneTemplateSettings.json",
+      "sha256": "BB9098B3BFCDE78D93E264B96F7B77B5430E64E8C57A7AAD7F5A5D9C3945E16A"
+    },
+    {
+      "path": "ProjectSettings/ShaderGraphSettings.asset",
+      "sha256": "CDBA1E5D65BCF6E3269D76ED3E60B6C21F98322002996642C9D74F1EB89F6B91"
+    },
+    {
+      "path": "ProjectSettings/TagManager.asset",
+      "sha256": "23FC56B484AA3D7EDF5914CD3591F7A823CCEF5E3F3496F8A51F30388EAD63DC"
+    },
+    {
+      "path": "ProjectSettings/TimeManager.asset",
+      "sha256": "1A83E54ADBBDA7C9F4851103A0C6AB7F6448A3343D4EA5B7620452FA08416ECD"
+    },
+    {
+      "path": "ProjectSettings/UnityConnectSettings.asset",
+      "sha256": "98F142992D8A623501C99648E1B7363ADCA08B67BB50390B566DF368D00BC9A0"
+    },
+    {
+      "path": "ProjectSettings/URPProjectSettings.asset",
+      "sha256": "596D5C8BF4F957B03684C949BEBC252AE1918F25415A1147A00684C4B086EFDA"
+    },
+    {
+      "path": "ProjectSettings/VersionControlSettings.asset",
+      "sha256": "E7BDA45BF7A394745FEE1316E6C71FA676004D591AD1F3AA247FD3E4CEB86071"
+    },
+    {
+      "path": "ProjectSettings/VFXManager.asset",
+      "sha256": "F066C6483919961332415EE64204F74FE52F38C02E82892EB02B7A5B2E381F0E"
+    },
+    {
+      "path": "ProjectSettings/XRSettings.asset",
+      "sha256": "EDD2BEB4A2E388312B4B7DA241AA51070434005D82C59363F1237DD2E567585F"
+    }
+  ]
+}

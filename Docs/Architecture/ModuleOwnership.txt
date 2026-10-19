@@ -1,0 +1,7 @@
+MyPrecious P0 — 旧00所有权说明已被替代
+版本：2026-10-18 / Dispatch v5 / Lean 00
+旧文档中的预建业务接口目录和通用模块注册要求不再有效。
+00当前范围、入口与输入接入方法见Docs/Architecture/BaseSetup.txt。
+实际保留、修改、移除的文件见Docs/Handoffs/00_Handoff.txt。
+原有功能模块分工继续保留；各模块仍以其最新任务提示词和Docs/AgentPrompts/ProjectRules.txt为准。
+后续共享类型按真实调用需要建立，正式场景和整体输入接线由09集中处理。

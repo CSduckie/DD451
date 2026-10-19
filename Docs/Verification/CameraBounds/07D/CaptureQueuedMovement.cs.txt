@@ -1,0 +1,173 @@
+// Executed as an Editor MCP method body during ordinary Play. No Assets script.
+// Queued InputSystem events -> real controller/physics/Brain. This is not native/OS input.
+// Run once per scene; wait for its JSON before starting another capture. No teleport or camera/physics writes.
+var flow = UnityEngine.Object.FindFirstObjectByType<GameFlowManager>();
+if (!EditorApplication.isPlaying || EditorApplication.isPaused || Time.timeScale <= 0f || flow == null || flow.Player == null) { return "No unpaused formal session"; }
+var player = flow.Player;
+GameFlowSceneBindings bindings = null;
+foreach (var candidate in UnityEngine.Object.FindObjectsByType<GameFlowSceneBindings>(FindObjectsSortMode.None)) {
+    if (candidate.gameObject.scene == player.gameObject.scene) {
+        if (bindings != null) { return "Multiple bindings in player scene"; }
+        bindings = candidate;
+    }
+}
+var camera = Camera.main;
+string boundsError;
+if (bindings == null || bindings.cameraBinder == null || camera == null || !camera.enabled
+    || camera.gameObject.scene != player.gameObject.scene || bindings.cameraBinder.player != player
+    || !bindings.cameraBinder.ValidateBounds(out boundsError)) { return "Camera/bindings not ready in player scene"; }
+var volume = bindings.cameraBinder.confiner.BoundingVolume as BoxCollider;
+if (volume == null || !volume.gameObject.activeInHierarchy
+    || (flow.Stage != GameFlowStage.Shelter && flow.Stage != GameFlowStage.Exploring)) { return "Scene is transitioning"; }
+bindings.CloseSessions();
+if (!player.CanAct || player.Body == null || player.Body.isKinematic || player.config == null) { return "Player cannot act"; }
+
+var originalSettings = UnityEngine.InputSystem.InputSystem.settings;
+var originalKeyboard = UnityEngine.InputSystem.Keyboard.current;
+var disabledKeyboards = new System.Collections.Generic.List<UnityEngine.InputSystem.InputDevice>();
+UnityEngine.InputSystem.InputSettings settings = null;
+UnityEngine.InputSystem.Keyboard keyboard = null;
+bool oldBackground = Application.runInBackground, finished = false;
+int sceneHandle = player.gameObject.scene.handle;
+string sceneName = player.gameObject.scene.name;
+string folder = "E:/DD451/Docs/Verification/CameraBounds/07D/";
+string resolution = Screen.width + "x" + Screen.height;
+float started = Time.time, phaseStarted = Time.time, phaseFixedStarted = Time.fixedTime;
+double realStarted = EditorApplication.timeSinceStartup;
+int phase = -1, phaseFrame = Time.frameCount, lastFrame = -1;
+float edgeSince = -1f, jumpBaseline = player.transform.position.y, peakY = player.transform.position.y, maxOutside = 0f;
+bool airborne = false, apexCaptured = false, leftCaptured = false, rightCaptured = false;
+var samples = new System.Collections.Generic.List<object>();
+var captures = new System.Collections.Generic.List<object>();
+EditorApplication.CallbackFunction tick = null;
+System.Action<UnityEngine.Rendering.ScriptableRenderContext, Camera> rendered = null;
+Camera.CameraCallback builtInRendered = null;
+System.Action cleanup = () => {
+    if (finished) { return; }
+    finished = true;
+    EditorApplication.update -= tick;
+    UnityEngine.Rendering.RenderPipelineManager.endCameraRendering -= rendered;
+    Camera.onPostRender -= builtInRendered;
+    try {
+        if (keyboard != null && keyboard.added) { UnityEngine.InputSystem.InputSystem.RemoveDevice(keyboard); }
+    } finally {
+        try {
+            if (originalSettings != null) { UnityEngine.InputSystem.InputSystem.settings = originalSettings; }
+            Application.runInBackground = oldBackground;
+            if (settings != null) { UnityEngine.Object.DestroyImmediate(settings); }
+        } finally {
+            foreach (var device in disabledKeyboards) {
+                if (device.added && !device.enabled) { UnityEngine.InputSystem.InputSystem.EnableDevice(device); }
+            }
+            if (originalKeyboard != null && originalKeyboard.added) { originalKeyboard.MakeCurrent(); }
+        }
+    }
+};
+System.Action<string> complete = reason => {
+    try {
+        System.IO.File.WriteAllText(folder + sceneName + "-Movement.json", Newtonsoft.Json.JsonConvert.SerializeObject(new {
+            mode = "ordinary Play / queued keyboard / real controller, physics and Brain; not native",
+            scene = sceneName, status = reason, leftCaptured = leftCaptured, rightCaptured = rightCaptured,
+            airborne = airborne, apexCaptured = apexCaptured, jumpRise = peakY - jumpBaseline,
+            maxOutside = maxOutside, captures = captures, samples = samples
+        }, Newtonsoft.Json.Formatting.Indented));
+    } finally { cleanup(); }
+};
+System.Action<System.Exception> fail = error => {
+    try { System.IO.File.WriteAllText(folder + sceneName + "-Movement-Error.txt", error.ToString()); }
+    catch (System.Exception writeError) { UnityEngine.Debug.LogError("Movement capture error: " + error + "\nError log write failed: " + writeError); }
+    finally { cleanup(); }
+};
+System.Action<int> enterPhase = next => {
+    phase = next; phaseStarted = Time.time; phaseFixedStarted = Time.fixedTime; phaseFrame = Time.frameCount; edgeSince = -1f;
+    var state = next == 0 ? new UnityEngine.InputSystem.LowLevel.KeyboardState(UnityEngine.InputSystem.Key.A)
+        : next == 1 || next == 3 ? new UnityEngine.InputSystem.LowLevel.KeyboardState(UnityEngine.InputSystem.Key.D)
+        : next == 2 ? new UnityEngine.InputSystem.LowLevel.KeyboardState(UnityEngine.InputSystem.Key.D, UnityEngine.InputSystem.Key.Space)
+        : new UnityEngine.InputSystem.LowLevel.KeyboardState();
+    UnityEngine.InputSystem.InputSystem.QueueStateEvent(keyboard, state);
+};
+System.Action<string> capture = label => {
+    string path = folder + sceneName + "-" + label + "-" + resolution + ".png";
+    ScreenCapture.CaptureScreenshot(path);
+    var p = player.transform.position; var c = camera.transform.position;
+    captures.Add(new { label = label, time = Time.time - started, frame = Time.frameCount, path = path,
+        player = new[] {p.x,p.y,p.z}, camera = new[] {c.x,c.y,c.z} });
+};
+// Sample completed camera renders after Brain output; support SRP and built-in, deduplicated per frame.
+System.Action<Camera> sampleRendered = output => {
+    if (finished || output != camera || lastFrame == Time.frameCount) { return; }
+    try {
+        if (player == null || volume == null || bindings == null || player.gameObject.scene.handle != sceneHandle) { complete("aborted: scene changed"); return; }
+        lastFrame = Time.frameCount;
+        var p = player.transform.position; var c = camera.transform.position;
+        float outside = Vector3.Distance(volume.ClosestPoint(c), c);
+        maxOutside = Mathf.Max(maxOutside, outside);
+        samples.Add(new { time = Time.time - started, frame = Time.frameCount, fixedTime = Time.fixedTime, phase = phase,
+            player = new[] {p.x,p.y,p.z}, camera = new[] {c.x,c.y,c.z},
+            velocity = new[] {player.Body.linearVelocity.x,player.Body.linearVelocity.y},
+            grounded = player.IsGrounded, input = player.MoveInput, outside = outside,
+            screen = new[] {Screen.width,Screen.height}, error = bindings.cameraBinder.LastBoundsError });
+        var local = volume.transform.InverseTransformPoint(c);
+        float edge = phase == 0 ? volume.center.x - volume.size.x * 0.5f : volume.center.x + volume.size.x * 0.5f;
+        if (phase == 0 || phase == 3) {
+            if (Mathf.Abs(local.x - edge) > 0.12f) { edgeSince = -1f; }
+            else if (edgeSince < 0f) { edgeSince = Time.time; }
+            if (edgeSince >= 0f && Time.time - edgeSince >= 0.25f) {
+                if (phase == 0 && !leftCaptured && Time.time - phaseStarted >= 1.8f) { capture("Left"); leftCaptured = true; }
+                if (phase == 3 && !rightCaptured && Time.time - phaseStarted >= 3f) { capture("Right"); rightCaptured = true; }
+            }
+        }
+        if (phase == 2 || phase == 3) {
+            peakY = Mathf.Max(peakY, p.y);
+            if (!player.IsGrounded && p.y > jumpBaseline + 0.2f) { airborne = true; }
+            // First rendered frame near/past apex, not the frame merely queuing Space.
+            if (airborne && !apexCaptured && !player.IsGrounded && player.Body.linearVelocity.y <= 0.75f) { capture("Jump"); apexCaptured = true; }
+        }
+    } catch (System.Exception error) { fail(error); }
+};
+rendered = (context, output) => sampleRendered(output);
+builtInRendered = output => sampleRendered(output);
+tick = () => {
+    if (finished) { return; }
+    try {
+        if (!EditorApplication.isPlaying || EditorApplication.isPaused || flow == null || player == null
+            || bindings == null || camera == null || volume == null || flow.Player != player
+            || player.gameObject.scene.handle != sceneHandle || camera.gameObject.scene.handle != sceneHandle
+            || bindings.gameObject.scene.handle != sceneHandle || !player.CanAct || Time.timeScale <= 0f) { complete("aborted: session unavailable, paused or blocked"); return; }
+        if (EditorApplication.timeSinceStartup - realStarted > 75 || Time.time - started > 18f) { complete("incomplete: timeout; inspect coverage flags and samples"); return; }
+        float held = Time.time - phaseStarted;
+        bool processed = Time.frameCount >= phaseFrame + 2 && Time.fixedTime >= phaseFixedStarted + Time.fixedDeltaTime * 2f;
+        if (phase == 0 && processed && held >= 2f && leftCaptured) { enterPhase(1); }
+        else if (phase == 1 && processed && held >= 0.5f && player.transform.position.x >= 3f && player.IsGrounded) {
+            jumpBaseline = player.transform.position.y; peakY = jumpBaseline; enterPhase(2);
+        }
+        else if (phase == 2 && processed && held >= 0.35f) { enterPhase(3); }
+        else if (phase == 3 && processed && rightCaptured && apexCaptured && player.IsGrounded) { enterPhase(4); }
+        else if (phase == 4 && processed && held >= 0.8f && Time.time - started >= 12f) {
+            complete(maxOutside <= 0.02f ? "completed" : "completed with camera outside bounds; inspect samples");
+        }
+    } catch (System.Exception error) { fail(error); }
+};
+try {
+    System.IO.Directory.CreateDirectory(folder);
+    settings = UnityEngine.Object.Instantiate(originalSettings);
+    settings.hideFlags = HideFlags.HideAndDontSave;
+    settings.editorInputBehaviorInPlayMode = UnityEngine.InputSystem.InputSettings.EditorInputBehaviorInPlayMode.AllDeviceInputAlwaysGoesToGameView;
+    settings.backgroundBehavior = UnityEngine.InputSystem.InputSettings.BackgroundBehavior.IgnoreFocus;
+    UnityEngine.InputSystem.InputSystem.settings = settings;
+    Application.runInBackground = true;
+    // MakeCurrent does not restrict bindings; isolate enabled existing keyboards and restore exactly those.
+    foreach (var device in UnityEngine.InputSystem.InputSystem.devices) {
+        if (device is UnityEngine.InputSystem.Keyboard && device.enabled) {
+            disabledKeyboards.Add(device);
+            UnityEngine.InputSystem.InputSystem.DisableDevice(device);
+        }
+    }
+    keyboard = UnityEngine.InputSystem.InputSystem.AddDevice<UnityEngine.InputSystem.Keyboard>();
+    keyboard.MakeCurrent();
+    enterPhase(0);
+    UnityEngine.Rendering.RenderPipelineManager.endCameraRendering += rendered;
+    Camera.onPostRender += builtInRendered;
+    EditorApplication.update += tick;
+} catch (System.Exception error) { fail(error); return error.ToString(); }
+return new { started = sceneName, mode = "queued keyboard, not native", expectedGameSeconds = "12-18", realTimeoutSeconds = 75 };

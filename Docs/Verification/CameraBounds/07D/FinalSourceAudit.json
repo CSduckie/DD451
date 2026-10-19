@@ -1,0 +1,43 @@
+{
+  "utc": "2026-10-19T02:00:32.4225015Z",
+  "scopeCount": 318,
+  "priorAuditArchive": "Docs\\Verification\\CameraBounds\\07D\\BeforeVisualTune\\FinalSourceAudit-013514.json",
+  "changes": [
+    {
+      "path": "Assets/Tests\\Player\\PlayMode\\PlayerIntegrationTests.cs",
+      "before": "2A4C28202B9EADBD23E356BE8F51EFA136A5AAFFEFC3098A70F1BF49C45E22BD",
+      "current": "CC762A7302669EF6D1627A7FBEF198617586740C3C4D1FA895583BAD033249C2",
+      "reason": "Previously audited integration repair, unchanged since 01:35:14Z."
+    },
+    {
+      "path": "Assets/Scripts\\Player\\MonoBehaviour\\PlayerCameraTargetBinder.cs",
+      "before": "D7CAEA52177CB3BBDED93261631AC499B3F472A4148ED9B6A8ED5ECE2249E51F",
+      "current": "6B22550363A1E47C78BFC22507BC298E7D576C6590FD805BFA3BDC9B487E645D",
+      "reason": "Previously audited integration repair, unchanged since 01:35:14Z."
+    },
+    {
+      "path": "Assets/Tests\\GameFlow\\Editor\\MinimumLoopSceneBuilder.cs",
+      "before": "98925C21DFFC7149981421F7F1566B2D6B6D765E6EC1D22513A2B4F2249AB78E",
+      "current": "A1F97F3AE6D4F9DE2A9C6C8A276A8E60E69AB5C484391A372F02C6D71060E24A",
+      "reason": "One-line future CameraBounds width defaults synchronized with the two formal scene visual tunes."
+    },
+    {
+      "path": "Assets/Scripts\\Interaction\\MonoBehaviour\\PlayerInteraction.cs",
+      "before": "41F7587D4574534671F3C0BC733C6326E7E0604AD34B622E473E89FCB275CC94",
+      "current": "187C638EF6504C5D603E5A58A552FDA7B222D735FFC5CA0B80E34D48488AC873",
+      "reason": "Previously audited integration repair, unchanged since 01:35:14Z."
+    }
+  ],
+  "visualTune": {
+    "path": "Assets/Tests/GameFlow/Editor/MinimumLoopSceneBuilder.cs",
+    "backup": "Docs\\Verification\\CameraBounds\\07D\\BeforeVisualTune\\Assets\\Tests\\GameFlow\\Editor\\MinimumLoopSceneBuilder.cs",
+    "beforeSha256": "98925C21DFFC7149981421F7F1566B2D6B6D765E6EC1D22513A2B4F2249AB78E",
+    "currentSha256": "A1F97F3AE6D4F9DE2A9C6C8A276A8E60E69AB5C484391A372F02C6D71060E24A",
+    "removedLine": "                isShelter ? new Vector3(15.6f, 1f, 2f) : new Vector3(14.6f, 3f, 2f));",
+    "addedLine": "                isShelter ? new Vector3(16.8f, 1f, 2f) : new Vector3(15.8f, 3f, 2f));",
+    "exactlyOneLineReplacement": true,
+    "metadataUnchanged": true
+  },
+  "unexpectedDifferences": [],
+  "note": "Four post-freeze changes: unchanged three audited integration repairs plus one MinimumLoopSceneBuilder line updating both formal CameraBounds width defaults. Actual builder/meta before visual tuning preserved. No test assertion or other source changed for visual tuning. The separate affected GameFlow8 rerun subsequently passed 8/8; FinalVerification confirmed no further source drift. Original hash data and observation UTC are preserved."
+}

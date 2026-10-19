@@ -1,0 +1,24 @@
+只读源码审查，未执行Unity/Editor操作。两份.cs.txt都是execute_code方法体，不应导入Assets。
+
+首选 RecoverOriginalMcpJob.method.cs.txt：
+MCP TestJobManager.ToSerializable的result字段只在job.Status==Succeeded时赋值（TestJobManager.cs 542-545），因此Failed的53项批次可能仍持有完整job.Result，只是工具输出隐藏。FinalizeCurrentJobFromRunFinished仍把payload写入job.Result（367-387），TestRunnerService从Unity的ITestResultAdaptor回调复制逐项结果。反射Jobs[原jobId].Result后调用TestRunResult.ToSerializable(string,true,true)可恢复完整53项及Enemy40项，不改job状态、不清缓存、不运行任何测试。
+TestJobManager.SessionState持久化明确不含Result，域重载恢复时Result=null（208-209）；如果首选返回null，不能从progress的完成数直接伪造40条Passed。
+
+后备 RecoverExistingUnityGuiCache.method.cs.txt：
+TestRunnerWindow.m_TestListGUIs/m_SelectedTestTypes -> TestListGUI.m_NewResultList（SerializeField）、m_QueuedResults；窗口不存在时，WindowResultUpdaterDataHolder.CachedResults保存TestRunnerResult。WindowResultUpdater.TestFinished更新这些记录，RunStarted为空；仅重跑GameFlow通常不清Enemy行。
+TestRunnerResult含fullName/resultStatus/duration/messages/output/stacktrace/isSuite/notOutdated；没有运行开始/结束时间或jobId，因此输出明确是Unity GUI逐项缓存，不能冒称原批次官方XML。notOutdated在域重载后变false，是代码变更/重载边界警示，不能自动视为当前运行证明。
+若TestListGUI.m_LatestTestResults还持有含53个叶子且Enemy40个的完整官方ITestResultAdaptor，就反射调用TestRunnerApi.SaveResultToFile导出官方XML。此字段仅在RunFinished赋值；当前13项GameFlow完成后可能被其结果覆盖。脚本会验证计数，不把GameFlow13项XML误标成Enemy40或原53项。
+方法不调用GetWindow/ShowWindow/SelectTestListGUI/Reload/Clear/RunTests，不访问可能创建对象的Singleton.instance，不注册回调。读取现存数据；唯一写入是Docs/Verification/Enemy/TimedAlert/Integration的证据文件。
+
+其它已查路径：
+UnityEditor.TestTools.TestRunner.TestResultSerializer只是EditModeRunner.m_ExecutedTests的状态重载包装，不是PlayMode全局历史仓库；RestoreTestResult会写入NUnit结果，恢复证据无需调用。
+TestJobDataHolder只保存正在运行的TestRuns，UnregisterRun会移除已完成job，不能可靠找回已完成的53项历史。
+MCP TestRunnerService._leafResults在RunTestsAsync以及RunStarted都会Clear；目前13项GameFlow已开始，不应再把这个服务列表当原53项来源。
+
+源码位置：
+E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Services/TestJobManager.cs
+E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Services/TestRunnerService.cs
+E:/DD451/Library/PackageCache/com.unity.test-framework@d97b7cd61ded/UnityEditor.TestRunner/GUI/Views/TestListGUIBase.cs
+E:/DD451/Library/PackageCache/com.unity.test-framework@d97b7cd61ded/UnityEditor.TestRunner/GUI/TestRunnerResult.cs
+E:/DD451/Library/PackageCache/com.unity.test-framework@d97b7cd61ded/UnityEditor.TestRunner/TestRunner/Callbacks/WindowResultUpdater.cs
+E:/DD451/Library/PackageCache/com.unity.test-framework@d97b7cd61ded/UnityEditor.TestRunner/TestRunner/Callbacks/WindowResultUpdaterDataHolder.cs

@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-18",
+  "scope": "Task007 responsive layout follow-up; native attempts distinct from programmatic fixtures",
+  "native": {
+    "captureRecovery": "Initial FrameArrived timeout and activate_window timeout occurred while another chat owned Editor. After explicit handoff and foreground restoration native screenshots recovered.",
+    "gameResolution": [
+      800,
+      600
+    ],
+    "gameZoom": 1,
+    "focus": true,
+    "focusedWindow": "GameView",
+    "playerCanAct": true,
+    "keyboardDevice": "Keyboard (RawInput)",
+    "keyboardLastUpdateBeforeAndAfter": 37.14864680000028,
+    "tab": {
+      "sentVia": "sky.press_key",
+      "opened": false
+    },
+    "d": {
+      "sentVia": "sky.press_key",
+      "positionBefore": "(-8.00, 0.00, 0.00)",
+      "positionAfter": "(-8.00, 0.00, 0.00)"
+    },
+    "warehouseScroll": {
+      "sessionOpenedViaAPI": true,
+      "sentVia": "sky.scroll",
+      "verticalBefore": 1,
+      "verticalAfter": 0,
+      "horizontalEnabled": false
+    },
+    "warehouseClose": {
+      "sentVia": "sky.click",
+      "backpackOpenAfter": false,
+      "warehouseOpenAfter": false,
+      "playerCanActAfter": true
+    },
+    "discardCancel": {
+      "fixtureViaAPI": true,
+      "sentVia": "sky.click",
+      "confirmationStillOpen": true,
+      "backpackCountAfter": 2
+    },
+    "twoFullNativeRounds": "BLOCKED: keyboard not delivered; not completed"
+  },
+  "capturePluginError": {
+    "success": true,
+    "message": "Retrieved 1 log entries.",
+    "data": [
+      {
+        "type": "Error",
+        "message": "An abnormal situation has occurred: the PlayerLoop internal function has been called recursively. Please contact Customer Support with a sample project so that we can reproduce the problem and troubleshoot it.",
+        "file": "E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Runtime/Helpers/ScreenshotUtility.cs",
+        "line": 197,
+        "stackTrace": "UnityEngine.StackTraceUtility:ExtractStackTrace ()\nMCPForUnity.Runtime.Helpers.ScreenshotUtility:CaptureCompositedAfterFrame (int,int) (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Runtime/Helpers/ScreenshotUtility.cs:197)\nMCPForUnity.Runtime.Helpers.ScreenshotUtility:CaptureComposited (string,int,bool,bool,int,string) (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Runtime/Helpers/ScreenshotUtility.cs:233)\nMCPForUnity.Editor.Tools.ManageScene:CaptureScreenshot (MCPForUnity.Editor.Tools.ManageScene/SceneCommand) (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Tools/ManageScene.cs:616)\nMCPForUnity.Editor.Tools.ManageScene:HandleCommand (Newtonsoft.Json.Linq.JObject) (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Tools/ManageScene.cs:286)\nMCPForUnity.Editor.Tools.Cameras.ManageCamera:HandleCommand (Newtonsoft.Json.Linq.JObject) (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Tools/Cameras/ManageCamera.cs:74)\nMCPForUnity.Editor.Tools.CommandRegistry:ExecuteCommand (string,Newtonsoft.Json.Linq.JObject,System.Threading.Tasks.TaskCompletionSource`1<string>) (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Tools/CommandRegistry.cs:295)\nMCPForUnity.Editor.Services.Transport.TransportCommandDispatcher:ProcessCommand (string,MCPForUnity.Editor.Services.Transport.TransportCommandDispatcher/PendingCommand) (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Services/Transport/TransportCommandDispatcher.cs:366)\nMCPForUnity.Editor.Services.Transport.TransportCommandDispatcher:ProcessQueue () (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Services/Transport/TransportCommandDispatcher.cs:262)\nMCPForUnity.Editor.Services.Transport.TransportCommandDispatcher:<RequestMainThreadPump>g__Pump|11_0 () (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Services/Transport/TransportCommandDispatcher.cs:184)\nMCPForUnity.Editor.Services.Transport.TransportCommandDispatcher/<>c:<RequestMainThreadPump>b__11_1 (object) (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Services/Transport/TransportCommandDispatcher.cs:189)\nUnityEngine.UnitySynchronizationContext:ExecuteTasks ()\n"
+      }
+    ]
+  },
+  "notes": [
+    "MCP manage_camera composited capture produced PlayerLoop recursion with ScreenshotUtility.cs:197 in stack. Subsequent captures use asynchronous Unity ScreenCapture.CaptureScreenshot or native window captures.",
+    "No changes to gameplay input were made to accommodate automation. No native pass inferred from screenshots or queued InputSystem tests."
+  ]
+}

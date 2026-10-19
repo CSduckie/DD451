@@ -1,0 +1,13 @@
+{
+  "success": true,
+  "message": "Retrieved 1 log entries.",
+  "data": [
+    {
+      "type": "Error",
+      "message": "An abnormal situation has occurred: the PlayerLoop internal function has been called recursively. Please contact Customer Support with a sample project so that we can reproduce the problem and troubleshoot it.",
+      "file": "E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Runtime/Helpers/ScreenshotUtility.cs",
+      "line": 197,
+      "stackTrace": "UnityEngine.StackTraceUtility:ExtractStackTrace ()\nMCPForUnity.Runtime.Helpers.ScreenshotUtility:CaptureCompositedAfterFrame (int,int) (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Runtime/Helpers/ScreenshotUtility.cs:197)\nMCPForUnity.Runtime.Helpers.ScreenshotUtility:CaptureComposited (string,int,bool,bool,int,string) (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Runtime/Helpers/ScreenshotUtility.cs:233)\nMCPForUnity.Editor.Tools.ManageScene:CaptureScreenshot (MCPForUnity.Editor.Tools.ManageScene/SceneCommand) (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Tools/ManageScene.cs:616)\nMCPForUnity.Editor.Tools.ManageScene:HandleCommand (Newtonsoft.Json.Linq.JObject) (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Tools/ManageScene.cs:286)\nMCPForUnity.Editor.Tools.Cameras.ManageCamera:HandleCommand (Newtonsoft.Json.Linq.JObject) (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Tools/Cameras/ManageCamera.cs:74)\nMCPForUnity.Editor.Tools.CommandRegistry:ExecuteCommand (string,Newtonsoft.Json.Linq.JObject,System.Threading.Tasks.TaskCompletionSource`1<string>) (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Tools/CommandRegistry.cs:295)\nMCPForUnity.Editor.Services.Transport.TransportCommandDispatcher:ProcessCommand (string,MCPForUnity.Editor.Services.Transport.TransportCommandDispatcher/PendingCommand) (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Services/Transport/TransportCommandDispatcher.cs:366)\nMCPForUnity.Editor.Services.Transport.TransportCommandDispatcher:ProcessQueue () (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Services/Transport/TransportCommandDispatcher.cs:262)\nMCPForUnity.Editor.Services.Transport.TransportCommandDispatcher:<RequestMainThreadPump>g__Pump|11_0 () (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Services/Transport/TransportCommandDispatcher.cs:184)\nMCPForUnity.Editor.Services.Transport.TransportCommandDispatcher/<>c:<RequestMainThreadPump>b__11_1 (object) (at E:/DownLoad/unity-mcp-beta/unity-mcp-beta/MCPForUnity/Editor/Services/Transport/TransportCommandDispatcher.cs:189)\nUnityEngine.UnitySynchronizationContext:ExecuteTasks ()\n"
+    }
+  ]
+}

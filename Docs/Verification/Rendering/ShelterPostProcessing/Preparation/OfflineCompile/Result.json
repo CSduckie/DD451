@@ -1,0 +1,18 @@
+{
+  "method": "Offline Roslyn C#6 compile against existing local Unity and project reference assemblies",
+  "exitCode": 0,
+  "utc": "2026-10-19T08:13:07.8026561Z",
+  "sourceFiles": [
+    "01_Begin.cs",
+    "02_Capture.cs",
+    "03_InteractFlowTarget.cs",
+    "04_VerifyReturned.cs",
+    "05_CancelCapture.cs"
+  ],
+  "unityCalled": false,
+  "assetsModified": false,
+  "runtimeExecution": false,
+  "diagnostics": [
+    "warning CS1701: 假定“Newtonsoft.Json”使用的程序集引用“netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51”与“netstandard”的标识“netstandard, Version=2.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51”匹配，您可能需要提供运行时策略"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "result": {
+    "success": true,
+    "message": "Test job status retrieved.",
+    "error": null,
+    "data": {
+      "job_id": "9c89cafa69eb4f75991f17ba171ea0d3",
+      "status": "failed",
+      "mode": "EditMode",
+      "started_unix_ms": 1792354632974,
+      "finished_unix_ms": 1792354648111,
+      "last_update_unix_ms": 1792354648111,
+      "progress": {
+        "completed": 206,
+        "total": 206,
+        "current_test_full_name": null,
+        "current_test_started_unix_ms": 1792354647912,
+        "last_finished_test_full_name": "WarehouseShelterTests.UpgradeRechecksAuthoritativeEvInsteadOfTrustingStaleButton",
+        "last_finished_unix_ms": 1792354647912,
+        "stuck_suspected": false,
+        "editor_is_focused": false,
+        "run_in_background": null,
+        "focus_nudge_attempts": null,
+        "focus_nudge_limit": null,
+        "focus_nudge_status": null,
+        "blocked_reason": null,
+        "failures_so_far": [
+          {
+            "full_name": "MinimumLoopSceneTests.BootstrapStartsEmptyAtRoundZeroAndTwoTransitionsKeepOnePlayer",
+            "message": "SetUp :   Generate and wire the real minimum-loop assets before running scene integration tests.\r\n  Expected: not null\r\n  But was:  null\r\n"
+          },
+          {
+            "full_name": "MinimumLoopSceneTests.LoadedTargetBindingFailureRetriesTheSameSceneAndAllocatedRound",
+            "message": "SetUp :   Generate and wire the real minimum-loop assets before running scene integration tests.\r\n  Expected: not null\r\n  But was:  null\r\n"
+          },
+          {
+            "full_name": "MinimumLoopSceneTests.ReturnLoadFailurePreservesWorldItemsAndRetrySettlesOnlyOnce",
+            "message": "SetUp :   Generate and wire the real minimum-loop assets before running scene integration tests.\r\n  Expected: not null\r\n  But was:  null\r\n"
+          },
+          {
+            "full_name": "PlayerSceneTransitionTests.NewRoundWhileLockedStaysFrozenAndDeathIsPreservedOnReturn",
+            "message": "  Expected: less than 0.0f\r\n  But was:  0.0f\r\n\r\nTearDown : Unhandled log message: '[Error] Destroy may not be called from edit mode! Use DestroyImmediate instead.\nDestroying an object in edit mode destroys it permanently.'. Use UnityEngine.TestTools.LogAssert.Expect"
+          },
+          {
+            "full_name": "PlayerSceneTransitionTests.TransitionFreezesPhysicalStateAndDiscardsInputsBeforeUnlock",
+            "message": "SetUp : Run Player scene transition tests in the Test Runner's clean scene.\r\nTearDown : Unhandled log message: '[Error] Destroy may not be called from edit mode! Use DestroyImmediate instead.\nDestroying an object in edit mode destroys it permanently.'. Use UnityEngine.TestTools.LogAssert.Expect"
+          }
+        ],
+        "failures_capped": false
+      },
+      "error": null,
+      "result": null
+    },
+    "hint": null
+  }
+}

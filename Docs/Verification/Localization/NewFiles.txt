@@ -1,0 +1,140 @@
+Assets/Art/Fonts/Localization\NotoSansCJKsc-Regular SDF.asset
+Assets/Art/Fonts/Localization\NotoSansCJKsc-Regular SDF.asset.meta
+Assets/Art/Fonts/Localization\NotoSansCJKsc-Regular.otf
+Assets/Art/Fonts/Localization\NotoSansCJKsc-Regular.otf.meta
+Assets/Art/Fonts/Localization\OFL.txt
+Assets/Art/Fonts/Localization\OFL.txt.meta
+Assets/Art/Fonts/Localization\Source.txt
+Assets/Art/Fonts/Localization\Source.txt.meta
+Assets/Data/Localization\Common.meta
+Assets/Data/Localization\Common\CommonText.asset
+Assets/Data/Localization\Common\CommonText.asset.meta
+Assets/Data/Localization\Items.meta
+Assets/Data/Localization\Items\ItemMessages.asset
+Assets/Data/Localization\Items\ItemMessages.asset.meta
+Assets/Data/Localization\Player.meta
+Assets/Data/Localization\Player\PlayerText.asset
+Assets/Data/Localization\Player\PlayerText.asset.meta
+Assets/Data/Localization\Tests.meta
+Assets/Data/Localization\Tests\TestPanelText.asset
+Assets/Data/Localization\Tests\TestPanelText.asset.meta
+Assets/Prefabs/Localization\LocalizationModule.prefab
+Assets/Prefabs/Localization\LocalizationModule.prefab.meta
+Assets/Prefabs/UI/Localization\LocalizedText.prefab
+Assets/Prefabs/UI/Localization\LocalizedText.prefab.meta
+Assets/Scenes/Tests/Localization\LocalizationTest.unity
+Assets/Scenes/Tests/Localization\LocalizationTest.unity.meta
+Assets/Scripts/Localization\MonoBehaviour.meta
+Assets/Scripts/Localization\MonoBehaviour\LocalizationManager.cs
+Assets/Scripts/Localization\MonoBehaviour\LocalizationManager.cs.meta
+Assets/Scripts/Localization\MonoBehaviour\LocalizedText.cs
+Assets/Scripts/Localization\MonoBehaviour\LocalizedText.cs.meta
+Assets/Scripts/Localization\MyPrecious.Localization.asmdef
+Assets/Scripts/Localization\MyPrecious.Localization.asmdef.meta
+Assets/Scripts/Localization\RuntimeData.meta
+Assets/Scripts/Localization\RuntimeData\GameLanguage.cs
+Assets/Scripts/Localization\RuntimeData\GameLanguage.cs.meta
+Assets/Scripts/Localization\ScriptableObject.meta
+Assets/Scripts/Localization\ScriptableObject\LocalizationTableSO.cs
+Assets/Scripts/Localization\ScriptableObject\LocalizationTableSO.cs.meta
+Assets/Tests/Localization\EditMode.meta
+Assets/Tests/Localization\EditMode\LocalizationQueryTests.cs
+Assets/Tests/Localization\EditMode\LocalizationQueryTests.cs.meta
+Assets/Tests/Localization\EditMode\MyPrecious.Localization.EditModeTests.asmdef
+Assets/Tests/Localization\EditMode\MyPrecious.Localization.EditModeTests.asmdef.meta
+Assets/Tests/Localization\Editor.meta
+Assets/Tests/Localization\Editor\LocalizationTestSceneBuilder.cs
+Assets/Tests/Localization\Editor\LocalizationTestSceneBuilder.cs.meta
+Assets/Tests/Localization\Editor\MyPrecious.Localization.Editor.asmdef
+Assets/Tests/Localization\Editor\MyPrecious.Localization.Editor.asmdef.meta
+Assets/Tests/Localization\PlayMode.meta
+Assets/Tests/Localization\PlayMode\LocalizationIntegrationTests.cs
+Assets/Tests/Localization\PlayMode\LocalizationIntegrationTests.cs.meta
+Assets/Tests/Localization\PlayMode\MyPrecious.Localization.PlayModeTests.asmdef
+Assets/Tests/Localization\PlayMode\MyPrecious.Localization.PlayModeTests.asmdef.meta
+Assets/Tests/Localization\TestDoubles.meta
+Assets/Tests/Localization\TestDoubles\LocalizationTestDriver.cs
+Assets/Tests/Localization\TestDoubles\LocalizationTestDriver.cs.meta
+Assets/Tests/Localization\TestDoubles\MyPrecious.Localization.TestDoubles.asmdef
+Assets/Tests/Localization\TestDoubles\MyPrecious.Localization.TestDoubles.asmdef.meta
+Assets/TextMesh Pro\Fonts.meta
+Assets/TextMesh Pro\Fonts\LiberationSans - OFL.txt
+Assets/TextMesh Pro\Fonts\LiberationSans - OFL.txt.meta
+Assets/TextMesh Pro\Fonts\LiberationSans.ttf
+Assets/TextMesh Pro\Fonts\LiberationSans.ttf.meta
+Assets/TextMesh Pro\Resources.meta
+Assets/TextMesh Pro\Resources\Fonts & Materials.meta
+Assets/TextMesh Pro\Resources\Fonts & Materials\LiberationSans SDF - Drop Shadow.mat
+Assets/TextMesh Pro\Resources\Fonts & Materials\LiberationSans SDF - Drop Shadow.mat.meta
+Assets/TextMesh Pro\Resources\Fonts & Materials\LiberationSans SDF - Fallback.asset
+Assets/TextMesh Pro\Resources\Fonts & Materials\LiberationSans SDF - Fallback.asset.meta
+Assets/TextMesh Pro\Resources\Fonts & Materials\LiberationSans SDF - Outline.mat
+Assets/TextMesh Pro\Resources\Fonts & Materials\LiberationSans SDF - Outline.mat.meta
+Assets/TextMesh Pro\Resources\Fonts & Materials\LiberationSans SDF.asset
+Assets/TextMesh Pro\Resources\Fonts & Materials\LiberationSans SDF.asset.meta
+Assets/TextMesh Pro\Resources\LineBreaking Following Characters.txt
+Assets/TextMesh Pro\Resources\LineBreaking Following Characters.txt.meta
+Assets/TextMesh Pro\Resources\LineBreaking Leading Characters.txt
+Assets/TextMesh Pro\Resources\LineBreaking Leading Characters.txt.meta
+Assets/TextMesh Pro\Resources\Sprite Assets.meta
+Assets/TextMesh Pro\Resources\Sprite Assets\EmojiOne.asset
+Assets/TextMesh Pro\Resources\Sprite Assets\EmojiOne.asset.meta
+Assets/TextMesh Pro\Resources\Style Sheets.meta
+Assets/TextMesh Pro\Resources\Style Sheets\Default Style Sheet.asset
+Assets/TextMesh Pro\Resources\Style Sheets\Default Style Sheet.asset.meta
+Assets/TextMesh Pro\Resources\TMP Settings.asset
+Assets/TextMesh Pro\Resources\TMP Settings.asset.meta
+Assets/TextMesh Pro\Shaders.meta
+Assets/TextMesh Pro\Shaders\SDFFunctions.hlsl
+Assets/TextMesh Pro\Shaders\SDFFunctions.hlsl.meta
+Assets/TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader
+Assets/TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader.meta
+Assets/TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader
+Assets/TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader.meta
+Assets/TextMesh Pro\Shaders\TMP_Bitmap.shader
+Assets/TextMesh Pro\Shaders\TMP_Bitmap.shader.meta
+Assets/TextMesh Pro\Shaders\TMP_SDF Overlay.shader
+Assets/TextMesh Pro\Shaders\TMP_SDF Overlay.shader.meta
+Assets/TextMesh Pro\Shaders\TMP_SDF SSD.shader
+Assets/TextMesh Pro\Shaders\TMP_SDF SSD.shader.meta
+Assets/TextMesh Pro\Shaders\TMP_SDF-HDRP LIT.shadergraph
+Assets/TextMesh Pro\Shaders\TMP_SDF-HDRP LIT.shadergraph.meta
+Assets/TextMesh Pro\Shaders\TMP_SDF-HDRP UNLIT.shadergraph
+Assets/TextMesh Pro\Shaders\TMP_SDF-HDRP UNLIT.shadergraph.meta
+Assets/TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader
+Assets/TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader.meta
+Assets/TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader
+Assets/TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader.meta
+Assets/TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader
+Assets/TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader.meta
+Assets/TextMesh Pro\Shaders\TMP_SDF-Mobile-2-Pass.shader
+Assets/TextMesh Pro\Shaders\TMP_SDF-Mobile-2-Pass.shader.meta
+Assets/TextMesh Pro\Shaders\TMP_SDF-Mobile.shader
+Assets/TextMesh Pro\Shaders\TMP_SDF-Mobile.shader.meta
+Assets/TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader
+Assets/TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader.meta
+Assets/TextMesh Pro\Shaders\TMP_SDF-Surface.shader
+Assets/TextMesh Pro\Shaders\TMP_SDF-Surface.shader.meta
+Assets/TextMesh Pro\Shaders\TMP_SDF-URP Lit.shadergraph
+Assets/TextMesh Pro\Shaders\TMP_SDF-URP Lit.shadergraph.meta
+Assets/TextMesh Pro\Shaders\TMP_SDF-URP Unlit.shadergraph
+Assets/TextMesh Pro\Shaders\TMP_SDF-URP Unlit.shadergraph.meta
+Assets/TextMesh Pro\Shaders\TMP_SDF.shader
+Assets/TextMesh Pro\Shaders\TMP_SDF.shader.meta
+Assets/TextMesh Pro\Shaders\TMP_Sprite.shader
+Assets/TextMesh Pro\Shaders\TMP_Sprite.shader.meta
+Assets/TextMesh Pro\Shaders\TMPro_Mobile.cginc
+Assets/TextMesh Pro\Shaders\TMPro_Mobile.cginc.meta
+Assets/TextMesh Pro\Shaders\TMPro_Properties.cginc
+Assets/TextMesh Pro\Shaders\TMPro_Properties.cginc.meta
+Assets/TextMesh Pro\Shaders\TMPro_Surface.cginc
+Assets/TextMesh Pro\Shaders\TMPro_Surface.cginc.meta
+Assets/TextMesh Pro\Shaders\TMPro.cginc
+Assets/TextMesh Pro\Shaders\TMPro.cginc.meta
+Assets/TextMesh Pro\Sprites.meta
+Assets/TextMesh Pro\Sprites\EmojiOne Attribution.txt
+Assets/TextMesh Pro\Sprites\EmojiOne Attribution.txt.meta
+Assets/TextMesh Pro\Sprites\EmojiOne.json
+Assets/TextMesh Pro\Sprites\EmojiOne.json.meta
+Assets/TextMesh Pro\Sprites\EmojiOne.png
+Assets/TextMesh Pro\Sprites\EmojiOne.png.meta

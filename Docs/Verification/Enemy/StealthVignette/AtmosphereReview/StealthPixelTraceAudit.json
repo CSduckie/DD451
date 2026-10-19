@@ -1,0 +1,1261 @@
+{
+  "scope": "Read-only supplied images andResult.json; onlyStealthPixelTraceAudit.txt/json written. No Unity,Assets or original image edit.",
+  "source": "E:\\DD451\\Docs\\Verification\\Enemy\\StealthVignette\\OrdinaryPlay\\Probe-ebaa8dc9",
+  "files": [
+    "00-InsideStanding-Normal-1920x1080.png",
+    "01-InsideCrouching-Stealth-1920x1080.png",
+    "02-InsideStanding-Exited-1920x1080.png",
+    "03-InsideCrouching-Backpack-1920x1080.png"
+  ],
+  "method": "API relocation + synthetic InputSystem C + real Backpack API; scene drones disabled temporarily; no native keyboard/mouse claim",
+  "disabledDroneCountRecorded": 0,
+  "captureChecks": [
+    {
+      "file": "00-InsideStanding-Normal-1920x1080.png",
+      "cameraAndNeutralFieldsMatch": true,
+      "gameTime": 151.490829,
+      "position": [
+        -5.5,
+        1.1920929E-07,
+        0.0
+      ],
+      "crouching": false,
+      "hidden": false,
+      "weight": 0.0,
+      "effectiveVignette": 0.0,
+      "backpackOpen": false
+    },
+    {
+      "file": "01-InsideCrouching-Stealth-1920x1080.png",
+      "cameraAndNeutralFieldsMatch": true,
+      "gameTime": 152.187775,
+      "position": [
+        -5.5,
+        0.0,
+        0.0
+      ],
+      "crouching": true,
+      "hidden": true,
+      "weight": 1.0,
+      "effectiveVignette": 0.22,
+      "backpackOpen": false
+    },
+    {
+      "file": "02-InsideStanding-Exited-1920x1080.png",
+      "cameraAndNeutralFieldsMatch": true,
+      "gameTime": 152.8839,
+      "position": [
+        -5.5,
+        0.0,
+        0.0
+      ],
+      "crouching": false,
+      "hidden": false,
+      "weight": 0.0,
+      "effectiveVignette": 0.0,
+      "backpackOpen": false
+    },
+    {
+      "file": "03-InsideCrouching-Backpack-1920x1080.png",
+      "cameraAndNeutralFieldsMatch": true,
+      "gameTime": 156.195374,
+      "position": [
+        -5.5,
+        0.0,
+        0.0
+      ],
+      "crouching": true,
+      "hidden": true,
+      "weight": 1.0,
+      "effectiveVignette": 0.22,
+      "backpackOpen": true
+    }
+  ],
+  "hashes": [
+    {
+      "file": "00-InsideStanding-Normal-1920x1080.png",
+      "sha256": "5981AA1EF86EA31754E83789708197D1F51103A7DCF7A7AD243F3E7649CC102F"
+    },
+    {
+      "file": "01-InsideCrouching-Stealth-1920x1080.png",
+      "sha256": "9E9CE0BA0103BD5805C6D14444300A9138DF9919C981D0D745ED31A4552EF769"
+    },
+    {
+      "file": "02-InsideStanding-Exited-1920x1080.png",
+      "sha256": "5981AA1EF86EA31754E83789708197D1F51103A7DCF7A7AD243F3E7649CC102F"
+    },
+    {
+      "file": "03-InsideCrouching-Backpack-1920x1080.png",
+      "sha256": "B340DF7FF5C47CA148C14A34599DBB97C0F0363F8A787B4C820D614F2D65B2DA"
+    }
+  ],
+  "comparisons": [
+    {
+      "before": "00-InsideStanding-Normal-1920x1080.png",
+      "after": "02-InsideStanding-Exited-1920x1080.png",
+      "regions": [
+        {
+          "roi": {
+            "name": "fullFrame",
+            "rect": [
+              0,
+              0,
+              1920,
+              1080
+            ],
+            "mode": 0
+          },
+          "pixels": 2073600.0,
+          "changedPixels": 0.0,
+          "changedPercent": 0.0,
+          "meanAbsRgb8Bit": 0.0,
+          "meanSignedRgb8Bit": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "meanEncodedLumaBefore": 39.280414002060176,
+          "meanEncodedLumaAfter": 39.280414002060176,
+          "encodedLumaMeanDropPercent": 0.0,
+          "maxChannelDelta": 0.0,
+          "pixelMaxDeltaP99": 0.0,
+          "pixelMaxDeltaP99_9": 0.0
+        },
+        {
+          "roi": {
+            "name": "staticCenterSky",
+            "rect": [
+              840,
+              400,
+              1080,
+              560
+            ],
+            "mode": 0
+          },
+          "pixels": 38400.0,
+          "changedPixels": 0.0,
+          "changedPercent": 0.0,
+          "meanAbsRgb8Bit": 0.0,
+          "meanSignedRgb8Bit": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "meanEncodedLumaBefore": 61.790607723958324,
+          "meanEncodedLumaAfter": 61.790607723958324,
+          "encodedLumaMeanDropPercent": 0.0,
+          "maxChannelDelta": 0.0,
+          "pixelMaxDeltaP99": 0.0,
+          "pixelMaxDeltaP99_9": 0.0
+        },
+        {
+          "roi": {
+            "name": "midLeftSky",
+            "rect": [
+              430,
+              300,
+              530,
+              380
+            ],
+            "mode": 0
+          },
+          "pixels": 8000.0,
+          "changedPixels": 0.0,
+          "changedPercent": 0.0,
+          "meanAbsRgb8Bit": 0.0,
+          "meanSignedRgb8Bit": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "meanEncodedLumaBefore": 43.73432282500038,
+          "meanEncodedLumaAfter": 43.73432282500038,
+          "encodedLumaMeanDropPercent": 0.0,
+          "maxChannelDelta": 0.0,
+          "pixelMaxDeltaP99": 0.0,
+          "pixelMaxDeltaP99_9": 0.0
+        },
+        {
+          "roi": {
+            "name": "midRightSky",
+            "rect": [
+              1390,
+              300,
+              1490,
+              380
+            ],
+            "mode": 0
+          },
+          "pixels": 8000.0,
+          "changedPixels": 0.0,
+          "changedPercent": 0.0,
+          "meanAbsRgb8Bit": 0.0,
+          "meanSignedRgb8Bit": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "meanEncodedLumaBefore": 39.712951749998616,
+          "meanEncodedLumaAfter": 39.712951749998616,
+          "encodedLumaMeanDropPercent": 0.0,
+          "maxChannelDelta": 0.0,
+          "pixelMaxDeltaP99": 0.0,
+          "pixelMaxDeltaP99_9": 0.0
+        },
+        {
+          "roi": {
+            "name": "topCenterSky",
+            "rect": [
+              910,
+              150,
+              1010,
+              230
+            ],
+            "mode": 0
+          },
+          "pixels": 8000.0,
+          "changedPixels": 0.0,
+          "changedPercent": 0.0,
+          "meanAbsRgb8Bit": 0.0,
+          "meanSignedRgb8Bit": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "meanEncodedLumaBefore": 30.296203925001873,
+          "meanEncodedLumaAfter": 30.296203925001873,
+          "encodedLumaMeanDropPercent": 0.0,
+          "maxChannelDelta": 0.0,
+          "pixelMaxDeltaP99": 0.0,
+          "pixelMaxDeltaP99_9": 0.0
+        },
+        {
+          "roi": {
+            "name": "upperLeftEdgeSky",
+            "rect": [
+              0,
+              140,
+              120,
+              240
+            ],
+            "mode": 0
+          },
+          "pixels": 12000.0,
+          "changedPixels": 0.0,
+          "changedPercent": 0.0,
+          "meanAbsRgb8Bit": 0.0,
+          "meanSignedRgb8Bit": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "meanEncodedLumaBefore": 35.60246511666894,
+          "meanEncodedLumaAfter": 35.60246511666894,
+          "encodedLumaMeanDropPercent": 0.0,
+          "maxChannelDelta": 0.0,
+          "pixelMaxDeltaP99": 0.0,
+          "pixelMaxDeltaP99_9": 0.0
+        },
+        {
+          "roi": {
+            "name": "upperRightEdgeSky",
+            "rect": [
+              1800,
+              140,
+              1920,
+              240
+            ],
+            "mode": 0
+          },
+          "pixels": 12000.0,
+          "changedPixels": 0.0,
+          "changedPercent": 0.0,
+          "meanAbsRgb8Bit": 0.0,
+          "meanSignedRgb8Bit": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "meanEncodedLumaBefore": 31.562542533332152,
+          "meanEncodedLumaAfter": 31.562542533332152,
+          "encodedLumaMeanDropPercent": 0.0,
+          "maxChannelDelta": 0.0,
+          "pixelMaxDeltaP99": 0.0,
+          "pixelMaxDeltaP99_9": 0.0
+        },
+        {
+          "roi": {
+            "name": "bottomCenterStatic",
+            "rect": [
+              840,
+              960,
+              1080,
+              1080
+            ],
+            "mode": 0
+          },
+          "pixels": 28800.0,
+          "changedPixels": 0.0,
+          "changedPercent": 0.0,
+          "meanAbsRgb8Bit": 0.0,
+          "meanSignedRgb8Bit": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "meanEncodedLumaBefore": 30.51879403473048,
+          "meanEncodedLumaAfter": 30.51879403473048,
+          "encodedLumaMeanDropPercent": 0.0,
+          "maxChannelDelta": 0.0,
+          "pixelMaxDeltaP99": 0.0,
+          "pixelMaxDeltaP99_9": 0.0
+        },
+        {
+          "roi": {
+            "name": "bottomLeftCornerStatic",
+            "rect": [
+              0,
+              960,
+              120,
+              1080
+            ],
+            "mode": 0
+          },
+          "pixels": 14400.0,
+          "changedPixels": 0.0,
+          "changedPercent": 0.0,
+          "meanAbsRgb8Bit": 0.0,
+          "meanSignedRgb8Bit": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "meanEncodedLumaBefore": 27.915589569449562,
+          "meanEncodedLumaAfter": 27.915589569449562,
+          "encodedLumaMeanDropPercent": 0.0,
+          "maxChannelDelta": 0.0,
+          "pixelMaxDeltaP99": 0.0,
+          "pixelMaxDeltaP99_9": 0.0
+        },
+        {
+          "roi": {
+            "name": "topUiGlyphInteriorProxy",
+            "rect": [
+              0,
+              0,
+              1920,
+              140
+            ],
+            "mode": 1
+          },
+          "pixels": 923.0,
+          "changedPixels": 0.0,
+          "changedPercent": 0.0,
+          "meanAbsRgb8Bit": 0.0,
+          "meanSignedRgb8Bit": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "meanEncodedLumaBefore": 245.4516000000003,
+          "meanEncodedLumaAfter": 245.4516000000003,
+          "encodedLumaMeanDropPercent": 0.0,
+          "maxChannelDelta": 0.0,
+          "pixelMaxDeltaP99": 0.0,
+          "pixelMaxDeltaP99_9": 0.0
+        },
+        {
+          "roi": {
+            "name": "outsideBackpackPanelMargin",
+            "rect": [
+              20,
+              156,
+              388,
+              844
+            ],
+            "mode": 2
+          },
+          "pixels": 1820416.0,
+          "changedPixels": 0.0,
+          "changedPercent": 0.0,
+          "meanAbsRgb8Bit": 0.0,
+          "meanSignedRgb8Bit": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "meanEncodedLumaBefore": 39.076387551519296,
+          "meanEncodedLumaAfter": 39.076387551519296,
+          "encodedLumaMeanDropPercent": 0.0,
+          "maxChannelDelta": 0.0,
+          "pixelMaxDeltaP99": 0.0,
+          "pixelMaxDeltaP99_9": 0.0
+        }
+      ]
+    },
+    {
+      "before": "00-InsideStanding-Normal-1920x1080.png",
+      "after": "01-InsideCrouching-Stealth-1920x1080.png",
+      "regions": [
+        {
+          "roi": {
+            "name": "fullFrame",
+            "rect": [
+              0,
+              0,
+              1920,
+              1080
+            ],
+            "mode": 0
+          },
+          "pixels": 2073600.0,
+          "changedPixels": 1957378.0,
+          "changedPercent": 94.39515817901234,
+          "meanAbsRgb8Bit": 3.7537471064814816,
+          "meanSignedRgb8Bit": [
+            -3.0383434606481483,
+            -3.707371720679012,
+            -4.4613517554012345
+          ],
+          "meanEncodedLumaBefore": 39.280414002060176,
+          "meanEncodedLumaAfter": 35.660840331085076,
+          "encodedLumaMeanDropPercent": 9.214703467191718,
+          "maxChannelDelta": 242.0,
+          "pixelMaxDeltaP99": 11.0,
+          "pixelMaxDeltaP99_9": 189.0
+        },
+        {
+          "roi": {
+            "name": "staticCenterSky",
+            "rect": [
+              840,
+              400,
+              1080,
+              560
+            ],
+            "mode": 0
+          },
+          "pixels": 38400.0,
+          "changedPixels": 18406.0,
+          "changedPercent": 47.932291666666664,
+          "meanAbsRgb8Bit": 0.21963541666666667,
+          "meanSignedRgb8Bit": [
+            -0.1496875,
+            -0.211171875,
+            -0.298046875
+          ],
+          "meanEncodedLumaBefore": 61.790607723958324,
+          "meanEncodedLumaAfter": 61.58623505208342,
+          "encodedLumaMeanDropPercent": 0.33075038327494033,
+          "maxChannelDelta": 1.0,
+          "pixelMaxDeltaP99": 1.0,
+          "pixelMaxDeltaP99_9": 1.0
+        },
+        {
+          "roi": {
+            "name": "midLeftSky",
+            "rect": [
+              430,
+              300,
+              530,
+              380
+            ],
+            "mode": 0
+          },
+          "pixels": 8000.0,
+          "changedPixels": 8000.0,
+          "changedPercent": 100.0,
+          "meanAbsRgb8Bit": 2.457291666666667,
+          "meanSignedRgb8Bit": [
+            -1.926375,
+            -2.360625,
+            -3.084875
+          ],
+          "meanEncodedLumaBefore": 43.73432282500038,
+          "meanEncodedLumaAfter": 41.413728525004714,
+          "encodedLumaMeanDropPercent": 5.306116912525097,
+          "maxChannelDelta": 4.0,
+          "pixelMaxDeltaP99": 4.0,
+          "pixelMaxDeltaP99_9": 4.0
+        },
+        {
+          "roi": {
+            "name": "midRightSky",
+            "rect": [
+              1390,
+              300,
+              1490,
+              380
+            ],
+            "mode": 0
+          },
+          "pixels": 8000.0,
+          "changedPixels": 8000.0,
+          "changedPercent": 100.0,
+          "meanAbsRgb8Bit": 2.2935416666666666,
+          "meanSignedRgb8Bit": [
+            -1.7745,
+            -2.17725,
+            -2.928875
+          ],
+          "meanEncodedLumaBefore": 39.712951749998616,
+          "meanEncodedLumaAfter": 37.567059075000955,
+          "encodedLumaMeanDropPercent": 5.403508378089111,
+          "maxChannelDelta": 4.0,
+          "pixelMaxDeltaP99": 4.0,
+          "pixelMaxDeltaP99_9": 4.0
+        },
+        {
+          "roi": {
+            "name": "topCenterSky",
+            "rect": [
+              910,
+              150,
+              1010,
+              230
+            ],
+            "mode": 0
+          },
+          "pixels": 8000.0,
+          "changedPixels": 8000.0,
+          "changedPercent": 100.0,
+          "meanAbsRgb8Bit": 2.0774583333333334,
+          "meanSignedRgb8Bit": [
+            -1.55175,
+            -1.885125,
+            -2.7955
+          ],
+          "meanEncodedLumaBefore": 30.296203925001873,
+          "meanEncodedLumaAfter": 28.41622537499573,
+          "encodedLumaMeanDropPercent": 6.2053270920014345,
+          "maxChannelDelta": 4.0,
+          "pixelMaxDeltaP99": 4.0,
+          "pixelMaxDeltaP99_9": 4.0
+        },
+        {
+          "roi": {
+            "name": "upperLeftEdgeSky",
+            "rect": [
+              0,
+              140,
+              120,
+              240
+            ],
+            "mode": 0
+          },
+          "pixels": 12000.0,
+          "changedPixels": 12000.0,
+          "changedPercent": 100.0,
+          "meanAbsRgb8Bit": 7.110222222222222,
+          "meanSignedRgb8Bit": [
+            -5.4943333333333335,
+            -6.720833333333333,
+            -9.1155
+          ],
+          "meanEncodedLumaBefore": 35.60246511666894,
+          "meanEncodedLumaAfter": 28.96949074999474,
+          "encodedLumaMeanDropPercent": 18.630660390897102,
+          "maxChannelDelta": 11.0,
+          "pixelMaxDeltaP99": 10.0,
+          "pixelMaxDeltaP99_9": 11.0
+        },
+        {
+          "roi": {
+            "name": "upperRightEdgeSky",
+            "rect": [
+              1800,
+              140,
+              1920,
+              240
+            ],
+            "mode": 0
+          },
+          "pixels": 12000.0,
+          "changedPixels": 12000.0,
+          "changedPercent": 100.0,
+          "meanAbsRgb8Bit": 6.521805555555556,
+          "meanSignedRgb8Bit": [
+            -5.083083333333334,
+            -6.12025,
+            -8.362083333333333
+          ],
+          "meanEncodedLumaBefore": 31.562542533332152,
+          "meanEncodedLumaAfter": 25.500933799999693,
+          "encodedLumaMeanDropPercent": 19.2050710963193,
+          "maxChannelDelta": 10.0,
+          "pixelMaxDeltaP99": 10.0,
+          "pixelMaxDeltaP99_9": 10.0
+        },
+        {
+          "roi": {
+            "name": "bottomCenterStatic",
+            "rect": [
+              840,
+              960,
+              1080,
+              1080
+            ],
+            "mode": 0
+          },
+          "pixels": 28800.0,
+          "changedPixels": 28800.0,
+          "changedPercent": 100.0,
+          "meanAbsRgb8Bit": 3.6527546296296296,
+          "meanSignedRgb8Bit": [
+            -3.4652430555555553,
+            -3.672465277777778,
+            -3.8205555555555555
+          ],
+          "meanEncodedLumaBefore": 30.51879403473048,
+          "meanEncodedLumaAfter": 26.87969208334019,
+          "encodedLumaMeanDropPercent": 11.92413418187161,
+          "maxChannelDelta": 5.0,
+          "pixelMaxDeltaP99": 5.0,
+          "pixelMaxDeltaP99_9": 5.0
+        },
+        {
+          "roi": {
+            "name": "bottomLeftCornerStatic",
+            "rect": [
+              0,
+              960,
+              120,
+              1080
+            ],
+            "mode": 0
+          },
+          "pixels": 14400.0,
+          "changedPixels": 14400.0,
+          "changedPercent": 100.0,
+          "meanAbsRgb8Bit": 7.247731481481481,
+          "meanSignedRgb8Bit": [
+            -7.097708333333333,
+            -7.188194444444444,
+            -7.457291666666666
+          ],
+          "meanEncodedLumaBefore": 27.915589569449562,
+          "meanEncodedLumaAfter": 20.727203652777966,
+          "encodedLumaMeanDropPercent": 25.750435607988972,
+          "maxChannelDelta": 9.0,
+          "pixelMaxDeltaP99": 9.0,
+          "pixelMaxDeltaP99_9": 9.0
+        },
+        {
+          "roi": {
+            "name": "topUiGlyphInteriorProxy",
+            "rect": [
+              0,
+              0,
+              1920,
+              140
+            ],
+            "mode": 1
+          },
+          "pixels": 923.0,
+          "changedPixels": 0.0,
+          "changedPercent": 0.0,
+          "meanAbsRgb8Bit": 0.0,
+          "meanSignedRgb8Bit": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "meanEncodedLumaBefore": 245.4516000000003,
+          "meanEncodedLumaAfter": 245.4516000000003,
+          "encodedLumaMeanDropPercent": 0.0,
+          "maxChannelDelta": 0.0,
+          "pixelMaxDeltaP99": 0.0,
+          "pixelMaxDeltaP99_9": 0.0
+        },
+        {
+          "roi": {
+            "name": "outsideBackpackPanelMargin",
+            "rect": [
+              20,
+              156,
+              388,
+              844
+            ],
+            "mode": 2
+          },
+          "pixels": 1820416.0,
+          "changedPixels": 1706394.0,
+          "changedPercent": 93.73648660525946,
+          "meanAbsRgb8Bit": 3.650228665682276,
+          "meanSignedRgb8Bit": [
+            -2.951189728062157,
+            -3.6225851673463647,
+            -4.3152021296231196
+          ],
+          "meanEncodedLumaBefore": 39.076387551519296,
+          "meanEncodedLumaAfter": 35.546534110454736,
+          "encodedLumaMeanDropPercent": 9.03321330921573,
+          "maxChannelDelta": 242.0,
+          "pixelMaxDeltaP99": 11.0,
+          "pixelMaxDeltaP99_9": 191.0
+        }
+      ]
+    },
+    {
+      "before": "01-InsideCrouching-Stealth-1920x1080.png",
+      "after": "03-InsideCrouching-Backpack-1920x1080.png",
+      "regions": [
+        {
+          "roi": {
+            "name": "fullFrame",
+            "rect": [
+              0,
+              0,
+              1920,
+              1080
+            ],
+            "mode": 0
+          },
+          "pixels": 2073600.0,
+          "changedPixels": 244800.0,
+          "changedPercent": 11.805555555555555,
+          "meanAbsRgb8Bit": 2.9704327417695473,
+          "meanSignedRgb8Bit": [
+            2.247850597993827,
+            0.9718315972222222,
+            -1.8800679976851853
+          ],
+          "meanEncodedLumaBefore": 35.660840331085076,
+          "meanEncodedLumaAfter": 36.69804641692625,
+          "encodedLumaMeanDropPercent": -2.908529569722614,
+          "maxChannelDelta": 239.0,
+          "pixelMaxDeltaP99": 72.0,
+          "pixelMaxDeltaP99_9": 187.0
+        },
+        {
+          "roi": {
+            "name": "staticCenterSky",
+            "rect": [
+              840,
+              400,
+              1080,
+              560
+            ],
+            "mode": 0
+          },
+          "pixels": 38400.0,
+          "changedPixels": 0.0,
+          "changedPercent": 0.0,
+          "meanAbsRgb8Bit": 0.0,
+          "meanSignedRgb8Bit": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "meanEncodedLumaBefore": 61.58623505208342,
+          "meanEncodedLumaAfter": 61.58623505208342,
+          "encodedLumaMeanDropPercent": 0.0,
+          "maxChannelDelta": 0.0,
+          "pixelMaxDeltaP99": 0.0,
+          "pixelMaxDeltaP99_9": 0.0
+        },
+        {
+          "roi": {
+            "name": "midLeftSky",
+            "rect": [
+              430,
+              300,
+              530,
+              380
+            ],
+            "mode": 0
+          },
+          "pixels": 8000.0,
+          "changedPixels": 0.0,
+          "changedPercent": 0.0,
+          "meanAbsRgb8Bit": 0.0,
+          "meanSignedRgb8Bit": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "meanEncodedLumaBefore": 41.413728525004714,
+          "meanEncodedLumaAfter": 41.413728525004714,
+          "encodedLumaMeanDropPercent": 0.0,
+          "maxChannelDelta": 0.0,
+          "pixelMaxDeltaP99": 0.0,
+          "pixelMaxDeltaP99_9": 0.0
+        },
+        {
+          "roi": {
+            "name": "midRightSky",
+            "rect": [
+              1390,
+              300,
+              1490,
+              380
+            ],
+            "mode": 0
+          },
+          "pixels": 8000.0,
+          "changedPixels": 0.0,
+          "changedPercent": 0.0,
+          "meanAbsRgb8Bit": 0.0,
+          "meanSignedRgb8Bit": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "meanEncodedLumaBefore": 37.567059075000955,
+          "meanEncodedLumaAfter": 37.567059075000955,
+          "encodedLumaMeanDropPercent": 0.0,
+          "maxChannelDelta": 0.0,
+          "pixelMaxDeltaP99": 0.0,
+          "pixelMaxDeltaP99_9": 0.0
+        },
+        {
+          "roi": {
+            "name": "topCenterSky",
+            "rect": [
+              910,
+              150,
+              1010,
+              230
+            ],
+            "mode": 0
+          },
+          "pixels": 8000.0,
+          "changedPixels": 0.0,
+          "changedPercent": 0.0,
+          "meanAbsRgb8Bit": 0.0,
+          "meanSignedRgb8Bit": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "meanEncodedLumaBefore": 28.41622537499573,
+          "meanEncodedLumaAfter": 28.41622537499573,
+          "encodedLumaMeanDropPercent": 0.0,
+          "maxChannelDelta": 0.0,
+          "pixelMaxDeltaP99": 0.0,
+          "pixelMaxDeltaP99_9": 0.0
+        },
+        {
+          "roi": {
+            "name": "upperLeftEdgeSky",
+            "rect": [
+              0,
+              140,
+              120,
+              240
+            ],
+            "mode": 0
+          },
+          "pixels": 12000.0,
+          "changedPixels": 7680.0,
+          "changedPercent": 64.0,
+          "meanAbsRgb8Bit": 19.085055555555556,
+          "meanSignedRgb8Bit": [
+            23.566,
+            15.827583333333333,
+            -3.246583333333333
+          ],
+          "meanEncodedLumaBefore": 28.96949074999474,
+          "meanEncodedLumaAfter": 45.0651066333353,
+          "encodedLumaMeanDropPercent": -55.560575856320426,
+          "maxChannelDelta": 214.0,
+          "pixelMaxDeltaP99": 210.0,
+          "pixelMaxDeltaP99_9": 213.0
+        },
+        {
+          "roi": {
+            "name": "upperRightEdgeSky",
+            "rect": [
+              1800,
+              140,
+              1920,
+              240
+            ],
+            "mode": 0
+          },
+          "pixels": 12000.0,
+          "changedPixels": 0.0,
+          "changedPercent": 0.0,
+          "meanAbsRgb8Bit": 0.0,
+          "meanSignedRgb8Bit": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "meanEncodedLumaBefore": 25.500933799999693,
+          "meanEncodedLumaAfter": 25.500933799999693,
+          "encodedLumaMeanDropPercent": 0.0,
+          "maxChannelDelta": 0.0,
+          "pixelMaxDeltaP99": 0.0,
+          "pixelMaxDeltaP99_9": 0.0
+        },
+        {
+          "roi": {
+            "name": "bottomCenterStatic",
+            "rect": [
+              840,
+              960,
+              1080,
+              1080
+            ],
+            "mode": 0
+          },
+          "pixels": 28800.0,
+          "changedPixels": 0.0,
+          "changedPercent": 0.0,
+          "meanAbsRgb8Bit": 0.0,
+          "meanSignedRgb8Bit": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "meanEncodedLumaBefore": 26.87969208334019,
+          "meanEncodedLumaAfter": 26.87969208334019,
+          "encodedLumaMeanDropPercent": 0.0,
+          "maxChannelDelta": 0.0,
+          "pixelMaxDeltaP99": 0.0,
+          "pixelMaxDeltaP99_9": 0.0
+        },
+        {
+          "roi": {
+            "name": "bottomLeftCornerStatic",
+            "rect": [
+              0,
+              960,
+              120,
+              1080
+            ],
+            "mode": 0
+          },
+          "pixels": 14400.0,
+          "changedPixels": 0.0,
+          "changedPercent": 0.0,
+          "meanAbsRgb8Bit": 0.0,
+          "meanSignedRgb8Bit": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "meanEncodedLumaBefore": 20.727203652777966,
+          "meanEncodedLumaAfter": 20.727203652777966,
+          "encodedLumaMeanDropPercent": 0.0,
+          "maxChannelDelta": 0.0,
+          "pixelMaxDeltaP99": 0.0,
+          "pixelMaxDeltaP99_9": 0.0
+        },
+        {
+          "roi": {
+            "name": "topUiGlyphInteriorProxy",
+            "rect": [
+              0,
+              0,
+              1920,
+              140
+            ],
+            "mode": 1
+          },
+          "pixels": 923.0,
+          "changedPixels": 0.0,
+          "changedPercent": 0.0,
+          "meanAbsRgb8Bit": 0.0,
+          "meanSignedRgb8Bit": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "meanEncodedLumaBefore": 245.4516000000003,
+          "meanEncodedLumaAfter": 245.4516000000003,
+          "encodedLumaMeanDropPercent": 0.0,
+          "maxChannelDelta": 0.0,
+          "pixelMaxDeltaP99": 0.0,
+          "pixelMaxDeltaP99_9": 0.0
+        },
+        {
+          "roi": {
+            "name": "outsideBackpackPanelMargin",
+            "rect": [
+              20,
+              156,
+              388,
+              844
+            ],
+            "mode": 2
+          },
+          "pixels": 1820416.0,
+          "changedPixels": 0.0,
+          "changedPercent": 0.0,
+          "meanAbsRgb8Bit": 0.0,
+          "meanSignedRgb8Bit": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "meanEncodedLumaBefore": 35.546534110454736,
+          "meanEncodedLumaAfter": 35.546534110454736,
+          "encodedLumaMeanDropPercent": 0.0,
+          "maxChannelDelta": 0.0,
+          "pixelMaxDeltaP99": 0.0,
+          "pixelMaxDeltaP99_9": 0.0
+        }
+      ]
+    }
+  ],
+  "traceSummary": {
+    "sampleCount": 1307,
+    "phaseCount": 10,
+    "allTimeScale1": true,
+    "allNeutralOtherFields": true,
+    "nonConsecutiveFramePairs": 0,
+    "maxGameTimeStepSeconds": 0.04615700000002221,
+    "maxEffectiveVignetteWeightProductError": 1.300000002091295E-08,
+    "phaseStats": [
+      {
+        "phase": 0,
+        "samples": 132,
+        "firstGameTime": 150.194641,
+        "lastGameTime": 150.832764,
+        "duration": 0.6381230000000073,
+        "minWeight": 0.0,
+        "maxWeight": 0.0,
+        "firstWeight": 0.0,
+        "lastWeight": 0.0,
+        "hiddenTrue": 0,
+        "crouchingTrue": 132,
+        "backpackOpenTrue": 0,
+        "firstCoverEnabledTrue": 132,
+        "secondCoverExistsTrue": 0,
+        "upSteps": 0,
+        "downSteps": 0
+      },
+      {
+        "phase": 1,
+        "samples": 130,
+        "firstGameTime": 150.838409,
+        "lastGameTime": 151.490829,
+        "duration": 0.652419999999978,
+        "minWeight": 0.0,
+        "maxWeight": 0.0,
+        "firstWeight": 0.0,
+        "lastWeight": 0.0,
+        "hiddenTrue": 0,
+        "crouchingTrue": 0,
+        "backpackOpenTrue": 0,
+        "firstCoverEnabledTrue": 130,
+        "secondCoverExistsTrue": 0,
+        "upSteps": 0,
+        "downSteps": 0
+      },
+      {
+        "phase": 2,
+        "samples": 137,
+        "firstGameTime": 151.5358,
+        "lastGameTime": 152.187775,
+        "duration": 0.6519749999999931,
+        "minWeight": 0.224780992,
+        "maxWeight": 1.0,
+        "firstWeight": 0.224780992,
+        "lastWeight": 1.0,
+        "hiddenTrue": 137,
+        "crouchingTrue": 137,
+        "backpackOpenTrue": 0,
+        "firstCoverEnabledTrue": 137,
+        "secondCoverExistsTrue": 0,
+        "upSteps": 33,
+        "downSteps": 0
+      },
+      {
+        "phase": 3,
+        "samples": 130,
+        "firstGameTime": 152.231842,
+        "lastGameTime": 152.8839,
+        "duration": 0.6520580000000109,
+        "minWeight": 0.0,
+        "maxWeight": 0.779596031,
+        "firstWeight": 0.779596031,
+        "lastWeight": 0.0,
+        "hiddenTrue": 0,
+        "crouchingTrue": 0,
+        "backpackOpenTrue": 0,
+        "firstCoverEnabledTrue": 130,
+        "secondCoverExistsTrue": 0,
+        "upSteps": 0,
+        "downSteps": 31
+      },
+      {
+        "phase": 4,
+        "samples": 128,
+        "firstGameTime": 152.925949,
+        "lastGameTime": 153.572144,
+        "duration": 0.6461950000000058,
+        "minWeight": 0.21024698,
+        "maxWeight": 1.0,
+        "firstWeight": 0.21024698,
+        "lastWeight": 1.0,
+        "hiddenTrue": 128,
+        "crouchingTrue": 128,
+        "backpackOpenTrue": 0,
+        "firstCoverEnabledTrue": 128,
+        "secondCoverExistsTrue": 0,
+        "upSteps": 33,
+        "downSteps": 0
+      },
+      {
+        "phase": 5,
+        "samples": 130,
+        "firstGameTime": 153.576523,
+        "lastGameTime": 154.2234,
+        "duration": 0.6468769999999893,
+        "minWeight": 0.0,
+        "maxWeight": 0.9781155,
+        "firstWeight": 0.9781155,
+        "lastWeight": 0.0,
+        "hiddenTrue": 0,
+        "crouchingTrue": 130,
+        "backpackOpenTrue": 0,
+        "firstCoverEnabledTrue": 130,
+        "secondCoverExistsTrue": 0,
+        "upSteps": 0,
+        "downSteps": 39
+      },
+      {
+        "phase": 6,
+        "samples": 136,
+        "firstGameTime": 154.228943,
+        "lastGameTime": 154.875763,
+        "duration": 0.6468200000000195,
+        "minWeight": 0.0277545,
+        "maxWeight": 1.0,
+        "firstWeight": 0.0277545,
+        "lastWeight": 1.0,
+        "hiddenTrue": 136,
+        "crouchingTrue": 136,
+        "backpackOpenTrue": 0,
+        "firstCoverEnabledTrue": 136,
+        "secondCoverExistsTrue": 0,
+        "upSteps": 40,
+        "downSteps": 0
+      },
+      {
+        "phase": 7,
+        "samples": 119,
+        "firstGameTime": 154.8831,
+        "lastGameTime": 155.531464,
+        "duration": 0.6483639999999866,
+        "minWeight": 1.0,
+        "maxWeight": 1.0,
+        "firstWeight": 1.0,
+        "lastWeight": 1.0,
+        "hiddenTrue": 119,
+        "crouchingTrue": 119,
+        "backpackOpenTrue": 0,
+        "firstCoverEnabledTrue": 0,
+        "secondCoverExistsTrue": 119,
+        "upSteps": 0,
+        "downSteps": 0
+      },
+      {
+        "phase": 8,
+        "samples": 128,
+        "firstGameTime": 155.541412,
+        "lastGameTime": 156.195374,
+        "duration": 0.6539619999999786,
+        "minWeight": 1.0,
+        "maxWeight": 1.0,
+        "firstWeight": 1.0,
+        "lastWeight": 1.0,
+        "hiddenTrue": 128,
+        "crouchingTrue": 128,
+        "backpackOpenTrue": 128,
+        "firstCoverEnabledTrue": 128,
+        "secondCoverExistsTrue": 0,
+        "upSteps": 0,
+        "downSteps": 0
+      },
+      {
+        "phase": 9,
+        "samples": 137,
+        "firstGameTime": 156.241531,
+        "lastGameTime": 156.889313,
+        "duration": 0.6477819999999781,
+        "minWeight": 1.0,
+        "maxWeight": 1.0,
+        "firstWeight": 1.0,
+        "lastWeight": 1.0,
+        "hiddenTrue": 137,
+        "crouchingTrue": 137,
+        "backpackOpenTrue": 0,
+        "firstCoverEnabledTrue": 137,
+        "secondCoverExistsTrue": 0,
+        "upSteps": 0,
+        "downSteps": 0
+      }
+    ],
+    "transitions": [
+      {
+        "phase": 2,
+        "direction": "in",
+        "lastPreviousPhaseTime": 151.490829,
+        "firstChangedSampleTime": 151.5358,
+        "firstEndpointTime": 151.693024,
+        "endpointFromLastPreviousSeconds": 0.20219500000001744,
+        "endpointFromFirstChangedSeconds": 0.15722400000001358,
+        "firstChangedWeight": 0.224780992,
+        "intermediateSamples": 33,
+        "monotonic": true
+      },
+      {
+        "phase": 3,
+        "direction": "out",
+        "lastPreviousPhaseTime": 152.187775,
+        "firstChangedSampleTime": 152.231842,
+        "firstEndpointTime": 152.388428,
+        "endpointFromLastPreviousSeconds": 0.20065300000001685,
+        "endpointFromFirstChangedSeconds": 0.15658600000000433,
+        "firstChangedWeight": 0.779596031,
+        "intermediateSamples": 31,
+        "monotonic": true
+      },
+      {
+        "phase": 4,
+        "direction": "in",
+        "lastPreviousPhaseTime": 152.8839,
+        "firstChangedSampleTime": 152.925949,
+        "firstEndpointTime": 153.088516,
+        "endpointFromLastPreviousSeconds": 0.20461599999998725,
+        "endpointFromFirstChangedSeconds": 0.1625669999999957,
+        "firstChangedWeight": 0.21024698,
+        "intermediateSamples": 33,
+        "monotonic": true
+      },
+      {
+        "phase": 5,
+        "direction": "out",
+        "lastPreviousPhaseTime": 153.572144,
+        "firstChangedSampleTime": 153.576523,
+        "firstEndpointTime": 153.775131,
+        "endpointFromLastPreviousSeconds": 0.20298699999997893,
+        "endpointFromFirstChangedSeconds": 0.1986079999999788,
+        "firstChangedWeight": 0.9781155,
+        "intermediateSamples": 39,
+        "monotonic": true
+      },
+      {
+        "phase": 6,
+        "direction": "in",
+        "lastPreviousPhaseTime": 154.2234,
+        "firstChangedSampleTime": 154.228943,
+        "firstEndpointTime": 154.4277,
+        "endpointFromLastPreviousSeconds": 0.20429999999998927,
+        "endpointFromFirstChangedSeconds": 0.19875700000000052,
+        "firstChangedWeight": 0.0277545,
+        "intermediateSamples": 40,
+        "monotonic": true
+      }
+    ]
+  },
+  "limitations": [
+    "All captures differ in gameTime; standing vs crouching also changes the player geometry. Vignette spatial checks use static ROIs outside the player.",
+    "Only the sampled frame sequence is audited; no native-input,pixel-level smooth-video guarantee or death/return lifecycle validation.",
+    "disabledDroneCountRecorded=0 means this probe itself disabled zero drones; preceding runtime isolation is documented elsewhere."
+  ]
+}

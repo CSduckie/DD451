@@ -1,0 +1,27 @@
+// execute_code method body, only after exclusive Editor ownership and final runtime tuning.
+if(EditorApplication.isPlaying || EditorApplication.isCompiling || EditorApplication.isUpdating)throw new Exception("Require stable Edit state.");
+for(int i=0;i<UnityEngine.SceneManagement.SceneManager.sceneCount;i++)if(UnityEngine.SceneManagement.SceneManager.GetSceneAt(i).isDirty)throw new Exception("Preserve dirty scenes before continuing.");
+string path="Assets/Prefabs/Player/Player.prefab";
+var root=PrefabUtility.LoadPrefabContents(path);
+try{
+ if(root.transform.Find("PlayerFillLight")!=null)throw new Exception("Fill light already exists.");
+ var renderers=root.GetComponentsInChildren<Renderer>(true);
+ if(renderers.Length!=2 || renderers.Any(r=>r.renderingLayerMask!=1u))throw new Exception("Unexpected current player renderer configuration; inspect before editing.");
+ var child=new GameObject("PlayerFillLight");
+ child.transform.SetParent(root.transform,false);
+ child.transform.localPosition=new Vector3(0,1.1f,-2f);
+ var lamp=child.AddComponent<Light>();
+ lamp.type=LightType.Point;lamp.lightmapBakeType=LightmapBakeType.Realtime;
+ lamp.color=Color.white;lamp.intensity=1.2f;lamp.range=4.5f;
+ lamp.shadows=LightShadows.None;lamp.bounceIntensity=0f;
+ lamp.cullingMask=-1;
+ var data=child.AddComponent<UnityEngine.Rendering.Universal.UniversalAdditionalLightData>();
+ data.renderingLayers=(UnityEngine.RenderingLayerMask)2;
+ foreach(var renderer in renderers)renderer.renderingLayerMask|=2u;
+ bool saved;PrefabUtility.SaveAsPrefabAsset(root,path,out saved);
+ if(!saved)throw new Exception("Prefab save failed.");
+ UnityEditor.Rendering.RenderPipelineEditorUtility.TrySetRenderingLayerName(1,"PlayerLighting");
+ var tagManager=AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/TagManager.asset").First();
+ EditorUtility.SetDirty(tagManager);AssetDatabase.SaveAssets();
+ return new{path=path,guid=AssetDatabase.AssetPathToGUID(path),intensity=lamp.intensity,range=lamp.range,position=child.transform.localPosition.ToString(),lightMask=lamp.renderingLayerMask,rendererMasks=renderers.Select(r=>new{name=r.name,mask=r.renderingLayerMask}).ToArray()};
+}finally{PrefabUtility.UnloadPrefabContents(root);}

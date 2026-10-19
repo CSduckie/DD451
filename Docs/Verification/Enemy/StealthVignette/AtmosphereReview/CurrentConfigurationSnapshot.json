@@ -1,0 +1,618 @@
+{
+  "utc": "2026-10-19T17:07:12.1869024Z",
+  "scope": "Read-only disk snapshot for collaborator review, not a claim of current Editor state or final visual acceptance.",
+  "hashes": [
+    {
+      "path": "Assets/Settings/DefaultVolumeProfile.asset",
+      "sha256": "3A6F825E8D07FE8B9F3B52E7D4E2DFA0E22C555B22335ADB19F0ECC66DFA38DD"
+    },
+    {
+      "path": "Assets/Scenes/Shelter/Global Volume Profile.asset",
+      "sha256": "92BD722219978A1A68056ECBB2D200A3B706312197C160AD1C757710B14FB1DD"
+    },
+    {
+      "path": "Assets/Settings/UniversalRenderPipelineGlobalSettings.asset",
+      "sha256": "67958644BADB14C610D6EBB26689EA980E32A0F1A140B7DCE3A0E515B1A878B9"
+    },
+    {
+      "path": "Assets/Settings/PC_RPAsset.asset",
+      "sha256": "F29BDA2174AB75CA4EEBE64B4C2153AF6E09965408548E5E2586DE101E876D32"
+    },
+    {
+      "path": "Assets/Settings/PC_Renderer.asset",
+      "sha256": "3D0B01D8DED3327263B6690BE128A3DE58D17C514943AE42FE743A3E084A9C79"
+    },
+    {
+      "path": "Assets/Prefabs/Player/PlayerCamera.prefab",
+      "sha256": "7456EE6888DE03CFFC87AA52AA31B800867507EAF82C05A91FF850C993F0FD64"
+    },
+    {
+      "path": "Assets/Prefabs/Player/Player.prefab",
+      "sha256": "1671B7057E8EED827936CE93D97A262669FC2A756C4E8CB0A412C4591760FDD2"
+    },
+    {
+      "path": "Assets/Prefabs/Shelter/ShelterScreenDust.prefab",
+      "sha256": "4A3B1133DAA83AF2499E5C865B92CC4C928FF9879CC7025ADAF9997E041611B8"
+    },
+    {
+      "path": "Assets/Art/Materials/Environment/ShelterScreenDust.mat",
+      "sha256": "A49FE189BDF88FF2CB91F4A8AF37B62614AA4EFDFB4DBE86872285B97EB0B5C5"
+    },
+    {
+      "path": "Assets/Scenes/Shelter.unity",
+      "sha256": "9285B6B8C9DC76CA43F42FB68AB1EBDD6AC3FF49DC00485CA9C0AD85C50D7A81"
+    },
+    {
+      "path": "Assets/Scenes/Ruins.unity",
+      "sha256": "A227EAA4EDB308BFC891FBD9C0D02B5901D1C1E53F762B589481ABD612638511"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowSceneBindings.cs",
+      "sha256": "7F498E295BB468789D74A00EF94674422BBDA9D73A71546FDEB0D558AF291CC3"
+    }
+  ],
+  "profiles": [
+    {
+      "path": "Assets/Settings/DefaultVolumeProfile.asset",
+      "components": [
+        {
+          "name": "MotionBlur",
+          "parameters": [
+            {
+              "name": "mode",
+              "override": "1",
+              "value": "0"
+            },
+            {
+              "name": "quality",
+              "override": "1",
+              "value": "0"
+            },
+            {
+              "name": "intensity",
+              "override": "1",
+              "value": "0"
+            },
+            {
+              "name": "clamp",
+              "override": "1",
+              "value": "0.05"
+            }
+          ]
+        },
+        {
+          "name": "ColorAdjustments",
+          "parameters": [
+            {
+              "name": "postExposure",
+              "override": "1",
+              "value": "0"
+            },
+            {
+              "name": "contrast",
+              "override": "1",
+              "value": "0"
+            },
+            {
+              "name": "colorFilter",
+              "override": "1",
+              "value": "{r: 1, g: 1, b: 1, a: 1}"
+            },
+            {
+              "name": "hueShift",
+              "override": "1",
+              "value": "0"
+            },
+            {
+              "name": "saturation",
+              "override": "1",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "name": "FilmGrain",
+          "parameters": [
+            {
+              "name": "type",
+              "override": "1",
+              "value": "0"
+            },
+            {
+              "name": "intensity",
+              "override": "1",
+              "value": "0"
+            },
+            {
+              "name": "response",
+              "override": "1",
+              "value": "0.8"
+            },
+            {
+              "name": "texture",
+              "override": "1",
+              "value": "{fileID: 0}"
+            }
+          ]
+        },
+        {
+          "name": "Tonemapping",
+          "parameters": [
+            {
+              "name": "mode",
+              "override": "1",
+              "value": "0"
+            },
+            {
+              "name": "neutralHDRRangeReductionMode",
+              "override": "1",
+              "value": "2"
+            },
+            {
+              "name": "acesPreset",
+              "override": "1",
+              "value": "3"
+            },
+            {
+              "name": "hueShiftAmount",
+              "override": "1",
+              "value": "0"
+            },
+            {
+              "name": "detectPaperWhite",
+              "override": "1",
+              "value": "0"
+            },
+            {
+              "name": "paperWhite",
+              "override": "1",
+              "value": "300"
+            },
+            {
+              "name": "detectBrightnessLimits",
+              "override": "1",
+              "value": "1"
+            },
+            {
+              "name": "minNits",
+              "override": "1",
+              "value": "0.005"
+            },
+            {
+              "name": "maxNits",
+              "override": "1",
+              "value": "1000"
+            }
+          ]
+        },
+        {
+          "name": "Bloom",
+          "parameters": [
+            {
+              "name": "skipIterations",
+              "override": "1",
+              "value": "1"
+            },
+            {
+              "name": "threshold",
+              "override": "1",
+              "value": "0.9"
+            },
+            {
+              "name": "intensity",
+              "override": "1",
+              "value": "0"
+            },
+            {
+              "name": "scatter",
+              "override": "1",
+              "value": "0.7"
+            },
+            {
+              "name": "clamp",
+              "override": "1",
+              "value": "65472"
+            },
+            {
+              "name": "tint",
+              "override": "1",
+              "value": "{r: 1, g: 1, b: 1, a: 1}"
+            },
+            {
+              "name": "highQualityFiltering",
+              "override": "1",
+              "value": "0"
+            },
+            {
+              "name": "downscale",
+              "override": "1",
+              "value": "0"
+            },
+            {
+              "name": "maxIterations",
+              "override": "1",
+              "value": "6"
+            },
+            {
+              "name": "dirtTexture",
+              "override": "1",
+              "value": "{fileID: 0}"
+            },
+            {
+              "name": "dirtIntensity",
+              "override": "1",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "name": "WhiteBalance",
+          "parameters": [
+            {
+              "name": "temperature",
+              "override": "1",
+              "value": "0"
+            },
+            {
+              "name": "tint",
+              "override": "1",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "name": "ColorLookup",
+          "parameters": [
+            {
+              "name": "texture",
+              "override": "1",
+              "value": "{fileID: 0}"
+            },
+            {
+              "name": "contribution",
+              "override": "1",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "name": "DepthOfField",
+          "parameters": [
+            {
+              "name": "mode",
+              "override": "1",
+              "value": "0"
+            },
+            {
+              "name": "gaussianStart",
+              "override": "1",
+              "value": "10"
+            },
+            {
+              "name": "gaussianEnd",
+              "override": "1",
+              "value": "30"
+            },
+            {
+              "name": "gaussianMaxRadius",
+              "override": "1",
+              "value": "1"
+            },
+            {
+              "name": "highQualitySampling",
+              "override": "1",
+              "value": "0"
+            },
+            {
+              "name": "focusDistance",
+              "override": "1",
+              "value": "10"
+            },
+            {
+              "name": "aperture",
+              "override": "1",
+              "value": "5.6"
+            },
+            {
+              "name": "focalLength",
+              "override": "1",
+              "value": "50"
+            },
+            {
+              "name": "bladeCount",
+              "override": "1",
+              "value": "5"
+            },
+            {
+              "name": "bladeCurvature",
+              "override": "1",
+              "value": "1"
+            },
+            {
+              "name": "bladeRotation",
+              "override": "1",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "name": "ChromaticAberration",
+          "parameters": [
+            {
+              "name": "intensity",
+              "override": "1",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "name": "Vignette",
+          "parameters": [
+            {
+              "name": "color",
+              "override": "1",
+              "value": "{r: 0, g: 0, b: 0, a: 1}"
+            },
+            {
+              "name": "center",
+              "override": "1",
+              "value": "{x: 0.5, y: 0.5}"
+            },
+            {
+              "name": "intensity",
+              "override": "1",
+              "value": "0"
+            },
+            {
+              "name": "smoothness",
+              "override": "1",
+              "value": "0.2"
+            },
+            {
+              "name": "rounded",
+              "override": "1",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "name": "LensDistortion",
+          "parameters": [
+            {
+              "name": "intensity",
+              "override": "1",
+              "value": "0"
+            },
+            {
+              "name": "xMultiplier",
+              "override": "1",
+              "value": "1"
+            },
+            {
+              "name": "yMultiplier",
+              "override": "1",
+              "value": "1"
+            },
+            {
+              "name": "center",
+              "override": "1",
+              "value": "{x: 0.5, y: 0.5}"
+            },
+            {
+              "name": "scale",
+              "override": "1",
+              "value": "1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Scenes/Shelter/Global Volume Profile.asset",
+      "components": [
+        {
+          "name": "Vignette",
+          "parameters": [
+            {
+              "name": "color",
+              "override": "0",
+              "value": "{r: 0, g: 0, b: 0, a: 1}"
+            },
+            {
+              "name": "center",
+              "override": "0",
+              "value": "{x: 0.5, y: 0.5}"
+            },
+            {
+              "name": "intensity",
+              "override": "1",
+              "value": "0"
+            },
+            {
+              "name": "smoothness",
+              "override": "0",
+              "value": "0.2"
+            },
+            {
+              "name": "rounded",
+              "override": "0",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "name": "ColorAdjustments",
+          "parameters": [
+            {
+              "name": "postExposure",
+              "override": "1",
+              "value": "-0.2"
+            },
+            {
+              "name": "contrast",
+              "override": "1",
+              "value": "8"
+            },
+            {
+              "name": "colorFilter",
+              "override": "1",
+              "value": "{r: 0.7578583, g: 0.7578583, b: 0.7578583, a: 1}"
+            },
+            {
+              "name": "hueShift",
+              "override": "1",
+              "value": "0"
+            },
+            {
+              "name": "saturation",
+              "override": "1",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "name": "Bloom",
+          "parameters": [
+            {
+              "name": "skipIterations",
+              "override": "0",
+              "value": "1"
+            },
+            {
+              "name": "threshold",
+              "override": "1",
+              "value": "1"
+            },
+            {
+              "name": "intensity",
+              "override": "1",
+              "value": "0.1"
+            },
+            {
+              "name": "scatter",
+              "override": "0",
+              "value": "0.571"
+            },
+            {
+              "name": "clamp",
+              "override": "0",
+              "value": "65472"
+            },
+            {
+              "name": "tint",
+              "override": "1",
+              "value": "{r: 0.3018868, g: 0.2748309, b: 0.2748309, a: 1}"
+            },
+            {
+              "name": "highQualityFiltering",
+              "override": "0",
+              "value": "0"
+            },
+            {
+              "name": "downscale",
+              "override": "0",
+              "value": "0"
+            },
+            {
+              "name": "maxIterations",
+              "override": "0",
+              "value": "6"
+            },
+            {
+              "name": "dirtTexture",
+              "override": "0",
+              "value": "{fileID: 0}"
+            },
+            {
+              "name": "dirtIntensity",
+              "override": "0",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "name": "Tonemapping",
+          "parameters": [
+            {
+              "name": "mode",
+              "override": "1",
+              "value": "0"
+            },
+            {
+              "name": "neutralHDRRangeReductionMode",
+              "override": "0",
+              "value": "2"
+            },
+            {
+              "name": "acesPreset",
+              "override": "0",
+              "value": "3"
+            },
+            {
+              "name": "hueShiftAmount",
+              "override": "0",
+              "value": "0"
+            },
+            {
+              "name": "detectPaperWhite",
+              "override": "0",
+              "value": "0"
+            },
+            {
+              "name": "paperWhite",
+              "override": "0",
+              "value": "300"
+            },
+            {
+              "name": "detectBrightnessLimits",
+              "override": "0",
+              "value": "1"
+            },
+            {
+              "name": "minNits",
+              "override": "0",
+              "value": "0.005"
+            },
+            {
+              "name": "maxNits",
+              "override": "0",
+              "value": "1000"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "scenes": [
+    {
+      "path": "Assets/Scenes/Ruins.unity",
+      "directCanvases": [
+        {
+          "id": "531758639",
+          "name": "DiscardConfirmation",
+          "renderMode": "2"
+        },
+        {
+          "id": "1547334977",
+          "name": "InventoryCanvas",
+          "renderMode": "0"
+        }
+      ]
+    },
+    {
+      "path": "Assets/Scenes/Shelter.unity",
+      "directCanvases": [
+        {
+          "id": "368363470",
+          "name": "InventoryCanvas",
+          "renderMode": "0"
+        },
+        {
+          "id": "487102953",
+          "name": "DiscardConfirmation",
+          "renderMode": "2"
+        }
+      ]
+    }
+  ]
+}

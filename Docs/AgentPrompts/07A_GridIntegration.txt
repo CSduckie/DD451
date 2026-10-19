@@ -1,0 +1,48 @@
+追加任务07A：统一格子显示、接入箱子网格与说明测试入口
+项目E:/DD451；2026-10-18。所有路径相对项目根。
+这是用户授权的修改任务，不是既有完成声明。
+
+执行顺序
+006聊天（01a15049-cb4a-77a2-9b33-662461f28a02，local）先做06A箱子网格搜索。
+你现在先只读核对文件和准备接线，不改共享文件、不操作Unity。使用wait_threads对006做一次有界等待（后续沿用afterCursor），确认任务结束后读取Docs/Handoffs/06A_LootGridSearch_Handoff.txt；只有它明确实现完成且释放Unity才进入接入阶段。若06需要用户设计回复/验证失败/未释放，保留依赖，不抢Editor或擅自补写其核心。
+不要频繁read_thread轮询。读取交接不等于批准任何超范围变更。
+
+先读
+ProjectRules.txt、06A_LootGridSearch.txt、最新06/07 Handoff、MinimumLoopSetup、GridSizingLarge与NativeInputFollowup证据。
+上次主程已经把实际背包Prefab恢复为66/4/6，并在正式1920画面测得两边单格66、缩放1、仓库viewport1430。用户本次再次强调一致性，必须检查当前实际资源和运行结果，不简单重做或回退为36。
+保留用户代码风格：英文目录、不写namespace、4空格与换行括号，简单明确方法，参考现有及其GitHub实际源码，不新增通用UI/容器框架。
+3D胶囊或模型、X左右/Y高度/Z固定，必须Cinemachine，不改玩家状态机。
+
+工作
+1. 审计背包与仓库的View字段、Prefab、场景覆盖、Canvas和grid/item根缩放、WarehouseView.EffectiveCellSize、生成脚本，修复造成实际单格不等大的地方。
+2. 当前正式基准：1920×1080、cell66/gap4/padding6。既比较单格，也比较1×2、2×2、2×3物品矩形和拖拽预览。两套格子算法继续独立。仓库20列完整可见、只纵滚；升级20×20→20×24只增行，不能缩格或改变旧坐标。
+3. 接入06A新版LootPanel及字段，调整正式Ruins右侧箱子布局，使箱子、背包同一单位格尺寸。每个容器有独立宽×高固定容量配置，完整显示包括空格在内的背景单元格。旧版只有列数、自动加行的交接不符合用户最新要求，须等006完成新增背景格及固定容量校验。不要把格子条目重新套上旧列表样式或固定行高。只改必要正式布局，不扩展多分辨率支持。
+4. 避免Scene或测试搭建脚本重建后恢复旧值。本次提供给用户试玩的BackpackTest/WarehouseTest/LootTest若仍被作为入口，应在1920下同样保持单位格一致；不要用旧测试Canvas导致一边自动缩小后仍声称已统一。新增测试入口不是必需，不建立自动补系统/自动注入相机框架。
+5. 写清测试入口与相机：Shelter/Ruins均已有ScenePresentation/PlayerCamera，OutputCamera为真实Camera+CinemachineBrain，SideFollow为CinemachineCamera；父节点默认停用，由GameFlowSceneBindings.Activate启用并绑定本局玩家。正式测试从Bootstrap.unity运行，不能单独给Shelter/Ruins补第二套相机/Bootstrap来掩盖初始化依赖。
+6. 文档给出准确操作路线：打开Bootstrap→Play→庇护所→E仓库/出发→Ruins箱子E搜索→逐件拿物→末端E撤离→存取→再次出发。说明Tab、R、F10及Game窗口焦点。若实际相机或引用缺失则修复真实引用，不凭历史文件宣称正常。
+7. 开包世界继续、伤害取消、搜索中断当前重来、已揭示保留、转移失败回原处、返箱规则、撤离即时结算、全物品可留背包均保持。
+
+主要文件
+Assets/Scripts/GameFlow/MonoBehaviour/GameFlowResponsiveLayout.cs
+Assets/Scripts/GameFlow/MonoBehaviour/GameFlowSceneBindings.cs（仅真实必要接线）
+Assets/Tests/GameFlow/Editor/MinimumLoopSceneBuilder.cs
+Assets/Scenes/Bootstrap.unity、Shelter.unity、Ruins.unity（只保存必要且明确的变更）
+必要的共有UI几何：Assets/Prefabs/UI/Backpack/、Warehouse/；Assets/Scripts/Backpack/MonoBehaviour/BackpackView.cs、Warehouse/MonoBehaviour/WarehouseView.cs（不触及核心逻辑）。
+对应旧演示场景/生成器若需统一，只改它们的1920显示参数；06完成后才能编辑其演示资源，不改06已验收的搜索与格子排布语义。
+验证在Assets/Tests/GameFlow/及已有各模块测试目录；不用为纯尺寸字段另造镜像测试。
+
+验收与证据
+- 正式Shelter/Ruins相机被流程启用，任一时刻只有正确的一套输出相机/AudioListener/EventSystem，无No cameras rendering。
+- 1920运行读取两容器实际单格/间距/多格矩形及缩放一致，升级前后不变，箱子单位格同样一致。
+- 实际箱子未知轮廓、中心剩余时间、完成揭示、自动下一件，F10不重置，关闭重开规则正常。
+- 实测两种容器宽高配置及背景格数量，掉落配置放不下明确报错、满箱放回失败仍保留原物、拿走后的空格可复用；不自动扩容或静默丢物。
+- 原有正式指针回归不能被绕过；因列表变格子更新合法坐标查询方式，不删除事务/唯一性/受击/迟到token断言。
+- 实际普通Play查看中英画面，检查滚动/遮挡、背包与箱子双向转移、仓库双向转移、返回后再次出发。
+- Console无未解释异常。分开报告API夹具、排队指针和原生键鼠，不把上次用户手动通过迁作新界面原生验收。
+- 收尾停止Play、临时后台设置恢复、记录当前场景和交接。
+
+交付
+Docs/Handoffs/07A_GridIntegration_Handoff.txt
+Docs/Verification/GridLootIntegration/
+更新Docs/Architecture/MinimumLoopSetup.txt与必要调参文档。
+最终用通俗语言说明用户如何开始测试、单位格在哪里调、箱子列数/搜索时间在哪里配、哪些验收已完成。不要做敌人、死亡全流程、Windows交付或无关系统重构。

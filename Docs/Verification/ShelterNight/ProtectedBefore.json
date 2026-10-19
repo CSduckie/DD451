@@ -1,0 +1,12 @@
+[
+  {
+    "Algorithm": "SHA256",
+    "Hash": "C0E39DA0280F8053AD11F0DD092C3ECC1D881B98E5E49DC59DD45F2B0D3281D0",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Ruins.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "2F802E4A623B51D34D6235D675FF152D026D5B1ABD663AD92FE2E89E0CC7306B",
+    "Path": "E:\\DD451\\Assets\\Prefabs\\Player\\PlayerCamera.prefab"
+  }
+]

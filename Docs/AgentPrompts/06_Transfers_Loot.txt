@@ -1,0 +1,403 @@
+任务06：物品转移、地面拾放、可配置箱子与逐件搜索
+MyPrecious P0｜精简开发提示词｜2026-10-18 / Dispatch v12
+
+最新规则补充（Dispatch v15）：按用户在04聊天的新要求，背包物品经提示确认后丢弃，普通物销毁、唯一物下一轮回原始拾取点同身份，不生成可同轮重新拾取的地面物。此条覆盖本文旧主动丢地与捡回要求；地图原生地面拾取仍保留，背包放回当前箱子属于另一种操作且可同轮再取。按04/06最新实际实现接入，勿为旧测试恢复旧玩法。
+
+执行安排更新（Dispatch v13）：06范围保持不变。后续先由新07统一整合无敌人的庇护所—搜刮—返回循环，新08验收，再做新09敌人和新10风险流程。本文“08流程”“09正式接线”在当前最小循环阶段映射为新07；完整死亡结算由新10完成。详见Roadmap_MinimumLoop.txt，不要求06因此重写现有模块。
+
+你是06号开发agent。本任务实现背包与仓库双向转移、地面拾取/丢放、箱子掉落与搜索，并接入01—05真实模块。
+先说明工程现状、工作范围和拟修改文件，再完成实现、配置、验证及交接，不只返回方案。
+
+这是我的作品集兼毕设。代码必须让我能读懂、修改和答辩。用明确的同步方法、简单集合和必要通知保证数据一致，不做通用事务引擎、全局拖拽框架或新物品系统。
+
+一、开工检查与已有规则
+
+项目根：E:/DD451；独立工作树使用实际项目根。
+以下路径均相对项目根。
+
+先读适用AGENTS.md、git状态、Unity与Packages版本，以及：
+- Docs/AgentPrompts/ProjectRules.txt。
+- Docs/Architecture/BaseSetup.txt、ItemsSetup.txt、PlayerSetup.txt、LocalizationSetup.txt。
+- Docs/Architecture/BackpackSetup.txt、WarehouseShelterSetup.txt及00—05实际Handoff。
+- 01—05真实代码，尤其物品、容器静默操作、UI拖拽与关闭流程。
+
+当前已看到01—05相关源码及BackpackSetup，但04/05最终交接仍须重新核对。不能凭文件存在宣称验收完成，也不能只按旧提示词猜接口。
+依赖不足先完成不受影响部分；真实转移、鼠标操作与联合验收必须补齐，不用假容器冒充完成。
+
+规则：
+1. 01管理唯一身份、当前归属、使用次数和保有状态；06只协调，不另建身份登记。
+2. 背包默认4×4、仓库默认20×20，各自独立格子算法继续保留。
+3. 普通转移不改实例ID、使用次数、原拾取点或IsRetained。新战利品由08撤离结算后才计EV。
+4. 拖拽只是预览；确认前来源保留，失败/取消不丢物、不复制。
+5. 开包及搜索时世界继续运行；沿用04的控制限制、有效受击关闭和死亡取消。
+6. 箱子每轮只生成一次，空箱也记为已生成；重开不重抽、拿走不补货。
+7. 候选条目独立概率判断，可同时生成多种，也可为空；0%不出，符合唯一资格的100%必出。
+8. 按物品搜索时间逐件揭示；已揭示可先拿，中断保留已揭示，当前未完成物品重新计时。
+9. 唯一剧情物品死亡、庇护所遗弃、撤离遗留后，下轮原点找回同一身份；不能复制、永久删掉或再次抽概率阻止找回。
+10. 3D模型与3D物理，玩家X左右、Y高度、Z固定；世界点位与UI格子分开。沿用02状态机和Cinemachine。
+11. 中英双语、默认中文、F10由03独占。
+12. 不实现08完整撤离/死亡流程、09正式地图、存档、商店、堆叠或自动整理。
+
+二、代码风格与真实复用
+
+参考仓库：
+- https://github.com/CSduckie/CardGame
+  本机E:/Portfolio-Card-Clone
+- https://github.com/CSduckie/LiDarProject
+  本机E:/Portfolio-LiDar
+- https://github.com/CSduckie/2DArpg-Portfolio
+  本机E:/Portfolio-Clone
+
+先读实际源码再修改复用，不改参考仓库本身。
+重点：
+- CardGame/Assets/Scripts/Cards/MonoBehaviour/CardDragHandler.cs：
+  参考UGUI拖拽生命周期，改用RectTransform；不搬卡牌效果、DOTween或全局手牌管理。
+- LiDarProject/Assets/Script/LevelScripts/TeleportLevels/KeyController.cs：
+  参考3D拾取与明确方法的形式；不搬独立F键监听和先销毁后确认的流程。
+- CardGame/Assets/Scripts/Card Effects/LastColumnChangeValueEffect.cs：
+  参考Random.value与概率比较，移除棋盘、UI解析和卡牌业务。
+- 2DArpg-Portfolio/Assets/Scripts/Enemy/Elites/Shielder/States/ShielderIdleState.cs：
+  可参考配置概率的表达，不复制每帧抽取或前项命中后跳过其他候选的逻辑。
+- CardGame的ItemTemplet及已有03—05文字刷新方式用于UI显示。
+
+这些仓库没有可直接迁入的完整搜刮/跨容器系统。CardManager中“随机选一个”的方法不符合本任务独立概率，不能照搬。
+
+代码要求：
+- 新增项目自有C#全部不写namespace，测试和Editor也一样；正常保留using。
+- 4空格缩进，大括号另起行；类型/方法PascalCase，字段/局部变量camelCase。
+- 使用普通类、MonoBehaviour、SO、枚举、List/Dictionary、明确方法和必要C#通知。
+- 中文注释解释关键原因，尤其“为何先保留来源”“为何归属最后修改”。
+- 不引入依赖注入、事件总线、反射注册、容器共用基类、通用命令队列或多层接口。
+- 英文目录，配置脚本与资源分开；asmdef/asmref不代表namespace，rootNamespace为空。
+- 真实必要公共类型才放Assets/Scripts/Utilities/Contracts/，不要求00预建接口。
+- 基础测试目录仍为Assets/Tests/Base/；06新增测试放自己的Loot目录，不改名或搬走基础测试。
+- 不升级无关Packages；共享Editor操作串行，保留他人改动、.meta和GUID。
+
+三、目录与最小实现
+
+转移：
+Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferCoordinator.cs
+- 明确的跨容器、来源到背包、背包丢地操作；校验、提交、失败恢复及完成通知。
+
+Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferUIBridge.cs
+- 接入04/05和来源UI，协调一次跨界面拖拽与目标确认。
+- 不另写格子算法，不代替04/05原有包内重排。
+
+Assets/Scripts/Items/Transfers/RuntimeData/ItemTransferResult.cs
+- 简单结果枚举及确有需要的过程记录；不建立通用事务对象层级。
+
+搜刮：
+Assets/Scripts/Loot/ScriptableObject/LootTableSO.cs
+- Inspector掉落候选列表，简单Serializable条目可以放在同一文件。
+
+Assets/Scripts/Loot/RuntimeData/LootSourceState.cs
+- 本轮来源、生成结果、条目ID、是否揭示/已取走和当前搜索进度。
+- 只引用01实例，不复制物品权威字段。
+
+Assets/Scripts/Loot/Logic/LootGenerator.cs
+- 独立概率判断与结果生成的清楚逻辑。
+
+Assets/Scripts/Loot/MonoBehaviour/LootRuntimeManager.cs
+- 常驻保存本轮来源状态、稳定点位绑定和实例到场景表现的对应关系。
+- 不创建第二份物品身份表。
+
+Assets/Scripts/Loot/MonoBehaviour/LootBox.cs
+- 箱子预制体组件，引用掉落表与稳定来源ID，继承现有Interactable。
+
+Assets/Scripts/Loot/MonoBehaviour/GroundItem.cs
+- 地面物品表现，绑定已有实例与来源，继承Interactable。
+
+Assets/Scripts/Loot/MonoBehaviour/LootUIController.cs
+- 一次来源打开/搜索会话、逐件计时、关闭中断和已揭示项操作。
+
+Assets/Scripts/Loot/MonoBehaviour/LootView.cs
+Assets/Scripts/Loot/MonoBehaviour/LootItemView.cs
+- 来源列表、未知项、进度、反馈与条目指针操作。
+
+建议06使用一个程序集：
+- Assets/Scripts/Loot/MyPrecious.Loot.asmdef
+- Assets/Scripts/Items/Transfers/MyPrecious.Loot.asmref
+
+asmref只把Transfers目录归入同一个06程序集，避免它被父目录Items程序集收进去后产生循环引用。
+引用实际需要的Items、Backpack、Warehouse、Shelter、Player、Interaction、Localization、Bootstrap、UGUI/TMP/Input System。
+01/04/05不能反向引用MyPrecious.Loot。
+
+资源：
+- Assets/Data/LootTables/
+- Assets/Data/Localization/Loot/LootText.asset
+- Assets/Prefabs/Loot/LootModule.prefab
+- Assets/Prefabs/Loot/LootBox.prefab
+- Assets/Prefabs/Loot/GroundItem.prefab
+- Assets/Prefabs/UI/Loot/LootPanel.prefab
+- Assets/Prefabs/UI/Loot/LootItem.prefab
+
+测试与文档：
+- Assets/Tests/Loot/EditMode/
+- Assets/Tests/Loot/PlayMode/
+- Assets/Tests/Loot/TestDoubles/
+- Assets/Tests/Loot/Editor/（确有需要时）
+- Assets/Scenes/Tests/Loot/LootTest.unity
+- Docs/Architecture/TransfersLootSetup.txt
+- Docs/Handoffs/06_Handoff.txt
+
+允许必要的小范围接入修改：
+- Assets/Scripts/Backpack/MonoBehaviour/BackpackUIController.cs
+- Assets/Scripts/Backpack/MonoBehaviour/BackpackItemView.cs、BackpackView.cs
+- Assets/Scripts/Warehouse/MonoBehaviour/WarehouseUIController.cs
+- Assets/Scripts/Warehouse/MonoBehaviour/WarehouseItemView.cs、WarehouseView.cs
+- Assets/Scripts/Interaction/MonoBehaviour/PlayerInteraction.cs：仅在需要时增加复用原距离/遮挡逻辑的只读空间查询。
+
+这些修改只补实际外部提交、关闭/取消通知、目标命中与显示入口，保持原包内重排、使用、受击和格子规则。
+通过基础类型的单一回调或最小必要契约返回操作结果；不要把业务提交广播给多个事件监听者。
+关闭/变化通知可以使用普通C#事件。04/05不能引用06具体类，不能靠循环程序集接线。
+原01数据核心、02运动、03语言核心默认只读。若仍有不能满足正确性的具体接口缺口，先说明最小差异，不通过改internal setter、反射或新造权威数据绕过。
+正式场景由09接线；自己的测试场景必须完成真实接入。
+
+四、转移怎样保证失败不丢物
+
+当前真实04/05均提供：
+- TryGetPlacement、GetPlacements。
+- CanPlaceExternal(instanceId, x, y, rotated)。
+- TryAddPlacement(instanceId, x, y, rotated)。
+- TryRemovePlacement(instanceId, out 原摆放)。
+- TryRestorePlacement(原摆放)。
+- NotifyChanged与Changed。
+
+返回值分别为BackpackResult、WarehouseResult。
+添加、移除、恢复均为静默布局操作，不改01归属、不自动通知。
+来源还可用TryGetCarriedItem/TryGetStoredItem核对。
+实施时再次读真实代码，不能只凭同名就假定语义。
+
+一次跨容器提交采用清楚的同步顺序：
+1. 重新检查同一01实例、预期Owner/ContainerId、来源记录、目标合法位置、场景权限和本次拖拽仍有效。
+2. 箱子来源还要检查本轮、已揭示且未取走；地面来源要检查绑定和可达性。
+3. 保存来源摆放或条目状态，目标静默添加。
+4. 来源静默移除或标记已取走。
+5. 最后调用01.TrySetOwner修改当前归属。
+6. 全部一致后，通知相关布局/来源UI，并调用必要的ShelterManager.RefreshEv。
+
+任一步失败：
+- 按实际已执行步骤移除新目标、恢复原来源。
+- 检查恢复结果，不吞掉恢复失败然后返回成功。
+- 原身份、归属、坐标、朝向、搜索揭示状态、次数和保有状态保持。
+- 失败消息由03显示，不靠Destroy图标修复数据。
+
+整个提交过程不await、不等待动画、不在中间发UI通知；一个06局部busy标记防止重入即可，不做通用事务引擎。
+01.TrySetOwner没有“预期旧归属”参数，且会改变SpawnClaimed，所以06自己核对来源，并把它放在可失败布局操作之后。
+SourceId是既有来源记录，不是每次移动都要改写的当前ContainerId。
+
+相同请求重复触发时，原来源/会话已不匹配就拒绝，不再次复制或挪动。
+成功后的显示通知失败不能把已完成转移伪报为未发生，也不能让通知监听者再次提交转移。
+仓库满、背包满、碎片空位、失效来源都必须有明确失败结果。
+
+五、真实UI、输入与场景权限
+
+当前04的BeginExternalPreview已有，但外部EndDrag仍会取消并提示待06。
+05当前UI主要支持仓库内部重排。不能只实现数据方法而留下这两个入口不接。
+
+完成可操作流程：
+- 庇护所：背包与仓库之间双向拖放，目标显示自己的合法占格预览。
+- 探索：地面物或已揭示箱内物品拖入背包。
+- 背包：通过明确“丢到地面”操作放回当前地图；不要把任意拖出窗口当作丢弃。
+
+任何时刻只有一份有效跨界面拖拽来源与一次提交。
+不能同时启动04和05两份有效旋转预览；R只由活动来源处理。
+沿用现有拖拽编号/取消检查，迟到鼠标松开不能提交。
+外部提交在有效会话内完成，再清理预览；不要先广播取消使请求失效，随后又强行提交。
+普通包内重排继续走04/05，不把它们也重写成跨容器系统。
+
+E由02负责，F10由03负责，Tab及背包使用由04负责；06不再监听这些按键。
+仓库转移必须核对WarehouseManager.IsManagementAllowed。
+配合现有TryClaimInteraction、OwnsInteraction、ReleaseInteraction：当前合法仓库拖拽可以继续，但不能绕过另一个待确认遗弃或升级操作。
+06不能为转仓自行调用SetShelterContext(true)授予权限。正式上下文归08/09，测试驱动可明确模拟。
+05已经负责仓库确认遗弃，06不重复记损；普通地面丢放也不是ShelterAbandonment。
+
+六、地面拾取、丢放与表现
+
+箱子和地面物继承现有Interactable，实现PromptKey、CanInteract、Interact。
+用02已存在的3D范围、深度和遮挡判定，不另做每个物体自己的E键循环。
+
+拾取：
+- E交互打开来源与背包，可将地面物显示为一项已揭示来源。
+- 玩家选择合法背包格子后才转移；满包或取消时地面表现和01来源保持。
+- 数据提交成功后才关闭/移除对应地面表现，不能接触即Destroy。
+
+丢放：
+- 仅对当前背包真实物品、有效探索场景和可操作上下文执行。
+- 丢放从打开的背包发起，不能要求CanAct=true；应检查真实玩家存活/已准备、探索上下文及本次操作仍有效。
+- 根据玩家固定Z平面和附近3D地面确定安全点，不把UI屏幕坐标直接当世界位置。
+- 检查地面、墙体、重叠和02交互可达范围；没有合法点就拒绝，物品留包。
+- 使用简单地面表现即可，不引入抛物线、投掷武器或复杂物理散落。
+- 先准备并验证未激活的地面表现和运行记录，再移除布局、提交World归属；成功后启用已准备的表现。
+- 不把可失败的资源加载/初始化放到归属成功后才执行。
+- 本轮可再次拾回同一实例；不重建身份、不刷新医疗包次数、不修改IsRetained。
+
+场景表现不等于权威物品：
+维护简单实例ID→当前场景表现对应关系，同一实例最多一份有效表现。
+卸载场景只解除表现绑定，不等于物品丢失。
+同轮重载从已有运行记录重建地面位置/来源，不重抽、不重新创建身份。
+
+七、可配置箱子与独立概率
+
+LootBox预制体引用LootTableSO，场景实例有稳定mapId/sourceId。
+预制体可反复摆放，但来源ID不能重复；不得用Unity InstanceID或会随排序变化的数组下标作为持久来源标识。
+
+每条候选至少有：
+- 稳定entryId。
+- ItemDataSO引用。
+- 是否使用物品默认概率。
+- 覆盖概率（0—1，只有关闭“使用默认”时生效）。
+
+P0每条候选代表一件物品；多份普通物品用多个条目明确配置，不增加数量范围、权重池或保底系统。
+概率读取默认或覆盖其中之一，不能把两者相乘。
+搜索时间、占格、名称和描述继续读取ItemDataSO，不在掉落表重复维护。
+
+生成规则：
+- 每条候选独立判断，前一条命中不影响后一条。
+- 0和1明确处理，保证0%绝不生成、符合唯一资格的100%必出。
+- 其余使用一次随机样本与概率比较，不用“从列表只选一个”。
+- 配置空引用、非法概率、重复稳定ID应可定位，不能默默生成半套坏数据。
+- 生成结果按本轮与稳定来源保存，包含空结果。
+- 重开UI、反复交互、拿完物品、换语言和同轮重载都不重新抽。
+- 按配置顺序保存命中项，逐件搜索不额外随机打乱顺序。
+- 来源条目保留稳定身份，取走后标记taken等状态；不要因列表删项使正在搜索的下一件跳过或重置。
+
+策划示例至少包含：
+全部0%、全部100%、多个独立中间概率、空表及含唯一物品的来源。
+所有具体概率和搜索时长是可调参数，不擅自改原物品配置来迁就测试。
+
+八、唯一身份、原点找回与轮次
+
+沿用01真实入口：
+TryCreateInstance、TryGetUniqueInstance、GetRecoverableItems、TryClaimUniqueSpawn。
+查询到已有实例不等于获得新增生成许可。
+
+首次生成：
+- 先校验来源、稳定原点和表现资源，再按概率及唯一资格决定。
+- 普通物品可创建多个独立实例；唯一物品已被携带/入仓或已有有效来源时，不再创建第二件。
+- 唯一物品固定原始来源，建议mapId/sourceId/entryId组合；重复配置多个冲突原点应明确报错，不依赖遍历顺序随机决定人物原点。
+- 创建唯一实例与领取原点生成许可按01现有要求执行，不能跳过许可检查。
+
+找回：
+- 新轮已到资格时，通过GetRecoverableItems按OriginalSpawnPointId定位原来源。
+- 领取成功后恢复同一InstanceId/UniqueId，不再抽普通概率。
+- 原点是箱子时接回该来源，按箱内搜索方式揭示；原点是地面时恢复地面表现。
+- 当前01找回成功会先设为World。箱子来源需再通过TrySetOwner恢复Container及正确sourceId，来源记录与归属一致后才展示，不能只把物品加入箱子列表。
+- 唯一资格优先于概率；100%不能复制已保有物品，0%也不能阻止已经确认的找回。
+- 仍在世界/箱子且未拿走的已登记唯一实例，使用原来源记录恢复同一对象；不能因“已登记”把它丢掉，也不能再创建一个替代。
+
+当前01没有撤销生成许可的公开方法。
+尽量先准备并初始化未激活表现，再领取许可。
+领取后若表现绑定失败，保留可恢复的来源记录，同轮补建同一实例的表现，不再次领取、不另造身份、不滥用RecordLoss把错误推迟到下一轮。
+若实际实现仍需01补一个恢复入口，明确指出最小需求，不能改internal字段绕过。
+
+轮次：
+- 08是正式BeginRound的拥有者，06不在Awake/开箱/开UI里推进轮次。
+- 给08提供明确的本轮准备、来源绑定和剩余世界/箱内实例查询。
+- 同轮重新准备应复用结果；真正新轮才刷新普通掉落和搜索。
+- 清理上一轮运行记录前，旧实例须已由流程终结、待找回或明确转交保留，不能只清字典留下幽灵物品。
+- 06提供来源信息，08决定死亡、撤离遗留等损失集合；普通场景卸载不自动记损。
+- 不保存失效Transform作为跨轮唯一原点，使用稳定ID解析新场景点位。
+
+九、逐件搜索与中断
+
+1. E打开箱子后，先成功打开04背包，再显示本次来源并自动搜索第一件未揭示物品。
+使用实际已生成结果，不在搜索开始时再次抽取。
+
+2. 一次只搜索一件，读取该物品searchSeconds。
+时间达到后标记揭示，再开始下一件。0秒物品正常立即揭示，不能无限循环或重复通知。
+使用正常游戏时间推进，不修改Time.timeScale。
+
+3. 未揭示项显示统一未知占位，不透露名称、描述或具体图标，不能拾取或调用转移。
+已揭示项立即可拿，后续搜索继续；拖拽/拿走前一件不能重置正在搜索的另一件。
+没有内容时清楚显示空箱/已搜空，不伪造掉落。
+
+4. 中断包括关闭来源/背包、有效受击关闭、死亡、切换来源、目标失效、离开有效距离/遮挡条件或场景卸载。
+中断保留生成结果和已揭示项，仅清零当前未揭示项的进度。
+再次打开从该未完成物品完整searchSeconds重新计时，不重搜已揭示物品。
+切语言不是中断。
+
+5. 复用04的受击关闭链：
+当前04已订阅NonLethalDamaged与Died，06不再重复订阅伤害来关包。
+按本任务授权给04补必要的统一关闭通知，在恢复玩家控制前结束来源会话和搜索。
+监听者只清理来源/计时，不反向递归调用Close。
+普通拖拽取消不等于整次搜索中断；必须区分“取消这件物品预览”和“关闭来源会话”。
+
+6. 重要真实接口边界：
+开包后CanAct=false，PlayerInteraction会清空CurrentTarget。
+不能用“CanAct必须为true”或“CurrentTarget仍为这个箱子”作为持续搜索条件，否则一打开就会中断。
+保存本次箱子引用，检查玩家存活/已准备、目标有效、会话仍开启及实际空间条件。
+需要时给PlayerInteraction加小型只读空间查询，复用原3D距离/深度/遮挡逻辑，允许在正常UI输入锁期间查询；不改变原E键权限。
+
+7. 关闭、换绑玩家和停用时取消会话、预览并解除自己订阅。
+应用失焦按统一中断路径处理，避免看不到界面时继续积累搜索。
+搜索和拾取失败不恢复玩家HP、不刷新次数、不改变EV保有状态。
+
+十、双语与现有模块接线
+
+使用真实03：
+LocalizationManager.Instance/Resolve、GetText、FormatText、LanguageChanged和LocalizedText。
+LootText使用LocalizationTableSO，key以loot.为前缀；转移结果可用transfer.前缀。
+
+覆盖：
+交互提示、搜索中/已揭示/空箱、当前进度、物品名称描述、放置失败、来源失效、不可达、转移成功和丢放反馈。
+物品文案只通过ItemDataSO.nameKey/descriptionKey查询，不复制另一份译文。
+
+表在进入Play前加入测试场景存活LocalizationModule的tables，保留03/04/05已有表。
+03不会因运行中追加表自动重建字典；正式启动资源由09一次接齐。
+复用NotoSansCJKsc-Regular SDF字体，不增加语言或字体框架。
+
+F10切换只刷新文字与当前进度显示，不重开来源、不重抽、不重置计时、揭示、拖拽或次数。
+保存稳定结果key/枚举和参数，上一条反馈也应切换。
+UI刷新不能再次执行转移或搜索完成逻辑。
+
+LootModule的数据跟随GameBootstrap常驻；场景组件和UI可重建并重新绑定存活模块。
+同轮重载只重建表现。新轮准备、正式场景及最终结算分别由08/09负责。
+成功协调后再调用04/05通知和ShelterManager.RefreshEv，不直接加减EV。
+不要修改仓库升级状态，也不恢复满仓阻止出发的旧规则。
+
+十一、验收与交付
+
+LootTest.unity必须接真实01、02、03、04、05及06：
+- 实际背包与仓库UI、真实玩家与Cinemachine。
+- 不同概率箱子、地面来源、3D墙体/地面及真实伤害测试源。
+- 明确切换测试探索/庇护所上下文的测试驱动。
+- 测试驱动模拟08轮次与结算时要标明；不能挂旧PlayerTestDriver绕过真实容器。
+
+至少验证：
+1. 背包→仓库、仓库→背包成功，ID/次数/IsRetained/EV不变，双方布局正确。
+2. 满容器、越界、重叠、碎片空位、来源过期、权限失效、重复松手均失败且原状保留。
+3. 对目标添加、来源移除和归属提交失败做有意义的故障测试，核对恢复；不能只测试最早校验失败。
+4. 操作中途不广播；通知读取的是双方与01一致的数据，重入/重复通知不复制物品。
+5. 真实鼠标跨界面拖放、R旋转只生效一次；04/05内部重排和右键使用仍正常。
+6. 地面拾取取消或背包放不下时来源保留；成功后只剩背包归属。本轮丢地再拾回仍是同一实例。
+7. 无可达落点、墙内/悬空/错误Z平面或表现准备失败时拒绝丢放，物品仍在包内。
+8. 0%、100%、多项独立命中和空结果正确；同轮重开、取空、切语言、重载均不重抽。
+9. 按物品时间逐件揭示，第一件可先拿；未揭示项无法通过UI或正式方法绕过检查。
+10. 搜索到一半中断，已揭示保留；当前项重开后从零计时。拿取已揭示物不干扰下一项计时。
+11. 受击关闭同时终止来源会话和预览，未完成拾取留来源；迟到松手不提交。死亡不解锁行动、不把来源物误算为已携带。
+12. 打开背包造成CurrentTarget清空时搜索仍正常；真实离开范围/遮挡失效才中断。
+13. 唯一物品在背包、仓库、箱子或地面时不复制；下轮找回同一身份，概率不能阻断找回。
+14. 同轮重载只重建一份地面/箱子表现；领取后表现失败有可复验恢复路径，不丢唯一身份。
+15. 中英文字、既有反馈与搜索进度正确切换，运行数据不被重置；中文无缺字。
+16. 在1920×1080（16:9）下验证滚动、目标格和实际拖拽；不以方法直调代替指针验收，暂不要求其他分辨率适配。
+17. 新代码无namespace、程序集无循环，不侵入两个独立格子核心。
+
+EditMode验证概率、状态和转移失败恢复；PlayMode及实际Game验证输入、受击、来源、UI与场景绑定。
+随机中间概率采用可重复样本或可控随机输入测试，不用偶然一次结果证明概率正确；不为此搭随机服务框架。
+未接08/09的正式撤离、死亡损失和完整关卡，不得标记为完整游戏联测通过。
+
+Docs/Architecture/TransfersLootSetup.txt写清：
+- 文件职责、Prefab和Inspector配置、稳定来源/原点命名。
+- 真实转移方法、提交与失败恢复顺序、通知时点。
+- 对04/05最小接入改了什么，输入和关闭通知归谁。
+- 箱子独立概率、逐件搜索、轮次/场景重建和唯一找回规则。
+- 03资源接线、08准备/结束轮次需要的实际入口及09整合要求。
+
+Docs/Handoffs/06_Handoff.txt写清：
+实际文件、复用来源与核实版本、编译/测试/指针操作结果、故障恢复证据、未完成和待联验事项。
+不得把存在脚本、测试替身或数据方法通过写成全部玩法已完成。
+
+用我能答辩的方式解释：
+“01保存物品是谁和属于哪里；04、05分别保存格子。06先检查目标，再静默调整双方，最后改归属，失败就按原记录恢复。箱子每轮只抽一次，搜索只改变哪些物品已被发现；关闭时已发现的保留，正在搜索的重新计时。”
+

@@ -1,0 +1,11 @@
+{
+  "utc": "2026-10-19T01:39:06.4885854Z",
+  "scene": "Assets/Scenes/Bootstrap.unity",
+  "play": false,
+  "dirty": false,
+  "graphics": "Direct3D12",
+  "reason": "84/85 PlayMode; only failure native D3D12 fence 258; normal scene CameraBounds warnings resolved",
+  "arguments": [
+    "-force-d3d11"
+  ]
+}

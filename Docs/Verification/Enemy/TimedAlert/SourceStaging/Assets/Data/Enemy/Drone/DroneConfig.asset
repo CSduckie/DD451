@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaafd42e9ddbc504c8c174284c7ad3ce, type: 3}
+  m_Name: DroneConfig
+  m_EditorClassIdentifier: MyPrecious.Enemy::DroneConfigSO
+  patrolSpeed: 1.5
+  chaseSpeed: 3
+  arrivalDistance: 0.15
+  patrolWaitSeconds: 1
+  discoveryAlertSeconds: 0.5
+  coverAlertSeconds: 2
+  searchSeconds: 2
+  blockedReturnSeconds: 2
+  contactDamage: 1

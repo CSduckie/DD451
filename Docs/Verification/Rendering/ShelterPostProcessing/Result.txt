@@ -1,0 +1,7 @@
+COMPLETE — Shelter-only post-processing implemented and verified.
+Authoritative handoff: Docs/Handoffs/ShelterPostProcessing_Handoff.txt
+Production changes: Shelter.unity (one scene-camera PP override) and existing Global Volume Profile.asset (exposure-.2, contrast8, neutral color, toneNone, vignette0, existing bloom.1/threshold1).
+Strict actual1920x1080 fixed-light before/after: Runtime-91fbe323/06-FixedPhase-Before and07-FixedPhase-After PNG/metadata, FixedPhase*.json.
+Saved formal Bootstrap→Shelter→Ruins→Shelter: Runtime-8ed49e61; API-assisted real interaction, same player, round/settledRound1, PP on→off→on. Not physical keyboard/mouse or Windows build.
+FinalIntegrity: 642files,640unchanged,2allowed changes,370meta unchanged; no unexpected drift. RuntimeChecks: bindings valid,missingScripts0,one output camera,real storage UI open. FinalConsole0error/warning.
+ReleaseState: Bootstrap clean/Edit, all playback/compile/update/test/capture flagsfalse,timeScale1/backgroundfalse. No pending Unity/Assets work.

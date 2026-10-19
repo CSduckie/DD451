@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="25" result="Passed" total="25" passed="25" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.0596908">
+  <test-suite type="TestSuite" id="1580" name="DD451Demo" fullname="DD451Demo" runstate="Runnable" testcasecount="324" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.059691" total="25" passed="25" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1078" name="MyPrecious.Enemy.EditModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.Enemy.EditModeTests.dll" runstate="Runnable" testcasecount="25" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.053425" total="25" passed="25" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="85336" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestFixture" id="1049" name="CoverAreaTests" fullname="CoverAreaTests" classname="CoverAreaTests" runstate="Runnable" testcasecount="12" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.019477" total="12" passed="12" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1053" name="AnyEnabledBodyColliderCanOverlapButTriggersAndInactiveChildrenCannotHide" fullname="CoverAreaTests.AnyEnabledBodyColliderCanOverlapButTriggersAndInactiveChildrenCannotHide" methodname="AnyEnabledBodyColliderCanOverlapButTriggersAndInactiveChildrenCannotHide" classname="CoverAreaTests" runstate="Runnable" seed="1009019515" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.005278" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1061" name="DisabledColliderAndInactiveCoverStopHidingWithoutAnExitCallback" fullname="CoverAreaTests.DisabledColliderAndInactiveCoverStopHidingWithoutAnExitCallback" methodname="DisabledColliderAndInactiveCoverStopHidingWithoutAnExitCallback" classname="CoverAreaTests" runstate="Runnable" seed="1226539802" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.000892" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1059" name="DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden" fullname="CoverAreaTests.DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden" classname="CoverAreaTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.007210" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1055" name="DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden(0)" fullname="CoverAreaTests.DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden(0)" methodname="DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden" classname="CoverAreaTests" runstate="Runnable" seed="1318434523" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.000830" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1056" name="DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden(1)" fullname="CoverAreaTests.DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden(1)" methodname="DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden" classname="CoverAreaTests" runstate="Runnable" seed="253923773" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.000266" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1057" name="DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden(2)" fullname="CoverAreaTests.DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden(2)" methodname="DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden" classname="CoverAreaTests" runstate="Runnable" seed="805954931" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.000227" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1058" name="DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden(3)" fullname="CoverAreaTests.DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden(3)" methodname="DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden" classname="CoverAreaTests" runstate="Runnable" seed="1874988588" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.000211" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1052" name="LeavingOneOverlappingCoverKeepsTheOtherUntilItIsDisabledOrDestroyed" fullname="CoverAreaTests.LeavingOneOverlappingCoverKeepsTheOtherUntilItIsDisabledOrDestroyed" methodname="LeavingOneOverlappingCoverKeepsTheOtherUntilItIsDisabledOrDestroyed" classname="CoverAreaTests" runstate="Runnable" seed="1036885511" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.000712" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1051" name="MovingOutsideAndBackUsesCurrentShapesWithoutWaitingForTriggerCallbacks" fullname="CoverAreaTests.MovingOutsideAndBackUsesCurrentShapesWithoutWaitingForTriggerCallbacks" methodname="MovingOutsideAndBackUsesCurrentShapesWithoutWaitingForTriggerCallbacks" classname="CoverAreaTests" runstate="Runnable" seed="204071511" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.000505" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1050" name="OnlyCrouchingInsideCoverIsHiddenAndOpenBackpackKeepsTheRule" fullname="CoverAreaTests.OnlyCrouchingInsideCoverIsHiddenAndOpenBackpackKeepsTheRule" methodname="OnlyCrouchingInsideCoverIsHiddenAndOpenBackpackKeepsTheRule" classname="CoverAreaTests" runstate="Runnable" seed="82222861" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.000464" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1054" name="RotatedVolumeUsesItsBoxShapeAndDepthInsteadOfAnAxisAlignedBoundsCheck" fullname="CoverAreaTests.RotatedVolumeUsesItsBoxShapeAndDepthInsteadOfAnAxisAlignedBoundsCheck" methodname="RotatedVolumeUsesItsBoxShapeAndDepthInsteadOfAnAxisAlignedBoundsCheck" classname="CoverAreaTests" runstate="Runnable" seed="1676391823" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.000834" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1062" name="RuntimeStaticResetRestoresExistingActiveCoversWithoutKeepingDestroyedOnes" fullname="CoverAreaTests.RuntimeStaticResetRestoresExistingActiveCoversWithoutKeepingDestroyedOnes" methodname="RuntimeStaticResetRestoresExistingActiveCoversWithoutKeepingDestroyedOnes" classname="CoverAreaTests" runstate="Runnable" seed="2024660533" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.000434" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1060" name="UnpreparedNullAndDestroyedPlayersHaveNoRetainedHiddenState" fullname="CoverAreaTests.UnpreparedNullAndDestroyedPlayersHaveNoRetainedHiddenState" methodname="UnpreparedNullAndDestroyedPlayersHaveNoRetainedHiddenState" classname="CoverAreaTests" runstate="Runnable" seed="1236567936" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.000489" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1063" name="DroneRoundTests" fullname="DroneRoundTests" classname="DroneRoundTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.011309" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1066" name="AThinSolidWallDoesNotTurnNearContactIntoAnExplosion" fullname="DroneRoundTests.AThinSolidWallDoesNotTurnNearContactIntoAnExplosion" methodname="AThinSolidWallDoesNotTurnNearContactIntoAnExplosion" classname="DroneRoundTests" runstate="Runnable" seed="126424620" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.001888" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1067" name="DamageObserverCannotReenterContactOrAdvanceRoundAndDistantApiCallDoesNothing" fullname="DroneRoundTests.DamageObserverCannotReenterContactOrAdvanceRoundAndDistantApiCallDoesNothing" methodname="DamageObserverCannotReenterContactOrAdvanceRoundAndDistantApiCallDoesNothing" classname="DroneRoundTests" runstate="Runnable" seed="1033890066" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.000856" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1065" name="ExplosionSurvivesSameRoundAndReenableButANewRoundRestoresBodyAndVisual" fullname="DroneRoundTests.ExplosionSurvivesSameRoundAndReenableButANewRoundRestoresBodyAndVisual" methodname="ExplosionSurvivesSameRoundAndReenableButANewRoundRestoresBodyAndVisual" classname="DroneRoundTests" runstate="Runnable" seed="1241610365" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.000858" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1064" name="NonPositiveSameAndOlderRoundsCannotResetAMovedLivingDrone" fullname="DroneRoundTests.NonPositiveSameAndOlderRoundsCannotResetAMovedLivingDrone" methodname="NonPositiveSameAndOlderRoundsCannotResetAMovedLivingDrone" classname="DroneRoundTests" runstate="Runnable" seed="1126205071" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.000524" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1068" name="DroneVisionGeometryTests" fullname="DroneVisionGeometryTests" classname="DroneVisionGeometryTests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.022052" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1069" name="ColliderControlsAngleRadiusAndThicknessAndStaysLegal" fullname="DroneVisionGeometryTests.ColliderControlsAngleRadiusAndThicknessAndStaysLegal" methodname="ColliderControlsAngleRadiusAndThicknessAndStaysLegal" classname="DroneVisionGeometryTests" runstate="Runnable" seed="1138571501" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.003000" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1074" name="DifferentDepthNarrowWallClipsBothDetectionAndDisplayAcrossFullThickness" fullname="DroneVisionGeometryTests.DifferentDepthNarrowWallClipsBothDetectionAndDisplayAcrossFullThickness" methodname="DifferentDepthNarrowWallClipsBothDetectionAndDisplayAcrossFullThickness" classname="DroneVisionGeometryTests" runstate="Runnable" seed="1665867571" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.003029" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1076" name="DisableClearsDetectionAndReenableRebuildsTransientMeshes" fullname="DroneVisionGeometryTests.DisableClearsDetectionAndReenableRebuildsTransientMeshes" methodname="DisableClearsDetectionAndReenableRebuildsTransientMeshes" classname="DroneVisionGeometryTests" runstate="Runnable" seed="1492180264" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.001022" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1070" name="FacingMirrorsHorizontalDirectionAndKeepsUpwardPitch" fullname="DroneVisionGeometryTests.FacingMirrorsHorizontalDirectionAndKeepsUpwardPitch" methodname="FacingMirrorsHorizontalDirectionAndKeepsUpwardPitch" classname="DroneVisionGeometryTests" runstate="Runnable" seed="799106496" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.000691" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1071" name="MainBodyCenterDecidesRangeAndBackpackDoesNotHidePlayer" fullname="DroneVisionGeometryTests.MainBodyCenterDecidesRangeAndBackpackDoesNotHidePlayer" methodname="MainBodyCenterDecidesRangeAndBackpackDoesNotHidePlayer" classname="DroneVisionGeometryTests" runstate="Runnable" seed="1777262183" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.001203" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1077" name="ManualColliderToggleSynchronizesDetectionAndDisplayWithoutRebuilding" fullname="DroneVisionGeometryTests.ManualColliderToggleSynchronizesDetectionAndDisplayWithoutRebuilding" methodname="ManualColliderToggleSynchronizesDetectionAndDisplayWithoutRebuilding" classname="DroneVisionGeometryTests" runstate="Runnable" seed="209111185" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.001577" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1073" name="OriginInsideWallCannotDetectThroughIt" fullname="DroneVisionGeometryTests.OriginInsideWallCannotDetectThroughIt" methodname="OriginInsideWallCannotDetectThroughIt" classname="DroneVisionGeometryTests" runstate="Runnable" seed="1576406240" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.001432" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1072" name="SolidWallBlocksPlayerAndClipsVisibleMesh" fullname="DroneVisionGeometryTests.SolidWallBlocksPlayerAndClipsVisibleMesh" methodname="SolidWallBlocksPlayerAndClipsVisibleMesh" classname="DroneVisionGeometryTests" runstate="Runnable" seed="1203920568" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.001747" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1075" name="WallAtAnotherDepthOfOriginBlocksTheWholeVisibleFan" fullname="DroneVisionGeometryTests.WallAtAnotherDepthOfOriginBlocksTheWholeVisibleFan" methodname="WallAtAnotherDepthOfOriginBlocksTheWholeVisibleFan" classname="DroneVisionGeometryTests" runstate="Runnable" seed="1920133083" result="Passed" start-time="2026-10-19 02:10:15Z" end-time="2026-10-19 02:10:15Z" duration="0.001115" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/cs200/AppData/LocalLow/DefaultCompany/DD451Demo\TestResults.xml
+Saving results to: C:/Users/cs200/AppData/LocalLow/DefaultCompany/DD451Demo\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

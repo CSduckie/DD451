@@ -1,0 +1,97 @@
+[
+  {
+    "Algorithm": "SHA256",
+    "Hash": "6D2059DCB028F66EF4128114DFA95B79C0C256384F9A6D280AEAD458585FBAF2",
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\MonoBehaviour\\DroneController.cs"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "17C7BCE9799DC9B3B45E6300D01D5B03BC61108A4EAD4934E1507D3643B68ED2",
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\MonoBehaviour\\DroneVision.cs"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "EBA65D068F20AD4AEB5AEA8B6985F4AE43A1F7D1CD092E35F6ECFABE06A5CE27",
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\MonoBehaviour\\DroneFlightVisual.cs"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "880DDF2B727D755FD628DBFFC34BFD5CF2875FB88C49464B19C92AE8CE460D7A",
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\States\\DronePatrolState.cs"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "62A1935E52555C7E80406CCE11772953381292EEACBAB363CBA24461956136E7",
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\States\\DroneAlertState.cs"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "C62A431EBB14DB0E5148E335FF10328B944C5E0B58FEE032ED59E68D0F66F6B9",
+    "Path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Drone\\States\\DroneSearchState.cs"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "BE0F505373C56B86B295C2A10D6EDA3DDB96EF6856A9B20C220314E71500F46C",
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\PlayMode\\DroneVisionAlignmentTests.cs"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "9C229925C4ECBFA0547E7A643133BC700AA88DEC3D548327AEE0C9DB09DCA9F7",
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\PlayMode\\DroneBehaviourTests.cs"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "23C97D6B34E74A0D4B5E1C647AB2CDD00571C26C2B29A571AE63ED26D1613930",
+    "Path": "E:\\DD451\\Assets\\Tests\\Enemy\\PlayMode\\DroneAlertTests.cs"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "016CE442E758223004A406B7FBD546585A1A71E6678BDE3276B8DAC6D69B1262",
+    "Path": "E:\\DD451\\Assets\\Prefabs\\Enemy\\Drone\\Drone.prefab"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "4AED52ADAA549D2B20E85B4815A170D32B8E902B83C8A983494ED83B57AC249F",
+    "Path": "E:\\DD451\\Assets\\Prefabs\\Player\\Player.prefab"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "C0E39DA0280F8053AD11F0DD092C3ECC1D881B98E5E49DC59DD45F2B0D3281D0",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Ruins.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "B2648D90321EE62E6E2821688C70A2A48C89C6C4D33981F84749D26A23079D77",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Shelter.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "9063DB1C2FD9EFBB83A120531BCA35644BE835D203A68EC49FBB1B8306526500",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Bootstrap.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "AA62E8EDC69AC0C08F7F4F8FA6DE3AD0425A0DDFB7FC344B85D20C7D40242200",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Tests\\Enemy\\EnemyTest.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "69E2354AE224E65FA89539A5D327946BDD547377027247F7816AFD85DB1E3A5D",
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\MonoBehaviour\\PlayerController.cs"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "868FD217FECB535E2E718470C15428D59ABE6ABA7308E92065F80836C7168F77",
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\ScriptableObject\\PlayerConfigSO.cs"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "0D276B1A989BB1401DDDEB4B457F38DE5FCD6E5D38D008EB8ECAA5F181FEAED4",
+    "Path": "E:\\DD451\\Assets\\Scripts\\Player\\States\\PlayerFallState.cs"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "B464BF0F53EAAFF0C09A58BE3D306BC9CF34C6AAED871B691E6D9DF9DE71AD91",
+    "Path": "E:\\DD451\\Assets\\Data\\Enemy\\Drone\\DroneConfig.asset"
+  }
+]

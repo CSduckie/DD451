@@ -1,0 +1,55 @@
+背包丢弃与唯一物品下轮找回 — 04增补验收
+工程：E:/DD451；日期：2026-10-18；Unity 6000.2.12f1。
+
+本轮用户规则
+未连接容器时右侧面板隐藏。背包选中物品后点击丢弃，执行前提示并确认：普通物品销毁；唯一物品本轮消失，下一轮探索回到原拾取点。此前临时丢地可再捡回规则已被用户覆盖，ProjectRules R26同步更新。
+
+落地行为
+ItemTransferCoordinator.TryDiscardFromBackpack保存/静默移除背包摆放，再通过01.RecordLoss(BackpackDiscard)提交。01拒绝时恢复原坐标/朝向。完成通知/EV刷新仍在busy保护内。旧TryDropFromBackpack兼容转调新行为。
+普通物品Owner=Lost，没有地面来源/表现；01保留不可拾取的身份账本，未删除去重记录或生成替代实例。唯一物品Owner=PendingRecovery，RecoveryRound=当前轮+1，保留InstanceId、UniqueId、SourceId、OriginalSpawnPointId；新轮沿用01/06原点领取机制，不立即重生。
+丢弃按实际损失撤销IsRetained和对应EV；当前使用轮次/次数不被丢弃刷新。丢弃不依赖地面、落点或GroundItem prefab。地图原生GroundItem继续正常拾取。
+ItemTransferUIBridge保存确认token与同一物品、摆放、玩家、管理器、轮次、场景等资格。取消/关闭/受击/死亡/失焦/换绑使旧资格失效；F10仅刷新文字。确认期间挡住选择/使用/拖拽。DiscardConfirmationButton在PointerDown捕获token，隐藏清资格，防旧按钮按下后受击，再开新提示时迟到PointerUp误操作新物品。
+BackpackTest与LootTest已接真实UI。BackpackDiscardUIBuilder被04、06及MinimumLoop场景生成器复用；04独立场景没有LootRuntime时也可确认丢弃。正式MinimumLoop场景本轮未生成/试玩，不将测试场景切轮称为完整正式流程验收。
+
+实际结果
+1. EditMode：125/125，0失败/0跳过。
+   Items 44 + Loot 81；2026-10-18 19:52:30–19:52:31 UTC，0.891852秒。
+   job d59909a004344ced9165c4064d443ad3；EditMode.xml、EditMode.json。
+   覆盖真实01忙拒绝后的布局恢复、模拟CommitLoss拒绝、独立无runtime、旧入口语义、失效请求、通知完整状态/重入、普通Lost和唯一下轮原点同身份。
+2. PlayMode 1280×720：31/31，0失败/0跳过。
+   Backpack 10 + Loot 21；2026-10-18 19:57:16–19:57:39 UTC，23.2952523秒。
+   job dc8c6db23e204fae9e6f290116c24f0f；PlayMode-1280x720.xml/.json。
+3. PlayMode 800×600：31/31，0失败/0跳过。
+   Backpack 10 + Loot 21；2026-10-18 19:58:32–19:58:57 UTC，24.5170366秒。
+   job 563ae4ed357f4cb584fae6e42b7c912c；PlayMode-800x600.xml。
+   MCP完成回调丢失，McpStatus仍显示0/running；以新官方XML及实际TestRunner.IsRunActive=false、Play=false核对完成后才清孤儿任务，未伪造MCP成功数据。
+
+Play关键路径
+- 真实InputSystem排队鼠标→UGUI点击请求、取消、确认；普通物品无表现/无占格，重复确认只Completed一次。
+- F10确认期间保持同一目标/token，实际双语表与物品名正确，未用[key]回退冒充成功。
+- 真实H非致命伤关闭提示和背包，旧token不能提交或取消重开的新目标；真实K致命伤同样取消，死亡限制保留。
+- 确认期间实际排队右键不能消费/治疗，拖拽门禁拒绝。
+- 真实旧Confirm/Cancel PointerDown保持左键→H受击→API布置新目标提示→真实旧PointerUp，均不影响新确认；随后新的完整点击仍可正常提交。API仅用于保持旧按下期间安排新提示，不用直接提交代替鼠标松手验证。
+- 从真实原点箱搜索/拖拽R旋转取出唯一布娃娃，确认丢弃后同轮不恢复，来源仍Taken；测试驱动明确结算/推进下轮后，即使概率改0仍返回原箱的同一对象/InstanceId/UniqueId/OriginalSpawnPointId，只存在一个唯一实例。
+- 普通物品同轮重载不复活；地图原生地面来源保留原身份。
+- 原箱子↔背包双向转移、受击取消有效预览/旋转、迟到松手/旧token、拒绝目标、重复提交以及仓库相关回归均在本轮21项Loot Play中重新执行，没有以仓库双向代替箱子双向。
+- 04独立背包右侧占位隐藏，未连接LootRuntime仍可通过实际UGUI确认普通丢弃。
+数据检查使用真实01实例与两套布局/06条目，保留同一对象和唯一ID检查、来源/原点/次数/保有等快照；成功仅发生预期变更，取消和失败保留原状态。
+
+发现并修复
+首次联合Play的04 10/10通过，06 19项都在初始化失败。共享GameBootstrap最近内置Items与Localization，而旧LootTest又添加了第二份，导致运行解析与显式引用不同源。保留失败XML：PlayMode-initial-failed.xml。
+03同期修复BackpackTest/Builder重复模块，并增加SharedModulesResolveBackpackTextAndF10RefreshesUiWithoutChangingItems；这些03改动已保留、参与本轮成绩，不归为04独立成果。
+04修复LootTest：保留继承的单一Items/Localization，合并必要语言表并把旧组件引用统一到保留实例，再移除场景添加的重复模块；未修改共享Bootstrap prefab。LootBuilder先复用已有模块，缺失才创建。修复后两尺寸31项全过。
+根据本地UGUI/InputSystem源码审查，普通Button隐藏不保证清UIInputModule的旧pointerPress，因此新增仅用于丢弃确认/取消的按下token按钮与两条真实松手回归。
+
+截图与证据边界
+Unique-ZH-800x600.png、Unique-EN-800x600.png：无右侧容器时的唯一物品中英提示，已查看文字和两个按钮完整、无缺字/裁剪。
+Ordinary-EN-1280x720.png：普通销毁提示，已查看。
+截图通过API选择物品、打开提示/切语言，再ScreenCapture获取真实Game画面；它们是视觉验证，不能替代原生鼠标输入证明。
+最终截图发现独立测试HUD快捷键行与新增顶部按钮相邻干扰，已将该测试提示随closedHintsRoot隐藏；按钮位置/业务未改，只复核截图和编译，未重复整套逻辑测试。
+自动测试使用InputSystem.QueueStateEvent，经InputAction/UIInputModule/UGUI真实链路。本轮未重新执行Windows原生OS鼠标/独立构建，也不宣称原生拖拽手感、敌人联测或完整两轮正式游戏已验收。
+
+交还
+最终停止Play；BackpackTest已保存且isDirty=false；无编译/导入/测试运行；Game preset7、非最大化；Console 0错误0警告。EditorSettings与开工快照逐字一致，没有用其他聊天快照覆盖当前设置。
+已明确释放Editor与Assets给05接续纵向扩容验证。04仅整理Docs，此后不再操作共享Editor。
+此前等待06的单轮heartbeat（automation id 06）已暂停，本轮未重新启用。

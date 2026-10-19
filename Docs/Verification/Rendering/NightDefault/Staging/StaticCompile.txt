@@ -1,0 +1,6 @@
+ProjectNightEnvironment.cs offline compile
+Unity 6000.2.12f1 bundled Roslyn, C# 6, target library
+Output only under Docs/Verification/Rendering/NightDefault/Staging
+References: NetStandard 2.1, UnityEngine.CoreModule, UnityEditor.CoreModule, UnityEditor.SceneTemplateModule
+No Unity Editor invocation. No runtime acceptance claimed.
+Exit=0

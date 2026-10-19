@@ -1,0 +1,20 @@
+Shelter Post-processing 最终磁盘完整性与固定灯光画面对比
+结果：PASS；UTC：2026-10-19T08:22:29.4972005Z
+范围：只读Assets/ProjectSettings/Packages与既有证据；未调用Unity，只写本任务Docs。
+BeforeHashes基线：642项；未改640；变化2；未授权漂移0；370个meta全部逐SHA-256核对。
+四份真实Before备份均重新校验与manifest一致。完整逐文件hash见FinalIntegrity.json.files。
+Shelter.unity：精确只新增4行m_RenderPostProcessing=1实例覆盖；将该四行移除后与真实Before逐字节一致。现有用户灯光、位置/对象、交互ID/内容、相机/Cinemachine/边界、Volume层级、天空盒引用等场景其余字节全部保留。
+Global Volume Profile.asset：原GUID 76ef7695bb051d746bed768237e73e75、root fileID 11400000、旧Bloom fileID 6176611016742131025保留；四个component引用唯一且均可解析，脚本GUID与本机URP包meta一致。
+Profile root仅增三条子资产引用；旧Bloom只将threshold OverrideState 0→1、value 5.68→1，原intensity .1、tint及其它Bloom字段逐块保持。新增ColorAdjustments：exposure -.2、contrast 8、saturation/hue 0、filter白；Tonemapping=None；Vignette intensity=0；明确相关override均true。
+固定灯相位：FixedPhase/FixedPhaseAfter的gameTime均91.67061，五盏灯的id/intensity/enabled完全一致。两截图metadata同相机id/位置/旋转/FOV/尺寸、同玩家/环境，唯一相机字段差异为PP false→true；均1920×1080。Before虽已存在配置stack但PP关闭，因此效果未渲染。
+图像已分别用view_image实看：B(-.2EV/+8contrast)保留玩家轮廓/绿色高光、蓝集装箱条纹、黄箱边沿、货架和地板层次；整体适度昏暗，无新增全屏灰幕。木箱本身较黑，但轮廓及上缘仍可辨。Bloom集中灯泡附近，HUD清晰。该固定相位对照取代初始03图左灯闪烁状态不同的参数对比。
+像素统计：指定矩形每隔2像素采样，8-bit sRGB加权亮度近似，非真实光度；near-black阈值12只用于比较，不等同全黑/视觉失败。
+06-FixedPhase-Before-1920x1080.png | right_floor | mean=34.686 | under12%=0 | RGB000%=0
+06-FixedPhase-Before-1920x1080.png | wood_crate | mean=19.4785 | under12%=9.2718 | RGB000%=0
+06-FixedPhase-Before-1920x1080.png | right_wall | mean=22.594 | under12%=0 | RGB000%=0
+06-FixedPhase-Before-1920x1080.png | player_with_small_background_border | mean=47.3834 | under12%=0 | RGB000%=0
+07-FixedPhase-After-1920x1080.png | right_floor | mean=28.8997 | under12%=0 | RGB000%=0
+07-FixedPhase-After-1920x1080.png | wood_crate | mean=15.6268 | under12%=35.2689 | RGB000%=0
+07-FixedPhase-After-1920x1080.png | right_wall | mean=18.2204 | under12%=0 | RGB000%=0
+07-FixedPhase-After-1920x1080.png | player_with_small_background_border | mean=40.943 | under12%=0 | RGB000%=0
+限制：仅证明642项基线和该时刻固定相位帧；运行状态来自root保存证据，本审计未重新运行Play/测试，不宣称原生键鼠、构建或Editor释放。

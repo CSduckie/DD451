@@ -1,0 +1,435 @@
+{
+  "utc": "2026-10-19T06:06:34.1228748Z",
+  "files": [
+    {
+      "path": "Assets/Prefabs/Enemy/Drone.meta",
+      "hash": "8F08231C9DDFDADDEEB6E669C5AE96AC53993BF3CD6F6626E4DBDB5AFEC3B68C",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Prefabs/Enemy/Drone/Drone.prefab",
+      "hash": "3DBF48088A9FC82470A4E5DFB056A8E962002B23CED19F883FB23A23891114EB",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Prefabs/Enemy/Drone/Drone.prefab.meta",
+      "hash": "7373C79FC9230FA996B140D761A8E06DE02E78D0803E5FA2FDAF064B771E4603",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Prefabs/Enemy/Stealth.meta",
+      "hash": "F56B48828F1691CEAC02CC4270DA607C309A1EA291B745804D193413BCF02251",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Prefabs/Enemy/Stealth/CoverArea.prefab",
+      "hash": "5D8C238BF9C48520EB8350C5714120CD9920B4FEB963325B6B9123D24AA8B233",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Prefabs/Enemy/Stealth/CoverArea.prefab.meta",
+      "hash": "F88D986910C3B8F5F21D0DBCE4352032B46569BFBC1D6D295BC5598E3916FF3B",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Bootstrap.unity",
+      "hash": "9063DB1C2FD9EFBB83A120531BCA35644BE835D203A68EC49FBB1B8306526500",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Bootstrap.unity.meta",
+      "hash": "7949600BE4F1DD1DCA13B37C142445FE5EB3F62518153EA2BA1B725AD567F1D3",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Ruins.unity",
+      "hash": "978E767934D66CF96821BF00D59DD7DF3386A75B99AA82DC0BE811CEDE4FBB3A",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Ruins.unity.meta",
+      "hash": "71BD0E68CE9B34EF682661D60BCD36605007FE6FFE66D8FD09D1A56542A66594",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/SampleScene.unity",
+      "hash": "AA55BCC6DD3B5E6DCFA46BD3CB0B0CF606E22B81B2ED8D9FA34D7005944201CA",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/SampleScene.unity.meta",
+      "hash": "B5815A6B12AFAF810577BC89041C4CE46516C7CD6609693F8DB616F8E5584D80",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Shelter.meta",
+      "hash": "166118BE3DDEE09B33DC192F5723E75FD1B579F1B61DA33CB69336EE07419566",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Shelter.unity",
+      "hash": "F4A36F7B10057621E7CBD4FB013C6D30EB92BE94FBF245786AC2E8C388F892B8",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Shelter.unity.meta",
+      "hash": "E32C6E5FFC8F10D2BB611941967203616E52F76353A7722CF717703EDD4D2889",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Shelter/Global Volume Profile.asset",
+      "hash": "7E05824EACAE75395279FAD27F31445ACE9DAFA4F730C25A88BC7498D2442A0C",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Shelter/Global Volume Profile.asset.meta",
+      "hash": "F90FCD52F6D97601CAF89BFAE74BE3E6826E9D8B837AC394F305BE23999FE07E",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Tests.meta",
+      "hash": "6E0C9AC4C451EC4BC3AD05F32FDB2BC1340517A3144C20B31B96677D499853A1",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Backpack.meta",
+      "hash": "0ABDD7FCA8D0A3797A99915E59C17548F9861A800E7B4CF6D1E37FFB0B824143",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Backpack/BackpackTest.unity",
+      "hash": "B7DCFBCA2D59276C1308242824B49CACD323572F1944644857BDA0DE9962015E",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Backpack/BackpackTest.unity.meta",
+      "hash": "A463B4A292ED09D1C93D2F191DC7F7E68E22C3D73AF6F6933970B814A99B0A1C",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Base.meta",
+      "hash": "2BBA6F0208D3935395AC01F971D8B6EFFC76DB08B098F8BBC260CCDF6A9B062E",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Base/BaseTest.unity",
+      "hash": "E8AE99910E12706D13BEE7716520C2AFDE6A9F436A55E414E123CE25E442E144",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Base/BaseTest.unity.meta",
+      "hash": "DECA6E6DAE4D7947BEAD518AC73E42E3212955AB678366AEA75E18655A4877CC",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Enemy.meta",
+      "hash": "76F2249999CA78FE5CBE0DD3E64F3B528CC28F8D6A48C09A71F71F1CF07B9A2F",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Enemy/EnemyTest.unity",
+      "hash": "AA62E8EDC69AC0C08F7F4F8FA6DE3AD0425A0DDFB7FC344B85D20C7D40242200",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Enemy/EnemyTest.unity.meta",
+      "hash": "C0A9DAB23896CA347B2C9EA4E221023A532CBF25F6279A51A02480E474543ACD",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Items.meta",
+      "hash": "2B7E58589D1694D1AC0B4655F7EF0CC48E35DF82E0EDA3B47519A94A0DCF3816",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Items/ItemsTest.unity",
+      "hash": "2AFE8D2E3A5C641B8F675A7C3F3A070849E7B743CCC16E0280B21C28B11F7001",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Items/ItemsTest.unity.meta",
+      "hash": "6D25FF21E24AC19D834188B163CAEEE1821631E88305DE137CAFC972E47B8BBF",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Localization.meta",
+      "hash": "67F743104B1F7CA3993454431152DFE450979D75F8409273ACB986531D39DD59",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Localization/LocalizationTest.unity",
+      "hash": "5C6DE36F4330D5EBA0A5A0B3126B0A82A7FD3B6E08A04D9C22F0B0A65E25693A",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Localization/LocalizationTest.unity.meta",
+      "hash": "3F457135A5551F76BDF1167777F2388A2028BEA90829EE37AA20740391716848",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Loot.meta",
+      "hash": "6FA755528185A669CA5E3BE4E774539CF613B1884F37764DA8044ECD38CEDB52",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Loot/LootTest.unity",
+      "hash": "00D2F271D9BEFA5F60558324821D66632C67FF7AE71A67949F2F6C53671B107B",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Loot/LootTest.unity.meta",
+      "hash": "5E5BC4F24F5B7ADC037649C6F371C629B9DDEDBFEAFE8A8748A54C4DB026E088",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Player.meta",
+      "hash": "435C621C5159C9D0E20D86AB98BD6EB2519AB84F070C64715FBC5B98591BD204",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Player/PlayerTest.unity",
+      "hash": "0E2D2BCA4F2084D39EE295DD7E505119B66F75443E83A5709895B5A6C6EF6775",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Player/PlayerTest.unity.meta",
+      "hash": "D0C8D130B39642FC141319782AC1010FF15048B0CA60BDC2B3C62413B5B94214",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Warehouse.meta",
+      "hash": "9DC96E4BD22FB0979E434FEFB75C1D2A3813A43D7D9D6145B53BD5C5D918ACA2",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Warehouse/WarehouseTest.unity",
+      "hash": "B661B3E4139570A2527C6D22A84282149772959A16A952DA55979BBB8F932D87",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scenes/Tests/Warehouse/WarehouseTest.unity.meta",
+      "hash": "3C0706359D0390E5A253C5FD702D42E49DA5B66AC0638821C9495A623E3B79D3",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone.meta",
+      "hash": "E87D66F471DAC34A978943C4154BFADE436DF661A39779559521D788C9F1E533",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour.meta",
+      "hash": "F45D9AE96F04155BB82BF8C2E57E5EE90AFE6B3139DD835B4BE0031B763F2CE4",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs",
+      "hash": "5205854792E2C6794F006E772F199516C4DDDBA9BCD4D0375D84753D74175B43",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs.meta",
+      "hash": "E20128ABB1EAD818FC20A49DD9120C7C5B97A4ADB7D028FFA7A251E45E32AEEB",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs",
+      "hash": "EBA65D068F20AD4AEB5AEA8B6985F4AE43A1F7D1CD092E35F6ECFABE06A5CE27",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs.meta",
+      "hash": "B0F129DCC8127D55CBD574D65A8A3BB8BA5100184661184FF46C3CA076905C43",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneStatusLight.cs",
+      "hash": "9E1A018A6FEB940D3837A8F20AD370A28C4E0A11A8C17FD3B906800333FE1AEF",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneStatusLight.cs.meta",
+      "hash": "6DA0307653A5DFA41782EF957F131A54E042D35054D7CF3D1A5E8AC426A9CD6A",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs",
+      "hash": "8D4BBB81367A23874EEBD18BE93B0E050CA421B3880A3DA97CD26F3B81072784",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs.meta",
+      "hash": "8C684DB24C4693A940C4525A27CD10F27CB7BF7836BC05C9BE30488F7684873C",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/ScriptableObject.meta",
+      "hash": "3EF2C70E4596C28653B353647FEB0B8E6E0FA3A4FBA192780CD21837C4CE9448",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/ScriptableObject/DroneConfigSO.cs",
+      "hash": "61129071D75F26C7356999471880875149D0E07A1C38BA060EA54A1FEDE270BE",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/ScriptableObject/DroneConfigSO.cs.meta",
+      "hash": "D344F2B071910590BEB40D6C7DC28045D99FC79939DE5BABF34FBABF680598B7",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States.meta",
+      "hash": "D474F3DC9F81A46965728FB1A2649BB2207E9A248AE6732320C38708726EF2D9",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneAlertState.cs",
+      "hash": "07773CB2513A5627696F23E09942471678DA3FDF766379193D4FAB1322F16EFD",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneAlertState.cs.meta",
+      "hash": "E913406808DF569D43CCDD331B10A1E63B9BCCD459B483C4097A7FCE26B504DA",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneChaseState.cs",
+      "hash": "EC3E2FC014CD9C9E0191B1CE80F74A77E4DB482F7159FB7A04E4C0CEDB9FDC82",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneChaseState.cs.meta",
+      "hash": "AA9BDD96D8C7FB3966C5B98AA9BAECC69D314150A9B76EF08D2909955EDB0409",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneExplodeState.cs",
+      "hash": "11CBBE19B35D6F0AB8DC169A86B721A8941F28038A492E9A2E72755CFB4E7410",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneExplodeState.cs.meta",
+      "hash": "94CFD1B0FF284571C70C5FA5D7C3C210BA705DD268BCB34CBB47FB0CA52CD7EC",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DronePatrolState.cs",
+      "hash": "880DDF2B727D755FD628DBFFC34BFD5CF2875FB88C49464B19C92AE8CE460D7A",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DronePatrolState.cs.meta",
+      "hash": "B1E7871D7E926424B915D6077224ADA5CF86496EE475EECA3C45522C0C418686",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneSearchState.cs",
+      "hash": "C62A431EBB14DB0E5148E335FF10328B944C5E0B58FEE032ED59E68D0F66F6B9",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneSearchState.cs.meta",
+      "hash": "913E19270631C4094335932887BAAFE6812A8B539F132B9198E4D4A926D17C41",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneStateBase.cs",
+      "hash": "FCD19A78094570856E71189BF3EA3192F119067CEA4D9919F7E15E320B68311D",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneStateBase.cs.meta",
+      "hash": "1B8C8DE8934FBEC34F8A59EF401A558F50836D9693B75072C9D04BD4B522AF97",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/MyPrecious.Enemy.asmdef",
+      "hash": "C8E0969EA0402FE2EC920B3CF4E0ACB80697C2BB81BFE78174B35DE735AFC630",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/MyPrecious.Enemy.asmdef.meta",
+      "hash": "C9AB429708B4FECAB9DC1E9B09C9699A49AC8C11C6BEB040A377BC971A3B3E41",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Stealth.meta",
+      "hash": "90E6EE8E91E926D83358501FC47C2D7551CCF0F10BEFE2B3E7D3D6DBCB9DC728",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Stealth/MonoBehaviour.meta",
+      "hash": "0292B3EC04203BBD3D1775D6DC82B8591526C3E47E4606A902C25BB1D97F120C",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Stealth/MonoBehaviour/CoverArea.cs",
+      "hash": "F70D62D4DEFA7AFE38F9F66B43A2CDA08C4740E641F9FD7274D08388E148C17C",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Stealth/MonoBehaviour/CoverArea.cs.meta",
+      "hash": "7AF0750B4D6A3EE51C77557F289268E2B43E66C8627C43131D312D2A4DAD71E5",
+      "scope": "protected"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowManager.cs",
+      "hash": "B0D2EC22A4BFE7CADAE2D46199A622254B593DD4EE103781487EBC8BC344434C",
+      "scope": "editable"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowManager.cs.meta",
+      "hash": "21A1565C8D783501970235437F5E1008A56DBDA0CBF2A732CD583349D83028C1",
+      "scope": "metadata"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowSceneBindings.cs",
+      "hash": "CC916A5CC714E494EA8B1868E36DD2A5C6BCD3D4B26E1C61769BE41098A03D15",
+      "scope": "editable"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MonoBehaviour/GameFlowSceneBindings.cs.meta",
+      "hash": "C32B9975E96E68B2D4384B8998FB1ED59280DBBCD71A2477AEF343A02CD9998B",
+      "scope": "metadata"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MyPrecious.GameFlow.asmdef",
+      "hash": "BFD7BE2FDB143123634E593C1406BF76B5EFCDDF537C7FB2D879963991D26C99",
+      "scope": "editable"
+    },
+    {
+      "path": "Assets/Scripts/GameFlow/MyPrecious.GameFlow.asmdef.meta",
+      "hash": "82A43613D9838D5E6B82EBE99F7C3ACE59EF4A1DBC12E90014DE8170814EF6A9",
+      "scope": "metadata"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/MinimumLoopPointerTests.cs",
+      "hash": "ABB88AC7F066C90D6522B9B070F392DBD02EFE3947B51D1EF5C1BB0D596CD505",
+      "scope": "editable"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/MinimumLoopPointerTests.cs.meta",
+      "hash": "02C1BF78211F827FB820D7CC44C1C9D475F6BB4D3C343B4B7AF4CE718DFC7E8E",
+      "scope": "metadata"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/MinimumLoopSceneTests.cs",
+      "hash": "292D1DBB6573589A29D7F75A3F37268292241687865A41590507C890F4182F88",
+      "scope": "editable"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/MinimumLoopSceneTests.cs.meta",
+      "hash": "1449BA777F82101A78D0938304C4A061B3AED94E45A16DA693577399E820A625",
+      "scope": "metadata"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/MyPrecious.GameFlow.PlayModeTests.asmdef",
+      "hash": "8BA01DBF29FDEFBEA30CDB530E626960B364B52803B4949A2C8B5984BF226BC0",
+      "scope": "editable"
+    },
+    {
+      "path": "Assets/Tests/GameFlow/PlayMode/MyPrecious.GameFlow.PlayModeTests.asmdef.meta",
+      "hash": "826DF15D6AF0E99619717CF3BBEC4991E7DE06A5D00CC904A43A93E26FA2CE3C",
+      "scope": "metadata"
+    }
+  ]
+}

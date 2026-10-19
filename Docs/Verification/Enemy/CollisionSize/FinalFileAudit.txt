@@ -1,0 +1,151 @@
+009 CollisionSize final file-only audit
+Audit UTC: 2026-10-19T07:15:53.9610578Z
+Scope: read-only inspection of current Assets and saved test evidence. This audit writes only this report; no Unity tools, Play control, refresh, scene save, Assets write or test execution.
+The current Assets sources are authoritative. The two post-run fixture corrections intentionally differ from the original staging/deployment hash manifest.
+
+1. Changed files and existing meta/GUID preservation
+Assets\Prefabs\Enemy\Drone\Drone.prefab
+  Current SHA256: 016CE442E758223004A406B7FBD546585A1A71E6678BDE3276B8DAC6D69B1262
+  Matches original ChangedHashes.json: True
+  Existing meta byte-hash unchanged: True; guid: 3acb978eb0ce9c94e83684187c6f274d
+  Meta SHA256: 7373C79FC9230FA996B140D761A8E06DE02E78D0803E5FA2FDAF064B771E4603
+  Current LastWriteTimeUtc: 2026-10-19T07:06:04.8061559Z
+Assets\Scripts\Enemy\Drone\MonoBehaviour\DroneController.cs
+  Current SHA256: 6D2059DCB028F66EF4128114DFA95B79C0C256384F9A6D280AEAD458585FBAF2
+  Matches original ChangedHashes.json: True
+  Existing meta byte-hash unchanged: True; guid: b402cc537134abc44a6124b29a44d357
+  Meta SHA256: E20128ABB1EAD818FC20A49DD9120C7C5B97A4ADB7D028FFA7A251E45E32AEEB
+  Current LastWriteTimeUtc: 2026-10-19T07:11:06.9580000Z
+Assets\Scripts\Enemy\Drone\ScriptableObject\DroneConfigSO.cs
+  Current SHA256: B557556359825650B9A9EA1046165E3EE3D1A98CDF794FB2A3BA4E1AD64B6CED
+  Matches original ChangedHashes.json: True
+  Existing meta byte-hash unchanged: True; guid: eaafd42e9ddbc504c8c174284c7ad3ce
+  Meta SHA256: D344F2B071910590BEB40D6C7DC28045D99FC79939DE5BABF34FBABF680598B7
+  Current LastWriteTimeUtc: 2026-10-19T07:11:07.0020000Z
+Assets\Tests\Enemy\Editor\EnemyTestSceneBuilder.cs
+  Current SHA256: 74D2B40E409E535CFC7485AE378D22DFEE49F1AD3CEAD81D38E0D1E78A27D2E7
+  Matches original ChangedHashes.json: True
+  Existing meta byte-hash unchanged: True; guid: 9eb02ddd2b3230045ab124892d28e483
+  Meta SHA256: F4C8630C9A1EF6E8CC7A74CE5A6549DAB578F7D06D9ACE59E38114591621D97A
+  Current LastWriteTimeUtc: 2026-10-19T07:11:07.0220000Z
+Assets\Tests\Enemy\PlayMode\DroneBehaviourTests.cs
+  Current SHA256: 9C229925C4ECBFA0547E7A643133BC700AA88DEC3D548327AEE0C9DB09DCA9F7
+  Matches original ChangedHashes.json: True
+  Existing meta byte-hash unchanged: True; guid: 7f4cd963ce3f8cc4281f340abc8950cf
+  Meta SHA256: 48698F9B8E57A7BD8E61E9D44B0012BB154AEAF03F097323A0F154DAB48E2D84
+  Current LastWriteTimeUtc: 2026-10-19T07:11:07.0430000Z
+Assets\Tests\Enemy\PlayMode\DroneAlertTests.cs
+  Current SHA256: 23C97D6B34E74A0D4B5E1C647AB2CDD00571C26C2B29A571AE63ED26D1613930
+  Matches original ChangedHashes.json: False
+  Existing meta byte-hash unchanged: True; guid: 8dcf054572c7faa4384670eeda62f512
+  Meta SHA256: F65421AF9E211CB3143798F5A1E40B27D853FEBBFBA508ABF7018AA8839F0951
+  Current LastWriteTimeUtc: 2026-10-19T07:13:57.2530000Z
+Assets\Tests\Enemy\PlayMode\EnemySceneIntegrationTests.cs
+  Current SHA256: 5363E15DBC40BB45EC535E1821AC37165042ABB9829A8B9264F57E507DA484B6
+  Matches original ChangedHashes.json: False
+  Existing meta byte-hash unchanged: True; guid: feb8ea25960a8ca439123890f1bda651
+  Meta SHA256: F6C20305ED8336D10672263785AC1DED8225A9CDC56141C4E3D77E85C682DAA5
+  Current LastWriteTimeUtc: 2026-10-19T07:13:57.2050000Z
+Result: 7/7 original meta files preserved exactly; no GUID replacement.
+
+2. Drone prefab exact scope
+Exact complete-text comparison after the single radius replacement matches: True
+Only change against Before: root SphereCollider m_Radius: 0.45 -> 0.25 (diameter 0.9 -> 0.5).
+The diff preserves collider center {x: 0, y: 0, z: 0}, m_IsTrigger: 0, m_Enabled: 1 and all other serialized prefab contents, including Visual, Vision, transforms and component references.
+
+3. Current saved scenes and protected files
+E:\DD451\Assets\Scenes\Ruins.unity
+  Current SHA256: 1F18544DBDB1C8C3A9D70D5D74A9EFA3BC5503812F60C7BC59EAF7CA764E206D
+  Matches initial protected hash: False
+  Matches Integrity.json: True
+  LastWriteTimeUtc: 2026-10-19T07:08:43.4358665Z
+E:\DD451\Assets\Scenes\Ruins.unity.meta
+  Current SHA256: 71BD0E68CE9B34EF682661D60BCD36605007FE6FFE66D8FD09D1A56542A66594
+  Matches initial protected hash: True
+  Matches Integrity.json: True
+  LastWriteTimeUtc: 2026-10-18T20:31:39.6736152Z
+E:\DD451\Assets\Scenes\Shelter.unity
+  Current SHA256: 76CEAD0B70F2542216DAA7660D7C5548E4A95E5DBB9E2F11C844FC1104D4983D
+  Matches initial protected hash: False
+  Matches Integrity.json: True
+  LastWriteTimeUtc: 2026-10-19T07:08:18.9613271Z
+E:\DD451\Assets\Scenes\Bootstrap.unity
+  Current SHA256: 9063DB1C2FD9EFBB83A120531BCA35644BE835D203A68EC49FBB1B8306526500
+  Matches initial protected hash: True
+  Matches Integrity.json: True
+  LastWriteTimeUtc: 2026-10-18T20:31:39.7559596Z
+E:\DD451\Assets\Scenes\Tests\Enemy\EnemyTest.unity
+  Current SHA256: AA62E8EDC69AC0C08F7F4F8FA6DE3AD0425A0DDFB7FC344B85D20C7D40242200
+  Matches initial protected hash: True
+  Matches Integrity.json: True
+  LastWriteTimeUtc: 2026-10-19T04:33:41.8348548Z
+E:\DD451\Assets\Scripts\Enemy\Drone\MonoBehaviour\DroneController.cs
+  Current SHA256: 6D2059DCB028F66EF4128114DFA95B79C0C256384F9A6D280AEAD458585FBAF2
+  Matches initial protected hash: False
+  Integrity.json omits this path; DroneController is an authorized changed source.
+  LastWriteTimeUtc: 2026-10-19T07:11:06.9580000Z
+E:\DD451\Assets\Scripts\Enemy\Drone\MonoBehaviour\DroneVision.cs
+  Current SHA256: 17C7BCE9799DC9B3B45E6300D01D5B03BC61108A4EAD4934E1507D3643B68ED2
+  Matches initial protected hash: True
+  Matches Integrity.json: True
+  LastWriteTimeUtc: 2026-10-19T06:36:46.0213435Z
+E:\DD451\Assets\Scripts\Enemy\Drone\MonoBehaviour\DroneFlightVisual.cs
+  Current SHA256: EBA65D068F20AD4AEB5AEA8B6985F4AE43A1F7D1CD092E35F6ECFABE06A5CE27
+  Matches initial protected hash: True
+  Matches Integrity.json: True
+  LastWriteTimeUtc: 2026-10-19T04:36:42.8109405Z
+E:\DD451\Assets\Data\Enemy\Drone\DroneConfig.asset
+  Current SHA256: BF942528A2B7487FD6E05F5A22F8D2A00BF52FCCE02FE33446E1B9324C1490A1
+  Matches initial protected hash: True
+  Matches Integrity.json: True
+  LastWriteTimeUtc: 2026-10-19T06:34:54.8269321Z
+Bootstrap, EnemyTest, Ruins.meta, DroneVision, DroneFlightVisual and DroneConfig.asset remain identical to the initial protected snapshot (6/6).
+Ruins and Shelter differ from the initial snapshot but both match the current hashes already recorded in Integrity.json. They are retained as the latest saved scene files; this audit did not restore any older scene snapshot.
+RuinsLatestBeforeTests.json contains SHA256 9C20CE7C881203C57B9731F85D24A5C90CF0A7DEF15802172F14167D7D66D9FB, which is stale relative to current saved Ruins SHA256 1F18544DBDB1C8C3A9D70D5D74A9EFA3BC5503812F60C7BC59EAF7CA764E206D. It is not a valid rollback target.
+Parent coordination/Scope.txt identifies these as external/user scene saves; file metadata independently proves their saved times, not the identity of the writer. No claim is made about unsaved in-memory Editor changes by this file-only audit.
+
+4. Official test evidence and pending fixture rechecks
+PlayMode-46.xml: total=46, passed=44, failed=2, start=2026-10-19 07:11:33Z, end=2026-10-19 07:12:23Z
+Assets\Scenes\Ruins.unity: saved 2026-10-19T07:08:43.4358665Z; precedes official test start=True
+Assets\Scenes\Shelter.unity: saved 2026-10-19T07:08:18.9613271Z; precedes official test start=True
+Recorded failure: DroneAlertTests.CoverRediscoveryImmediatelyChasesWhenStandingOrLeavingActualCover
+  The first real rediscovery update must chase; do not start another half-second discovery alert. |   Expected: Chase |   But was:  Alert
+Recorded failure: EnemySceneIntegrationTests.RealPrefabClearsTheOldRadiusHeadGapAndOnlyBodyContactExplodesPatrolOnce
+  Expected string length 39 but was 0. Strings differ at index 0. |   Expected: "Assets/Prefabs/Enemy/Drone/Drone.prefab" |   But was:  <string.Empty> |   -----------^
+Actual DroneAlertTests.cs post-run correction at 07:13:57Z: CoverRediscoveryImmediatelyChasesWhenStandingOrLeavingActualCover waits for the real state update for at most 0.2 seconds and still asserts elapsed time < the 0.5-second discovery duration; it does not force Chase.
+Actual EnemySceneIntegrationTests.cs post-run correction at 07:13:57Z: RealPrefabClearsTheOldRadiusHeadGapAndOnlyBodyContactExplodesPatrolOnce loads the saved prefab via AssetDatabase and verifies its 0.25 radius, then separately verifies the actual scene body radius; it no longer requires runtime objects to preserve an Editor prefab-instance link.
+These are the only differences between current Assets and the respective CollisionSize staging files. The remaining 5 changed files still match ChangedHashes.json.
+Status: 44 official passes, 2 recorded fixture failures subsequently corrected in source; those two corrections await revalidation after the user ends the current manual Play session. No rerun or approval is inferred from elapsed time.
+
+5. Saved scene retention during this audit
+Assets\Scenes\Bootstrap.unity: matches first observation of this audit=True; SHA256=9063DB1C2FD9EFBB83A120531BCA35644BE835D203A68EC49FBB1B8306526500
+Assets\Scenes\Ruins.unity: matches first observation of this audit=True; SHA256=1F18544DBDB1C8C3A9D70D5D74A9EFA3BC5503812F60C7BC59EAF7CA764E206D
+Assets\Scenes\Shelter.unity: matches first observation of this audit=True; SHA256=76CEAD0B70F2542216DAA7660D7C5548E4A95E5DBB9E2F11C844FC1104D4983D
+Assets\Scenes\Tests\Enemy\EnemyTest.unity: matches first observation of this audit=True; SHA256=AA62E8EDC69AC0C08F7F4F8FA6DE3AD0425A0DDFB7FC344B85D20C7D40242200
+
+6. Final closeout addendum — 2026-10-19T07:18:18.7283474Z
+This addendum supersedes the earlier pending-test status and earlier EnemySceneIntegrationTests.cs hash. Read-only Assets/scene review; no Unity operation or test execution by the auditor.
+Assets\Prefabs\Enemy\Drone\Drone.prefab: SHA256=016CE442E758223004A406B7FBD546585A1A71E6678BDE3276B8DAC6D69B1262; original meta unchanged=True
+Assets\Scripts\Enemy\Drone\MonoBehaviour\DroneController.cs: SHA256=6D2059DCB028F66EF4128114DFA95B79C0C256384F9A6D280AEAD458585FBAF2; original meta unchanged=True
+Assets\Scripts\Enemy\Drone\ScriptableObject\DroneConfigSO.cs: SHA256=B557556359825650B9A9EA1046165E3EE3D1A98CDF794FB2A3BA4E1AD64B6CED; original meta unchanged=True
+Assets\Tests\Enemy\Editor\EnemyTestSceneBuilder.cs: SHA256=74D2B40E409E535CFC7485AE378D22DFEE49F1AD3CEAD81D38E0D1E78A27D2E7; original meta unchanged=True
+Assets\Tests\Enemy\PlayMode\DroneBehaviourTests.cs: SHA256=9C229925C4ECBFA0547E7A643133BC700AA88DEC3D548327AEE0C9DB09DCA9F7; original meta unchanged=True
+Assets\Tests\Enemy\PlayMode\DroneAlertTests.cs: SHA256=23C97D6B34E74A0D4B5E1C647AB2CDD00571C26C2B29A571AE63ED26D1613930; original meta unchanged=True
+Assets\Tests\Enemy\PlayMode\EnemySceneIntegrationTests.cs: SHA256=E4C316FC806EA65DDFDC8776228B2D64F1B371AB3E2FBB72A513B6F18F7D67FD; original meta unchanged=True
+Meta retention reconfirmed: 7/7.
+Prefab remains exactly equal to original after only m_Radius 0.45 -> 0.25 replacement: True
+E:\DD451\Assets\Scenes\Ruins.unity: SHA256=1F18544DBDB1C8C3A9D70D5D74A9EFA3BC5503812F60C7BC59EAF7CA764E206D; matches LatestExternalSceneHashes.json=True; LastWriteTimeUtc=2026-10-19T07:08:43.4358665Z; original external save time retained=True
+E:\DD451\Assets\Scenes\Shelter.unity: SHA256=76CEAD0B70F2542216DAA7660D7C5548E4A95E5DBB9E2F11C844FC1104D4983D; matches LatestExternalSceneHashes.json=True; LastWriteTimeUtc=2026-10-19T07:08:18.9613271Z; original external save time retained=True
+Protected current match: True; E:\DD451\Assets\Scenes\Ruins.unity; SHA256=1F18544DBDB1C8C3A9D70D5D74A9EFA3BC5503812F60C7BC59EAF7CA764E206D
+Protected current match: True; E:\DD451\Assets\Scenes\Ruins.unity.meta; SHA256=71BD0E68CE9B34EF682661D60BCD36605007FE6FFE66D8FD09D1A56542A66594
+Protected current match: True; E:\DD451\Assets\Scenes\Shelter.unity; SHA256=76CEAD0B70F2542216DAA7660D7C5548E4A95E5DBB9E2F11C844FC1104D4983D
+Protected current match: True; E:\DD451\Assets\Scenes\Bootstrap.unity; SHA256=9063DB1C2FD9EFBB83A120531BCA35644BE835D203A68EC49FBB1B8306526500
+Protected current match: True; E:\DD451\Assets\Scenes\Tests\Enemy\EnemyTest.unity; SHA256=AA62E8EDC69AC0C08F7F4F8FA6DE3AD0425A0DDFB7FC344B85D20C7D40242200
+Protected current match: True; E:\DD451\Assets\Scripts\Enemy\Drone\MonoBehaviour\DroneVision.cs; SHA256=17C7BCE9799DC9B3B45E6300D01D5B03BC61108A4EAD4934E1507D3643B68ED2
+Protected current match: True; E:\DD451\Assets\Scripts\Enemy\Drone\MonoBehaviour\DroneFlightVisual.cs; SHA256=EBA65D068F20AD4AEB5AEA8B6985F4AE43A1F7D1CD092E35F6ECFABE06A5CE27
+Protected current match: True; E:\DD451\Assets\Data\Enemy\Drone\DroneConfig.asset; SHA256=BF942528A2B7487FD6E05F5A22F8D2A00BF52FCCE02FE33446E1B9324C1490A1
+All 8 Integrity.json protected entries still match. Ruins 07:08:43Z and Shelter 07:08:18Z latest user/external saved versions remain intact, and both precede the 07:11:33Z initial test run.
+Current CoverRediscoveryImmediatelyChasesWhenStandingOrLeavingActualCover still waits for real Update-driven Chase and asserts it is quicker than a fresh discovery delay. PlayMode-Retry2.xml (07:15:33Z–07:15:35Z) confirms this case Passed.
+Current RealPrefabClearsTheOldRadiusHeadGapAndOnlyBodyContactExplodesPatrolOnce now additionally yields WaitForDiscoveryAlert(drone), then Physics.SyncTransforms, before checking the real vision-trigger geometry. This 07:16:28Z fixture pose synchronization change is present in actual source; the source retains its physical-radius and contact/explosion checks.
+Official evidence at this audit: first run 44/46 Passed; Retry2 1/2 Passed (CoverRediscovery passed; scene fixture failed before the new pose synchronization). The single scene fixture is awaiting the parent task run. This audit does not label that final case passed without its new XML.
+Root final supplement 2026-10-19 07:21 UTC: final scene test now passed (PlayMode-ContactFinal.xml); its vision overlap assertion uses actual RangeCollider.ClosestPoint containment plus natural Alert/CanSee/no-damage. PlayMode-FinalCoverage.json contains all46 latest results Passed. Current-source EditMode4/4 passed in EditMode-4-Final.json. Final hashes regenerated in ChangedHashes.json; latest protection8/8 matches in Integrity.json. No further Assets changes after those hashes.

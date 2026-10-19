@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="6" result="Failed(Child)" total="6" passed="4" failed="2" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-19 17:16:54Z" end-time="2026-10-19 17:17:00Z" duration="5.7819546">
+  <test-suite type="TestSuite" id="1242" name="DD451Demo" fullname="DD451Demo" runstate="Runnable" testcasecount="203" result="Failed" site="Child" start-time="2026-10-19 17:16:54Z" end-time="2026-10-19 17:17:00Z" duration="5.781955" total="6" passed="4" failed="2" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1090" name="MyPrecious.Enemy.PlayModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.Enemy.PlayModeTests.dll" runstate="Runnable" testcasecount="56" result="Failed" site="Child" start-time="2026-10-19 17:16:54Z" end-time="2026-10-19 17:17:00Z" duration="5.754492" total="6" passed="4" failed="2" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="85336" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestFixture" id="1083" name="PlayerStealthVignetteTests" fullname="PlayerStealthVignetteTests" classname="PlayerStealthVignetteTests" runstate="Runnable" testcasecount="6" result="Failed" site="Child" start-time="2026-10-19 17:16:54Z" end-time="2026-10-19 17:17:00Z" duration="5.749042" total="6" passed="4" failed="2" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-case id="1088" name="MovingTheBoundPlayerToAnotherSceneClearsBeforeTheNextBindingRefresh" fullname="PlayerStealthVignetteTests.MovingTheBoundPlayerToAnotherSceneClearsBeforeTheNextBindingRefresh" methodname="MovingTheBoundPlayerToAnotherSceneClearsBeforeTheNextBindingRefresh" classname="PlayerStealthVignetteTests" runstate="Runnable" seed="1447743777" result="Passed" start-time="2026-10-19 17:16:54Z" end-time="2026-10-19 17:16:54Z" duration="0.453084" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1084" name="OnlyActualCrouchingCoverFadesInAndStandingOrLeavingFadesOut" fullname="PlayerStealthVignetteTests.OnlyActualCrouchingCoverFadesInAndStandingOrLeavingFadesOut" methodname="OnlyActualCrouchingCoverFadesInAndStandingOrLeavingFadesOut" classname="PlayerStealthVignetteTests" runstate="Runnable" seed="1873737446" result="Failed" start-time="2026-10-19 17:16:54Z" end-time="2026-10-19 17:16:54Z" duration="0.066914" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[  Expected: greater than or equal to 0.0127362562f
+  But was:  0.0f
+]]></message>
+            <stack-trace><![CDATA[at PlayerStealthVignetteTests+<AssertGradualWeight>d__22.MoveNext () [0x000cc] in E:\DD451\Assets\Tests\Enemy\PlayMode\PlayerStealthVignetteTests.cs:370
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@d97b7cd61ded\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1085" name="OverlappingCoversAndBackpackDoNotInterruptAnExistingVignette" fullname="PlayerStealthVignetteTests.OverlappingCoversAndBackpackDoNotInterruptAnExistingVignette" methodname="OverlappingCoversAndBackpackDoNotInterruptAnExistingVignette" classname="PlayerStealthVignetteTests" runstate="Runnable" seed="155321433" result="Passed" start-time="2026-10-19 17:16:54Z" end-time="2026-10-19 17:16:55Z" duration="0.477901" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1089" name="ReenableReusesOneOwnedProfileAndDestroyCleansItWithoutChangingOtherVolumes" fullname="PlayerStealthVignetteTests.ReenableReusesOneOwnedProfileAndDestroyCleansItWithoutChangingOtherVolumes" methodname="ReenableReusesOneOwnedProfileAndDestroyCleansItWithoutChangingOtherVolumes" classname="PlayerStealthVignetteTests" runstate="Runnable" seed="413883128" result="Failed" start-time="2026-10-19 17:16:55Z" end-time="2026-10-19 17:16:58Z" duration="3.061988" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <failure>
+            <message><![CDATA[  Hidden before disabling iteration 0
+  Expected: True
+  But was:  False
+]]></message>
+            <stack-trace><![CDATA[at PlayerStealthVignetteTests+<Until>d__23.MoveNext () [0x0005b] in E:\DD451\Assets\Tests\Enemy\PlayMode\PlayerStealthVignetteTests.cs:383
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@d97b7cd61ded\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+          </failure>
+        </test-case>
+        <test-case id="1086" name="TransitionAndDeathClearImmediatelyAndANewRoundCanHideAgain" fullname="PlayerStealthVignetteTests.TransitionAndDeathClearImmediatelyAndANewRoundCanHideAgain" methodname="TransitionAndDeathClearImmediatelyAndANewRoundCanHideAgain" classname="PlayerStealthVignetteTests" runstate="Runnable" seed="1280769251" result="Passed" start-time="2026-10-19 17:16:58Z" end-time="2026-10-19 17:16:59Z" duration="0.628844" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1087" name="UnpreparedUnboundOrDisabledBindingCannotLeaveAStaleWeight" fullname="PlayerStealthVignetteTests.UnpreparedUnboundOrDisabledBindingCannotLeaveAStaleWeight" methodname="UnpreparedUnboundOrDisabledBindingCannotLeaveAStaleWeight" classname="PlayerStealthVignetteTests" runstate="Runnable" seed="741440113" result="Passed" start-time="2026-10-19 17:16:59Z" end-time="2026-10-19 17:17:00Z" duration="1.035748" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/cs200/AppData/LocalLow/DefaultCompany/DD451Demo\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -1,0 +1,2 @@
+OpenProject with same project did not restart: PID 48276 and Direct3D12 remained. Current Bootstrap clean, Play false. Using graceful Exit then normal Unity CLI launch with -force-d3d11; no asset or project graphics setting change.
+Deferred exit did not run; calling graceful EditorApplication.Exit directly after a fresh clean-state check. 2026-10-19T01:41:04.9373838Z

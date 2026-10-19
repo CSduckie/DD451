@@ -1,0 +1,27 @@
+{
+  "status": "STAGED_NOT_DEPLOYED_NOT_COMPILED_NOT_RUN",
+  "checkedAtUtc": "2026-10-19T05:29:17.1588114Z",
+  "source": "Assets/Tests/Enemy/PlayMode/EnemySceneIntegrationTests.cs",
+  "sourceSha256": "F7E0E75ABDC26388B51C372D590B7DE36BD5BF5AC65C48F63C398030138AF587",
+  "staged": "Docs/Verification/Enemy/AlertFill/AIStaging/Assets/Tests/Enemy/PlayMode/EnemySceneIntegrationTests.cs",
+  "stagedSha256": "1E27B3CEA84C8F2F19A0CABEBE8B8FF83B95210DBA2A9654451BB168640DE5B3",
+  "existingUnityTestsPreserved": 3,
+  "newUnityTests": [
+    "RealSceneDetectionHoversInAlertUntilFilledBeforeEnteringChase",
+    "QueuedF10PreservesIndependentAlertFillAndDecayOnTwoRealSceneDrones"
+  ],
+  "totalUnityTests": 5,
+  "changes": [
+    "Keep shader assertion and require MyPrecious/DroneVision plus _BaseColor, _FillColor, _FillProgress, retaining _Cull=2.",
+    "Natural scene detection uses saved Drone/Player/Collider and waits through Alert; no forced Chase.",
+    "Queued F10 preserves unequal alert progress, one filling and one decaying behind a runtime BoxCollider, along with health/items/placements/rounds.",
+    "Existing damage/backpack/search chain assertions remain; PrepareContact keeps explicit Chase only for damage fixtures."
+  ],
+  "fixtureBoundaries": [
+    "Positions are API-assisted above the authored scene floor; input is InputSystem.QueueStateEvent, not native OS input.",
+    "Each runtime DroneConfig clone starts from the saved resource and asserts its two-second fill/decay defaults. Natural discovery retains them; the F10 fixture uses four-second runtime durations for observation margin.",
+    "Player Rigidbody is temporarily kinematic without disabling PlayerController or setting a scene-transition lock.",
+    "Runtime clones and wall are cleaned after scene unload; saved assets and existing scene are unchanged."
+  ],
+  "verification": "Text diff whitespace check passed apart from standard LF/CRLF warnings. Source Assets hash remains F7E0E75ABDC26388B51C372D590B7DE36BD5BF5AC65C48F63C398030138AF587. No Unity tools or refresh used."
+}

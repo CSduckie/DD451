@@ -1,0 +1,228 @@
+MyPrecious P0 — 玩家接入与调参说明
+版本：2026-10-18 / ProjectRules v21 / 02A、02B与07C/07D接入更新；原Lean02说明保留未变业务。
+项目：E:/DD451。以下路径均相对项目根目录。
+本文说明当前代码与资源用法；原02模块证据见Docs/Handoffs/02_Handoff.txt，02A/02B源码合同及07C/07D实际集成分别见对应交接。07最终Edit149/149、微调前DX11 Play85/85已通过；正常加载相机warning0、预期故障诊断6。正式两图范围宽度微调保存后，GameFlow8/8另存通过；1920运动与画面核验已完成，root于02:06 UTC明确释放Unity。当前IMPLEMENTED_AUTOMATED_VALIDATED / NATIVE_ACCEPTANCE_PENDING，Windows原生两轮仍未完成。
+
+一、先运行白盒场景
+
+使用Unity 6000.2.12f1打开Assets/Scenes/Tests/Player/PlayerTest.unity，进入Play。
+场景开始时玩家未准备，HP为0但不算死亡，不能移动或交互。点击面板“Prepare next round (explicit 08 simulation)”才开始首轮。
+测试驱动选取大于玩家与物品当前轮次的编号，明确把同一个编号传给PlayerController.ResetForExploration和真实ItemManager.BeginRound；只有此测试按钮模拟08推进轮次。PlayerController不自行增加轮次、不刷新医疗包次数。
+
+操作：A/D或左右箭头横移，Space跳跃，短按跳低、按住跳高；按住C蹲伏、松开站立，E交互。落地前0.12秒可提前按跳，走出平台后0.12秒内仍可起跳。先恢复站立再跳；不支持二段跳、空中切蹲或蹲伏跳跃。
+面板提供开关背包、伤害1HP、致命伤、医疗包、Food A、Food B。这里没有正式Tab背包、右键物品使用或F10处理。
+场景包含3D地面、小平台、实体墙、带重复Collider的测试交互物、墙后目标以及红色接触伤害Trigger。当前用户保存的BackgroundDecoration_NotInPlane位置为(-2,1,0.02)、scale(1,2,1)，本轮保留；旧Z=4是历史构造示例，不能据名称或旧说明恢复用户位置。
+交互目标只记录InteractionCount，在Play中的Inspector查看；它不生成物品、不改背包、不切换场景。
+伤害Trigger按配置重复请求伤害，PlayerHealth的短暂无敌决定哪些请求有效；这不表示敌人接触伤害已经接入。
+
+真实GameBootstrap实例下挂真实ItemModule实例，使用既有ItemLibrary、Medkit、Food、HealFull和HealOne资源。PlayerTestDriver在没有实例记录时创建一个背包医疗包和两份独立食物；有旧记录时复用，不补充已消耗食物。
+场景重载不自动准备玩家、不自动新增轮次。测试场景里的新玩家需再次按显式准备按钮；物品数据按GameBootstrap既有生命周期保留。
+进入新轮次会恢复玩家生命并刷新医疗包额度，但不补发食物。关闭Play结束本次内存数据，没有磁盘存档。
+
+测试资产已存在时直接打开场景。Assets/Tests/Player/Editor/PlayerTestSceneBuilder.cs的菜单Tools/MyPrecious/Create Player Test Assets用于初次搭建；场景已存在时拒绝覆盖，不用于刷新用户已有调整。
+现有PlayerCamera已为透视镜头，旧生成器仍含正交初建默认；不要为TriggerBox/CameraBounds迁移重跑它。当前五个相机消费场景均由07原位补范围，未重建模型或镜头。
+
+二、实际文件与组件职责
+
+共用状态机：
+- Assets/Scripts/Utilities/StateMachine/StateBase.cs、StateMachine.cs。
+- Assets/Scripts/Utilities/Contracts/StateMachine/IStateMachineOwner.cs。
+- 程序集MyPrecious.StateMachine与MyPrecious.StateMachine.Contracts。
+
+玩家：
+- Assets/Scripts/Player/MonoBehaviour/PlayerController.cs：引用初始化、输入协调、状态枚举switch、3D运动、背包限制、新轮次及动画入口。
+- Assets/Scripts/Player/MonoBehaviour/PlayerInputReader.cs：读取共享资源中的四个动作，缓存并消费跳跃/交互按下。
+- Assets/Scripts/Player/MonoBehaviour/PlayerHealth.cs：唯一真实HP、伤害、治疗和生命通知。
+- Assets/Scripts/Player/MonoBehaviour/PlayerCameraTargetBinder.cs：Cinemachine目标重绑、本场景边界验证、加载期延迟绑定、范围变化与瞬移状态重置、引用及事件清理。
+- Assets/Scripts/Player/ScriptableObject/PlayerConfigSO.cs；配置资源Assets/Data/Player/PlayerConfig.asset。
+- Assets/Scripts/Player/States/PlayerStateBase.cs及PlayerIdleState、PlayerMoveState、PlayerJumpState、PlayerFallState、PlayerCrouchState、PlayerDieState。
+- PlayerState枚举与Controller在同一文件中：None、Idle、Move、Jump、Fall、Crouch、Die。
+
+交互：
+- Assets/Scripts/Interaction/MonoBehaviour/PlayerInteraction.cs、Interactable.cs；程序集MyPrecious.Interaction。
+- 沿用Assets/Scripts/Utilities/Contracts/Player/IHealthTarget.cs及MyPrecious.Health，不新增第二份生命接口。
+
+资源：
+- Assets/Prefabs/Player/Player.prefab、PlayerCamera.prefab。
+- Assets/Art/Materials/Player/PlayerTeal.mat、WhiteboxGround.mat、TestTarget.mat、TestDamage.mat。
+- Assets/Art/Materials/Player/PlayerFrictionless.physicMaterial：玩家胶囊使用的物理材质。
+- Assets/Scenes/Tests/Player/PlayerTest.unity。
+当前没有正式模型、AnimatorController或AnimationClip；没有为占位创建空动画资源。
+
+测试：Assets/Tests/Player/EditMode、PlayMode、TestDoubles及Editor。测试驱动/伤害源/交互目标全部在测试目录，不进入生产组件目录。
+MyPrecious.Player引用生命契约、共用状态机、交互、Unity.InputSystem和Unity.Cinemachine。新增项目C#无namespace，asmdef的rootNamespace为空。
+
+三、Player预制体与Inspector
+
+Player逻辑根：Transform缩放保持(1,1,1)，挂Rigidbody、CapsuleCollider、PlayerController、PlayerInputReader、PlayerHealth和PlayerInteraction。
+Rigidbody约束FreezePositionZ与FreezeRotation，Interpolation=Interpolate，CollisionDetection=ContinuousSpeculative；准备前为Kinematic，显式首轮准备后使用重力。
+CapsuleCollider：Center=(0,1,0)、Height=2、Radius=0.4。只有逻辑根拥有实体角色碰撞体。
+CapsuleCollider的Material已接PlayerFrictionless.physicMaterial：Static Friction=0、Dynamic Friction=0、Friction Combine=Minimum、Bounciness=0。PlayerTest运行曾发现默认摩擦会在贴着1.3米平台侧面起跳时消耗向上速度，因此使用此材质减少侧面摩擦对起跳的干扰；不是提高跳跃速度或增加攀爬能力。
+这些物理参数可直接在材质Inspector调整，初次搭建脚本也已同步接线。调整后需复查贴平台侧面起跳、撞墙和落地表现；本轮最终回归结果见02_Handoff，本说明不把资产接线等同于测试通过。
+子对象CapsulePlaceholder仅Mesh/Renderer，下面的FacingMarker标明朝向；二者都移除了自动生成的Collider。
+CameraTarget是逻辑根直接子对象，LocalPosition=(0,1.3,0)，不能放到会转身或缩放的CapsulePlaceholder下。
+Controller的config、inputReader、health、interaction、visual、cameraTarget已接线；animator留空。
+InputReader的inputActions指向Assets/Input/GameInputActions.inputactions，沿用现有GUID，未新建输入资源。
+
+PlayerConfig试玩默认：
+moveSpeed=5：正常横移速度。
+crouchSpeed=2：蹲伏横移速度。
+acceleration=20、deceleration=30：沿用原ARPG非线性加减速；反向输入使用acceleration，松键才使用deceleration，空中同样可控。
+jumpSpeed=13：一次起跳的Y速度；不是跳跃高度。
+gravityScale=3.5、fallMultiplier=2.5、lowJumpMultiplier=3、maxFallSpeed=12：沿用原Player预制体及PlayerBetterJump参数。下落和松键上升分别在基础重力倍率上加1.5和2，不与3.5相乘。
+jumpBufferSeconds=0.12：落地前提前按跳的缓存窗口，按下即计时，释放不取消；成功起跳后消费，超时丢弃。
+coyoteTimeSeconds=0.12：走出边缘后允许起跳的窗口，主动起跳立即消费；不会提供二段跳。两项设0可分别关闭。
+planeZ=0：玩法平面。出生/新轮次位置的传入Z会被此值替换，物理同时锁Z。
+groundProbeDistance=0.12、groundProbeRadius=0.25、groundMinNormalY=0.65、groundLayers=Everything：从脚底向下SphereCast，排除自己、Trigger和法线不够朝上的侧墙。
+maxHealth=3：新轮次采用的生命上限；本轮生命保存在PlayerHealth，不写回SO。
+damageInvulnerabilitySeconds=0.5：有效伤害后的暂时无敌，基于Time.timeAsDouble；无敌不阻止治疗。
+crouchVisualHeight=0.65：只压低表现子对象，实体碰撞体保持原高，本轮不支持低矮通道。
+modelYawOffset=0：正式模型不是朝+X制作时调整模型朝向偏移。
+animationBlendSeconds=0.12：代码动画固定秒数过渡。
+
+修改速度、跳跃、生命和检测参数时优先在PlayerConfig.asset中调整。运行输入、HP、计时和状态不写入配置。想修改当前生命上限的试玩效果，应在调整maxHealth后显式准备下一轮。
+运行中直接改变planeZ不会把已有角色主动传送到新平面；准备新轮次时才按新平面设置出生位置。
+
+四、输入、运动与背包限制
+
+InputReader从原Player动作表Clone出Move、Jump、Crouch、Interact四个运行实例，只启用Keyboard&Mouse绑定；没有第二份InputActionAsset，也不关闭整张共享动作表。
+Move只读取Vector2.x，W/S不会产生纵深移动。Jump/Interact按下缓存为一次请求，ConsumeJump/ConsumeInteract消费后清空；Jump同时记录按下时间和持续按住状态，Controller持有限时落地缓存。停用时解除回调并Dispose运行动作，重新启用不累积订阅。
+Controller.Update读取并缓存当前方向/蹲伏/跳跃按住，消费按键、判断状态与交互；FixedUpdate才执行常规X速度、起跳Y速度与额外重力。横移使用pow(abs(targetSpeed-currentSpeed)*rate, 0.9)*fixedDeltaTime逼近目标；末步限制到目标，消除原公式低速过冲。输入锁定立即清X，不延续惯性。
+每次Update和FixedUpdate只转发当前状态一次；切换后不会在同一回调手工补调新状态Update。
+Controller.FixedUpdate先探地，再统一检查限时请求和地面/土狼资格，成功时写一次起跳速度、消费两项窗口，并经枚举/泛型切入Jump播放动画；随后仅转发一次当前状态的FixedUpdate。PlayerJumpState负责空中横移和上升结束转Fall，不再持有第二份待起跳标记。走出平台转Fall，落地后按输入与姿态选择地面状态。
+Rigidbody保留useGravity，Controller补足gravityScale并叠加BetterJump重力；限速预先计入稍后的引擎重力，因此实际下落速度封顶12。开关背包、死亡、停用和新轮次清除旧buffer与土狼资格；仍在地面时下一次探地可取得新的地面资格。
+
+bool PlayerController.ResetForExploration(int roundId, Vector3 spawnPosition)
+只接受大于当前值的正数轮次；要求组件启用、config存在及出生X/Y为有限数值。首次准备与以后新轮次都走同一入口。
+成功时：恢复满血、清理死亡/无敌时间、旧请求、背包/UI交互标记和速度，恢复站立/初始朝向，设置合法XYZ并进入Idle或Fall；位置/状态建立后才通知生命显示。
+同一或旧轮次返回false，不再补血、复活、移动出生点或清掉本轮状态。普通启用、关界面或场景加载不代替此入口。
+
+void PlayerController.SetBackpackOpen(bool open)
+幂等开关，清掉横移缓存、旧跳跃/交互请求。开包时保留当时站立或蹲伏姿态；后续物理帧把主动X速度归零，保留Y重力与下落。
+开包不停止状态机、不改Time.timeScale、不整体冻结刚体；空中仍下落、落地、受伤或死亡。关包恢复当前有效控制，不补发锁定期间的按键。
+CanAct同时检查准备、启用、死亡和背包状态，所以关包不会解除死亡限制。
+
+void PlayerController.SetInteractionUiBlocked(bool blocked)
+其他UI只占用世界交互时使用，清掉旧交互请求；它不承担通用输入锁或暂停游戏。
+停用时清请求、Stop状态机并停止残留主动横移；重新启用按真实生命及地面情况恢复状态，死亡对象仍进入Die，不自动补血。
+
+五、生命、伤害与真实01治疗
+
+PlayerHealth公开属性：IsPrepared、IsDead、CurrentRound、CurrentHealth、MaxHealth。
+bool TakeDamage(int amount)：非正数、未准备、死亡、无敌期或生命通知回调重入时返回false；有效伤害封底为0。
+void Heal(int amount)：精确实现IHealthTarget，立即完成且封顶；非正数、满血、未准备或死亡时不变。极大int治疗量也不会溢出。普通治疗不复活。
+IHealthTarget精确签名：int CurrentHealth { get; }、int MaxHealth { get; }、void Heal(int amount)。
+
+事件：
+event Action<int, int> HealthChanged：参数为当前HP、上限。
+event Action<int> NonLethalDamaged：参数为本次实际非致命伤害量。
+event Action Died：首次有效致命伤后一次通知。
+处理顺序：先落实HP/IsDead；致命伤同步调用同物体Controller.HandleDeath，建立Die状态和交互限制；随后发HealthChanged，再发NonLethalDamaged或Died。
+每个生命订阅者单独try/catch，异常用Debug.LogException记录，不中断后续通知，也不使已完成回血漏掉01计次。局部isNotifying阻止生命回调重入伤害、治疗或新轮次准备。
+生命事件用于显示或明确协作，订阅者不在回调中再次使用物品、改效果资源或推进探索业务；由订阅方在停用/销毁时退订。
+
+内部PrepareForRound与NotifyPrepared仅供Controller组合初始化，外部模块统一调用ResetForExploration，避免只恢复生命而漏掉位置/输入/状态。
+医疗包/食物调用真实ItemManager.TryUseItem(instanceId, player.health)。HP只由PlayerHealth维护；次数、是否携带、指定实例消费和跨轮额度仍由01维护。
+医疗包成功回满、保留自身且本轮记一次；食物恢复1HP并只消耗指定实例。满血、未携带或死亡目标的拒绝与消费结果由真实01返回；实际联测结果见02_Handoff。
+
+六、最小交互接入
+
+Interactable为简单抽象组件，GroundItem、LootBox、GameFlowInteractable与Player测试目标继承并实现：
+string PromptKey { get; }
+bool CanInteract(PlayerInteraction player)
+void Interact(PlayerInteraction player)
+公开BoxCollider interactionTrigger必填，通常绑定目标自己的TriggerBox子物体；必须是归属当前目标的启用BoxCollider且isTrigger=true。可选Transform interactionPoint用于墙体锚点与排序，空时用目标根。TryGetInteractionTrigger(out BoxCollider)检查结构与运行可用性，包含inactive祖先归属；缺配/非Trigger/错归属诊断并拒绝，不回退球形范围。临时禁用/销毁只是不可达，不强迫开启。
+目标不独立监听E；玩家InputReader收集E，Controller统一转交，一次按下只调用一个目标。
+
+PlayerInteraction公开：CurrentTarget、CurrentPromptKey、InputBlocked；RefreshTarget()刷新选择，TryInteract()再次校验后执行并返回bool，SetInputBlocked(bool)由Controller合并控制状态后调用。CanReachTarget(Interactable)供持续来源空间检查，独立于UI输入锁、CurrentTarget及业务CanInteract，仍检查真实身体重叠/墙体；CanReachWorldPoint(Vector3)服务无目标对象的实际落点安全。
+默认queryOffset=(0,1,0)、interactableLayers与obstructionLayers为Everything，可在Prefab Inspector调查询/射线起点及层。interactionRadius=2、maxDepthDifference=0.65仅用于CanReachWorldPoint，不限制显式TriggerBox目标；范围厚度决定视觉模型偏Z时是否可达。
+目标发现以玩家身体Collider.bounds的OverlapBox粗筛，Physics.ComputePenetration精确检查身体与显式BoxCollider的重叠；多个Collider按同一Interactable去重。按interactionPoint或根锚点距离排序，同距按实例ID稳定选择，不取Trigger内部最近点来绕过墙。
+3D墙体射线从玩家queryOffset指向锚点，排除自己/目标自身，实体障碍仍阻挡，普通Trigger不当作墙。已配置目标不叠加旧2m球或根Z差裁剪；仅进入范围不执行拾取/开UI，E才调用一次业务。
+刷新、目标读取、执行和空间查询同步物理Transform并重新验证生命周期；输入/业务资格与空间资格分别处理。玩家自身Rigidbody缓存为空时按真实父级解析，兼容未经过Awake的EditMode真实身体夹具，不放宽遮挡。
+提示UI读取CurrentPromptKey，不能缓存旧目标后跳过执行前校验。离开/禁用/销毁后来源安全取消搜索/拖拽；开包禁止E不使已开的空间会话立即失效。模型与原实体/占位Collider保持原状，只用独立TriggerBox调交互范围。
+
+七、Cinemachine侧向跟随
+
+实际包版本com.unity.cinemachine 3.1.7；Input System仍为1.14.2。包差异详见02_Handoff，不将其他已有依赖变化归为本模块升级。
+PlayerCamera.prefab结构：
+PlayerCamera根：PlayerCameraTargetBinder。
+OutputCamera子对象：Camera、唯一AudioListener、UniversalAdditionalCameraData、CinemachineBrain，Tag=MainCamera。
+SideFollow子对象：CinemachineCamera、CinemachinePositionComposer、一个CinemachineConfiner3D。
+Brain.UpdateMethod与BlendUpdateMethod均为LateUpdate，配合玩家Rigidbody的Interpolate读取平滑后的目标位置。
+
+当前已保存镜头：透视FOV=50，Near=0.1，Far=100，CameraDistance=12，相机Z≈-12；Damping=(0.25,0.2,0)，Composition.ScreenPosition=(0,0.13)，DeadZone关闭。旧正交Size5/ScreenY=-0.12仅是历史生成器默认，不能覆盖当前用户镜头。
+SideFollow保持固定侧向观察方向，没有根据角色转身旋转镜头的逻辑。正常输出相机Transform由CinemachineBrain驱动，Binder不逐帧手写跟随。
+保留当前镜头；每场景CameraBounds控制允许的相机中心范围，SlowingDistance控制原生近边界减速。Confiner3D不保证整个透视画面四边都在环境内，1920×1080最终边缘取景/平滑度须另作画面验收，不以组件存在代替。
+
+场景实例将Binder.player指向当前Player，followCamera指向SideFollow；Follow指向逻辑根的CameraTarget，缺少该子对象时退回逻辑根。
+Binder.confiner指向同一SideFollow上的原生扩展；唯一边界引用为confiner.BoundingVolume，本场景实例绑定独立静态CameraBounds BoxCollider trigger，共享prefab保持null；当前SlowingDistance=0.5。Bounds自身activeSelf/Collider enabled/isTrigger=true，不带Renderer/Rigidbody/Interactable、不放在玩家或相机下面；包含当前相机Z=-12。
+ValidateBounds(out string error)在激活前检查同场景有效配置，允许暂存时祖先inactive；LastBoundsError只读。真实null/禁用/外scene配置拒绝并诊断，外scene引用清理，未激活祖先就绪前Follow保持null。当前场景尚未isLoaded时RefreshBinding暂缓，后续Update恢复严格校验，正常加载不产生假跨场景warning。
+创建新玩家后调用void PlayerCameraTargetBinder.Bind(PlayerController target)明确重绑，旧目标事件先解除。Binder使用DefaultExecutionOrder(-100)的Update校验，早于通常Brain LateUpdate；目标销毁、停用/Bind(null)清Follow与订阅，但保留本scene的原生BoundingVolume供重新激活/回滚。
+Controller的event Action<Vector3> Teleported提供本次位置差；新轮次瞬移触发后，Binder调用OnTargetObjectWarped并清PreviousStateIsValid，使构图按新位置建立。
+绑定/换目标/换Camera/换范围，以及同Box的center/size/world transform变化时，同步物理并清旧PreviousStateIsValid；实际限制始终由原生Confiner3D执行，不在Binder手写clamp。五个已保存场景各有独立Bounds，精确当前几何见07D交接；Bootstrap系统入口不加无用途跟随相机。
+相机订阅者应只处理镜头反馈。正式流程不要直接改Transform位置绕过ResetForExploration所负责的出生准备。
+
+八、代码动画与后续模型替换
+
+调用链：Controller.ChangeState(PlayerState) → StateMachine.ChangeState<具体State>() → State.Enter() → Controller.PlayAnimation(name) → Animator.CrossFadeInFixedTime。
+配置动画名：Idle、Run、Jump、Fall、CrouchIdle、CrouchMove、Die。蹲伏状态只在静止/移动发生变化时切对应动画，不每帧从头播放。
+PlayAnimation(string animationName, float fixedTransitionDuration = -1f)允许局部覆盖过渡秒数；默认使用config.animationBlendSeconds。
+无Animator、无Controller或空动画名安全返回；有Controller但缺状态名时，每个缺失名称仅警告一次，玩法继续。
+
+正式资源接入时，用3D模型替换CapsulePlaceholder的表现内容，配置Controller.visual和animator，校准modelYawOffset、模型位置和比例；CameraTarget继续留在逻辑根下。
+Animator默认关闭Root Motion。为上述名称创建状态节点并绑定真实Clip，可以保留默认入口，无需手工连接状态间Transition、AnyState或Trigger网络。
+CrossFade直接请求已有状态，所以不需要Transition；它不会凭空生成动画资源，仍需Animator、AnimatorController、状态与Clip。
+当前胶囊没有Animator/Clip，运动、生命、交互与镜头可独立验证；真实动画播放质量和正式模型联验均待资源接入，不作为已完成测试。
+
+九、原代码复用与07共用方式
+
+来源：https://github.com/CSduckie/2DArpg-Portfolio.git；本机E:/Portfolio-Clone。
+实际核实HEAD：c601c36f95efdd4d67327489f9edb58412aa54b4。只读取参考仓库，改编代码写入本项目。
+原Assets/Scripts/FrameWork/StateMachine/StateBase.cs：保留Init、UnInit、Enter、Exit、Update、FixedUpdate、LateUpdate虚方法。
+原同目录StateMachine.cs：保留Dictionary<Type, StateBase>缓存、小型泛型ChangeState<T>(bool reCurrstate=false)、CurrentState/CurrentStateType/hasState；IStateMachineOwner从原文件拆到共用契约目录。
+修正成功切换返回true，同状态且未请求重入返回false；顺序仍为旧Exit → 取得/创建目标并Init → 设置当前状态 → 新Enter。
+Stop先清运行引用和缓存，再退出当前状态并释放已创建状态；未进入状态、重复Stop以及停用后销毁不会重复Exit/UnInit。Stop后再次使用需Init(owner)。
+删除MonoManager更新注册/注销以及Singleton依赖。各Controller自己转发Update/FixedUpdate，各角色拥有独立状态机实例和缓存，避免全局注册残留或双重更新。当前没有需要转发的LateUpdate状态行为。
+
+原Player/PlayerController.cs与States/PlayerStateBase、PlayerIdleState、PlayerMoveState、PlayerJumpState、PlayerFallState、PlayerDieState：保留Controller枚举switch、具体状态判断切换、Enter调用动画和宿主强类型转换的方式。
+运动追加复用：原PlayerController.UpdateVelocity的0.9次幂加减速、FallSpeedLimit，以及PlayerBetterJump的松键短跳和下落加速。实际参数取Assets/Prefabs/Player.prefab（lowJumpMultiplier为3，覆盖脚本默认2）；原工程Physics2D重力-9.81、gravityScale3.5。参考源码没有buffer/土狼时间，本项目新增两个0.12秒窗口。原横移在Update积分，本项目按FixedUpdate积分以匹配3D物理，因此不声称不同帧率下轨迹逐帧完全相同。
+修改为3D Rigidbody/CapsuleCollider、固定XY平面和Input System；增加本项目蹲伏，删去原2D精灵翻转、技能/攻击/格挡/失衡等无关依赖；不沿用输入受限就整个Update返回的处理。
+原Player/CharacterStats.cs与PlayerStats.cs：参考生命查询、封顶治疗及C#变化通知，移除能量、技能、架势、击退等战斗属性，以int和现有IHealthTarget完成真实玩家生命。
+
+07使用方式：自己的Controller实现IStateMachineOwner，创建自己的new StateMachine()，启用时Init(this)，通过自己的枚举switch调用ChangeState<EnemyConcreteState>()；Update/FixedUpdate各转发一次CurrentState方法，停用/销毁Stop。
+具体敌人状态继承同一StateBase，在Init保存敌人宿主，在UnInit清引用；每次Enter重置本次所需计时/标记。不要复制第二份StateMachine，也不要让多个角色共享同一个实例。
+状态ChangeState后立即return，不继续用旧状态写速度；P0不在Enter/Exit递归切换，不增加切换队列或Tick接口层。
+
+十、04/06/07/08/09最小接入
+
+04：背包打开/关闭调用SetBackpackOpen。订阅NonLethalDamaged后完成自己的关包和取消拖拽，再解除玩家背包限制；当前测试驱动仅模拟关包，未完成真实拖拽回滚。物品使用传真实player.health，仍由01判断次数和消费。
+06：继承Interactable，实现目标是否可用、稳定提示键与一次执行，绑定显式TriggerBox；玩家负责E输入、身体精确重叠、锚点排序、墙体遮挡和执行前重验。箱子内容、搜刮计时、拾取与物品转移仍归06。
+07：读取Controller.Position、FacingDirection（+1右/-1左）、IsCrouching；调用health.TakeDamage(int)。蹲伏不等于隐藏，敌人视野、掩体遮挡、接触伤害和追击仍归07。
+08：提供严格递增的同一轮次编号，协调玩家ResetForExploration与01.BeginRound；首轮也需明确准备。订阅Died后由流程实现死亡损失/场景切换；02不自动复活、不清空物品。重生新玩家后明确Binder.Bind(newPlayer)。
+09：整合现有Player与PlayerCamera，保证一个有效输出Camera/AudioListener和真实GameBootstrap/ItemModule；正式HUD订阅HealthChanged，交互提示读取CurrentPromptKey。正式UI、语言和场景组织按对应模块实现。
+
+十一、稳定文本键与中英示例
+
+当前没有另建语言系统或Player文案资源库，正式文案由03接入统一来源。测试面板是调试信息。
+player.interact.test：交互测试 / Test interaction（测试目标当前实际使用）。
+player.interact.prompt：按E交互 / Press E to interact。
+player.health.value：生命 {0}/{1} / Health {0}/{1}。03采用标准string.Format编号占位符，见LocalizationSetup.txt。
+player.status.unprepared：等待开始探索 / Waiting to begin exploration。
+player.status.dead：你已死亡 / You have died。
+player.backpack.open：背包已打开 / Backpack open。
+除player.interact.test外，其余为后续UI接入约定示例，当前未声称已进入正式本地化资源。
+
+十二、答辩时可对应代码说明
+
+Controller负责角色引用、输入/状态协调与物理入口；StateMachine只负责缓存、切换和生命周期；具体State判断自己的转移并执行行为。三者不各自维护另一份HP。
+保留泛型切换能沿用熟悉的ARPG结构，并让玩家和敌人复用；删除MonoManager是为了让每个角色的更新随自身启用/停用，减少全局订阅和重复驱动。
+3D横版仍使用3D碰撞，XY承载玩法，Rigidbody锁定Z和旋转；模型子对象单独转身/蹲伏，因此表现变化不改变物理根的平面与碰撞体。
+Update适合收集短按与判断状态，FixedUpdate按物理步长写速度；短按先存请求，物理帧消费一次，避免漏跳或多跳。
+关背包只去掉一个操作限制，CanAct还检查IsDead，所以关闭界面不等于复活。复活只能来自新轮次准备。
+玩家掌握当前HP，物品掌握身份、次数与消耗；医疗包读取真实生命并同步治疗，双方通过小接口协作，不互相复制业务状态。
+Cinemachine按CameraTarget与PositionComposer计算构图，Confiner3D按当前scene范围约束相机中心，Brain驱动输出Camera；模型转身不带着CameraTarget旋转，瞬移单独通知相机重新建立位置。
+胶囊足以验证状态、运动、生命与相机；替换正式模型后只接表现和动画资源，继续使用同一套状态机与生命逻辑。
+
+07C/07D集成已在正式场景queued/API流程验证两轮、来源退出取消、HUD/F10、失败重试、当前Bounds及实际Brain输出；PlayerCameraBoundsTests7/7、PlayerIntegration4/4和其余Player合计40/40进入最终85项。新增加载/重载用例同时要求无诊断及实际Follow绑定，不能静默不跟随来消除warning。该阶段85/85不代表白盒驱动自身实现全部业务；具体覆盖及输入性质见RegressionCoverage。
+保存后的Shelter/Ruins分别2118/2198个1920渲染采样，左右/跳跃顶点均captured，maxOutside0/4.76837158e-7；root核看六张最终图确认墙端玩家完整及顶点可见，详细范围见07D/VisualReport与MovementAnalysis。此为真实Player/物理/Brain的queued输入采样，不是Windows原生操作，也不证明每次切换每个首帧。ReleaseState.finalObservedUtc=02:06:20.4809702Z记录Bootstrap clean、非Play/切换/暂停/编译/更新、设置恢复和临时对象清理，root在EditorCoordination明确释放，Console0 errors/0 warnings。
+敌人视野/接触伤害、完整死亡风险整合、正式动画与Windows构建仍不在本轮已完成范围。NativeInput-DX11的原生Tab/F10仍未触发游戏动作，原生完整两轮及原生平滑度NOT COMPLETED；07B的04混合按键失败未因本轮不含Backpack/Warehouse PlayMode而关闭。实际结果以02历史交接及07C/07D现行交接分别为准。

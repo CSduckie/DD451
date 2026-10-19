@@ -1,0 +1,2 @@
+PASS: Automatic second-round enemy reset and actual patrol movement; same player, full health, retained same item after real warehouse round-trip.
+round=2; real carried item=d992c2107a884ed88c189a7acc39358e; current Drone instance=-2546520; previous exploded instance=-2540598

@@ -1,0 +1,103 @@
+PlayerFillLight 玩家专属补光交接
+日期：2026-10-19
+状态：配置、保存重载、磁盘完整性、静态画面隔离、动作/生命周期及正常timeScale=1往返补验完成，Editor已明确释放。冻结Ruins时触发的既有Enemy零时间错误如实保留，不将整次任务描述为全程零错误。
+任务依据：Docs/AgentPrompts/Shelter_PlayerFillLight_Dispatch.txt。
+证据目录：Docs/Verification/Rendering/PlayerFillLight/。
+
+一、交付行为与最终配置
+
+正式Player.prefab新增一盏根节点直系子物体PlayerFillLight，随同一个玩家在Shelter/Ruins及死亡返回中移动。用URP Rendering Layers隔离照明接收者；玩家仍接收原有Default环境光，周围环境和敌人未加入专用位。
+没有新增或修改产品C#、管理器、每帧查找/Layer更新逻辑、场景识别开关或RendererFeature。Docs/Preparation内的临时工具代码和审计脚本不是产品组件。
+
+Inspector最终值：
+- Player/PlayerFillLight：普通GameObject Layer=Default(0)，启用；直接挂Player根，避免跟随CapsulePlaceholder的下蹲缩放或朝向表现。
+- Transform localPosition=(0,1.1,-2)，localRotation=identity，localScale=(1,1,1)。负Z朝当前相机，X=0使左右朝向对称。
+- Light：Point，白色RGBA(1,1,1,1)，Intensity=1.2，Range=4.5，Realtime，Shadows=None，Bounce Intensity=0，不使用Color Temperature；普通Culling Mask=Everything。
+- UniversalAdditionalLightData：Rendering Layers只勾PlayerLighting（index1，bit1，数值mask2），底层Light.renderingLayerMask同步为2；Custom Shadow Layers关闭。
+- CapsulePlaceholder与FacingMarker两个MeshRenderer：保留Default(bit0)并加入PlayerLighting(bit1)，mask1→3。未改GameObject普通Layer、物理碰撞矩阵、Collider/Rigidbody或交互/AI Mask。
+- URP当前序列化版本4使用m_RenderingLayersMask.bits=2；资源里兼容旧版本的m_LightLayerMask/m_RenderingLayers字段仍为1，不是当前生效值。包源码getter和现场runtime读取均使用当前字段。
+
+接手时InitialState.json记录当前质量PC、Assets/Settings/PC_RPAsset.asset、useRenderingLayers=true；无需重配全局管线。实际画面验收基于此PC管线，不扩称为Mobile平台验证。
+
+二、生产文件与保护证据
+
+仅两份生产文件变化：
+1. Assets/Prefabs/Player/Player.prefab
+   原GUID 4a37e015a99af1948851c34d90ec57de保留。新增GameObject/Transform/Light/UniversalAdditionalLightData四个YAML块；Player根children新增灯Transform；两个现有MeshRenderer的RenderingLayerMask 1→3。
+   去掉这四块与新增child引用并还原两个mask后，完整文件与真实Before逐字节一致。因此所有原组件、物理、输入、交互、状态机引用、模型/材质、CameraTarget等其它字段保留。
+2. ProjectSettings/TagManager.asset
+   RenderingLayer index1由Light Layer 1命名为PlayerLighting。Unity官方API保存同时将serializedVersion 2→3，并将Rendering Layer名称数组32项归一化为8项，省略原index8–31的24个空名称。
+   原8个有效Rendering Layer的索引/位保持，除index1外名称保持；普通layers、tags、sorting未变。新增灯mask2和两个Renderer mask3不使用这些空槽。该伴随格式变化已明确保留，不能描述成只有一个字符串的字节差异。
+
+BeforeHashes.json基线采于007释放后2026-10-19T09:01:19.9680562Z，包含743文件；Before/保存Player.prefab、meta及TagManager真实原件。
+FinalIntegrity.json/.txt在退出Play并完成清理后于09:19:42.0145701Z再次通过39项检查：741文件不变，仅上述两文件变化，无意外文件漂移或基线目录新增文件；432份meta全部SHA-256一致，三份真实原件与基线一致。结果PASS_WITH_SERIALIZATION_NOTE。
+Shelter/Ruins/Bootstrap及其它场景、Shelter后处理Profile、夜空、浮尘、相机预览、007死亡流程和Enemy/Player源码均在相应基线范围内保持。勿从更早场景副本恢复当前内容。
+可复核脚本：Docs/Verification/Rendering/PlayerFillLight/Preparation/AuditFinalIntegrity.ps1。它只读生产文件、写本任务Docs；末次清理后的复核已完成。
+
+三、1920×1080实际画面与隔离
+
+所有编号PNG为普通Play的真实Game framebuffer，ScreenCapture取得；不是Scene View或美术示意。此部分是API辅助、冻结相位的受控画面对照，不能表述为实体键鼠全流程。
+
+Shelter：01-FillOff、03-FillOn1p2、04-ControlDefaultLayer及metadata；详见VisualIsolationAudit.json/.txt。
+- 三帧gameTime=15.2223263，相机、玩家、环境、Volume stack及五盏其它灯的全部已记录属性一致。03为最终1.2强度/mask2；04正对照只把补光mask改为Default(mask1)，参数其它一致；该正对照只作用运行时，没有保存到Prefab。
+- 最终03对比01，12,878个变化像素全部位于玩家紧包围框内；排除玩家框外扩12px后，外部2,043,504个RGB像素逐字节相同、最大通道差0。场景中非玩家专用位接收者列表为空。
+- 玩家胶囊内部代理区域平均编码亮度20.148892→73.789780/255，保留青绿色、曲面明暗和朝向标记。04正对照在玩家范围外改变175,710像素，能实际照亮邻近集装箱和地板，支持专用Rendering Layer确实隔离而不只是字段正确。
+- 原始02-FillOn为0.8强度调参帧；最终使用03的1.2，不混写为相同配置。
+
+Ruins：09-RuinsFillOff、10-RuinsFillOn、metadata、RuinsIsolationSetup.json；详见RuinsIsolationAudit.json/.txt。
+- 玩家由运行时API定位到既有无人机附近，对照gameTime=116.94809、相机/玩家/环境及其它四盏灯的记录相同，补光仅enabled false→true。
+- 无人机距灯3.19698715，处于Range4.5内；所记录39/39无人机Renderer含Vision均mask1，非玩家专用位接收者为空。
+- 12,892个变化像素全在玩家紧包围框内；外部2,046,468像素RGB逐字节相同。无人机ROI10,200像素、视锥ROI344,250像素均0变化；附近箱体/平台/地面/天空/UI保持。
+- 玩家内部代理区域编码亮度134.966015→167.805006/255。玩家框内任一通道=255的像素前后均0，最终最大通道244；此帧未见过曝削顶或变白失去形体。
+- Ruins本来比Shelter亮，且相机PP=false；effectiveStack存在默认值不表示后处理已渲染。本任务没有调整Ruins环境。
+
+两组对照只证明所记录视角与配置。矩形包围框包含部分背景，内部代理ROI不是精确模型分割；亮度统计是截图相对数值，不是场景lux。Ruins冻结相位还触发了下述Enemy零deltaTime问题，不能把这些静态画面结论扩大为当次运行的敌人动画/AI无异常。
+
+四、动作、成功返回与死亡返回
+
+保存Prefab后正式运行记录SavedRuntime.json：player=-4310918，light=-4310944；父节点Player，local(0,1.1,-2)，intensity1.2/range4.5，Light/URP mask2，两个Renderer mask3。
+
+动作使用Synthetic InputSystem KeyboardState，经真实PlayerInputReader与状态机Update/FixedUpdate到达状态；没有直接改为动作状态，也不是实体键鼠。
+Left-18843a7b.json、Right-7f82a373.json、Jump-e2d73842.json、Crouch-79ec8ccd.json均reached=true：
+- Left到Move/facing=-1；Right到Move/facing=+1。
+- Jump到Jump/grounded=false，玩家Y约0.39724，灯世界Y同步约1.49724。
+- Crouch到Crouch/crouching=true，灯根下local仍(0,1.1,-2)，不随模型缩放。
+每个记录before/after均同一个player/light、lightCount=1、直接位于Player根且启用。状态到达后临时timeScale0保留截图帧，并暂保合成按键至Cleanup；这不是持续动态帧或最终清理已完成的声明。截图05-SavedMovingLeft、06-SavedMovingRight、07-SavedJump、08-SavedCrouch已保存，最终输入/回调清理由主线程末节补记。
+
+Interactions.jsonl：API RelocateWithinRun定位到真实Trigger范围，再经真实空间/遮挡查询与PlayerInteraction.TryInteract完成出发、撤离、再次出发；不是物理E键。
+Lifecycle.jsonl记录：
+- SuccessfulReturn：Shelter，round1/settled1，player=-4310918、light=-4310944，lightCount1/active=true/mask2/local不变；health2/3、EV0。成功返回保留受伤状态，没有由补光逻辑回血。
+- ActualDeath.json：探索round2通过真实PlayerHealth.TakeDamage(MaxHealth) API辅助致死，accepted=true，health2→0、isDead=true、stage=DeathReturning，仍同一玩家/唯一灯。
+- DeathReturn：正式007流程回Shelter，round2/settled2、health3/3、EV0，仍同一个player/light、唯一灯、启用、mask2/local不变；截图11-SavedSuccessfulReturn、12-SavedDeathReturn已保存。
+本轮只验证补光随既有成功/死亡返回生命周期保留。EV0空物品路径不代表重新完整验收物品丢失/保有/仓库结算；这些业务由007既有证据负责。也不把API致死称为自然敌人致死或实体键鼠验收。
+
+五、Console真实记录与补验
+
+RuntimeConsoleObserved.json保留实际返回的7条日志条目（6条Assert、1条Error），不是全程日志发生次数统计。错误为DroneFlightVisual.cs:44向Visual.localRotation赋NaN；相关Assert经DroneController.FacingRotation/DroneVision路径报告四元数异常。
+Ruins隔离对照使用timeScale0冻结相位。ZeroDeltaDiagnostic.json记录只读独立数学复现：SmoothDampAngle在deltaTime0后velocity=NaN；对应现有DroneController.cs:95–96与DroneFlightVisual.cs:41–42使用Time.deltaTime。此次冻结条件触发了已有敌人平滑代码的零时间问题。
+本任务没有修改Enemy源码或屏蔽这些日志，FinalIntegrity保留其hash不变。不能将静态补光隔离通过写成“全程Console零错误”；冻结条件的失败与下述正常timeScale1独立补验分别保留。
+ZeroDeltaResumeDiagnostic.json进一步记录独立标量复现：deltaTime0令velocity成为NaN，再以deltaTime0.016转向180度会令angle也成为NaN；从干净velocity0以相同正deltaTime直接计算得到有限数。未写任何真实无人机数值。
+ToolHistory.txt保留只读execute_code旧API名称编译拒绝和修正，以及临时后台运行设置的清理记录；没有由此新增/编译产品脚本。
+
+正常timeScale1独立补验：NormalTimeRuntimeCheck.json，passed=true/timedOut=false。
+2026-10-19T09:16:45.2971350Z至09:17:31.5141176Z，新鲜Bootstrap普通Play，经公开定位API和实际Trigger/PlayerInteraction完成Shelter→Ruins→Shelter；本次会话始终不冻结timeScale，不使用实体键鼠。
+观察约46.217秒；JSON的playFrames=2400实际上是Editor tick计数，不称为2400个渲染帧。Ruins采样43次，invalidSamples=0、scaleViolations=0、logCount=0/logs=[]；四台无人机的已记录yaw/velocity/tilt/tiltVelocity/visual quaternion均保持有限数。
+补验使用新运行实例player=-4329792、light=-4329818；整个观测段保持同一玩家、唯一有效补光及往返关系。日志观察器已移除，临时后台运行设置恢复false，见结果method和主线程清理记录。
+此结果确认该正常时间观测窗口未复现冻结时间的NaN/新增日志；不删除历史失败，不证明所有敌人状态或任意暂停方式都已修复。死亡返回的依据仍为前节实际PlayerHealth API致死及Lifecycle记录，不能把此次正常时间成功往返补验额外计成第二次死亡补验。
+
+最终恢复与释放：
+- ReleaseState.json，2026-10-19T09:19:40.2291206Z：唯一Bootstrap clean/Edit；Play/paused/changing/compiling/updating/PrefabStage均false，真实TestRunnerApi.IsRunActive=false。截图、动作、日志观察回调均已移除，相关Running/Held=false；合成设备ID=-1，无残留PlayerFill输入设备。
+- timeScale1，Application.runInBackground与PlayerSettings.runInBackground均false，原DisableDomainReload、Direct3D11、PC管线保留；Player.prefab在Project中选中供查看。再次读取Prefab确认原GUID、missingScripts0、灯参数及mask2/3、PlayerLighting名称正确。
+- 补验观察器最初在Edit设置Application后台运行而影响了内存中的PlayerSettings；PreCleanupState.json保留该现场。随后已显式恢复两者false；最终ProjectSettings.asset哈希与基线一致。Docs中的观察器现改为仅在Play设置临时后台运行，并恢复PlayerSettings；不声称改后的辅助脚本重新跑过。
+- FinalConsole.json最终读取0错误/0警告；该快照不覆盖前述RuntimeConsoleObserved.json的冻结期错误。未调用Console Clear；正常时间独立观察器记录0条新增错误/警告/Assert/Exception。
+- 最后磁盘完整性复核仍仅Player.prefab、TagManager.asset两处授权变化。所有子agent工作完成，无排队Unity/Play/测试或Assets操作。
+- Docs/Verification/Enemy/EditorCoordination.txt已追加“PLAYER FILL LIGHT EXPLICIT EDITOR RELEASE — 2026-10-19”，共享Editor和Assets写入权明确释放；后续操作者fresh检查并保留当前最新资源。
+
+六、以后换正式3D角色模型
+
+保留Player根和PlayerFillLight，不将灯重挂到会旋转/缩放的Visual、骨骼或摄像机，也不在每个场景复制灯。
+在新模型每个需要补光的MeshRenderer/SkinnedMeshRenderer Inspector中，将Rendering Layer Mask增加PlayerLighting，保留原Default及原有必要位；仅勾GameObject Layer不会完成本方案。
+当前配置只接了现有CapsulePlaceholder与FacingMarker；新建Renderer不会由任何脚本自动加入专用位，需逐个配置。确保环境、草丛、箱子、无人机、浮尘等Renderer不勾PlayerLighting。
+Light的URP Rendering Layers仍只选PlayerLighting(mask2)，保持实时/无阴影/Bounce0；不要用提高全局曝光、Unlit材质或Emission替代补光。
+新材质应支持当前URP Rendering Layers（当前模型通过实际画面对照确认）。更换材质/管线或模型尺寸后，检查Standing/Crouch/Jump/左右转身及Shelter/Ruins真实1920×1080画面，按模型体积在Inspector微调灯的local位置、强度/范围；重新用灯开关和邻近普通物体确认未照到环境。
+本补光不参与隐蔽、发现、伤害或交互规则；无需给AI/物理Mask添加PlayerLighting。

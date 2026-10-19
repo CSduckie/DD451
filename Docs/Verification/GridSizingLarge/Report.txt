@@ -1,0 +1,27 @@
+背包与仓库放大到原背包尺寸
+2026-10-18
+
+结果
+按用户最新要求，恢复统一前实际BackpackPanel.prefab的66×66、gap4、padding6（不是旧脚本中未采用的68默认值）。两边View默认和Prefab一致；4×4背包整体288×288、x36居中。正式1920×1080 Canvas缩放为1，两边实际单格均66px。
+仓库20列总宽1408、viewport1430，保持20列完整可见且只纵向滚动。仓库外框1488宽，庇护所升级信息移到底部。打开整理时隐藏底部世界交互提示，避免与升级信息重叠。
+
+修改范围
+Assets/Scripts/Backpack/MonoBehaviour/BackpackView.cs
+Assets/Tests/Backpack/Editor/BackpackTestSceneBuilder.cs
+Assets/Prefabs/UI/Backpack/BackpackPanel.prefab
+Assets/Scripts/Warehouse/MonoBehaviour/WarehouseView.cs
+Assets/Prefabs/UI/Warehouse/WarehousePanel.prefab
+Assets/Scripts/GameFlow/MonoBehaviour/GameFlowResponsiveLayout.cs
+Assets/Tests/GameFlow/Editor/MinimumLoopSceneBuilder.cs
+仅改显示和搭建默认值；不改独立占格算法、身份、转移提交、EV或输入业务逻辑；未新增框架或namespace。
+
+验证
+1. 当前Unity编译完成，末次Console错误0/警告0。
+2. 现有正式场景扩展指针用例通过1/1。覆盖逐件搜索拾取、R旋转、双向转仓、两轮返回、唯一ID与摆放保持、中英文字边界、升级及新增第22行转移。job c61b2dadfa004694ab67d6bf255f8f2a；这是InputSystem排队事件测试，不是第二次实体键鼠操作。
+3. 首次用例暴露英文Warehouse标题42高不足，修为48后原用例通过。未改测试断言。
+4. 普通Play用临时公开API样本检查三张1920截图：中文、英文、英文升级后。运行读回两边66/4/6、缩放1，升级后20×24、格高1688，EV7、实例2、原格不变。
+5. 用户已在放大前亲手完成原生F10/Tab/E/A/D与双向拖拽，并有真实设备/动作/身份记录，见../NativeInputFollowup/Report.txt。此证据不扩大为完整三轮搜刮验收。
+
+收尾与范围
+普通Play已停止；临时样本及观察器清除；后台运行恢复false。桌面工具在报告Esc停止后未继续操作键鼠，后续验证通过Unity MCP和引擎截图完成。
+仅要求正式1920界面；旧WarehouseTest等模块演示场景保持原布局，不宣称它们已按66显示。此前GridSizing目录36/3/8是历史证据，最新规则以ProjectRules.txt R01与本记录为准。

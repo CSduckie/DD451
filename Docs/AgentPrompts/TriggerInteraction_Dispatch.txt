@@ -1,0 +1,92 @@
+TriggerBox interaction dispatch — 02A / 06D / 07C
+Project: E:/DD451
+User request (2026-10-18): 物品跟玩家模型不产生接触，也可以在一定范围内交互；使用物品自带的BoxCollider TriggerBox；下发对应聊天修改。
+This is a task assignment, not implementation or acceptance evidence.
+
+Scope update: user explicitly added “所有的交互都要同步成这个模式”. This applies to every world Interactable: GroundItem, LootBox, GameFlowInteractable Storage/Departure/Extraction, and future world targets. Screen UI buttons/dragging retain their existing input rules. This is mandatory global migration, not optional compatibility work for GameFlow.
+Migrate all existing prefab/scene instances and relevant module test builders/doubles. Missing or disabled explicit interactionTrigger must reject with a clear configuration diagnostic where appropriate, never silently fall back to the old radius system. Target prompts, E execution and active-session spatial checks share the same reach rule.
+02A additionally covers Assets/Tests/Player/TestDoubles/PlayerTestInteractable.cs and Player fixture builders; 06D covers Loot fixtures; 07C audits the full project for omitted Interactable instances/builders and coordinates required migrations without rewriting other module business logic. Full-project scan currently found three production subclasses: GroundItem, LootBox and GameFlowInteractable, plus PlayerTestInteractable test double.
+
+Current implementation verified
+Player/Interact is bound to E in Assets/Input/GameInputActions.inputactions.
+PlayerInputReader receives performed and PlayerController consumes once in Update.
+PlayerInteraction.RefreshTarget uses Physics.OverlapSphere (Player prefab radius 2, queryOffset 0/1/0), target root Z limit 0.65, target Collider.ClosestPoint, 3D wall rays, nearest valid Interactable.
+TryInteract rechecks then calls target.Interact(this).
+LootBox/GroundItem open a real loot source; GameFlowInteractable opens warehouse/departs/extracts.
+LootUIController.CanReachTarget checks remain active while input is UI-blocked.
+Current logic does not require model contact. New task moves target reach authority to each object's explicit TriggerBox.
+
+Shared behavior and minimal API
+- Enter object interaction TriggerBox: eligible for E prompt. Press E once: invoke existing target action once. Enter alone does not auto-loot or auto-open.
+- A dedicated 3D BoxCollider with isTrigger=true defines the range; inspector center/size are configurable independently of model scale and solid collision.
+- Prefer named child TriggerBox; existing solid model collider remains non-trigger if it provides blocking. Ground props need no added solid body merely to enable interaction.
+- Use player body CapsuleCollider overlap as this assignment's explicit boundary convention, not mesh contact. Range trigger never pushes or blocks the player.
+- No extra legacy 2m radius dilation/cutoff or target-root 0.65 Z clipping for explicitly configured TriggerBox. Its authored shape and depth decide eligibility. Trigger-only depth overlap can permit models with visual Z offsets.
+- Preserve actual wall obstruction. Ray to a defined interactionPoint/target anchor, NOT TriggerBox.ClosestPoint when player is already inside, which would produce zero-length rays and bypass walls.
+- Stable target selection by distance to interaction point; deterministic tie-break. One target/action per E; no multi-open when ranges overlap.
+- A disabled/destroyed target or disabled trigger immediately invalidates eligibility; player spawn/teleport inside, re-enable and multiple body colliders must work without waiting for a new OnTriggerEnter.
+- Keep UI/input locking separate from spatial eligibility. An opened loot UI blocks another E but must not invalidate its own CanReachTarget check. Leaving range cancels current drag/search safely; revealed items remain, current unrevealed timer restarts on reopen.
+- Keep CanReachWorldPoint for actual world-point/drop validation. It currently serves LootRuntimeManager.IsDropPointSafe and has no target object; do not remove it or let its old radius clamp TriggerBox target reach.
+- Proposed shared fields owned by 02 on Interactable: public BoxCollider interactionTrigger; optional public Transform interactionPoint. Fallback point must be documented. Keep existing CurrentTarget, CurrentPromptKey, TryInteract, CanReachTarget, CanReachWorldPoint consumer APIs where possible.
+- If 02 finds this minimal field proposal unsuitable, update 02A handoff with the exact replacement before dependent writes. No generic interaction framework or duplicate E input.
+- All project-owned C# has no namespace, English folders, existing readable style. Reuse user's local GitHub reference where relevant. 3D physics only, 1920x1080, default CN / existing F10 EN service.
+
+02A owner: 任务002玩家移动
+Allowed production source:
+Assets/Scripts/Interaction/MonoBehaviour/PlayerInteraction.cs
+Assets/Scripts/Interaction/MonoBehaviour/Interactable.cs
+Assets/Scripts/Interaction/MonoBehaviour/InteractionTrigger.cs (only if needed for explicit lifecycle handling)
+Existing Player source only where truly necessary; preserve movement, health and input ownership.
+Tests: Assets/Tests/Player/PlayMode/PlayerInteractionTests.cs and tightly related files.
+Own fixture builder: Assets/Tests/Player/Editor/, where present.
+Do not edit Loot/GameFlow production, shared formal scenes or other module prefabs.
+Implement common TriggerBox reach/selection/lifecycle and compatible UI reach API.
+Meaningful tests: outside trigger but within old sphere rejected; inside enlarged trigger farther than old radius accepted; visual Z offset does not clip authored range; body does not touch model yet interacts; wall inside large trigger still blocks; trigger disable/re-enable/teleport; overlapping targets and multicollider cleanup; E blocked but open source spatial check remains valid.
+Write Docs/Handoffs/02A_TriggerInteraction_Handoff.txt with READY_FOR_INTEGRATION when code/necessary fixtures ready. Record exact fields and methods, runnable test names, remaining work. No Unity Play/tests/scenes while 07C controls integration.
+
+06D owner: 任务006物品拾取与移动
+Allowed source: Assets/Scripts/Loot/, necessary existing transfer consumers in its own module, Assets/Tests/Loot/.
+Own prefabs: Assets/Prefabs/Loot/LootBox.prefab and GroundItem.prefab (preserve GUID).
+Own builder: Assets/Tests/Loot/Editor/LootTestSceneBuilder.cs.
+Wait for 02A contract before dependent code/asset writes; independent read-only audit may start immediately.
+Add/configure explicit TriggerBox references on LootBox and GroundItem, separate visuals/solid geometry/range as needed. Default ranges should visibly allow interaction with a gap; inspector values remain configurable.
+Keep world model scale intact, no enlargement of visible meshes to enlarge interaction.
+Critical existing coupling:
+LootRuntimeManager.ValidateGroundPrefab currently demands exactly one small centered root BoxCollider.
+IsDropPointSafe currently treats GroundItem/LootBox child colliders, including triggers, as drop obstacles.
+Update these checks only as required to distinguish actual drop/body footprint from interaction TriggerBox. Trigger volume must not enlarge drop footprint or block unrelated drops; actual obstruction safety still applies.
+Preserve real source session validity, one-time generation/unique identity, partial reveal, interruption, all transfer guarantees and latest Ctrl/precise-drag behavior.
+No rebuild of all Loot assets or reset of user-configured tables.
+Write Docs/Handoffs/06D_TriggerLoot_Handoff.txt with READY_FOR_INTEGRATION, exact pending prefab/build steps if source-only.
+No Unity scene switches/Play/test runs; 07C owns the single editor validation phase.
+
+07C owner: 任务007串联游戏流程
+Read 02A and 06D handoffs, wait for both ready, then integrate serially. May use read-only wait_threads snapshots; no need to message other chats.
+Own GameFlow and Assets/Tests/GameFlow/Editor/MinimumLoopSceneBuilder.cs adaptations.
+Own formal Bootstrap/Shelter/Ruins references and GameFlow interactable prefab instances; use minimal instance edits instead of rebuilding user-authored environment.
+Wire ALL existing warehouse/departure/extraction targets to the common explicit trigger approach, including their prefab/scene instances and builders; do not change their business rules. Audit remaining source and test builders for legacy range behavior. No old-range fallback in final delivered world interaction.
+Coordinate any necessary shared Player prefab field setup; avoid overwriting 02/06 source.
+Current known Editor state at prior operation: Shelter open and dirty, Play=false. Re-read live state. Do not save, reload, discard or replace the user's dirty scene implicitly. Continue code/asset and non-disruptive checks; report if a scene switch cannot safely proceed.
+Before mutations back up actual touched asset content and GUIDs; do not just record hashes.
+Specific pre-save checkpoint from 06 handoff: Assets/Scenes/Tests/Loot/LootTest.unity must be backed up as current actual bytes together with its .meta, then inspected by object, prefab overrides, UI links and source links. Identify which differences belong to earlier upgrades or user/other-chat edits. Parts of the 06C baseline were reconstructed text comparisons, NOT original byte snapshots; they are not safe restoration sources. Never whole-file checkout/reset/rebuild LootTest merely because it differs from an old baseline. Record this inspection in the integration evidence before saving any necessary change.
+Only 07C runs Unity refresh/compile/Play/tests for this assignment, after source writers are ready.
+Run focused 02/06/common-flow regressions appropriate to changed behavior, then actual 1920x1080 scene checks. Preserve historical 07B failure evidence separately; don't silently claim unrelated open issues fixed.
+Read the actual current project and do not assume 08/global acceptance is complete.
+
+07C acceptance
+1. Player visibly separated from box/item model but inside TriggerBox sees localized E prompt; E opens one real source.
+2. Outside TriggerBox no prompt/action, even if within old 2m sphere. Enlarged trigger works past old radius.
+3. Size/center/depth configured per prefab/instance changes range without changing visual scale or solid collisions.
+4. Wall still blocks even when large TriggerBox extends through it; decorative/interaction triggers do not block rays.
+5. Overlap of two sources chooses one stable target and invokes once.
+6. Walking out / disabled source / teleport invalidates safely, and re-entry works.
+7. Opening loot UI does not immediately close it due to InputBlocked. Interrupted search keeps reveals/current timer reset; current drag fails safely without loss or duplication.
+8. Existing warehouse, departure, extraction and next-round flow remain usable.
+9. CN/EN prompts, F10, player X/Y movement and fixed Z preserved.
+10. Test results distinguish code/API/queued input/native/manual visual. No fabricated native success.
+
+Delivery
+Docs/Handoffs/07C_TriggerInteractionIntegration_Handoff.txt
+Evidence: Docs/Verification/TriggerInteraction/
+Include ownership, actual changed files, precise inspector setup, test results, screenshots, untested items and restored/released editor state.
+

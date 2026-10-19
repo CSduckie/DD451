@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-18",
+  "request": "恢复统一前实际背包Prefab大小",
+  "source": "Temp/UnifiedGridSizeBackup/Assets/Prefabs/UI/Backpack/BackpackPanel.prefab",
+  "cellSize": 66,
+  "gap": 4,
+  "padding": 6,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "beforeUpgrade": {
+    "screen": [
+      1920,
+      1080
+    ],
+    "bagCell": 66,
+    "warehouseCell": 66,
+    "bagGap": 4,
+    "warehouseGap": 4,
+    "bagPadding": 6,
+    "warehousePadding": 6,
+    "bagScale": 1,
+    "warehouseScale": 1,
+    "viewport": 1430,
+    "gridWidth": 1408,
+    "horizontal": false,
+    "warehouseWidth": 20,
+    "warehouseHeight": 20,
+    "bagRect": "(x:0.00, y:-288.00, width:288.00, height:288.00)"
+  },
+  "afterUpgrade": {
+    "bagCell": 66,
+    "warehouseCell": 66,
+    "bagScale": 1,
+    "warehouseScale": 1,
+    "warehouseWidth": 20,
+    "warehouseHeight": 24,
+    "gridHeight": 1688,
+    "ev": 7,
+    "instanceCount": 2,
+    "stage": "Shelter"
+  },
+  "test": {
+    "name": "MinimumLoopPointerTests.FormalSearchPickupExtractionAndBidirectionalStorageUseQueuedPointers",
+    "job": "c61b2dadfa004694ab67d6bf255f8f2a",
+    "status": "succeeded",
+    "completed": 1,
+    "total": 1,
+    "failures": [],
+    "input": "InputSystem queued events, not native OS input",
+    "initialFailure": {
+      "job": "03588789847c4ec68665182fd78e762a",
+      "message": "Warehouse英文标题需要43.44高，原42不足；高度改为48后同项通过"
+    }
+  },
+  "screenshots": [
+    "Chinese1920.png",
+    "English1920.png",
+    "EnglishUpgraded1920.png"
+  ],
+  "console": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "scope": "正式Bootstrap/Shelter/Ruins 1920x1080。旧模块测试场景保留旧布局。本次未重新声称原生完整循环验收。",
+  "nativeEvidence": "../NativeInputFollowup/Report.txt",
+  "cleanup": "临时API样本随Play退出清除，Application.runInBackground恢复false；桌面自动操作在Esc停止状态后未继续。"
+}

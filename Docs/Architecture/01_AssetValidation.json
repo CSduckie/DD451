@@ -1,0 +1,68 @@
+{
+  "libraryValid": true,
+  "error": null,
+  "definitions": [
+    {
+      "id": "doll",
+      "zh": "布娃娃",
+      "en": "Doll",
+      "width": 2,
+      "height": 3,
+      "ev": 5,
+      "unique": true,
+      "canUse": false,
+      "consumed": false,
+      "limit": 0,
+      "effects": 0,
+      "inspectorWidth": true
+    },
+    {
+      "id": "medkit",
+      "zh": "医疗包",
+      "en": "Medkit",
+      "width": 2,
+      "height": 2,
+      "ev": 2,
+      "unique": true,
+      "canUse": true,
+      "consumed": false,
+      "limit": 1,
+      "effects": 1,
+      "inspectorWidth": true
+    },
+    {
+      "id": "food",
+      "zh": "食物",
+      "en": "Food",
+      "width": 2,
+      "height": 2,
+      "ev": 0,
+      "unique": false,
+      "canUse": true,
+      "consumed": true,
+      "limit": 0,
+      "effects": 1,
+      "inspectorWidth": true
+    },
+    {
+      "id": "battery",
+      "zh": "电池",
+      "en": "Battery",
+      "width": 1,
+      "height": 2,
+      "ev": 0,
+      "unique": false,
+      "canUse": false,
+      "consumed": false,
+      "limit": 0,
+      "effects": 0,
+      "inspectorWidth": true
+    }
+  ],
+  "prefabManagerCount": 1,
+  "prefabLibrary": true,
+  "missingScripts": 0,
+  "urpCamera": true,
+  "playStopped": true,
+  "scene": "Assets/Scenes/SampleScene.unity"
+}

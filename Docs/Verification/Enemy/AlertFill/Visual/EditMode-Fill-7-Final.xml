@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="7" result="Passed" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-19 05:33:57Z" end-time="2026-10-19 05:33:57Z" duration="0.2397426">
+  <test-suite type="TestSuite" id="1000" name="DD451Demo" fullname="DD451Demo" runstate="Runnable" testcasecount="333" result="Passed" start-time="2026-10-19 05:33:57Z" end-time="2026-10-19 05:33:57Z" duration="0.239743" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1090" name="MyPrecious.Enemy.EditModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.Enemy.EditModeTests.dll" runstate="Runnable" testcasecount="34" result="Passed" start-time="2026-10-19 05:33:57Z" end-time="2026-10-19 05:33:57Z" duration="0.139524" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="85336" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestFixture" id="1068" name="DroneVisionAlertFillTests" fullname="DroneVisionAlertFillTests" classname="DroneVisionAlertFillTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-19 05:33:57Z" end-time="2026-10-19 05:33:57Z" duration="0.135970" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1074" name="ClearAndDisableReenableDoNotRetainFill" fullname="DroneVisionAlertFillTests.ClearAndDisableReenableDoNotRetainFill" methodname="ClearAndDisableReenableDoNotRetainFill" classname="DroneVisionAlertFillTests" runstate="Runnable" seed="887129390" result="Passed" start-time="2026-10-19 05:33:57Z" end-time="2026-10-19 05:33:57Z" duration="0.011931" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1073" name="OrdinaryTintClearsFillAndKeepsRequestedColor" fullname="DroneVisionAlertFillTests.OrdinaryTintClearsFillAndKeepsRequestedColor" methodname="OrdinaryTintClearsFillAndKeepsRequestedColor" classname="DroneVisionAlertFillTests" runstate="Runnable" seed="594006817" result="Passed" start-time="2026-10-19 05:33:57Z" end-time="2026-10-19 05:33:57Z" duration="0.003113" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-suite type="ParameterizedMethod" id="1072" name="ProgressClampsWithoutReplacingGeometry" fullname="DroneVisionAlertFillTests.ProgressClampsWithoutReplacingGeometry" classname="DroneVisionAlertFillTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-19 05:33:57Z" end-time="2026-10-19 05:33:57Z" duration="0.010953" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-case id="1069" name="ProgressClampsWithoutReplacingGeometry(-1.0f,0.0f)" fullname="DroneVisionAlertFillTests.ProgressClampsWithoutReplacingGeometry(-1.0f,0.0f)" methodname="ProgressClampsWithoutReplacingGeometry" classname="DroneVisionAlertFillTests" runstate="Runnable" seed="1379229405" result="Passed" start-time="2026-10-19 05:33:57Z" end-time="2026-10-19 05:33:57Z" duration="0.004858" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1070" name="ProgressClampsWithoutReplacingGeometry(0.5f,0.5f)" fullname="DroneVisionAlertFillTests.ProgressClampsWithoutReplacingGeometry(0.5f,0.5f)" methodname="ProgressClampsWithoutReplacingGeometry" classname="DroneVisionAlertFillTests" runstate="Runnable" seed="1021827414" result="Passed" start-time="2026-10-19 05:33:57Z" end-time="2026-10-19 05:33:57Z" duration="0.000845" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+          <test-case id="1071" name="ProgressClampsWithoutReplacingGeometry(2.0f,1.0f)" fullname="DroneVisionAlertFillTests.ProgressClampsWithoutReplacingGeometry(2.0f,1.0f)" methodname="ProgressClampsWithoutReplacingGeometry" classname="DroneVisionAlertFillTests" runstate="Runnable" seed="520719057" result="Passed" start-time="2026-10-19 05:33:57Z" end-time="2026-10-19 05:33:57Z" duration="0.000759" asserts="0">
+            <properties>
+              <property name="retryIteration" value="0" />
+              <property name="repeatIteration" value="0" />
+            </properties>
+          </test-case>
+        </test-suite>
+        <test-case id="1075" name="SharedMaterialInstancesFillAndRetreatIndependently" fullname="DroneVisionAlertFillTests.SharedMaterialInstancesFillAndRetreatIndependently" methodname="SharedMaterialInstancesFillAndRetreatIndependently" classname="DroneVisionAlertFillTests" runstate="Runnable" seed="1388830478" result="Passed" start-time="2026-10-19 05:33:57Z" end-time="2026-10-19 05:33:57Z" duration="0.002894" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1076" name="WallClippedFanHasNormalizedRadialUvsAndOneSurface" fullname="DroneVisionAlertFillTests.WallClippedFanHasNormalizedRadialUvsAndOneSurface" methodname="WallClippedFanHasNormalizedRadialUvsAndOneSurface" classname="DroneVisionAlertFillTests" runstate="Runnable" seed="2135979578" result="Passed" start-time="2026-10-19 05:33:57Z" end-time="2026-10-19 05:33:57Z" duration="0.003646" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/cs200/AppData/LocalLow/DefaultCompany/DD451Demo\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

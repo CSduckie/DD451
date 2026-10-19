@@ -1,0 +1,28 @@
+{
+  "success": true,
+  "message": "Code executed successfully.",
+  "data": {
+    "result": {
+      "scene": "Assets/Scenes/Shelter.unity",
+      "dirty": true,
+      "playing": false,
+      "effects": [
+        {
+          "name": "灯光",
+          "enabled": true,
+          "active": true,
+          "lightIntensity": 50,
+          "lightEnabled": true
+        },
+        {
+          "name": "灯光 (1)",
+          "enabled": true,
+          "active": true,
+          "lightIntensity": 50,
+          "lightEnabled": true
+        }
+      ]
+    },
+    "compiler": "codedom"
+  }
+}

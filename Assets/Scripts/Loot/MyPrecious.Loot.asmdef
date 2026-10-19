@@ -1,0 +1,6 @@
+{
+    "name": "MyPrecious.Loot",
+    "rootNamespace": "",
+    "references": ["MyPrecious.Items", "MyPrecious.Backpack", "MyPrecious.Warehouse", "MyPrecious.Shelter", "MyPrecious.Player", "MyPrecious.Interaction", "MyPrecious.Localization", "MyPrecious.Bootstrap", "MyPrecious.Health", "Unity.InputSystem", "Unity.TextMeshPro", "Unity.ugui"],
+    "autoReferenced": true
+}

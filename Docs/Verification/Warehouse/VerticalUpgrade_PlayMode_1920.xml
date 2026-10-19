@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="7" result="Passed" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-18 20:07:14Z" end-time="2026-10-18 20:07:17Z" duration="2.5350997">
+  <test-suite type="TestSuite" id="1095" name="DD451Demo" fullname="DD451Demo" runstate="Runnable" testcasecount="73" result="Passed" start-time="2026-10-18 20:07:14Z" end-time="2026-10-18 20:07:17Z" duration="2.535100" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1091" name="MyPrecious.Warehouse.PlayModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.Warehouse.PlayModeTests.dll" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-18 20:07:14Z" end-time="2026-10-18 20:07:17Z" duration="2.441136" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="48276" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1083" name="WarehouseIntegrationTests" fullname="WarehouseIntegrationTests" classname="WarehouseIntegrationTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-18 20:07:14Z" end-time="2026-10-18 20:07:17Z" duration="2.435885" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1087" name="ConfirmationLanguageCancelStaleTargetAndRepeatedClickCannotRepeatLoss" fullname="WarehouseIntegrationTests.ConfirmationLanguageCancelStaleTargetAndRepeatedClickCannotRepeatLoss" methodname="ConfirmationLanguageCancelStaleTargetAndRepeatedClickCannotRepeatLoss" classname="WarehouseIntegrationTests" runstate="Runnable" seed="2035791429" result="Passed" start-time="2026-10-18 20:07:14Z" end-time="2026-10-18 20:07:15Z" duration="1.009960" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1090" name="DestroyingCompleteRuntimeThenStartingFreshUsesInitialConfigAndChinese" fullname="WarehouseIntegrationTests.DestroyingCompleteRuntimeThenStartingFreshUsesInitialConfigAndChinese" methodname="DestroyingCompleteRuntimeThenStartingFreshUsesInitialConfigAndChinese" classname="WarehouseIntegrationTests" runstate="Runnable" seed="1692612659" result="Passed" start-time="2026-10-18 20:07:16Z" end-time="2026-10-18 20:07:16Z" duration="0.201395" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1086" name="DisableFocusLossContextExitAndLateReleaseCancelWithoutAccumulatingRCallbacks" fullname="WarehouseIntegrationTests.DisableFocusLossContextExitAndLateReleaseCancelWithoutAccumulatingRCallbacks" methodname="DisableFocusLossContextExitAndLateReleaseCancelWithoutAccumulatingRCallbacks" classname="WarehouseIntegrationTests" runstate="Runnable" seed="817125989" result="Passed" start-time="2026-10-18 20:07:16Z" end-time="2026-10-18 20:07:16Z" duration="0.136042" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1088" name="NewAdditiveShelterContextCancelsOldDragAndConfirmationWithoutRevokingNewInteraction" fullname="WarehouseIntegrationTests.NewAdditiveShelterContextCancelsOldDragAndConfirmationWithoutRevokingNewInteraction" methodname="NewAdditiveShelterContextCancelsOldDragAndConfirmationWithoutRevokingNewInteraction" classname="WarehouseIntegrationTests" runstate="Runnable" seed="294318729" result="Passed" start-time="2026-10-18 20:07:16Z" end-time="2026-10-18 20:07:16Z" duration="0.104012" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1084" name="QueuedPointerDragUsesRealEventSystemAndRAndF10OnlyChangePreview" fullname="WarehouseIntegrationTests.QueuedPointerDragUsesRealEventSystemAndRAndF10OnlyChangePreview" methodname="QueuedPointerDragUsesRealEventSystemAndRAndF10OnlyChangePreview" classname="WarehouseIntegrationTests" runstate="Runnable" seed="1351560835" result="Passed" start-time="2026-10-18 20:07:16Z" end-time="2026-10-18 20:07:16Z" duration="0.340911" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1089" name="SceneReloadRebindsPersistentStateAndClearsPermissionUntilNewSceneGrantsIt" fullname="WarehouseIntegrationTests.SceneReloadRebindsPersistentStateAndClearsPermissionUntilNewSceneGrantsIt" methodname="SceneReloadRebindsPersistentStateAndClearsPermissionUntilNewSceneGrantsIt" classname="WarehouseIntegrationTests" runstate="Runnable" seed="1448589582" result="Passed" start-time="2026-10-18 20:07:16Z" end-time="2026-10-18 20:07:16Z" duration="0.209738" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1085" name="VerticalScrollingKeepsEveryColumnVisibleAndMapsPointerWithoutRebuildingCells" fullname="WarehouseIntegrationTests.VerticalScrollingKeepsEveryColumnVisibleAndMapsPointerWithoutRebuildingCells" methodname="VerticalScrollingKeepsEveryColumnVisibleAndMapsPointerWithoutRebuildingCells" classname="WarehouseIntegrationTests" runstate="Runnable" seed="1481858802" result="Passed" start-time="2026-10-18 20:07:16Z" end-time="2026-10-18 20:07:17Z" duration="0.373568" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/cs200/AppData/LocalLow/DefaultCompany/DD451Demo\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

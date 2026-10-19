@@ -1,0 +1,83 @@
+MyPrecious P0 — 06D全部Loot来源显式TriggerBox接入
+工程：E:/DD451；2026-10-18；ProjectRules Dispatch v21 / A26。
+状态：READY_FOR_INTEGRATION（源码、测试夹具和资产升级步骤就绪；不是编译或运行验收通过）。
+本轮没有运行Unity刷新、编译、Play、测试或保存资产；07C/07D统一操作Editor。
+
+一、实际契约与实现
+
+已读取02A最终READY交接及实际Interactable/PlayerInteraction源码；02B最终交接也已显示READY。02A字段为public BoxCollider interactionTrigger、可选Transform interactionPoint；后者为空时射线/排序使用目标根。TryGetInteractionTrigger验证结构及运行可用性，归属查询包含inactive祖先；未激活仍正常拒绝。没有新增基类OnEnable注册。
+所有世界交互统一显式TriggerBox，缺配不回退旧球形半径。06不增加E输入、范围算法或OnTriggerEnter名单。LootBox/GroundItem继承字段，LootBox.cs无需改动。LootUIController打开/持续会话及Runtime拾取/返箱已经真实调用CanReachTarget，本轮未改这些业务链。
+玩家身体与范围精确重叠，向实际交互点检查墙体，UI锁不取消空间可达；离开或禁用后按已有关闭链取消拖拽及当前搜索计时，保留揭示和身份。CanReachWorldPoint独立保留实际世界点半径、深度和墙，只用于底层安全落点，不限制新交互范围。
+
+LootRuntimeManager.ValidateGroundPrefab：
+- 保留启用的中心小根Box占位，世界尺寸有限且各轴非零，不超过dropRadius直径，禁止Rigidbody。
+- 单独要求明确归属本GroundItem的子Box范围，isTrigger=true、enabled、整条子路径activeSelf；允许模板根inactive。
+- 配置校验不调用依赖activeInHierarchy的TryGetInteractionTrigger；GetComponentInParent包含inactive祖先。
+- 范围中心/世界尺寸须有限，各轴非零；范围不得绑定原根占位或同根另一Box；层级只允许原根占位与这一范围，额外Collider拒绝。
+IsDropPointSafe在Loot层级只排除nearest Interactable显式绑定且isTrigger=true的范围；其他Loot小占位Trigger和所有实体仍阻挡，普通无关范围Trigger沿用不占位规则。地面支持、固定Z、墙和准备后CanCommit复验保留。动态克隆沿用Prefab内部引用，不重新生成身份。
+GroundItem隐藏时仅记录自己关闭的Renderer/Collider；重显只恢复这些记录并清空列表。首次绑定不启用人工禁用组件，连续隐藏不丢失第一次记录，已销毁组件安全跳过。
+来源、唯一恢复、Taken、轮次及正式丢弃规则保持。本任务没有恢复“背包丢弃后可捡回”的旧用户流程；现有底层drop能力仍不是背包丢弃入口。
+
+二、实际修改文件与备份
+
+Assets/Scripts/Loot/MonoBehaviour/LootRuntimeManager.cs
+Assets/Scripts/Loot/MonoBehaviour/GroundItem.cs
+Assets/Tests/Loot/Editor/LootTestSceneBuilder.cs
+Assets/Tests/Loot/EditMode/LootSourceStateTests.cs
+Assets/Tests/Loot/EditMode/LootGridLayoutTests.cs
+Assets/Tests/Loot/PlayMode/LootIntegrationTests.cs
+Assets/Tests/Loot/PlayMode/LootGridSearchTests.cs
+Assets/Tests/Loot/PlayMode/LootUIRegressionTests.cs
+Docs/Architecture/TransfersLootSetup.txt
+本交接及Docs/Verification/TriggerInteraction/06D/StaticReview.json。
+
+共8份既有C#，无新增脚本/程序集/namespace/.meta。LootBox、LootUIController、Transfer Coordinator/Bridge、01身份、04/05格子、02源码及GameFlow未由06修改。LootReturnTests复用已迁移的CreateGridTestBox；LootTestDriver不构造目标，也不运行时补范围掩盖资产漏配，两文件未改。
+写前实际内容副本在Docs/Verification/TriggerInteraction/06D/Before，含上述8份、未改的LootBox.cs及Architecture原文，共10份。首次复制逐份SHA256一致，未覆盖。06D全部是真实写前副本；不同于06C部分反向补建文本比较基线。后者不能覆盖当前资产。
+
+三、资产真实状态与07精确操作步骤
+
+本轮没有修改LootBox.prefab、GroundItem.prefab、LootTest.unity或正式场景。源码READY不代表现有资产已接线，运行测试前必须完成以下步骤。
+当前已知用户Shelter有未保存修改，07须重新读取实际状态，不得擅自保存、丢弃、重载或切换替代它。06不占用Editor。A27相机由02B/07接线，06工具不触碰相机。
+
+1. 确认02A、02B、06D最终READY，再由07统一编译。保存前实际备份当时资产内容与.meta/GUID，不只记录hash。重点逐对象复核LootTest已有保存差异，确认Prefab覆盖、UI/来源接线和其他人的修改，禁止按旧快照整文件回退或重建。
+2. Tools/MyPrecious/Upgrade Loot Interaction Prefabs → LootTestSceneBuilder.UpgradeInteractionPrefabs()。先退出两个目标资产的PrefabStage，并妥善处理未保存资产编辑；菜单会拒绝这些情况。仅对既有LootBox和GroundItem执行LoadPrefabContents→补显式子范围→同路径SaveAsPrefabAsset→Unload，不调用Build、SaveAssets或场景保存。
+3. 在用户未保存内容已安全处理且允许加载的时机，打开现有LootTest。Tools/MyPrecious/Upgrade Loot Test Interaction Triggers → UpgradeTestInteractionTriggers()只接受已加载且初始clean的该场景，不打开/切换/保存任何场景。含inactive扫描所有LootBox/GroundItem，先预检全部配置，再补缺子范围/引用，记录实例覆盖并标dirty。07逐项复核后显式保存LootTest。
+4. 审计LootTest现有5箱+2地面及新增非Prefab/解包对象。正式Ruins已见2个Loot来源Prefab实例，由07检查继承及覆盖，不仅假定更新Prefab就完成所有场景接线。GameFlow仓库/出发/撤离及其他模块漏项按02A契约由07完成全项目扫描；06这两个菜单不保存正式场景。
+
+范围结构与参数：
+- 独立子物体TriggerBox，BoxCollider.isTrigger=true，无Renderer/Rigidbody，layer沿用目标，须被PlayerInteraction.interactableLayers包含。
+- 新建默认世界边长沿对象各轴为(3.2,2.8,2)，中心向世界上方偏0.6。local size按abs(lossyScale)换算，center用InverseTransformPoint换算；不放大模型。这些是可调默认。
+- 现LootBox根scale=(0.9,0.85,0.75)，新范围local size约(3.555556,3.294118,2.666667)、center约(0,0.705882,0)。Ground根scale=1，新范围size=(3.2,2.8,2)、center=(0,0.6,0)。
+- interactionPoint可留空使用根锚点，已有人工点保留。根在墙内/脚底影响射线时，由07放置合理物体交互点，不能挪到玩家一侧绕过墙。
+- 已有有效child引用或同名子Box保留所有参数；绑定根占位、错归属、非Trigger、非法尺寸/缩放报错拒绝，不自动覆盖。已有disabled/inactive不悄悄启用且不可交互；Ground运行模板须可用，由07按用途复核。
+- 两个当前Prefab原小根Collider本来都是trigger，升级不改其size/isTrigger/enabled；其他已有solid变体也须保留。Ground原根Box为0.36³，不能扩大成范围。
+- LootBox GUID：5a6f77d4e54f5db4f96cef3d48ee511a；GroundItem GUID：77b7bedce9c1def4ab7a47d9f1844397。
+- CreateWorldPrefabs未来缺失资产创建分支也接同一配置；本轮不要运行Create Loot Test Assets/Build、Upgrade Loot Test Layout或重建用户掉落表/UI。
+
+四、测试源码与实际验证边界
+
+EditMode静态计数138个参数展开case（原122）：ItemTransfer 28、Generation 17、GridLayout 34、SourceState 59。净增16，数量是源码统计，不是Unity发现/通过成绩。
+关键方法：
+LootSourceStateTests.BoundLootInteractionRangesDoNotOccupyDropSpaceButRootFootprintsDo（Ground/Loot两类）
+LootSourceStateTests.PreparedDropRechecksActualOccupancyWithoutTreatingBoundRangeAsVolume（实体/未绑定Loot Trigger）
+LootSourceStateTests.InactiveDropTemplateSeparatesLargeRangeFromSmallFootprintAndClonesTheBinding
+LootSourceStateTests.InvalidDropTemplateCannotUseInteractionRangeAsItsFootprint（10种配置错误）
+LootSourceStateTests.GroundBindingAndRepeatedHideRestoreOnlyPreviouslyEnabledComponents（范围初始启用/禁用）
+显隐验证走真实BindGround→MarkTaken/CompletePickupVisual→重复Bind隐藏→RestoreTaken→重复Bind恢复，无反射或内部字段绕过。所有EditMode Loot构造器显式配置独立范围；PreparedPlayer使用真实RequireComponent身体胶囊。
+
+PlayMode静态计数37个UnityTest（原36）。动态CreateGridTestBox在inactive期接独立TriggerBox/交互点，激活后由真实Runtime生成；原小根占位仍trigger，保留多箱夹具既有不互挡视线语义。
+真实场景测试不运行时补范围：漏接资产直接失败。已有箱子及地面排队E测试强化为身体与Trigger精确重叠、与Renderer横向有间隙、进入不自动打开、按住E仅一个session、UI锁后CanReachTarget仍有效。
+LootIntegrationTests.LeavingExplicitTriggerAndRealWallInterruptSearchWhileUiLockDoesNot：从实际范围边界计算离开位置，按交互点射线中点摆墙；UI锁可持续，离开/墙则中断。
+新增LootIntegrationTests.TriggerExitAndDisableCancelSearchDragButKeepRevealsAndIdentityOnReentry：离开、范围禁用、目标组件禁用；取消真实拖拽、保留揭示/布局/身份、清零当前计时、拒绝旧松手，重入后真实Ctrl提交一次。
+既有快捷双向、精确落位/抓取偏移/R、滚动、身份、搜索、受击/关闭、重入与事务回滚断言保留。
+
+已做：真实API与全量构造点阅读、8份源码完整diff、静态交叉审查、9份修改文件diff --check无空白错误、8份源码namespace声明为0且.meta存在；LootBox源码与Before hash相同。StaticReview.json记录前后hash、依赖READY和未运行状态。静态审查未发现具体阻断，不能代替编译。
+未做：任何Unity调用、主动刷新/编译、测试执行、Play、Prefab/场景保存、1920×1080画面或实体键鼠验收；没有本轮通过数。QueueStateEvent属于排队输入夹具，不能称实体键鼠。
+07须运行02交互/相机、全部Loot EditMode/PlayMode和必要GameFlow回归，再做1920×1080模型间隙E、边界/墙/多目标、搜索中断、Ctrl/拖拽及出发→搜刮→撤离→存取→再出发正式验收。CN/EN与F10沿用03。
+07B历史04混合左右键夹具失败和本版实体输入未验收仍以其原记录为准，06D未修复或重跑；旧成绩不能迁用为本版通过。
+
+五、实际参考
+
+重读E:/Portfolio-LiDar/Assets/Script/LevelScripts/TeleportLevels/KeyController.cs，并直接读取.git/HEAD及refs/heads/main核实7d691ab14ff69a85cf6be7b91cc910139205507f。参考范围Trigger与明确拾取入口的表达；不复制独立F监听、事件布尔作为唯一资格或先销毁再确认。统一范围/输入由02实现，06沿用真实来源与同步转移，参考仓库未改。
+
+READY_FOR_INTEGRATION；待07按上述步骤完成资产接线、统一编译与正式验收。

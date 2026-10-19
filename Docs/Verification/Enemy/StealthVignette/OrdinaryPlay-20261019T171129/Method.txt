@@ -1,0 +1,1 @@
+Ordinary Bootstrap->Shelter->Ruins. Runtime-only drones disabled and LightFlicker components disabled for stable normal PP comparison; no scene saves; timeScale remains1 throughout. Public API flow/position assistance; no native keyboard claim. All later scenes reload original authored actors/lights.

@@ -1,0 +1,8 @@
+009 Alert implementation staged only; not deployed or tested yet.
+Own production: Controller/Patrol/Search/ConfigSO/StatusLight + new DroneAlertState.
+Own assets: DroneConfig.asset (2/2 default), EnemyText.asset (Alert CN/EN).
+Own tooling: EnemyTestDriver (only localized state plus Alert percentage), EnemyTestSceneBuilder (config/localization/shader creation).
+Own tests: Behaviour/StatusLight/SceneIntegration + new DroneAlertTests; existing geometry tests kept.
+Alert appended as enum value5; existing0..4 unchanged. Controller has only authoritative AlertProgress. AlertState observes and updates progress; does not MoveTowards. Patrol route index remains inController. InvalidTarget fast-return excludesAlert, so actual observation governs decay. New round/disable/explode clears progress. SameRound returns before mutation.
+Visual ownership remains external until BOTH explicit shared release records exist. Visual SetTint must clear fill; SetAlertProgress uses MPB; Clear must clear fill on disable. Do not deploy this directory wholesale: read latest actualAssets and verify per-file baseline hashes before backup/copy. No change to Drone prefab, Scene, original model, status light parameters or formal flow.
+Actual integration checks required after release: compile/Console, full Enemy suites, real scene1920x1080 screenshots0/50/full and decay via actualController, recorded API-assistance/native limitation, asset GUID preservation, clean Editor release.

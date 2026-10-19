@@ -1,0 +1,726 @@
+{
+  "project": "E:/DD451",
+  "date": "2026-10-18",
+  "unityVersion": "6000.2.12f1",
+  "compile": "Passed",
+  "tests": [
+    {
+      "mode": "EditMode",
+      "source": "Docs/Architecture/01_EditModeResults.xml",
+      "result": "Passed",
+      "total": 43,
+      "passed": 43,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 0.3002669,
+      "startedUtc": "2026-10-18 07:11:28Z",
+      "cases": [
+        {
+          "name": "ItemsEditModeTests.EditingRegisteredIdentityCannotCreateAnotherInstanceOrUseTheWrongIdentity(\"definition-id\")",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.EditingRegisteredIdentityCannotCreateAnotherInstanceOrUseTheWrongIdentity(\"unique-id\")",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.EditingRegisteredIdentityCannotCreateAnotherInstanceOrUseTheWrongIdentity(\"unique-flag\")",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.FixedHealingClampsBeforeCallingTheHealthTarget",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.FullHealthRejectsFoodAndMedkitWithoutConsumingOrSpendingQuota(False)",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.FullHealthRejectsFoodAndMedkitWithoutConsumingOrSpendingQuota(True)",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.HealingRequiresBackpackAndFailedOwnerCheckDoesNotSpendQuota(World)",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.HealingRequiresBackpackAndFailedOwnerCheckDoesNotSpendQuota(Container)",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.HealingRequiresBackpackAndFailedOwnerCheckDoesNotSpendQuota(Storage)",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.HealthTargetThatAppliesNoHealingDoesNotConsumeOrSpendQuota(False)",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.HealthTargetThatAppliesNoHealingDoesNotConsumeOrSpendQuota(True)",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.InitialUniqueMapSpawnHasOnePermitAndQueriesDoNotGrantAnother(World)",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.InitialUniqueMapSpawnHasOnePermitAndQueriesDoNotGrantAnother(Container)",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.InvalidHealthTargetsNeverMutateOrConsumeTheItem",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"width\")",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"height\")",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"search\")",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"probability-low\")",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"probability-high\")",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"probability-nan\")",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"definition-id\")",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"unique-id\")",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"negative-limit\")",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.InvalidInspectorConfigurationIsReportedAndCannotCreateInstances(\"missing-text-key\")",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.InvalidLaterEffectIsRejectedBeforeAnyEarlierHealingRuns(\"unsupported\")",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.InvalidLaterEffectIsRejectedBeforeAnyEarlierHealingRuns(\"null\")",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.InvalidLaterEffectIsRejectedBeforeAnyEarlierHealingRuns(\"invalid-heal\")",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.LibraryRejectsDuplicateDefinitionOrUniqueIdentifiers(False)",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.LibraryRejectsDuplicateDefinitionOrUniqueIdentifiers(True)",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.MedkitHealsToFullKeepsIdentityAndRetentionAndRejectsSecondUse",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.MissingUnusableAndNotStartedRequestsReturnSpecificFailuresWithoutHealing",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.MultipleSupportedHealEffectsCountAsOneUseEvenWhenAnEarlierEffectFillsHealth(True)",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.MultipleSupportedHealEffectsCountAsOneUseEvenWhenAnEarlierEffectFillsHealth(False)",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.QueriesTransfersAndDisplaySelectionKeepQuotaAndOnlyNewRoundRefreshesIt",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.TemporaryDropRemainsPickableButOrdinaryLossNeverGetsUniqueRecovery",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.TwoFoodInstancesRemainIndependentAndNeverWriteRuntimeStateIntoDefinitions",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.UniqueLossRecoversTheSameIdentityAtOriginalPointOnceNextRound(ExplorationDeath)",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.UniqueLossRecoversTheSameIdentityAtOriginalPointOnceNextRound(ShelterAbandonment)",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.UniqueLossRecoversTheSameIdentityAtOriginalPointOnceNextRound(LeftBehindOnExtraction)",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.UniqueRegistrationRejectsDuplicatesInEveryActiveOwner(World)",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.UniqueRegistrationRejectsDuplicatesInEveryActiveOwner(Container)",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.UniqueRegistrationRejectsDuplicatesInEveryActiveOwner(Backpack)",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsEditModeTests.UniqueRegistrationRejectsDuplicatesInEveryActiveOwner(Storage)",
+          "result": "Passed"
+        }
+      ]
+    },
+    {
+      "mode": "PlayMode",
+      "source": "Docs/Architecture/01_PlayModeResults.xml",
+      "result": "Passed",
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 9.2653054,
+      "startedUtc": "2026-10-18 07:15:57Z",
+      "cases": [
+        {
+          "name": "ItemsPlayModeTests.DestroyedUnityHealthTargetDoesNotConsumeOrSpendAllowance",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsPlayModeTests.ItemsSceneInitializesOnceAndRetainsConsumedFoodOnReload",
+          "result": "Passed"
+        },
+        {
+          "name": "ItemsPlayModeTests.RealPrefabsKeepIdentityAndUseStateAcrossSceneReloads",
+          "result": "Passed"
+        }
+      ]
+    }
+  ],
+  "missingMeta": [],
+  "duplicateAssetGuids": [],
+  "namespaceDeclarations": [],
+  "protectedFileCount": 58,
+  "protectedFiles": [
+    {
+      "path": "E:\\DD451\\Assets\\Input\\GameInputActions.inputactions",
+      "before": "483A802C6FEAD9F249F70B169277EBD5729D6B14A44B40030ADC8108EBC43DCB",
+      "after": "483A802C6FEAD9F249F70B169277EBD5729D6B14A44B40030ADC8108EBC43DCB",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Input\\GameInputActions.inputactions.meta",
+      "before": "3B4E424A80F5B4FA76B6ABD774884A24285EAA61F22FF9BB20E5AD505FD8B569",
+      "after": "3B4E424A80F5B4FA76B6ABD774884A24285EAA61F22FF9BB20E5AD505FD8B569",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Scripts\\Bootstrap\\MonoBehaviour.meta",
+      "before": "8293214AB5A7B1EC4F668E911799D8950D3105B279C6720736D2CE2ED73264EF",
+      "after": "8293214AB5A7B1EC4F668E911799D8950D3105B279C6720736D2CE2ED73264EF",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Scripts\\Bootstrap\\MyPrecious.Bootstrap.asmdef",
+      "before": "67FA7FC8EEF531F20C378F1DC316CD51439F428E646CC489A89ADAFFC9A43A8D",
+      "after": "67FA7FC8EEF531F20C378F1DC316CD51439F428E646CC489A89ADAFFC9A43A8D",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Scripts\\Bootstrap\\MyPrecious.Bootstrap.asmdef.meta",
+      "before": "F883D80CC021D29AF9E6AA2CD920D4C83955AC6F41F160FB71D83373422232E4",
+      "after": "F883D80CC021D29AF9E6AA2CD920D4C83955AC6F41F160FB71D83373422232E4",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Scripts\\Bootstrap\\MonoBehaviour\\GameBootstrap.cs",
+      "before": "306034A23BB8CBE9BE79B5D7A05A8A80F39FF239631CCA9AF782623624BE3CB7",
+      "after": "306034A23BB8CBE9BE79B5D7A05A8A80F39FF239631CCA9AF782623624BE3CB7",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Scripts\\Bootstrap\\MonoBehaviour\\GameBootstrap.cs.meta",
+      "before": "19AC78D93615DD3D40CB1D9906AC9EA2A4456B748E670111984B5AD079C09466",
+      "after": "19AC78D93615DD3D40CB1D9906AC9EA2A4456B748E670111984B5AD079C09466",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Prefabs\\Bootstrap\\GameBootstrap.prefab",
+      "before": "08DFE64559756999345F4E2057C016BF849D1ADA5350755E818EAAE16F336BE1",
+      "after": "08DFE64559756999345F4E2057C016BF849D1ADA5350755E818EAAE16F336BE1",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Prefabs\\Bootstrap\\GameBootstrap.prefab.meta",
+      "before": "B4BD8F1494CA2FBA631A7BE66D220963B9B2FFE0A63E9174E4F91EAA210A1D69",
+      "after": "B4BD8F1494CA2FBA631A7BE66D220963B9B2FFE0A63E9174E4F91EAA210A1D69",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Tests\\Base\\PlayMode.meta",
+      "before": "EBECFB2A7EF7B6434A80D4B25800F557AB68972389C3839937A601A05B70FF60",
+      "after": "EBECFB2A7EF7B6434A80D4B25800F557AB68972389C3839937A601A05B70FF60",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Tests\\Base\\PlayMode\\GameBootstrapTests.cs",
+      "before": "90DBFB61919201A7A72C3F4A898F42D4DAC25693B7A9C9746799720CADCC6F99",
+      "after": "90DBFB61919201A7A72C3F4A898F42D4DAC25693B7A9C9746799720CADCC6F99",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Tests\\Base\\PlayMode\\GameBootstrapTests.cs.meta",
+      "before": "4B5B586D67C54E822A1AD99EC09B7C051B752CC0BD6E4FEEC68D3968ACBA6D45",
+      "after": "4B5B586D67C54E822A1AD99EC09B7C051B752CC0BD6E4FEEC68D3968ACBA6D45",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Tests\\Base\\PlayMode\\MyPrecious.Base.PlayModeTests.asmdef",
+      "before": "C1F6DE9BDA2558D823BF56F9034EFBEB923E6CFC8C4134E0642CF4E7E6231725",
+      "after": "C1F6DE9BDA2558D823BF56F9034EFBEB923E6CFC8C4134E0642CF4E7E6231725",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Tests\\Base\\PlayMode\\MyPrecious.Base.PlayModeTests.asmdef.meta",
+      "before": "DC0236DFF958E393C9259B9AA28E7FE99D0D74651FBE33BA1414E84EEE5831C1",
+      "after": "DC0236DFF958E393C9259B9AA28E7FE99D0D74651FBE33BA1414E84EEE5831C1",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Scenes\\Tests\\Base\\BaseTest.unity",
+      "before": "E8AE99910E12706D13BEE7716520C2AFDE6A9F436A55E414E123CE25E442E144",
+      "after": "E8AE99910E12706D13BEE7716520C2AFDE6A9F436A55E414E123CE25E442E144",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Scenes\\Tests\\Base\\BaseTest.unity.meta",
+      "before": "DECA6E6DAE4D7947BEAD518AC73E42E3212955AB678366AEA75E18655A4877CC",
+      "after": "DECA6E6DAE4D7947BEAD518AC73E42E3212955AB678366AEA75E18655A4877CC",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Scenes\\SampleScene.unity",
+      "before": "AA55BCC6DD3B5E6DCFA46BD3CB0B0CF606E22B81B2ED8D9FA34D7005944201CA",
+      "after": "AA55BCC6DD3B5E6DCFA46BD3CB0B0CF606E22B81B2ED8D9FA34D7005944201CA",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Packages\\manifest.json",
+      "before": "3E82F54FF677A882C2348F8E64BF5EC7118CBD30D3E674915CF07E0541F4F7F6",
+      "after": "3E82F54FF677A882C2348F8E64BF5EC7118CBD30D3E674915CF07E0541F4F7F6",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Packages\\packages-lock.json",
+      "before": "8A5EBB21FFE88430D707E89B0F083B627192018EAA7998ACCF1248BC5E73D288",
+      "after": "8A5EBB21FFE88430D707E89B0F083B627192018EAA7998ACCF1248BC5E73D288",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\ProjectSettings\\AudioManager.asset",
+      "before": "AEEDEB3243F07B61DBBE854AA08B5EF6F0B5274DD9852AD9F6129DDE3E105A31",
+      "after": "AEEDEB3243F07B61DBBE854AA08B5EF6F0B5274DD9852AD9F6129DDE3E105A31",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\ProjectSettings\\ClusterInputManager.asset",
+      "before": "40E65DD214BF254955D2C8829CA8CE2130FD3510485560CE012E9A1DDD93E623",
+      "after": "40E65DD214BF254955D2C8829CA8CE2130FD3510485560CE012E9A1DDD93E623",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\ProjectSettings\\DynamicsManager.asset",
+      "before": "B7C9A9DC08B98990109D4346F68745E15E238DE400F96C583E53E1C83C743A78",
+      "after": "B7C9A9DC08B98990109D4346F68745E15E238DE400F96C583E53E1C83C743A78",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\ProjectSettings\\EditorBuildSettings.asset",
+      "before": "348BA1ECA4B0698957F264F877F76227B78583ACD3138FD5FC85BE92F158E261",
+      "after": "348BA1ECA4B0698957F264F877F76227B78583ACD3138FD5FC85BE92F158E261",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\ProjectSettings\\EditorSettings.asset",
+      "before": "32D6A9BE4C9AA9795A96BD951820A2D9BE1BFEFAB82ED05A5DB111AF0863938F",
+      "after": "32D6A9BE4C9AA9795A96BD951820A2D9BE1BFEFAB82ED05A5DB111AF0863938F",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\ProjectSettings\\GraphicsSettings.asset",
+      "before": "9C1BB28A2AAC0FEE9D3CFD844F6F345FE573F18D35A5C9FD3048B9E9A066C4DF",
+      "after": "9C1BB28A2AAC0FEE9D3CFD844F6F345FE573F18D35A5C9FD3048B9E9A066C4DF",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\ProjectSettings\\InputManager.asset",
+      "before": "7A1BB836A1008D26D0860D143E9D9DF7CA41731D30A72901B518063819C62DF2",
+      "after": "7A1BB836A1008D26D0860D143E9D9DF7CA41731D30A72901B518063819C62DF2",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\ProjectSettings\\MemorySettings.asset",
+      "before": "1E8379A461B10AE09F3F696911088C16875D63E87ED5F2D95DF9E1892703F9FD",
+      "after": "1E8379A461B10AE09F3F696911088C16875D63E87ED5F2D95DF9E1892703F9FD",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\ProjectSettings\\MultiplayerManager.asset",
+      "before": "ABA89FD1A1DDAD182727AD82727E536D27372E90328A8196DA2A4560398983DD",
+      "after": "ABA89FD1A1DDAD182727AD82727E536D27372E90328A8196DA2A4560398983DD",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\ProjectSettings\\NavMeshAreas.asset",
+      "before": "80106CFA7E6181A1928B142C075F3E510D527441E3D79BC83590E4AC91E7CD66",
+      "after": "80106CFA7E6181A1928B142C075F3E510D527441E3D79BC83590E4AC91E7CD66",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\ProjectSettings\\PackageManagerSettings.asset",
+      "before": "A7DABBA589ABE7FC2B45BD3D3FBA3FE9BE97043492703F716DA2D9131C13A807",
+      "after": "A7DABBA589ABE7FC2B45BD3D3FBA3FE9BE97043492703F716DA2D9131C13A807",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\ProjectSettings\\Physics2DSettings.asset",
+      "before": "E3CBDBF0BE15244B7B67D2F07BDB8E8981911C11A8C7FE8035F5261272FEC658",
+      "after": "E3CBDBF0BE15244B7B67D2F07BDB8E8981911C11A8C7FE8035F5261272FEC658",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\ProjectSettings\\PresetManager.asset",
+      "before": "29C125923FE6E29F90190D4FCE1C82D660E7051546E2C9D02908D18C9CF2436C",
+      "after": "29C125923FE6E29F90190D4FCE1C82D660E7051546E2C9D02908D18C9CF2436C",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\ProjectSettings\\ProjectSettings.asset",
+      "before": "883568C7519C8C83808FEE8A39259427D8E2127D7CBF10ADE97CA42903711F1D",
+      "after": "883568C7519C8C83808FEE8A39259427D8E2127D7CBF10ADE97CA42903711F1D",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\ProjectSettings\\ProjectVersion.txt",
+      "before": "A700781C44C17ECD6F7316C959B0055F4D5D08C4A2B5A6981E5947D8BB0F1994",
+      "after": "A700781C44C17ECD6F7316C959B0055F4D5D08C4A2B5A6981E5947D8BB0F1994",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\ProjectSettings\\QualitySettings.asset",
+      "before": "6814D6CC3EB850DD7D2A069A8B17BA9F7591DEBA8B1758A855978BD9C8627643",
+      "after": "6814D6CC3EB850DD7D2A069A8B17BA9F7591DEBA8B1758A855978BD9C8627643",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\ProjectSettings\\SceneTemplateSettings.json",
+      "before": "BB9098B3BFCDE78D93E264B96F7B77B5430E64E8C57A7AAD7F5A5D9C3945E16A",
+      "after": "BB9098B3BFCDE78D93E264B96F7B77B5430E64E8C57A7AAD7F5A5D9C3945E16A",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\ProjectSettings\\ShaderGraphSettings.asset",
+      "before": "CDBA1E5D65BCF6E3269D76ED3E60B6C21F98322002996642C9D74F1EB89F6B91",
+      "after": "CDBA1E5D65BCF6E3269D76ED3E60B6C21F98322002996642C9D74F1EB89F6B91",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\ProjectSettings\\TagManager.asset",
+      "before": "23FC56B484AA3D7EDF5914CD3591F7A823CCEF5E3F3496F8A51F30388EAD63DC",
+      "after": "23FC56B484AA3D7EDF5914CD3591F7A823CCEF5E3F3496F8A51F30388EAD63DC",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\ProjectSettings\\TimeManager.asset",
+      "before": "1A83E54ADBBDA7C9F4851103A0C6AB7F6448A3343D4EA5B7620452FA08416ECD",
+      "after": "1A83E54ADBBDA7C9F4851103A0C6AB7F6448A3343D4EA5B7620452FA08416ECD",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\ProjectSettings\\UnityConnectSettings.asset",
+      "before": "B7DD1E8290598F5CE86919BA1C98B42B766C8C42191A30FA2C4D12195C4ECD00",
+      "after": "B7DD1E8290598F5CE86919BA1C98B42B766C8C42191A30FA2C4D12195C4ECD00",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\ProjectSettings\\URPProjectSettings.asset",
+      "before": "596D5C8BF4F957B03684C949BEBC252AE1918F25415A1147A00684C4B086EFDA",
+      "after": "596D5C8BF4F957B03684C949BEBC252AE1918F25415A1147A00684C4B086EFDA",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\ProjectSettings\\VersionControlSettings.asset",
+      "before": "E7BDA45BF7A394745FEE1316E6C71FA676004D591AD1F3AA247FD3E4CEB86071",
+      "after": "E7BDA45BF7A394745FEE1316E6C71FA676004D591AD1F3AA247FD3E4CEB86071",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\ProjectSettings\\VFXManager.asset",
+      "before": "F066C6483919961332415EE64204F74FE52F38C02E82892EB02B7A5B2E381F0E",
+      "after": "F066C6483919961332415EE64204F74FE52F38C02E82892EB02B7A5B2E381F0E",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\ProjectSettings\\XRSettings.asset",
+      "before": "EDD2BEB4A2E388312B4B7DA241AA51070434005D82C59363F1237DD2E567585F",
+      "after": "EDD2BEB4A2E388312B4B7DA241AA51070434005D82C59363F1237DD2E567585F",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Docs\\AgentPrompts\\00_Foundation_Contracts.txt",
+      "before": "F9F7FB3F7BC026A9AF8A9DA641575B87F690869A6036F8C29043E42D27BEFE86",
+      "after": "F9F7FB3F7BC026A9AF8A9DA641575B87F690869A6036F8C29043E42D27BEFE86",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Docs\\AgentPrompts\\01_Items_Identity_Effects.txt",
+      "before": "B33EB4761858468CE671A1F0664AFE7000F9C757C7DA3EB618EA8C4D0E3EEF1B",
+      "after": "B33EB4761858468CE671A1F0664AFE7000F9C757C7DA3EB618EA8C4D0E3EEF1B",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Docs\\AgentPrompts\\02_Player_Health_Interaction.txt",
+      "before": "DED07D889EC0BAEEBCABCE7277B43EC20BB841D04CE4AC0D9523F0D0A4B679A9",
+      "after": "DED07D889EC0BAEEBCABCE7277B43EC20BB841D04CE4AC0D9523F0D0A4B679A9",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Docs\\AgentPrompts\\03_Localization.txt",
+      "before": "C95CF3721B04AC3707F060E04CACCA97902B2E648649EEA83198542935797D46",
+      "after": "C95CF3721B04AC3707F060E04CACCA97902B2E648649EEA83198542935797D46",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Docs\\AgentPrompts\\04_Backpack.txt",
+      "before": "CC8123FE72F4E9DD29D0C9FDF005F9845C8DD83EACDF3BF71F0005A21609B40C",
+      "after": "CC8123FE72F4E9DD29D0C9FDF005F9845C8DD83EACDF3BF71F0005A21609B40C",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Docs\\AgentPrompts\\05_Warehouse_Shelter.txt",
+      "before": "DFE7A9EB84B04E9255F1D31A7E5AD5F793AA05CDE815D614540FECFD734C5C65",
+      "after": "DFE7A9EB84B04E9255F1D31A7E5AD5F793AA05CDE815D614540FECFD734C5C65",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Docs\\AgentPrompts\\06_Transfers_Loot.txt",
+      "before": "235557C2D9650826839063DEFF9162255F1E8B52627B2032E43257AF526EA1FA",
+      "after": "235557C2D9650826839063DEFF9162255F1E8B52627B2032E43257AF526EA1FA",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Docs\\AgentPrompts\\07_Enemy_Stealth.txt",
+      "before": "F237B11FAA35700CD05C0A7371308D6AD8809C77EE5C7F40B0C91A7936D1A07F",
+      "after": "F237B11FAA35700CD05C0A7371308D6AD8809C77EE5C7F40B0C91A7936D1A07F",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Docs\\AgentPrompts\\08_GameFlow.txt",
+      "before": "15830F63B90DE3A03A1B4A3909F1831147AF2EBF27A5E60DE6797B0067390779",
+      "after": "15830F63B90DE3A03A1B4A3909F1831147AF2EBF27A5E60DE6797B0067390779",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Docs\\AgentPrompts\\09_Scenes_UI_Integration.txt",
+      "before": "6A05BAFB43D72F6A52A9BEAD70CD9CD52738DFB7D4FB4E14D7CBA489BA3C9708",
+      "after": "6A05BAFB43D72F6A52A9BEAD70CD9CD52738DFB7D4FB4E14D7CBA489BA3C9708",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Docs\\AgentPrompts\\10_Regression_Windows_Delivery.txt",
+      "before": "CE4E7349165BBA8C10BDF1AED3CE491954681DB06AF4FA432E7CFA5655E4CDA7",
+      "after": "CE4E7349165BBA8C10BDF1AED3CE491954681DB06AF4FA432E7CFA5655E4CDA7",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Docs\\AgentPrompts\\AcceptanceCases.txt",
+      "before": "BD69533E7C669A3CF29EF99E72813FF76890E5EC1D3740E40BBDEA1BBE6B5165",
+      "after": "BD69533E7C669A3CF29EF99E72813FF76890E5EC1D3740E40BBDEA1BBE6B5165",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Docs\\AgentPrompts\\ProjectRules.txt",
+      "before": "A462F633BC82E562465A3D5F38B74DEBFB1E5054885EB146F9BD74C1F422224A",
+      "after": "A462F633BC82E562465A3D5F38B74DEBFB1E5054885EB146F9BD74C1F422224A",
+      "unchanged": true
+    },
+    {
+      "path": "E:\\DD451\\Docs\\AgentPrompts\\README.txt",
+      "before": "F6F7D2A2B56B1F734E25CC0E7C1CCB5EF48D57FD90696624448F152CB60D7E69",
+      "after": "F6F7D2A2B56B1F734E25CC0E7C1CCB5EF48D57FD90696624448F152CB60D7E69",
+      "unchanged": true
+    }
+  ],
+  "ownedAssets": [
+    {
+      "path": "E:\\DD451\\Assets\\Scripts\\Items\\MyPrecious.Items.asmdef",
+      "sha256": "894CD67ACC8E5ED189ED68F36421C463C3D74B310143BE9E3C879B2F55D10BD9",
+      "guid": "57bfd4d37b287884ebae4aef7810cccc"
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Scripts\\Items\\MonoBehaviour\\ItemManager.cs",
+      "sha256": "1F65B8FFE2857C3DFDAEF71E78D1D39A55BE3479079AA77A75D9E6C7EB2D6281",
+      "guid": "fa652d94ba167134e9d9f25a585f9718"
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Scripts\\Items\\RuntimeData\\ItemInstance.cs",
+      "sha256": "83AEE113FC71DA12711188E7D6F1A5372B5D5BE86B5E72C3F721BD4A211374D0",
+      "guid": "29ce08776dbdb9741914c5f6c615c93e"
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Scripts\\Items\\ScriptableObject\\ItemDataSO.cs",
+      "sha256": "8F9F1ACA3C2FDAAEB94D4C55721E5B6B1E937CE1377CAD563EA52E463C1876AA",
+      "guid": "8552858fffd26694eb40799537746bfe"
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Scripts\\Items\\ScriptableObject\\ItemLibrarySO.cs",
+      "sha256": "F6F67A6088DB81771F03B7287973C871F84341192074C1FCA500189736660F0F",
+      "guid": "3b7ebcc3a9f907e4895ad0aa30afd598"
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Scripts\\Items\\ScriptableObject\\Effects\\HealEffectSO.cs",
+      "sha256": "A5B084616ADB53A579D2FE5568871A45C171C1AAD5C3797B1A47409E30ACAC71",
+      "guid": "57923fc2e728b574a8d3a2552addcf6f"
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Scripts\\Items\\ScriptableObject\\Effects\\ItemEffectSO.cs",
+      "sha256": "598BFED4A91BB7C94419557474EA2B3AF5085BA7F77C4A91B4D69838071CEFCC",
+      "guid": "7c528800698a96a40be7551819c057fe"
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Scripts\\Utilities\\Contracts\\Player\\IHealthTarget.cs",
+      "sha256": "820D12046354504F53404127E364804A1C601CBBE0FD6C45478ADCC90EC3096A",
+      "guid": "85f6d2504b0a8e042817a81f719469ed"
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Scripts\\Utilities\\Contracts\\Player\\MyPrecious.Health.asmdef",
+      "sha256": "94A9A9C81FE15BF2F48481D1FAB8478F00163E77A6933CEC97D665E95D499DCB",
+      "guid": "e069bf8d4cc2dfc40ac94f79ac92d199"
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Data\\Items\\Battery.asset",
+      "sha256": "F47A0DDC97C594EBB81A21FA4FC8683D5B1D6FCAD28CF3D1AA23B6D2C74D1ACD",
+      "guid": "269537bc78b7ddb4985e6c8838e08c40"
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Data\\Items\\Doll.asset",
+      "sha256": "59375058099954E5F98840E2989BA6CF1B33CDF28BB848C37EB58ED394A016E7",
+      "guid": "80f09a905aa61ce45905811cdcc3a722"
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Data\\Items\\Food.asset",
+      "sha256": "902A0F45DC74324FF3B37EC1B1B7B66E797D9344C52A191293FD225C03D99E09",
+      "guid": "ae650d3ae712a714f85823dde14576b0"
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Data\\Items\\ItemLibrary.asset",
+      "sha256": "25F8965B915275CCF892A83BAA57A271E800BC68B70F68212D077B1295350186",
+      "guid": "68774b0199e4c5f429701003dac53e8c"
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Data\\Items\\Medkit.asset",
+      "sha256": "B252DBB0B15478290D4C14BA0109AFA88C57F76B1CE7345A4E7C4A472EFEDB95",
+      "guid": "b21623eecd3606d4aa6239855e3dace6"
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Data\\ItemEffects\\HealFull.asset",
+      "sha256": "8CB5076B57F5B0615F596BD566A184F7A004E3319F417D03A8E91CD8641D3C8E",
+      "guid": "cbf0310d77b6edd42b09f6b94a652a9a"
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Data\\ItemEffects\\HealOne.asset",
+      "sha256": "4F2BB8C557DFD7E41FD43D65D0744C4A1EDFFC577308ABA05E8CD638493C5888",
+      "guid": "1a7ec6150abca8c458734a516b10d372"
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Prefabs\\Items\\ItemModule.prefab",
+      "sha256": "9EC22B5B8A254E34C037E0A938BC27157080DB6A2B70C68FC0AAE1D1A5DDF352",
+      "guid": "8d623e4ec1a277a4c846006b7f9377e2"
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Scenes\\Tests\\Items\\ItemsTest.unity",
+      "sha256": "F2E007CD172B95E37B86F3037B0734E6559A526180098E05539FA097BE6CDE24",
+      "guid": "451d0fe10b9a9da4cad10b5852f8427c"
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Tests\\Items\\EditMode\\ItemsEditModeTests.cs",
+      "sha256": "081DA1813F5180BDD3299D2D19430800C3FF0569B0931B8CD1CC65EA64095516",
+      "guid": "b6e2e1bb6f7904041bdea8233fca2cf2"
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Tests\\Items\\EditMode\\MyPrecious.Items.EditModeTests.asmdef",
+      "sha256": "347C33C8255927AEB48F702D17E187202831C80E3DAD4796ADC2DAEE55A2FE43",
+      "guid": "1d236d8b06cab0546abd1ca1e84feeb4"
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Tests\\Items\\EditMode\\UnsupportedItemEffectSO.cs",
+      "sha256": "7FDD255BEB6382E0E2A27A514C14F86D759A7905A97D9838667CAEDB89843DDE",
+      "guid": "d3c7e71756c02e34aa3dff84f03a69db"
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Tests\\Items\\PlayMode\\ItemsPlayModeTests.cs",
+      "sha256": "6381D8A98A323F54A9FBB594606B638283D0286E39F392A3FB9A53AE93028429",
+      "guid": "65889483861758248b6b6ba3bc9057a0"
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Tests\\Items\\PlayMode\\MyPrecious.Items.PlayModeTests.asmdef",
+      "sha256": "ECFAB7D36046A31DFE70A78D566E45ECFBFF82F9429EA157B23E27C54D085468",
+      "guid": "b458792fe29b7f14cbc1577e65e789f5"
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Tests\\Items\\TestDoubles\\ItemsTestDriver.cs",
+      "sha256": "303A9C94CD69C03719074D5D69EDCF3C873989E6335CBB2F12E0B65511725A19",
+      "guid": "e6e8957aed934bb439f34e70550bfdfe"
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Tests\\Items\\TestDoubles\\ItemsTestHealth.cs",
+      "sha256": "0291094FF9C0876562932C963C8D5B6DC29EB6FEAD104B2BF75C7E4F4A0F5658",
+      "guid": "d73e2f03b5ecdf34190eca28081e9422"
+    },
+    {
+      "path": "E:\\DD451\\Assets\\Tests\\Items\\TestDoubles\\MyPrecious.Items.TestDoubles.asmdef",
+      "sha256": "623CE3E7DBA928F9B6CBBDB9C5C06E12102ED4AFAA3FF6EBD150A66E0165B4A7",
+      "guid": "21517b8558fdc3b4d9bd6bc380d41579"
+    }
+  ],
+  "screenshot": "Docs/Architecture/01_ItemsTest.png",
+  "playProbe": {
+    "maxHealth": 5,
+    "foodUse": "Success",
+    "instanceCount": 3,
+    "medkitUses": 1,
+    "sameIdentity": true,
+    "medkitSecondUseAfterInjury": "RoundLimitReached",
+    "scene": "DontDestroyOnLoad",
+    "medkitFirstUse": "Success",
+    "hp": 5,
+    "managerCount": 1
+  },
+  "notExecuted": [
+    "02 real player health",
+    "04/05 real grid and consumed layout consistency",
+    "06 map spawn/recovery failure handling",
+    "05/08 EV display and settlement",
+    "03 F10 language switch",
+    "Windows standalone build and human playtest"
+  ],
+  "note": "Native Unity XML is authoritative for completed test counts; MCP initialization/reconnect anomalies are described in 01_Handoff.txt. Screenshot reviewed visually. Test health is not the production player."
+}

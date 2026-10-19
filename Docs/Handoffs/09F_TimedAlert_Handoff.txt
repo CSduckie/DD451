@@ -1,0 +1,59 @@
+MyPrecious 009 / 09F — 固定警戒与草丛脱战交接
+日期：2026-10-19；项目 E:/DD451。
+当前源码交付完成。09F 覆盖旧 Alert 红色填充/退条玩法；主程接手独立普通 Play 验收。既有无摇晃、移动渐前倾、停止渐回正、平滑转头及四桨持续旋转保留。
+
+一、当前行为与配置
+Patrol/Search 真实发现有效玩家后原地橙色 Alert 0.5 秒；持续可见才进入红灯 Chase。Chase 仅关闭视锥 MeshRenderer，Vision 物体、组件、范围 Collider 和 CanSee 继续工作。
+Chase 或首次 Alert 中，玩家在现有 CoverArea 内真正蹲伏隐藏，立即转原地橙色草丛 Alert 2 秒，重新显示视锥。清除跟踪目标/最后位置，持续 Hidden 不重置倒计时。2 秒内实际再发现立即 Chase，不再等 0.5 秒；持续隐藏直到到点恢复原巡逻索引。墙遮挡/超距离等普通丢失仍走最后看见位置 Search；Search 再发现重新等 0.5 秒。
+只有 Chase 可以伤害/自毁。FixedUpdate 在 CheckContacts 前处理真实草丛隐藏，所有接触、直调、扫掠路径再次检查 CoverArea.IsHidden。该保障针对 Player 已进入实际蹲伏状态，不声称预测尚未经过 Player.Update 的新按键。
+配置：Assets/Data/Enemy/Drone/DroneConfig.asset，discoveryAlertSeconds=0.5、coverAlertSeconds=2；运行时最小0.01秒。只读上下文 AlertSecondsRemaining / IsCoverAlert；已有 DroneState 序号未重排。
+已移除旧 AlertProgress、alertFillSeconds、alertDecaySeconds、SetAlertProgress 依赖；现有 shader/material 保留且 SetTint 将 _FillProgress 固定归零，纯状态色，无旧积累或退条分支。没有新增通用 AI 管理器或兼容模式。
+
+二、修改文件
+15 项源码/配置部署清单及 SHA256：Integration/DeployedManifest.json。实际 Assets 与审查源均匹配。
+生产：DroneController.cs、DroneVision.cs、DroneAlertState.cs、DroneChaseState.cs、DroneConfigSO.cs、DroneConfig.asset。
+编辑器/驱动：DroneVisionEditor.cs、EnemyTestSceneBuilder.cs、EnemyTestDriver.cs。
+测试：DroneVisionViewTests.cs、DroneAlertTests.cs、DroneBehaviourTests.cs、DroneStatusLightTests.cs、EnemySceneIntegrationTests.cs、RuinsEnemyIntegrationTests.cs。
+以上简名的完整路径见清单。旧 DroneVisionAlertFillTests.cs 改名为 DroneVisionViewTests.cs，同一 .meta/GUID ff3654ab0dc7b3e4fae5c7eed12fa177 保留。15 个已有 meta 字节不变、GUID 各唯一。详见 Integration/FinalTestAndMetaAudit.txt。
+另外，仅按用户后续两次授权修正 Ruins 新箱两个字段，并新增 Assets/Data/LootTables/RuinsExtraSuppliesLoot.asset 及 .meta，见第五节。
+Drone Prefab、原 FBX、DroneFlightVisual、DroneStatusLight、CoverArea、正式流程生产脚本以及其它场景未改。
+
+三、实际自动测试与证据边界
+1. EditMode：45/45 Passed，Enemy34 + GameFlow11；完整逐项结果 Integration/EditMode-Full.json。
+2. 首次混合 PlayMode：53 项执行完成，10 条失败均属于 GameFlow，原因是新复制箱子的重复 sourceId；Enemy40 无失败条目。MCP failed job 的 result=null，未导出这40项独立官方XML，不能据此宣称该批完整逐项通过/零跳过记录。Integration/PlayMode-Full.json 为实际证据；Enemy-40-UnityGuiCache-Recovered.json 的缓存是0条，未恢复结果。
+3. sourceId 修复后 GameFlow 再运行暴露重复唯一物品原点；按用户最终授权新箱仅 Food 后，最终 GameFlow PlayMode 官方 XML 13/13 Passed，failed/skipped/inconclusive 均0。证据 Integration/PlayMode-GameFlow-Final.xml，时间06:44:43–06:45:00 UTC。
+MCP 后两次 PlayMode 状态孤立停留在0；已核实 Unity 实际完成并取得最终官方结果，再清理工具 stuck job。没有因此重复已通过的 Enemy 测试。最终无运行中的测试。
+覆盖包括自然警戒、墙丢失/再发现、真实掩体、实际 FixedUpdate 先于AI Update时的保护、直调和扫掠、仅追击伤害、灯光呼吸、水平转头/前倾解耦、独立无人机、旧背包/搜刮/拖动接线；正式 GameFlow 保留三架已启用无人机的共享轮次、同轮不重置计时/位置/目标、不复活，真实下轮出发按原场景刷新。
+未增加 Windows 构建或原生操作验收。
+
+四、普通 Play 记录及主程接手
+正式 Bootstrap→Shelter→TryDepart→Ruins，1920×1080、timeScale=1，实际已启用无人机和现有草丛。仅公开 RelocateWithinRun 辅助玩家定位、临时冻结玩家 Rigidbody，并使用探针自有 InputSystem Keyboard 排队 C；无原生操作声明。未强制 AI 状态/计时/轮次，未改巡逻点、Collider、配置、相机、其它无人机或永久场景。
+首次 Run-16ed070b 保留 FAIL：发现边缘随后真实 CanSee 由 true 变 false，倒计时约0.373时自然 Search，尚未到0.5秒；这不是 Chase Renderer 隐藏失败的证据。当时未记录足够几何量，边缘和机头回正是工作假设，不能将具体遮挡原因定论。探针后改为待真实转头稳定、草丛中心处于真实 Collider 内且距机头小于半径65%才定位玩家；没有改产品行为。
+第二次 Run-a8f4c7af 在主程要求接手时已接近完成；009随即发送取消并停止 Play，自然流程在取消生效前写入 PASS。其02-TimedAlert.txt/CSV记录0.5秒橙色静止→Chase只隐藏Renderer、真实草丛2秒警戒与立即重发现、连续隐藏到期恢复同一路线并实际移动；两种Alert同轮正式重绑不重置计时；悬停和草丛最大位置漂移均0。
+该run有6张1920截图：02-Discovery-Orange、03-First-Chase-NoFan、04-Cover-Orange、05-Rediscovered-Chase-NoFan、06-Cover-FullTimeout、07-Returned-Patrol。只读审阅六图均1920×1080且状态画面一致；1538条CSV测得首次Alert0.5054379秒、完整草丛Alert2.0014544秒，23条Chase样本均Renderer=false且CanSee/真实检测=true，再发现下一帧0.0081186秒已Chase，恢复巡逻后实际移动0.09米。审阅说明另见 Integration/OrdinaryPlay/Review.txt。不冒称主程独立验收或原生键鼠；墙Search、同物理步隐藏保护、真实自毁及次轮由自动化覆盖，不冒称该短探针覆盖。
+已停止调试或重跑普通 Play。所有探针回调、临时输入设备和临时运行设置均清理；主程接手剩余独立视觉/自然状态验收。
+
+五、用户最新场景与箱子保护
+接手后用户继续保存新增第三无人机分组，始终使用最新场景，没有还原旧 Before。
+明确授权1：新 SuppliesBox (1) 的 sourceId 从 supplies-box 改为 supplies-box-2。
+明确授权2（最终答复）：新箱只放食物，唯一物品留原箱。因此新箱引用独立 RuinsExtraSuppliesLoot（仅Food、50%），原箱 MinimumLoopLoot 不变（Doll100%、Medkit100%、Food50%）。医疗包也是唯一物品，不能按早先误称的“普通补给”复制。
+新表 GUID 87867702eb2621645ad5181cdc743f31。当前Ruins SHA256 C7DEA594DA3809BFDC02C959B9019EE0AB2EF2A0436849765C0D97152F4C8744。
+FinalSceneAndLootAudit.txt：最新授权哈希6/6一致；早期保护集除获授权Ruins外8/8一致。当前Ruins反向替换仅上述sourceId/lootTable两个值，与BeforeAuthorizedSourceIdFix-Ruins文本完全相同，确认其它布局/位置/灯光/巡逻配置保留。
+三条世界路线：
+(-10,2.5,0)→(0,2.5,0)
+(19.5,5,0)→(40,5,0)
+(44,3,0)→(64.5,3,0)
+出生位置分别(-3.34,2.39,-.38)、(28.66,4.89,-.38)、(53.16,2.89,-.38)；实际浮点序列以场景及审计为准。无人机仍固定自身出生Z。
+以后不得用较旧的 D7E092 / F085 基线覆盖当前场景；本轮授权基线为 Integration/AuthorizedSceneAndLootHashes.json。
+
+六、最后 Editor 状态与释放
+最后现场 2026-10-19T06:50:37.7536674Z：唯一 Ruins，clean/Edit，Play/paused/changing/compiling/updating=false，无PrefabStage。timeScale1，Application/PlayerSettings.runInBackground=false，原DisableDomainReload保留，1920×1080。ProbeRunning与自动刷新持有标志false，仅原native Keyboard/Mouse；测试resource确认is_running=false且current_job_id=null。自建TestRunner窗口关闭。
+Scene与Drone Prefab Missing Scripts均0；4个桨叶引用有效，2400deg/s保留。FinalConsole.json为0错误0警告。早期MCP传输警告和预期失败注入诊断留在原文件，未将其隐匿成全程无警告。
+证据：Integration/ReleaseState.json、FinalConsole.json及上述审计。009已结束所有Assets/Editor操作，交接后仅Docs收尾。正式释放见 Docs/Verification/Enemy/EditorCoordination.txt。
+
+
+七、主程独立验收与最新场景（2026-10-19 06:55 UTC）
+主程验收已通过，详见Docs/Verification/Enemy/TimedAlert/RootAcceptance/Result.txt。735样本测得首次0.50236秒、草丛约2.01256秒、再发现0.00513秒后Chase，三张1920截图已查看；实际追击接触一次3→2伤害、同轮正式重接不复活。API辅助玩家定位及临时CoverArea/其他机隔离，非原生键鼠。
+接手后用户另增SuppliesBox (2)，导致重复sourceId及唯一原点；沿用用户已确认新箱仅食物规则，仅将其编号设supplies-box-3、表设既有RuinsExtraSuppliesLoot。BeforeThirdBox-Ruins保留修前用户现场，差异仅两字段。最终Ruins基线请以RootAcceptance/ThirdBoxFixHash.json为准，勿回写本交接第五节旧C7DEA哈希。其余受保护资产不变。
+最终Ruins/clean/Edit，所有回调/Play结束，Console0错误/警告，主程已释放Editor。
+

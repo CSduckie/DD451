@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="13" result="Passed" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-19 06:11:12Z" end-time="2026-10-19 06:11:28Z" duration="15.5510931">
+  <test-suite type="TestSuite" id="1205" name="DD451Demo" fullname="DD451Demo" runstate="Runnable" testcasecount="170" result="Passed" start-time="2026-10-19 06:11:12Z" end-time="2026-10-19 06:11:28Z" duration="15.551093" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1087" name="MyPrecious.GameFlow.PlayModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.GameFlow.PlayModeTests.dll" runstate="Runnable" testcasecount="13" result="Passed" start-time="2026-10-19 06:11:12Z" end-time="2026-10-19 06:11:28Z" duration="15.537762" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="85336" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1070" name="MinimumLoopPointerTests" fullname="MinimumLoopPointerTests" classname="MinimumLoopPointerTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-19 06:11:12Z" end-time="2026-10-19 06:11:21Z" duration="8.598914" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1071" name="FormalSearchPickupExtractionAndBidirectionalStorageUseQueuedPointers" fullname="MinimumLoopPointerTests.FormalSearchPickupExtractionAndBidirectionalStorageUseQueuedPointers" methodname="FormalSearchPickupExtractionAndBidirectionalStorageUseQueuedPointers" classname="MinimumLoopPointerTests" runstate="Runnable" seed="1471639281" result="Passed" start-time="2026-10-19 06:11:12Z" end-time="2026-10-19 06:11:21Z" duration="8.584905" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[Formal queued-pointer integration at 1920x1080; not native OS input.
+]]></output>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1072" name="MinimumLoopSceneTests" fullname="MinimumLoopSceneTests" classname="MinimumLoopSceneTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-19 06:11:21Z" end-time="2026-10-19 06:11:23Z" duration="2.020523" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1073" name="BootstrapStartsEmptyAtRoundZeroAndTwoTransitionsKeepOnePlayer" fullname="MinimumLoopSceneTests.BootstrapStartsEmptyAtRoundZeroAndTwoTransitionsKeepOnePlayer" methodname="BootstrapStartsEmptyAtRoundZeroAndTwoTransitionsKeepOnePlayer" classname="MinimumLoopSceneTests" runstate="Runnable" seed="1916075432" result="Passed" start-time="2026-10-19 06:11:21Z" end-time="2026-10-19 06:11:21Z" duration="0.331490" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1077" name="FullWarehouseAllowsReturnAndAnotherDepartureWithoutMovingCarriedLoot" fullname="MinimumLoopSceneTests.FullWarehouseAllowsReturnAndAnotherDepartureWithoutMovingCarriedLoot" methodname="FullWarehouseAllowsReturnAndAnotherDepartureWithoutMovingCarriedLoot" classname="MinimumLoopSceneTests" runstate="Runnable" seed="1068560433" result="Passed" start-time="2026-10-19 06:11:21Z" end-time="2026-10-19 06:11:21Z" duration="0.395613" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1074" name="LoadedTargetBindingFailureRetriesTheSameSceneAndAllocatedRound" fullname="MinimumLoopSceneTests.LoadedTargetBindingFailureRetriesTheSameSceneAndAllocatedRound" methodname="LoadedTargetBindingFailureRetriesTheSameSceneAndAllocatedRound" classname="MinimumLoopSceneTests" runstate="Runnable" seed="625407937" result="Passed" start-time="2026-10-19 06:11:21Z" end-time="2026-10-19 06:11:22Z" duration="0.164620" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[GameFlow: 场景接线不完整：Assets/Scenes/Ruins.unity
+]]></output>
+        </test-case>
+        <test-case id="1075" name="ReturnLoadFailurePreservesWorldItemsAndRetrySettlesOnlyOnce" fullname="MinimumLoopSceneTests.ReturnLoadFailurePreservesWorldItemsAndRetrySettlesOnlyOnce" methodname="ReturnLoadFailurePreservesWorldItemsAndRetrySettlesOnlyOnce" classname="MinimumLoopSceneTests" runstate="Runnable" seed="1741422447" result="Passed" start-time="2026-10-19 06:11:22Z" end-time="2026-10-19 06:11:22Z" duration="0.225431" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[GameFlow: 目标场景未配置、与另一地图重复或未加入Build Settings：Assets/Scenes/Missing-MinimumLoop-Test.unity
+]]></output>
+        </test-case>
+        <test-case id="1076" name="UsedMedkitAndHealthSurviveReturnAndUiReopenUntilTheNextDeparture" fullname="MinimumLoopSceneTests.UsedMedkitAndHealthSurviveReturnAndUiReopenUntilTheNextDeparture" methodname="UsedMedkitAndHealthSurviveReturnAndUiReopenUntilTheNextDeparture" classname="MinimumLoopSceneTests" runstate="Runnable" seed="962074387" result="Passed" start-time="2026-10-19 06:11:22Z" end-time="2026-10-19 06:11:23Z" duration="0.896262" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1078" name="PlayerSceneTransitionTests" fullname="PlayerSceneTransitionTests" classname="PlayerSceneTransitionTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-19 06:11:23Z" end-time="2026-10-19 06:11:23Z" duration="0.275194" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1080" name="NewRoundWhileLockedStaysFrozenAndDeathIsPreservedOnReturn" fullname="PlayerSceneTransitionTests.NewRoundWhileLockedStaysFrozenAndDeathIsPreservedOnReturn" methodname="NewRoundWhileLockedStaysFrozenAndDeathIsPreservedOnReturn" classname="PlayerSceneTransitionTests" runstate="Runnable" seed="1690668599" result="Passed" start-time="2026-10-19 06:11:23Z" end-time="2026-10-19 06:11:23Z" duration="0.130439" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1079" name="TransitionFreezesPhysicalStateAndDiscardsInputsBeforeUnlock" fullname="PlayerSceneTransitionTests.TransitionFreezesPhysicalStateAndDiscardsInputsBeforeUnlock" methodname="TransitionFreezesPhysicalStateAndDiscardsInputsBeforeUnlock" classname="PlayerSceneTransitionTests" runstate="Runnable" seed="264628006" result="Passed" start-time="2026-10-19 06:11:23Z" end-time="2026-10-19 06:11:23Z" duration="0.138683" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1081" name="RuinsEnemyIntegrationTests" fullname="RuinsEnemyIntegrationTests" classname="RuinsEnemyIntegrationTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-19 06:11:23Z" end-time="2026-10-19 06:11:28Z" duration="4.636987" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1084" name="BindingFailureLeavesEnemiesUnstartedAndRetryUsesTheAllocatedRound" fullname="RuinsEnemyIntegrationTests.BindingFailureLeavesEnemiesUnstartedAndRetryUsesTheAllocatedRound" methodname="BindingFailureLeavesEnemiesUnstartedAndRetryUsesTheAllocatedRound" classname="RuinsEnemyIntegrationTests" runstate="Runnable" seed="1012780772" result="Passed" start-time="2026-10-19 06:11:23Z" end-time="2026-10-19 06:11:23Z" duration="0.250271" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[GameFlow: 场景接线不完整：Assets/Scenes/Ruins.unity
+]]></output>
+        </test-case>
+        <test-case id="1086" name="EmptyShelterOtherSceneAndDisabledEnemiesRespectStartupScopeAndRoundGuards" fullname="RuinsEnemyIntegrationTests.EmptyShelterOtherSceneAndDisabledEnemiesRespectStartupScopeAndRoundGuards" methodname="EmptyShelterOtherSceneAndDisabledEnemiesRespectStartupScopeAndRoundGuards" classname="RuinsEnemyIntegrationTests" runstate="Runnable" seed="799163163" result="Passed" start-time="2026-10-19 06:11:23Z" end-time="2026-10-19 06:11:23Z" duration="0.032767" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1085" name="InvalidEnemyConfigurationFailsBeforeAnyStartupAndRetryKeepsOneRound" fullname="RuinsEnemyIntegrationTests.InvalidEnemyConfigurationFailsBeforeAnyStartupAndRetryKeepsOneRound" methodname="InvalidEnemyConfigurationFailsBeforeAnyStartupAndRetryKeepsOneRound" classname="RuinsEnemyIntegrationTests" runstate="Runnable" seed="71983748" result="Passed" start-time="2026-10-19 06:11:23Z" end-time="2026-10-19 06:11:23Z" duration="0.248821" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[GameFlow: 探索无人机缺少配置或轮次超前：Drone(Clone)
+]]></output>
+        </test-case>
+        <test-case id="1083" name="RebindingPreservesNaturalAlertAndExplosionUntilTheNextRealDeparture" fullname="RuinsEnemyIntegrationTests.RebindingPreservesNaturalAlertAndExplosionUntilTheNextRealDeparture" methodname="RebindingPreservesNaturalAlertAndExplosionUntilTheNextRealDeparture" classname="RuinsEnemyIntegrationTests" runstate="Runnable" seed="985566953" result="Passed" start-time="2026-10-19 06:11:23Z" end-time="2026-10-19 06:11:27Z" duration="3.437811" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1082" name="TwoFormalDeparturesStartPatrolWithTheAuthoredSpawnRouteAndSharedRound" fullname="RuinsEnemyIntegrationTests.TwoFormalDeparturesStartPatrolWithTheAuthoredSpawnRouteAndSharedRound" methodname="TwoFormalDeparturesStartPatrolWithTheAuthoredSpawnRouteAndSharedRound" classname="RuinsEnemyIntegrationTests" runstate="Runnable" seed="661039241" result="Passed" start-time="2026-10-19 06:11:27Z" end-time="2026-10-19 06:11:28Z" duration="0.661372" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/cs200/AppData/LocalLow/DefaultCompany/DD451Demo\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

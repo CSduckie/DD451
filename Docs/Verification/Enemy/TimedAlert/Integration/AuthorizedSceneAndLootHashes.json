@@ -1,0 +1,32 @@
+[
+  {
+    "Algorithm": "SHA256",
+    "Hash": "C7DEA594DA3809BFDC02C959B9019EE0AB2EF2A0436849765C0D97152F4C8744",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Ruins.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "71BD0E68CE9B34EF682661D60BCD36605007FE6FFE66D8FD09D1A56542A66594",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Ruins.unity.meta"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "958FDF2170FF091DABBA5A71FA125CDD77768DF4D001EA825C69990ECEA4328B",
+    "Path": "E:\\DD451\\Assets\\Data\\LootTables\\RuinsExtraSuppliesLoot.asset"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "5A0F3A26BC095D63BC82BB7BB122AB23AF1C52D921962786311FB640C6A777A0",
+    "Path": "E:\\DD451\\Assets\\Data\\LootTables\\RuinsExtraSuppliesLoot.asset.meta"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "E0321CE611653F75DFF9058F7ED7C581D25D3DF81F7AE27EB3FF29942604FCBE",
+    "Path": "E:\\DD451\\Assets\\Data\\LootTables\\MinimumLoopLoot.asset"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "E58998A095FC75856FD77E5FF1F833C89E317E8C8E9822D10CD42DCEA0B3F18F",
+    "Path": "E:\\DD451\\Assets\\Data\\LootTables\\MinimumLoopLoot.asset.meta"
+  }
+]

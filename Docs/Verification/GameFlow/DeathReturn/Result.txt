@@ -1,0 +1,9 @@
+07F Death Return — completed 2026-10-19
+
+Implemented real death -> loss settlement -> same-player Shelter revival -> next actual departure.
+64/64 PlayMode and161/161 EditMode passed on final source, no failed/skipped tests. Official XML in this directory; this is scoped validation, not every project assembly.
+Ordinary Game run: Run-2a22615e, same player across rounds1/2/3. EV7 ->2 at death ->7 after recovering and extracting the same unique doll. Storage medkit placement/rotation and20x24 upgrade retained. Round2 unchanged on revival; round3 starts only on departure with4 fresh patrol drones.
+API positioning/body freeze, real interactions/natural search/item transfer/TakeDamage. Not a native keyboard/mouse or standalone build claim.1920x1080 CN/EN screenshots visually inspected; see VisualReview.txt.
+Independent707-file baseline audit:699 unchanged,8 expected modifications,2 separately documented new test/meta files; no unexpected changes or missing files. All recorded scenes/prefabs/settings preserved. Full scope limits in IntegrityAudit.txt/json.
+All temporary callbacks finished. Play exited. ReleaseState.json shows Bootstrap clean/Edit, no active TestRunner, compile/update/Play/capture/observer/acquire inactive; backgroundfalse, timeScale1,1920x1080,Direct3D11. FinalConsole.json has0 errors/warnings.
+Failure/startup history preserved in CompileAndRunHistory.txt. Handoff: Docs/Handoffs/07F_DeathReturn_Handoff.txt.

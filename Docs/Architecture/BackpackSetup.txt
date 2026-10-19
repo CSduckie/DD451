@@ -1,0 +1,199 @@
+MyPrecious P0 — 04背包接入与调参说明
+版本：2026-10-18 / Dispatch v18 / 04A快捷转移代码待统一集成
+工程：E:/DD451。以下均为工程相对路径。
+本文说明实际实现与复验方法；本轮真正执行的编译、自动测试、指针/键盘与截图结果以Docs/Handoffs/04_Handoff.txt为准。
+04A新增代码与待运行测试单独见Docs/Handoffs/04A_BackpackQuickTransfer_Handoff.txt；旧成绩不代表04A通过。当前验收以1920×1080为准，上文/下文旧尺寸成绩仅保留历史事实。
+界面以用户最新要求为准：玩家背包在左；没有连接容器时隐藏右侧面板，连接真实搜刮来源或打开仓库后由对应模块显示右侧内容，中间保留可见的3D世界。
+
+2026-10-18最新显示尺寸：按用户要求恢复原背包Prefab的66/4/6，覆盖此前36/3/8。4×4网格288×288，在360宽面板内x36居中；Prefab、View默认值和背包搭建脚本同步。正式1920×1080场景的仓库同样显示66边长，业务逻辑不变。见Docs/Verification/GridSizingLarge/Report.txt。
+
+一、数据由谁保存
+
+01的ItemManager保存唯一一份ItemInstance：实例ID、当前归属、containerId、次数、保有状态和找回记录。
+04的BackpackManager只保存BackpackGrid布局，每条BackpackPlacement引用既有ItemInstance，并保存X、Y、Rotated。不会复制HP、EV、次数或归属，不会为移动创建新身份。
+BackpackPlacement没有可写属性；GetPlacements返回只读集合快照。移动替换一条记录，旧快照里的坐标不会随之改变。快照中的Item仍然是01的同一份权威实例，读取其Owner/UsesThisRound会得到最新状态。
+BackpackManager挂在既有GameBootstrap的场景实例下，常驻由父入口提供。04没有第二个Singleton根、DontDestroyOnLoad调用、背包存档或新轮次流程。
+
+二、脚本及资源
+
+Assets/Scripts/Backpack/ScriptableObject/BackpackConfigSO.cs：Inspector配置宽高。
+Assets/Scripts/Backpack/RuntimeData/BackpackPlacement.cs：不可变的物品引用、格子坐标与旋转记录。
+Assets/Scripts/Backpack/Logic/BackpackGrid.cs：背包独立的矩形边界、重叠、移动、增删和查询；BackpackResult枚举也在此文件。
+Assets/Scripts/Backpack/MonoBehaviour/BackpackManager.cs：真实ItemManager接入、合法包内操作、同步使用与通知、供06调用的静默布局操作。
+Assets/Scripts/Backpack/MonoBehaviour/BackpackUIController.cs：开关、唯一Tab/R/右键业务输入、玩家绑定、伤害/死亡通知和一次拖拽预览。
+Assets/Scripts/Backpack/MonoBehaviour/BackpackView.cs：左侧背包格子、物品、预览、详情、反馈，以及右侧搜刮占位的当前语言文字；不另存真实背包或搜刮物品。
+Assets/Scripts/Backpack/MonoBehaviour/BackpackItemView.cs：UGUI选择和IBeginDragHandler/IDragHandler/IEndDragHandler回调，委托控制器处理。
+Assets/Scripts/Backpack/MyPrecious.Backpack.asmdef：只引用真实Items、Health、Player、Bootstrap、Localization、InputSystem、TMP与UGUI程序集；rootNamespace为空。
+
+Assets/Data/Backpack/BackpackConfig.asset：默认4×4。
+Assets/Data/Localization/Backpack/BackpackText.asset：03格式的背包中英表。
+Assets/Prefabs/Backpack/BackpackModule.prefab：只承载常驻布局管理器与配置。
+Assets/Prefabs/UI/Backpack/BackpackPanel.prefab：左侧暖棕色面板显示真实玩家格子、物品和预览，详情、反馈和操作提示位于格子下方。右侧LootContainerPreview保留对象和引用但默认关闭，不显示“未连接”占位；真实容器界面由05/06独立控制。
+Assets/Prefabs/UI/Backpack/BackpackCell.prefab：无业务的格子Image。
+Assets/Prefabs/UI/Backpack/BackpackItem.prefab：色块、名称、尺寸与拖拽回调。
+
+三、Inspector与场景接线
+
+1. 在既有GameBootstrap场景实例下放ItemModule、BackpackModule、LocalizationModule各一份。BackpackManager.config引用BackpackConfig，itemManager引用该根下的真实ItemManager，containerId使用稳定的player-backpack。
+2. BackpackConfig.width/height必须大于0。新模块Initialize时读取一次；正在运行的背包不因编辑配置、重复初始化、打开UI或切场景而调整尺寸。当前没有升级流程，需要改变尺寸时在停止运行后改配置，再开始新的运行。
+3. 场景Canvas使用Screen Space Overlay、GraphicRaycaster和CanvasScaler。测试面板使用1280×720参考分辨率，Scale With Screen Size，matchWidthOrHeight=0.5。
+4. 将BackpackPanel放在Canvas下。BackpackView接panelRoot、左侧gridRoot/itemRoot、cellPrefab、itemPrefab、preview、所有TMP文字与closeButton；lootTitleText/lootStatusText引用右侧搜刮占位文字。gridRoot与itemRoot保持相同位置/尺寸。左右面板均使用暖棕色；伸展的根Image关闭，中间不铺遮住世界的面板。选中详情、反馈与操作说明排在左侧格子下方；详情使用ScrollRect与滚动条，保留完整描述。
+5. 场景中单独保留一个启用的BackpackUIController对象，不把它放进会整体SetActive(false)的Panel。填写view、真实player和Assets/Input/GameInputActions.inputactions。关闭面板后它仍需接收Tab。
+6. 只保留一个有效EventSystem，挂InputSystemUIInputModule，并引用现有UI/Point、UI/Click等动作。没有StandaloneInputModule，也不复制一套输入资源。
+7. LocalizationModule实例的tables列表保留现有表，再加入BackpackText.asset；itemLibrary继续引用原ItemLibrary.asset，ToggleLanguage仍指向原Player/ToggleLanguage。配置须在运行前完成；当前03初始化后不提供动态追加表的注册入口。
+8. 所有TMP引用Assets/Art/Fonts/Localization/NotoSansCJKsc-Regular SDF.asset，沿用03的工程内中文源字体与Dynamic图集。背包不新增字体框架。
+9. 正式接线由09处理；04测试场景仅对共享Prefab场景实例追加引用，不把修改Apply回共享GameBootstrap、Player或Localization预制体。
+
+04独立测试场景没有连接容器，因此右侧不显示。LootContainerPreview仅保留历史布局对象，没有第二份ItemManager、真实物品集合、格子算法或转移业务；Prefab与构建器都将其默认关闭。06的LootView仅在有效来源会话中显示，CloseSource会隐藏；05仓库使用自己的打开权限与显示控制。本场景没有绑定06回调，V键外部布娃娃预览也不会打开右侧容器面板。
+当前子对象PlayerInventory位于左上偏移(24,110)，参考尺寸360×580；LootContainerPreview位于右上向内偏移(24,110)，参考尺寸310×400。左格使用cellSize=66、gap=4、padding=6，默认4×4区域为288×288。右侧DisconnectedCell_x_y只是16个装饰Image，不表达真实容器容量或可放置位置。
+英文物品名和关闭按钮使用自动缩字号且不换行，Battery/Close保持单行。详情ScrollRect的滚动条Handle保持sizeDelta=Vector2.zero，由Scrollbar控制实际比例，避免滑块超出轨道。反馈区域高度46，覆盖英文约43.44的preferredHeight；不要恢复成原42高度。
+
+四、坐标、占格与缩放
+
+左上角为(0,0)，X向右，Y向下。Placement的X/Y总是物品矩形左上角，不是世界坐标。
+原宽高读取ItemDataSO.width/height；Rotated=true代表90度，宽高交换，不改SO原尺寸。canRotate=false时任何旋转摆放均拒绝。
+BackpackGrid使用简单List与矩形相交检查。先确认完整矩形在范围内，再比较其他物品，不能只用总空面积判断。坐标边界使用减法和必要的long比较，极大输入不会通过int溢出绕过边界。
+CanPlace/CanMove只查询；TryAdd/TryMove先检查成功再修改。失败保持所有记录不变。同一实例不能重复添加；包内移动只忽略自己的原占格，仍检查其他物品。
+BackpackView.TryScreenToCell通过RectTransformUtility.ScreenPointToLocalPointInRectangle转换，使用gridRoot.rect边缘、padding、cellSize和gap计算。边距与格子缝隙不作为有效目标格；CanvasScaler的缩放由RectTransform转换处理。面板须启用，存在EventSystem时还检查实际最上层射线命中属于本窗口，不能穿过来源面板或确认框放置。没有固定深度的ScreenToWorldPoint。
+单个物品宽度为width*cellSize+(width-1)*gap；高度同理。物品左上角位置为padding+(x或y)*(cellSize+gap)。格子坐标不参与玩家X/Y/Z世界运动。
+当前有效摆放目标仅为左侧真实gridRoot。右侧占位、中间世界区域及左侧详情区都不属于背包格子；拖到这些区域松手按面板外取消处理，不构成丢弃或向搜刮容器转移。
+
+五、拖拽与取消为什么不会丢物
+
+BeginItemDrag记录实例、原Placement、朝向以及按下位置所在的抓取格。真实布局和01归属完全不变；View只画半透明预览。合法位置显示绿色，非法位置红色，并显示当前语言原因。
+每次拖拽使用一个递增token。UpdateDrag和EndDrag必须携带当前token；CancelDrag把有效token清零，所以受击后迟到的OnEndDrag或上一轮拖拽回调不能提交。ItemView停用时以自己的token调用CancelDrag(token)，不会误取消另一轮拖拽。
+按R只改变预览的bool旋转与抓取偏移。松手时再次确认：当前拖拽仍有效，实例仍是01同一对象，Owner/ContainerId仍属于本包，原摆放未被其他操作更改，目标仍合法。随后TryMove再次完整校验并一次替换记录。
+非法位置、格子缝隙或面板外松手只取消预览；不交换其他物品、不丢地、不删除任何身份。CancelDrag和Close重复调用安全。
+Tab关闭、关闭按钮、有效伤害、死亡、控制器停用、换绑玩家、失去焦点/应用暂停都走统一取消路径。切语言只RefreshText，不清token、不改旋转、不重建正在拖拽的物品视图。
+
+外部预览：BackpackUIController.BeginExternalPreview(instanceId)只接受现存World/Container/Storage实例且本包没有其Placement，记录原Owner/ContainerId后预览。取消不改来源、不调用TrySetOwner、不删除来源表现。EndDrag在有效token内先调用已绑定的ExternalDropRequested同步处理者；该回调未处理时，外部预览才取消并显示pending。04测试场景没有绑定06回调，因此只验证预览和取消，不能视为真实拾取已完成。真实来源和转移由06协调。
+
+六、与02玩家协作
+
+探索默认shelterContext=false；未准备、无玩家或死亡玩家不能打开。打开调用真实PlayerController.SetBackpackOpen(true)，由02禁止主动移动/跳跃/世界交互并保持当时站立或蹲伏。04不禁用PlayerController，不冻结刚体，不修改Time.timeScale，不替换Cinemachine。
+正常关闭顺序：先设IsOpen=false → 原先打开时发布Closing清理来源会话 → CancelDrag并通知DragCancelled → 关闭View → SetBackpackOpen(false)。closing标记防止递归进入；Closing监听者只清理来源，不反向调用Close。只有存在拖拽时才发布DragCancelled。来源和预览均在解除玩家限制前结束。不使用CanAct阻止关闭，因为开包期间CanAct本来就是false。
+只订阅PlayerHealth.NonLethalDamaged和Died。02接受有效伤害后，04同步取消并关闭；被无敌期拒绝的伤害不发NonLethalDamaged，因此不会误关包。死亡同样清理背包标记，但02的IsDead和死亡状态继续限制行动。
+04不RecordLoss、不扣EV、不清全部携带物、不推进轮次。死亡时原布局完整保留，供08和06决定并执行实际损失/转移。
+BindPlayer(newPlayer)先关闭并清理仍存在的旧玩家标记，再解除旧Health订阅，最后绑定新玩家。OnDisable同样清理；重新启用后重新解析常驻数据。
+庇护所由08/09调用SetShelterContext(true)或在场景Inspector明确配置。该上下文允许未准备玩家或没有场景玩家时整理，但死亡玩家仍拒绝打开。没有有效存活且准备好的PlayerHealth时不能使用治疗物品。
+
+七、物品使用只有一个入口
+
+UI右键只由克隆的Player/UseItem回调处理；BackpackItemView.OnPointerClick只处理左键选择。回调通过EventSystem实际最上层命中的本包ItemView确定目标，避免点击其他UI时穿透使用。
+BackpackUIController.TryUseHoveredItem要求开包、无拖拽且真实玩家有效存活，然后调用：
+BackpackResult TryUseItem(string instanceId, PlayerHealth target, out ItemUseResult useResult)
+
+BackpackResult表示04的布局与归属检查。只有其为Success后才读取useResult；useResult表示01的真实使用结果，或无有效PlayerHealth时的InvalidTarget。BackpackResult.Success本身不等于治疗成功。
+管理器先确认真实实例、Owner==Backpack、ContainerId==本包、存在且合法的摆放，然后把同一个PlayerHealth作为IHealthTarget交给ItemManager.TryUseItem。
+成功且Owner==Consumed时，先删对应实例的布局，再发Changed。成功且保留的医疗包原格不变。失败不改布局；满血不会扣次数、吃食物或腾格。
+医疗包每轮一次、回满、食物回复1HP后消耗等规则全部由01现有配置与TryUseItem负责。04不BeginRound、不ResetForExploration、不修改IsRetained。
+busy覆盖完整同步操作与Changed通知。治疗期间或监听者中重入移动、布局增删和使用会返回Busy，重复NotifyChanged不会递归。通知读取已经一致的数据，不承担第二次移除业务。
+
+八、06可以调用的实际接口与顺序
+
+BackpackManager.Resolve()：只在有效GameBootstrap.Instance下寻找启用的BackpackManager，避免新场景重复根延迟销毁期间绑定错实例。它不创建全局根。
+bool Initialize(ItemManager source)：首次配置格子并记录真实来源；再次传同一来源返回true，布局不清空。换另一份ItemManager返回false。
+ItemManager Items；int Width/Height；string ContainerId；bool IsReady。
+IReadOnlyList<BackpackPlacement> GetPlacements()：布局只读快照。
+bool TryGetPlacement(string instanceId, out BackpackPlacement placement)：查摆放。
+BackpackResult TryGetCarriedItem(string instanceId, out ItemInstance item)：校验身份、归属、容器与合法摆放。
+BackpackResult CanMove(string instanceId, int x, int y, bool rotated)：包内预览查询，无副作用。
+BackpackResult TryMove(string instanceId, int x, int y, bool rotated)：包内提交，成功后发Changed。
+BackpackResult CanPlaceExternal(string instanceId, int x, int y, bool rotated)：查询没有本包记录的现有活动实例。接受World/Container/Storage或本containerId的Backpack；拒绝重复、终止/待找回归属及其他背包containerId。
+BackpackResult TryAddPlacement(string instanceId, int x, int y, bool rotated)：检查后新增一条布局，不改01归属、不发通知。
+BackpackResult TryRemovePlacement(string instanceId, out BackpackPlacement removed)：只移除指定布局，返回原记录，不改01归属、不发通知。允许归属已转移或已由08记损后清理旧摆放。
+BackpackResult TryRestorePlacement(BackpackPlacement placement)：用原实例与原位置/朝向重新检查后添加，不覆盖冲突记录，不自动恢复01归属、不发通知。失败返回原因，当前布局不变。
+void NotifyChanged()；event Action Changed：完整协调操作结束后刷新显示。
+
+06应先完成来源与目标的全部必要校验，再协调其来源布局、04布局与01.TrySetOwner。失败自行用保留的原Placement及来源状态恢复；04没有通用事务或跨容器协调器。只有来源、目标与01数据一致后才NotifyChanged，不能在半完成的布局加入后就刷新界面。
+新增/恢复静默入口有意允许实例尚在来源归属，这只是提供同步协调所需的局部能力，不是拾取成功或所有权转移许可。终止状态Consumed/Lost/PendingRecovery不能借恢复布局复活。
+BackpackResult实际值：Success、NotReady、InvalidConfiguration、NotFound、WrongOwner、WrongContainer、MissingPlacement、DuplicateInstance、RotationNotAllowed、OutOfBounds、Overlap、Busy。
+
+06按用户授权补入的UI同步回调（04仍不引用06类型）：
+- Func<bool> CanBeginDrag：来源状态可暂时阻止选择、开始拖拽与使用；未接时保持04原有行为。
+- Action<int, Vector2, Camera> DragUpdated：04更新预览后通知唯一协调者当前token与指针，以便显示另一目标。
+- Func<int, Vector2, Camera, bool> ExternalDropRequested：在有效token内同步处理松手；返回true表示已处理，04保存结果反馈并结束预览；返回false继续04原路径。不能把多个监听者串成业务提交链。
+- event Action Closing、DragCancelled：清理来源会话和预览的生命周期通知，不执行第二次转移。
+- int DragToken、Vector2Int DragGrabOffset、bool IsDragValid(int token)、void CancelDrag(int token)、void SetFeedback(string key)：用于验证当前拖拽、保留抓取格、取消指定预览和显示稳定反馈key。
+06负责这些回调的绑定、解除与真实来源联合验收；04当前测试场景不绑定回调。它们是明确的单次同步接入点，不是通用事件总线或事务引擎。
+
+九、03双语接入
+
+BackpackText使用真实LocalizationTableSO.entries；每条LocalizationEntry包含key/chinese/english。普通背包键使用backpack.前缀；物品结果直接复用items.use.*。窄左栏使用backpack.language_hint显示简短F10提示，这只是一条显示文案；F10仍完全由03唯一监听，04没有第二个切语言入口。
+物品名称与描述只从ItemDataSO.nameKey/descriptionKey查询；译文唯一编辑来源仍为ItemDataSO中英字段。背包表不复制物品译文。
+动态文字调用LocalizationManager.GetText(key)、FormatText(key,args)，并配对订阅/解除LanguageChanged。BackpackUIController只保存FeedbackKey等稳定含义；切语言重查上一条反馈、选中物品和说明，也刷新右侧搜刮标题与未连接状态，不重新使用或移动。
+BackpackView.Bind不因相同绑定而重建视图；LanguageChanged只RefreshText。关闭后新打开立即使用当前语言。全新运行默认中文由03负责，04没有F10监听。
+静态测试HUD使用03的LocalizedText。04自己的测试场景把BackpackText接入LocalizationModule实例tables；09在正式场景按同样方式汇总实际使用的表。
+
+十、08/09后续集成注意事项
+
+布局在常驻BackpackModule中；UI、输入控制器、玩家和EventSystem属于场景。重载时旧UI取消预览并解除订阅，新UI调用ResolveBindings取得存活入口下的数据，不引用即将销毁的重复Bootstrap子模块。
+成功撤离或普通换场景不清背包、不自动整理、不修改使用次数。08负责决定场景与玩家上下文；新玩家通过BindPlayer绑定，庇护所通过SetShelterContext设置。04不开新轮次、不结算EV或损失。
+09复用BackpackUIController处理Tab/R/右键；不得另加第二个相同业务输入监听。F10仍由03独占。关闭UI对象时必须保留能够接收Tab的控制器。
+仓库、箱子搜刮、地面拾取/丢放、撤离、死亡损失和正式场景转换均需与05/06/08/09联合验收；当前04测试上下文不能代替这些流程。
+双侧布局只改变场景UI的展示与接线，不改变常驻BackpackModule的职责、物品身份、布局数据或保存时机。06后续应在右侧接入真实来源并协调转移；09继续保留中间世界视野及左侧背包既有输入入口。
+
+十一、BackpackTest启动与复验
+
+测试场景：Assets/Scenes/Tests/Backpack/BackpackTest.unity。
+若资源尚未生成，先在停止Play且保存/保留当前场景后运行菜单Tools/MyPrecious/Create Backpack Test Assets。构建器只创建缺失的04资源与测试场景，保留已有资源/GUID；不修改Build Settings或共享Prefab。
+已有旧版居中面板时，使用Tools/MyPrecious/Rebuild Backpack Panel Layout执行本次布局更新。RebuildPanelLayout通过LoadPrefabContents保留BackpackPanel根、BackpackView的fileID及Prefab GUID，替换04面板自身子对象、色彩和对应背包表文案；Create菜单仍保持“只创建缺失资源”的行为。重建只适用于04自有UI，不对共享模块或常驻物品数据执行重置。
+进入干净测试运行，BackpackTestDriver仅在01零实例且04零布局时创建样本；不认领其他测试containerId的物品。首次显式模拟08的轮次1准备；场景重载沿用物品当前轮次，新场景玩家准备不会调用01.BeginRound，所以不会刷新医疗包。
+包内初始为医疗包(0,0)、食物A(2,0)、食物B(0,2)、电池(2,2)，共14格；布娃娃保留World归属。五件总面积为20格，不可能全部装入4×4。布娃娃用于外部预览，不提供假拾取。
+真实GameBootstrap、ItemModule、LocalizationModule、Player与Cinemachine相机均引用已有Prefab；没有旧PlayerTestDriver。红色3D触发区复用PlayerTestDamageSource；运动方块与计时显示用于观察世界继续运行。
+未连接容器时打开背包，只显示左侧玩家物品，右侧保持世界视野。连接真实来源后的右侧内容在LootTest等集成场景中检查。
+正式背包键：Tab开关、左键选择/拖拽、R旋转、右键使用、F10切语言。
+测试专用键：H尝试1点真实伤害，K尝试致命伤害，V外部布娃娃预览，Escape取消预览，T切换测试庇护所上下文。H/K仍受真实PlayerHealth无敌期规则限制，拒绝伤害不应关包。
+
+复验建议按以下顺序进行并分别记录结果：
+1. 站立开包，A/D与Space不能主动移动/跳跃，世界计时和运动方块继续；关闭后恢复正常控制。再按C蹲伏开包，松C仍保持打开时姿态。
+2. 在左侧拖电池到合法空格，R预览旋转，松手提交；拖到重叠、边缘、缝隙、中间世界或右侧占位区松手取消。再次Tab、关闭按钮或重复取消均保持原摆放。
+3. 拖拽中按H，在有效伤害时立即关闭；再松鼠标不能迟到提交。等无敌结束后再打开，拖拽中K致命伤害应关闭且角色仍死亡，携带物仍完整等待08。
+4. 满血右键医疗包/食物都拒绝。H受伤后使用食物，仅对应实例消耗且腾格；医疗包成功后保留，同轮再次受伤使用应提示额度已用。
+5. V启动外部预览，再Escape/Tab取消；01实例仍在World且containerId未变。此项只验预览，不验真实转移。
+6. F10中英来回切换，包括正在拖拽、关包重开和上一条错误反馈；无来源时右侧保持隐藏，ID、坐标、旋转、次数不变。检查中文无方框，左侧格子下的详情、英文和多行说明可读。
+7. 在1280×720与800×600实际Game窗口尺寸重复点击、抓取非左上角、旋转和放置，确认预览与真实占格一致，左右面板不遮住中间世界，左侧下方详情与操作说明未被裁切。已完成这两尺寸的排队InputSystem→UGUI自动验证和截图检查；直接设置画面状态、自动输入与原生键鼠/人工验收分别记录，不混为同一种证据。
+8. 同次运行重载BackpackTest，已提交摆放、ID、医疗包次数与语言保留，临时预览消失，食物不补发。
+
+自动测试位于Assets/Tests/Backpack/EditMode和PlayMode。EditMode的BackpackGridTests覆盖独立矩形与不变性，BackpackManagerTests使用真实01和真实PlayerHealth覆盖使用/布局一致性。PlayMode应从干净测试环境执行，以免销毁用户当前会话。执行数量和通过情况只引用04_Handoff中的本轮证据。
+本轮最终记录：16项EditMode通过；800×600完整8项PlayMode通过（a6126bfa94f74f6a87735f7440644207，3.8416878秒）；1280×720指针/关闭/右键3项复验通过（6810c7fe2bbe48fd8d30beff9480912e，1.9702512秒）。两尺寸检查面板完全位于屏幕内且不重叠，并验证从电池下半格拖至指针格(3,3)时，物品左上角为(3,2)。含06回调接口的源码已参与这些复验，但当前场景没有绑定真实06业务。
+实际工具结果保存在Temp/BackpackVerification/EditMode.json、PlayMode_800x600.json、PlayMode_1280x720.json。04释放前控制台0错误、Play=false、BackpackTest.isDirty=false，已通知06/05释放共享Editor，06已接手；保护文件最终3项差异和EditorSettings的API/磁盘值差异见04_Handoff，不回滚并行修改。
+中文/英文两尺寸截图和1280英文详情底部图位于Temp/BackpackVerification，准确文件名见04_Handoff。已查看中文无方框、Battery与Close单行、详情顶部和底部内容可读。截图选中/滚动通过API设置，Tab/F10为排队输入；不将这些截图称为原生鼠标或真实滚轮验收。最后反馈高度42→46的微小显示调整没有再跑逻辑测试。
+原生Windows键盘/拖动工具此前未稳定生效，真实操作系统输入和真人手感仍未验收；失焦只用模拟OnApplicationFocus(false)验证。首轮食物未Consumed的一次失败原因尚未证实，后续诊断与重跑记录保留在04_Handoff。MCP域重载断连/空作业不计成绩。
+运动方块与真实伤害源只代表世界继续运行；尚无07敌人时不称敌人联测通过。Windows构建、真人手感、完整P0流程和后续模块联合验收另行记录。
+
+十二、答辩说明
+
+“01保存这件物品是谁、属于哪里、用了几次；04保存它在背包哪几格。拖拽先显示预览，合法松手才改位置，受击只需取消预览，因此不会丢物。UI读取这些数据并显示03提供的当前语言文字。”
+
+具体看代码：BackpackGrid.CanMove不写数据，TryMove检查后替换一条Placement；UIController.CancelDrag只清临时token与预览；Manager.TryUseItem先让01完成真实使用，再删除已消耗实例的占格，最后通知View。这里的正确性来自明确顺序和数据只有一份，不需要通用事务框架。
+
+十三、2026-10-18 真实丢弃接入
+
+背包选中物品后点顶部“丢弃选中物品”。普通物品提示销毁；唯一物品提示本轮不可拾取、下一轮原拾取点恢复。确认才提交，取消保持原状；未连接容器时右侧隐藏也能使用。拖到无效区域仍取消拖拽，不自动销毁。
+06 ItemTransferUIBridge保存确认资格，专用DiscardConfirmationButton防旧鼠标按下的迟到释放。04已有Closing和CanBeginDrag门禁被复用，不新增第二个伤害或使用处理者；01仍唯一拥有记损/找回数据。
+04独立测试场景新增真实ItemTransferCoordinator/UIBridge和Loot语言表，允许无LootRuntime进行丢弃。原点恢复的运行验证在06真实LootTest中以其明确测试切轮完成，BackpackTest本身不新增地图生成或正式流程。
+确认面板由Assets/Tests/Loot/Editor/BackpackDiscardUIBuilder.cs搭建，已用于04/06及MinimumLoop场景生成器。实际丢弃按钮/确认字段见ItemTransferUIBridge，来源双向转移接口保留。
+当前成绩与边界以Docs/Verification/BackpackDiscard/Report.txt为准；上文旧独立场景无06业务和历史次数仅是此前状态，不代表本轮接入状态。
+
+十四、04A Ctrl快捷转移入口（代码就绪，运行待07）
+
+BackpackUIController新增public Func<string, bool> QuickTransferRequested { get; set; }与public bool TryQuickTransfer(string instanceId)。06绑定同步回调，负责唯一有效目标选择、真实提交及双侧反馈；04没有目标查找、Items/Transfers或Loot反向依赖。未绑定返回false。卸载由06只移除自己绑定的回调，04关包只作手势失效，不随意清除桥接委托。
+入口验证本地组件/背包已打开、权威物品仍归本包且摆放合法、无拖拽、玩家状态与场景切换锁；庇护所仍允许未准备或无玩家。复用CanBeginDrag处理真实丢弃确认和对侧拖拽限制。同步请求期间禁止递归快捷请求、普通拖拽与使用；闸门回调后的状态再次检查。返回最终回调结果，false不覆盖06反馈，不自动丢弃。
+BackpackItemView通过UGUI PointerDown读取Input System左右Ctrl，只在有效PointerUp→PointerClick发一次快捷请求。按住不逐帧调用；本次按压成功或失败都不启动普通拖拽/选择。快捷按压移动超过拖拽阈值只取消，不在松手时补发快捷请求。普通按下后再按Ctrl仍走普通路径。使用入口同时检查快捷按压以及同帧Ctrl+左右键，避免UseItem先于UGUI回调使用物品。没有注册新的轮询或InputAction。
+关闭、禁用或换绑清按压状态；关闭使InputSession失效，旧Click/BeginDrag不能借用重开的面板。相同实例的Bind刷新保留手势，F10不重新提交。受击和死亡沿用原有Close入口，场景切换锁也禁止重开。
+
+BackpackManager新增public BackpackResult TryFindSpaceForExternal(string instanceId, bool preferredRotated, out Vector2Int cell, out bool rotated)。
+依次调用现有身份/归属检查与grid.CanPlace，y从上到下、x从左到右；当前方向整张查完才尝试允许的另一方向。只读，不重排、不改归属/实例/使用次数，不发Changed。普通拖拽继续按原鼠标坐标/抓取偏移提交，不调用此自动查询。
+成功返回Success和合法cell/rotated。失败cell=(-1,-1)，rotated保持preferredRotated；已有身份/初始化/忙/重复错误原样返回。禁止旋转却传true返回RotationNotAllowed；至少有能容纳尺寸的位置但全部占用返回Overlap；全部允许方向都超大返回OutOfBounds。查询不是来源许可或最终提交，06仍须完整复验。
+
+文字生成源只更新backpack.controls的中英文，不直接写共享.asset；07统一更新BackpackText并验证1920×1080文字可读。没有新增语言键或调整66/4/6。
+EditMode新增查询顺序、方向优先、仅旋转可容纳、失败及全部布局/身份/通知不变性；PlayMode新增排队Input System→UGUI与入口守卫测试。04A没有操作Unity、编译或运行测试；07在04A/05A/06C交付后统一执行。回调计数测试只证明04请求入口，不冒称真实跨容器转移或实体鼠标验收。
+
+十五、04A补充：保持外部条目旋转与抓取位置
+
+主程核对06C实际消费者后新增public bool BeginExternalPreview(string instanceId, bool rotated, Vector2Int grabOffset)。旧BeginExternalPreview(string instanceId)保留，转调false/Vector2Int.zero，仍可打开背包开始外部预览。
+06应传入条目LayoutRotated和按下位置相对物品左上格计算的抓取偏移。04校验定义存在、宽高为正、旋转被允许，以及原有外部归属/无占格/无拖拽/CanBeginDrag门禁和玩家状态；闸门同步关闭或重开会话时拒绝继续。
+先按该方向计算实际宽高，夹紧偏移到[0,width-1]和[0,height-1]，再设置PreviewRotated、抓取偏移和本次唯一token，最后调用首次UpdateDrag。因此首次DragUpdated已能读取正确方向与目标格。后续R继续复用04唯一处理者，鼠标格减当前抓取偏移的逻辑不变。
+参数非法返回false，不改来源身份/归属/占格，不创建预览token。已有拖拽期间拒绝新请求且保留原拖拽。首次更新通知若同步关闭、取消或改动来源，本入口返回false并仅取消自己的token；不能取消回调中新建的另一拖拽，也不回滚其他调用者对来源的权威修改。首次更新抛异常时清理本次token后原样抛出，不遗留半启动状态。尺寸合法但当前位置重叠/越界仍可显示红色预览，不能把“预览建立成功”当作目标可提交。
+补充3条PlayMode API夹具验证单参默认、首次通知方向/非方形偏移/夹紧、真实R动作、禁止旋转和失效定义、正尺寸校验、真实受击取消、迟到token，以及首次回调改变来源、抛异常、重入替换。配置无效用运行时SO克隆，不修改共享.asset。此处没有调用06实际鼠标拾取或箱子条目提交，运行仍待07。

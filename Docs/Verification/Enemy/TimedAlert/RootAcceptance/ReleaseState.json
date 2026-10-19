@@ -1,0 +1,18 @@
+{
+  "utc": "2026-10-19T06:55:10.3979819Z",
+  "scene": "Assets/Scenes/Ruins.unity",
+  "dirty": false,
+  "scenes": 1,
+  "play": false,
+  "compile": false,
+  "update": false,
+  "prefab": false,
+  "running": false,
+  "timeScale": 1.0,
+  "background": false,
+  "settingsBackground": false,
+  "screen": [
+    1920,
+    1080
+  ]
+}

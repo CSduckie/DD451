@@ -1,0 +1,400 @@
+{
+  "route": "Ordinary Play, public APIs, not OS native keyboard/mouse",
+  "transfers": {
+    "results": [
+      "Success",
+      "Success",
+      "Success"
+    ],
+    "backpack": 1,
+    "backgroundCells": 24
+  },
+  "storageAndUpgrade": {
+    "upgrade": "Success",
+    "dollToStorage": "Success",
+    "medkitToStorage": "Success",
+    "medkitToBag": "Success",
+    "ev": 7,
+    "capacity": [
+      20,
+      24
+    ],
+    "viewport": 1430,
+    "cell": 66
+  },
+  "secondReturn": {
+    "utc": "2026-10-18T22:58:39.6282862Z",
+    "stage": "Shelter",
+    "round": 2,
+    "screen": [
+      1920,
+      1080
+    ],
+    "language": "English",
+    "grids": [],
+    "cameras": [
+      {
+        "name": "OutputCamera",
+        "scene": "Shelter",
+        "brain": true
+      }
+    ],
+    "listeners": 1,
+    "events": 1,
+    "cameraFollowsPlayer": true,
+    "clips": [],
+    "sourceEntries": [],
+    "backpack": 1,
+    "warehouse": 1,
+    "ev": 7
+  },
+  "legacy": [
+    {
+      "name": "BackpackTest",
+      "snapshot": {
+        "scene": "BackpackTest",
+        "screen": [
+          1920,
+          1080
+        ],
+        "grids": [
+          {
+            "kind": "Backpack",
+            "active": true,
+            "cellSize": 66,
+            "gap": 4,
+            "padding": 6,
+            "scale": "(1.00, 1.00, 1.00)",
+            "count": 16,
+            "actual": [
+              66,
+              66
+            ],
+            "canvas": [
+              1920,
+              1080
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "WarehouseTest",
+      "snapshot": {
+        "scene": "WarehouseTest",
+        "screen": [
+          1920,
+          1080
+        ],
+        "grids": [
+          {
+            "kind": "Warehouse",
+            "active": true,
+            "cellSize": 66,
+            "effective": 66,
+            "gap": 4,
+            "padding": 6,
+            "scale": "(1.00, 1.00, 1.00)",
+            "count": 401,
+            "actual": [
+              66,
+              66
+            ],
+            "canvas": [
+              1920,
+              1080
+            ],
+            "viewport": 1430,
+            "horizontal": false,
+            "vertical": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "LootTest",
+      "snapshot": {
+        "scene": "LootTest",
+        "screen": [
+          1920,
+          1080
+        ],
+        "grids": [
+          {
+            "kind": "Backpack",
+            "active": true,
+            "cellSize": 66,
+            "gap": 4,
+            "padding": 6,
+            "scale": "(1.00, 1.00, 1.00)",
+            "count": 16,
+            "actual": [
+              66,
+              66
+            ],
+            "canvas": [
+              1920,
+              1080
+            ]
+          },
+          {
+            "kind": "Warehouse",
+            "active": false,
+            "cellSize": 66,
+            "effective": 66,
+            "gap": 4,
+            "padding": 6,
+            "scale": "(1.00, 1.00, 1.00)",
+            "count": 401,
+            "actual": [
+              66,
+              66
+            ],
+            "canvas": [
+              1920,
+              1080
+            ],
+            "viewport": 1430,
+            "horizontal": false,
+            "vertical": true
+          }
+        ]
+      }
+    }
+  ],
+  "legacyNote": "count is root.childCount in early legacy measurements: Warehouse=401 includes 400 cell Images plus Item root; not 401 cells.",
+  "savedSceneAudit": [
+    {
+      "scene": "Assets/Scenes/Shelter.unity",
+      "dirty": false,
+      "data": [
+        {
+          "kind": "Backpack",
+          "cellSize": 66,
+          "gap": 4,
+          "padding": 6,
+          "scale": "(1.00, 1.00, 1.00)"
+        },
+        {
+          "kind": "Warehouse",
+          "cellSize": 66,
+          "gap": 4,
+          "padding": 6,
+          "scale": "(1.00, 1.00, 1.00)",
+          "viewport": "(926.00, 452.00)",
+          "horizontal": false,
+          "vertical": true
+        },
+        {
+          "kind": "Loot",
+          "cellSize": 66,
+          "gap": 4,
+          "padding": 6,
+          "position": "(1412.00, -132.00)",
+          "size": "(484.00, 808.00)",
+          "grid": true,
+          "cell": true,
+          "item": true,
+          "countdown": true
+        },
+        {
+          "kind": "Canvas",
+          "name": "GameFlowHUD",
+          "reference": "(1920.00, 1080.00)",
+          "match": 0
+        },
+        {
+          "kind": "Canvas",
+          "name": "InventoryCanvas",
+          "reference": "(1920.00, 1080.00)",
+          "match": 0
+        },
+        {
+          "kind": "Camera",
+          "name": "OutputCamera",
+          "active": false,
+          "brain": true
+        }
+      ]
+    },
+    {
+      "scene": "Assets/Scenes/Ruins.unity",
+      "dirty": false,
+      "data": [
+        {
+          "kind": "Box",
+          "sourceId": "supplies-box",
+          "gridWidth": 6,
+          "gridHeight": 4
+        },
+        {
+          "kind": "Backpack",
+          "cellSize": 66,
+          "gap": 4,
+          "padding": 6,
+          "scale": "(1.00, 1.00, 1.00)"
+        },
+        {
+          "kind": "Loot",
+          "cellSize": 66,
+          "gap": 4,
+          "padding": 6,
+          "position": "(1412.00, -132.00)",
+          "size": "(484.00, 808.00)",
+          "grid": true,
+          "cell": true,
+          "item": true,
+          "countdown": true
+        },
+        {
+          "kind": "Canvas",
+          "name": "GameFlowHUD",
+          "reference": "(1920.00, 1080.00)",
+          "match": 0
+        },
+        {
+          "kind": "Canvas",
+          "name": "InventoryCanvas",
+          "reference": "(1920.00, 1080.00)",
+          "match": 0
+        },
+        {
+          "kind": "Camera",
+          "name": "OutputCamera",
+          "active": false,
+          "brain": true
+        }
+      ]
+    },
+    {
+      "scene": "Assets/Scenes/Tests/Backpack/BackpackTest.unity",
+      "dirty": false,
+      "data": [
+        {
+          "kind": "Camera",
+          "name": "OutputCamera",
+          "active": true,
+          "brain": true
+        },
+        {
+          "kind": "Backpack",
+          "cellSize": 66,
+          "gap": 4,
+          "padding": 6,
+          "scale": "(1.00, 1.00, 1.00)"
+        },
+        {
+          "kind": "Canvas",
+          "name": "Backpack Canvas",
+          "reference": "(1920.00, 1080.00)",
+          "match": 0
+        }
+      ]
+    },
+    {
+      "scene": "Assets/Scenes/Tests/Warehouse/WarehouseTest.unity",
+      "dirty": false,
+      "data": [
+        {
+          "kind": "Camera",
+          "name": "Main Camera",
+          "active": true,
+          "brain": false
+        },
+        {
+          "kind": "Warehouse",
+          "cellSize": 66,
+          "gap": 4,
+          "padding": 6,
+          "scale": "(1.00, 1.00, 1.00)",
+          "viewport": "(1430.00, 440.00)",
+          "horizontal": false,
+          "vertical": true
+        },
+        {
+          "kind": "Canvas",
+          "name": "WarehouseCanvas",
+          "reference": "(1920.00, 1080.00)",
+          "match": 0
+        }
+      ]
+    },
+    {
+      "scene": "Assets/Scenes/Tests/Loot/LootTest.unity",
+      "dirty": false,
+      "data": [
+        {
+          "kind": "Camera",
+          "name": "OutputCamera",
+          "active": true,
+          "brain": true
+        },
+        {
+          "kind": "Backpack",
+          "cellSize": 66,
+          "gap": 4,
+          "padding": 6,
+          "scale": "(1.00, 1.00, 1.00)"
+        },
+        {
+          "kind": "Warehouse",
+          "cellSize": 66,
+          "gap": 4,
+          "padding": 6,
+          "scale": "(1.00, 1.00, 1.00)",
+          "viewport": "(1430.00, 440.00)",
+          "horizontal": false,
+          "vertical": true
+        },
+        {
+          "kind": "Loot",
+          "cellSize": 66,
+          "gap": 4,
+          "padding": 6,
+          "position": "(-24.00, -132.00)",
+          "size": "(484.00, 808.00)",
+          "grid": true,
+          "cell": true,
+          "item": true,
+          "countdown": true
+        },
+        {
+          "kind": "Canvas",
+          "name": "Loot Canvas",
+          "reference": "(1920.00, 1080.00)",
+          "match": 0
+        },
+        {
+          "kind": "Box",
+          "sourceId": "guaranteed",
+          "gridWidth": 6,
+          "gridHeight": 4
+        },
+        {
+          "kind": "Box",
+          "sourceId": "zero",
+          "gridWidth": 6,
+          "gridHeight": 4
+        },
+        {
+          "kind": "Box",
+          "sourceId": "mixed",
+          "gridWidth": 6,
+          "gridHeight": 4
+        },
+        {
+          "kind": "Box",
+          "sourceId": "empty",
+          "gridWidth": 6,
+          "gridHeight": 4
+        },
+        {
+          "kind": "Box",
+          "sourceId": "unique-doll",
+          "gridWidth": 6,
+          "gridHeight": 4
+        }
+      ]
+    }
+  ]
+}

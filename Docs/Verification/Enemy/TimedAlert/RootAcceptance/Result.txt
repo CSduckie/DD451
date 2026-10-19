@@ -1,0 +1,33 @@
+09F 固定警戒与草丛脱战 — 主程独立验收通过
+2026-10-19；以下时间戳为UTC。工程 E:/DD451。
+
+最终行为
+首次真实发现：原地橙色呼吸灯0.5秒，再红色呼吸灯追击。旧红色填充/消退规则已替换。
+追击只隐藏视锥MeshRenderer，Vision物体、组件、范围Collider与真实CanSee继续运行。
+草丛范围内蹲伏隐藏：停止追击、原地橙色警戒2秒并恢复视锥；到期沿原巡逻索引继续。期间实际再发现立即追击。
+仅Chase实际接触可以自毁；有效隐藏优先于本次物理接触检查。普通墙/距离丢失保留最后位置Search。
+配置Assets/Data/Enemy/Drone/DroneConfig.asset：discoveryAlertSeconds=0.5、coverAlertSeconds=2。
+
+独立运行结果
+从正式Bootstrap启动、到Shelter后实际TryDepart进入最新Ruins；1920×1080。没有强制AI状态、BeginRound或警戒计时。
+Sequence-e2a6f7a2记录735个逐帧样本，原地发现警戒0.50236178秒；草丛隐藏开始到恢复Patrol约2.01256323秒（含首次状态/物理步）；重新现身后下一观察帧0.00512575秒已Chase。
+两段警戒位置保持，原巡逻目标未重置。真实Chase实体重叠发生一次伤害，生命3→2；继续观察0.3秒无重复伤害，模型/碰撞/视锥正确关闭。
+SameRound.json：在同一自然自毁实例上重复正式TryBeginExplorationEnemies(1)，仍为Explode、碰撞与视锥关闭、健康不再下降。
+三张独立截图已实际逐张查看：首次纯橙警戒、红灯Chase无视锥、隐藏后的橙色警戒恢复视锥，均1920×1080。
+截图阶段短暂Time.timeScale=0等待图像写入，计时指标使用游戏Time.time；随后恢复1。没有用暂停或直接改计时跳过任何状态。
+
+验证边界
+主程通过公开API安排玩家位置/姿态，使用仅运行期临时CoverArea+真实BoxCollider验证隐藏条件，并临时禁用另外两架无人机以隔离当前样本。它们在退出Play后恢复场景原配置，不修改任何巡逻点或敌人资产。
+主程探针不代表原生键鼠或原草丛布局验收；009另在当前正式草丛完成Run-a8f4c7af自然流程，且全程保留其余无人机。主程读取该记录：0.5054379秒首次警戒、2.0014544秒完整草丛警戒、再发现0.0081186秒后追击、原路线实际恢复运动。
+同FixedUpdate的隐藏保护通过针对性测试和源码审查覆盖：真实Chase下先设置隐藏/重叠，在任何AI Update前进入实际FixedUpdate及接触/扫掠门禁。普通帧采样不冒称证明所有回调排列。
+009自动证据：EditMode45/45；最终GameFlow PlayMode官方XML13/13。首次53项混合PlayMode中10个失败均为新箱配置，Enemy40没有失败条目但缺少逐项正式结果；不把它表述为98项完整全通过。见09F交接第三节。
+
+最新场景与第三只箱子
+009交接后又出现用户新增SuppliesBox (2)，主程接手基线Ruins=53D3810E...，保留了它及其余所有用户布局。它复制了supplies-box及含唯一物品的MinimumLoopLoot，首次正式出发因此Failed。诊断Console已保存在BeforeFinalRunConsole.json。
+沿用用户已确认“新箱只放食物、唯一物品留原箱”的规则，仅将SuppliesBox (2)的sourceId改为supplies-box-3，lootTable指向既有RuinsExtraSuppliesLoot（Food50%）。修前完整副本BeforeThirdBox-Ruins.unity；最终文本diff仅这两个值，原箱表/模型/路线/其他布局不变。此后重新从Bootstrap正式出发成功，完成上述独立验收。
+该修改是必要的场景配置修复，没有重建箱子或增加自动命名框架。场景后来显示dirty但另存副本与磁盘文本完全相同，保存后继续；没有丢弃用户编辑。
+本轮RootIntegrity的唯一允许变化为Ruins这两字段；其余8个受保护文件哈希不变。新最终Ruins hash见ThirdBoxFixHash.json/Integrity.json，不用009较早C7DEA...基线覆盖。
+
+结束状态
+06:55:10Z：唯一Ruins，clean/Edit，Play/compile/update/PrefabStage及探针Running全部false；timeScale1，两项runInBackgroundfalse；Console0错误/0警告。所有临时草丛/其他无人机隔离/玩家设置均已通过清理及正常退出Play恢复。
+主程Assets和Editor工作已结束并释放。可从Bootstrap按Play进入庇护所再出发试玩。

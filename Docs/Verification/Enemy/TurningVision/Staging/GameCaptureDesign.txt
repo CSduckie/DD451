@@ -1,0 +1,38 @@
+09H 三帧实际Game取景设计（只读准备，未执行Unity）
+
+可直接复用
+1. Docs/Verification/Enemy/TimedAlert/ProbeStaging/01_Depart.cs：从真实Bootstrap已到Shelter后，以flow.TryDepart进入Ruins；共享轮次、持久Player、1920×1080检查继续保留。若已有合规正式Exploring会话，可直接复用现有对象，不再创建场景或Prefab。
+2. 同目录02_NaturalTimedAlert.cs：复用EditorApplication.update每frameCount采样一次、SessionState token取消、ScreenCapture.CaptureScreenshot、异常/完成时卸载callback并恢复玩家位置/刚体标志/runInBackground的模式。不要复制旧cover流程及其“等yaw稳定才进入”phase0，该条件会绕开09H。
+3. 同目录ReadResult.cs/CancelProbe.cs可按09H独立key使用，避免与其它任务的回调冲突。
+4. Docs/Verification/Enemy/TimedAlert/RootAcceptance/Result.txt已有“截图阶段短暂timeScale=0、用游戏Time.time记录计时”的验收方式；仅在无法稳定保存短瞬间图像时复用。09G CollisionSize下没有新的普通Play截图/相机探针；它提供自动化接触证据，不能把旧截图当成09H画面。
+
+推荐取景：现有正式Ruins + 原Cinemachine
+- 等主程完成Shelter天空盒并明确释放Editor后，fresh核对场景/dirty/Play；保全新的用户场景，不读取旧Before替换当前场景。
+- 使用真实GameFlow已初始化、enabled、有有效路线的Drone，按scene.path和instance选择，不假定名称、根层级或数量。保留出生Z、配置、模型、掩体和所有巡逻点。
+- 不修改Camera资产、MainCamera变换、Cinemachine参数或场景布局。只用真实Player.RelocateWithinRun辅助定位，临时kinematic以固定测量位置，原Cinemachine继续跟随真实玩家。让玩家与无人机相距约2.4m，两个对象自然保持同屏，沿用09F已验证的取景距离。
+- 初始玩家在旧朝向后方约2.4m、与视野起点近同高；真实CanSee必须false，实际球体与胶囊不得重叠。等待路线反向期间如需保持镜头近景，可仅移动玩家夹具在无人机后方，明确记为API辅助，不宣称原生行走。不要移动无人机或改路线来制造转向。
+- 09G最新规则为所有存活状态真实接触都爆炸，含草丛隐藏；必须保持实体间距，不能沿用旧的“Alert可接触免伤”夹具。
+
+三张图的自然触发点
+01-Turn-Initial-1920.png：记录一次真实巡逻FacingDirection反向。保存旧FacingRotation/方向；在yaw刚开始偏离旧方向、玩家仍在后方且CanSee=false时取图。必须同时记录状态Patrol、实际yaw和目标朝向，不能手工设heading/Target。
+02-Turn-Discovered-Alert-1920.png：当自然yaw相对旧朝向偏离10至30度时，把真实玩家胶囊中心放到旧前方约2.4m。用当前真实CapsuleCollider.center/TransformVector计算定位，不能硬编码standing中心1m或忽略02C下蹲尺寸；Z仍由真实Player.config.planeZ约束。先证明RangeCollider.ClosestPoint(center)距离接近0、CanSee=true及无实体接触，再等产品Update自然进入Alert。记录发现yaw，并在Alert剩余约0.4至0.2秒时取橙色扇形和灯的图；这时yaw应保持发现角度，不继续旧巡逻反向。
+03-Turn-Chase-1920.png：等待同一次Alert自然走完约0.5秒进入Chase，保存红灯、MeshRenderer隐藏的画面，同时记录Vision对象/组件/真实RangeCollider仍开启、CanSee=true、Target为真实Player。取图后立即收尾，避免实际追击继续靠近造成09G接触爆炸。
+正常0.18秒转向若采样跳过10至30度窗口，该次只记“未采到入口”并等下一次真实反向，不强制设置yaw或把一次未命中称为产品漏检。若仅为了辅助静态图使用运行时0.6秒夹具，必须另列为放慢夹具，不能代替原0.18的自动化证据。
+
+短暂停帧的边界
+- 优先在timeScale1下按条件直接CaptureScreenshot，记录请求帧，完成后核对实际PNG。
+- 若原生截图请求的帧尾延迟难以捕获初始转向，可在已经由产品更新产生该状态后将timeScale临时置0，只保存这一状态；等PNG落盘/完成采样再恢复原值。暂停期间不移动玩家、不排输入、不改AI状态/计时，不在暂停期间“等待0.5秒通过”。
+- Alert时长用Time.time差与AlertSecondsRemaining验证，另记录timeScale及暂停开始/结束真实时间；不把停止的墙钟时间算作警戒增长。所有取消/异常路径恢复原timeScale；不留下常驻Assets helper。
+- 三张图用于实际显示对照，不能单独证明每个检测帧。不要宣称像素截屏精确对应截图请求帧；以暂停的稳定状态或实际采样对照说明边界。
+
+CSV最小字段（补足09F旧记录缺口）
+frame/time/fixedTime/timeScale；阶段、CurrentState、IsCoverAlert、AlertSecondsRemaining；FacingDirection、FacingRotation完整Quaternion或yaw；Body.position、FlightVelocity；visionOrigin.position与vision.transform.position/rotation；实际capsule.bounds.center及InverseTransformPoint；RangeCollider.ClosestPoint距离；CanSee、Target是否为本玩家、Hidden/有效资格；Renderer/range/component/object启用；点灯RGB/强度；health/HasExploded。
+先记姿态和状态，再做公开CanSee查询；不要只留一个canSee布尔值后猜测丢失原因。Alert内yaw变化、range距离和状态变化应能从同一trace重建。
+
+验证与收尾
+- 该画面段重点复现“移动玩家进入正在转向的视锥→同次Alert保持发现角→自然Chase”；静止玩家被扫入、左右方向、边缘、墙/草丛否定对照由新增DroneTurningVisionTests及相关自动化覆盖，不让三帧图承担全部矩阵。
+- 真正90度yaw时视锥的有限Z厚度也随转向旋转，固定世界XY玩家不一定属于真实凸体。不要为了“中途”字样要求玩家在90度必然被发现，更不能扩大视野或取消遮挡制造画面。
+- 成功后核对三PNG为1920×1080：初始可见扇形、发现橙色扇形、Chase无扇形；用CSV证明检测仍开及自然0.5秒，而不是只断言Renderer属性。
+- 恢复Player原位置/kinematic/gravity、timeScale、runInBackground，注销callback，保留原相机；正式退出Play后fresh确认无回调/测试。资料写明“公开API定位与运行探针辅助，非原生键鼠验收”。
+
+本文件是待根执行的设计，不是新的运行结果。此准备未写Assets、未操作Unity、未改相机或产品场景。

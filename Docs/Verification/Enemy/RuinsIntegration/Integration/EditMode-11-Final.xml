@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="11" result="Passed" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-19 06:13:20Z" end-time="2026-10-19 06:13:20Z" duration="0.1967574">
+  <test-suite type="TestSuite" id="1000" name="DD451Demo" fullname="DD451Demo" runstate="Runnable" testcasecount="333" result="Passed" start-time="2026-10-19 06:13:20Z" end-time="2026-10-19 06:13:20Z" duration="0.196757" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1104" name="MyPrecious.GameFlow.EditModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.GameFlow.EditModeTests.dll" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-10-19 06:13:20Z" end-time="2026-10-19 06:13:20Z" duration="0.176606" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="85336" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestFixture" id="1091" name="GameFlowSettlementTests" fullname="GameFlowSettlementTests" classname="GameFlowSettlementTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-19 06:13:20Z" end-time="2026-10-19 06:13:20Z" duration="0.071183" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1094" name="CarriedUniqueIsNotDuplicatedWhenNextRoundRebindsTheOriginalSource" fullname="GameFlowSettlementTests.CarriedUniqueIsNotDuplicatedWhenNextRoundRebindsTheOriginalSource" methodname="CarriedUniqueIsNotDuplicatedWhenNextRoundRebindsTheOriginalSource" classname="GameFlowSettlementTests" runstate="Runnable" seed="1109254368" result="Passed" start-time="2026-10-19 06:13:20Z" end-time="2026-10-19 06:13:20Z" duration="0.044332" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1092" name="ExtractionRetainsLayoutIdentityAndUsageAndPublishesOnlyCompleteState" fullname="GameFlowSettlementTests.ExtractionRetainsLayoutIdentityAndUsageAndPublishesOnlyCompleteState" methodname="ExtractionRetainsLayoutIdentityAndUsageAndPublishesOnlyCompleteState" classname="GameFlowSettlementTests" runstate="Runnable" seed="1049758227" result="Passed" start-time="2026-10-19 06:13:20Z" end-time="2026-10-19 06:13:20Z" duration="0.005430" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1095" name="InvalidLaterPlacementRejectsAllChangesAndCanRetryAfterRepair" fullname="GameFlowSettlementTests.InvalidLaterPlacementRejectsAllChangesAndCanRetryAfterRepair" methodname="InvalidLaterPlacementRejectsAllChangesAndCanRetryAfterRepair" classname="GameFlowSettlementTests" runstate="Runnable" seed="1343486131" result="Passed" start-time="2026-10-19 06:13:20Z" end-time="2026-10-19 06:13:20Z" duration="0.002054" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1093" name="LeftUniqueRecoversTheSameIdentityNextRoundWhileOrdinaryGetsNewIdentity" fullname="GameFlowSettlementTests.LeftUniqueRecoversTheSameIdentityNextRoundWhileOrdinaryGetsNewIdentity" methodname="LeftUniqueRecoversTheSameIdentityNextRoundWhileOrdinaryGetsNewIdentity" classname="GameFlowSettlementTests" runstate="Runnable" seed="820854358" result="Passed" start-time="2026-10-19 06:13:20Z" end-time="2026-10-19 06:13:20Z" duration="0.002003" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1096" name="OrphanBackpackOwnerCannotSilentlyBypassSettlementValidation" fullname="GameFlowSettlementTests.OrphanBackpackOwnerCannotSilentlyBypassSettlementValidation" methodname="OrphanBackpackOwnerCannotSilentlyBypassSettlementValidation" classname="GameFlowSettlementTests" runstate="Runnable" seed="1870850840" result="Passed" start-time="2026-10-19 06:13:20Z" end-time="2026-10-19 06:13:20Z" duration="0.001098" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1097" name="RoundOverflowIsRejectedBeforeAnyRetainedOrLossMutation" fullname="GameFlowSettlementTests.RoundOverflowIsRejectedBeforeAnyRetainedOrLossMutation" methodname="RoundOverflowIsRejectedBeforeAnyRetainedOrLossMutation" classname="GameFlowSettlementTests" runstate="Runnable" seed="959562596" result="Passed" start-time="2026-10-19 06:13:20Z" end-time="2026-10-19 06:13:20Z" duration="0.000915" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1098" name="PlayerFlowEntryTests" fullname="PlayerFlowEntryTests" classname="PlayerFlowEntryTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-19 06:13:20Z" end-time="2026-10-19 06:13:20Z" duration="0.010128" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1101" name="DeadPlayerCanRelocateButUnlockAndFirstShelterEntryCannotReviveIt" fullname="PlayerFlowEntryTests.DeadPlayerCanRelocateButUnlockAndFirstShelterEntryCannotReviveIt" methodname="DeadPlayerCanRelocateButUnlockAndFirstShelterEntryCannotReviveIt" classname="PlayerFlowEntryTests" runstate="Runnable" seed="1743179975" result="Passed" start-time="2026-10-19 06:13:20Z" end-time="2026-10-19 06:13:20Z" duration="0.001849" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1099" name="FirstShelterPreparationKeepsRoundZeroAndCannotRefillExistingPlayer" fullname="PlayerFlowEntryTests.FirstShelterPreparationKeepsRoundZeroAndCannotRefillExistingPlayer" methodname="FirstShelterPreparationKeepsRoundZeroAndCannotRefillExistingPlayer" classname="PlayerFlowEntryTests" runstate="Runnable" seed="1756007753" result="Passed" start-time="2026-10-19 06:13:20Z" end-time="2026-10-19 06:13:20Z" duration="0.001534" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1103" name="InvalidPositionAndUnpreparedRelocationDoNotChangePreparationOrRound" fullname="PlayerFlowEntryTests.InvalidPositionAndUnpreparedRelocationDoNotChangePreparationOrRound" methodname="InvalidPositionAndUnpreparedRelocationDoNotChangePreparationOrRound" classname="PlayerFlowEntryTests" runstate="Runnable" seed="1669536836" result="Passed" start-time="2026-10-19 06:13:20Z" end-time="2026-10-19 06:13:20Z" duration="0.000487" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1100" name="RelocationPreservesHealthRoundAndInvulnerabilityWithoutHealthNotification" fullname="PlayerFlowEntryTests.RelocationPreservesHealthRoundAndInvulnerabilityWithoutHealthNotification" methodname="RelocationPreservesHealthRoundAndInvulnerabilityWithoutHealthNotification" classname="PlayerFlowEntryTests" runstate="Runnable" seed="820699700" result="Passed" start-time="2026-10-19 06:13:20Z" end-time="2026-10-19 06:13:20Z" duration="0.000778" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1102" name="SceneLockSurvivesFirstPreparationBackpackClosingAndNewRoundReset" fullname="PlayerFlowEntryTests.SceneLockSurvivesFirstPreparationBackpackClosingAndNewRoundReset" methodname="SceneLockSurvivesFirstPreparationBackpackClosingAndNewRoundReset" classname="PlayerFlowEntryTests" runstate="Runnable" seed="1983719561" result="Passed" start-time="2026-10-19 06:13:20Z" end-time="2026-10-19 06:13:20Z" duration="0.001135" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/cs200/AppData/LocalLow/DefaultCompany/DD451Demo\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

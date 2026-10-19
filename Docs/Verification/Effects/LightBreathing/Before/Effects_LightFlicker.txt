@@ -1,0 +1,45 @@
+灯光间歇闪烁交接
+
+本轮新增：Assets/Scripts/Effects/MonoBehaviour/LightFlicker.cs。
+本轮修改：Assets/Prefabs/灯光.prefab，仅根节点增加 LightFlicker 并引用既有子对象“光照”。
+没有新增 Manager、接口、SO、asmdef、场景或测试脚本。
+
+参考：CSduckie/2DArpg-Portfolio，本机 E:/Portfolio-Clone，版本 c601c36f95efdd4d67327489f9edb58412aa54b4。
+实际读取 Enemy/Elites/Shielder/ShielderSprite.cs 的 damageFlash 与 Dialogue/Dialogue.cs 的 Coroutine 句柄停止写法，按本项目改写为单一 MonoBehaviour。
+没有搬入角色/战斗依赖，没有 namespace。
+
+行为：
+OnEnable 缓存 Light 和当时的强度，启动一条协程。
+正常照明等待随机 interval 后，执行 flashCount 次短暂变暗/恢复。
+暗时强度 = 原始强度 × darkIntensityMultiplier。每个实例独立取随机间隔。
+OnDisable 显式停止协程并恢复原始强度，保证重新启用时不缓存闪灭中的低亮度。
+目标销毁时协程安全退出；只改 intensity，不改 enabled、位置、颜色、Range、角度或阴影。
+当前不处理灯管的材质 Emission；没有加入烘焙/Bloom/音效/电力系统。
+
+默认值：
+interval=(3,8) 秒，flashCount=(2,4)，darkTime=(0.05,0.15) 秒，brightTime=(0.08,0.2) 秒，darkIntensityMultiplier=0。
+Inspector Vector2 的 X/Y 分别为最小/最大值。
+运行时对时间下限和次数范围做简单约束，避免错误范围造成忙循环。
+
+已验证：
+Unity 编译成功。
+Shelter 的“灯光”和“灯光 (1)”都继承预制体组件，targetLight 正确。
+实际 Play 20.00 秒、1131 组采样，两实例暗态进入次数分别10、8；106组采样的两灯强度不同。
+在实际闪灭期间：实例0禁用组件恢复50；实例1禁用整个根对象恢复50。随后重新启用，两灯继续闪烁。
+退出 Play 后两灯强度均50、Light和效果组件均启用。
+最终 Console errors/warnings 查询0条。
+只用运行观测验证这个小效果，未新增自动化测试框架；未将此记录称为人工画面验收或完整游戏回归。
+缺失/销毁引用、初始关闭Light的行为经过源码检查，本轮没有单独构造运行用例，不冒称全部边界都实测。
+
+持久化：
+Prefab已保存，原 .meta/GUID未变化；Prefab文本差异仅新增效果组件。
+Assets/Scenes/Shelter.unity磁盘字节与本轮开始一致。
+场景在开始和结束时均dirty=true，未保存、重载或覆盖用户未保存编辑。
+最终停在Shelter/Edit模式。
+原Prefab及meta、已保存场景的磁盘备份见 Docs/Verification/LightFlicker/Before/；场景磁盘备份不包含用户未保存修改。
+
+证据：
+Docs/Verification/LightFlicker/RuntimeResult.txt
+Docs/Verification/LightFlicker/RuntimeSamples.tsv
+Docs/Verification/LightFlicker/FinalState.json
+后续聊天提示词：Docs/AgentPrompts/Effects_Maintenance.txt

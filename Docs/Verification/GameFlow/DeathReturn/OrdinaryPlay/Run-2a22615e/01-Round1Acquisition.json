@@ -1,0 +1,1572 @@
+{
+  "status": "PASS",
+  "reason": "All requested items naturally revealed and acquired.",
+  "method": "API positioning/body freeze; real interaction, natural search, validated item transfer; no native keyboard claim",
+  "round": 1,
+  "acquired": [
+    {
+      "id": "7550c364798b441199dfbb34a679ee48",
+      "definition": "doll",
+      "owner": "Backpack",
+      "retained": false,
+      "origin": "ruins01/supplies-box/doll"
+    },
+    {
+      "id": "80f94f77db3d45b883e2fdef9c177116",
+      "definition": "medkit",
+      "owner": "Backpack",
+      "retained": false,
+      "origin": "ruins01/supplies-box/medkit"
+    }
+  ],
+  "samples": [
+    {
+      "frame": 936,
+      "time": 26.61122,
+      "entry": "doll",
+      "elapsed": 0.333333343,
+      "health": 2
+    },
+    {
+      "frame": 937,
+      "time": 26.636898,
+      "entry": "doll",
+      "elapsed": 0.359011054,
+      "health": 2
+    },
+    {
+      "frame": 938,
+      "time": 26.65002,
+      "entry": "doll",
+      "elapsed": 0.372133762,
+      "health": 2
+    },
+    {
+      "frame": 939,
+      "time": 26.6669483,
+      "entry": "doll",
+      "elapsed": 0.389061242,
+      "health": 2
+    },
+    {
+      "frame": 940,
+      "time": 26.6836014,
+      "entry": "doll",
+      "elapsed": 0.405715853,
+      "health": 2
+    },
+    {
+      "frame": 941,
+      "time": 26.700901,
+      "entry": "doll",
+      "elapsed": 0.423015743,
+      "health": 2
+    },
+    {
+      "frame": 942,
+      "time": 26.7172165,
+      "entry": "doll",
+      "elapsed": 0.439330935,
+      "health": 2
+    },
+    {
+      "frame": 943,
+      "time": 26.7340412,
+      "entry": "doll",
+      "elapsed": 0.456154943,
+      "health": 2
+    },
+    {
+      "frame": 944,
+      "time": 26.75026,
+      "entry": "doll",
+      "elapsed": 0.472372949,
+      "health": 2
+    },
+    {
+      "frame": 945,
+      "time": 26.7672787,
+      "entry": "doll",
+      "elapsed": 0.489391536,
+      "health": 2
+    },
+    {
+      "frame": 946,
+      "time": 26.7834473,
+      "entry": "doll",
+      "elapsed": 0.5055608,
+      "health": 2
+    },
+    {
+      "frame": 947,
+      "time": 26.8005924,
+      "entry": "doll",
+      "elapsed": 0.5227056,
+      "health": 2
+    },
+    {
+      "frame": 948,
+      "time": 26.8165817,
+      "entry": "doll",
+      "elapsed": 0.5386955,
+      "health": 2
+    },
+    {
+      "frame": 949,
+      "time": 26.8341827,
+      "entry": "doll",
+      "elapsed": 0.556297,
+      "health": 2
+    },
+    {
+      "frame": 950,
+      "time": 26.8508778,
+      "entry": "doll",
+      "elapsed": 0.5729924,
+      "health": 2
+    },
+    {
+      "frame": 951,
+      "time": 26.8672333,
+      "entry": "doll",
+      "elapsed": 0.589347,
+      "health": 2
+    },
+    {
+      "frame": 952,
+      "time": 26.8837528,
+      "entry": "doll",
+      "elapsed": 0.6058675,
+      "health": 2
+    },
+    {
+      "frame": 953,
+      "time": 26.9013252,
+      "entry": "doll",
+      "elapsed": 0.6234395,
+      "health": 2
+    },
+    {
+      "frame": 954,
+      "time": 26.9173527,
+      "entry": "doll",
+      "elapsed": 0.639467,
+      "health": 2
+    },
+    {
+      "frame": 955,
+      "time": 26.9339466,
+      "entry": "doll",
+      "elapsed": 0.6560595,
+      "health": 2
+    },
+    {
+      "frame": 956,
+      "time": 26.9502945,
+      "entry": "doll",
+      "elapsed": 0.6724076,
+      "health": 2
+    },
+    {
+      "frame": 957,
+      "time": 26.9677334,
+      "entry": "doll",
+      "elapsed": 0.6898478,
+      "health": 2
+    },
+    {
+      "frame": 958,
+      "time": 26.9840546,
+      "entry": "doll",
+      "elapsed": 0.706167638,
+      "health": 2
+    },
+    {
+      "frame": 959,
+      "time": 27.00079,
+      "entry": "doll",
+      "elapsed": 0.7229037,
+      "health": 2
+    },
+    {
+      "frame": 960,
+      "time": 27.0174484,
+      "entry": "doll",
+      "elapsed": 0.739562333,
+      "health": 2
+    },
+    {
+      "frame": 961,
+      "time": 27.0344658,
+      "entry": "doll",
+      "elapsed": 0.756579936,
+      "health": 2
+    },
+    {
+      "frame": 962,
+      "time": 27.0505333,
+      "entry": "doll",
+      "elapsed": 0.772646546,
+      "health": 2
+    },
+    {
+      "frame": 963,
+      "time": 27.06741,
+      "entry": "doll",
+      "elapsed": 0.789523065,
+      "health": 2
+    },
+    {
+      "frame": 964,
+      "time": 27.0838146,
+      "entry": "doll",
+      "elapsed": 0.805928648,
+      "health": 2
+    },
+    {
+      "frame": 965,
+      "time": 27.1010132,
+      "entry": "doll",
+      "elapsed": 0.8231263,
+      "health": 2
+    },
+    {
+      "frame": 966,
+      "time": 27.11729,
+      "entry": "doll",
+      "elapsed": 0.839403331,
+      "health": 2
+    },
+    {
+      "frame": 967,
+      "time": 27.134531,
+      "entry": "doll",
+      "elapsed": 0.856644154,
+      "health": 2
+    },
+    {
+      "frame": 968,
+      "time": 27.1502,
+      "entry": "doll",
+      "elapsed": 0.872314,
+      "health": 2
+    },
+    {
+      "frame": 969,
+      "time": 27.1673985,
+      "entry": "doll",
+      "elapsed": 0.88951236,
+      "health": 2
+    },
+    {
+      "frame": 970,
+      "time": 27.1836739,
+      "entry": "doll",
+      "elapsed": 0.905787051,
+      "health": 2
+    },
+    {
+      "frame": 971,
+      "time": 27.200964,
+      "entry": "doll",
+      "elapsed": 0.9230769,
+      "health": 2
+    },
+    {
+      "frame": 972,
+      "time": 27.2170811,
+      "entry": "doll",
+      "elapsed": 0.939194739,
+      "health": 2
+    },
+    {
+      "frame": 973,
+      "time": 27.2342949,
+      "entry": "doll",
+      "elapsed": 0.956409156,
+      "health": 2
+    },
+    {
+      "frame": 974,
+      "time": 27.2507076,
+      "entry": "doll",
+      "elapsed": 0.9728215,
+      "health": 2
+    },
+    {
+      "frame": 975,
+      "time": 27.2677116,
+      "entry": "doll",
+      "elapsed": 0.989825249,
+      "health": 2
+    },
+    {
+      "frame": 976,
+      "time": 27.2839165,
+      "entry": "doll",
+      "elapsed": 1.0060302,
+      "health": 2
+    },
+    {
+      "frame": 977,
+      "time": 27.3013077,
+      "entry": "doll",
+      "elapsed": 1.02342129,
+      "health": 2
+    },
+    {
+      "frame": 978,
+      "time": 27.3179188,
+      "entry": "doll",
+      "elapsed": 1.04003334,
+      "health": 2
+    },
+    {
+      "frame": 979,
+      "time": 27.3345757,
+      "entry": "doll",
+      "elapsed": 1.0566895,
+      "health": 2
+    },
+    {
+      "frame": 980,
+      "time": 27.3515625,
+      "entry": "doll",
+      "elapsed": 1.07367647,
+      "health": 2
+    },
+    {
+      "frame": 981,
+      "time": 27.3677959,
+      "entry": "doll",
+      "elapsed": 1.08990967,
+      "health": 2
+    },
+    {
+      "frame": 982,
+      "time": 27.3839169,
+      "entry": "doll",
+      "elapsed": 1.10603011,
+      "health": 2
+    },
+    {
+      "frame": 983,
+      "time": 27.4009781,
+      "entry": "doll",
+      "elapsed": 1.12309158,
+      "health": 2
+    },
+    {
+      "frame": 984,
+      "time": 27.4174,
+      "entry": "doll",
+      "elapsed": 1.13951313,
+      "health": 2
+    },
+    {
+      "frame": 985,
+      "time": 27.4343567,
+      "entry": "doll",
+      "elapsed": 1.15647006,
+      "health": 2
+    },
+    {
+      "frame": 986,
+      "time": 27.450779,
+      "entry": "doll",
+      "elapsed": 1.17289174,
+      "health": 2
+    },
+    {
+      "frame": 987,
+      "time": 27.4678783,
+      "entry": "doll",
+      "elapsed": 1.18999183,
+      "health": 2
+    },
+    {
+      "frame": 988,
+      "time": 27.4841442,
+      "entry": "doll",
+      "elapsed": 1.20625722,
+      "health": 2
+    },
+    {
+      "frame": 989,
+      "time": 27.501009,
+      "entry": "doll",
+      "elapsed": 1.22312307,
+      "health": 2
+    },
+    {
+      "frame": 990,
+      "time": 27.5178452,
+      "entry": "doll",
+      "elapsed": 1.23995793,
+      "health": 2
+    },
+    {
+      "frame": 991,
+      "time": 27.5344219,
+      "entry": "doll",
+      "elapsed": 1.25653481,
+      "health": 2
+    },
+    {
+      "frame": 992,
+      "time": 27.5506077,
+      "entry": "doll",
+      "elapsed": 1.27272081,
+      "health": 2
+    },
+    {
+      "frame": 993,
+      "time": 27.5681267,
+      "entry": "doll",
+      "elapsed": 1.29024076,
+      "health": 2
+    },
+    {
+      "frame": 994,
+      "time": 27.5843239,
+      "entry": "doll",
+      "elapsed": 1.30643809,
+      "health": 2
+    },
+    {
+      "frame": 995,
+      "time": 27.601263,
+      "entry": "doll",
+      "elapsed": 1.32337713,
+      "health": 2
+    },
+    {
+      "frame": 996,
+      "time": 27.6176567,
+      "entry": "doll",
+      "elapsed": 1.33976972,
+      "health": 2
+    },
+    {
+      "frame": 997,
+      "time": 27.6343746,
+      "entry": "doll",
+      "elapsed": 1.356488,
+      "health": 2
+    },
+    {
+      "frame": 998,
+      "time": 27.6509838,
+      "entry": "doll",
+      "elapsed": 1.37309682,
+      "health": 2
+    },
+    {
+      "frame": 999,
+      "time": 27.66785,
+      "entry": "doll",
+      "elapsed": 1.38996458,
+      "health": 2
+    },
+    {
+      "frame": 1000,
+      "time": 27.6845741,
+      "entry": "doll",
+      "elapsed": 1.40668762,
+      "health": 2
+    },
+    {
+      "frame": 1001,
+      "time": 27.7012577,
+      "entry": "doll",
+      "elapsed": 1.42337108,
+      "health": 2
+    },
+    {
+      "frame": 1002,
+      "time": 27.7180557,
+      "entry": "doll",
+      "elapsed": 1.44016886,
+      "health": 2
+    },
+    {
+      "frame": 1003,
+      "time": 27.7345352,
+      "entry": "doll",
+      "elapsed": 1.45664918,
+      "health": 2
+    },
+    {
+      "frame": 1004,
+      "time": 27.750948,
+      "entry": "doll",
+      "elapsed": 1.473062,
+      "health": 2
+    },
+    {
+      "frame": 1005,
+      "time": 27.7676125,
+      "entry": "doll",
+      "elapsed": 1.48972619,
+      "health": 2
+    },
+    {
+      "frame": 1006,
+      "time": 27.78436,
+      "entry": "doll",
+      "elapsed": 1.50647354,
+      "health": 2
+    },
+    {
+      "frame": 1007,
+      "time": 27.8041153,
+      "entry": "doll",
+      "elapsed": 1.52622831,
+      "health": 2
+    },
+    {
+      "frame": 1008,
+      "time": 27.81825,
+      "entry": "doll",
+      "elapsed": 1.54036391,
+      "health": 2
+    },
+    {
+      "frame": 1009,
+      "time": 27.83533,
+      "entry": "doll",
+      "elapsed": 1.5574435,
+      "health": 2
+    },
+    {
+      "frame": 1010,
+      "time": 27.852354,
+      "entry": "doll",
+      "elapsed": 1.57446766,
+      "health": 2
+    },
+    {
+      "frame": 1011,
+      "time": 27.8687134,
+      "entry": "doll",
+      "elapsed": 1.59082615,
+      "health": 2
+    },
+    {
+      "frame": 1012,
+      "time": 27.8852386,
+      "entry": "doll",
+      "elapsed": 1.60735261,
+      "health": 2
+    },
+    {
+      "frame": 1013,
+      "time": 27.9017849,
+      "entry": "doll",
+      "elapsed": 1.6238991,
+      "health": 2
+    },
+    {
+      "frame": 1014,
+      "time": 27.9182377,
+      "entry": "doll",
+      "elapsed": 1.64035046,
+      "health": 2
+    },
+    {
+      "frame": 1015,
+      "time": 27.93528,
+      "entry": "doll",
+      "elapsed": 1.6573931,
+      "health": 2
+    },
+    {
+      "frame": 1016,
+      "time": 27.9517956,
+      "entry": "doll",
+      "elapsed": 1.67391,
+      "health": 2
+    },
+    {
+      "frame": 1017,
+      "time": 27.9684849,
+      "entry": "doll",
+      "elapsed": 1.69059825,
+      "health": 2
+    },
+    {
+      "frame": 1018,
+      "time": 27.9852619,
+      "entry": "doll",
+      "elapsed": 1.70737565,
+      "health": 2
+    },
+    {
+      "frame": 1019,
+      "time": 28.00161,
+      "entry": "doll",
+      "elapsed": 1.72372365,
+      "health": 2
+    },
+    {
+      "frame": 1020,
+      "time": 28.01785,
+      "entry": "doll",
+      "elapsed": 1.739964,
+      "health": 2
+    },
+    {
+      "frame": 1021,
+      "time": 28.03502,
+      "entry": "doll",
+      "elapsed": 1.75713372,
+      "health": 2
+    },
+    {
+      "frame": 1022,
+      "time": 28.0520039,
+      "entry": "doll",
+      "elapsed": 1.7741183,
+      "health": 2
+    },
+    {
+      "frame": 1023,
+      "time": 28.0683231,
+      "entry": "doll",
+      "elapsed": 1.79043639,
+      "health": 2
+    },
+    {
+      "frame": 1024,
+      "time": 28.0846424,
+      "entry": "doll",
+      "elapsed": 1.80675566,
+      "health": 2
+    },
+    {
+      "frame": 1025,
+      "time": 28.1017818,
+      "entry": "doll",
+      "elapsed": 1.82389641,
+      "health": 2
+    },
+    {
+      "frame": 1026,
+      "time": 28.1183414,
+      "entry": "doll",
+      "elapsed": 1.84045565,
+      "health": 2
+    },
+    {
+      "frame": 1027,
+      "time": 28.135004,
+      "entry": "doll",
+      "elapsed": 1.8571173,
+      "health": 2
+    },
+    {
+      "frame": 1028,
+      "time": 28.1512833,
+      "entry": "doll",
+      "elapsed": 1.87339759,
+      "health": 2
+    },
+    {
+      "frame": 1029,
+      "time": 28.1684036,
+      "entry": "doll",
+      "elapsed": 1.89051807,
+      "health": 2
+    },
+    {
+      "frame": 1030,
+      "time": 28.184906,
+      "entry": "doll",
+      "elapsed": 1.90702033,
+      "health": 2
+    },
+    {
+      "frame": 1031,
+      "time": 28.202095,
+      "entry": "doll",
+      "elapsed": 1.92420781,
+      "health": 2
+    },
+    {
+      "frame": 1032,
+      "time": 28.21808,
+      "entry": "doll",
+      "elapsed": 1.94019508,
+      "health": 2
+    },
+    {
+      "frame": 1033,
+      "time": 28.2348957,
+      "entry": "doll",
+      "elapsed": 1.95700967,
+      "health": 2
+    },
+    {
+      "frame": 1034,
+      "time": 28.2512054,
+      "entry": "doll",
+      "elapsed": 1.97331953,
+      "health": 2
+    },
+    {
+      "frame": 1035,
+      "time": 28.2684441,
+      "entry": "doll",
+      "elapsed": 1.99055719,
+      "health": 2
+    },
+    {
+      "frame": 1036,
+      "time": 28.2845821,
+      "entry": "medkit",
+      "elapsed": 0.006695997,
+      "health": 2
+    },
+    {
+      "frame": 1037,
+      "time": 28.3035564,
+      "entry": "medkit",
+      "elapsed": 0.025670493,
+      "health": 2
+    },
+    {
+      "frame": 1038,
+      "time": 28.3197956,
+      "entry": "medkit",
+      "elapsed": 0.0419096947,
+      "health": 2
+    },
+    {
+      "frame": 1039,
+      "time": 28.3347969,
+      "entry": "medkit",
+      "elapsed": 0.0569095947,
+      "health": 2
+    },
+    {
+      "frame": 1040,
+      "time": 28.3519154,
+      "entry": "medkit",
+      "elapsed": 0.07402969,
+      "health": 2
+    },
+    {
+      "frame": 1041,
+      "time": 28.3687019,
+      "entry": "medkit",
+      "elapsed": 0.0908153951,
+      "health": 2
+    },
+    {
+      "frame": 1042,
+      "time": 28.3848381,
+      "entry": "medkit",
+      "elapsed": 0.106951,
+      "health": 2
+    },
+    {
+      "frame": 1043,
+      "time": 28.401886,
+      "entry": "medkit",
+      "elapsed": 0.1239997,
+      "health": 2
+    },
+    {
+      "frame": 1044,
+      "time": 28.4186935,
+      "entry": "medkit",
+      "elapsed": 0.1408066,
+      "health": 2
+    },
+    {
+      "frame": 1045,
+      "time": 28.4352646,
+      "entry": "medkit",
+      "elapsed": 0.1573784,
+      "health": 2
+    },
+    {
+      "frame": 1046,
+      "time": 28.4513569,
+      "entry": "medkit",
+      "elapsed": 0.1734696,
+      "health": 2
+    },
+    {
+      "frame": 1047,
+      "time": 28.4686356,
+      "entry": "medkit",
+      "elapsed": 0.1907489,
+      "health": 2
+    },
+    {
+      "frame": 1048,
+      "time": 28.4849319,
+      "entry": "medkit",
+      "elapsed": 0.2070456,
+      "health": 2
+    },
+    {
+      "frame": 1049,
+      "time": 28.501852,
+      "entry": "medkit",
+      "elapsed": 0.2239663,
+      "health": 2
+    },
+    {
+      "frame": 1050,
+      "time": 28.5191689,
+      "entry": "medkit",
+      "elapsed": 0.241282612,
+      "health": 2
+    },
+    {
+      "frame": 1051,
+      "time": 28.53527,
+      "entry": "medkit",
+      "elapsed": 0.2573837,
+      "health": 2
+    },
+    {
+      "frame": 1052,
+      "time": 28.551712,
+      "entry": "medkit",
+      "elapsed": 0.2738251,
+      "health": 2
+    },
+    {
+      "frame": 1053,
+      "time": 28.5688438,
+      "entry": "medkit",
+      "elapsed": 0.2909581,
+      "health": 2
+    },
+    {
+      "frame": 1054,
+      "time": 28.5859871,
+      "entry": "medkit",
+      "elapsed": 0.308101416,
+      "health": 2
+    },
+    {
+      "frame": 1055,
+      "time": 28.6024723,
+      "entry": "medkit",
+      "elapsed": 0.3245857,
+      "health": 2
+    },
+    {
+      "frame": 1056,
+      "time": 28.6190758,
+      "entry": "medkit",
+      "elapsed": 0.3411892,
+      "health": 2
+    },
+    {
+      "frame": 1057,
+      "time": 28.6349182,
+      "entry": "medkit",
+      "elapsed": 0.3570311,
+      "health": 2
+    },
+    {
+      "frame": 1058,
+      "time": 28.65179,
+      "entry": "medkit",
+      "elapsed": 0.3739034,
+      "health": 2
+    },
+    {
+      "frame": 1059,
+      "time": 28.6696777,
+      "entry": "medkit",
+      "elapsed": 0.3917914,
+      "health": 2
+    },
+    {
+      "frame": 1060,
+      "time": 28.6855965,
+      "entry": "medkit",
+      "elapsed": 0.407710016,
+      "health": 2
+    },
+    {
+      "frame": 1061,
+      "time": 28.7025242,
+      "entry": "medkit",
+      "elapsed": 0.424637318,
+      "health": 2
+    },
+    {
+      "frame": 1062,
+      "time": 28.7187119,
+      "entry": "medkit",
+      "elapsed": 0.440826416,
+      "health": 2
+    },
+    {
+      "frame": 1063,
+      "time": 28.7356339,
+      "entry": "medkit",
+      "elapsed": 0.4577482,
+      "health": 2
+    },
+    {
+      "frame": 1064,
+      "time": 28.7518272,
+      "entry": "medkit",
+      "elapsed": 0.4739406,
+      "health": 2
+    },
+    {
+      "frame": 1065,
+      "time": 28.7688255,
+      "entry": "medkit",
+      "elapsed": 0.490939915,
+      "health": 2
+    },
+    {
+      "frame": 1066,
+      "time": 28.7852154,
+      "entry": "medkit",
+      "elapsed": 0.507329345,
+      "health": 2
+    },
+    {
+      "frame": 1067,
+      "time": 28.8020878,
+      "entry": "medkit",
+      "elapsed": 0.524200857,
+      "health": 2
+    },
+    {
+      "frame": 1068,
+      "time": 28.8189468,
+      "entry": "medkit",
+      "elapsed": 0.54106003,
+      "health": 2
+    },
+    {
+      "frame": 1069,
+      "time": 28.835598,
+      "entry": "medkit",
+      "elapsed": 0.5577107,
+      "health": 2
+    },
+    {
+      "frame": 1070,
+      "time": 28.8519878,
+      "entry": "medkit",
+      "elapsed": 0.5741019,
+      "health": 2
+    },
+    {
+      "frame": 1071,
+      "time": 28.8693924,
+      "entry": "medkit",
+      "elapsed": 0.591506,
+      "health": 2
+    },
+    {
+      "frame": 1072,
+      "time": 28.886692,
+      "entry": "medkit",
+      "elapsed": 0.6088059,
+      "health": 2
+    },
+    {
+      "frame": 1073,
+      "time": 28.9025154,
+      "entry": "medkit",
+      "elapsed": 0.6246282,
+      "health": 2
+    },
+    {
+      "frame": 1074,
+      "time": 28.9189587,
+      "entry": "medkit",
+      "elapsed": 0.6410721,
+      "health": 2
+    },
+    {
+      "frame": 1075,
+      "time": 28.935585,
+      "entry": "medkit",
+      "elapsed": 0.6576991,
+      "health": 2
+    },
+    {
+      "frame": 1076,
+      "time": 28.95206,
+      "entry": "medkit",
+      "elapsed": 0.6741744,
+      "health": 2
+    },
+    {
+      "frame": 1077,
+      "time": 28.9689388,
+      "entry": "medkit",
+      "elapsed": 0.6910532,
+      "health": 2
+    },
+    {
+      "frame": 1078,
+      "time": 28.9851341,
+      "entry": "medkit",
+      "elapsed": 0.7072475,
+      "health": 2
+    },
+    {
+      "frame": 1079,
+      "time": 29.0026,
+      "entry": "medkit",
+      "elapsed": 0.7247138,
+      "health": 2
+    },
+    {
+      "frame": 1080,
+      "time": 29.0194855,
+      "entry": "medkit",
+      "elapsed": 0.7415995,
+      "health": 2
+    },
+    {
+      "frame": 1081,
+      "time": 29.0359669,
+      "entry": "medkit",
+      "elapsed": 0.7580807,
+      "health": 2
+    },
+    {
+      "frame": 1082,
+      "time": 29.0524158,
+      "entry": "medkit",
+      "elapsed": 0.7745291,
+      "health": 2
+    },
+    {
+      "frame": 1083,
+      "time": 29.0697632,
+      "entry": "medkit",
+      "elapsed": 0.7918771,
+      "health": 2
+    },
+    {
+      "frame": 1084,
+      "time": 29.0861874,
+      "entry": "medkit",
+      "elapsed": 0.8083008,
+      "health": 2
+    },
+    {
+      "frame": 1085,
+      "time": 29.1032925,
+      "entry": "medkit",
+      "elapsed": 0.8254055,
+      "health": 2
+    },
+    {
+      "frame": 1086,
+      "time": 29.1193581,
+      "entry": "medkit",
+      "elapsed": 0.8414711,
+      "health": 2
+    },
+    {
+      "frame": 1087,
+      "time": 29.1358414,
+      "entry": "medkit",
+      "elapsed": 0.857955,
+      "health": 2
+    },
+    {
+      "frame": 1088,
+      "time": 29.152195,
+      "entry": "medkit",
+      "elapsed": 0.8743083,
+      "health": 2
+    },
+    {
+      "frame": 1089,
+      "time": 29.169199,
+      "entry": "medkit",
+      "elapsed": 0.8913121,
+      "health": 2
+    },
+    {
+      "frame": 1090,
+      "time": 29.18533,
+      "entry": "medkit",
+      "elapsed": 0.9074428,
+      "health": 2
+    },
+    {
+      "frame": 1091,
+      "time": 29.2029133,
+      "entry": "medkit",
+      "elapsed": 0.9250261,
+      "health": 2
+    },
+    {
+      "frame": 1092,
+      "time": 29.2190228,
+      "entry": "medkit",
+      "elapsed": 0.941135943,
+      "health": 2
+    },
+    {
+      "frame": 1093,
+      "time": 29.2362385,
+      "entry": "medkit",
+      "elapsed": 0.958351731,
+      "health": 2
+    },
+    {
+      "frame": 1094,
+      "time": 29.2529888,
+      "entry": "medkit",
+      "elapsed": 0.9751023,
+      "health": 2
+    },
+    {
+      "frame": 1095,
+      "time": 29.269474,
+      "entry": "medkit",
+      "elapsed": 0.9915882,
+      "health": 2
+    },
+    {
+      "frame": 1096,
+      "time": 29.2863388,
+      "entry": "medkit",
+      "elapsed": 1.0084523,
+      "health": 2
+    },
+    {
+      "frame": 1097,
+      "time": 29.3025246,
+      "entry": "medkit",
+      "elapsed": 1.0246377,
+      "health": 2
+    },
+    {
+      "frame": 1098,
+      "time": 29.3190327,
+      "entry": "medkit",
+      "elapsed": 1.04114592,
+      "health": 2
+    },
+    {
+      "frame": 1099,
+      "time": 29.3359623,
+      "entry": "medkit",
+      "elapsed": 1.05807531,
+      "health": 2
+    },
+    {
+      "frame": 1100,
+      "time": 29.3524761,
+      "entry": "medkit",
+      "elapsed": 1.07459056,
+      "health": 2
+    },
+    {
+      "frame": 1101,
+      "time": 29.3692665,
+      "entry": "medkit",
+      "elapsed": 1.09138072,
+      "health": 2
+    },
+    {
+      "frame": 1102,
+      "time": 29.38591,
+      "entry": "medkit",
+      "elapsed": 1.10802364,
+      "health": 2
+    },
+    {
+      "frame": 1103,
+      "time": 29.4027061,
+      "entry": "medkit",
+      "elapsed": 1.12482,
+      "health": 2
+    },
+    {
+      "frame": 1104,
+      "time": 29.4194012,
+      "entry": "medkit",
+      "elapsed": 1.14151478,
+      "health": 2
+    },
+    {
+      "frame": 1105,
+      "time": 29.4359035,
+      "entry": "medkit",
+      "elapsed": 1.15801728,
+      "health": 2
+    },
+    {
+      "frame": 1106,
+      "time": 29.4524956,
+      "entry": "medkit",
+      "elapsed": 1.17461,
+      "health": 2
+    },
+    {
+      "frame": 1107,
+      "time": 29.4692364,
+      "entry": "medkit",
+      "elapsed": 1.19135022,
+      "health": 2
+    },
+    {
+      "frame": 1108,
+      "time": 29.4858227,
+      "entry": "medkit",
+      "elapsed": 1.20793617,
+      "health": 2
+    },
+    {
+      "frame": 1109,
+      "time": 29.5030556,
+      "entry": "medkit",
+      "elapsed": 1.22517,
+      "health": 2
+    },
+    {
+      "frame": 1110,
+      "time": 29.5197334,
+      "entry": "medkit",
+      "elapsed": 1.24184763,
+      "health": 2
+    },
+    {
+      "frame": 1111,
+      "time": 29.5360489,
+      "entry": "medkit",
+      "elapsed": 1.25816345,
+      "health": 2
+    },
+    {
+      "frame": 1112,
+      "time": 29.5528927,
+      "entry": "medkit",
+      "elapsed": 1.27500629,
+      "health": 2
+    },
+    {
+      "frame": 1113,
+      "time": 29.5694065,
+      "entry": "medkit",
+      "elapsed": 1.29152131,
+      "health": 2
+    },
+    {
+      "frame": 1114,
+      "time": 29.5862389,
+      "entry": "medkit",
+      "elapsed": 1.30835235,
+      "health": 2
+    },
+    {
+      "frame": 1115,
+      "time": 29.6028538,
+      "entry": "medkit",
+      "elapsed": 1.32496858,
+      "health": 2
+    },
+    {
+      "frame": 1116,
+      "time": 29.61926,
+      "entry": "medkit",
+      "elapsed": 1.34137475,
+      "health": 2
+    },
+    {
+      "frame": 1117,
+      "time": 29.6361523,
+      "entry": "medkit",
+      "elapsed": 1.35826647,
+      "health": 2
+    },
+    {
+      "frame": 1118,
+      "time": 29.6526165,
+      "entry": "medkit",
+      "elapsed": 1.3747313,
+      "health": 2
+    },
+    {
+      "frame": 1119,
+      "time": 29.6697025,
+      "entry": "medkit",
+      "elapsed": 1.3918165,
+      "health": 2
+    },
+    {
+      "frame": 1120,
+      "time": 29.6857014,
+      "entry": "medkit",
+      "elapsed": 1.40781522,
+      "health": 2
+    },
+    {
+      "frame": 1121,
+      "time": 29.7030125,
+      "entry": "medkit",
+      "elapsed": 1.42512584,
+      "health": 2
+    },
+    {
+      "frame": 1122,
+      "time": 29.71973,
+      "entry": "medkit",
+      "elapsed": 1.44184434,
+      "health": 2
+    },
+    {
+      "frame": 1123,
+      "time": 29.73623,
+      "entry": "medkit",
+      "elapsed": 1.4583447,
+      "health": 2
+    },
+    {
+      "frame": 1124,
+      "time": 29.7529354,
+      "entry": "medkit",
+      "elapsed": 1.47504842,
+      "health": 2
+    },
+    {
+      "frame": 1125,
+      "time": 29.7695923,
+      "entry": "medkit",
+      "elapsed": 1.49170709,
+      "health": 2
+    },
+    {
+      "frame": 1126,
+      "time": 29.7863064,
+      "entry": "medkit",
+      "elapsed": 1.50842059,
+      "health": 2
+    },
+    {
+      "frame": 1127,
+      "time": 29.8034573,
+      "entry": "medkit",
+      "elapsed": 1.52557147,
+      "health": 2
+    },
+    {
+      "frame": 1128,
+      "time": 29.8193913,
+      "entry": "medkit",
+      "elapsed": 1.54150581,
+      "health": 2
+    },
+    {
+      "frame": 1129,
+      "time": 29.83662,
+      "entry": "medkit",
+      "elapsed": 1.558734,
+      "health": 2
+    },
+    {
+      "frame": 1130,
+      "time": 29.8532047,
+      "entry": "medkit",
+      "elapsed": 1.57531786,
+      "health": 2
+    },
+    {
+      "frame": 1131,
+      "time": 29.86997,
+      "entry": "medkit",
+      "elapsed": 1.59208345,
+      "health": 2
+    },
+    {
+      "frame": 1132,
+      "time": 29.8862419,
+      "entry": "medkit",
+      "elapsed": 1.6083566,
+      "health": 2
+    },
+    {
+      "frame": 1133,
+      "time": 29.902813,
+      "entry": "medkit",
+      "elapsed": 1.62492645,
+      "health": 2
+    },
+    {
+      "frame": 1134,
+      "time": 29.9195557,
+      "entry": "medkit",
+      "elapsed": 1.64167,
+      "health": 2
+    },
+    {
+      "frame": 1135,
+      "time": 29.936636,
+      "entry": "medkit",
+      "elapsed": 1.65874994,
+      "health": 2
+    },
+    {
+      "frame": 1136,
+      "time": 29.9529533,
+      "entry": "medkit",
+      "elapsed": 1.67506814,
+      "health": 2
+    },
+    {
+      "frame": 1137,
+      "time": 29.96969,
+      "entry": "medkit",
+      "elapsed": 1.69180393,
+      "health": 2
+    },
+    {
+      "frame": 1138,
+      "time": 29.9861259,
+      "entry": "medkit",
+      "elapsed": 1.70823908,
+      "health": 2
+    },
+    {
+      "frame": 1139,
+      "time": 30.0032063,
+      "entry": "medkit",
+      "elapsed": 1.72532046,
+      "health": 2
+    },
+    {
+      "frame": 1140,
+      "time": 30.01974,
+      "entry": "medkit",
+      "elapsed": 1.74185264,
+      "health": 2
+    },
+    {
+      "frame": 1141,
+      "time": 30.0367088,
+      "entry": "medkit",
+      "elapsed": 1.75882256,
+      "health": 2
+    },
+    {
+      "frame": 1142,
+      "time": 30.0531445,
+      "entry": "medkit",
+      "elapsed": 1.77525771,
+      "health": 2
+    },
+    {
+      "frame": 1143,
+      "time": 30.0706749,
+      "entry": "medkit",
+      "elapsed": 1.79278946,
+      "health": 2
+    },
+    {
+      "frame": 1144,
+      "time": 30.0866,
+      "entry": "medkit",
+      "elapsed": 1.808713,
+      "health": 2
+    },
+    {
+      "frame": 1145,
+      "time": 30.1045132,
+      "entry": "medkit",
+      "elapsed": 1.82662773,
+      "health": 2
+    },
+    {
+      "frame": 1146,
+      "time": 30.1213112,
+      "entry": "medkit",
+      "elapsed": 1.84342515,
+      "health": 2
+    },
+    {
+      "frame": 1147,
+      "time": 30.1365738,
+      "entry": "medkit",
+      "elapsed": 1.85868776,
+      "health": 2
+    },
+    {
+      "frame": 1148,
+      "time": 30.153286,
+      "entry": "medkit",
+      "elapsed": 1.87540007,
+      "health": 2
+    },
+    {
+      "frame": 1149,
+      "time": 30.1698036,
+      "entry": "medkit",
+      "elapsed": 1.89191735,
+      "health": 2
+    },
+    {
+      "frame": 1150,
+      "time": 30.1867466,
+      "entry": "medkit",
+      "elapsed": 1.90886033,
+      "health": 2
+    },
+    {
+      "frame": 1151,
+      "time": 30.2032242,
+      "entry": "medkit",
+      "elapsed": 1.92533827,
+      "health": 2
+    },
+    {
+      "frame": 1152,
+      "time": 30.22012,
+      "entry": "medkit",
+      "elapsed": 1.94223332,
+      "health": 2
+    },
+    {
+      "frame": 1153,
+      "time": 30.23691,
+      "entry": "medkit",
+      "elapsed": 1.95902371,
+      "health": 2
+    },
+    {
+      "frame": 1154,
+      "time": 30.25373,
+      "entry": "medkit",
+      "elapsed": 1.97584438,
+      "health": 2
+    },
+    {
+      "frame": 1155,
+      "time": 30.27063,
+      "entry": "medkit",
+      "elapsed": 1.9927448,
+      "health": 2
+    },
+    {
+      "frame": 1156,
+      "time": 30.2863922,
+      "entry": "food",
+      "elapsed": 0.008506998,
+      "health": 2
+    }
+  ],
+  "callbacksRemoved": true
+}

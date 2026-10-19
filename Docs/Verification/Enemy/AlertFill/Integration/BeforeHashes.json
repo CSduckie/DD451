@@ -1,0 +1,98 @@
+[
+  {
+    "path": "Assets/Data/Enemy/Drone/DroneConfig.asset",
+    "hash": "EC43D5D9FE2811A51FA6E461CE44CFC9806D4CE8075D2C3CC23BE1D3DBC4DB1D"
+  },
+  {
+    "path": "Assets/Data/Enemy/Drone/DroneConfig.asset.meta",
+    "hash": "654217017F81C7135E3FD1BB0CC247733B40C3A52145F6A415441AE19876A493"
+  },
+  {
+    "path": "Assets/Data/Localization/Enemy/EnemyText.asset",
+    "hash": "674077D0F0548D0214C90BA65352CEE65EC81FA503650FCA66F36DC46BEEC3A0"
+  },
+  {
+    "path": "Assets/Data/Localization/Enemy/EnemyText.asset.meta",
+    "hash": "D92F592EF4AB2B8F309C6F8506F7909FAC3D73ACCD9F8AED4EBFC096649BC5B7"
+  },
+  {
+    "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs",
+    "hash": "02EAD3EAE3330A52C4C6D467FD85DE237BE00FB0F8F76F7891B633AB1763A165"
+  },
+  {
+    "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs.meta",
+    "hash": "E20128ABB1EAD818FC20A49DD9120C7C5B97A4ADB7D028FFA7A251E45E32AEEB"
+  },
+  {
+    "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneStatusLight.cs",
+    "hash": "3FAB8B54AEF78C3A919B79335D938E19CA560DD516C03876029E67DB12CDE20D"
+  },
+  {
+    "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneStatusLight.cs.meta",
+    "hash": "6DA0307653A5DFA41782EF957F131A54E042D35054D7CF3D1A5E8AC426A9CD6A"
+  },
+  {
+    "path": "Assets/Scripts/Enemy/Drone/ScriptableObject/DroneConfigSO.cs",
+    "hash": "A6DF3669973B010263BE7C9B63157264E4986280DF26F325ACCF76594EC02365"
+  },
+  {
+    "path": "Assets/Scripts/Enemy/Drone/ScriptableObject/DroneConfigSO.cs.meta",
+    "hash": "D344F2B071910590BEB40D6C7DC28045D99FC79939DE5BABF34FBABF680598B7"
+  },
+  {
+    "path": "Assets/Scripts/Enemy/Drone/States/DronePatrolState.cs",
+    "hash": "05AE171A58F4095A0F0D8447ECAB9B5319817BAEFC4BBBBB5F59F2A651A11859"
+  },
+  {
+    "path": "Assets/Scripts/Enemy/Drone/States/DronePatrolState.cs.meta",
+    "hash": "B1E7871D7E926424B915D6077224ADA5CF86496EE475EECA3C45522C0C418686"
+  },
+  {
+    "path": "Assets/Scripts/Enemy/Drone/States/DroneSearchState.cs",
+    "hash": "A8AF4D2E236DEE0C9207BD0016AFEEA2B9150649C3C0F0986BFDC47D1FBC5DF7"
+  },
+  {
+    "path": "Assets/Scripts/Enemy/Drone/States/DroneSearchState.cs.meta",
+    "hash": "913E19270631C4094335932887BAAFE6812A8B539F132B9198E4D4A926D17C41"
+  },
+  {
+    "path": "Assets/Tests/Enemy/Editor/EnemyTestSceneBuilder.cs",
+    "hash": "3F8E5167226FEA7847F7501AAF36FD3FD03EAD7D61D290976D3FAA6414ACD74F"
+  },
+  {
+    "path": "Assets/Tests/Enemy/Editor/EnemyTestSceneBuilder.cs.meta",
+    "hash": "F4C8630C9A1EF6E8CC7A74CE5A6549DAB578F7D06D9ACE59E38114591621D97A"
+  },
+  {
+    "path": "Assets/Tests/Enemy/PlayMode/DroneBehaviourTests.cs",
+    "hash": "AF0BEFCF0F690CC538C35D9BB24A71821804684E019968C34F80FB7EAD2D776A"
+  },
+  {
+    "path": "Assets/Tests/Enemy/PlayMode/DroneBehaviourTests.cs.meta",
+    "hash": "48698F9B8E57A7BD8E61E9D44B0012BB154AEAF03F097323A0F154DAB48E2D84"
+  },
+  {
+    "path": "Assets/Tests/Enemy/PlayMode/DroneStatusLightTests.cs",
+    "hash": "7AE950FCDC6C3945762AC87C78E3A2BDA578B0F08E957752ED7A93EF540B1DF1"
+  },
+  {
+    "path": "Assets/Tests/Enemy/PlayMode/DroneStatusLightTests.cs.meta",
+    "hash": "9B085958422BA0326BA3FA5E45711F6A079854B463D131377F75E94E08727387"
+  },
+  {
+    "path": "Assets/Tests/Enemy/PlayMode/EnemySceneIntegrationTests.cs",
+    "hash": "F7E0E75ABDC26388B51C372D590B7DE36BD5BF5AC65C48F63C398030138AF587"
+  },
+  {
+    "path": "Assets/Tests/Enemy/PlayMode/EnemySceneIntegrationTests.cs.meta",
+    "hash": "F6C20305ED8336D10672263785AC1DED8225A9CDC56141C4E3D77E85C682DAA5"
+  },
+  {
+    "path": "Assets/Tests/Enemy/PlayMode/Runtime/EnemyTestDriver.cs",
+    "hash": "C27B43862443BE5B5E1C0A741311EC7D6DE9CEC607958A90627746C4CC4B1FA9"
+  },
+  {
+    "path": "Assets/Tests/Enemy/PlayMode/Runtime/EnemyTestDriver.cs.meta",
+    "hash": "962F676265BA5AABF197BF7885111869C8AFFFEA83D21F3069DFB89057961E8D"
+  }
+]

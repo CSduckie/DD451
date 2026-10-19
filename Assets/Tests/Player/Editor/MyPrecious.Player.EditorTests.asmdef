@@ -1,0 +1,8 @@
+{
+    "name": "MyPrecious.Player.EditorTests",
+    "rootNamespace": "",
+    "references": ["MyPrecious.Player", "MyPrecious.Interaction", "MyPrecious.Health", "MyPrecious.Items", "MyPrecious.Bootstrap", "MyPrecious.Player.TestDoubles", "Unity.InputSystem", "Unity.Cinemachine", "Unity.RenderPipelines.Universal.Runtime"],
+    "includePlatforms": ["Editor"],
+    "autoReferenced": false,
+    "optionalUnityReferences": ["TestAssemblies"]
+}

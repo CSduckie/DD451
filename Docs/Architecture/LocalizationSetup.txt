@@ -1,0 +1,117 @@
+MyPrecious P0 — 中英双语接入说明
+版本：2026-10-18 / Dispatch v9 / Lean 03
+项目：E:/DD451。以下路径均相对项目根目录。
+本文说明实际代码和资源的接法；本轮运行证据、测试成绩及未执行项以Docs/Handoffs/03_Handoff.txt为准。
+
+一、语言系统的数据流
+
+SO保存两种语言的文本，Dictionary按key查询；F10改变当前语言并通知界面刷新。物品译文来自既有物品配置，语言模块只读数据，不执行玩法操作。
+本次仅有中文和英文。每次全新进入Play或启动游戏均从中文开始；同一次运行切场景或重开UI保留当前语言。没有PlayerPrefs、文件或其他磁盘语言偏好。
+
+四个核心脚本：
+- Assets/Scripts/Localization/RuntimeData/GameLanguage.cs：中文、英文枚举。
+- Assets/Scripts/Localization/ScriptableObject/LocalizationTableSO.cs：Serializable文本条目和List；每条包含key、chinese、english。
+- Assets/Scripts/Localization/MonoBehaviour/LocalizationManager.cs：建立查询Dictionary、保存当前语言、查询和格式化文本、发布LanguageChanged、管理唯一F10运行输入。
+- Assets/Scripts/Localization/MonoBehaviour/LocalizedText.cs：把指定key写入已存在的TMP_Text，并在语言变化及重新启用时刷新。
+Assets/Scripts/Localization/MyPrecious.Localization.asmdef只引用真实需要的Bootstrap、Items、Input System与TMP程序集；Items不反向引用Localization。
+
+四份普通文本表：
+- Assets/Data/Localization/Common/CommonText.asset：语言名、F10提示、是/否、开/关、方向、物品归属等通用文字。
+- Assets/Data/Localization/Player/PlayerText.asset：玩家状态、动态状态格式、真实CurrentPromptKey对应的交互提示。
+- Assets/Data/Localization/Items/ItemMessages.asset：使用结果等物品提示，不另存物品名称或描述。
+- Assets/Data/Localization/Tests/TestPanelText.asset：三个验证界面的标题、说明、按钮、动态结果格式。
+
+二、增加或修改文字
+
+在合适的LocalizationTableSO资源中给entries列表增加一项，填写稳定key与中英文。key表示用途，例如player.health.value，不使用中文原文作key。
+数字和可变化参数使用标准string.Format的编号占位符，例如中文“生命 {0}/{1}”、英文“Health {0}/{1}”。两种语言使用同一组参数含义；不要用{current}等命名占位符。
+确认LocalizationModule的tables引用该资源。修改后重新进入Play建立查询字典；运行中修改SO不会自动成为热更新系统。
+如果GameBootstrap预制体已经内置LocalizationModule，直接给该实例追加本场景所需表，不要再添加第二份语言模块。构建器先GetComponentInChildren<LocalizationManager>(true)，不存在才实例化；追加表前用Contains去重。ItemModule同理，业务组件和UI必须引用同一份存活模块。
+出现“表中有key但运行仍提示缺key”时，先检查Bootstrap下是否存在重复Manager，以及实际LocalizationManager.Instance的tables。只给第二份Manager加表不能解决第一份被优先解析的问题。
+同一个key只定义一处。重复key必须按警告指出的两个来源修正，不能依赖“后写覆盖前写”的加载顺序。
+
+查询缺key显示[key]，便于定位接线错误。某种语言缺译时可以回退另一种；两种都缺时也显示可识别标记。错误占位符会报告诊断并返回安全显示结果，不能中断原物品操作。
+错误用HashSet记录，避免相同问题每帧刷屏。检查资源可调用LocalizationTableSO.TryValidate(out string error)，或使用资源的“校验语言表”ContextMenu；跨资源重复key在Manager构建Dictionary时报告两个来源并保留首条。
+
+三、公开入口与文字刷新
+
+LocalizationManager.Instance取得属于当前存活GameBootstrap的有效组件；配置字段为tables、itemLibrary、toggleLanguageAction。
+关键显示API：
+- GameLanguage CurrentLanguage：读取当前语言。
+- string GetText(string key)：按当前语言查找文字。
+- string FormatText(string key, params object[] args)：查询后调用标准string.Format。
+- void SetLanguage(GameLanguage language)：设置中文或英文；语言实际变化后通知。
+- void ToggleLanguage()：中文与英文互换。
+- event Action LanguageChanged：通知界面重新读取文字，不携带或修改玩法数据。
+- void Initialize()：本次运行只建立一次字典并默认中文；重复调用保留已选语言。
+- static LocalizationManager Resolve(LocalizationManager preferred = null)：运行中只解析存活GameBootstrap下的有效组件；preferred仅在编辑模式下用于明确指定组件的查询。
+- static bool TryGetActive(out LocalizationManager manager)：尝试取得同一有效组件，未接线则返回false。
+
+GameLanguage枚举值为Chinese与English。SubsystemRegistration清静态引用并更新运行编号，Initialize用这个编号区分关闭Domain Reload后的新一次运行。
+SetLanguage对同语言重复设置不通知；通知期间拒绝递归切换；一个订阅者异常不会阻止其余订阅者刷新。查询本身不会发语言通知。
+
+四、静态TMP文字
+
+可直接给已有TMP_Text对象挂LocalizedText，也可以实例化Assets/Prefabs/UI/Localization/LocalizedText.prefab。
+在Inspector填写targetText、key和可选localizationManager。没填targetText时尝试取得同对象上的TMP_Text；公开RefreshText()只做重新解析、订阅与赋值。界面打开时立即按当前语言赋值，语言变化后重新赋值，关闭时解除自己建立的订阅。
+场景切换会销毁新场景中的重复Bootstrap；界面必须重新取得存活LocalizationManager，不能一直引用重复入口的子组件。
+不要用语言事件重新调用按钮回调。静态标题文字刷新只写TMP_Text.text。
+
+五、动态文字与现有IMGUI面板
+
+动态界面自己读取真实生命、轮次、状态等数据，然后调用FormatText。数据变化和LanguageChanged都调用同一个RefreshText方法。例如：
+
+healthText.text = localization.FormatText("player.health.value",
+    health.CurrentHealth, health.MaxHealth);
+
+订阅和解除必须配对：OnEnable订阅所需事件并刷新；OnDisable解除对应事件。重复打开窗口不应累计订阅。
+格式参数中的显示名称要在刷新时重新查询当前语言，例如localization.GetText(item.Definition.nameKey)，不要长期缓存“医疗包”或“Medkit”。
+
+PlayerTestDriver与ItemsTestDriver保留现有IMGUI/GUILayout结构。OnGUI从真实业务对象读取状态，再GetText/FormatText绘制；语言切换不需要把面板重写成TMP。
+两个面板每次查询使用LocalizationManager.Instance解析存活模块；IMGUI每次绘制自然读取当前语言，所以不额外订阅LanguageChanged。panelFont字段分别指定实际随工程分发的Font，GUIStyle开启wordWrap，窄画面按钮改为纵排，内容较长时可滚动。
+操作结果保存稳定结果key、结果枚举、物品定义引用/标识及必要数值快照；OnGUI根据当前语言生成结果文字。受伤时记录的生命快照应保留，后来重绘不能把它替换为当前生命。
+当前LastResult公开只读属性每次把lastResultKey、ItemUseResult、definitionId、A/B后缀转换为当前译文；PlayerTest保存结果发生时的resultRound，ItemsTest另外保存resultHealth/resultMaxHealth。物品名通过原ItemLibrary.FindDefinition(definitionId).nameKey重新取得。
+例如满血使用医疗包只在按钮操作中调用一次TryUseItem；之后切语言只把结果从“医疗包：生命值已满”显示为英文，不再次治疗或扣使用次数。
+instanceId、definitionId等技术标识保持原值，只翻译周围标签。
+
+六、物品名称和描述的唯一来源
+
+继续在Assets/Data/Items下原有Doll.asset、Medkit.asset、Food.asset、Battery.asset等ItemDataSO资源编辑nameZh、nameEn、descriptionZh、descriptionEn以及稳定nameKey、descriptionKey。
+LocalizationModule.itemLibrary引用现有Assets/Data/Items/ItemLibrary.asset。Manager遍历itemLibraryList中的真实itemData，把其nameKey和descriptionKey及双语字段加入普通查询Dictionary。
+例如GetText(itemData.nameKey)和GetText(itemData.descriptionKey)。这里只读取配置，不调用ItemManager.TryCreateInstance或TryUseItem，不登记任何物品身份。
+不要把这几段可编辑译文复制到ItemMessages或另一份语言表；不要改动definitionId、uniqueId和已有稳定文本key。
+新增物品先加入现有ItemLibrary；停止运行后修改配置、重新运行，即从唯一来源读取新文案。
+
+七、常驻接线与唯一F10入口
+
+Assets/Prefabs/Localization/LocalizationModule.prefab挂在现有GameBootstrap场景实例下，随这个入口常驻；不自行新建DontDestroyOnLoad根，也不修改GameBootstrap的生命周期。
+配置tables四份文本表、itemLibrary真实物品目录，以及toggleLanguageAction指向Assets/Input/GameInputActions.inputactions中的Player/ToggleLanguage（F10）。
+LocalizationManager只Clone这一条Action成为自己的运行实例，订阅按下回调、自行Enable并在关闭/销毁时解除和释放；不启停整个Player Action Map，不轮询另一条键盘F10入口。
+PlayerInputReader已核实只Clone Move/Jump/Crouch/Interact四条动作；它没有语言处理者，与本模块没有F10争用。
+重复Bootstrap使用帧末延迟销毁，Manager必须核对父级确为GameBootstrap.Instance且有效，只有存活模块拥有输入。一个按下只切一次；按住不重复切换。
+玩家尚未准备、死亡、背包限制操作时F10仍由独立语言动作响应，不改变CanAct、IsBackpackOpen、生命、轮次或物品状态。
+退出本次运行清理静态引用；下一次启动仍默认中文。再次初始化有效实例或查询文字不重置已经选择的语言。
+
+八、字体与布局
+
+任务开始时项目与三个参考仓库未发现现成可复用的中文字体。LiberationSans和LiDar中的VCR_OSD_MONO不足以覆盖本项目中文；不能依赖Windows机器本地字体。
+本轮引入Assets/Art/Fonts/Localization/NotoSansCJKsc-Regular.otf，许可证同目录OFL.txt（SIL Open Font License 1.1），来源与精确散列记录在Source.txt。来源为https://github.com/notofonts/noto-cjk/blob/main/Sans/OTF/SimplifiedChinese/NotoSansCJKsc-Regular.otf；字体文件SHA256：2C76254F6FC379FDDFCE0A7E84FB5385BB135D3E399294F6EEB6680D0365B74B。
+对应TMP字体为同目录NotoSansCJKsc-Regular SDF.asset，使用Dynamic模式、2048×2048图集、启用多图集，并引用工程内的源Font。创建时预热现有表和物品配置中的文字；源Font的Include Font Data已开启，新增字符可从打包源字体补入。不是依赖系统字体的DynamicOS模式。
+LocalizedText.prefab明确引用这份TMP字体；PlayerTestDriver.panelFont与ItemsTestDriver.panelFont分别引用同一个Noto源Font，供IMGUI使用。
+工程原先没有TMP的Essential Resources，本轮从已安装UGUI2.0.0附带的TMP Essential Resources导入Assets/TextMesh Pro，提供TMP设置、shader及默认资源；这是现有包配套资源，没有增加包依赖。
+TMP预制体必须显式引用覆盖中英文字的TMP_FontAsset或必要fallback；所需字符、中文标点及数字应在实际Game视图检查。
+IMGUI需要另外给GUIStyle/GUISkin设置可随构建分发的Font。TMP_FontAsset不会自动改变GUILayout字体。英文说明和长按钮需要足够宽度、换行及可用的面板高度。
+
+九、验证场景与后续模块
+
+Assets/Scenes/Tests/Localization/LocalizationTest.unity展示静态TMP、带数字的动态文本、真实ItemDataSO名称/描述、F10提示与当前语言，以及结果重绘示例。
+示例中的sampleCurrent/sampleMaximum是可改的演示数字，LocalizationTestDriver.RefreshText()只将其格式化；它展示的满血使用结果明确是示例，真实物品使用验收仍在原有两个测试面板执行。
+Tools/MyPrecious/Create Localization Test Assets菜单只创建缺少的字体、模块、文字Prefab及验证场景，不覆盖已存在的SO译文或已建场景。既有PlayerTestSceneBuilder重建场景时会引用同一LocalizationModule与panelFont；不另做F10处理。
+真实玩家和物品集成检查仍分别使用Assets/Scenes/Tests/Player/PlayerTest.unity和Assets/Scenes/Tests/Items/ItemsTest.unity；ItemsTestHealth仅测试替身，不能作为真实玩家联测证明。
+自动测试位于Assets/Tests/Localization下；只覆盖有价值的查询/回退/重复key、初始化/切换、单次F10及业务数据不变等边界，不为每一句译文写重复测试。
+实际测试名称、执行数量、截图和未执行项目见03_Handoff；它分别记录静态检查、自动测试和实际Game运行。
+
+04–08在各自界面按稳定key读取普通文字，按ItemDataSO稳定key读取物品译文；业务操作与文字刷新分别通过明确方法完成。
+06交互提示使用02实际提供的CurrentPromptKey，有目标时查询显示，没有目标时隐藏；语言模块不参与距离、遮挡或候选目标计算。
+09正式场景只接入一份LocalizationModule到存活GameBootstrap，并接好字体/表/输入引用；09不能重复监听F10，也不再实现第二套语言管理器。
+未提前制作背包、仓库、搜刮、敌人、流程、存档或04–09未交付界面。本次完成的是可复用语言模块和已有验证界面接入。

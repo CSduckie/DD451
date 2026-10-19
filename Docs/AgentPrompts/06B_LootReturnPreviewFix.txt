@@ -1,0 +1,48 @@
+任务06B：修复背包物品放回搜刮容器时的预览与提示
+项目 E:/DD451；2026-10-18；用户明确要求下发到对应开发聊天。
+
+用户证据
+Docs/Verification/LootReturnPreview/UserReported.png（保留原图，不做图片修改）。
+必须先查看图片。用户说明问题发生在把物品移动回容器时。
+图中可直接确认：箱子整个viewport及格子下方大片空白变绿；右侧提示松开放回箱子，左侧背包却仍提示不在可放置格子上、松手取消。
+仅凭图片不能断言松手后转移失败、丢物或复制；须实际复现并记录提交结果。
+
+当前上下文与所有权
+先读ProjectRules Dispatch v17、06A及07A最新交接。固定容量/背景格已实现，105/27和正式6/6是修复前基线。
+主程已停止Play，干净Bootstrap，Game已选择内置Full HD（1920×1080），runInBackground=false，现明确释放Unity给006。
+006是本修复唯一代码/Editor执行者。007暂不改动，主程只读等待，修复交接后主程继续原定独立验收。
+
+先定位
+ItemTransferUIBridge.OnBackpackDrag返箱分支只写loot.SetFeedback，没有覆盖BackpackUIController.UpdateDrag先写的backpack.outside。
+LootView.ShowReturnPreview直接改变整个returnTarget/viewport Image.color，导致全背景变绿/变红。上述为已读代码线索，实际根因由复现确认。
+
+修复要求
+1. 返箱预览保留正常背景单元格、物品和未知轮廓，不用整块viewport纯色覆盖作为有效/无效提示。
+2. 用清楚、局部的目标预览表示放回位置；优先显示现有自动归位算法选中的实际物品占格外框。预览查询不提交、不改归属/布局；提交仍通过原Coordinator复验。复用现有查空位方法，不复制一套布局算法。
+3. 保留“返箱自动选合法位置”的现有规则，不新增箱内手动摆放或旋转玩法。原位可用优先原位，已占找其它空位，满箱失败原物保留。视口空白能接收自动返箱的既有规则不因视觉修复悄悄改变。
+4. 鼠标处于合法返箱目标时，背包与箱子反馈一致，不能一边说可放回、另一边说松手取消；满箱/会话失效显示明确且一致的失败原因。移动回背包/其他目标时恢复对应目标提示，不能留下旧返箱文字。
+5. 松手成功/失败、移出目标、关闭界面、Tab、有效受击、取消、场景切换均清理局部预览，恢复正常网格样式；迟到松手不得提交下一次拖拽。
+6. 新预览不拦截UGUI射线，不遮住当前搜索倒计时、不泄漏未知物身份；搜索进度、EntryId和现存位置保持。
+7. 沿用03中英切换及唯一F10入口，正式1920×1080、66/4/6不变。
+
+修改边界与风格
+主要：Assets/Scripts/Items/Transfers/MonoBehaviour/ItemTransferUIBridge.cs；Assets/Scripts/Loot/MonoBehaviour/LootView.cs。
+必要时为只读预览查询最小补充Assets/Scripts/Loot/RuntimeData/LootSourceState.cs或LootRuntimeManager.cs的现有方法；不重写固定容量或提交规则。
+必要Prefab：Assets/Prefabs/UI/Loot/LootPanel.prefab；对应Assets/Tests/Loot/Editor/LootTestSceneBuilder.cs与语言配置；不要改GUID。
+测试：Assets/Tests/Loot/PlayMode已有返箱/格子用例中补真实回归，必要EditMode只覆盖新增查询与提交一致性，不写镜像测试。
+不改玩家、仓库/背包格子核心、正式场景业务；如发现正式接线确需变更，先写明具体点由主程协调007。
+英文目录、自有C#不写namespace、4空格与换行括号、普通类与明确方法，参考用户CardGame拖拽风格及项目已适配实现。不要引入通用框架/事件总线/事务系统。
+
+验收
+- 复现截图场景：搜空箱子，把食物2×2或电池1×2从背包拖回；原箱返还和地面/其它箱外来物都测。
+- 拖过网格/视口下方空白时，没有整个背景变绿；局部预览与实际自动落位一致，背景格保持66×66。
+- 左右提示同步；移回背包、满箱、关闭取消、受击与迟到松手不残留提示/预览。
+- 松手后核对实例身份、归属、双方数量与坐标；失败不丢物、不复制、不误发成功通知。
+- 搜索进行中返还已知物，未知轮廓、唯一中央倒计时与后续搜索不受影响。
+- 中文/英文普通Play截图，至少保存拖拽中及松手后；检查文字可读。
+- 运行相关既有回归；只因本次变化/失败扩大范围。区分排队输入、API夹具、实体键鼠，不能以旧用户手动通过代替新版。
+
+交接
+Docs/Handoffs/06B_LootReturnPreview_Handoff.txt；证据放Docs/Verification/LootReturnPreview/。
+写明复现、根因、最小修改、测试结果、截图、实际松手结果和未验项，更新TransfersLootSetup必要段落。
+结束停止Play、恢复后台设置，回到干净Bootstrap并明确“06B修复与验证完成，已释放Unity”。主程随后完成1920独立复核。

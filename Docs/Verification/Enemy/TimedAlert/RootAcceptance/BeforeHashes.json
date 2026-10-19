@@ -1,0 +1,47 @@
+[
+  {
+    "Algorithm": "SHA256",
+    "Hash": "53D3810E802789B3E578538E15C8FF0CCC5634E00C22A83AD3155C1DBB99D6A5",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Ruins.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "71BD0E68CE9B34EF682661D60BCD36605007FE6FFE66D8FD09D1A56542A66594",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Ruins.unity.meta"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "F4A36F7B10057621E7CBD4FB013C6D30EB92BE94FBF245786AC2E8C388F892B8",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Shelter.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "9063DB1C2FD9EFBB83A120531BCA35644BE835D203A68EC49FBB1B8306526500",
+    "Path": "E:\\DD451\\Assets\\Scenes\\Bootstrap.unity"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "3DBF48088A9FC82470A4E5DFB056A8E962002B23CED19F883FB23A23891114EB",
+    "Path": "E:\\DD451\\Assets\\Prefabs\\Enemy\\Drone\\Drone.prefab"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "7373C79FC9230FA996B140D761A8E06DE02E78D0803E5FA2FDAF064B771E4603",
+    "Path": "E:\\DD451\\Assets\\Prefabs\\Enemy\\Drone\\Drone.prefab.meta"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "BF942528A2B7487FD6E05F5A22F8D2A00BF52FCCE02FE33446E1B9324C1490A1",
+    "Path": "E:\\DD451\\Assets\\Data\\Enemy\\Drone\\DroneConfig.asset"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "E0321CE611653F75DFF9058F7ED7C581D25D3DF81F7AE27EB3FF29942604FCBE",
+    "Path": "E:\\DD451\\Assets\\Data\\LootTables\\MinimumLoopLoot.asset"
+  },
+  {
+    "Algorithm": "SHA256",
+    "Hash": "958FDF2170FF091DABBA5A71FA125CDD77768DF4D001EA825C69990ECEA4328B",
+    "Path": "E:\\DD451\\Assets\\Data\\LootTables\\RuinsExtraSuppliesLoot.asset"
+  }
+]

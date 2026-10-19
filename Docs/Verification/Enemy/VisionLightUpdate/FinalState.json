@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "message": "Code executed successfully.",
+  "data": {
+    "result": {
+      "observed": "2026-10-19T04:47:58.7865802Z",
+      "playing": false,
+      "changing": false,
+      "compiling": false,
+      "updating": false,
+      "scene": "Assets/Scenes/Shelter.unity",
+      "dirty": false,
+      "prefabStage": null,
+      "timeScale": 1,
+      "runInBackground": false,
+      "prefab": {
+        "missingScripts": 0,
+        "anchor": "VisionOrigin",
+        "anchorUnderVisual": true,
+        "directionOffset": 0,
+        "lightName": "Point Light",
+        "type": "Point",
+        "intensity": 8,
+        "range": 0.3,
+        "color": "RGBA(0.000, 0.122, 1.000, 1.000)",
+        "period": 2,
+        "min": 0.35,
+        "max": 1,
+        "search": "RGBA(1.000, 0.500, 0.000, 1.000)",
+        "chase": "RGBA(1.000, 0.050, 0.020, 1.000)"
+      }
+    },
+    "compiler": "codedom"
+  }
+}

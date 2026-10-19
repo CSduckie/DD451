@@ -1,0 +1,16 @@
+Shelter night skybox completed — 2026-10-19
+Scene: Assets/Scenes/Shelter.unity
+Material: Assets/Art/Materials/Environment/ShelterNightSkybox.mat
+Built-in Skybox/Procedural, sun disk disabled, exposure0.18, atmosphere0.8,
+sky tint(0.08,0.12,0.23), ground(0.015,0.02,0.04).
+Shelter OutputCamera instance clearFlags changed from SolidColor to Skybox.
+Task-owned scene edits are only skybox reference and camera instance clearFlags override.
+Final diff also includes an independently made directional-light color change during preview:
+white -> (0.7169812,0.32128873,0.32128873). No task tool wrote any Light property;
+the current in-memory user edit was preserved by the final scene save rather than reverted.
+Shared PlayerCamera prefab and Ruins scene unchanged. No task edits to lights or scene layout.
+Inspected ShelterNight-1920.png (actual scene camera edit-mode render, indoor view),
+and NightSky-Preview.png (sky-only preview showing dark blue night horizon, no solar disk).
+No new scripts, no tests necessary for material setting. No Play-mode acceptance claimed.
+Temporary preview cameras/RenderTextures destroyed; Shelter saved clean/Edit; Console0errors/0warnings.
+Before/, ProtectedAfter.json, DeliveredHashes.json preserve before/after evidence.

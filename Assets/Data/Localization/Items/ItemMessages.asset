@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f3cd9f8c424ac5439f636ad5435f100, type: 3}
+  m_Name: ItemMessages
+  m_EditorClassIdentifier: 
+  entries:
+  - key: items.use.result
+    chinese: "{0}：{1}"
+    english: "{0}: {1}"
+  - key: items.use.success
+    chinese: "使用成功"
+    english: "Used successfully"
+  - key: items.use.not_found
+    chinese: "未找到物品"
+    english: "Item not found"
+  - key: items.use.not_carried
+    chinese: "物品未放入背包"
+    english: "Item is not in the backpack"
+  - key: items.use.not_usable
+    chinese: "该物品不可使用"
+    english: "This item cannot be used"
+  - key: items.use.invalid_target
+    chinese: "治疗目标无效"
+    english: "Invalid healing target"
+  - key: items.use.full_health
+    chinese: "生命值已满"
+    english: "Health is full"
+  - key: items.use.round_not_started
+    chinese: "本轮尚未开始"
+    english: "The round has not started"
+  - key: items.use.round_limit_reached
+    chinese: "本轮使用次数已用完"
+    english: "No uses left this round"
+  - key: items.use.invalid_configuration
+    chinese: "物品配置无效"
+    english: "Invalid item configuration"
+  - key: items.use.no_healing_applied
+    chinese: "治疗未生效"
+    english: "No healing was applied"
+  - key: items.use.busy
+    chinese: "物品正在处理中"
+    english: "An item operation is in progress"
+  - key: items.use.unknown
+    chinese: "未知使用结果"
+    english: "Unknown use result"

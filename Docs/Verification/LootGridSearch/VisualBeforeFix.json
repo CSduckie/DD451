@@ -1,0 +1,136 @@
+{
+  "chinese": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"success\":true,\"message\":\"Code executed successfully.\",\"data\":{\"result\":{\"screen\":[1920,1080],\"countdown\":\"visual-1\",\"elapsed\":6.645847,\"items\":[{\"EntryId\":\"visual-0\",\"Revealed\":true,\"Taken\":false,\"LayoutX\":0,\"LayoutY\":0,\"LayoutWidth\":1,\"LayoutHeight\":1},{\"EntryId\":\"visual-1\",\"Revealed\":false,\"Taken\":false,\"LayoutX\":1,\"LayoutY\":0,\"LayoutWidth\":1,\"LayoutHeight\":2},{\"EntryId\":\"visual-2\",\"Revealed\":false,\"Taken\":false,\"LayoutX\":2,\"LayoutY\":0,\"LayoutWidth\":2,\"LayoutHeight\":2},{\"EntryId\":\"visual-3\",\"Revealed\":false,\"Taken\":false,\"LayoutX\":4,\"LayoutY\":0,\"LayoutWidth\":2,\"LayoutHeight\":3}],\"texts\":[{\"name\":\"Title\",\"text\":\"搜索来源\",\"overflow\":false,\"rect\":\"(x:0.00, y:-40.00, width:264.00, height:40.00)\",\"font\":27.0},{\"name\":\"Label\",\"text\":\"关闭来源\",\"overflow\":false,\"rect\":\"(x:0.00, y:-32.00, width:148.00, height:32.00)\",\"font\":17.0},{\"name\":\"Status\",\"text\":\"正在搜索\",\"overflow\":false,\"rect\":\"(x:0.00, y:-56.00, width:428.00, height:56.00)\",\"font\":18.0},{\"name\":\"Name\",\"text\":\"电池\",\"overflow\":false,\"rect\":\"(x:-27.00, y:-27.00, width:54.00, height:54.00)\",\"font\":18.0},{\"name\":\"Countdown\",\"text\":\"83.4 秒\",\"overflow\":false,\"rect\":\"(x:-29.00, y:-16.00, width:58.00, height:32.00)\",\"font\":18.3},{\"name\":\"Feedback\",\"text\":\"已识别物品可拖入背包；背包物品可放回箱格。\",\"overflow\":false,\"rect\":\"(x:0.00, y:-48.00, width:444.00, height:48.00)\",\"font\":17.0}]},\"compiler\":\"codedom\"}}"
+      }
+    ],
+    "structuredContent": {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "screen": [
+            1920,
+            1080
+          ],
+          "countdown": "visual-1",
+          "elapsed": 6.645847,
+          "items": [
+            {
+              "EntryId": "visual-0",
+              "Revealed": true,
+              "Taken": false,
+              "LayoutX": 0,
+              "LayoutY": 0,
+              "LayoutWidth": 1,
+              "LayoutHeight": 1
+            },
+            {
+              "EntryId": "visual-1",
+              "Revealed": false,
+              "Taken": false,
+              "LayoutX": 1,
+              "LayoutY": 0,
+              "LayoutWidth": 1,
+              "LayoutHeight": 2
+            },
+            {
+              "EntryId": "visual-2",
+              "Revealed": false,
+              "Taken": false,
+              "LayoutX": 2,
+              "LayoutY": 0,
+              "LayoutWidth": 2,
+              "LayoutHeight": 2
+            },
+            {
+              "EntryId": "visual-3",
+              "Revealed": false,
+              "Taken": false,
+              "LayoutX": 4,
+              "LayoutY": 0,
+              "LayoutWidth": 2,
+              "LayoutHeight": 3
+            }
+          ],
+          "texts": [
+            {
+              "name": "Title",
+              "text": "搜索来源",
+              "overflow": false,
+              "rect": "(x:0.00, y:-40.00, width:264.00, height:40.00)",
+              "font": 27
+            },
+            {
+              "name": "Label",
+              "text": "关闭来源",
+              "overflow": false,
+              "rect": "(x:0.00, y:-32.00, width:148.00, height:32.00)",
+              "font": 17
+            },
+            {
+              "name": "Status",
+              "text": "正在搜索",
+              "overflow": false,
+              "rect": "(x:0.00, y:-56.00, width:428.00, height:56.00)",
+              "font": 18
+            },
+            {
+              "name": "Name",
+              "text": "电池",
+              "overflow": false,
+              "rect": "(x:-27.00, y:-27.00, width:54.00, height:54.00)",
+              "font": 18
+            },
+            {
+              "name": "Countdown",
+              "text": "83.4 秒",
+              "overflow": false,
+              "rect": "(x:-29.00, y:-16.00, width:58.00, height:32.00)",
+              "font": 18.3
+            },
+            {
+              "name": "Feedback",
+              "text": "已识别物品可拖入背包；背包物品可放回箱格。",
+              "overflow": false,
+              "rect": "(x:0.00, y:-48.00, width:444.00, height:48.00)",
+              "font": 17
+            }
+          ]
+        },
+        "compiler": "codedom"
+      }
+    },
+    "isError": false
+  },
+  "english": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"success\":true,\"message\":\"Code executed successfully.\",\"data\":{\"result\":{\"language\":\"English\",\"search\":\"visual-1\",\"elapsed\":26.3833332,\"overflow\":[{\"name\":\"Feedback\",\"text\":\"Drag revealed items to your backpack; return items to this grid.\"}]},\"compiler\":\"codedom\"}}"
+      }
+    ],
+    "structuredContent": {
+      "success": true,
+      "message": "Code executed successfully.",
+      "data": {
+        "result": {
+          "language": "English",
+          "search": "visual-1",
+          "elapsed": 26.3833332,
+          "overflow": [
+            {
+              "name": "Feedback",
+              "text": "Drag revealed items to your backpack; return items to this grid."
+            }
+          ]
+        },
+        "compiler": "codedom"
+      }
+    },
+    "isError": false
+  },
+  "note": "Before final feedback height correction: English feedback preferred height 49.24 versus rect 48; production builder changed rect to 56."
+}

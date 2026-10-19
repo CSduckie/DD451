@@ -1,0 +1,148 @@
+{
+  "scope": "Read-only audit of saved data and images; only Audit.txt/Audit.json written. No Unity or Assets changes.",
+  "motionMethod": "Ordinary Play, three seconds scaled runtime; sample actual particle positions/lifetimes.",
+  "elapsedGameSeconds": 3.0162181999999973,
+  "cameraBefore": "(-8.40, 2.50, -12.00)",
+  "cameraAfter": "(-8.40, 2.50, -12.00)",
+  "rootLocalBefore": "(0.00, 0.00, 4.00)",
+  "rootLocalAfter": "(0.00, 0.00, 4.00)",
+  "motion": [
+    {
+      "system": "FineDust",
+      "beforeCount": 161,
+      "afterCount": 158,
+      "duplicateSeedsBefore": 0,
+      "duplicateSeedsAfter": 0,
+      "matchedSeeds": 127,
+      "movedCount": 127,
+      "lifetimeDecreasedCount": 127,
+      "unchangedStartLifetimeCount": 127,
+      "minDisplacement": 0.030815753910071422,
+      "maxDisplacement": 0.3418067798806999,
+      "meanDisplacement": 0.2007923078006034,
+      "minLifetimeDecrease": 3.0359434999999997,
+      "maxLifetimeDecrease": 3.03596326,
+      "meanLifetimeDecrease": 3.0359548259842537,
+      "maxLifetimeDecreaseErrorFromElapsed": 0.019745060000002645
+    },
+    {
+      "system": "ForegroundMotes",
+      "beforeCount": 28,
+      "afterCount": 28,
+      "duplicateSeedsBefore": 0,
+      "duplicateSeedsAfter": 0,
+      "matchedSeeds": 22,
+      "movedCount": 22,
+      "lifetimeDecreasedCount": 22,
+      "unchangedStartLifetimeCount": 22,
+      "minDisplacement": 0.016437571188591023,
+      "maxDisplacement": 0.22264481187072432,
+      "meanDisplacement": 0.12174796159988568,
+      "minLifetimeDecrease": 3.035949795,
+      "maxLifetimeDecrease": 3.0359611,
+      "meanLifetimeDecrease": 3.035955602727272,
+      "maxLifetimeDecreaseErrorFromElapsed": 0.019742900000002894
+    }
+  ],
+  "image": {
+    "width": 1920.0,
+    "height": 1080.0,
+    "pixels": 2073600.0,
+    "changedPixels": 10959.0,
+    "changedPercent": 0.5285011574074074,
+    "changedOver2Pixels": 905.0,
+    "changedOver2Percent": 0.04364390432098766,
+    "changedOver8Pixels": 460.0,
+    "changedOver8Percent": 0.022183641975308643,
+    "changedOver16Pixels": 204.0,
+    "changedOver16Percent": 0.009837962962962963,
+    "meanAbsoluteRgbDifference8Bit": 0.0061996849279835385,
+    "meanSignedRgbDifference8Bit": 0.00231079603909465,
+    "beforeMeanRgb8Bit": 22.094947112911523,
+    "afterMeanRgb8Bit": 22.09725790895062,
+    "maxAbsoluteChannelDifference8Bit": 58.0,
+    "note": "Encoded 8-bit RGB metrics, not physical luminance; not every changed pixel is independently attributable to dust."
+  },
+  "metadata": {
+    "captureMethod": "ScreenCapture.CaptureScreenshot, supersize1, ordinary Play Game framebuffer",
+    "sameCamera": true,
+    "samePlayer": true,
+    "sameEnvironment": true,
+    "sameEffectiveStack": true,
+    "note": "Metadata does not record individual Light intensities; no independent fixed-light-phase claim is made."
+  },
+  "protection": [
+    {
+      "path": "Assets/Scenes/Shelter.unity",
+      "baseline": "SceneCameraPreview/DeliveredHashes.json",
+      "expected": "9A6F3DDE347095ACE30FC0F77F0E7D54160D0879316D2882360282A0EE77EBCD",
+      "actual": "9A6F3DDE347095ACE30FC0F77F0E7D54160D0879316D2882360282A0EE77EBCD",
+      "match": true
+    },
+    {
+      "path": "Assets/Scenes/Shelter.unity.meta",
+      "baseline": "ShelterDust/ProtectedBefore.json",
+      "expected": "E32C6E5FFC8F10D2BB611941967203616E52F76353A7722CF717703EDD4D2889",
+      "actual": "E32C6E5FFC8F10D2BB611941967203616E52F76353A7722CF717703EDD4D2889",
+      "match": true
+    },
+    {
+      "path": "Assets/Scenes/Ruins.unity",
+      "baseline": "SceneCameraPreview/DeliveredHashes.json",
+      "expected": "A227EAA4EDB308BFC891FBD9C0D02B5901D1C1E53F762B589481ABD612638511",
+      "actual": "A227EAA4EDB308BFC891FBD9C0D02B5901D1C1E53F762B589481ABD612638511",
+      "match": true
+    },
+    {
+      "path": "Assets/Scenes/Ruins.unity.meta",
+      "baseline": "ShelterDust/ProtectedBefore.json",
+      "expected": "71BD0E68CE9B34EF682661D60BCD36605007FE6FFE66D8FD09D1A56542A66594",
+      "actual": "71BD0E68CE9B34EF682661D60BCD36605007FE6FFE66D8FD09D1A56542A66594",
+      "match": true
+    },
+    {
+      "path": "Assets/Scenes/Bootstrap.unity",
+      "baseline": "ShelterDust/ProtectedBefore.json",
+      "expected": "C5E5CBACB10DA5B087420D64CA42761C2822627EFF5C160ADECE1E04DE4C9DED",
+      "actual": "C5E5CBACB10DA5B087420D64CA42761C2822627EFF5C160ADECE1E04DE4C9DED",
+      "match": true
+    },
+    {
+      "path": "Assets/Prefabs/Player/PlayerCamera.prefab",
+      "baseline": "ShelterDust/ProtectedBefore.json",
+      "expected": "7456EE6888DE03CFFC87AA52AA31B800867507EAF82C05A91FF850C993F0FD64",
+      "actual": "7456EE6888DE03CFFC87AA52AA31B800867507EAF82C05A91FF850C993F0FD64",
+      "match": true
+    },
+    {
+      "path": "Assets/Prefabs/Player/PlayerCamera.prefab.meta",
+      "baseline": "ShelterDust/ProtectedBefore.json",
+      "expected": "00EF61A4E3B2C53252818DAA239D0DA2BFE0B00C06AF9DACB14824B4AD80B5ED",
+      "actual": "00EF61A4E3B2C53252818DAA239D0DA2BFE0B00C06AF9DACB14824B4AD80B5ED",
+      "match": true
+    },
+    {
+      "path": "Assets/Scenes/Shelter/Global Volume Profile.asset",
+      "baseline": "ShelterDust/ProtectedBefore.json",
+      "expected": "92BD722219978A1A68056ECBB2D200A3B706312197C160AD1C757710B14FB1DD",
+      "actual": "92BD722219978A1A68056ECBB2D200A3B706312197C160AD1C757710B14FB1DD",
+      "match": true
+    },
+    {
+      "path": "Assets/Art/Materials/Environment/ShelterNightSkybox.mat",
+      "baseline": "ShelterDust/ProtectedBefore.json",
+      "expected": "175DC252138EE95FBE84AB95A09F03256C25C0DAA4A045535AC4380789F8E688",
+      "actual": "175DC252138EE95FBE84AB95A09F03256C25C0DAA4A045535AC4380789F8E688",
+      "match": true
+    },
+    {
+      "path": "Assets/Scripts/Effects/MonoBehaviour/LightFlicker.cs",
+      "baseline": "ShelterDust/ProtectedBefore.json",
+      "expected": "FFCB0F069DE0BC1B147050CE18614AB8819B33B49E537DA7A5D813EEBF911004",
+      "actual": "FFCB0F069DE0BC1B147050CE18614AB8819B33B49E537DA7A5D813EEBF911004",
+      "match": true
+    }
+  ],
+  "protectionPassCount": 10,
+  "protectionTotal": 10
+}

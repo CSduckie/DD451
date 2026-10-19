@@ -1,0 +1,61 @@
+07E 正式Ruins无人机接入 — 交接初稿（只读源码审查后准备）
+日期：2026-10-19（America/New_York）
+状态：DRAFT / IMPLEMENTATION_REVIEWED / COMPILE_TEST_VISUAL_RELEASE_PENDING
+本文件是root整合正式交接的素材，不是已完成验收或Editor释放记录。最终交付以Docs/Handoffs/07E_RuinsEnemyIntegration_Handoff.txt及实际验证结果为准。
+
+1. 问题与本次范围
+009的DroneController首次必须显式BeginRound(roundId)，IsRunning要求CurrentRound>0。独立EnemyTestDriver已有调用，正式GameFlow此前只准备物品、搜刮和玩家，所以用户放在Ruins中的无人机未进入运行轮次。
+本次复用GameFlow当前探索轮次，在正式Shelter出发成功后接入Ruins中的实际无人机。沿用009现有Patrol/Alert/Chase/Search/Explode及伤害规则，不新增Manager、通用敌人注册框架或持久化敌人ID，不承担010完整死亡返回/携带物损失/EV及唯一找回流程。不通过关闭Kinematic、强制状态或修改用户路线伪造巡逻。
+
+2. 已审查的生产机制（源码事实；尚不代表运行通过）
+GameFlowManager.RunTransition在旧场景UnloadPrevious成功、目标UI与业务绑定、Physics.SyncTransforms之后，仍持有玩家sceneTransitionBlocked时调用target.TryBeginExplorationEnemies(CurrentRound)。仅探索目标调用；失败复用现有flow.error.scene双语反馈与Fail/Retry路径。成功后才解除玩家场景锁、提交Exploring阶段。
+GameFlowSceneBindings新增TryBeginExplorationEnemies(int roundId, out string error)。方法仅遍历自身已加载Scene的根节点及其子对象，不依赖Environment3D层级，不通过全局FindObjects启动其它地图或测试场景的无人机。
+仅处理isActiveAndEnabled的无人机；策划停用的根/父对象或DroneController组件跳过。庇护所直接不启动；有效探索场景没有无人机也允许正常完成。
+先遍历并预检启用机的config与CurrentRound，不允许缺少配置或敌人轮次超前；全部通过后才开始需要推进的机，避免常见配置错误产生部分启动。没有在此分配或递增探索轮次。
+CurrentRound与传入轮次相同直接跳过，包括已自毁无人机；不重新启用对象、不清警戒值、不重置位置或调用ChangeState。只为尚未进入本轮的机调用009的BeginRound。BeginRound仍保留同轮/旧轮拒绝逻辑。
+GameFlow与GameFlow.PlayModeTests程序集均增加MyPrecious.Enemy引用，rootNamespace保持空。现有Bindings.Activate不负责敌人初始化，因此重复UI接线不会主动重置敌人。
+
+3. 依赖009现有行为与边界
+BeginRound接受更大的正轮次后恢复Awake记下的出生位置/旋转、巡逻索引及表现，再进入Patrol。新一次真实出发会卸载旧Ruins并载入新实例；新实例从原场景出生和patrolPoints配置开始，不需要额外保存敌人身份。
+OnDisable会清目标、警戒进度和状态机；OnEnable会使仍存活的机重新Patrol。因此接入没有通过禁用/启用来暂停或重置同轮无人机。
+Player的场景切换锁同时被DroneVision.CanSeePrepared和DroneController.CanTarget拒绝；首次未开始轮次的机不运行。保留旧地图卸载完成后才解锁玩家的原顺序，避免两图重叠时让旧敌人攻击已迁移玩家。
+本次不改009感知规则，也不声称失败等待期间敌人状态冻结。已运行敌人遇到被场景锁保护的玩家，仍会按009自然退警戒或丢失目标；这与重复初始化清除状态不同。无人机的同轮接入本身应无副作用。
+本方法限定启动范围，不负责接管其它独立测试场景已经自行运行的敌人。
+
+4. 当前用户场景基线
+本轮fresh初态来自Integration/InitialEditorState.json，UTC 2026-10-19T06:05:55.4972476Z：唯一Ruins，Edit，clean，无PrefabStage，非编译/导入/切换。
+用户Drone是Ruins场景根对象，初始位置(-3.34101677, 2.39236856, -0.382937431)，对象/组件启用。
+patrolPoints顺序为巡逻1(-12, 2.5, 0)、巡逻2(1, 2.5, 0)。009本来使用点位X/Y与本机出生Z构造实际路线；不得为验证把Drone Z改为0或挪动点位。
+Integration/BeforeHashes.json与Integration/Before保存接手时的真实基线。其后用户在06:09 UTC明确授权保存当前dirty Ruins；root先saveAsCopy为Integration/AuthorizedLatest-Ruins.unity，再执行SaveScene。不得把这次授权保存的用户改动归为007实现改场景，也不得用最初Before回退。
+据root核对，唯一场景差异为fileID 1834287630附近对象Transform：position从(6, 0.2, 0)变为(6, 0.70000005, 0)，scale从(2, 0.4, 2)变为(2, 2, 4)。无人机出生配置与巡逻点未改。Integration/DirtyAfterCompile-Ruins.unity及AuthorizedLatest-Ruins.unity保留当时内容。
+后续Ruins保护基线采用Integration/AuthorizedSceneBaseline.json（UTC 2026-10-19T06:09:17.5366337Z）。该记录的Ruins SHA256为A1E839BD3E3C028AF05C47C7AFFB05586E5CA5CAF9BCDD1744DD24CEEAAA0EB1，meta为71BD0E68CE9B34EF682661D60BCD36605007FE6FFE66D8FD09D1A56542A66594。文件还记录原DroneConfig.asset及其meta，不表示其由007修改。
+正式结束前必须对照上述授权新基线及其余原Before基线核对Ruins、Shelter、Bootstrap、Drone/Cover Prefab、已有.meta以及受保护009源码/配置。当前初稿不宣称最终哈希一致。
+007接入本身目标仍为零场景、零Prefab修改，保留用户模型、灯光、相机、所有原巡逻引用和数值；授权保存当前用户工作单独记录。
+
+5. 编译、回归与实际流程（全部待root填入真实证据）
+待编译：当前补丁导入完成、无工程编译错误。
+待回归：真实Bootstrap→Shelter→Ruins启动；GameFlow/Item/Loot/PlayerHealth/Drone共享轮次；原Drone自动Patrol并沿原路线实际移动。
+待回归：同轮重复接入保留位置、状态及警戒余量；自毁后重复接入不复活、不重复伤害；下一轮正常刷新。
+待边界：空敌人场景、目标Scene隔离、停用对象/组件、配置错误预检、正常失败后的同轮Retry。初次失败不能在玩家未准备或场景未成功时启动新敌人轮次。
+待流程：搜刮、撤离、返回存仓、再次出发。既有GameFlow搜刮/UI用例如需隔离敌人，只能使用明确的运行期测试夹具，保留原断言和用户资产。
+待画面：1920×1080正式相机与真实流程证据，须如实说明API定位/交互与排队输入。不得用每机直接BeginRound、强制ChangeState或伪造取景代替正式GameFlow接入。
+待完整性：记录所有实际变更文件、已有.meta/GUID不变，以及用户场景/Prefab/巡逻点最终比对。新的测试脚本需由Unity生成正常.meta，不覆盖已有GUID。
+当前已只读检查RuinsEnemyIntegrationTests.cs的5项新增测试及两旧夹具调整；root报告GameFlow PlayMode共13项正在真实运行，最终通过/失败数字仍待实际结果，不在初稿提前宣称通过。
+新测试源码安排：两轮正式出发验证原根节点Drone的轮次、自然Patrol与物理位移/路线；自然Alert与自然Chase后接触自毁，重复Bindings.Activate/敌人接入验证同轮状态及自毁不复活；初次绑定失败后同场景/同轮Retry；双机中一台缺配置时全体未启动、修复后同轮Retry；独立运行期Scene夹具覆盖空场景、庇护所、其它Scene、关闭组件/对象与轮次拒绝。
+新正式场景测试按当前用户Ruins确有1架Drone断言Single；这是本轮场景基线约束，不是要求产品永远只支持1架。双机预检由运行期克隆夹具验证，不保存场景。
+MinimumLoopSceneTests与MinimumLoopPointerTests仅在自己的运行期Ruins.sceneLoaded回调中禁用DroneController，并在TearDown解除回调；旧物品、生命、UI和相机断言保留。隔离AI后的旧用例不能单独证明“活敌人存在时连续搜刮→撤离→仓库存放”，应由root普通Play流程探针另补，不能混同证据。
+测试数量、时长、截图文件、Console情况及是否发生失败/重跑均由root依据实际结果填写，本初稿不填写预测数字。
+
+6. 保留未完成范围
+010完整死亡结算/返回尚不属于本任务。正式敌人可以按009规则造成伤害与死亡，不因此虚报死亡后完整循环已完成。
+没有新增原生键盘鼠标或Windows构建验收结论；API与排队输入必须按证据分类。历史007原生Tab/F10限制及04混合鼠标测试问题不因本次接入自动关闭。
+既有ProjectRules A23仍以1920×1080验收，不恢复旧双尺寸要求。
+
+7. 最终交接与释放（待root完成，当前不可视为释放）
+正式交接需写入Docs/Handoffs/07E_RuinsEnemyIntegration_Handoff.txt，包含测试、画面、完整性及限制。
+结束所有Assets写入、TestRunner任务、截图/采样回调后退出Play；记录最终Scene/dirty/Play/compiling/updating、Console、背景与时间设置等实际状态。
+仅在完成后向Docs/Verification/Enemy/EditorCoordination.txt追加明确“007 Assets和Editor已释放，主程可以验收”。当前文件不提前作出该声明，root仍独占实现与Editor。
+
+8. 本次只读审查结果
+当前最小补丁的启动顺序、Scene范围、设计禁用过滤、同轮跳过和新轮API选择与任务要求一致，未发现需阻塞实现的源码问题。
+审查只覆盖源码意图；编译、正式加载生命周期、实际巡逻/碰撞与资产最终不变仍由上述待实测项证明。

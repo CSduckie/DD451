@@ -1,0 +1,47 @@
+{
+  "utc": "2026-10-19T06:05:55.4972476Z",
+  "play": false,
+  "changing": false,
+  "compiling": false,
+  "updating": false,
+  "prefabStage": false,
+  "scenes": [
+    {
+      "path": "Assets/Scenes/Ruins.unity",
+      "isLoaded": true,
+      "isDirty": false
+    }
+  ],
+  "drones": [
+    {
+      "name": "Drone",
+      "scene": "Assets/Scenes/Ruins.unity",
+      "parent": null,
+      "position": [
+        -3.34101677,
+        2.39236856,
+        -0.382937431
+      ],
+      "enabled": true,
+      "active": true,
+      "points": [
+        {
+          "name": "巡逻1",
+          "position": [
+            -12.0,
+            2.5,
+            0.0
+          ]
+        },
+        {
+          "name": "巡逻2",
+          "position": [
+            1.0,
+            2.5,
+            0.0
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+06A 固定容量与背景格验证记录（最新）
+日期：2026-10-18 / ProjectRules Dispatch v17
+工程E:/DD451；Unity 6000.2.12f1；WindowsEditor；1920×1080。
+本目录是“每容器宽×高、固定容量、显示所有空格”追加要求的最终证据。父目录先前89/24及无背景版本保留作历史，不能用来验收本版。
+
+结果
+EditMode 105/105，PlayMode 27/27，均0失败、0跳过。
+六张普通Play截图均已实际查看：未知、部分揭示、中英文、全完成、4×3与3×4两个空箱。
+只完成逻辑、测试设备排队输入和画面检查；新版箱格实体键鼠、正式场景和Windows独立构建尚未验收。
+交接：Docs/Handoffs/06A_LootGridSearch_Handoff.txt。
+
+逻辑与实际提交
+EditModeResults.xml：Unity官方TestResults.xml原样复制，22:44:45Z—22:44:46Z，105 passed。
+EditModeResults.json：MCP job e89d70d7ddd142839fa1d9674858e14c，succeeded，105 passed，0.9645088秒。
+当前构成为既有81项、更新后的20项LootGridLayoutTests、4项新增真实提交容量/回滚case；不把重复运行累计成数量。
+布局与生成覆盖：6×4固定尺寸；不同箱子独立宽高；同轮重绑快照/新轮读配置；概率>0全候选预排容量检查；非法宽高；几何装不下但面积看似足够；失败前不抽随机数/不生成任何场景来源实例；0%唯一找回装不下时不认领；01忙时保存抽取结果、修改坏尺寸重试仍失败且不重抽；空箱；地面实际尺寸；零秒、长帧、搜索中断；原位优先、Taken空洞复用、超宽超高返回拒绝。
+实际Coordinator覆盖：2×1满箱返回Occupied、未进入首个提交点、三路通知为0且全部身份/布局/搜索不变；已取走原格被外来物占后原物另寻合法格；SourceRemovalFailed与OwnerRejected均恢复旧Taken历史位置、背包原位/朝向、其它条目与搜索状态。
+
+独立审查反例与修复
+固定3×3，全候选顺序A1×1(50%)、B1×1、C1×3、D1×1、E2×1。
+全候选first-fit位置A(0,0)、B(1,0)、C(2,0)、D(0,1)、E(0,2)可装；跳过A后若对子集重新first-fit，B(0,0)、C(1,0)、D(2,0)使E无处放，会让有效配置随机失效。
+最终实现复用全候选预排坐标，仅命中项写入Entries。未命中A不生成、不保留占位，后续外来物可填(0,0)。不引入装箱框架或回溯算法。
+SkippingFirstCandidateKeepsTheFullPlanAndLeavesItsHoleAvailableForReturns使用Unity真实Random种子让A未命中，验证B/C/D/E仍全部生成、坐标/身份不变、A空洞可返还、把A改100%后同轮重绑仍不重抽。该用例已包含在最终105/105中。
+保留候选尺寸与保存Rect的一致性复验，避免创建失败重试时配置被放大却利用旧小矩形绕过检查。
+
+排队输入集成
+PlayModeResults.xml：Unity官方结果原样复制，22:45:13Z—22:45:33Z，27 passed。
+PlayModeResults.json：MCP job bdaa81b5d2904d31b51b231e85b23123，succeeded，27 passed，20.2444541秒。
+API创建测试来源/打开会话；正常Update推进搜索，键鼠操作通过InputSystem.QueueStateEvent和真实EventSystem/UGUI，不是实体键鼠。
+新增本次3项：同为12格的4×3/3×4空箱切换、F10保持背景对象/状态；1×2满箱排队返还，悬停loot.return_full、松手transfer.Occupied，完整快照/三路通知不变；3×2空位被外来物复用，原物另位返回，现存条目不跳。
+前版3项网格测试继续覆盖四种占格、未知点击/右键/拖拽不泄漏、唯一中央倒计时、背包与箱格屏幕尺寸一致、F10不改变身份/坐标/计时、第二件中途关闭重开、先取已揭示物再返还、0秒/空箱/全完成。
+旧自动扩列断言已按新用户规则替换为合法7×2箱的横滚可达；多行滚动样本显式6×14，从空背景格滚动、末行真实拖入，保留仓库ScrollRect验证。
+既有取消/遮挡/受击/迟到松手/丢弃/原生地面/往返身份等测试一并通过。仅改测试夹具隔离本机输入，finally恢复原InputSettings和设备，正式输入代码未改。
+放回仍在有效viewport内松手自动选空格；默认6×4内容428×288，viewport428×584，旧ReturnPoint中心在背景下方4px仍被接收，这是已有自动归位语义，不代表箱内指定坐标或容量外放置。
+
+过程记录
+第一次104项Edit实际已运行通过，但资产导入/域重载期间MCP未在15秒内收到初始化，报timeout；EditModeInitializationTimeout.json保留原始工具结果。
+使用120秒初始化期限后的104项重跑MCP正常succeeded，见EditModeBeforeSubsetFix.json/xml。随后独立审查发现上面的子集排列反例，修复并新增测试后最终105项通过。不能把修复前104项结果当作最终代码结果。
+本次最终Edit与Play的MCP均正常succeeded，没有沿用上一版MCP陈旧running/0作为最终结果。
+截图辅助代码首次因C#局部变量同名未执行，改名后运行成功；不是工程编译失败，也未修改资产或测试结果。
+
+运行画面
+全部六图为1920×1080，正常Play且timeScale=1。运行时临时克隆四个现有ItemDataSO，尺寸1×1、1×2、2×2、2×3，搜索30/90/20/15秒；创建真实绑定6×4来源、独立4×3和3×4空来源，未写入共享ItemLibrary或保存临时物品。
+ChineseUnknown6x4-API.png：24格全部可见，四件真实轮廓，只有第一件中央中文倒计时，无名称/图标。
+ChinesePartial6x4-API.png：第一件原位揭示，第二件中央倒计时，其余轮廓不跳。
+EnglishPartial6x4-API.png：英文名称/倒计时/反馈无裁切；TMP溢出检查全false。
+EnglishComplete6x4-API.png：四件全部揭示，Search complete，倒计时清空；同一实例/坐标，Taken均false，没有自动拾取。
+ChineseEmpty4x3-API.png与EnglishEmpty3x4-API.png：各12格，形状分别4列3行和3列4行，条目0，内容288×218与218×288。
+VisualEvidence.json保留读数。第一次包含Unity Vector2的匿名结果回退为字符串，后续用数值数组记录；不伪造未返回字段。普通截图在调用后一帧写出，计时与调用读数允许自然小数差异。
+部分/完成画面使用AdvanceSearch(30f/1000f)，语言使用SetLanguage，打开使用TryOpenSource；这些截图不证明实体输入或完整自然等待。实体F10/Tab/E/A/D旧验收不移用为本版新箱格通过。
+
+文件与编辑器
+StaticAudit.json：19个06A代码/资产主体，所有对应meta存在，自有C# namespace数0；92受保护文件未改。ReleaseHashCheck.json在测试与截图后复核，19个主体无漂移，92个保护文件仍一致。
+新增背景引用已保存到LootPanel.prefab；LootBox.prefab保存gridWidth=6/gridHeight=4，场景实例可独立覆盖。已有资产GUID保留。
+ReleaseState.json：22:47:55.856Z，Play显式停止，Bootstrap场景dirty=false，非编译，runInBackground=false，enterPlayModeOptionsEnabled=false/None，原生Keyboard/Mouse启用，Console 0条error/warning。
+没有修改GameFlowResponsiveLayout、MinimumLoopSceneBuilder、正式场景、玩家/背包/仓库核心；007需清理正式箱子旧420×580面板根覆盖，接入484×808新版Prefab及Grid/CellTemplate引用，并核对每个来源实际宽高和候选配置。
+
+06A实现与验证完成，已释放Unity。

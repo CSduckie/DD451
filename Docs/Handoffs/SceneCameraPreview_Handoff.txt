@@ -1,0 +1,29 @@
+Scene camera edit preview — 2026-10-19
+
+已检查全部12个scene，原本各有一台专属Camera。Shelter/Ruins的Camera位于被序列化关闭的ScenePresentation下，导致编辑态Game无画面。本次复用原有Camera/Cinemachine与场景后处理，不增加第二台相机。
+
+交付文件
+Assets/Scenes/Shelter.unity
+Assets/Scenes/Ruins.unity
+Assets/Scripts/GameFlow/MonoBehaviour/GameFlowSceneBindings.cs
+Assets/Tests/GameFlow/Editor/MinimumLoopSceneBuilder.cs
+Assets/Tests/GameFlow/PlayMode/MinimumLoopSceneTests.cs
+
+行为与使用
+直接在编辑器打开Shelter或Ruins，再看Game，即可通过该scene已有OutputCamera预览。Shelter保留专属后处理开启与既有Global Volume Profile，Ruins保留实际后处理关闭；没有统一改动所有scene的色调。
+Scene视图已开启灯光、天空盒与Image Effects显示。正式游玩仍从Assets/Scenes/Bootstrap.unity开始，直接从Shelter/Ruins按Play不属于本次支持范围。
+编辑态ScenePresentation开启；BusinessUI、HUD、EventSystem关闭，避免未接入业务显示占位面板。GameFlowSceneBindings的Awake(-200)在运行加载时先关闭ScenePresentation；Activate完成绑定后开启HUD、EventSystem与表现根，继续由原GameFlow管理切场景。
+Builder同步此初始化方式，但本次没有运行Builder重建用户场景。
+
+验证
+Docs/Verification/Rendering/SceneCameraPreview/PlayMode-Final.xml：3/3 PlayMode通过。
+1. Bootstrap起始空状态，连续两轮切换后仍只有一个玩家和一套Camera/Brain/Listener/EventSystem。
+2. Shelter/Ruins加载但尚未流程激活时，编辑态可见相机及输入节点在运行时正确关闭。
+3. 目标场景接线失败与同场景/同轮次重试，目标相机保持关闭且旧场景唯一相机保留。
+第一次测试发现重复EventSystem警告，已通过序列化关闭EventSystem并在Activate中开启修正。首次XML保留，最终XML无该警告；失败注入用例中的“场景接线不完整”是预期错误日志。
+场景实际保存前副本Before/Live-Shelter.unity和Live-Ruins.unity与交付文件对比，只含上述四类激活状态变化。FinalHashAudit.json确认其余10场景、Shelter后处理Profile、共享PlayerCamera、URP资产、夜空材质未变。DeliveredHashes.json记录交付文件哈希。
+本次没有新增1920×1080截图或宣称原生键鼠验收；最终视觉截图被另一个正在使用Editor的浮尘任务错开。后续007普通Game验收可复核预览与正式相机接管。
+
+协调
+主程的Assets修改和Unity测试已结束，无待执行Play/测试/Editor回调。当前另一个聊天Shelter 昏暗氛围与后处理正在制作Screen Dust并声明占用Editor。007死亡任务只能在该聊天明确释放后接管，不以本交接覆盖它的占用。
+007须保留本次SceneBindings/Builder/测试及场景激活状态，优先在GameFlowManager、PlayerHealth和独立死亡测试完成07F，不恢复旧场景基线。

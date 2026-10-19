@@ -1,0 +1,30 @@
+[
+  {
+    "path": "E:\\DD451\\Assets\\Scenes\\Shelter.unity",
+    "unchanged": true
+  },
+  {
+    "path": "E:\\DD451\\Assets\\Scenes\\Bootstrap.unity",
+    "unchanged": true
+  },
+  {
+    "path": "E:\\DD451\\Assets\\Prefabs\\Player\\Player.prefab",
+    "unchanged": true
+  },
+  {
+    "path": "E:\\DD451\\Assets\\Prefabs\\Player\\PlayerCamera.prefab",
+    "unchanged": true
+  },
+  {
+    "path": "E:\\DD451\\Assets\\Scenes\\Shelter\\Global Volume Profile.asset",
+    "unchanged": true
+  },
+  {
+    "path": "E:\\DD451\\Assets\\Settings\\Effects\\RuinsPostProcessingProfile.asset",
+    "unchanged": true
+  },
+  {
+    "path": "E:\\DD451\\Assets\\Scripts\\Enemy\\Stealth\\MonoBehaviour\\PlayerStealthVignette.cs",
+    "unchanged": true
+  }
+]

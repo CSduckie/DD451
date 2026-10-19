@@ -1,0 +1,48 @@
+06A LootGridSearch 验证记录（固定容量追加前的历史版本）
+最新完成记录见 Docs/Verification/LootGridSearch/FixedCapacity/Report.txt：105项EditMode、27项PlayMode，含背景格和每容器固定宽高。下文89/24仅记录前版，不能验收新容量要求。
+2026-10-18，E:/DD451，Unity 6000.2.12f1，WindowsEditor，1920×1080。
+交接：Docs/Handoffs/06A_LootGridSearch_Handoff.txt；实现说明：Docs/Architecture/TransfersLootSetup.txt。
+
+最终结论
+相关 EditMode 89/89、PlayMode 24/24 通过。新增8条 EditMode 与3条 PlayMode，未把重复运行算成新增用例。
+3张最终运行截图已实际查看。新版箱格实体键鼠、正式场景接入及 Windows 独立构建未验收。
+释放时 Bootstrap 场景干净、非 Play、非编译；Console 无 error/warning；runInBackground=false；原生 Keyboard/Mouse 启用，测试设备已清理。
+
+逻辑测试
+EditModeResults.json：MCP job 80cff24b29b44b46aa52d418303e4bfb，89 passed / 0 failed / 0 skipped，0.9031526 秒。
+新增 LootGridLayoutTests 覆盖：真实生成占格且不揭示/新增实例；拿走保留位与外来物追加；宽物扩列但不重排；中断/同轮重绑保持位置；零时长/长帧顺序揭示且不重复；非法新尺寸原子拒绝；行数溢出安全拒绝；空生成无虚假格且旧轮状态不能布局。
+既有转移、回滚、会话、损失/唯一物找回规则测试一起运行。现有预期异常测试的受控日志是用例内容，最终报告为通过；不以这些预期日志推断生产错误。
+
+排队输入与集成测试
+最终 PlayModeResults.xml 原样复制自 C:/Users/cs200/AppData/LocalLow/DefaultCompany/DD451Demo/TestResults.xml；测试时间22:27:32Z—22:27:53Z；24 passed / 0 failed / 0 skipped。
+PlayModeSummary.json 记录官方汇总、MCP job 19e368f2208142fd9deefc16171da9c6、加载程序集 MVID ffd982a8-e686-49db-97de-449d4aa89dfc。
+新增测试：
+QueuedGridUnknownOutlinesHaveOneCenteredCountdownAndMatchBackpackPixels：四种尺寸、未知图标/文字/详情不泄漏、未知点击/右键/拖拽不转移、唯一中心倒计时、66/4/6与背包真实屏幕矩形一致、F10及中英文文字不溢出、自然 Update 揭示第一件并推进第二件且不自动拾取。
+QueuedGridInterruptedSecondSearchAndPickupReturnKeepEveryOriginalSlot：第二件搜索到一半，经排队鼠标关闭，重开完整计时；第一件已揭示不变；真实拖入背包、原箱返还、外来条目追加均保持旧位置、身份与第二件进度；F10不改变状态。
+GridZeroSecondAndEmptySourcesShowCompletionWhileWideItemsRemainFullSize：0秒全揭示与空箱无倒计时；7格宽条目保持486像素，开启横滚及双语提示；排队横向滚轮后右边缘进入可视区。
+LoadScene/API建立样本与打开来源；键盘鼠标事件为 InputSystem.QueueStateEvent。它们通过真实 InputSystem/EventSystem/UGUI，但不是用户物理键鼠。
+同批既有用例覆盖关闭/受击/无效/取消不丢失、转移身份、迟到松手、箱子↔背包、空箱返回、地面拾取与实际滚动等。LootReturnTests 的滚动样本已由旧3行列表改为真实多行箱格。
+测试夹具保存原输入设置及原先启用的键鼠设备，测试中禁用它们并添加合成设备，退出 finally 恢复。此修改只在测试代码，未修改正式玩家输入。
+
+过程问题与证据保留
+1. 初次完整 Play 一条新增稳定布局测试失败（期望外来返回后5条，实际4条），PlayModeInitial.json 为该次 MCP 记录。
+2. 隔离诊断曾发生关闭按钮点击未关闭，PlayModeDiagnostic.xml/json 保留失败；下一次带指针分阶段诊断的同例通过，PlayModePointerDiagnostic.xml/json 保留。根因没有被这两次结果完全证明。根据 InputSystem 多指针共用 UI pointer 的实际实现，为测试加入原设备隔离，避免测试与本机输入竞争；没有据此改动业务拖拽规则。
+3. PlayModeBeforeIsolationImport.xml/json 是隔离代码写入但新程序集尚未导入时的旧程序集运行：测试结束22:21:16，新DLL写入22:21:18。因此该失败不能被说成隔离后的结论。之后 force import 并反射确认 RestoreTestInput 已加载。
+4. 隔离生效后的整批24/24见 PlayModeBeforeHeightFix.xml/json；随后实际截图发现英文提示 preferredHeight=49.24 > rect.height=48，见 EnglishPartial-BeforeHeightFix-API.png 和 VisualBeforeFix.json。Builder/Prefab反馈改为56，并加入中英 TMP 边界断言，再跑最终24/24。
+5. 最终测试官方 XML 已结束，但 MCP job 仍显示 running/0。FinalMcpStaleStatus.json 如实保留该状态；确认官方结果时间、已加载最终测试程序集、编辑器非Play且非编译后 clear_stuck。没有伪造 MCP succeeded，也未因陈旧状态否认官方完整结果。
+
+画面检查
+普通 Play、LootTest，运行时临时克隆四个物品配置，尺寸1×1、1×2、2×2、2×3，搜索时长30/90/20/15秒；真实绑定 LootBox 与既有管理器，未保存这些临时配置。
+ChineseUnknown-API.png：仅4个中性轮廓，第一件中心中文倒计时；左侧背包同单位格。
+ChinesePartial-API.png：第一件电池已揭示，第二件中心倒计时，其余仅轮廓；坐标不跳。
+EnglishPartial-API.png：相同状态的英文名称、倒计时、反馈文字；最终反馈框56像素，无裁切。
+FinalVisualEvidence.json 保存实际API读数、条目ID/实例ID/位置及英文文本溢出检查。读数在截图下一帧之前，倒计时小数允许自然推进差异。
+部分搜索画面调用 AdvanceSearch(30f) 并 NotifySourceChanged；语言调用 SetLanguage。截图证明画面，不证明实体输入，也不证明完整自然等待。未保留最终全揭示截图；全揭示、空箱与0秒由自动测试验证。
+未把旧 NativeInputFollowup 的人工通过移用为本次新箱格验收。
+
+文件与释放审计
+ProtectedBefore.json：开工92个受保护文件哈希；FinalStaticAudit.json：13个实际修改代码/资产主体、namespace/meta检查；ReleaseHashCheck.json：释放前再次校验，13主体无漂移、92保护文件无变化。
+ReleaseState.json：22:33:02.917Z实际状态为 Bootstrap、dirty=false、playing=false、changing=false、compiling=false、runInBackground=false、enterPlayModeOptionsEnabled=false、选项None、原生Keyboard/Mouse启用；Console读取0条error/warning。最终查看时编辑器已处于停止状态，随后恢复干净Bootstrap，未执行保存场景。
+未改正式 Bootstrap/Shelter/Ruins、GameFlowResponsiveLayout、MinimumLoopSceneBuilder、玩家/背包/仓库核心。007仍须更新旧420×580 LootPanel根覆盖并验证正式场景。
+
+06A实现与验证完成，已释放Unity。

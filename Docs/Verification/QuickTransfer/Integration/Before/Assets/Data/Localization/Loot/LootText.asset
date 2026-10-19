@@ -1,0 +1,224 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f3cd9f8c424ac5439f636ad5435f100, type: 3}
+  m_Name: LootText
+  m_EditorClassIdentifier: MyPrecious.Localization::LocalizationTableSO
+  entries:
+  - key: loot.title
+    chinese: "\u641C\u7D22\u6765\u6E90"
+    english: Loot source
+  - key: loot.close
+    chinese: "\u5173\u95ED\u6765\u6E90"
+    english: Close source
+  - key: loot.unknown
+    chinese: "\u672A\u53D1\u73B0\u7684\u7269\u54C1"
+    english: Unknown item
+  - key: loot.searching
+    chinese: "\u6B63\u5728\u641C\u7D22"
+    english: Searching
+  - key: loot.revealed
+    chinese: "\u5DF2\u53D1\u73B0"
+    english: Revealed
+  - key: loot.taken
+    chinese: "\u5DF2\u53D6\u8D70"
+    english: Taken
+  - key: loot.empty
+    chinese: "\u7A7A\u7BB1 / \u5DF2\u641C\u7A7A"
+    english: Empty / looted
+  - key: loot.complete
+    chinese: "\u641C\u7D22\u5B8C\u6210"
+    english: Search complete
+  - key: loot.progress
+    chinese: "{0:0.0} / {1:0.0} \u79D2"
+    english: '{0:0.0} / {1:0.0} s'
+  - key: loot.drag_hint
+    chinese: "\u5C06\u5DF2\u53D1\u73B0\u7684\u7269\u54C1\u62D6\u5165\u80CC\u5305\uFF1BR\u65CB\u8F6C\u3002"
+    english: Drag a revealed item into your backpack; R rotates.
+  - key: loot.closed
+    chinese: "\u6765\u6E90\u5DF2\u5173\u95ED\uFF0C\u672A\u5B8C\u6210\u7684\u641C\u7D22\u91CD\u65B0\u8BA1\u65F6\u3002"
+    english: Source closed; unfinished search will restart.
+  - key: loot.source_invalid
+    chinese: "\u6765\u6E90\u5DF2\u5931\u6548"
+    english: Source is no longer valid
+  - key: loot.unreachable
+    chinese: "\u8D85\u51FA\u8DDD\u79BB\u6216\u88AB\u5899\u4F53\u6321\u4F4F"
+    english: Out of reach or obstructed
+  - key: loot.drop
+    chinese: "\u4E22\u5230\u5730\u9762"
+    english: Drop on ground
+  - key: loot.interact.box
+    chinese: "E \u641C\u7D22\u7BB1\u5B50"
+    english: E Search box
+  - key: loot.interact.ground
+    chinese: "E \u67E5\u770B\u5730\u9762\u7269\u54C1"
+    english: E Inspect ground item
+  - key: loot.test.title
+    chinese: "06 \u771F\u5B9E\u6A21\u5757\u8054\u9A8C\uFF5C08\u6D41\u7A0B\u7531\u6D4B\u8BD5\u6309\u94AE\u6A21\u62DF"
+    english: 06 integration test | Buttons simulate the future 08 flow
+  - key: loot.test.status
+    chinese: "\u7B2C{0}\u8F6E  HP {1}/{2}  EV {3}  \u4E16\u754C\u65F6\u95F4 {4:0.0}s"
+    english: Round {0}  HP {1}/{2}  EV {3}  World time {4:0.0}s
+  - key: loot.test.exploration
+    chinese: "\u63A2\u7D22\uFF1AA/D\u79FB\u52A8\uFF0CE\u67E5\u770B\u6765\u6E90\uFF0CTab\u80CC\u5305\uFF0CR\u65CB\u8F6C\uFF0CF10\u5207\u8BED\u8A00\u3002"
+    english: 'Explore: A/D move, E inspect, Tab backpack, R rotate, F10 language.'
+  - key: loot.test.shelter
+    chinese: "\u6A21\u62DF\u5E87\u62A4\u6240\uFF1A\u80CC\u5305\u4E0E\u4ED3\u5E93\u53EF\u53CC\u5411\u62D6\u653E\uFF1B\u5165\u4ED3\u4E0D\u7B49\u4E8E\u64A4\u79BB\u7ED3\u7B97\u3002"
+    english: 'Simulated shelter: drag both ways; storage transfer does not retain
+      loot.'
+  - key: loot.test.enter_shelter
+    chinese: "\u6A21\u62DF\u5E87\u62A4\u6240"
+    english: Simulate shelter
+  - key: loot.test.enter_exploration
+    chinese: "\u6A21\u62DF\u63A2\u7D22"
+    english: Simulate exploration
+  - key: loot.test.next_round
+    chinese: "\u6A21\u62DF08\uFF1A\u7ED3\u7B97\u540E\u65B0\u8F6E"
+    english: 'Simulate 08: settle + next round'
+  - key: loot.test.damage
+    chinese: "\u771F\u5B9E\u4F24\u5BB3 1HP"
+    english: 'Real damage: 1 HP'
+  - key: loot.test.lethal
+    chinese: "\u771F\u5B9E\u81F4\u547D\u4F24"
+    english: Real lethal damage
+  - key: loot.test.scope
+    chinese: "\u7BB1\u5B50\u4ECE\u5DE6\u81F3\u53F3\uFF1A100%\u30010%\u3001\u72EC\u7ACB\u4E2D\u95F4\u6982\u7387\u3001\u7A7A\u8868\u3001\u552F\u4E00\u5E03\u5A03\u5A03\u3002\u5730\u9762\u6709\u7535\u6C60\u4E0E\u533B\u7597\u5305\u539F\u70B9\u3002\u7EA2\u533A\u6301\u7EED\u9020\u6210\u771F\u5B9E\u4F24\u5BB3\u3002"
+    english: 'Boxes left to right: 100%, 0%, independent mixed chances, empty, unique
+      doll. Ground battery and medkit origin; red zone deals real damage.'
+  - key: loot.test.round_ready
+    chinese: "\u6D4B\u8BD5\u65B0\u8F6E\u5DF2\u51C6\u5907\uFF1B\u4E0A\u4E00\u8F6E\u5730\u56FE\u9057\u7559\u5DF2\u660E\u786E\u8BB0\u635F\u3002"
+    english: Test round ready; previous world leftovers were explicitly settled.
+  - key: loot.test.box.guaranteed
+    chinese: "100%\u7BB1\u5B50"
+    english: 100% box
+  - key: loot.test.box.zero
+    chinese: "0%\u7BB1\u5B50"
+    english: 0% box
+  - key: loot.test.box.mixed
+    chinese: "\u72EC\u7ACB25/50/75%"
+    english: Independent 25/50/75%
+  - key: loot.test.box.empty
+    chinese: "\u7A7A\u8868\u7BB1\u5B50"
+    english: Empty table
+  - key: loot.test.box.unique-doll
+    chinese: "\u552F\u4E00\u5E03\u5A03\u5A03"
+    english: Unique doll
+  - key: transfer.Success
+    chinese: "\u8F6C\u79FB\u5B8C\u6210"
+    english: Transfer complete
+  - key: transfer.NotReady
+    chinese: "\u6A21\u5757\u5C1A\u672A\u51C6\u5907\u597D"
+    english: Modules are not ready
+  - key: transfer.Busy
+    chinese: "\u8BF7\u5148\u7ED3\u675F\u5F53\u524D\u64CD\u4F5C"
+    english: Finish the current operation first
+  - key: transfer.StaleRequest
+    chinese: "\u672C\u6B21\u62D6\u62FD\u5DF2\u53D6\u6D88\u6216\u8FC7\u671F"
+    english: This drag was cancelled or expired
+  - key: transfer.SourceInvalid
+    chinese: "\u7269\u54C1\u6765\u6E90\u5DF2\u53D8\u5316"
+    english: The item source has changed
+  - key: transfer.SourceHidden
+    chinese: "\u7269\u54C1\u5C1A\u672A\u641C\u7D22\u63ED\u793A"
+    english: The item has not been revealed
+  - key: transfer.NotAllowed
+    chinese: "\u5F53\u524D\u573A\u666F\u6216\u64CD\u4F5C\u72B6\u6001\u4E0D\u5141\u8BB8\u8F6C\u79FB"
+    english: Transfer is unavailable in this context
+  - key: transfer.Unreachable
+    chinese: "\u6765\u6E90\u8D85\u51FA\u8303\u56F4\u6216\u88AB\u906E\u6321"
+    english: The source is out of reach or obstructed
+  - key: transfer.OutOfBounds
+    chinese: "\u76EE\u6807\u8D85\u51FA\u5BB9\u5668\u8FB9\u754C"
+    english: The target is outside the container
+  - key: transfer.Occupied
+    chinese: "\u76EE\u6807\u683C\u88AB\u5360\u7528\u6216\u7A7A\u95F4\u4E0D\u8DB3"
+    english: The target cells are occupied or there is not enough space
+  - key: transfer.InvalidRotation
+    chinese: "\u8BE5\u7269\u54C1\u4E0D\u5141\u8BB8\u65CB\u8F6C"
+    english: This item cannot rotate
+  - key: transfer.InvalidConfiguration
+    chinese: "\u7269\u54C1\u6216\u6765\u6E90\u914D\u7F6E\u65E0\u6548"
+    english: Invalid item or source configuration
+  - key: transfer.TargetRejected
+    chinese: "\u76EE\u6807\u62D2\u7EDD\u63A5\u6536\uFF0C\u539F\u7269\u54C1\u4FDD\u7559"
+    english: Target rejected the item; source preserved
+  - key: transfer.SourceRemovalFailed
+    chinese: "\u6765\u6E90\u63D0\u4EA4\u5931\u8D25\uFF0C\u76EE\u6807\u5DF2\u6062\u590D"
+    english: Source commit failed; target restored
+  - key: transfer.OwnerRejected
+    chinese: "\u5F52\u5C5E\u63D0\u4EA4\u5931\u8D25\uFF0C\u6446\u653E\u5DF2\u6062\u590D"
+    english: Owner commit failed; placements restored
+  - key: transfer.RollbackFailed
+    chinese: "\u6062\u590D\u5931\u8D25\uFF0C\u8BF7\u68C0\u67E5\u8FD0\u884C\u8BB0\u5F55"
+    english: Rollback failed; inspect runtime records
+  - key: transfer.NoGroundPosition
+    chinese: "\u9644\u8FD1\u6CA1\u6709\u53EF\u8FBE\u7684\u5B89\u5168\u843D\u70B9"
+    english: No safe reachable ground position nearby
+  - key: transfer.PresentationFailed
+    chinese: "\u5730\u9762\u8868\u73B0\u51C6\u5907\u5931\u8D25\uFF0C\u7269\u54C1\u7559\u5728\u80CC\u5305"
+    english: Ground presentation failed; item remains in backpack
+  - key: loot.return_hint
+    chinese: "\u5DF2\u8BC6\u522B\u7269\u54C1\u53EF\u62D6\u5165\u80CC\u5305\uFF1B\u80CC\u5305\u7269\u54C1\u53EF\u653E\u56DE\u7BB1\u683C\u3002"
+    english: Drag revealed items to your backpack; return items to this grid.
+  - key: loot.return_ready
+    chinese: "\u677E\u5F00\u653E\u56DE\u5F53\u524D\u7BB1\u5B50\uFF0C\u7269\u54C1\u4FDD\u6301\u5DF2\u53D1\u73B0\u3002"
+    english: Release to place in this box; the item remains revealed.
+  - key: loot.return_unavailable
+    chinese: "\u5F53\u524D\u7BB1\u5B50\u6682\u65F6\u4E0D\u80FD\u63A5\u6536\uFF0C\u7269\u54C1\u4ECD\u7559\u5728\u80CC\u5305\u3002"
+    english: This box cannot receive the item now; it remains in your backpack.
+  - key: loot.discard
+    chinese: "\u4E22\u5F03\u9009\u4E2D\u7269\u54C1"
+    english: Discard selected
+  - key: loot.discard.title
+    chinese: "\u786E\u8BA4\u4E22\u5F03"
+    english: Confirm discard
+  - key: loot.discard.ordinary
+    chinese: "\u786E\u5B9A\u4E22\u5F03\u201C{0}\u201D\uFF1F\n\u666E\u901A\u7269\u54C1\u5C06\u6C38\u4E45\u9500\u6BC1\uFF0C\u4E0D\u4F1A\u6389\u5230\u5730\u9762\uFF0C\u4E5F\u65E0\u6CD5\u518D\u6B21\u62FE\u53D6\u3002"
+    english: "Discard \u201C{0}\u201D?\nThis ordinary item will be permanently destroyed.
+      It will not drop on the ground or be available to pick up again."
+  - key: loot.discard.unique
+    chinese: "\u786E\u5B9A\u4E22\u5F03\u201C{0}\u201D\uFF1F\n\u8BE5\u552F\u4E00\u7269\u54C1\u5C06\u5728\u4E0B\u4E00\u8F6E\u63A2\u7D22\u65F6\u56DE\u5230\u539F\u62FE\u53D6\u70B9\uFF0C\u672C\u8F6E\u65E0\u6CD5\u518D\u6B21\u62FE\u53D6\u3002"
+    english: "Discard \u201C{0}\u201D?\nThis unique item will return to its original
+      pickup point during the next exploration round. It cannot be picked up again
+      this round."
+  - key: loot.discard.confirm
+    chinese: "\u786E\u8BA4\u4E22\u5F03"
+    english: Confirm discard
+  - key: loot.discard.cancel
+    chinese: "\u53D6\u6D88"
+    english: Cancel
+  - key: loot.discard.cancelled
+    chinese: "\u5DF2\u53D6\u6D88\u4E22\u5F03\uFF0C\u7269\u54C1\u4FDD\u7559\u3002"
+    english: Discard cancelled; item kept.
+  - key: loot.discard.invalid
+    chinese: "\u4E22\u5F03\u786E\u8BA4\u5DF2\u5931\u6548\uFF0C\u8BF7\u91CD\u65B0\u9009\u62E9\u7269\u54C1\u3002"
+    english: Discard confirmation expired. Select the item again.
+  - key: loot.discard.unavailable
+    chinese: "\u4E22\u5F03\u786E\u8BA4\u754C\u9762\u5C1A\u672A\u51C6\u5907\u597D\uFF0C\u7269\u54C1\u4FDD\u7559\u3002"
+    english: Discard confirmation is not ready; item kept.
+  - key: loot.discard.destroyed
+    chinese: "\u7269\u54C1\u5DF2\u9500\u6BC1\uFF0C\u65E0\u6CD5\u518D\u6B21\u62FE\u53D6\u3002"
+    english: Item destroyed; it cannot be picked up again.
+  - key: loot.discard.pending
+    chinese: "\u552F\u4E00\u7269\u54C1\u5C06\u5728\u4E0B\u8F6E\u63A2\u7D22\u56DE\u5230\u539F\u62FE\u53D6\u70B9\u3002"
+    english: Unique item returns to its original pickup point next exploration round.
+  - key: loot.countdown
+    chinese: "{0:0.0} \u79D2"
+    english: '{0:0.0} s'
+  - key: loot.wide_hint
+    chinese: "\u7BB1\u683C\u8F83\u5BBD\uFF0C\u53EF\u7528\u5E95\u90E8\u6A2A\u5411\u6EDA\u52A8\u6761\u67E5\u770B\u3002"
+    english: Use the bottom scrollbar to view this wide container.
+  - key: loot.layout_invalid
+    chinese: "\u7BB1\u5B50\u5BB9\u91CF\u6216\u5360\u683C\u914D\u7F6E\u65E0\u6548\uFF0C\u8BF7\u68C0\u67E5\u7BB1\u5B50\u914D\u7F6E\u3002"
+    english: Invalid container size or item layout; check its configuration.
+  - key: loot.return_full
+    chinese: "\u7BB1\u5185\u7A7A\u95F4\u4E0D\u8DB3\uFF0C\u7269\u54C1\u4FDD\u7559\u5728\u80CC\u5305\u3002"
+    english: Not enough space in this box; the item stays in your backpack.

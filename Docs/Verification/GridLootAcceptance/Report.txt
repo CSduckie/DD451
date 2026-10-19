@@ -1,0 +1,82 @@
+主程序独立验收记录
+日期：2026-10-18；项目 E:/DD451
+结论：本次三类格子、箱格搜索及06B返箱预览修复，在下述范围验收通过。
+
+一、用户截图问题与任务下发
+已将修复任务下发到“任务006物品拾取与移动”，007保持待命，避免同时修改和操作Unity。
+完整任务：Docs/AgentPrompts/06B_LootReturnPreviewFix.txt。
+用户原图：Docs/Verification/LootReturnPreview/UserReported.png。
+修复前复现确认：返箱时整个viewport变绿，背包提示松手取消而箱子提示可以返还；实际松手能够入箱，未复现丢物或复制。
+修复后只画实际自动选位的局部绿色占格外框，保持背景网格；背包与箱子显示相同结果。
+预览查询复用提交所用选位方法，原位优先、另找空位及满箱拒绝规则保持。
+关闭、Tab、受击、取消、迟到松手和结果清理已在006回归覆盖。
+实现交接：Docs/Handoffs/06B_LootReturnPreview_Handoff.txt。
+
+二、主程正式场景实测
+从干净Assets/Scenes/Bootstrap.unity进入Shelter，默认中文，Game实际1920×1080。
+打开仓库、出发Ruins；使用当前Play中的临时箱子和克隆物品配置，不修改磁盘物品配置。
+所有尺寸通过RectTransform世界角转换为屏幕像素，不仅比较Inspector数值；独立只读子代理复核全部活动格子。
+- 背包4×4：16格，全部66×66。
+- 仓库20×20：400格，全部66×66。
+- 箱子6×4：24格，全部66×66。
+- 另一空箱4×3：12格，全部66×66，切换后没有旧物品或旧背景格残留。
+全部相邻格步长70（间距4），padding=6，scale=(1,1)，背景格raycastTarget=false。
+仓库20列完整可见，高度使用滚动；没有通过缩小格子塞入视口。
+升级后20×24的480格及相同单位格依据007既有正式接入证据，本轮主程未重复伪造EV升级。
+证据：Final-ShelterChinese.json/png、Final-Unknown.json、Final-Empty4x3.json/png。
+
+三、自然逐件搜索与双语
+第一轮夹具时长12/35/8/0秒，使用正常LootUIController.Update推进，没有调用AdvanceSearch，也没有加速Time.timeScale。
+自然观察回调只读状态及截图，记录揭示数量0→1→2→4；最后一件0秒，因此与前件完成时同帧揭示。
+每个搜索阶段恰好1个活动倒计时，位置对应当前SearchEntryId；全部完成后倒计时为0个。
+1×1、1×2、2×2、2×3轮廓实际为66×66、66×136、136×136、136×206。
+未知项名称/描述/状态均为空、图标隐藏；图片只显示中性占格轮廓。
+倒计时TMP为Center；矩形中心与物品完整矩形中心的误差全部为0。
+关闭时正在搜索的第二件进度4.55555248秒→0，重开0；第一件仍已揭示，身份不变。
+提前拿走第一件成功，下一件进度前后12.2118874秒不变；切换英语后搜索继续，世界Time.timeScale=1。
+最终只有显式拿走的第一件Taken，其他物品仍在箱内，没有自动拾取。
+本轮语言切换是API调用；006另有F10排队输入证据，均不冒称实体键盘。
+证据：NaturalTransitions.json、Natural-0/1/2/4.png、Final-Interrupt.json、Final-EarlyPickup.json、Final-SearchEnglish.json/png。
+Final-LastItemSearching.json是最后一件尚未搜索结束的快照；全完成依据NaturalTransitions最后一条和Natural-4.png。
+
+四、主程独立返箱复核
+先保存正式场景英文悬停画面：只框实际2×2区域，背景不变，两侧loot.return_ready。
+随后一次跨工具调用期间Unity退出Play；该次取消记录保留为API-InterCallCancelled.json/png，不能计为成功返箱。
+没有证据确定退出来源；006、007当时均空闲且006确认已交还，不猜测是用户或某段游戏代码导致。
+读取旧运行对象时出现一次MCP动态脚本MissingReferenceException，属于退出后的失效夹具访问，不计为游戏Console错误。
+主程重新从干净Bootstrap补测：使用0秒搜索夹具，仅用于返箱，不替代前一轮自然计时证据。
+在一次工具调用内，经BackpackUIController BeginItemDrag→UpdateDrag→EndDrag完成操作，避免跨调用中断。
+实例5b43b2cd18664716b4b97694b6e14651：Backpack→Container；背包数量1→0，条目Taken=false。
+预览与实际同一实例屏幕矩形均[1578,674,136,136]，误差0，箱内位置(2,0)、尺寸2×2。
+双方最终transfer.Success，拖拽关闭、局部框清除；viewport背景色始终不变。
+证据：Final-ReturnHover.json/png（第一轮英文悬停）、Final-ReturnAtomic.json/png（补测提交）、Final-ReturnReleased.json（补测完整快照）。
+补测随后4×3空箱切换和正式撤离返回成功：Shelter，round=1，settled=1，LastError为空。
+
+五、开发回归证据
+006本次06B版本官方结果：
+Docs/Verification/LootReturnPreview/EditMode-105.xml：105/105，0失败。
+Docs/Verification/LootReturnPreview/PlayMode-29.xml：29/29，0失败。
+覆盖独立概率固定容量、配置过载、满箱拒绝原物保留、旋转物返还、原位占用、滚动、未知搜索与取消等。
+其中PlayMode工具job曾在域重载后显示running，结论依据官方XML和Editor实际状态，不声称该job成功返回。
+007在06B前正式流程官方回归：Docs/Verification/GridLootIntegration/FormalPlayModeResults.xml，6/6。
+006四张AfterFix中英文排队输入截图已实际查看；主程也查看了正式场景中文仓库、未知轮廓、英文搜索/完成、返箱前后、空箱画面。
+本次没有重复运行无关模块测试，没有宣称完成独立Windows构建或新版实体键鼠试玩。
+
+六、场景文件审计与限制
+006保护清单96项中95项保持一致，正式场景/业务/Prefab保护项未变。
+唯一例外Assets/Scenes/Tests/Loot/LootTest.unity被TestRunner重新保存。旧SHA仅有记录，Git未跟踪，无可确认的变更前副本，不能还原具体差异。
+006曾尝试不保存切场景，被自动审批拒绝且未执行；随后TestRunner保存了场景。没有用推测版本覆盖或盲目回退共享文件。
+主程安排只读复核：235个序列化文档的本地引用可解析，29个脚本GUID和56个非内置资源GUID均有对应资源，无null m_Script。
+没有ReturnPreview、运行Cell_x_y、Clone、RootGrid等运行对象被持久化；容量、1920布局、Prefab的66/4/6符合Builder。
+部分嵌套Prefab展开引用无法只凭YAML完整验证，因此不宣称此次保存完全零差异，也不把TMP重序列化推测当作已证根因。
+早期中断轮的ShelterChinese/PassiveCurrentSession等旧证据不纳入本轮通过判据。
+API首次提前拾取因未提供会话回调被StaleRequest正确拒绝；随后带有效会话回调成功，原始记录保留。
+
+七、收尾与试玩入口
+最终普通Play返回Shelter、结算完成后由主程停止Play，临时夹具随运行结束移除，观察回调清除。
+Final-Release.json：2026-10-18T23:26:08.7671370Z，非Play/非编译、干净Bootstrap、1920×1080。
+Application.runInBackground和PlayerSettings.runInBackground均恢复false；磁盘ProjectSettings.runInBackground=0。
+最后Unity Console为0 error / 0 warning；没有保存正式场景运行态物品。
+正确试玩入口：Assets/Scenes/Bootstrap.unity → Game 1920×1080 → Play。
+箱子配置口：场景或Prefab的LootBox.gridWidth/gridHeight，默认6×4；固定容量不自动扩张。
+物品搜索时长：ItemDataSO.searchSeconds。

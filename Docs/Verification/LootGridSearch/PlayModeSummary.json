@@ -1,0 +1,13 @@
+{
+  "source": "Unity TestResults.xml, copied without modification",
+  "mcpJob": "19e368f2208142fd9deefc16171da9c6",
+  "mcpStatusNote": "MCP remained running/0 after official XML finished; editor was non-Play/non-compiling, stale job cleared",
+  "assemblyMvid": "ffd982a8-e686-49db-97de-449d4aa89dfc",
+  "result": "Passed",
+  "total": "24",
+  "passed": "24",
+  "failed": "0",
+  "skipped": "0",
+  "start": "2026-10-18 22:27:32Z",
+  "end": "2026-10-18 22:27:53Z"
+}

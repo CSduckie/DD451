@@ -1,0 +1,28 @@
+09I normal PP:pixel/metadata audit
+Conclusion: visually no obvious color cast or atmosphere/contrast change. Difference is widespread but only1-2 encodedRGB levels/255,with a small darkward bias; images are not byte-identical.
+
+Capture: actual1920x1080 ordinary Play Game framebuffer. gameTime61.0709076 -> 71.7767,delta10.7057924s; NOT a same-time or frozen comparison.
+Method.txt:Ordinary Bootstrap->Shelter->Ruins. Runtime-only drones disabled and LightFlicker components disabled for stable normal PP comparison; no scene saves; timeScale remains1 throughout. Public API flow/position assistance; no native keyboard claim. All later scenes reload original authored actors/lights.
+The runtime actor/flicker disables and timeScale1 are009-recorded method evidence; this reviewer did not operate Unity.
+
+Metadata: camera fields match except postProcessing false->true. Player,environment,screen,scene/stage/round,volumes,projected bounds and all recorded properties of both lights match exactly.
+Both sampled stacks neutral: colorinactive/exposure0/contrast0/saturation0/hue0/whitefilter; bloominactive/intensity0; tonemappinginactive/None; vignetteinactive/intensity0; whitebalanceinactive/temp0/tint0. StealthVignette weight0.
+
+Full frame: changed1838932/2073600=88.683063%;maxDelta1pixels=1822524;maxDelta2pixels=16408;greaterThan2pixels=0.
+AbsoluteRGB mean=0.60806793/255;maximum channel difference=2/255. Pixel-max difference quantiles P50/P90/P95/P99/P99.9=1/1/1/1/2.
+Mean signed R/G/B=-0.54560667/-0.62925781/-0.58895737/255. Mean encoded luma=39.3889733 -> 38.78040941/255.
+
+ROI results;coordinates[left,top,right,bottom),PNG y from1080-screenY for player. Difference percent counts any changedRGB channel; all metrics in8-bit code values:
+playerBounds[817,586,916,790]:20196pixels;changed81.54585%;meanAbsRGB0.410197;max2;P99/P99.9=1/2.
+center[480,270,1440,810]:518400pixels;changed88.75656%;meanAbsRGB0.623598;max2;P99/P99.9=2/2.
+topUiAndBackground[0,0,1920,140]:268800pixels;changed86.81473%;meanAbsRGB0.487955;max2;P99/P99.9=1/1.
+topUiGlyphInteriorProxy[0,0,1920,140]:923pixels;changed0%;meanAbsRGB0;max0;P99/P99.9=0/0.
+leftStaticEdge[0,160,160,1000]:134400pixels;changed89.77753%;meanAbsRGB0.626448;max2;P99/P99.9=1/2.
+rightStaticEdge[1760,160,1920,1000]:134400pixels;changed89.92485%;meanAbsRGB0.655935;max2;P99/P99.9=2/2.
+bottomStaticEdge[0,960,1920,1080]:230400pixels;changed75.7053%;meanAbsRGB0.574728;max1;P99/P99.9=1/1.
+staticSky[800,150,1520,320]:122400pixels;changed95.88154%;meanAbsRGB0.653391;max1;P99/P99.9=1/1.
+
+UI proxy:923 top140-row pixels with dominant bright glyph RGB(237,247,255) remain exact. This samples filled glyph interiors;PNG does not expose original UI alpha. The entire top rectangle also includes scene background and antialiasing.
+Visual review: both originals opened;player hue/shading,green cover,chest,sky,horizon,floor andHUD appear unchanged in practical viewing.
+Limits: different-time screenshots cannot independently identify the mathematical source of every1-2level difference. The values are consistent with low-amplitude PP/output quantization precision differences,but that cause is an inference,not directly measured. No claim of identical pixels,zero numerical drift,performance or native keyboard input.
+OnlyNormalPpPixelAudit.txt/json were written. Original images and allAssets unchanged.

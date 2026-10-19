@@ -1,0 +1,18 @@
+{
+  "round": 1,
+  "health": 2,
+  "ev": 7,
+  "upgrade": true,
+  "width": 20,
+  "height": 24,
+  "storage": [
+    {
+      "InstanceId": "80f94f77db3d45b883e2fdef9c177116",
+      "X": 3,
+      "Y": 4,
+      "Rotated": true
+    }
+  ],
+  "carried": "7550c364798b441199dfbb34a679ee48",
+  "dollOrigin": "ruins01/supplies-box/doll"
+}

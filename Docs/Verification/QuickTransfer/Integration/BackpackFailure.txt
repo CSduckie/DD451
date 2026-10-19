@@ -1,0 +1,17 @@
+07B integration finding — 2026-10-19 00:00 UTC
+Status: WAITING_FOR_04_TEST_CORRECTION; business defect not established.
+
+New official run: EditMode 209/209; combined PlayMode 74/75.
+PlayMode module totals: Backpack 18/19, Warehouse 12/12, Loot 36/36, GameFlow 8/8 (6 formal + 2 adaptation).
+Official XML: PlayMode-75-Initial.xml. Isolated rerun also fails: PlayMode-BackpackFailureRetry.xml.
+
+Failure: BackpackIntegrationTests.QueuedSameFrameCtrlLeftAndRightPressCannotUseAndRightUseRecoversAfterRelease
+Assets/Tests/Backpack/PlayMode/BackpackIntegrationTests.cs:636, requests expected 1, actual 0.
+The later use-count/recovery assertions have not been reached; they must not be described as failing.
+
+Repro: hold RightCtrl, point at food, queue MouseState buttons=3 (both down), then buttons=1 (release right first), then buttons=0 (release left), with two frames between states.
+InputSystem 1.14.2 UI module uses shared PointerEventData. InputSystemUIInputModule.cs:474–505 processes left then right; right release at 752 clears eligibleForClick. PointerModel.cs:261–296 does not copy eligibleForClick per button. Later left release at 716 therefore does not issue OnPointerClick. BackpackItemView.cs:106 is not invoked. Static source explains both actual failures.
+
+Suggested module-owned correction: require the mixed-button gesture to cancel safely (0 quick requests, no use, unchanged item), then perform a separate complete Ctrl+left click and require exactly 1 request; release Ctrl, perform ordinary right click, and preserve Consumed/UsesThisRound=1/health assertions. Keep real queued InputSystem/UGUI, do not directly invoke handlers or weaken normal click assertions. A25 does not require a mixed-button gesture to commit.
+
+07 has not changed any Backpack code/tests. Main program coordinates the 04 correction under the module boundary. 07 continues independent visual/formal-scene checks. Final integration cannot be marked all green until corrected 04 test is run.

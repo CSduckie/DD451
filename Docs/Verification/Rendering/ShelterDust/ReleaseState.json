@@ -1,0 +1,21 @@
+{
+  "utc": "2026-10-19T08:39:10.2146923Z",
+  "scenes": [
+    {
+      "path": "Assets/Scenes/Ruins.unity",
+      "dirty": false
+    }
+  ],
+  "playing": false,
+  "changing": false,
+  "paused": false,
+  "compiling": false,
+  "updating": false,
+  "prefabStage": false,
+  "testRunning": false,
+  "captureRunning": false,
+  "motionRunning": false,
+  "timeScale": 1.0,
+  "runInBackground": false,
+  "selected": "Assets/Prefabs/Shelter/ShelterScreenDust.prefab"
+}

@@ -1,0 +1,405 @@
+任务05：独立仓库、庇护所EV与首次免费扩容
+MyPrecious P0｜精简开发提示词｜2026-10-18 / Dispatch v11
+
+最新规则补充（Dispatch v15）：用户要求仓库升级向下拓展，原物品不缩放。首次升级保持宽度，只增加行数；当前示例20×20→20×24，目标高度可配置，同一viewport下原格子/物品尺寸与摆放不变，纵向滚动访问新增行。此条覆盖本文旧24×24或两轴均可扩大的描述。最新实现与复验状态读取05_Handoff，旧截图不代表新规则已验收。
+
+你是本项目05号开发agent，负责独立仓库格子、仓库局部UI、庇护所EV显示与首次免费升级，并接入03号中英双语。
+先核对当前工程，简述工作内容和拟修改文件，再完成本任务的实现、配置、验证及交接，不只返回方案。
+
+这是我的作品集兼毕业设计。代码必须让我能够读懂、修改并在答辩时解释。使用明确的方法和简单数据，保证状态正确，不提前建设通用容器、经济系统或升级框架。
+
+一、开工检查与实际依赖
+
+项目根目录：E:/DD451；独立工作树以实际项目根目录为准。
+以下Assets/和Docs/路径均相对项目根目录。
+
+读取：
+- 适用的AGENTS.md（如有）、git状态、ProjectVersion与Packages配置。
+- Docs/AgentPrompts/ProjectRules.txt。
+- Docs/Architecture/BaseSetup.txt、ItemsSetup.txt、LocalizationSetup.txt。
+- Docs/Handoffs/00_Handoff.txt、01_Handoff.txt、03_Handoff.txt。
+- 若04已交付，读取Docs/Architecture/BackpackSetup.txt和Docs/Handoffs/04_Handoff.txt。
+- 实际GameBootstrap、ItemManager、ItemInstance、ItemDataSO及Localization代码。
+
+本提示词整理时：
+- 01已有真实物品实例、保有状态和损失入口。
+- 03已有源码、资源和接入说明；不能仅凭文件存在认定所有运行验收已通过。
+- 尚未看到04实现及交接，06转移、08流程也未交付。实施时重新核对。
+
+仓库、EV和升级可以独立完成。不要等待未实现的完整游戏流程才开始，也不要伪造背包API或宣称真实跨容器联测完成。
+不恢复旧提示词要求00预建的全量契约或事务框架。
+
+保留其他聊天的改动、已有.meta与GUID。使用Unity MCP前读取对应技能，确认工程与Editor；共享Editor操作串行进行。
+
+二、必须遵守的规则
+
+1. 仓库默认20×20，共400格，初始宽高可配置。
+2. 仓库和背包各自独立实现格子逻辑，不调用BackpackGrid、不继承同一个格子基类，不提取共用GridContainer。
+3. 升级前后尺寸都可配置，P0只实现首次仓库扩容。
+4. 当前EV达到7，可以手动免费激活升级。不消耗EV、不消耗物品，不自动升级。
+5. 激活后即使EV下降、玩家死亡或切换场景，升级仍保留，不缩仓、不再次收费。
+6. 沿用已确定的P0范围：数据在本次运行中常驻，不新增磁盘存档。“永久保留”指激活状态不被后续玩法撤销；跨退出重启的持久化留给后续存档任务。
+7. 已保有的背包物品和仓库物品都贡献EV；新战利品成功撤离前不计入。转移容器、重开UI和重复通知不增加EV。
+8. 撤离即结算，背包可保留新旧物品。仓库满不阻止撤离或再次出发，不恢复强制入仓、强制整理确认或待结算队列。
+9. 物品身份、归属、保有状态和使用次数由01管理；05只保存仓库摆放和本任务的升级状态。
+10. 庇护所主动遗弃唯一剧情物品后，下轮可在原始拾取点找回同一身份；不是永久删除该人物。
+11. 默认中文，F10运行时切换中英文，完全复用03。
+12. 保留项目3D模型、X轴左右、Y轴跳跃、Z轴固定和Cinemachine要求。05不改角色、状态机、世界物理或摄像机；仓库二维格子属于UI数据。
+
+三、代码风格与参考复用
+
+参考仓库：
+- https://github.com/CSduckie/CardGame
+  本机：E:/Portfolio-Card-Clone
+- https://github.com/CSduckie/2DArpg-Portfolio
+  本机：E:/Portfolio-Clone
+- https://github.com/CSduckie/LiDarProject
+  本机：E:/Portfolio-LiDar
+
+先读实际源码再选择复用，记录来源，不修改参考仓库。
+
+优先参考：
+1. CardGame/Assets/Scripts/GameBoard/UIGridController.cs
+   参考按行列创建格子表现的循环。去掉固定列数、敌人、特殊格和世界坐标转换；原棋盘不是仓库核心。
+
+2. CardGame/Assets/Scripts/Cards/MonoBehaviour/CardDragHandler.cs
+   修改复用UGUI开始拖拽、拖拽、结束拖拽的流程。改用RectTransform坐标，不搬卡牌效果、回合、全局拖拽单例或DOTween依赖。
+
+3. CardGame/Assets/Scripts/UI/PlayerUI/GamePlayPanel.cs
+   参考根据条件设置Button.interactable的明确写法。
+   不照搬反向解析UI文字计算业务数值的做法，EV必须读取真实物品数据。
+
+4. CardGame/Assets/Scripts/Items/MonoBehaviour/ItemTemplet.cs
+   参考持有配置引用并通过明确方法刷新TMP文字。
+
+5. 2DArpg-Portfolio/Assets/Scripts/UI/PlayerUI/PlayerUI.cs
+   参考查询权威数据后刷新UI及事件订阅形式；修正原代码中遗漏解除订阅的问题。
+
+未找到可直接搬入的完整仓库或免费扩容系统；不要把参考仓库的占位奖励分支描述成现成升级实现。
+04若已实现，可以了解其操作习惯和接口形式，但仓库格子核心仍在Warehouse内独立实现。
+
+代码要求：
+- 项目自有新增C#不写namespace，包括测试和Editor脚本；正常保留using。
+- 4空格缩进，类与方法大括号另起行；类型/方法PascalCase，字段/局部变量camelCase。
+- 使用普通类、MonoBehaviour、ScriptableObject、枚举、List/Dictionary、必要的C#事件。
+- 配置沿用...SO、CreateAssetMenu、Header等熟悉形式。
+- 注释用中文解释原因，不逐行翻译代码。
+- 不引入依赖注入、事件总线、服务定位器、反射注册、通用事务引擎或多级升级框架。
+- 不为每个类创建接口，不为了“可扩展”预建空目录。
+- 英文文件夹，配置.cs与.asset分开；asmdef的rootNamespace为空。
+- 继续使用Assets/Scripts/Utilities/Contracts/和Assets/Tests/Base/既定位置，本任务不要求新增通用仓库契约。
+
+四、文件目录与最小职责
+
+仓库：
+Assets/Scripts/Warehouse/ScriptableObject/WarehouseConfigSO.cs
+- 初始宽高，默认20×20；必要的简单显示配置。
+
+Assets/Scripts/Warehouse/RuntimeData/WarehousePlacement.cs
+- 物品引用或稳定ID、左上角坐标、旋转状态。
+
+Assets/Scripts/Warehouse/Logic/WarehouseGrid.cs
+- 独立边界、重叠、旋转、放置、移除和扩容逻辑。
+
+Assets/Scripts/Warehouse/MonoBehaviour/WarehouseManager.cs
+- 保存本次运行的仓库布局与实际尺寸。
+- 仓库内重排、仓库已有物品的确认遗弃及完整操作后的通知。
+
+Assets/Scripts/Warehouse/MonoBehaviour/WarehouseUIController.cs
+- 开关界面、局部拖拽预览、旋转、取消及确认框操作。
+
+Assets/Scripts/Warehouse/MonoBehaviour/WarehouseView.cs
+- 格子、物品、选择信息与当前语言文字显示。
+
+Assets/Scripts/Warehouse/MonoBehaviour/WarehouseItemView.cs
+- 单个物品UI，把指针操作交给本仓库控制器。
+
+庇护所：
+Assets/Scripts/Shelter/ScriptableObject/ShelterUpgradeSO.cs
+- EV门槛，P0资源保持7；目标宽高。
+- 初始尺寸只在WarehouseConfigSO维护，不重复保存。
+
+Assets/Scripts/Shelter/MonoBehaviour/ShelterManager.cs
+- 从01读取数据计算EV、检查升级、执行首次扩容、保存已激活标记。
+- 一个简单bool记录首次升级即可，不做技能树或升级注册表。
+
+Assets/Scripts/Shelter/MonoBehaviour/ShelterView.cs
+- EV、升级资格、升级前后尺寸、按钮及结果文字。
+
+程序集：
+- Assets/Scripts/Warehouse/MyPrecious.Warehouse.asmdef
+- Assets/Scripts/Shelter/MyPrecious.Shelter.asmdef
+
+按实际代码引用Items、Bootstrap、Localization、UGUI、Input System、TMP等。
+Shelter可引用Warehouse，Warehouse不反向引用Shelter。
+不要为了EV刷新制造循环依赖，也不引用尚未存在的06程序集。
+
+配置与预制体：
+- Assets/Data/Warehouse/WarehouseConfig.asset
+- Assets/Data/ShelterUpgrades/FirstWarehouseUpgrade.asset
+- Assets/Data/Localization/Warehouse/WarehouseText.asset
+- Assets/Data/Localization/Shelter/ShelterText.asset
+- Assets/Prefabs/Warehouse/WarehouseModule.prefab
+- Assets/Prefabs/Shelter/ShelterModule.prefab
+- Assets/Prefabs/UI/Warehouse/WarehousePanel.prefab
+- Assets/Prefabs/UI/Warehouse/WarehouseCell.prefab
+- Assets/Prefabs/UI/Warehouse/WarehouseItem.prefab
+- Assets/Prefabs/UI/Warehouse/AbandonConfirmPanel.prefab
+- Assets/Prefabs/UI/Shelter/ShelterPanel.prefab
+
+测试与交接：
+- Assets/Tests/Warehouse/EditMode/
+- Assets/Tests/Warehouse/PlayMode/
+- Assets/Tests/Warehouse/TestDoubles/
+- Assets/Tests/Warehouse/Editor/（仅确需搭建工具时）
+- Assets/Scenes/Tests/Warehouse/WarehouseTest.unity
+- Docs/Architecture/WarehouseShelterSetup.txt
+- Docs/Handoffs/05_Handoff.txt
+
+小型结果枚举可与对应逻辑放在同一文件。只创建实际使用的文件和目录，不要求为了凑分层再拆更多类。
+只修改本任务文件和自己的测试场景；通过场景实例引用00—03的预制体，不改共享Bootstrap、输入资源或其他模块核心。
+实际跨模块缺陷应明确指出文件与最小修正，不自行重构其他任务。
+
+五、独立仓库与整理
+
+1. 坐标采用左上角(0,0)，x向右、y向下。
+物品占格读取ItemDataSO.width、height、canRotate。90°旋转交换宽高，不修改SO。
+简单摆放列表与矩形检查足够；不以UI层级或图标位置作为权威数据。
+
+2. 校验正尺寸、边界、重叠、重复实例、旋转权限和碎片空位。
+移动时仅忽略自身旧占格；非法操作保留所有原坐标与朝向。
+不要把“总空面积足够”当成一定能放下。
+
+3. 使用稳定仓库containerId，例如shelter-warehouse。
+仓库内移动、旋转、遗弃前，核对实例Owner为Storage、ContainerId匹配并有真实摆放。
+外部放置检查和新增摆放允许尚无本仓库记录，但必须拒绝重复加入。
+
+4. 拖拽只改预览，真实原占格保留。
+合法松手后重新验证再提交；越界、重叠、面板外松手或关闭界面均取消。
+取消恢复原位置与原朝向；迟到的OnEndDrag不能再次提交。
+拖出仓库面板不代表自动丢弃、存入背包或生成地面物品。
+
+5. 复用现有Player/RotateItem动作处理R，仅在本仓库有效拖拽时生效。
+只管理自己动作实例，不启停整张共享Action Map，不处理Tab背包或F10。
+与04同时显示时，同一次拖拽只能有一个活动来源处理旋转；06接入时明确协调，不另建全局输入或拖拽框架。
+仓库物品不能原地使用治疗；必须先按正式转移流程装入背包。
+控制器停用、销毁或换绑时取消拖拽与未提交确认，解除R回调并释放自己Clone的动作；重新启用不能累计订阅。失去应用焦点时取消预览，重复关闭和迟到的松手事件仍应安全。
+
+6. 使用UGUI、TMP、RectTransform与InputSystemUIInputModule。
+20×20区域应可查看和操作，可用ScrollRect及横/纵滚动条，不把400格硬挤到不可点击。
+在1920×1080（16:9）及当前CanvasScaler配置下，滚动后的鼠标位置与实际格子必须一致；暂不要求窗口尺寸变化的兼容支持。
+格子不应每帧重建；当前规模不需要复杂虚拟列表或对象池。
+无物品图标时可用色块和本地化名称占位，不强迫01增加美术框架。
+
+六、EV计算与刷新
+
+EV不是可花费货币，不建立AddEV/SpendEV式累计账本。
+以01的权威实例重新求和：
+
+- ItemManager.GetInstances()取得登记实例。
+- 对仍有效且IsRetained为true的实例，累加Definition.ev。
+- 同一实例只从登记表计一次，不分别汇总背包、仓库和UI图标后再相加。
+
+实际规则：
+- 已保有布娃娃EV5、医疗包EV2，合计7，即使都留在背包也应计入。
+- 新战利品IsRetained=false时不计EV；05不能因为物品进入仓库就自行设为true。
+- 旧物带出或背包↔仓库转移不改变保有状态，EV不变。
+- 当前01临时丢地不会清除IsRetained，05不要仅因Owner变为World就另行扣EV。
+- 最终死亡、遗弃、撤离遗留由既有损失入口清除保有；Consumed、Lost、PendingRecovery正常情况下不计EV。
+- 新战利品正式保有由08撤离结算安排，05不能用开关UI替代结算。
+
+当前真实ItemManager没有ItemsChanged或ItemUsed事件，不假定它们存在。
+实现一个明确的RefreshEv或同职责方法：
+- 庇护所界面打开时重新计算。
+- 本仓库完成遗弃等操作后，通过自身变化通知让Shelter刷新。
+- 后续04/06/08完成使用、转移、损失、结算后，在完整操作结束时接入刷新。
+- 点击升级时必须再从权威数据计算，不能只相信上次按钮显示的EV。
+
+05可以缓存上次显示值并在变化时发一个C#通知，但缓存不是独立账本。
+不要每帧GetInstances复制整个列表，也不要为补通知建立事件总线。
+未实现模块的刷新接入在交接中列明，不能靠测试驱动冒充正式通知链已完成。后续可由09接线实际完成通知与RefreshEv，不要求04反向引用Shelter来刷新，也不形成模块互相依赖。
+
+七、首次手动免费升级
+
+1. 初始尺寸从WarehouseConfigSO读取，默认20×20。
+升级目标从FirstWarehouseUpgrade读取。
+示例目标可设24×24，明确这是可调测试默认值，不是用户最终锁定的平衡参数。
+
+2. 目标尺寸必须：
+- 宽高均为正数。
+- 两个方向都不小于当前尺寸。
+- 至少一个方向增大。
+- 保留全部现有物品的合法位置。
+
+即使面积增加，只要其中一边缩小也应拒绝。
+不能删除越界物品、自动重排或把物品塞进临时队列来强行升级。
+
+3. 一个明确的TryUpgrade方法处理：
+- 当前处于明确允许管理庇护所的上下文。
+- 尚未激活首次升级。
+- 重新计算后的EV≥7。
+- 配置和仓库有效。
+- 当前没有本地拖拽或待确认遗弃操作。
+
+按钮interactable只负责显示，不能代替方法内部检查。
+EV不足、已升级或配置无效时，返回当前语言可显示的原因，数据保持不变。
+
+4. 成功顺序：
+先完成校验，再扩容；扩容成功后记录已激活；最后刷新仓库和庇护所UI。
+底层扩容不能在状态只完成一半时先广播成功。
+用简单同步方法即可，不做通用事务引擎。
+
+5. 升级不调用TryUseItem、RecordLoss或TrySetRetained，不扣EV，也不销毁任何物品。
+已有实例ID、坐标、旋转、使用次数和保有状态全部保留。
+
+6. 重复点击只允许第一次生效。
+已升级后EV7降到2、降到0都保留扩容和激活标记。
+未升级时EV从7降到2，则暂时失去资格，重新达到7后可手动升级。
+
+7. 实际尺寸和激活状态存放在常驻运行数据，不写回SO。
+打开UI、重复Initialize、场景切换或新一轮探索都不重置升级。
+运行中改SO不自动执行扩容或缩仓；修改初始配置的验证使用新的干净运行。
+
+8. 界面清楚显示：
+- 当前EV与门槛。
+- 当前仓库宽×高和格数。
+- 升级后的宽×高和格数。
+- “免费升级”“EV不足”“已升级”等状态。
+- 升级前后变化，例如20×20（400格）→24×24（576格）。
+
+八、仓库内确认遗弃
+
+本任务实现仓库内已有物品的确认遗弃；背包物品的庇护所遗弃交后续对应容器与06接入，不由05直接改04布局。
+
+1. 选中物品后点击遗弃，先取消本地拖拽并打开确认框。
+确认框保存稳定实例ID，不依赖图标对象作为物品身份。
+取消、关窗口或切换场景时不改变归属、布局、EV。
+
+2. 确认时重新核对：
+仍处于允许庇护所整理的上下文；
+实例仍归当前Storage且仍有该仓库摆放；
+没有已完成的同一操作。
+
+3. 使用真实入口：
+ItemManager.RecordLoss(instanceId, ItemLossReason.ShelterAbandonment)
+
+成功后移除对应仓库摆放，再统一通知仓库和EV显示。RecordLoss成功后Owner已不再是Storage；此时按已验证的实例ID清理布局，不能再次要求Owner==Storage而拒绝清理，也不能提前发中间通知。
+失败保留原摆放。不要先删图标，再假定权威操作一定成功。
+用预先验证后的明确同步方法完成，不实现通用撤销系统。
+
+4. 唯一物品的PendingRecovery、下轮资格和原拾取点由01记录，06/08负责实际重新生成和流程。
+05不能创建替代实例、永久删掉唯一身份或立即生成地面物品。
+
+5. EV由真实数据重算，不能额外手动减一次。
+已升级仓库不受EV下降影响。
+重复确认不能重复扣除；确认框切换语言只刷新文字，不更换目标或再次遗弃。
+
+九、常驻、场景和其他任务接入
+
+1. WarehouseModule和ShelterModule挂在既有GameBootstrap场景实例下。
+仓库运行布局和升级标记常驻；场景里的UI可以销毁后重绑。
+绑定存活入口的模块，不能继续引用即将销毁的重复Bootstrap子对象。
+
+2. 庇护所整理权限由明确的场景上下文或打开入口控制；测试驱动可模拟，08/09后续正式提供。
+用简单字段和方法即可，不在05搭建游戏流程框架。进入/离开庇护所时明确更新上下文，场景卸载清理引用和本场景的允许状态，不能让探索场景继承“允许仓库操作”。
+未准备探索不等于禁止庇护所整理，不能用Player.IsPrepared统一封死。
+05不补血、不刷新医疗包次数、不调用ResetForExploration，也不改Time.timeScale来完成UI交互。
+
+3. 给06交付实际可用的少量方法：
+查询布局、检查放置、添加/移除/恢复指定摆放，以及完整操作后的显示通知。
+方法签名以真实实现为准，写进交接，不提前建立一套全项目容器接口。
+
+外部转入预览不提前改Owner或移除来源。
+ItemManager.TrySetOwner只改归属，不代表已经完成跨容器转移；06要同时协调01、04和05。
+05不直接访问或修改背包内部集合，不在本任务中偷偷实现第二套转移管理器。
+
+4. 当前04缺失时，可用真实01实例验证“已保有背包物品计入EV”，但这只是数据层验证，不代表真实背包转仓通过。
+未来取得04/06后再联测实际双向转移和失败保留原状。
+
+5. 满仓只使不合法转入失败。
+不要提供因满仓禁用出发、强制清包、强制入库或等待整理确认的逻辑。
+正式出发、撤离和死亡流程归08，正式庇护所场景及整体UI归09。
+
+十、03双语接入
+
+当前真实接口：
+- LocalizationManager.Instance或Resolve(preferred)
+- GetText(string key)
+- FormatText(string key, params object[] args)
+- event Action LanguageChanged
+- LocalizedText及RefreshText()
+
+实施前再次核对实际代码。
+
+1. 使用现有LocalizationTableSO格式创建WarehouseText和ShelterText。
+条目包含key、chinese、english，分别使用warehouse.与shelter.前缀。
+复用已有通用文字，物品名称/描述通过ItemDataSO.nameKey、descriptionKey读取，不复制译文。
+
+2. 在05自己的测试场景中，把两份表预先加入LocalizationModule场景实例的tables。
+必须在进入Play、字典初始化之前接好。
+当前Initialize在同一次运行内幂等，不会因为运行中追加表自动重新建字典，也不会因换场景自动热注册。
+正式启动时需要的表由09一次接齐；不新增动态语言注册框架，不改03共享预制体。
+
+3. 静态TMP可用LocalizedText；EV、尺寸、升级结果与确认框由本界面RefreshText读取真实数据，再FormatText。
+使用编号占位符{0}、{1}，不自建模板语法。
+LanguageChanged只刷新显示；订阅、解绑和重新打开时的刷新要正确配对。
+
+4. F10由03处理，05不增加监听者。
+切语言不执行升级、遗弃、转移或结算，不清空选中项和拖拽。
+已有提示保存稳定key、结果和必要数值参数，不能永久缓存最终中文字符串。
+
+5. 复用03现有字体：
+Assets/Art/Fonts/Localization/NotoSansCJKsc-Regular SDF.asset
+
+检查中文无方框、长英文可读、升级尺寸和确认框不截断。
+不要只切标题而保留中文物品说明、错误或按钮状态。
+
+十一、验证与交付
+
+WarehouseTest.unity使用真实ItemModule、语言模块及05两个模块，搭建可操作的仓库与庇护所局部UI。
+如需要3D角色或镜头展示，复用02资源与Cinemachine，不重写角色或相机。
+
+测试初始化只放在Assets/Tests/Warehouse/TestDoubles/。
+在干净数据下明确创建物品并放入合法位置；模拟“已成功带回”的测试物品由测试驱动明确TrySetRetained(id, true)，不能让生产仓库默认把所有入仓物品变成已保有。
+不要在每次OnEnable或重载场景时补发物品、重置布局或激活状态。
+测试里的结算/损失模拟与真实08流程分开标注。
+
+验收至少覆盖：
+1. 默认20×20、400格；非正方形配置也能正确放置和显示。
+2. 越界、重叠、碎片空位、重复实例、旋转权限正确；失败和取消保持原布局。
+3. 在1920×1080（16:9）下实际鼠标拖拽、R旋转、滚动后落点正确；暂不要求其他分辨率验收。
+4. 已保有布娃娃5加医疗包2得到EV7；不要求它们都入仓。未保有的新战利品不计入。
+5. 容器位置变化、重开UI、重复RefreshEv和语言通知不重复计EV；最终损失按权威状态正确减少。
+6. EV6不能升级，EV7可手动免费升级；即使按钮状态滞后，方法也重新核对实际EV。
+7. 升级前后实例、坐标、朝向、使用次数、保有状态不变，EV不扣除；重复点击不再次扩容。
+8. 非法目标尺寸、缩小任一方向、无增长或依赖缺失时拒绝，布局和已激活标记不变。
+9. 升级后EV下降仍保留扩容；未升级时资格随EV下降而失效。
+10. 取消遗弃无副作用；确认仓库布娃娃遗弃后EV7→2，唯一身份进入既有找回状态，已升级尺寸保留。
+11. 重复确认和确认目标已变化时不重复执行；失败不删除物品摆放。
+12. UI关闭重开、场景重载重绑后保留布局、尺寸和升级状态；新的完整运行按初始配置开始。
+13. 默认中文，F10切英文再切回；EV、尺寸、资格、确认框及结果全部正确刷新，业务数据不变。
+14. 400格仓库可以查看和操作；满仓不产生强制整理/禁止出发逻辑。
+15. 没有共享背包格子核心、namespace、多余接口或无关包依赖。
+
+用有价值的EditMode测试覆盖格子、EV和升级边界；PlayMode与实际Game检查常驻、UI、双语及真实鼠标操作。
+方法直接调用通过不等于拖拽已验证。
+04/06/08尚未接入的真实转移、撤离、找回生成和死亡流程，不得写成整条验收通过。
+
+Docs/Architecture/WarehouseShelterSetup.txt写清：
+- 具体职责、Inspector配置、预制体和测试场景接线。
+- 初始/升级尺寸如何修改，为什么不能缩小。
+- EV的权威来源与刷新时点，如何接入04/06/08。
+- 升级标记与当前资格为何分开。
+- 遗弃的确认、权威操作、布局清理顺序。
+- 03表与字体的接法、06可调用的实际方法、09正式接线要求。
+
+Docs/Handoffs/05_Handoff.txt写清：
+- 实际完成范围、准确文件路径、复用源码与核实版本。
+- 编译、自动测试、真实Game操作分别执行了什么。
+- 缺失依赖、未执行检查与后续待联验项，不把规划当作完成。
+
+最后用我能在答辩时说明的话解释：
+“仓库独立保存物品摆放。EV从物品模块的已保有记录重新求和，不靠收到几次事件来加分。EV够7后手动扩容，成功才保存升级标记，所以以后EV下降也不会缩仓。语言变化只重绘文字，不再执行升级或遗弃。”
+
+完成05范围即可，不顺带开发背包、搜刮、敌人、完整流程、第二级升级或磁盘存档。
+

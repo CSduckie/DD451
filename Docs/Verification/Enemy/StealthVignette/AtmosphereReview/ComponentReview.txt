@@ -1,0 +1,13 @@
+09I 最小组件只读复核
+对象：Assets/Scripts/Enemy/Stealth/MonoBehaviour/PlayerStealthVignette.cs（009初次编译完成版本）
+结论：未发现本次明确用途下需扩展设计的实际问题；最终动态行为由009的测试与普通Game验证。
+
+Awake创建一份私有运行时Profile，仅含Vignette，赋给专用Volume；不修改sharedProfile或生产磁盘资产。
+LateUpdate直接读取约定cameraBinder.player，复用CoverArea.IsHidden，普通进退使用MoveTowards与deltaTime/transitionSeconds。
+无玩家、禁用、未准备、死亡、转场或玩家不在本scene时立即weight0；OnDisable也归0；OnDestroy断开私有profile并销毁Vignette和Profile。
+字段intensity/smoothness/transitionSeconds可Inspector调整，未增加每帧搜索、Camera、Volume对象或其他管理框架。
+RuinsPostProcessingProfile实际只含active ToneNone、Bloom intensity0、Vignette intensity0的对应override，符合中性base约定。
+本审查未修改任何源码/配置，未操作Unity，不替代生命周期测试/引用重载/Console检查。
+
+参数评估：.22/.45/roundedfalse按当前URP公式，屏幕边中点线性RGB乘数约.772、四角约.575；最终截图sRGB亮度差不同。数学不能代替实际画面，当前先看.22版本，不因子agent建议.14/.35而擅自改已约定初值。若边缘目标可读性不足，优先降低intensity。
+

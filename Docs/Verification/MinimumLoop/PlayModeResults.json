@@ -1,0 +1,108 @@
+{
+  "success": true,
+  "message": "Test job status retrieved.",
+  "error": null,
+  "data": {
+    "job_id": "a88f857edceb49d29a11bb05e2c76970",
+    "status": "succeeded",
+    "mode": "PlayMode",
+    "started_unix_ms": 1792355626093,
+    "finished_unix_ms": 1792355737384,
+    "last_update_unix_ms": 1792355737384,
+    "progress": {
+      "completed": 7,
+      "total": 7,
+      "current_test_full_name": null,
+      "current_test_started_unix_ms": 1792355737172,
+      "last_finished_test_full_name": "PlayerSceneTransitionTests.TransitionFreezesPhysicalStateAndDiscardsInputsBeforeUnlock",
+      "last_finished_unix_ms": 1792355737342,
+      "stuck_suspected": false,
+      "editor_is_focused": false,
+      "run_in_background": null,
+      "focus_nudge_attempts": null,
+      "focus_nudge_limit": null,
+      "focus_nudge_status": null,
+      "blocked_reason": null,
+      "failures_so_far": [],
+      "failures_capped": false
+    },
+    "error": null,
+    "result": {
+      "mode": "PlayMode",
+      "summary": {
+        "total": 7,
+        "passed": 7,
+        "failed": 0,
+        "skipped": 0,
+        "durationSeconds": 94.7100753,
+        "resultState": "Passed"
+      },
+      "results": [
+        {
+          "name": "BootstrapStartsEmptyAtRoundZeroAndTwoTransitionsKeepOnePlayer",
+          "fullName": "MinimumLoopSceneTests.BootstrapStartsEmptyAtRoundZeroAndTwoTransitionsKeepOnePlayer",
+          "state": "Passed",
+          "durationSeconds": 44.2936505,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "FullWarehouseAllowsReturnAndAnotherDepartureWithoutMovingCarriedLoot",
+          "fullName": "MinimumLoopSceneTests.FullWarehouseAllowsReturnAndAnotherDepartureWithoutMovingCarriedLoot",
+          "state": "Passed",
+          "durationSeconds": 6.1040828,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "LoadedTargetBindingFailureRetriesTheSameSceneAndAllocatedRound",
+          "fullName": "MinimumLoopSceneTests.LoadedTargetBindingFailureRetriesTheSameSceneAndAllocatedRound",
+          "state": "Passed",
+          "durationSeconds": 12.2601031,
+          "message": null,
+          "stackTrace": null,
+          "output": "GameFlow: 场景接线不完整：Assets/Scenes/Ruins.unity\r\n"
+        },
+        {
+          "name": "ReturnLoadFailurePreservesWorldItemsAndRetrySettlesOnlyOnce",
+          "fullName": "MinimumLoopSceneTests.ReturnLoadFailurePreservesWorldItemsAndRetrySettlesOnlyOnce",
+          "state": "Passed",
+          "durationSeconds": 24.0725113,
+          "message": null,
+          "stackTrace": null,
+          "output": "GameFlow: 目标场景未配置、与另一地图重复或未加入Build Settings：Assets/Scenes/Missing-MinimumLoop-Test.unity\r\n"
+        },
+        {
+          "name": "UsedMedkitAndHealthSurviveReturnAndUiReopenUntilTheNextDeparture",
+          "fullName": "MinimumLoopSceneTests.UsedMedkitAndHealthSurviveReturnAndUiReopenUntilTheNextDeparture",
+          "state": "Passed",
+          "durationSeconds": 1.1207461,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "NewRoundWhileLockedStaysFrozenAndDeathIsPreservedOnReturn",
+          "fullName": "PlayerSceneTransitionTests.NewRoundWhileLockedStaysFrozenAndDeathIsPreservedOnReturn",
+          "state": "Passed",
+          "durationSeconds": 0.1920195,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        },
+        {
+          "name": "TransitionFreezesPhysicalStateAndDiscardsInputsBeforeUnlock",
+          "fullName": "PlayerSceneTransitionTests.TransitionFreezesPhysicalStateAndDiscardsInputsBeforeUnlock",
+          "state": "Passed",
+          "durationSeconds": 0.1692335,
+          "message": null,
+          "stackTrace": null,
+          "output": ""
+        }
+      ]
+    }
+  },
+  "hint": null
+}

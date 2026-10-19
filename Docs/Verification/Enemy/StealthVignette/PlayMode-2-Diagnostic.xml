@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Passed" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-19 17:18:38Z" end-time="2026-10-19 17:18:41Z" duration="2.4370736">
+  <test-suite type="TestSuite" id="1242" name="DD451Demo" fullname="DD451Demo" runstate="Runnable" testcasecount="203" result="Passed" start-time="2026-10-19 17:18:38Z" end-time="2026-10-19 17:18:41Z" duration="2.437074" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1090" name="MyPrecious.Enemy.PlayModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.Enemy.PlayModeTests.dll" runstate="Runnable" testcasecount="56" result="Passed" start-time="2026-10-19 17:18:38Z" end-time="2026-10-19 17:18:41Z" duration="2.410314" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="85336" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1083" name="PlayerStealthVignetteTests" fullname="PlayerStealthVignetteTests" classname="PlayerStealthVignetteTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-19 17:18:38Z" end-time="2026-10-19 17:18:41Z" duration="2.405766" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1084" name="OnlyActualCrouchingCoverFadesInAndStandingOrLeavingFadesOut" fullname="PlayerStealthVignetteTests.OnlyActualCrouchingCoverFadesInAndStandingOrLeavingFadesOut" methodname="OnlyActualCrouchingCoverFadesInAndStandingOrLeavingFadesOut" classname="PlayerStealthVignetteTests" runstate="Runnable" seed="1245446161" result="Passed" start-time="2026-10-19 17:18:38Z" end-time="2026-10-19 17:18:40Z" duration="1.739005" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1089" name="ReenableReusesOneOwnedProfileAndDestroyCleansItWithoutChangingOtherVolumes" fullname="PlayerStealthVignetteTests.ReenableReusesOneOwnedProfileAndDestroyCleansItWithoutChangingOtherVolumes" methodname="ReenableReusesOneOwnedProfileAndDestroyCleansItWithoutChangingOtherVolumes" classname="PlayerStealthVignetteTests" runstate="Runnable" seed="484372533" result="Passed" start-time="2026-10-19 17:18:40Z" end-time="2026-10-19 17:18:41Z" duration="0.643885" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/cs200/AppData/LocalLow/DefaultCompany/DD451Demo\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

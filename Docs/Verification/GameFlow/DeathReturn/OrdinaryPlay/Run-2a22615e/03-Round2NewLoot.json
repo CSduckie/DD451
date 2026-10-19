@@ -1,0 +1,312 @@
+{
+  "status": "PASS",
+  "reason": "All requested items naturally revealed and acquired.",
+  "method": "API positioning/body freeze; real interaction, natural search, validated item transfer; no native keyboard claim",
+  "round": 2,
+  "acquired": [
+    {
+      "id": "d0fa40d8cdd449919434be46913169bb",
+      "definition": "food",
+      "owner": "Backpack",
+      "retained": false,
+      "origin": "ruins01/supplies-box/food"
+    }
+  ],
+  "samples": [
+    {
+      "frame": 6272,
+      "time": 119.115791,
+      "entry": "food",
+      "elapsed": 0.333333343,
+      "health": 2
+    },
+    {
+      "frame": 6273,
+      "time": 119.129562,
+      "entry": "food",
+      "elapsed": 0.347108036,
+      "health": 2
+    },
+    {
+      "frame": 6274,
+      "time": 119.145538,
+      "entry": "food",
+      "elapsed": 0.363081038,
+      "health": 2
+    },
+    {
+      "frame": 6275,
+      "time": 119.161865,
+      "entry": "food",
+      "elapsed": 0.379409254,
+      "health": 2
+    },
+    {
+      "frame": 6276,
+      "time": 119.179153,
+      "entry": "food",
+      "elapsed": 0.396702051,
+      "health": 2
+    },
+    {
+      "frame": 6277,
+      "time": 119.195091,
+      "entry": "food",
+      "elapsed": 0.412632763,
+      "health": 2
+    },
+    {
+      "frame": 6278,
+      "time": 119.212463,
+      "entry": "food",
+      "elapsed": 0.430012167,
+      "health": 2
+    },
+    {
+      "frame": 6279,
+      "time": 119.228828,
+      "entry": "food",
+      "elapsed": 0.446375877,
+      "health": 2
+    },
+    {
+      "frame": 6280,
+      "time": 119.246208,
+      "entry": "food",
+      "elapsed": 0.463749766,
+      "health": 2
+    },
+    {
+      "frame": 6281,
+      "time": 119.262138,
+      "entry": "food",
+      "elapsed": 0.47968626,
+      "health": 2
+    },
+    {
+      "frame": 6282,
+      "time": 119.279053,
+      "entry": "food",
+      "elapsed": 0.49659887,
+      "health": 2
+    },
+    {
+      "frame": 6283,
+      "time": 119.295227,
+      "entry": "food",
+      "elapsed": 0.512770653,
+      "health": 2
+    },
+    {
+      "frame": 6284,
+      "time": 119.312149,
+      "entry": "food",
+      "elapsed": 0.529695451,
+      "health": 2
+    },
+    {
+      "frame": 6285,
+      "time": 119.329269,
+      "entry": "food",
+      "elapsed": 0.546815336,
+      "health": 2
+    },
+    {
+      "frame": 6286,
+      "time": 119.345345,
+      "entry": "food",
+      "elapsed": 0.562891841,
+      "health": 2
+    },
+    {
+      "frame": 6287,
+      "time": 119.361809,
+      "entry": "food",
+      "elapsed": 0.579351544,
+      "health": 2
+    },
+    {
+      "frame": 6288,
+      "time": 119.379616,
+      "entry": "food",
+      "elapsed": 0.597158551,
+      "health": 2
+    },
+    {
+      "frame": 6289,
+      "time": 119.395737,
+      "entry": "food",
+      "elapsed": 0.613278151,
+      "health": 2
+    },
+    {
+      "frame": 6290,
+      "time": 119.412796,
+      "entry": "food",
+      "elapsed": 0.6303409,
+      "health": 2
+    },
+    {
+      "frame": 6291,
+      "time": 119.429375,
+      "entry": "food",
+      "elapsed": 0.646922469,
+      "health": 2
+    },
+    {
+      "frame": 6292,
+      "time": 119.44577,
+      "entry": "food",
+      "elapsed": 0.6633134,
+      "health": 2
+    },
+    {
+      "frame": 6293,
+      "time": 119.462257,
+      "entry": "food",
+      "elapsed": 0.6798057,
+      "health": 2
+    },
+    {
+      "frame": 6294,
+      "time": 119.480019,
+      "entry": "food",
+      "elapsed": 0.6975649,
+      "health": 2
+    },
+    {
+      "frame": 6295,
+      "time": 119.49543,
+      "entry": "food",
+      "elapsed": 0.7129759,
+      "health": 2
+    },
+    {
+      "frame": 6296,
+      "time": 119.512146,
+      "entry": "food",
+      "elapsed": 0.729695,
+      "health": 2
+    },
+    {
+      "frame": 6297,
+      "time": 119.528908,
+      "entry": "food",
+      "elapsed": 0.746454537,
+      "health": 2
+    },
+    {
+      "frame": 6298,
+      "time": 119.546066,
+      "entry": "food",
+      "elapsed": 0.7636107,
+      "health": 2
+    },
+    {
+      "frame": 6299,
+      "time": 119.562286,
+      "entry": "food",
+      "elapsed": 0.7798348,
+      "health": 2
+    },
+    {
+      "frame": 6300,
+      "time": 119.579575,
+      "entry": "food",
+      "elapsed": 0.7971226,
+      "health": 2
+    },
+    {
+      "frame": 6301,
+      "time": 119.595985,
+      "entry": "food",
+      "elapsed": 0.8135312,
+      "health": 2
+    },
+    {
+      "frame": 6302,
+      "time": 119.6128,
+      "entry": "food",
+      "elapsed": 0.8303474,
+      "health": 2
+    },
+    {
+      "frame": 6303,
+      "time": 119.628662,
+      "entry": "food",
+      "elapsed": 0.8462093,
+      "health": 2
+    },
+    {
+      "frame": 6304,
+      "time": 119.64579,
+      "entry": "food",
+      "elapsed": 0.863339067,
+      "health": 2
+    },
+    {
+      "frame": 6305,
+      "time": 119.662842,
+      "entry": "food",
+      "elapsed": 0.88038975,
+      "health": 2
+    },
+    {
+      "frame": 6306,
+      "time": 119.679573,
+      "entry": "food",
+      "elapsed": 0.897116363,
+      "health": 2
+    },
+    {
+      "frame": 6307,
+      "time": 119.696129,
+      "entry": "food",
+      "elapsed": 0.9136715,
+      "health": 2
+    },
+    {
+      "frame": 6308,
+      "time": 119.713242,
+      "entry": "food",
+      "elapsed": 0.9307832,
+      "health": 2
+    },
+    {
+      "frame": 6309,
+      "time": 119.729095,
+      "entry": "food",
+      "elapsed": 0.9466437,
+      "health": 2
+    },
+    {
+      "frame": 6310,
+      "time": 119.746063,
+      "entry": "food",
+      "elapsed": 0.963608,
+      "health": 2
+    },
+    {
+      "frame": 6311,
+      "time": 119.762756,
+      "entry": "food",
+      "elapsed": 0.9803022,
+      "health": 2
+    },
+    {
+      "frame": 6312,
+      "time": 119.779221,
+      "entry": "food",
+      "elapsed": 0.9967661,
+      "health": 2
+    },
+    {
+      "frame": 6313,
+      "time": 119.795914,
+      "entry": "",
+      "elapsed": 0.0,
+      "health": 2
+    }
+  ],
+  "callbacksRemoved": true
+}

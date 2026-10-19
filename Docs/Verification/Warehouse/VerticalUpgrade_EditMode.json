@@ -1,0 +1,326 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"success\":true,\"message\":\"Test job status retrieved.\",\"error\":null,\"data\":{\"job_id\":\"3afdf7a769dd44978064edef0cad727d\",\"status\":\"succeeded\",\"mode\":\"EditMode\",\"started_unix_ms\":1792353903096,\"finished_unix_ms\":1792353907512,\"last_update_unix_ms\":1792353907512,\"progress\":{\"completed\":30,\"total\":30,\"current_test_full_name\":null,\"current_test_started_unix_ms\":1792353907369,\"last_finished_test_full_name\":\"WarehouseShelterTests.UpgradeRechecksAuthoritativeEvInsteadOfTrustingStaleButton\",\"last_finished_unix_ms\":1792353907369,\"stuck_suspected\":false,\"editor_is_focused\":false,\"run_in_background\":null,\"focus_nudge_attempts\":null,\"focus_nudge_limit\":null,\"focus_nudge_status\":null,\"blocked_reason\":null,\"failures_so_far\":[],\"failures_capped\":false},\"error\":null,\"result\":{\"mode\":\"EditMode\",\"summary\":{\"total\":30,\"passed\":30,\"failed\":0,\"skipped\":0,\"durationSeconds\":0.3266675,\"resultState\":\"Passed\"},\"results\":[{\"name\":\"DefaultConfigHasFourHundredCellsAndRejectsNonpositiveDimensions\",\"fullName\":\"WarehouseGridTests.DefaultConfigHasFourHundredCellsAndRejectsNonpositiveDimensions\",\"state\":\"Passed\",\"durationSeconds\":0.0923563,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"DuplicateInstanceForbiddenRotationAndInvalidDimensionsPreserveLayout\",\"fullName\":\"WarehouseGridTests.DuplicateInstanceForbiddenRotationAndInvalidDimensionsPreserveLayout\",\"state\":\"Passed\",\"durationSeconds\":0.003773,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"FragmentedFreeAreaDoesNotFitRectangleDespiteEnoughTotalCells\",\"fullName\":\"WarehouseGridTests.FragmentedFreeAreaDoesNotFitRectangleDespiteEnoughTotalCells\",\"state\":\"Passed\",\"durationSeconds\":0.0006846,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidExpansionNeverChangesDimensionsOrPlacements(0,30)\",\"fullName\":\"WarehouseGridTests.InvalidExpansionNeverChangesDimensionsOrPlacements(0,30)\",\"state\":\"Passed\",\"durationSeconds\":0.0008878,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidExpansionNeverChangesDimensionsOrPlacements(30,-1)\",\"fullName\":\"WarehouseGridTests.InvalidExpansionNeverChangesDimensionsOrPlacements(30,-1)\",\"state\":\"Passed\",\"durationSeconds\":0.0001534,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidExpansionNeverChangesDimensionsOrPlacements(19,30)\",\"fullName\":\"WarehouseGridTests.InvalidExpansionNeverChangesDimensionsOrPlacements(19,30)\",\"state\":\"Passed\",\"durationSeconds\":0.0000909,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidExpansionNeverChangesDimensionsOrPlacements(30,19)\",\"fullName\":\"WarehouseGridTests.InvalidExpansionNeverChangesDimensionsOrPlacements(30,19)\",\"state\":\"Passed\",\"durationSeconds\":0.0000821,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidExpansionNeverChangesDimensionsOrPlacements(20,20)\",\"fullName\":\"WarehouseGridTests.InvalidExpansionNeverChangesDimensionsOrPlacements(20,20)\",\"state\":\"Passed\",\"durationSeconds\":0.0000804,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"MoveIgnoresOnlyOwnRectangleAndFailureKeepsEveryPlacement\",\"fullName\":\"WarehouseGridTests.MoveIgnoresOnlyOwnRectangleAndFailureKeepsEveryPlacement\",\"state\":\"Passed\",\"durationSeconds\":0.0008049,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"NonSquareGridRotatesWithoutChangingDefinitionAndRejectsOverflowCoordinates\",\"fullName\":\"WarehouseGridTests.NonSquareGridRotatesWithoutChangingDefinitionAndRejectsOverflowCoordinates\",\"state\":\"Passed\",\"durationSeconds\":0.0004022,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"PreviewAndRemovalSnapshotsNeverModifyItemAuthority\",\"fullName\":\"WarehouseGridTests.PreviewAndRemovalSnapshotsNeverModifyItemAuthority\",\"state\":\"Passed\",\"durationSeconds\":0.0007641,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"SingleAxisExpansionKeepsExactPlacementAndAddsUsableCells\",\"fullName\":\"WarehouseGridTests.SingleAxisExpansionKeepsExactPlacementAndAddsUsableCells\",\"state\":\"Passed\",\"durationSeconds\":0.000433,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ActivationSurvivesEvLossReinitializeAndConfigurationEditsDuringRun\",\"fullName\":\"WarehouseShelterTests.ActivationSurvivesEvLossReinitializeAndConfigurationEditsDuringRun\",\"state\":\"Passed\",\"durationSeconds\":0.0449997,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ConfirmedAbandonmentCleansLayoutBeforeOneNotificationAndKeepsUpgrade\",\"fullName\":\"WarehouseShelterTests.ConfirmedAbandonmentCleansLayoutBeforeOneNotificationAndKeepsUpgrade\",\"state\":\"Passed\",\"durationSeconds\":0.0024574,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"EvCountsRetainedRegistryOnceAcrossBackpackStorageAndTemporaryWorldOwner\",\"fullName\":\"WarehouseShelterTests.EvCountsRetainedRegistryOnceAcrossBackpackStorageAndTemporaryWorldOwner\",\"state\":\"Passed\",\"durationSeconds\":0.0006924,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"EvSixCannotUpgradeAndSevenNeverAutoActivates\",\"fullName\":\"WarehouseShelterTests.EvSixCannotUpgradeAndSevenNeverAutoActivates\",\"state\":\"Passed\",\"durationSeconds\":0.0007313,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ExternalPreviewAndSilentLayoutEditsPreserveAuthorityUntilCoordinatorCommits\",\"fullName\":\"WarehouseShelterTests.ExternalPreviewAndSilentLayoutEditsPreserveAuthorityUntilCoordinatorCommits\",\"state\":\"Passed\",\"durationSeconds\":0.0006875,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"FreeUpgradePreservesUsedRetainedItemPlacementIdentityAndNotifiesAfterActivation\",\"fullName\":\"WarehouseShelterTests.FreeUpgradePreservesUsedRetainedItemPlacementIdentityAndNotifiesAfterActivation\",\"state\":\"Passed\",\"durationSeconds\":0.002768,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InternalOperationsRequireContextOwnershipContainerAndRealPlacement\",\"fullName\":\"WarehouseShelterTests.InternalOperationsRequireContextOwnershipContainerAndRealPlacement\",\"state\":\"Passed\",\"durationSeconds\":0.0007103,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(0,24)\",\"fullName\":\"WarehouseShelterTests.InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(0,24)\",\"state\":\"Passed\",\"durationSeconds\":0.0010315,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(20,-1)\",\"fullName\":\"WarehouseShelterTests.InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(20,-1)\",\"state\":\"Passed\",\"durationSeconds\":0.0003264,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(19,30)\",\"fullName\":\"WarehouseShelterTests.InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(19,30)\",\"state\":\"Passed\",\"durationSeconds\":0.0001658,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(20,19)\",\"fullName\":\"WarehouseShelterTests.InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(20,19)\",\"state\":\"Passed\",\"durationSeconds\":0.0004031,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(20,20)\",\"fullName\":\"WarehouseShelterTests.InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(20,20)\",\"state\":\"Passed\",\"durationSeconds\":0.0002061,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(24,24)\",\"fullName\":\"WarehouseShelterTests.InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(24,24)\",\"state\":\"Passed\",\"durationSeconds\":0.0002611,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"MissingDependenciesWrongRegistryContextAndPendingInteractionRejectUpgrade\",\"fullName\":\"WarehouseShelterTests.MissingDependenciesWrongRegistryContextAndPendingInteractionRejectUpgrade\",\"state\":\"Passed\",\"durationSeconds\":0.001002,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"NonDefaultWarehouseWidthCanUpgradeOnlyByAddingRows\",\"fullName\":\"WarehouseShelterTests.NonDefaultWarehouseWidthCanUpgradeOnlyByAddingRows\",\"state\":\"Passed\",\"durationSeconds\":0.0008583,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"ReinitializationDoesNotDuplicateEligibilityNotificationsAndOnlyCurrentOwnerCanReleaseBusyState\",\"fullName\":\"WarehouseShelterTests.ReinitializationDoesNotDuplicateEligibilityNotificationsAndOnlyCurrentOwnerCanReleaseBusyState\",\"state\":\"Passed\",\"durationSeconds\":0.0020556,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"RejectedAuthoritativeLossKeepsPlacementAndRetainedState\",\"fullName\":\"WarehouseShelterTests.RejectedAuthoritativeLossKeepsPlacementAndRetainedState\",\"state\":\"Passed\",\"durationSeconds\":0.0006411,\"message\":null,\"stackTrace\":null,\"output\":\"\"},{\"name\":\"UpgradeRechecksAuthoritativeEvInsteadOfTrustingStaleButton\",\"fullName\":\"WarehouseShelterTests.UpgradeRechecksAuthoritativeEvInsteadOfTrustingStaleButton\",\"state\":\"Passed\",\"durationSeconds\":0.0004026,\"message\":null,\"stackTrace\":null,\"output\":\"\"}]}},\"hint\":null}"
+    }
+  ],
+  "structuredContent": {
+    "result": {
+      "success": true,
+      "message": "Test job status retrieved.",
+      "error": null,
+      "data": {
+        "job_id": "3afdf7a769dd44978064edef0cad727d",
+        "status": "succeeded",
+        "mode": "EditMode",
+        "started_unix_ms": 1792353903096,
+        "finished_unix_ms": 1792353907512,
+        "last_update_unix_ms": 1792353907512,
+        "progress": {
+          "completed": 30,
+          "total": 30,
+          "current_test_full_name": null,
+          "current_test_started_unix_ms": 1792353907369,
+          "last_finished_test_full_name": "WarehouseShelterTests.UpgradeRechecksAuthoritativeEvInsteadOfTrustingStaleButton",
+          "last_finished_unix_ms": 1792353907369,
+          "stuck_suspected": false,
+          "editor_is_focused": false,
+          "run_in_background": null,
+          "focus_nudge_attempts": null,
+          "focus_nudge_limit": null,
+          "focus_nudge_status": null,
+          "blocked_reason": null,
+          "failures_so_far": [],
+          "failures_capped": false
+        },
+        "error": null,
+        "result": {
+          "mode": "EditMode",
+          "summary": {
+            "total": 30,
+            "passed": 30,
+            "failed": 0,
+            "skipped": 0,
+            "durationSeconds": 0.3266675,
+            "resultState": "Passed"
+          },
+          "results": [
+            {
+              "name": "DefaultConfigHasFourHundredCellsAndRejectsNonpositiveDimensions",
+              "fullName": "WarehouseGridTests.DefaultConfigHasFourHundredCellsAndRejectsNonpositiveDimensions",
+              "state": "Passed",
+              "durationSeconds": 0.0923563,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "DuplicateInstanceForbiddenRotationAndInvalidDimensionsPreserveLayout",
+              "fullName": "WarehouseGridTests.DuplicateInstanceForbiddenRotationAndInvalidDimensionsPreserveLayout",
+              "state": "Passed",
+              "durationSeconds": 0.003773,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "FragmentedFreeAreaDoesNotFitRectangleDespiteEnoughTotalCells",
+              "fullName": "WarehouseGridTests.FragmentedFreeAreaDoesNotFitRectangleDespiteEnoughTotalCells",
+              "state": "Passed",
+              "durationSeconds": 0.0006846,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidExpansionNeverChangesDimensionsOrPlacements(0,30)",
+              "fullName": "WarehouseGridTests.InvalidExpansionNeverChangesDimensionsOrPlacements(0,30)",
+              "state": "Passed",
+              "durationSeconds": 0.0008878,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidExpansionNeverChangesDimensionsOrPlacements(30,-1)",
+              "fullName": "WarehouseGridTests.InvalidExpansionNeverChangesDimensionsOrPlacements(30,-1)",
+              "state": "Passed",
+              "durationSeconds": 0.0001534,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidExpansionNeverChangesDimensionsOrPlacements(19,30)",
+              "fullName": "WarehouseGridTests.InvalidExpansionNeverChangesDimensionsOrPlacements(19,30)",
+              "state": "Passed",
+              "durationSeconds": 0.0000909,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidExpansionNeverChangesDimensionsOrPlacements(30,19)",
+              "fullName": "WarehouseGridTests.InvalidExpansionNeverChangesDimensionsOrPlacements(30,19)",
+              "state": "Passed",
+              "durationSeconds": 0.0000821,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidExpansionNeverChangesDimensionsOrPlacements(20,20)",
+              "fullName": "WarehouseGridTests.InvalidExpansionNeverChangesDimensionsOrPlacements(20,20)",
+              "state": "Passed",
+              "durationSeconds": 0.0000804,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "MoveIgnoresOnlyOwnRectangleAndFailureKeepsEveryPlacement",
+              "fullName": "WarehouseGridTests.MoveIgnoresOnlyOwnRectangleAndFailureKeepsEveryPlacement",
+              "state": "Passed",
+              "durationSeconds": 0.0008049,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "NonSquareGridRotatesWithoutChangingDefinitionAndRejectsOverflowCoordinates",
+              "fullName": "WarehouseGridTests.NonSquareGridRotatesWithoutChangingDefinitionAndRejectsOverflowCoordinates",
+              "state": "Passed",
+              "durationSeconds": 0.0004022,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "PreviewAndRemovalSnapshotsNeverModifyItemAuthority",
+              "fullName": "WarehouseGridTests.PreviewAndRemovalSnapshotsNeverModifyItemAuthority",
+              "state": "Passed",
+              "durationSeconds": 0.0007641,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "SingleAxisExpansionKeepsExactPlacementAndAddsUsableCells",
+              "fullName": "WarehouseGridTests.SingleAxisExpansionKeepsExactPlacementAndAddsUsableCells",
+              "state": "Passed",
+              "durationSeconds": 0.000433,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ActivationSurvivesEvLossReinitializeAndConfigurationEditsDuringRun",
+              "fullName": "WarehouseShelterTests.ActivationSurvivesEvLossReinitializeAndConfigurationEditsDuringRun",
+              "state": "Passed",
+              "durationSeconds": 0.0449997,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ConfirmedAbandonmentCleansLayoutBeforeOneNotificationAndKeepsUpgrade",
+              "fullName": "WarehouseShelterTests.ConfirmedAbandonmentCleansLayoutBeforeOneNotificationAndKeepsUpgrade",
+              "state": "Passed",
+              "durationSeconds": 0.0024574,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "EvCountsRetainedRegistryOnceAcrossBackpackStorageAndTemporaryWorldOwner",
+              "fullName": "WarehouseShelterTests.EvCountsRetainedRegistryOnceAcrossBackpackStorageAndTemporaryWorldOwner",
+              "state": "Passed",
+              "durationSeconds": 0.0006924,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "EvSixCannotUpgradeAndSevenNeverAutoActivates",
+              "fullName": "WarehouseShelterTests.EvSixCannotUpgradeAndSevenNeverAutoActivates",
+              "state": "Passed",
+              "durationSeconds": 0.0007313,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ExternalPreviewAndSilentLayoutEditsPreserveAuthorityUntilCoordinatorCommits",
+              "fullName": "WarehouseShelterTests.ExternalPreviewAndSilentLayoutEditsPreserveAuthorityUntilCoordinatorCommits",
+              "state": "Passed",
+              "durationSeconds": 0.0006875,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "FreeUpgradePreservesUsedRetainedItemPlacementIdentityAndNotifiesAfterActivation",
+              "fullName": "WarehouseShelterTests.FreeUpgradePreservesUsedRetainedItemPlacementIdentityAndNotifiesAfterActivation",
+              "state": "Passed",
+              "durationSeconds": 0.002768,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InternalOperationsRequireContextOwnershipContainerAndRealPlacement",
+              "fullName": "WarehouseShelterTests.InternalOperationsRequireContextOwnershipContainerAndRealPlacement",
+              "state": "Passed",
+              "durationSeconds": 0.0007103,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(0,24)",
+              "fullName": "WarehouseShelterTests.InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(0,24)",
+              "state": "Passed",
+              "durationSeconds": 0.0010315,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(20,-1)",
+              "fullName": "WarehouseShelterTests.InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(20,-1)",
+              "state": "Passed",
+              "durationSeconds": 0.0003264,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(19,30)",
+              "fullName": "WarehouseShelterTests.InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(19,30)",
+              "state": "Passed",
+              "durationSeconds": 0.0001658,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(20,19)",
+              "fullName": "WarehouseShelterTests.InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(20,19)",
+              "state": "Passed",
+              "durationSeconds": 0.0004031,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(20,20)",
+              "fullName": "WarehouseShelterTests.InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(20,20)",
+              "state": "Passed",
+              "durationSeconds": 0.0002061,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(24,24)",
+              "fullName": "WarehouseShelterTests.InvalidUpgradeTargetNeverWritesActivationOrChangesLayout(24,24)",
+              "state": "Passed",
+              "durationSeconds": 0.0002611,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "MissingDependenciesWrongRegistryContextAndPendingInteractionRejectUpgrade",
+              "fullName": "WarehouseShelterTests.MissingDependenciesWrongRegistryContextAndPendingInteractionRejectUpgrade",
+              "state": "Passed",
+              "durationSeconds": 0.001002,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "NonDefaultWarehouseWidthCanUpgradeOnlyByAddingRows",
+              "fullName": "WarehouseShelterTests.NonDefaultWarehouseWidthCanUpgradeOnlyByAddingRows",
+              "state": "Passed",
+              "durationSeconds": 0.0008583,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "ReinitializationDoesNotDuplicateEligibilityNotificationsAndOnlyCurrentOwnerCanReleaseBusyState",
+              "fullName": "WarehouseShelterTests.ReinitializationDoesNotDuplicateEligibilityNotificationsAndOnlyCurrentOwnerCanReleaseBusyState",
+              "state": "Passed",
+              "durationSeconds": 0.0020556,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "RejectedAuthoritativeLossKeepsPlacementAndRetainedState",
+              "fullName": "WarehouseShelterTests.RejectedAuthoritativeLossKeepsPlacementAndRetainedState",
+              "state": "Passed",
+              "durationSeconds": 0.0006411,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            },
+            {
+              "name": "UpgradeRechecksAuthoritativeEvInsteadOfTrustingStaleButton",
+              "fullName": "WarehouseShelterTests.UpgradeRechecksAuthoritativeEvInsteadOfTrustingStaleButton",
+              "state": "Passed",
+              "durationSeconds": 0.0004026,
+              "message": null,
+              "stackTrace": null,
+              "output": ""
+            }
+          ]
+        }
+      },
+      "hint": null
+    }
+  },
+  "isError": false
+}

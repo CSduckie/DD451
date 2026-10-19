@@ -1,0 +1,147 @@
+[
+  {
+    "path": "Assets/Prefabs/Player/PlayerCamera.prefab",
+    "bytes": 9039,
+    "sha256": "DA4E345C170AA4B9A918607D10D5B509AF3143344EACE728BBB91516140BC2F0"
+  },
+  {
+    "path": "Assets/Prefabs/GameFlow/ShelterStoragePoint.prefab",
+    "bytes": 9417,
+    "sha256": "B4684DBFD8D73922DDA1E4A8CC2A5545E42A743BFED135B629F997A6AEF2C27C"
+  },
+  {
+    "path": "Assets/Prefabs/GameFlow/DeparturePoint.prefab",
+    "bytes": 9413,
+    "sha256": "692A875763EE93D8574E615655A3CA565B3F81171F947846D80D391833193FAB"
+  },
+  {
+    "path": "Assets/Prefabs/GameFlow/ExtractionPoint.prefab",
+    "bytes": 9413,
+    "sha256": "FDCB5BDA5E6D1DC2421C70EBA348630C64BACA0EC5AAD989A1A255C341A56E7C"
+  },
+  {
+    "path": "Assets/Prefabs/Loot/LootBox.prefab",
+    "bytes": 3857,
+    "sha256": "B08506461082B629FD8FA2CE6D16DFA265A409C29DAA56FC6CDFB104D3E93EE8"
+  },
+  {
+    "path": "Assets/Prefabs/Loot/GroundItem.prefab",
+    "bytes": 4681,
+    "sha256": "7F431C4F42286ABD0F391DB35B8BB3DBB6DA9AF5A3F54D6D8568B0EC756E65CC"
+  },
+  {
+    "path": "Assets/Scenes/Bootstrap.unity",
+    "bytes": 27151,
+    "sha256": "9063DB1C2FD9EFBB83A120531BCA35644BE835D203A68EC49FBB1B8306526500"
+  },
+  {
+    "path": "Assets/Scenes/Shelter.unity",
+    "bytes": 125606,
+    "sha256": "9F6001B2422D8B6B62E1FCF110259D42548BB4A865E55A82D2634F37BB3EBA6A"
+  },
+  {
+    "path": "Assets/Scenes/Ruins.unity",
+    "bytes": 116549,
+    "sha256": "90625D2C3D4BB14144F0E2618A8509CD7EC418DB54406798E30070AF020A1D19"
+  },
+  {
+    "path": "Assets/Scenes/Tests/Player/PlayerTest.unity",
+    "bytes": 41717,
+    "sha256": "D967536A30A0A86A6B59B4814BBAD2753DEA08695C3D17BCDA9B725E2A1B7D49"
+  },
+  {
+    "path": "Assets/Scenes/Tests/Backpack/BackpackTest.unity",
+    "bytes": 110939,
+    "sha256": "D898114AD90760B7FF01E4DDBE5702218712F1FDF5BA1CA84E2FC3A1FB9E3730"
+  },
+  {
+    "path": "Assets/Scenes/Tests/Loot/LootTest.unity",
+    "bytes": 233426,
+    "sha256": "5138DE1660AB2F068CBC58FADE1A6BCA739BB6BD958AFF5449FF7555CBF870C4"
+  },
+  {
+    "path": "ProjectSettings/EditorSettings.asset",
+    "bytes": 1585,
+    "sha256": "D31BE15C85A31D85372564BF5EE30188A9454274C6DF8FE7A3372375A0DB98BC"
+  },
+  {
+    "path": "ProjectSettings/ProjectSettings.asset",
+    "bytes": 25286,
+    "sha256": "7E8D7317565EE7C2DC4832BE2E3DBB806F616CCAA34BE60E4211996413A3D19D"
+  },
+  {
+    "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Unlit_Yellow.mat",
+    "bytes": 3203,
+    "sha256": "9C4046ED3936F9F992A56CAC9A444E4993037DCB01B1C3C630157B68AA32F899"
+  },
+  {
+    "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Unlit_Red.mat",
+    "bytes": 3199,
+    "sha256": "B2BE986C34534343A9031CDA7FB98386ECDB9CE5BC1CAF2D7CB9D642C8434274"
+  },
+  {
+    "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Unlit_Purple.mat",
+    "bytes": 3203,
+    "sha256": "85CC3E352BEAD5847C7C682E96D3F388340986430D121CBACE7D217101E469F7"
+  },
+  {
+    "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Unlit_Green.mat",
+    "bytes": 3202,
+    "sha256": "50AF5608DC6836536242BC7D20962DDD99BE45472C88B6636E185AEDB649D1C3"
+  },
+  {
+    "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Unlit_Blue.mat",
+    "bytes": 3200,
+    "sha256": "71C1AC869E615F48FC82D2EA7A16ED40C3A32BBA7C28BF7CDFE52FE176FC0066"
+  },
+  {
+    "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Metal_Yellow.mat",
+    "bytes": 4050,
+    "sha256": "26C6B3A1D9F58F904D0D3923038B981B46BC24650E530E4FF8A938ABF5E4D1BE"
+  },
+  {
+    "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Metal_Red.mat",
+    "bytes": 4046,
+    "sha256": "4F56F4284B814435409F90FDE96552B12544B7461A822C1C95227F4D01CDB955"
+  },
+  {
+    "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Metal_Purple.mat",
+    "bytes": 4050,
+    "sha256": "26A6CBE5EF9CF2F4D74A7EAE2208B3F48B13B1996118C78AE5BF97B7940E120D"
+  },
+  {
+    "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Metal_Green.mat",
+    "bytes": 4049,
+    "sha256": "52C6C9F9E54835F4764F77067F91D828ABE8B7DF6016331EFC795547D1BC11DF"
+  },
+  {
+    "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Metal_Blue.mat",
+    "bytes": 4048,
+    "sha256": "5761BF2ACF0693CAF50CF15A81C4ADC3E114DC5E78AFE12E44DC6DDB350D9327"
+  },
+  {
+    "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Diffuse_Yellow.mat",
+    "bytes": 4040,
+    "sha256": "12BC2941B37636D6A416BFE6CE68A1CF049363EB6152CE5B400060D990AEA4D0"
+  },
+  {
+    "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Diffuse_Red.mat",
+    "bytes": 4037,
+    "sha256": "C61B0EC74E30F7041978314945AC8B9596753CA1BB5DDBB9CBF7F46600FFC008"
+  },
+  {
+    "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Diffuse_Purple.mat",
+    "bytes": 4040,
+    "sha256": "024F7EB5DB1AC1ADC5B9CCA727A1192C0B3BF5D1FA1EE52F65E027CED6ADEC96"
+  },
+  {
+    "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Diffuse_Green.mat",
+    "bytes": 4038,
+    "sha256": "C1B78B0F70814018B39272EEE82113FA2B3918C9FF5B69F70F7593F72E806F6A"
+  },
+  {
+    "path": "Assets/BrokenVector/LowPolyStoragePack\\Materials\\Storage_Diffuse_Blue.mat",
+    "bytes": 3202,
+    "sha256": "83E46CF200205CD31AEF2682FEB57035347EE21338889F2674CC7FE9EB829715"
+  }
+]

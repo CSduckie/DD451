@@ -1,0 +1,8 @@
+{
+    "name": "MyPrecious.Enemy.Editor",
+    "rootNamespace": "",
+    "references": ["MyPrecious.Enemy", "MyPrecious.Enemy.TestSupport", "MyPrecious.Player", "MyPrecious.StateMachine.Contracts", "MyPrecious.Bootstrap", "MyPrecious.Items", "MyPrecious.Backpack", "MyPrecious.Loot", "MyPrecious.Localization", "MyPrecious.Health", "MyPrecious.Interaction", "Unity.TextMeshPro", "Unity.ugui", "Unity.InputSystem", "Unity.Cinemachine"],
+    "includePlatforms": ["Editor"],
+    "autoReferenced": false
+}
+

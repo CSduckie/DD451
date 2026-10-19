@@ -1,0 +1,101 @@
+{
+  "status": "STAGING_ONLY_NOT_UNITY_TESTED",
+  "generatedUtc": "2026-10-19T01:19:55.2255415Z",
+  "csharpFiles": 18,
+  "lineCount": 3051.0,
+  "asmdefs": 5,
+  "files": [
+    {
+      "path": "Assets/Scripts/Enemy/MyPrecious.Enemy.asmdef",
+      "sha256": "C8E0969EA0402FE2EC920B3CF4E0ACB80697C2BB81BFE78174B35DE735AFC630"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs",
+      "sha256": "8224740B59DFC48395199A8F5C10EC0BAA6272225B5D1FC8C768001D38E42F54"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs",
+      "sha256": "6CCEAD5B4FD22E4431B355736CD7A83E646166D85C6DACCBE1C5018E9E318A74"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs",
+      "sha256": "7A74295E351F1C23E9A445ABD0454C11800DF72C5769866140586855EA18A1E9"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/ScriptableObject/DroneConfigSO.cs",
+      "sha256": "57CB2554CB55DF125580D8B2EFA5906BDEF0B3DC436D3457FE9C4491200A0D7B"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneChaseState.cs",
+      "sha256": "EC3E2FC014CD9C9E0191B1CE80F74A77E4DB482F7159FB7A04E4C0CEDB9FDC82"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneExplodeState.cs",
+      "sha256": "11CBBE19B35D6F0AB8DC169A86B721A8941F28038A492E9A2E72755CFB4E7410"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DronePatrolState.cs",
+      "sha256": "05AE171A58F4095A0F0D8447ECAB9B5319817BAEFC4BBBBB5F59F2A651A11859"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneSearchState.cs",
+      "sha256": "A8AF4D2E236DEE0C9207BD0016AFEEA2B9150649C3C0F0986BFDC47D1FBC5DF7"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Drone/States/DroneStateBase.cs",
+      "sha256": "FCD19A78094570856E71189BF3EA3192F119067CEA4D9919F7E15E320B68311D"
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Stealth/MonoBehaviour/CoverArea.cs",
+      "sha256": "F70D62D4DEFA7AFE38F9F66B43A2CDA08C4740E641F9FD7274D08388E148C17C"
+    },
+    {
+      "path": "Assets/Tests/Enemy/EditMode/CoverAreaTests.cs",
+      "sha256": "C3E474F18138E3760C728B5415ACC488A4FB0E90E1D26591B55C909AE7A19DE9"
+    },
+    {
+      "path": "Assets/Tests/Enemy/EditMode/DroneRoundTests.cs",
+      "sha256": "15A2A6DE0BF8BE0BC68CBD50155C17BCD8DF28287D5623D6F319163C6199CF27"
+    },
+    {
+      "path": "Assets/Tests/Enemy/EditMode/DroneVisionGeometryTests.cs",
+      "sha256": "3D25AF60A6AECAE907E9283987D9797BC7E389A335CCBEA16C6A7B78B1C6CAF9"
+    },
+    {
+      "path": "Assets/Tests/Enemy/EditMode/MyPrecious.Enemy.EditModeTests.asmdef",
+      "sha256": "0538F94DB3E050FCB2359188CC277FBA113EA1ABC394994901413C7A3898DA75"
+    },
+    {
+      "path": "Assets/Tests/Enemy/Editor/DroneVisionEditor.cs",
+      "sha256": "AFC15E06AE3CBE70731EE3144B4C370BA3E3D05B1C387C7865E6472AF8D79A24"
+    },
+    {
+      "path": "Assets/Tests/Enemy/Editor/EnemyTestSceneBuilder.cs",
+      "sha256": "BB04EFDFE8900B3D958BA25F7E19F1693FEC0671392200F2A059D96062F96F5B"
+    },
+    {
+      "path": "Assets/Tests/Enemy/Editor/MyPrecious.Enemy.Editor.asmdef",
+      "sha256": "82DCA64818DB5B3340A4CFB12490EB1C13A659EDFA74F4D3B8BB901893A6DEC6"
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/DroneBehaviourTests.cs",
+      "sha256": "82289CCB5D9AC6028DB1B87BE388A27186AFB515F8EE3B33A2F907C00DA1008C"
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/EnemySceneIntegrationTests.cs",
+      "sha256": "636870F0C4EC7B4614389A5E0AB29DE0E0E9BF065C4C5D2F7C8999E95B3364B6"
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/MyPrecious.Enemy.PlayModeTests.asmdef",
+      "sha256": "44F8951DA2554990D1E4111ABC2E381BA75175F126923978D959A492ECB0933E"
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/Runtime/EnemyTestDriver.cs",
+      "sha256": "C27B43862443BE5B5E1C0A741311EC7D6DE9CEC607958A90627746C4CC4B1FA9"
+    },
+    {
+      "path": "Assets/Tests/Enemy/PlayMode/Runtime/MyPrecious.Enemy.TestSupport.asmdef",
+      "sha256": "19AB0AFEC22AAAE3B5098B46D9AF5EF6177CDDD6D4C0683ACD5D62F185B0D046"
+    }
+  ]
+}

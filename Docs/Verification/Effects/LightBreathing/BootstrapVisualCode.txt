@@ -1,0 +1,40 @@
+if (!UnityEditor.EditorApplication.isPlaying || Camera.main == null) return "No live main camera.";
+var effects = UnityEngine.Object.FindObjectsByType<LightFlicker>(UnityEngine.FindObjectsInactive.Include, UnityEngine.FindObjectsSortMode.None);
+System.Array.Sort(effects, (a,b) => string.CompareOrdinal(a.name,b.name));
+var lamp = effects[0];
+var done = new bool[3];
+var notes = new System.Collections.Generic.List<string>();
+var folder = "E:/DD451/Docs/Verification/Effects/LightBreathing";
+var culture = System.Globalization.CultureInfo.InvariantCulture;
+bool oldBackground = Application.runInBackground;
+Application.runInBackground = true;
+double start = UnityEditor.EditorApplication.timeSinceStartup;
+int lastFrame = -1;
+UnityEditor.EditorApplication.CallbackFunction capture = null;
+capture = () =>
+{
+    double elapsed = UnityEditor.EditorApplication.timeSinceStartup - start;
+    if (!UnityEditor.EditorApplication.isPlaying || elapsed > 15)
+    {
+        UnityEditor.EditorApplication.update -= capture;
+        Application.runInBackground = oldBackground;
+        notes.Add("Captures(high,low,dark)=" + string.Join(",",System.Array.ConvertAll(done,x=>x.ToString())));
+        notes.Add("DurationSeconds=" + elapsed.ToString("F3",culture));
+        notes.Add("Resolution=" + Screen.width + "x" + Screen.height);
+        System.IO.File.WriteAllLines(folder + "/BootstrapVisualCapture.txt",notes.ToArray());
+        return;
+    }
+    if (Time.frameCount == lastFrame || lamp == null || lamp.targetLight == null) return;
+    lastFrame = Time.frameCount;
+    float intensity = lamp.targetLight.intensity;
+    int index = intensity == 0 ? 2 : (intensity > 49.5f ? 0 : (intensity < 33f ? 1 : -1));
+    if(index >= 0 && !done[index])
+    {
+        done[index] = true;
+        var names = new string[] { "Bootstrap-High.png", "Bootstrap-Low.png", "Bootstrap-Dark.png" };
+        ScreenCapture.CaptureScreenshot(folder + "/" + names[index]);
+        notes.Add(names[index] + ";seconds=" + elapsed.ToString("F4",culture) + ";lamp=" + lamp.name + ";intensity=" + intensity.ToString("F6",culture));
+    }
+};
+UnityEditor.EditorApplication.update += capture;
+return "Capturing existing Bootstrap game camera for 15 seconds; no camera or player changes.";

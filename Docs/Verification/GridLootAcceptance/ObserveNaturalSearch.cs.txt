@@ -1,0 +1,66 @@
+// 仅验收：记录正常Update推进，不调用AdvanceSearch，不修改timeScale。
+var ui = System.AppDomain.CurrentDomain.GetData("RootGridAudit.UI") as LootUIController;
+var source = System.AppDomain.CurrentDomain.GetData("RootGridAudit.Source") as LootSourceState;
+if (ui == null || source == null) { return "Missing temporary audit source"; }
+var old = System.AppDomain.CurrentDomain.GetData("RootGridAudit.Observer") as UnityEditor.EditorApplication.CallbackFunction;
+if (old != null) { UnityEditor.EditorApplication.update -= old; }
+var records = new System.Collections.Generic.List<object>();
+string previous = null;
+float began = UnityEngine.Time.realtimeSinceStartup;
+UnityEditor.EditorApplication.CallbackFunction observer = null;
+observer = () =>
+{
+    if (!UnityEngine.Application.isPlaying || ui == null || UnityEngine.Time.realtimeSinceStartup - began > 180f)
+    {
+        UnityEditor.EditorApplication.update -= observer;
+        return;
+    }
+    if (!ui.IsOpen || ui.Source != source || UnityEngine.Time.realtimeSinceStartup - began < 0.25f) { return; }
+    int revealed = 0;
+    foreach (var entry in source.Entries) { if (entry.Revealed) { revealed++; } }
+    string state = source.SearchEntryId + "/" + revealed;
+    if (previous == state) { return; }
+    previous = state;
+    UnityEngine.Canvas.ForceUpdateCanvases();
+    var entries = new System.Collections.Generic.List<object>();
+    int activeCountdowns = 0;
+    foreach (var entry in source.Entries)
+    {
+        LootItemView view = null;
+        foreach (var candidate in ui.view.GetComponentsInChildren<LootItemView>(true))
+        {
+            if (candidate.EntryId == entry.EntryId) { view = candidate; break; }
+        }
+        if (view == null) { continue; }
+        var rect = (UnityEngine.RectTransform)view.transform;
+        var label = view.countdownText;
+        var center = rect.TransformPoint(rect.rect.center);
+        var labelCenter = label != null ? label.rectTransform.TransformPoint(label.rectTransform.rect.center) : center;
+        bool active = label != null && label.gameObject.activeInHierarchy;
+        if (active) { activeCountdowns++; }
+        entries.Add(new { entry.EntryId, entry.InstanceId, entry.Revealed, entry.Taken,
+            name = view.nameText != null ? view.nameText.text : null,
+            icon = view.icon != null && view.icon.gameObject.activeInHierarchy,
+            countdown = label != null ? label.text : null, countdownActive = active,
+            alignment = label != null ? label.alignment.ToString() : null,
+            centerError = UnityEngine.Vector3.Distance(center, labelCenter),
+            entry.LayoutX, entry.LayoutY, entry.LayoutWidth, entry.LayoutHeight });
+    }
+    records.Add(new { utc = System.DateTime.UtcNow.ToString("o"), frame = UnityEngine.Time.frameCount,
+        realtime = UnityEngine.Time.realtimeSinceStartup, scaledTime = UnityEngine.Time.time,
+        timeScale = UnityEngine.Time.timeScale, width = UnityEngine.Screen.width, height = UnityEngine.Screen.height,
+        source.SearchEntryId, source.SearchElapsed, revealed = revealed,
+        activeCountdowns = activeCountdowns, entries = entries });
+    System.IO.File.WriteAllText("E:/DD451/Docs/Verification/GridLootAcceptance/NaturalTransitions.json",
+        Newtonsoft.Json.JsonConvert.SerializeObject(records, Newtonsoft.Json.Formatting.Indented));
+    UnityEngine.ScreenCapture.CaptureScreenshot("E:/DD451/Docs/Verification/GridLootAcceptance/Natural-" + revealed + ".png");
+    if (source.GetNextUnrevealed() == null)
+    {
+        System.AppDomain.CurrentDomain.SetData("RootGridAudit.NaturalComplete", true);
+        UnityEditor.EditorApplication.update -= observer;
+    }
+};
+System.AppDomain.CurrentDomain.SetData("RootGridAudit.Observer", observer);
+System.AppDomain.CurrentDomain.SetData("RootGridAudit.NaturalComplete", false);
+UnityEditor.EditorApplication.update += observer;
+return "Natural search observer installed; maximum 180 seconds; cleanup on completion or exit.";

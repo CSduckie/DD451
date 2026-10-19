@@ -1,0 +1,49 @@
+// 主程普通Play的API返箱复核；只操作本轮临时样本，不加入游戏程序集。
+var flow = UnityEngine.Object.FindFirstObjectByType<GameFlowManager>();
+var ui = System.AppDomain.CurrentDomain.GetData("RootGridAudit.UI") as LootUIController;
+var source = System.AppDomain.CurrentDomain.GetData("RootGridAudit.Source") as LootSourceState;
+if (flow == null || ui == null || source == null || !ui.IsOpen) { return "Missing open audit source"; }
+var entry = source.Entries[2];
+if (!entry.Revealed || entry.Taken) { return "Expected revealed 2x2 sample in box"; }
+int session = ui.SessionToken;
+var pickup = flow.Transfers.TrySourceToBackpack(source, entry.EntryId, 1, 0, false,
+    () => ui.IsSessionValid(session, source));
+if (pickup != ItemTransferResult.Success) { return "Cannot prepare return: " + pickup; }
+UnityEngine.Canvas.ForceUpdateCanvases();
+var cell = ui.backpack.view.gridRoot.Find("Cell_1_0") as UnityEngine.RectTransform;
+var begin = UnityEngine.RectTransformUtility.WorldToScreenPoint(null, cell.TransformPoint(cell.rect.center));
+var viewport = ui.view.GetReturnViewport();
+var target = UnityEngine.RectTransformUtility.WorldToScreenPoint(null,
+    viewport.TransformPoint(new UnityEngine.Vector3(viewport.rect.center.x, viewport.rect.yMin + 30f, 0f)));
+var background = viewport.GetComponent<UnityEngine.UI.Image>();
+var colorBefore = background.color;
+// 只排队鼠标位置，使正常Update下一帧仍使用同一目标；开始/结束拖拽由API驱动。
+if (UnityEngine.InputSystem.Mouse.current != null)
+{
+    UnityEngine.InputSystem.InputSystem.QueueDeltaStateEvent(UnityEngine.InputSystem.Mouse.current.position, target);
+}
+int token = ui.backpack.BeginItemDrag(entry.InstanceId, begin, null);
+ui.backpack.UpdateDrag(token, target, null);
+UnityEngine.Canvas.ForceUpdateCanvases();
+var preview = ui.view.ReturnPreviewRect;
+var corners = new UnityEngine.Vector3[4];
+if (preview != null) { preview.GetWorldCorners(corners); }
+var a = UnityEngine.RectTransformUtility.WorldToScreenPoint(null, corners[0]);
+var b = UnityEngine.RectTransformUtility.WorldToScreenPoint(null, corners[2]);
+var rect = new float[] { a.x, a.y, b.x-a.x, b.y-a.y };
+ItemInstance item;
+flow.Items.TryGetInstance(entry.InstanceId, out item);
+var result = new { token = token, id = entry.InstanceId, owner = item.Owner.ToString(),
+    visible = ui.view.IsReturnPreviewVisible, rect = rect,
+    backpackFeedback = ui.backpack.FeedbackKey, lootFeedback = ui.FeedbackKey,
+    viewportColorUnchanged = background.color == colorBefore, bagCount = flow.Backpack.GetPlacements().Count,
+    width = UnityEngine.Screen.width, height = UnityEngine.Screen.height,
+    target = new float[] { target.x, target.y } };
+System.AppDomain.CurrentDomain.SetData("RootGridAudit.ReturnToken", token);
+System.AppDomain.CurrentDomain.SetData("RootGridAudit.ReturnTarget", target);
+System.AppDomain.CurrentDomain.SetData("RootGridAudit.ReturnId", entry.InstanceId);
+System.AppDomain.CurrentDomain.SetData("RootGridAudit.ReturnRect", rect);
+string json = Newtonsoft.Json.JsonConvert.SerializeObject(result, Newtonsoft.Json.Formatting.Indented);
+System.IO.File.WriteAllText("E:/DD451/Docs/Verification/GridLootAcceptance/Final-ReturnHover.json", json);
+UnityEngine.ScreenCapture.CaptureScreenshot("E:/DD451/Docs/Verification/GridLootAcceptance/Final-ReturnHover.png");
+return json;

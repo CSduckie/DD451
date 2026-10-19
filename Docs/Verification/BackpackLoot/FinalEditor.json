@@ -1,0 +1,27 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"success\":true,\"message\":\"Code executed successfully.\",\"data\":{\"result\":{\"playing\":false,\"changing\":false,\"compiling\":false,\"updating\":false,\"testActive\":false,\"scene\":\"Assets/Scenes/Tests/Loot/LootTest.unity\",\"dirty\":false,\"enterPlayMode\":false,\"options\":\"None\"},\"compiler\":\"codedom\"}}"
+    }
+  ],
+  "structuredContent": {
+    "success": true,
+    "message": "Code executed successfully.",
+    "data": {
+      "result": {
+        "playing": false,
+        "changing": false,
+        "compiling": false,
+        "updating": false,
+        "testActive": false,
+        "scene": "Assets/Scenes/Tests/Loot/LootTest.unity",
+        "dirty": false,
+        "enterPlayMode": false,
+        "options": "None"
+      },
+      "compiler": "codedom"
+    }
+  },
+  "isError": false
+}

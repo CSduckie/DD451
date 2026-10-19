@@ -1,0 +1,64 @@
+07F 死亡损失与来源生命周期只读审查
+日期：2026-10-19（America/New_York）
+范围：只读当前 Assets；仅写本 Staging 文档，未操作 Unity、未修改 Assets。
+本文件是实现建议，不表示已经实现或通过测试。
+
+一、现成入口足够承担身份、布局和 EV
+1. ItemManager.cs:120 RecordLoss(id, ExplorationDeath) 是权威入口：普通物品 Owner=Lost；唯一物品 Owner=PendingRecovery；清 ContainerId、IsRetained、SpawnClaimed；唯一 RecoveryRound=CurrentRound+1；InstanceId/OriginalSpawnPointId 不变。
+   失败返回前不写状态。已 Lost/PendingRecovery 再调用会 false；因此不能把重复调用 false 当成“重新生成再损失”的理由。
+   此处不用新增唯一物品系统，也不要直接改 ItemInstance 的 internal 数据。
+2. BackpackManager.cs:168 TryRemovePlacement 明确支持“归属已转移或损失后”清旧布局；不要求 Owner 仍为 Backpack。它静默执行，和 NotifyChanged(:218) 分开。
+   TryGetCarriedItem(:70) 可在清算前核验真实布局、Owner、containerId、实例引用。
+3. ShelterManager.cs:108 RefreshEv 从全部权威实例重算；CalculateEv(:123) 只计仍 active 且 IsRetained 的物品。RecordLoss 已清保有标记，因此旧携带物 EV 自然扣除，新物原本没有 EV；不要直接减数值。
+4. WarehouseManager 及 ShelterManager 同运行中的 Initialize 不重建 grid、不清激活标记；保留相同 Bootstrap/模块即可保留仓库摆放、宽高、升级。死亡清算不要调用 warehouse.Clear/重建模块，也不要触碰 Storage 归属物。
+5. ItemManager.BeginRound(:105) 会同时重置所有物品的 UseRound/UsesThisRound。死亡返回绝不能调用它；只由下一次真实出发调用。
+
+二、可复用的清算快照与去重方式
+GameFlowManager.cs:461 TryCaptureSettlement 已验证：所有背包 placement 与 ItemManager 的 Backpack 归属一一对应；carried 与 loot.GetRemainingWorldItems() 不重叠；每项身份有效，遗留物 UseRound 为当前轮次。死亡可复用此快照，只改变 carried 的处理方式。
+
+建议顺序（继续使用当前简单方法和索引，不引入事务/Manager）：
+A. Died 回调先选定本轮死亡结果，设置场景锁，关闭 currentBindings 的会话、取消拖拽，禁用探索 context；让重复通知看到已经 pending 的死亡结果。
+B. 协程首帧 yield return null，再进入依赖/快照/清算；PlayerHealth.Died 在 isNotifying=true 的同步通知栈内，不能在该栈里复活。同步转移若从 Completed 回调间接触发死亡，也可在首帧后退出 IsBusy。
+C. 仅首次捕获全部 carried/left 快照，锁定 settlementRound；失败重试不能按“当前剩余集合”重建快照，否则半清算后可能漏项。
+D. 对每件 carried：先验证该 ID 仍是快照的真实实例；调用 RecordLoss(ExplorationDeath)，成功后清该 ID 的 Backpack placement。每步只有成功才推进对应索引。
+   最简单可靠恢复法是分别维护“已记损索引”和“已清布局索引”；所有背包身份记损后逐项清布局，最后再处理 world/container。这样布局移除暂时失败时，Retry 仅补清布局，不再次 RecordLoss；玩家和 UI 全程锁住，不会暴露半完成数据。
+   也可每件先移布局，再 RecordLoss，失败时恢复原 placement；这符合现有转移风格，但需要明确检查恢复结果，不要假设回滚永不失败。前者顺序更接近 Warehouse.TryAbandon(:196)。
+E. 对 leftSnapshot 的全部 world/container 遗留调用 RecordLoss(ExplorationDeath) 并逐项推进；不可只丢失 Backpack 而把遗留保持 active，否则下一次 Loot.PrepareRound 拒绝清旧来源。
+F. 关闭已结算来源（下节缺口）；完成后才设置 settledRound。设置标记在 backpack.NotifyChanged/shelter.RefreshEv 前，防止显示监听者重复结算。
+G. 只有完整死亡清算成功后，才开始加载/激活 Shelter；之后失败 Retry 保留 settlementRound/各索引/settledRound，不重复清算，不推进轮次。
+H. 同一 Player 移至 Shelter 原出生点，通过必要的“死亡后在 Shelter 恢复”入口恢复血量/Die 状态/刚体/下蹲等；CurrentRound 不变，物品 UseRound/UsesThisRound 不变。下一次正常 TryDepart 才 +1。
+
+注：已有 TrySettleExtraction(:409) 的 carried 标记保有与 left 记损也是逐项推进，可保留成功撤离分支，避免死亡误走成功保有逻辑。一个 pending 结果必须始终固定为撤离或死亡，不能在已有部分清算后切换解释。
+
+三、确有缺口：Loot 当前没有“此轮已结束”入口
+LootRuntimeManager.cs:59 SetExplorationContext(false) 仅影响拾取权限，不阻止生成/重绑。
+OnSceneLoaded(:886) 在任意新场景加载后，只要 PreparedRound>0 就调用 BindSceneSources(:871)，扫描所有仍加载的 LootBox/GroundItem（包括暂未卸载的 Ruins）。
+GenerateSource(:451) 对旧未 Taken 条目会重新检查并尝试 TryClaimUniqueSpawn(:497)。若死亡已把该条目 RecordLoss 为 PendingRecovery，下轮未开始，认领必定失败并产生日志；普通 Lost 条目也无法恢复期望 Owner。
+所以死亡“先清算、后加载 Shelter”的新顺序不能仅 SetExplorationContext(false) 后照搬旧流程；会在加载 Shelter 的 sceneLoaded 回调误处理已终结的旧来源。
+
+最小补充建议：LootRuntimeManager 增加明确的 TryCompleteRound(int round, out string error)（名称可沿实际风格调整），只由流程结算后调用，不创建新框架。
+- 轮次必须等于 ItemManager.CurrentRound 和 PreparedRound；同轮已关闭返回 true；旧/未来轮次拒绝。
+- 先确认没有仍 active 的 GetRemainingWorldItems；取消未提交 preparedDrops（若某准备已实际提交，应保留为 world 数据并要求先记损，不能隐式删除）。中断所有来源 Search。
+- 记一个本轮已关闭标记，保留已生成来源记录与唯一 origin 登记，不清 PreparedRound，不让此轮重新生成。
+- BindBox/BindGround 可登记场景 target 引用，但在此轮已关闭时应不再 GenerateSource；OnSceneLoaded/PrepareRound 同轮/重建表现也必须遵守关闭标记。下一轮 PrepareRound 才清旧 sources/表示并解除关闭标记。
+- 若采用把已损失条目标 Taken 来封口，也需明确 ClosedRound 防止新的同轮来源偷偷生成；仅改 OnSceneLoaded 不足以挡新对象 OnEnable→BindBox/BindGround。
+- 最好成功撤离清算也统一调用此小入口，使成功返回失败后的同轮重绑不会处理已损失遗留；不能改变既有未结算同轮 Retry 的生成/搜索保持行为。
+
+现有 next-round 恢复链不用修改：
+ItemManager.GetRecoverableItems(:137) 仅在 CurrentRound>=RecoveryRound 返回原实例；LootGenerator.TrySelect(:22) 对匹配原点且可恢复的唯一物品不再抽概率；GenerateSource(:484) 取 TryGetUniqueInstance，TryClaimUniqueSpawn(:150) 恢复同一身份，再转换为原 World/Container 来源。uniqueOrigins 始终保留以防原点冲突。
+
+四、会话与损伤时序
+GameFlowSceneBindings.CloseSessions(:189) 已按 Loot.CloseSource → transferUI.CancelAll → warehouse/shelter/backpack.Close 清理；SuspendBusiness(:204) 再停业务对象。无需新增第二个背包死亡订阅系统。
+BackpackUIController.Close(:159) 取消拖拽并提升 InputSession，04 已订阅 Died(:126,464)；LootUIController.CloseSource(:154) 清 SessionToken、取消外部拖拽并中断未完成搜索。预览本来不改归属/占格，所以关闭后清算真实快照即可，无需把预览物品“放回”或创建补偿实例。
+ItemTransferCoordinator.ValidateRequest(:292) 拒绝 dead/transition-blocked 玩家；现有转移同步且通知在 busy 内，死亡处理应等通知栈退出后再做数据清算。
+PlayerHealth.TakeDamage(:62) 在发 Died 前先 HandleDeath；NotifyChanges(:95) 期间 isNotifying=true。重复 TakeDamage 对 dead 返回 false，07F 仍应以本轮 pending/settled guard 防范重复死亡通知或测试注入。
+
+五、建议必须覆盖的故障/边界
+- 背包旧 EV + 新物全损失，仓库存同身份/坐标/旋转物品和已激活扩容均不变；RefreshEv 前后数值准确。
+- carried 清算第 N 项失败、布局清理第 N 项失败、left 第 N 项失败、来源关闭失败、Shelter path/接线/卸载失败：Retry 索引前项不重复 RecordLoss，InstanceCount 不变，轮次不变。
+- 死亡时箱子正在搜索且外部拖拽预览中：关闭并保留真实来源条目供清算，无孤立 Backpack owner/placement。
+- 身份 PendingRecovery 的唯一物品本轮加载 Shelter 时不再被 GenerateSource 误认领；下一轮自动同 ID 原点找回，概率调为 0 仍可找回。
+- 死亡返回本轮不刷新 UsesThisRound；下一次正常出发才重置。
+- 成功撤离路径原有断言保留；相邻死亡事件按明确 pending 结果优先级只结算一次，不能靠重复 Notify 或先保有后记损掩盖二次结算。
+
+源码路径均为 E:/DD451/Assets/Scripts 下上述实际文件；行号为本次只读观察时的位置。主程正在改 GameFlowSceneBindings，请实施时 fresh 读取最新文件，不复制旧全文。

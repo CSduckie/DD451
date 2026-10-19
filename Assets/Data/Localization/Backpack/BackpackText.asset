@@ -1,0 +1,171 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f3cd9f8c424ac5439f636ad5435f100, type: 3}
+  m_Name: BackpackText
+  m_EditorClassIdentifier: MyPrecious.Localization::LocalizationTableSO
+  entries:
+  - key: backpack.title
+    chinese: "\u968F\u8EAB\u80CC\u5305"
+    english: BACKPACK
+  - key: backpack.close
+    chinese: "\u5173\u95ED \xB7 Tab"
+    english: "Close \xB7 Tab"
+  - key: backpack.controls
+    chinese: "\u5DE6\u952E\u62D6\u52A8 \xB7 R\u65CB\u8F6C \xB7 \u53F3\u952E\u4F7F\u7528\nCtrl+\u5DE6\u952E\u5FEB\u6377\u8F6C\u79FB
+      \xB7 \u53D7\u51FB\u5173\u5305"
+    english: "Drag \xB7 R rotate \xB7 Right click: use\nCtrl+Left: transfer \xB7
+      Damage closes"
+  - key: backpack.select_hint
+    chinese: "\u9009\u62E9\u7269\u54C1\u67E5\u770B\u8BE6\u60C5\u3002\n\u5408\u6CD5\u677E\u624B\u624D\u4F1A\u6539\u53D8\u6446\u653E\u3002"
+    english: 'Select an item to inspect it.
+
+      Release in a valid position to
+      move.'
+  - key: backpack.item_size
+    chinese: "{0} \xD7 {1}"
+    english: "{0} \xD7 {1}"
+  - key: backpack.dimensions
+    chinese: "\u5360\u683C\uFF1A{0} \xD7 {1}"
+    english: "Size: {0} \xD7 {1} cells"
+  - key: backpack.rotatable
+    chinese: "\u5141\u8BB8\u65CB\u8F6C\uFF1A\u62D6\u52A8\u65F6\u6309 R"
+    english: 'Rotatable: press R while dragging'
+  - key: backpack.fixed_orientation
+    chinese: "\u6B64\u7269\u54C1\u4E0D\u80FD\u65CB\u8F6C"
+    english: This item cannot be rotated
+  - key: backpack.uses
+    chinese: "\u672C\u8F6E\u5DF2\u7528\uFF1A{0} / {1}"
+    english: 'Uses this round: {0} / {1}'
+  - key: backpack.uses_unlimited
+    chinese: "\u4E0D\u9650\u5236\u672C\u8F6E\u4F7F\u7528\u6B21\u6570"
+    english: No per-round use limit
+  - key: backpack.consumed_on_use
+    chinese: "\u6210\u529F\u4F7F\u7528\u540E\u6D88\u8017\uFF1B\u6EE1\u8840\u4E0D\u80FD\u4F7F\u7528"
+    english: Consumed on successful use; cannot use at full health
+  - key: backpack.kept_on_use
+    chinese: "\u6210\u529F\u4F7F\u7528\u540E\u4FDD\u7559\uFF1B\u6EE1\u8840\u4E0D\u80FD\u4F7F\u7528"
+    english: Kept after successful use; cannot use at full health
+  - key: backpack.ready
+    chinese: "\u80CC\u5305\u5DF2\u6253\u5F00\u3002\u8BF7\u9009\u62E9\u6216\u62D6\u52A8\u7269\u54C1\u3002"
+    english: Backpack open. Select or drag an item.
+  - key: backpack.moved
+    chinese: "\u6446\u653E\u5DF2\u66F4\u65B0\u3002"
+    english: Item moved.
+  - key: backpack.cancelled
+    chinese: "\u5DF2\u53D6\u6D88\u9884\u89C8\uFF0C\u539F\u6446\u653E\u4E0D\u53D8\u3002"
+    english: Preview cancelled. Original placement kept.
+  - key: backpack.outside
+    chinese: "\u4E0D\u5728\u53EF\u653E\u7F6E\u7684\u683C\u5B50\u4E0A\uFF1B\u677E\u624B\u53D6\u6D88\u3002"
+    english: Outside the grid. Release to cancel.
+  - key: backpack.external_pending
+    chinese: "\u4EC5\u663E\u793A\u5916\u90E8\u9884\u89C8\uFF0C\u7269\u54C1\u4ECD\u5728\u539F\u6765\u6E90\uFF1B\u771F\u5B9E\u8F6C\u79FB\u5F8506\u63A5\u5165\u3002"
+    english: External preview only; the item stays at its source. Transfer integration
+      is pending.
+  - key: backpack.dragging_external
+    chinese: "\u5916\u90E8\u7269\u54C1\u4EC5\u9884\u89C8\uFF1A\u53D6\u6D88\u4E0D\u4F1A\u6539\u53D8\u6765\u6E90\uFF1B\u6682\u4E0D\u6267\u884C\u771F\u5B9E\u8F6C\u79FB\u3002"
+    english: External item preview only. Its source is unchanged; transfer is not
+      connected yet.
+  - key: backpack.player_unavailable
+    chinese: "\u73A9\u5BB6\u5C1A\u672A\u51C6\u5907\u6216\u5DF2\u7ECF\u6B7B\u4EA1\uFF0C\u5F53\u524D\u4E0D\u80FD\u6253\u5F00\u6216\u4F7F\u7528\u3002"
+    english: The player is not prepared or has died. Opening or using is unavailable.
+  - key: backpack.drag_active
+    chinese: "\u8BF7\u5148\u7ED3\u675F\u62D6\u62FD\uFF0C\u518D\u4F7F\u7528\u7269\u54C1\u3002"
+    english: Finish dragging before using an item.
+  - key: backpack.result.success
+    chinese: "\u4F4D\u7F6E\u5408\u6CD5\uFF0C\u677E\u5F00\u5DE6\u952E\u786E\u8BA4\u6446\u653E\u3002"
+    english: Valid position. Release the left mouse button to place.
+  - key: backpack.result.not_ready
+    chinese: "\u80CC\u5305\u3001\u7269\u54C1\u6216\u8BED\u8A00\u4F9D\u8D56\u5C1A\u672A\u5C31\u7EEA\u3002"
+    english: The backpack, items or localization is not ready.
+  - key: backpack.result.invalid_configuration
+    chinese: "\u80CC\u5305\u6216\u7269\u54C1\u5C3A\u5BF8\u914D\u7F6E\u65E0\u6548\u3002"
+    english: The backpack or item size configuration is invalid.
+  - key: backpack.result.not_found
+    chinese: "\u672A\u627E\u5230\u5F53\u524D\u7269\u54C1\u3002"
+    english: The item no longer exists.
+  - key: backpack.result.wrong_owner
+    chinese: "\u7269\u54C1\u5DF2\u4E0D\u5C5E\u4E8E\u80CC\u5305\uFF0C\u64CD\u4F5C\u5DF2\u53D6\u6D88\u3002"
+    english: The item is no longer in the backpack. Operation cancelled.
+  - key: backpack.result.wrong_container
+    chinese: "\u7269\u54C1\u5C5E\u4E8E\u53E6\u4E00\u4E2A\u80CC\u5305\uFF0C\u4E0D\u80FD\u5728\u8FD9\u91CC\u64CD\u4F5C\u3002"
+    english: The item belongs to another backpack.
+  - key: backpack.result.missing_placement
+    chinese: "\u7269\u54C1\u6CA1\u6709\u672C\u80CC\u5305\u7684\u6709\u6548\u6446\u653E\u8BB0\u5F55\u3002"
+    english: The item has no valid placement in this backpack.
+  - key: backpack.result.duplicate_instance
+    chinese: "\u540C\u4E00\u4EF6\u7269\u54C1\u4E0D\u80FD\u91CD\u590D\u653E\u5165\u3002"
+    english: The same item cannot be added twice.
+  - key: backpack.result.rotation_not_allowed
+    chinese: "\u8FD9\u4EF6\u7269\u54C1\u4E0D\u5141\u8BB8\u65CB\u8F6C\u3002"
+    english: This item cannot be rotated.
+  - key: backpack.result.out_of_bounds
+    chinese: "\u7269\u54C1\u8D85\u51FA\u80CC\u5305\u8FB9\u754C\uFF1B\u677E\u624B\u53D6\u6D88\u3002"
+    english: The item extends beyond the grid. Release to cancel.
+  - key: backpack.result.overlap
+    chinese: "\u6B64\u5904\u4E0E\u5176\u4ED6\u7269\u54C1\u91CD\u53E0\uFF1B\u677E\u624B\u53D6\u6D88\u3002"
+    english: This position overlaps another item. Release to cancel.
+  - key: backpack.result.busy
+    chinese: "\u64CD\u4F5C\u6B63\u5728\u8FDB\u884C\uFF0C\u8BF7\u7A0D\u540E\u518D\u8BD5\u3002"
+    english: An operation is in progress. Try again shortly.
+  - key: backpack.test.title
+    chinese: "\u80CC\u5305\u8054\u52A8\u6D4B\u8BD5"
+    english: BACKPACK INTEGRATION TEST
+  - key: backpack.test.instructions
+    chinese: "Tab \u80CC\u5305 \xB7 H \u53D7\u4F24 \xB7 K \u81F4\u547D\u4F24 \xB7
+      V \u5916\u90E8\u9884\u89C8 \xB7 Esc \u53D6\u6D88 \xB7 T \u5E87\u62A4\u6240\u4E0A\u4E0B\u6587"
+    english: "Tab backpack \xB7 H damage \xB7 K lethal \xB7 V external preview \xB7
+      Esc cancel \xB7 T shelter context"
+  - key: backpack.test.status
+    chinese: "\u4E16\u754C\u65F6\u95F4 {0:0.0}s \xB7 \u751F\u547D {1}/{2} \xB7 \u8F6E\u6B21
+      {3}"
+    english: "World {0:0.0}s \xB7 HP {1}/{2} \xB7 Round {3}"
+  - key: backpack.test.sample
+    chinese: "\u6837\u672C\u517120\u683C\uFF1A\u5305\u518514\u683C\uFF0C\u4E16\u754C\u5E03\u5A03\u5A036\u683C\u3002"
+    english: 'Samples need 20 cells: 14 in the backpack, 6 for the doll in the world.'
+  - key: backpack.test.scope
+    chinese: "\u6A21\u62DF08\u51C6\u5907\u4E0E\u4F24\u5BB3\uFF1B\u672A\u63A5\u5165\u654C\u4EBA\u3001\u8F6C\u79FB\u6216\u7ED3\u7B97\u3002"
+    english: Simulates round preparation and damage. Enemies, transfers and settlement
+      are not connected.
+  - key: backpack.test.context.exploration
+    chinese: "\u5F53\u524D\uFF1A\u63A2\u7D22\u4E0A\u4E0B\u6587"
+    english: 'Context: exploration'
+  - key: backpack.test.context.shelter
+    chinese: "\u5F53\u524D\uFF1A\u5E87\u62A4\u6240\u81EA\u7531\u6574\u7406\u4E0A\u4E0B\u6587"
+    english: 'Context: shelter arrangement'
+  - key: backpack.test.external_preview
+    chinese: "\u5916\u90E8\u5E03\u5A03\u5A03\u9884\u89C8\u4E2D\uFF1B\u5176\u771F\u5B9E\u6765\u6E90\u4FDD\u6301\u4E0D\u53D8\u3002"
+    english: Previewing the external doll. Its actual source is unchanged.
+  - key: backpack.test.external_unavailable
+    chinese: "\u5F53\u524D\u65E0\u6CD5\u5F00\u59CB\u5916\u90E8\u9884\u89C8\u3002"
+    english: External preview is currently unavailable.
+  - key: backpack.test.damage
+    chinese: "\u771F\u5B9E\u975E\u81F4\u547D\u4F24\u5BB3\u5DF2\u751F\u6548\u3002"
+    english: Real nonlethal damage was accepted.
+  - key: backpack.test.damage_rejected
+    chinese: "\u4F24\u5BB3\u672A\u88AB\u63A5\u53D7\uFF08\u4F8B\u5982\u65E0\u654C\u671F\uFF09\u3002"
+    english: Damage was rejected (for example, during invulnerability).
+  - key: backpack.test.lethal
+    chinese: "\u771F\u5B9E\u81F4\u547D\u4F24\u5BB3\u5DF2\u6267\u884C\uFF1B\u643A\u5E26\u7269\u4E0D\u753104\u7ED3\u7B97\u3002"
+    english: Real lethal damage applied. Backpack losses are not settled by this
+      module.
+  - key: backpack.test.cancelled
+    chinese: "\u6D4B\u8BD5\u9884\u89C8\u5DF2\u53D6\u6D88\u3002"
+    english: Test preview cancelled.
+  - key: backpack.language_hint
+    chinese: "F10\uFF1A\u4E2D\u6587 / English"
+    english: 'F10: Chinese / English'
+  - key: backpack.loot.title
+    chinese: "\u641C\u522E\u5BB9\u5668"
+    english: LOOT CONTAINER
+  - key: backpack.loot.disconnected
+    chinese: "\u5C1A\u672A\u8FDE\u63A5\u641C\u522E\u6765\u6E90\u3002"
+    english: No loot source connected.

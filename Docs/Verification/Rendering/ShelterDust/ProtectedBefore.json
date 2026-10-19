@@ -1,0 +1,42 @@
+[
+  {
+    "path": "Assets/Scenes/Shelter.unity",
+    "sha256": "7B62885206B78FCEB003BF78995424D987AF569120EB7780CC35427D7B5EFB11"
+  },
+  {
+    "path": "Assets/Scenes/Shelter.unity.meta",
+    "sha256": "E32C6E5FFC8F10D2BB611941967203616E52F76353A7722CF717703EDD4D2889"
+  },
+  {
+    "path": "Assets/Scenes/Ruins.unity",
+    "sha256": "AB88F9164649EB1C07F6216B607BDE7B1AA7A465E2FCA625DE0638727ACA5E35"
+  },
+  {
+    "path": "Assets/Scenes/Ruins.unity.meta",
+    "sha256": "71BD0E68CE9B34EF682661D60BCD36605007FE6FFE66D8FD09D1A56542A66594"
+  },
+  {
+    "path": "Assets/Scenes/Bootstrap.unity",
+    "sha256": "C5E5CBACB10DA5B087420D64CA42761C2822627EFF5C160ADECE1E04DE4C9DED"
+  },
+  {
+    "path": "Assets/Prefabs/Player/PlayerCamera.prefab",
+    "sha256": "7456EE6888DE03CFFC87AA52AA31B800867507EAF82C05A91FF850C993F0FD64"
+  },
+  {
+    "path": "Assets/Prefabs/Player/PlayerCamera.prefab.meta",
+    "sha256": "00EF61A4E3B2C53252818DAA239D0DA2BFE0B00C06AF9DACB14824B4AD80B5ED"
+  },
+  {
+    "path": "Assets/Scenes/Shelter/Global Volume Profile.asset",
+    "sha256": "92BD722219978A1A68056ECBB2D200A3B706312197C160AD1C757710B14FB1DD"
+  },
+  {
+    "path": "Assets/Art/Materials/Environment/ShelterNightSkybox.mat",
+    "sha256": "175DC252138EE95FBE84AB95A09F03256C25C0DAA4A045535AC4380789F8E688"
+  },
+  {
+    "path": "Assets/Scripts/Effects/MonoBehaviour/LightFlicker.cs",
+    "sha256": "FFCB0F069DE0BC1B147050CE18614AB8819B33B49E537DA7A5D813EEBF911004"
+  }
+]

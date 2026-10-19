@@ -1,0 +1,28 @@
+09I focused PlayMode测试稿说明（Docs草稿；当前运行结果见正式XML与FixtureFailureDiagnosis.txt）
+
+待部署文件：PlayerStealthVignetteTests.cs -> Assets/Tests/Enemy/PlayMode/PlayerStealthVignetteTests.cs。
+6项UnityTest，global namespace，UNITY_EDITOR包围；无需新增helper/程序集。新meta由Unity部署时生成并保留。
+
+依赖
+现有MyPrecious.Enemy.PlayModeTests直接引用已含MyPrecious.Enemy、MyPrecious.Player、Health、Interaction、Unity.InputSystem、Unity.Cinemachine与TestAssemblies；本文件直接使用Volume/VolumeProfile/Vignette/Bloom，必须再加Unity.RenderPipelines.Core.Runtime及Unity.RenderPipelines.Universal.Runtime。生产Enemy程序集亦需两项，已只读确认root当前生产asmdef已加。
+测试通过AssetDatabase加载Assets/Prefabs/Player/Player.prefab，保留真实Controller/Health/InputReader/胶囊；只克隆config与InputActionAsset，运行时groundLayers=0、planeZ=0、伤害间隔0，刚体kinematic隔离掉落。没有GameBootstrap或GameFlow依赖。
+相机采用合法最小绑定：同scene的PlayerCameraTargetBinder、启用CinemachineCamera+Confiner3D，以及独立静态trigger BoxCollider CameraBounds。先接齐后激活，并断言ValidateBounds、LastBoundsError和Follow；没有OutputCamera/Brain或截图，因此不宣称实景PP输出已验证。
+效果GO按场景契约放单一global Volume、priority100、weight0、sharedProfile=null，再挂PlayerStealthVignette。组件按当前公开cameraBinder/intensity/smoothness/transitionSeconds契约使用。
+
+覆盖
+1. 草内站立/草外蹲伏不触发；真实进入、站起、离开分别观察0..1中间weight与单调渐变。默认.22/.45/.2被读回；仅此例将transitionSeconds设.4给中间帧采样余量。
+2. 两个真实Cover重叠，禁用一个仍保持；开关背包且C保持时不掉效果；最后Cover禁用后正常渐退。
+3. 真实玩家场景锁和health.TakeDamage致死，单次LateUpdate立即清零；解锁和新轮次能再次进入。
+4. Bind(null)、禁用Binder（仍保留player引用）、未prepared替换玩家均立即清零；效果OnDisable同步清零，再启用可恢复。
+5. 将玩家根移入临时additive scene，保留Binder引用，同帧单次LateUpdate清零；随后先解绑再移回/重绑，避免故意向下帧Binder留下错误引用。临时scene由TearDown卸载。
+6. 三次enable/disable复用同一profile/唯一Vignette/唯一Volume；销毁组件后profile与Vignette均真正销毁，Volume无内部profile残留；另一个Volume的共享Profile、Bloom、Vignette、weight/priority不被修改。
+
+隔离与边界
+仅在状态改变时一次API设真实蹲姿；排队C经真实InputReader维持，不逐帧强制Player状态。临时禁用已有键盘、建立测试键盘/输入设置、ignorefocus/background；TearDown停用玩家后恢复原输入与background，销毁所有创建对象/资源。这里没有原生键鼠验收。
+正常过渡由真实LateUpdate推进；失效分支通过SendMessage("LateUpdate")同步调用一次真实表现入口，验证不依赖渐退等待。OnDisable直接断言同步清零。无修改生产state/计时或反射字段。
+正式Ruins的OutputCamera PP开关/Mask、baseline三参数与PC Sample默认Volume兼容、原灯光/浮尘、UI和中心可读性、正式死亡/撤离回Shelter及重进仍应由主程实景验收；这6项不冒称覆盖完整GameFlow/屏幕视觉。
+
+离线编译
+使用当前已导入Library/ScriptAssemblies和Unity6000.2.12f1自带Roslyn，仅将单文件编译输出到本目录OfflineCompile。ExitCode=0；Compiler.log仅有Unity源码生成器USG0001信息（未提供AdditionalFile），没有C#编译错误。Compile.rsp留存依赖来源。未调用Unity、Refresh、Play或TestRunner，故不是6项PASS证据。
+
+输入同步修订：首轮4/6、仅诊断两项复跑2/2已留证，确切首因未定。当前稿保留root的Describe，SetCrouching已改为队列后等待自然frame与真实reader确认再一次设姿；删除手动InputSystem.Update。站起渐退在等待松C之前记录起点，全部产品断言保留。详见../FixtureFailureDiagnosis.txt；待root按原6项组验证的结果须以新XML记录，不以离线编译替代。

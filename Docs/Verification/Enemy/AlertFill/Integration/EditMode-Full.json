@@ -1,0 +1,353 @@
+{
+  "result": {
+    "success": true,
+    "message": "Test job status retrieved.",
+    "error": null,
+    "data": {
+      "job_id": "0bce194ab728413fba3d32979d5b6a04",
+      "status": "succeeded",
+      "mode": "EditMode",
+      "started_unix_ms": 1792388330816,
+      "finished_unix_ms": 1792388334105,
+      "last_update_unix_ms": 1792388334105,
+      "progress": {
+        "completed": 34,
+        "total": 34,
+        "current_test_full_name": null,
+        "current_test_started_unix_ms": 1792388333971,
+        "last_finished_test_full_name": "DroneVisionGeometryTests.YawHeadingRotatesActualRangeAndKeepsWallClippingAligned(90.0f)",
+        "last_finished_unix_ms": 1792388333973,
+        "stuck_suspected": false,
+        "editor_is_focused": false,
+        "run_in_background": null,
+        "focus_nudge_attempts": null,
+        "focus_nudge_limit": null,
+        "focus_nudge_status": null,
+        "blocked_reason": null,
+        "failures_so_far": [],
+        "failures_capped": false
+      },
+      "error": null,
+      "result": {
+        "mode": "EditMode",
+        "summary": {
+          "total": 34,
+          "passed": 34,
+          "failed": 0,
+          "skipped": 0,
+          "durationSeconds": 0.3101758,
+          "resultState": "Passed"
+        },
+        "results": [
+          {
+            "name": "AnyEnabledBodyColliderCanOverlapButTriggersAndInactiveChildrenCannotHide",
+            "fullName": "CoverAreaTests.AnyEnabledBodyColliderCanOverlapButTriggersAndInactiveChildrenCannotHide",
+            "state": "Passed",
+            "durationSeconds": 0.0188386,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "DisabledColliderAndInactiveCoverStopHidingWithoutAnExitCallback",
+            "fullName": "CoverAreaTests.DisabledColliderAndInactiveCoverStopHidingWithoutAnExitCallback",
+            "state": "Passed",
+            "durationSeconds": 0.0007476,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden(0)",
+            "fullName": "CoverAreaTests.DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden(0)",
+            "state": "Passed",
+            "durationSeconds": 0.0009308,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden(1)",
+            "fullName": "CoverAreaTests.DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden(1)",
+            "state": "Passed",
+            "durationSeconds": 0.0003213,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden(2)",
+            "fullName": "CoverAreaTests.DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden(2)",
+            "state": "Passed",
+            "durationSeconds": 0.0007323,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden(3)",
+            "fullName": "CoverAreaTests.DisabledInactiveDeadOrTransitioningPlayerIsNeverHidden(3)",
+            "state": "Passed",
+            "durationSeconds": 0.0005941,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "LeavingOneOverlappingCoverKeepsTheOtherUntilItIsDisabledOrDestroyed",
+            "fullName": "CoverAreaTests.LeavingOneOverlappingCoverKeepsTheOtherUntilItIsDisabledOrDestroyed",
+            "state": "Passed",
+            "durationSeconds": 0.0009506,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "MovingOutsideAndBackUsesCurrentShapesWithoutWaitingForTriggerCallbacks",
+            "fullName": "CoverAreaTests.MovingOutsideAndBackUsesCurrentShapesWithoutWaitingForTriggerCallbacks",
+            "state": "Passed",
+            "durationSeconds": 0.0005499,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "OnlyCrouchingInsideCoverIsHiddenAndOpenBackpackKeepsTheRule",
+            "fullName": "CoverAreaTests.OnlyCrouchingInsideCoverIsHiddenAndOpenBackpackKeepsTheRule",
+            "state": "Passed",
+            "durationSeconds": 0.000574,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "RotatedVolumeUsesItsBoxShapeAndDepthInsteadOfAnAxisAlignedBoundsCheck",
+            "fullName": "CoverAreaTests.RotatedVolumeUsesItsBoxShapeAndDepthInsteadOfAnAxisAlignedBoundsCheck",
+            "state": "Passed",
+            "durationSeconds": 0.001005,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "RuntimeStaticResetRestoresExistingActiveCoversWithoutKeepingDestroyedOnes",
+            "fullName": "CoverAreaTests.RuntimeStaticResetRestoresExistingActiveCoversWithoutKeepingDestroyedOnes",
+            "state": "Passed",
+            "durationSeconds": 0.0005144,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "UnpreparedNullAndDestroyedPlayersHaveNoRetainedHiddenState",
+            "fullName": "CoverAreaTests.UnpreparedNullAndDestroyedPlayersHaveNoRetainedHiddenState",
+            "state": "Passed",
+            "durationSeconds": 0.000541,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "AThinSolidWallDoesNotTurnNearContactIntoAnExplosion",
+            "fullName": "DroneRoundTests.AThinSolidWallDoesNotTurnNearContactIntoAnExplosion",
+            "state": "Passed",
+            "durationSeconds": 0.0087932,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "DamageObserverCannotReenterContactOrAdvanceRoundAndDistantApiCallDoesNothing",
+            "fullName": "DroneRoundTests.DamageObserverCannotReenterContactOrAdvanceRoundAndDistantApiCallDoesNothing",
+            "state": "Passed",
+            "durationSeconds": 0.0030907,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ExplosionSurvivesSameRoundAndReenableButANewRoundRestoresBodyAndVisual",
+            "fullName": "DroneRoundTests.ExplosionSurvivesSameRoundAndReenableButANewRoundRestoresBodyAndVisual",
+            "state": "Passed",
+            "durationSeconds": 0.0022038,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "NonPositiveSameAndOlderRoundsCannotResetAMovedLivingDrone",
+            "fullName": "DroneRoundTests.NonPositiveSameAndOlderRoundsCannotResetAMovedLivingDrone",
+            "state": "Passed",
+            "durationSeconds": 0.0005756,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ClearAndDisableReenableDoNotRetainFill",
+            "fullName": "DroneVisionAlertFillTests.ClearAndDisableReenableDoNotRetainFill",
+            "state": "Passed",
+            "durationSeconds": 0.0090918,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "OrdinaryTintClearsFillAndKeepsRequestedColor",
+            "fullName": "DroneVisionAlertFillTests.OrdinaryTintClearsFillAndKeepsRequestedColor",
+            "state": "Passed",
+            "durationSeconds": 0.0030149,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ProgressClampsWithoutReplacingGeometry(-1.0f,0.0f)",
+            "fullName": "DroneVisionAlertFillTests.ProgressClampsWithoutReplacingGeometry(-1.0f,0.0f)",
+            "state": "Passed",
+            "durationSeconds": 0.0043624,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ProgressClampsWithoutReplacingGeometry(0.5f,0.5f)",
+            "fullName": "DroneVisionAlertFillTests.ProgressClampsWithoutReplacingGeometry(0.5f,0.5f)",
+            "state": "Passed",
+            "durationSeconds": 0.0009269,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ProgressClampsWithoutReplacingGeometry(2.0f,1.0f)",
+            "fullName": "DroneVisionAlertFillTests.ProgressClampsWithoutReplacingGeometry(2.0f,1.0f)",
+            "state": "Passed",
+            "durationSeconds": 0.0008524,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "SharedMaterialInstancesFillAndRetreatIndependently",
+            "fullName": "DroneVisionAlertFillTests.SharedMaterialInstancesFillAndRetreatIndependently",
+            "state": "Passed",
+            "durationSeconds": 0.0030968,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "WallClippedFanHasNormalizedRadialUvsAndOneSurface",
+            "fullName": "DroneVisionAlertFillTests.WallClippedFanHasNormalizedRadialUvsAndOneSurface",
+            "state": "Passed",
+            "durationSeconds": 0.0053143,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ColliderControlsAngleRadiusAndThicknessAndStaysLegal",
+            "fullName": "DroneVisionGeometryTests.ColliderControlsAngleRadiusAndThicknessAndStaysLegal",
+            "state": "Passed",
+            "durationSeconds": 0.0021846,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "DifferentDepthNarrowWallClipsBothDetectionAndDisplayAcrossFullThickness",
+            "fullName": "DroneVisionGeometryTests.DifferentDepthNarrowWallClipsBothDetectionAndDisplayAcrossFullThickness",
+            "state": "Passed",
+            "durationSeconds": 0.003007,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "DisableClearsDetectionAndReenableRebuildsTransientMeshes",
+            "fullName": "DroneVisionGeometryTests.DisableClearsDetectionAndReenableRebuildsTransientMeshes",
+            "state": "Passed",
+            "durationSeconds": 0.0010627,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "FacingMirrorsHorizontalDirectionAndKeepsUpwardPitch",
+            "fullName": "DroneVisionGeometryTests.FacingMirrorsHorizontalDirectionAndKeepsUpwardPitch",
+            "state": "Passed",
+            "durationSeconds": 0.0010227,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "MainBodyCenterDecidesRangeAndBackpackDoesNotHidePlayer",
+            "fullName": "DroneVisionGeometryTests.MainBodyCenterDecidesRangeAndBackpackDoesNotHidePlayer",
+            "state": "Passed",
+            "durationSeconds": 0.0016727,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "ManualColliderToggleSynchronizesDetectionAndDisplayWithoutRebuilding",
+            "fullName": "DroneVisionGeometryTests.ManualColliderToggleSynchronizesDetectionAndDisplayWithoutRebuilding",
+            "state": "Passed",
+            "durationSeconds": 0.0016016,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "OriginInsideWallCannotDetectThroughIt",
+            "fullName": "DroneVisionGeometryTests.OriginInsideWallCannotDetectThroughIt",
+            "state": "Passed",
+            "durationSeconds": 0.001104,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "SolidWallBlocksPlayerAndClipsVisibleMesh",
+            "fullName": "DroneVisionGeometryTests.SolidWallBlocksPlayerAndClipsVisibleMesh",
+            "state": "Passed",
+            "durationSeconds": 0.0017153,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "WallAtAnotherDepthOfOriginBlocksTheWholeVisibleFan",
+            "fullName": "DroneVisionGeometryTests.WallAtAnotherDepthOfOriginBlocksTheWholeVisibleFan",
+            "state": "Passed",
+            "durationSeconds": 0.0011258,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "YawHeadingRotatesActualRangeAndKeepsWallClippingAligned(45.0f)",
+            "fullName": "DroneVisionGeometryTests.YawHeadingRotatesActualRangeAndKeepsWallClippingAligned(45.0f)",
+            "state": "Passed",
+            "durationSeconds": 0.0031426,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          },
+          {
+            "name": "YawHeadingRotatesActualRangeAndKeepsWallClippingAligned(90.0f)",
+            "fullName": "DroneVisionGeometryTests.YawHeadingRotatesActualRangeAndKeepsWallClippingAligned(90.0f)",
+            "state": "Passed",
+            "durationSeconds": 0.0014653,
+            "message": null,
+            "stackTrace": null,
+            "output": ""
+          }
+        ]
+      }
+    },
+    "hint": null
+  }
+}

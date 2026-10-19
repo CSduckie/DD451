@@ -1,0 +1,20 @@
+09H TurningVision final file audit
+Capture UTC: 2026-10-19T08:10:08.8308797Z through 2026-10-19T08:10:08.9750317Z
+File-only audit. No Unity calls, Assets writes, or test reruns.
+
+Baseline scope: 19 existing files from BeforeHashes.json; LatestUserSceneHashes.json has scene priority. Original manifests are unchanged.
+19/19 existing meta files match retained Before copies. 17/19 existing file hashes match the manifests. The two manifest differences are expected DroneController.cs and the explicitly recorded later Shelter save. With the latest preserved Shelter copy as the current protection reference, all 18 protected existing files other than the intentionally changed Controller match. Unexpected differences: 0.
+
+Controller SHA256: CEFDBA4C3422B22C1C45DFFE7DDCF70EFEFF599C2EDB3C3B3BD4C786375B8588
+Reviewed change: freeze smooth yaw updates while Alert, and clear turnVelocity when entering Alert. Perception continues to run. New test file: E:\DD451\Assets\Tests\Enemy\PlayMode\DroneTurningVisionTests.cs
+New test SHA256: EB07D1752E849AE1E04445201EE0BFCADCC960174599763D72FEC12C7E7D781E
+New test GUID: 35fc528bc09b1b948b205b653e304f7b
+Drone/Player prefabs, DroneConfig.asset, 02C PlayerController/PlayerConfigSO/PlayerFallState, all other listed production files and existing tests match their 09H baseline. Ruins, Bootstrap, and EnemyTest match the latest applicable manifest.
+
+Shelter latest SHA256: D1DD18A573846182F45BDD2E8A802A6F0FFC8E044D3C1ED3F9EE1B71A7CAF46F
+Current Shelter equals Before/LatestPreserved-20261019T080721120.unity byte-for-byte by SHA256. Parent reports clean Shelter at about 08:06, then an unintended brief enter/exit Play due to an OpenScene namespace typo; dirty=true after stopping. Parent saved a copy and original at 08:07:21 before opening EnemyTest. This is a known save during the session; the cause of dirty state is not established and is not attributed to an external editor.
+Initial 08:07:03 snapshot is retained in InitialCapturedHashes-20261019T080703.json. It observed the 08:06:18 Shelter SHA256 19AE02119BB1A0F75F22E21D870F98BA1878D7C51BD1CF113C35E2286C2BA9E5. No corresponding full byte copy was found under TurningVision/Before, so a direct line diff against that intermediate version is unavailable.
+Against the available 08:01:22 copy FF7FDB..., only five YAML values differ: object 1834287629 active 0->1; its Light enabled 0->1, color (0,.23602962,.41509432,1)->(0,0,0,1), intensity .1->7.29; Transform for GameObject 1380149357730246 local Y .41->-.09. These cannot be assigned specifically to the 08:06 or 08:07 save. No scene file was changed by this audit.
+
+PlayMode coverage: 44 distinct passed test cases assembled from two saved result files, not one 44-case run. AfterFix-9-First.xml contributes 8 passed; Related-36.xml contributes 36 passed; exact fullname sets have no overlap. Across the raw files there are 45 executions, including one historical failure of MidTurnDiscoveryStillRespondsToRealLossAndCoverTimeout subsequently passed in Related-36.xml. Latest per-case results are all Passed. Per-case source mapping, source hashes/times, and the superseded failure are in PlayMode-FinalCoverage.json.
+EditMode: EditMode-4.json reports 4/4 passed; its source hash, job ID, timestamps, and individual names are included in the same coverage JSON. These statements describe retained test evidence and do not claim a rerun against any later rendering or scene edits.

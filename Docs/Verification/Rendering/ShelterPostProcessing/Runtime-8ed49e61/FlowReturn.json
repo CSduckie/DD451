@@ -1,0 +1,12 @@
+{
+  "status": "PASS_FORMAL_BOOTSTRAP_SHELTER_RUINS_SHELTER_API_ASSISTED",
+  "playerId": -3709458,
+  "currentRound": 1,
+  "settledRound": 1,
+  "playerRound": 1,
+  "health": 2,
+  "loadedScenes": [
+    "Assets/Scenes/Shelter.unity"
+  ],
+  "visualAcceptance": "Pending actual1920x1080 image review and target-camera stack comparison; does not claim physical keyboard/mouse validation."
+}

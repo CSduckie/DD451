@@ -1,0 +1,171 @@
+{
+  "method": "Runtime API positioning beside existing drone; natural scene frozen for isolation comparison.",
+  "stage": "Exploring",
+  "round": 1,
+  "player": -4310918,
+  "health": 2,
+  "light": -4310944,
+  "drone": -4316078,
+  "dronePosition": "(43.44, 3.00, -0.38)",
+  "lightPosition": "(41.44, 1.10, -2.00)",
+  "distance": 3.19698715,
+  "range": 4.5,
+  "droneRendererMasks": [
+    {
+      "name": "Drone_Body",
+      "mask": 1
+    },
+    {
+      "name": "Camera_Gimbal",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Camera_Lens_Barrel",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Camera_Lens_Glass",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Gimbal_Axle",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Antenna",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Arm_FL",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Arm_FR",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Arm_RL",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Arm_RR",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Battery",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Battery_Straps",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Belly_Mount_Plate",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Expansion_Rails",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Gimbal_Bracket",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Motor_Collar_FL",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Motor_Collar_FR",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Motor_Collar_RL",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Motor_Collar_RR",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Motor_FL",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Motor_FR",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Motor_RL",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Motor_RR",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Searchlight_Housing",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Searchlight_Lens",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Searchlight_Reflector",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Signal_Base",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Upper_Armor",
+      "mask": 1
+    },
+    {
+      "name": "Landing_Gear_L",
+      "mask": 1
+    },
+    {
+      "name": "Landing_Gear_R",
+      "mask": 1
+    },
+    {
+      "name": "Propeller_FL",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Propeller_Hub_FL",
+      "mask": 1
+    },
+    {
+      "name": "Propeller_FR",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Propeller_Hub_FR",
+      "mask": 1
+    },
+    {
+      "name": "Propeller_RL",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Propeller_Hub_RL",
+      "mask": 1
+    },
+    {
+      "name": "Propeller_RR",
+      "mask": 1
+    },
+    {
+      "name": "Drone_Propeller_Hub_RR",
+      "mask": 1
+    },
+    {
+      "name": "Vision",
+      "mask": 1
+    }
+  ]
+}

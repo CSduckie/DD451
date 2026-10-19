@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-18",
+  "scope": "Task007 source static checks only; no Unity compilation, tests or gameplay",
+  "csharpFiles": 10,
+  "asmdefFiles": 4,
+  "namespaceDeclarations": 0,
+  "trailingWhitespaceLines": 0,
+  "invalidAsmdefs": [],
+  "missingLootDependencies": [],
+  "generatedProductionScenes": [],
+  "testAttributes": 16,
+  "sourceHashes": [
+    {
+      "file": "E:\\DD451\\Assets\\Scripts\\GameFlow\\MonoBehaviour\\GameFlowHUD.cs",
+      "sha256": "E430481D146E43846C767C18207638A6F5876CD13797062BB599FAD5E6DB3D54"
+    },
+    {
+      "file": "E:\\DD451\\Assets\\Scripts\\GameFlow\\MonoBehaviour\\GameFlowInteractable.cs",
+      "sha256": "4C8299AF84C7B66CC616888C8591ECEE7067F19745E7F7A23EA3DF3B1C24E252"
+    },
+    {
+      "file": "E:\\DD451\\Assets\\Scripts\\GameFlow\\MonoBehaviour\\GameFlowManager.cs",
+      "sha256": "B0D2EC22A4BFE7CADAE2D46199A622254B593DD4EE103781487EBC8BC344434C"
+    },
+    {
+      "file": "E:\\DD451\\Assets\\Scripts\\GameFlow\\MonoBehaviour\\GameFlowSceneBindings.cs",
+      "sha256": "E772B51A90E094DD4D47058F86C7ECD781B346F608331F8BD4A6CD173C60C253"
+    },
+    {
+      "file": "E:\\DD451\\Assets\\Scripts\\GameFlow\\RuntimeData\\GameFlowStage.cs",
+      "sha256": "C83264E09897C06F54208B5553AE7D345950D449C5CD9936B12056021989E638"
+    },
+    {
+      "file": "E:\\DD451\\Assets\\Tests\\GameFlow\\EditMode\\GameFlowSettlementTests.cs",
+      "sha256": "DCB4EF6D73476EA30ED33B1B94F05F7744BE3F5F9E7B6C3C1E5C9FBD0FF10343"
+    },
+    {
+      "file": "E:\\DD451\\Assets\\Tests\\GameFlow\\EditMode\\PlayerFlowEntryTests.cs",
+      "sha256": "A50FB589B9635E29A15A6A712A3958969EAA2EEBEBA431883703615164EB8E37"
+    },
+    {
+      "file": "E:\\DD451\\Assets\\Tests\\GameFlow\\Editor\\MinimumLoopSceneBuilder.cs",
+      "sha256": "C88894CAD3786C2612F62CC67A35701D0523D5A553AFF14A4B2422338F3D3D9E"
+    },
+    {
+      "file": "E:\\DD451\\Assets\\Tests\\GameFlow\\PlayMode\\MinimumLoopSceneTests.cs",
+      "sha256": "2B5C5EA2B8BFC1A4C780884BCB6871194DBF5EA62C0DF1D02A1FD34B22F8AF76"
+    },
+    {
+      "file": "E:\\DD451\\Assets\\Tests\\GameFlow\\PlayMode\\PlayerSceneTransitionTests.cs",
+      "sha256": "8D112EB6F70AC46E2C98B75BBEB953CCB4922291B2F7ECAD0BA681A8B1F50981"
+    }
+  ],
+  "modifiedPlayerHashes": [
+    {
+      "file": "Assets/Scripts/Player/MonoBehaviour/PlayerController.cs",
+      "sha256": "F4F65D95F40215C644BD4E134EB3514857822CE2CCE73FD9FD6788643DEEF2CF"
+    },
+    {
+      "file": "Assets/Scripts/Player/MonoBehaviour/PlayerHealth.cs",
+      "sha256": "BA4393EF8D0047B60D89DE67C84A9C20739974DCC6A550533AA80C20DFDFC7E7"
+    }
+  ]
+}

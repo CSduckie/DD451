@@ -1,0 +1,80 @@
+09I 草丛潜行暗角：玩家/相机/流程接线只读审计
+日期：2026-10-19；工程：E:/DD451。
+范围：读 09I 派单、当前脚本/场景/Prefab/asmdef、本地 URP 源码、07F/玩家补光/后处理交接。没有 Unity 调用，没有 Assets 写入。
+
+建议的最小接入
+
+只新增一个 Enemy/Stealth 下的 PlayerStealthVignette，放在 Ruins 现有 ScenePresentation 内，序列化引用当前 PlayerCameraTargetBinder 和专用 Volume。EnemyTest 如需验收，同样指向它现有 Binder。无需改 PlayerController、PlayerCameraTargetBinder、GameFlowManager 或 GameFlowSceneBindings，也无需向 Player 程序集引入 Enemy 依赖。
+每次 LateUpdate 只读已序列化的 cameraBinder.player；当引用变化时才解绑旧 PlayerHealth.Died、绑定新玩家并清零过渡量。不是 FindObjects/GetRoots/Camera.main 每帧搜索。正式流程将玩家移入对应场景再绑定，允许检查 player.gameObject.scene == gameObject.scene 以拒绝旧场景玩家。
+OnEnable 先将自有 Volume.weight 清零，再接当前 Binder；OnDisable/OnDestroy 清零且解除 Died 订阅。Binder 不存在、被禁用、player 为 null/失效/未准备/死亡/处于场景锁时，立即清零；普通站起/离草丛才走约 0.2 秒渐退。死亡回调只清视觉，不调用恢复/伤害/流程状态 API。每帧在上述生命周期检查后，唯一隐藏依据仍是 CoverArea.IsHidden(player)。
+若不希望新增健康事件订阅，LateUpdate 根据 IsDead 清零也能在常规 FixedUpdate/Update 伤害之后、渲染之前生效；但订阅已有 Died 可以让死亡同步回调内的视觉清理确定完成，且不会增加公共事件框架。
+不要在组件自身的 Bind(null) 中反向调用 cameraBinder.Bind(null)：本组件只解除自己的玩家引用/事件，不能控制跟随相机或正式流程。
+
+正式流程的准确顺序与依据
+
+Assets/Scripts/GameFlow/MonoBehaviour/GameFlowSceneBindings.cs:
+- 5、25-29：执行顺序 -200，Awake 先关闭 presentationRoot；编辑态相机预览不代表运行中已接线。
+- 45-49：现有 Validate 要求表现根恰好一套 Camera/AudioListener/EventSystem；不要新增 Camera。
+- 66-74：Activate 要求玩家已在目标场景。
+- 98：先写 cameraBinder.player。
+- 115-120：先启用环境/边界，cameraBinder.Bind(player)，然后启用 presentationRoot；新组件 OnEnable 可以直接读取这一玩家。
+- 205-209：SuspendBusiness 只关会话和业务根，并不立即禁用表现根。
+- 217-223：Deactivate 先 SuspendBusiness，再 cameraBinder.Bind(null)，再关闭 presentationRoot，最后停环境。因此暗角组件随表现根 OnDisable 清理天然覆盖正常撤离/卸载。
+
+Assets/Scripts/Player/MonoBehaviour/PlayerCameraTargetBinder.cs:
+- 5、8、23-32：执行顺序 -100；公开 player 是流程写入点；OnEnable 调 Bind(player)，Bind 先私有 Unbind，再写目标。
+- 79-83：已有 Update 维护跟随引用；新暗角组件用 LateUpdate 可读取该帧完成后的 Binder 状态。
+- 85-119：未加载/跨场景/无有效边界/未启用会撤销实际跟随。
+- 135-144：建立跟随并订阅 Teleported。
+- 163-185：Unbind 解除 Teleported/Follow，OnDisable 调 Unbind。注意私有 Unbind 不会清公开 player 字段；因此暗角组件不能仅判断 binder.player 非空，还需 binder.isActiveAndEnabled 和玩家同场景/有效状态。对外的 Bind(null) 会清该字段。
+
+Assets/Scripts/GameFlow/MonoBehaviour/GameFlowManager.cs:
+- 72-88：正式流程已订阅 PlayerHealth.Died，并在真实探索死亡时进入 DeathReturning。
+- 137-153：StartTransition 同步 SetSceneTransitionBlocked(true)，随后 SuspendBusiness；旧相机仍可能显示加载中的旧图，因此暗角不能等最终 OnDisable 才清除。
+- 156-161：死亡转场显式等一帧，避免在健康事件通知中清算/复活；视觉 Died 回调可以只清自己的效果。
+- 221-229：仅启动时实例化一次正式玩家，随后沿用同一玩家。
+- 230-237：先 Deactivate 旧图，再切活动场景并 MoveGameObjectToScene 玩家。
+- 243-258：初始准备/新轮/死亡恢复/普通返回分别调用既有玩家 API；无需为暗角另加重生逻辑。
+- 269-277：激活目标接线后再卸载旧图。
+- 282-290：恢复业务、启动敌人后才解除场景锁；新场景组件启用期间应保持 weight=0，直到真实隐藏条件成立。
+
+玩家死亡、背包及隐藏判定
+
+Assets/Scripts/Player/MonoBehaviour/PlayerHealth.cs:84-94 先设置 IsDead、执行 Controller.HandleDeath，再发送健康/死亡通知；110-119 先 HealthChanged 再 Died。
+Assets/Scripts/Player/MonoBehaviour/PlayerController.cs:44-56 提供 IsPrepared/IsDead/IsCrouching/IsSceneTransitionBlocked；CanAct(52) 会因背包打开变 false，不能作为暗角触发条件。WantsCrouch(56) 在背包中保留真实 IsCrouching。
+PlayerController.cs:156-161 打开背包只清输入请求，不直接站起；171-182 场景锁是独立状态；213-235 死亡恢复/下轮准备不由视觉负责；268-275 定位后更新实际姿态并通知 Teleported。
+Assets/Scripts/Enemy/Stealth/MonoBehaviour/CoverArea.cs:54-57 已拒绝 null/禁用/未准备/死亡/场景锁/非蹲伏玩家；59-83 对注册的有效 Cover 使用当前真实 3D Collider ComputePenetration，任一重叠就返回 true。没有 CanAct/背包过滤；重叠掩体无需新计数器或 Trigger 进出布尔值。不要复制一份隐藏逻辑。
+CoverArea.cs:11-24 的静态清理及一次性 AfterSceneLoad 恢复是既有行为；新组件不应再做全场景发现。
+
+EnemyTest 的实际引用
+
+Assets/Tests/Enemy/PlayMode/Runtime/EnemyTestDriver.cs:7-8 是真实 player/Binder；27 Start 初始化；79-84 先 ResetForExploration 再 cameraBinder.Bind(player)。196-202 的 OnDisable 仅清语言/背包/搜刮，并没有相机解绑；不要依赖 Driver.OnDisable 清暗角，组件本身和 Binder/玩家有效性必须负责。
+Assets/Scenes/Tests/Enemy/EnemyTest.unity:1971-1972 的 player fileID=25829、cameraBinder=1071658351；2795-2798 已将 PlayerCamera Prefab 的 Binder.player 覆盖为同一玩家；2811-2822 指向共享 PlayerCamera Prefab/Binder。该场景没有 GameFlowSceneBindings，直接读 Binder 同时覆盖独立测试与正式流程，不必修改 Driver。
+EnemyTest.unity:2232、2499 的 Canvas m_RenderMode=0（Screen Space Overlay）；后处理不会直接覆盖这些 UI 像素。仍需实际截图验证可读性。
+
+相机与程序集
+
+Assets/Prefabs/Player/PlayerCamera.prefab:17 是 OutputCamera；112 为 Base camera；115-120 为 Volume mask bits=1（Default）及 renderPostProcessing=0；150 为现有 CinemachineBrain；306、338-343 为 PlayerCamera 根及 Binder。
+Assets/Scenes/Ruins.unity:280 指向本图 Binder(955271489)，2574 使用共享相机 GUID 3cf4a390a92e98447ada0654fb991c91；当前无 PP/Volume Mask 实例覆盖，因此继承 PP=false、mask=1。
+EnemyTest.unity:2811 同样使用该 Prefab，也没有 PP/Mask 覆盖。
+Assets/Scenes/Shelter.unity:3976-3979 已有该 OutputCamera m_RenderPostProcessing=1 实例覆盖；5340 是本图 Binder。不能为了 Ruins 暗角修改共享 Prefab 或覆盖 Shelter 当前表现。
+只在 Ruins/必要的 EnemyTest 实例打开现有 OutputCamera PP；专用 Volume 选该相机可见的层。保留其他相机/场景/Mask，单独核实开启 PP 前后的正常画面。
+
+Assets/Scripts/Enemy/MyPrecious.Enemy.asmdef:4 已引用 MyPrecious.Player、Health、StateMachine/Contracts；新增 Volume/VolumeProfile/Vignette 直接类型需要加入 Unity.RenderPipelines.Core.Runtime 与 Unity.RenderPipelines.Universal.Runtime。
+Assets/Scripts/GameFlow/MyPrecious.GameFlow.asmdef:4 已引用 Enemy 与 Player；Assets/Scripts/Player/MyPrecious.Player.asmdef:4 没有 Enemy。把 Enemy 暗角 API 放进 PlayerCameraTargetBinder 会形成 Player->Enemy->Player 循环，应避免。
+Assets/Tests/Enemy/PlayMode/MyPrecious.Enemy.PlayModeTests.asmdef:4 当前也没有两个 RenderPipelines 引用；只有测试直接使用 Volume/Vignette 类型时才为该测试程序集补这两个引用。不需要把 GameFlow 加到 Enemy 测试程序集，正式转场验收可继续由主程普通 Play 完成。
+本地包准确程序集名已核实：Library/PackageCache/com.unity.render-pipelines.core@8d70e2c352d2/Runtime/Unity.RenderPipelines.Core.Runtime.asmdef:2；com.unity.render-pipelines.universal@6c02063a0a76/Runtime/Unity.RenderPipelines.Universal.Runtime.asmdef:2。
+若组件只读 binder.player/isActiveAndEnabled，就不需新增 Unity.Cinemachine 直接引用；若读取 binder.followCamera 的 Cinemachine 类型成员，则需额外引用，但此接法没有必要。
+
+隔离及当前值提醒
+
+建议预先放置一个专用 Volume/仅含 Vignette 的独立 Profile，使用该 Volume 自己的 weight 做 0..1 过渡；初始化时一次取得 volume.profile 的私有副本，缓存 Vignette，只修改这一副本的 intensity/smoothness 等本组件参数。不要写 sharedProfile，不要复位整个相机 stack，也不要每帧创建 GameObject/Volume/Profile。
+本地 Volume.cs:54-74 明确 sharedProfile 会修改项目资源，而 profile 生成专属副本；77-99 是实际惰性克隆实现。自建或克隆的运行时 Profile/组件需明确所有权并在销毁时释放，禁用再启用则复用同一运行时实例；禁用清 weight 不应销毁后每帧重建。
+DefaultVolumeProfile.asset 当前 Tonemapping mode=0（212-217）、Vignette intensity=0（878-889），不是旧交接的 Neutral/.2。当前 Shelter Global Volume Profile 还有后续用户值：ColorAdjustments.colorFilter=(.7578583,.7578583,.7578583,1)，Bloom.scatter=.571、tint=(.3018868,.2748309,.2748309,1)。本任务不要按旧交接写回白色滤镜/旧 Bloom。
+PlayerFillLight_Handoff 已确认补光在正式 Player.prefab 根下随玩家迁移，独立 Rendering Layers；新暗角不用修改 Player Prefab、Light、Renderer、普通 Layer 或 TagManager。
+
+最少关键验证建议
+
+1. 真实玩家+两个重叠 Cover：草外蹲伏/草内站立 weight=0；草内蹲伏渐入；跨重叠区不中断；背包开关不改变真实 IsHidden 或暗角目标；离开/站起渐退。
+2. 显示中通过真实 health.TakeDamage 致死，Died 后本组件立即清零；Bind(null)、禁用 Binder/组件/表现根、玩家销毁均清零且解绑；再次启用/绑定可重新进入，不新增 Volume/Camera/Profile 实例。
+3. 正式 Bootstrap->Shelter->Ruins->死亡回家->再次出发和正常撤离：旧效果在场景锁期间清除、Shelter 原 Volume 保留，Ruins 正常 PP 对照无意外调色。无需改敌人/玩家流程或重跑 Builder。

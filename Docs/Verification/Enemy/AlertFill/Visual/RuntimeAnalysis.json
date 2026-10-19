@@ -1,0 +1,16 @@
+{
+  "SampleFrames": 2220,
+  "LastSampleSeconds": "12.19963",
+  "ProgressErrorMax": 0.0,
+  "OtherProgressChangedSamples": 0,
+  "MeshIds": [
+    "-1896136"
+  ],
+  "ColliderIds": [
+    "-1893332"
+  ],
+  "CenterVerticalDirections": [
+    "0.000000"
+  ],
+  "StartRetreatZeroImagesIdentical": false
+}

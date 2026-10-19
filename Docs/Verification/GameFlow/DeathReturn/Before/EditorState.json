@@ -1,0 +1,18 @@
+{
+  "utc": "2026-10-19T08:41:14.1339812Z",
+  "scenes": [
+    {
+      "path": "Assets/Scenes/Ruins.unity",
+      "isDirty": false,
+      "isLoaded": true
+    }
+  ],
+  "play": false,
+  "changing": false,
+  "compiling": false,
+  "updating": false,
+  "prefabStage": false,
+  "timeScale": 1.0,
+  "background": false,
+  "graphics": "Direct3D11"
+}

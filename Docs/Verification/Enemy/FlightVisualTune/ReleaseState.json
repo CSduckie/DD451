@@ -1,0 +1,18 @@
+{
+  "success": true,
+  "message": "Code executed successfully.",
+  "data": {
+    "result": {
+      "utc": "2026-10-19T02:28:06.3460013Z",
+      "playing": false,
+      "compiling": false,
+      "updating": false,
+      "scene": "Assets/Scenes/Shelter.unity",
+      "dirty": true,
+      "sceneCount": 1,
+      "background": false,
+      "timeScale": 1
+    },
+    "compiler": "codedom"
+  }
+}

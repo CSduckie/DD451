@@ -1,0 +1,18 @@
+07F actual Game visual review — 2026-10-19
+Reviewer: root agent. All four images were opened and visually inspected during the ordinary Play run.
+Directory: OrdinaryPlay/Run-2a22615e/.
+Capture: actual ScreenCapture.CaptureScreenshot supersize1 Game framebuffer. PNG headers, Screen and formal output-camera metadata agree on1920x1080. No fabricated RenderTexture view.
+
+02-StorageAndInjuredReturn-CN-1920x1080.png
+PASS: carried doll in backpack, medkit in warehouse, EV7, warehouse20x24 and HP2. Existing Chinese storage/backpack layout is readable.
+
+06-DeathReturned-Storage-CN-1920x1080.png
+PASS: backpack empty, medkit retained at its storage placement, EV2,20x24, HP3. Chinese death-return feedback fits; no new message clipping/overlap observed.
+
+07-DeathReturned-Storage-EN-1920x1080.png
+PASS: same state in English. Death-return text and storage controls readable; no new message clipping/overlap observed. Existing language API used; Chinese restored afterwards.
+
+11-SameDollRecovered-Round3-1920x1080.png
+PASS: same doll recovered into backpack in Ruins, HP2 after natural enemy contact. Current scene geometry/camera presentation retained. Identity is proven by JSON, not inferred from pixels.
+
+Limits:1920 only per current A23. API-assisted ordinary Play; no native keyboard/mouse or physicalF10 claim. General darkness/current scene art was not changed by this task. Independent IntegrityAudit checks PNG dimensions and data consistency, while this file records root's separate pixel review.

@@ -1,0 +1,25 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"success\":true,\"message\":\"Code executed successfully.\",\"data\":{\"result\":{\"domainReloadDisabled\":true,\"options\":\"DisableDomainReload\",\"initial\":\"Chinese\",\"pressed\":\"English\",\"held\":\"English\",\"second\":\"Chinese\",\"managers\":1},\"compiler\":\"codedom\"}}"
+    }
+  ],
+  "structuredContent": {
+    "success": true,
+    "message": "Code executed successfully.",
+    "data": {
+      "result": {
+        "domainReloadDisabled": true,
+        "options": "DisableDomainReload",
+        "initial": "Chinese",
+        "pressed": "English",
+        "held": "English",
+        "second": "Chinese",
+        "managers": 1
+      },
+      "compiler": "codedom"
+    }
+  },
+  "isError": false
+}

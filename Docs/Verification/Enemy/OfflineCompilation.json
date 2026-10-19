@@ -1,0 +1,27 @@
+[
+  {
+    "assembly": "MyPrecious.Enemy",
+    "exitCode": 0,
+    "log": "info USG0001: Only allowed to have one file passed in with extension '.AdditionalFile.txt'"
+  },
+  {
+    "assembly": "MyPrecious.Enemy.TestSupport",
+    "exitCode": 0,
+    "log": "info USG0001: Only allowed to have one file passed in with extension '.AdditionalFile.txt'"
+  },
+  {
+    "assembly": "MyPrecious.Enemy.EditModeTests",
+    "exitCode": 0,
+    "log": "info USG0001: Only allowed to have one file passed in with extension '.AdditionalFile.txt'"
+  },
+  {
+    "assembly": "MyPrecious.Enemy.PlayModeTests",
+    "exitCode": 0,
+    "log": "info USG0001: Only allowed to have one file passed in with extension '.AdditionalFile.txt'"
+  },
+  {
+    "assembly": "MyPrecious.Enemy.Editor",
+    "exitCode": 0,
+    "log": "info USG0001: Only allowed to have one file passed in with extension '.AdditionalFile.txt'"
+  }
+]

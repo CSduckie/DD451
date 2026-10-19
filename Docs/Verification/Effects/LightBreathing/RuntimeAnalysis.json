@@ -1,0 +1,525 @@
+{
+  "status": "pass_for_recorded_runtime_properties",
+  "sources": {
+    "samples": "RuntimeSamples.tsv",
+    "checks": "RuntimeChecks.txt",
+    "observationCode": "RuntimeObservationCode.txt",
+    "samplesSha256": "f813262e8d98990017a903e439452d569de4841043f838afa1fd6d5b41b58f03"
+  },
+  "scope": "Runtime numeric/state evidence only; not visual acceptance or proof of unrecorded boundaries.",
+  "tolerance": 0.001,
+  "recordCount": 14984,
+  "sampledFrames": 7492,
+  "sampleWindowSeconds": [
+    0.0081,
+    33.9997
+  ],
+  "groups": [
+    {
+      "lamp": "灯光",
+      "phase": "defaults",
+      "windowSeconds": [
+        0.0081,
+        23.0005
+      ],
+      "total": 4974,
+      "bright": {
+        "count": 4679,
+        "min": 32.5,
+        "max": 50
+      },
+      "brightMovement": {
+        "risingPairs": 2179,
+        "fallingPairs": 2453,
+        "flatPairs": 35
+      },
+      "dark": {
+        "count": 227,
+        "min": 0,
+        "max": 0
+      },
+      "darkMovement": {
+        "risingPairs": 0,
+        "fallingPairs": 0,
+        "flatPairs": 216
+      },
+      "disabledOrInactive": {
+        "count": 68,
+        "min": 50,
+        "max": 50
+      },
+      "brightWithinExpectedRange": true,
+      "darkWithinExpectedRange": true,
+      "disabledRestores50": true,
+      "originalIntensityAlways50": true
+    },
+    {
+      "lamp": "灯光",
+      "phase": "fractionalDark",
+      "windowSeconds": [
+        23.005,
+        33.9997
+      ],
+      "total": 2518,
+      "bright": {
+        "count": 2423,
+        "min": 32.50002,
+        "max": 49.99999
+      },
+      "brightMovement": {
+        "risingPairs": 1119,
+        "fallingPairs": 1269,
+        "flatPairs": 30
+      },
+      "dark": {
+        "count": 95,
+        "min": 16.28908,
+        "max": 18.31078
+      },
+      "darkMovement": {
+        "risingPairs": 0,
+        "fallingPairs": 91,
+        "flatPairs": 0
+      },
+      "disabledOrInactive": {
+        "count": 0,
+        "min": null,
+        "max": null
+      },
+      "brightWithinExpectedRange": true,
+      "darkWithinExpectedRange": true,
+      "disabledRestores50": null,
+      "originalIntensityAlways50": true
+    },
+    {
+      "lamp": "灯光 (1)",
+      "phase": "defaults",
+      "windowSeconds": [
+        0.0081,
+        23.0005
+      ],
+      "total": 4974,
+      "bright": {
+        "count": 4766,
+        "min": 32.5,
+        "max": 50
+      },
+      "brightMovement": {
+        "risingPairs": 2191,
+        "fallingPairs": 2515,
+        "flatPairs": 50
+      },
+      "dark": {
+        "count": 141,
+        "min": 0,
+        "max": 0
+      },
+      "darkMovement": {
+        "risingPairs": 0,
+        "fallingPairs": 0,
+        "flatPairs": 132
+      },
+      "disabledOrInactive": {
+        "count": 67,
+        "min": 50,
+        "max": 50
+      },
+      "brightWithinExpectedRange": true,
+      "darkWithinExpectedRange": true,
+      "disabledRestores50": true,
+      "originalIntensityAlways50": true
+    },
+    {
+      "lamp": "灯光 (1)",
+      "phase": "breathingOff",
+      "windowSeconds": [
+        23.005,
+        33.9997
+      ],
+      "total": 2518,
+      "bright": {
+        "count": 2437,
+        "min": 50,
+        "max": 50
+      },
+      "brightMovement": {
+        "risingPairs": 0,
+        "fallingPairs": 0,
+        "flatPairs": 2433
+      },
+      "dark": {
+        "count": 81,
+        "min": 0,
+        "max": 0
+      },
+      "darkMovement": {
+        "risingPairs": 0,
+        "fallingPairs": 0,
+        "flatPairs": 78
+      },
+      "disabledOrInactive": {
+        "count": 0,
+        "min": null,
+        "max": null
+      },
+      "brightWithinExpectedRange": true,
+      "darkWithinExpectedRange": true,
+      "disabledRestores50": null,
+      "originalIntensityAlways50": true
+    }
+  ],
+  "independence": {
+    "bothActiveDefaultFrames": 4839,
+    "brightnessDifferentFrames": 4837,
+    "darkStateDifferentFrames": 368,
+    "bothBrightFrames": 4471,
+    "bothBrightDifferentIntensityFrames": 4469
+  },
+  "disableAndReenable": [
+    {
+      "lamp": "灯光",
+      "action": "component disabled",
+      "disableTriggerSample": {
+        "seconds": 10.0022,
+        "frame": 8254,
+        "lamp": "灯光",
+        "phase": "defaults",
+        "intensity": 0,
+        "isDark": true,
+        "active": true,
+        "enabled": true,
+        "originalIntensity": 50,
+        "breathingPhase": 0.803189
+      },
+      "firstDisabledSample": {
+        "seconds": 10.008,
+        "frame": 8255,
+        "lamp": "灯光",
+        "phase": "defaults",
+        "intensity": 50,
+        "isDark": false,
+        "active": true,
+        "enabled": false,
+        "originalIntensity": 50,
+        "breathingPhase": 0.803189
+      },
+      "lastDisabledSample": {
+        "seconds": 10.3052,
+        "frame": 8322,
+        "lamp": "灯光",
+        "phase": "defaults",
+        "intensity": 50,
+        "isDark": false,
+        "active": true,
+        "enabled": false,
+        "originalIntensity": 50,
+        "breathingPhase": 0.803189
+      },
+      "firstReenabledSample": {
+        "seconds": 10.3097,
+        "frame": 8323,
+        "lamp": "灯光",
+        "phase": "defaults",
+        "intensity": 35.89846,
+        "isDark": false,
+        "active": true,
+        "enabled": true,
+        "originalIntensity": 50,
+        "breathingPhase": 0.895262
+      },
+      "recordedActionIntervalSeconds": 0.303,
+      "disabledSamples": {
+        "count": 68,
+        "min": 50,
+        "max": 50
+      },
+      "allDisabledSamplesRestore50": true,
+      "afterReenableDefaultBright": {
+        "count": 2619,
+        "min": 32.50002,
+        "max": 50
+      },
+      "afterReenableBaselineAlways50": true,
+      "afterReenableFormulaMismatches": 0
+    },
+    {
+      "lamp": "灯光 (1)",
+      "action": "root GameObject deactivated",
+      "disableTriggerSample": {
+        "seconds": 10.3951,
+        "frame": 8342,
+        "lamp": "灯光 (1)",
+        "phase": "defaults",
+        "intensity": 0,
+        "isDark": true,
+        "active": true,
+        "enabled": true,
+        "originalIntensity": 50,
+        "breathingPhase": 0.932633
+      },
+      "firstDisabledSample": {
+        "seconds": 10.3997,
+        "frame": 8343,
+        "lamp": "灯光 (1)",
+        "phase": "defaults",
+        "intensity": 50,
+        "isDark": false,
+        "active": false,
+        "enabled": true,
+        "originalIntensity": 50,
+        "breathingPhase": 0.932633
+      },
+      "lastDisabledSample": {
+        "seconds": 10.6965,
+        "frame": 8409,
+        "lamp": "灯光 (1)",
+        "phase": "defaults",
+        "intensity": 50,
+        "isDark": false,
+        "active": false,
+        "enabled": true,
+        "originalIntensity": 50,
+        "breathingPhase": 0.932633
+      },
+      "firstReenabledSample": {
+        "seconds": 10.7007,
+        "frame": 8410,
+        "lamp": "灯光 (1)",
+        "phase": "defaults",
+        "intensity": 49.4058,
+        "isDark": false,
+        "active": true,
+        "enabled": true,
+        "originalIntensity": 50,
+        "breathingPhase": 0.308991
+      },
+      "recordedActionIntervalSeconds": 0.3014,
+      "disabledSamples": {
+        "count": 67,
+        "min": 50,
+        "max": 50
+      },
+      "allDisabledSamplesRestore50": true,
+      "afterReenableDefaultBright": {
+        "count": 2585,
+        "min": 32.5,
+        "max": 50
+      },
+      "afterReenableBaselineAlways50": true,
+      "afterReenableFormulaMismatches": 0
+    }
+  ],
+  "transitions": [
+    {
+      "lamp": "灯光",
+      "kind": "disabled",
+      "before": {
+        "seconds": 10.0022,
+        "frame": 8254,
+        "lamp": "灯光",
+        "phase": "defaults",
+        "intensity": 0,
+        "isDark": true,
+        "active": true,
+        "enabled": true,
+        "originalIntensity": 50,
+        "breathingPhase": 0.803189
+      },
+      "firstAfter": {
+        "seconds": 10.008,
+        "frame": 8255,
+        "lamp": "灯光",
+        "phase": "defaults",
+        "intensity": 50,
+        "isDark": false,
+        "active": true,
+        "enabled": false,
+        "originalIntensity": 50,
+        "breathingPhase": 0.803189
+      },
+      "firstAfterExpectedIntensity": 50,
+      "firstAfterAbsoluteError": 0
+    },
+    {
+      "lamp": "灯光",
+      "kind": "reenabled",
+      "before": {
+        "seconds": 10.3052,
+        "frame": 8322,
+        "lamp": "灯光",
+        "phase": "defaults",
+        "intensity": 50,
+        "isDark": false,
+        "active": true,
+        "enabled": false,
+        "originalIntensity": 50,
+        "breathingPhase": 0.803189
+      },
+      "firstAfter": {
+        "seconds": 10.3097,
+        "frame": 8323,
+        "lamp": "灯光",
+        "phase": "defaults",
+        "intensity": 35.89846,
+        "isDark": false,
+        "active": true,
+        "enabled": true,
+        "originalIntensity": 50,
+        "breathingPhase": 0.895262
+      },
+      "firstAfterExpectedIntensity": 35.89845209471665,
+      "firstAfterAbsoluteError": 0.000007905283347042769
+    },
+    {
+      "lamp": "灯光",
+      "kind": "parameter variant starts",
+      "before": {
+        "seconds": 23.0005,
+        "frame": 11071,
+        "lamp": "灯光",
+        "phase": "defaults",
+        "intensity": 44.87218,
+        "isDark": false,
+        "active": true,
+        "enabled": true,
+        "originalIntensity": 50,
+        "breathingPhase": 0.067928
+      },
+      "firstAfter": {
+        "seconds": 23.005,
+        "frame": 11072,
+        "lamp": "灯光",
+        "phase": "fractionalDark",
+        "intensity": 44.92846,
+        "isDark": false,
+        "active": true,
+        "enabled": true,
+        "originalIntensity": 50,
+        "breathingPhase": 0.069054
+      },
+      "firstAfterExpectedIntensity": 44.92844405632647,
+      "firstAfterAbsoluteError": 0.000015943673531637614
+    },
+    {
+      "lamp": "灯光 (1)",
+      "kind": "disabled",
+      "before": {
+        "seconds": 10.3951,
+        "frame": 8342,
+        "lamp": "灯光 (1)",
+        "phase": "defaults",
+        "intensity": 0,
+        "isDark": true,
+        "active": true,
+        "enabled": true,
+        "originalIntensity": 50,
+        "breathingPhase": 0.932633
+      },
+      "firstAfter": {
+        "seconds": 10.3997,
+        "frame": 8343,
+        "lamp": "灯光 (1)",
+        "phase": "defaults",
+        "intensity": 50,
+        "isDark": false,
+        "active": false,
+        "enabled": true,
+        "originalIntensity": 50,
+        "breathingPhase": 0.932633
+      },
+      "firstAfterExpectedIntensity": 50,
+      "firstAfterAbsoluteError": 0
+    },
+    {
+      "lamp": "灯光 (1)",
+      "kind": "reenabled",
+      "before": {
+        "seconds": 10.6965,
+        "frame": 8409,
+        "lamp": "灯光 (1)",
+        "phase": "defaults",
+        "intensity": 50,
+        "isDark": false,
+        "active": false,
+        "enabled": true,
+        "originalIntensity": 50,
+        "breathingPhase": 0.932633
+      },
+      "firstAfter": {
+        "seconds": 10.7007,
+        "frame": 8410,
+        "lamp": "灯光 (1)",
+        "phase": "defaults",
+        "intensity": 49.4058,
+        "isDark": false,
+        "active": true,
+        "enabled": true,
+        "originalIntensity": 50,
+        "breathingPhase": 0.308991
+      },
+      "firstAfterExpectedIntensity": 49.405801475126246,
+      "firstAfterAbsoluteError": 0.0000014751262469303583
+    },
+    {
+      "lamp": "灯光 (1)",
+      "kind": "parameter variant starts",
+      "before": {
+        "seconds": 23.0005,
+        "frame": 11071,
+        "lamp": "灯光 (1)",
+        "phase": "defaults",
+        "intensity": 47.08454,
+        "isDark": false,
+        "active": true,
+        "enabled": true,
+        "originalIntensity": 50,
+        "breathingPhase": 0.383831
+      },
+      "firstAfter": {
+        "seconds": 23.005,
+        "frame": 11072,
+        "lamp": "灯光 (1)",
+        "phase": "breathingOff",
+        "intensity": 50,
+        "isDark": false,
+        "active": true,
+        "enabled": true,
+        "originalIntensity": 50,
+        "breathingPhase": 0.383831
+      },
+      "firstAfterExpectedIntensity": 50,
+      "firstAfterAbsoluteError": 0
+    }
+  ],
+  "formulaAudit": {
+    "allSamplesChecked": 14984,
+    "maximumAbsoluteError": 0.00003531287202918065,
+    "mismatchCount": 0,
+    "mismatches": [],
+    "excludedSamples": 0
+  },
+  "rawChecks": [
+    "CaptureRequest=Game-High.png;seconds=0.0081;intensity=49.502970",
+    "CaptureRequest=Game-Low.png;seconds=1.5754;intensity=32.990790",
+    "CaptureRequest=Game-Dark.png;seconds=1.7855;intensity=0.000000",
+    "灯光:DisableDuringDark;restore50=True;coroutineCleared=True",
+    "灯光:Reenabled;baseline50=True;coroutinePresent=True",
+    "灯光 (1):DisableDuringDark;restore50=True;coroutineCleared=True",
+    "灯光 (1):Reenabled;baseline50=True;coroutinePresent=True",
+    "VariantsStartedAt=23.0005",
+    "Completed=True",
+    "DurationSeconds=34.004",
+    "SampleFrames=7492",
+    "GameResolution=1920x1080",
+    "VariantsStarted=True",
+    "Captures(high,low,dark)=True,True,True"
+  ],
+  "transitionInterpretation": "Observation callback records before changing the component/root or variant fields. The triggering default row at 23.0005s is correctly labeled defaults; new variants start at 23.0050s. Immediate disable/reenable assertions are separately in RuntimeChecks.txt. Every first recorded sample after reenable/field change already agrees with its applicable formula. No stale first-frame values or unexplained transition anomalies were observed, and no transition samples were excluded from the formula audit.",
+  "limitations": [
+    "fractionalDark samples span 16.28908 to 18.31078, within the permitted 16.25 to 25 range; this run did not sample its entire theoretical range.",
+    "A non-null coroutine handle after reenable is recorded by RuntimeChecks.txt; waveform samples alone do not prove the number of scheduled coroutine instances.",
+    "Missing/destroyed target and originally disabled Light were not exercised in these two files.",
+    "Screen capture requests and 1920x1080 resolution are logged, but screenshot content must be inspected separately.",
+    "All 91 consecutive fractional-dark sample pairs with measurable change were falling; the captured short dark intervals verify continued breathing modulation but do not independently show both rising and falling inside dark windows. The full default bright samples show both directions."
+  ]
+}

@@ -1,0 +1,13 @@
+{
+    "name": "MyPrecious.Warehouse",
+    "rootNamespace": "",
+    "references": [
+        "MyPrecious.Items",
+        "MyPrecious.Bootstrap",
+        "MyPrecious.Localization",
+        "Unity.InputSystem",
+        "Unity.TextMeshPro",
+        "Unity.ugui"
+    ],
+    "autoReferenced": true
+}

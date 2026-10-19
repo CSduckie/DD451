@@ -1,0 +1,19 @@
+{
+  "success": true,
+  "message": "Code executed successfully.",
+  "data": {
+    "result": {
+      "completed": true,
+      "checkedVertices": 64,
+      "verticesBehindWall": 0,
+      "maxXInWallHeight": -2.36037159,
+      "wallFront": -2.35,
+      "viewVertices": 180,
+      "viewSubmeshes": 1,
+      "runInBackground": false,
+      "scene": "Assets/Scenes/Tests/Enemy/EnemyTest.unity",
+      "screen": "1920x1080"
+    },
+    "compiler": "codedom"
+  }
+}

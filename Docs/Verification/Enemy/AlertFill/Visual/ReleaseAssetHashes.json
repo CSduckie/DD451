@@ -1,0 +1,34 @@
+[
+  {
+    "Path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs",
+    "Hash": "8D4BBB81367A23874EEBD18BE93B0E050CA421B3880A3DA97CD26F3B81072784"
+  },
+  {
+    "Path": "Assets/Art/Shaders/Enemy/DroneVision.shader",
+    "Hash": "6E50F4490E5DB2A12D8574081F1987B95203058D6A1A9D29D860FD928FA4C590"
+  },
+  {
+    "Path": "Assets/Art/Shaders/Enemy/DroneVision.shader.meta",
+    "Hash": "21B7BB9710ABB0301C5C1E10BEF135D956735B7E286F56095316D7681EBA6E72"
+  },
+  {
+    "Path": "Assets/Art/Materials/Enemy/DroneVision.mat",
+    "Hash": "4535371ED6236C24E50D231CEF6192093C4251AA53B9D5590D1AC01D949A3676"
+  },
+  {
+    "Path": "Assets/Art/Materials/Enemy/DroneVision.mat.meta",
+    "Hash": "B14479829C3AD1FBC11CC838BBA8D5482B579FA6E591BEDEAD7D3B0F2CCC88B9"
+  },
+  {
+    "Path": "Assets/Tests/Enemy/EditMode/DroneVisionAlertFillTests.cs",
+    "Hash": "B55BA070276E38C5E5ADEBC2AFB715D188860E3FD8CA4E9238001038E861ED3D"
+  },
+  {
+    "Path": "Assets/Tests/Enemy/EditMode/DroneVisionAlertFillTests.cs.meta",
+    "Hash": "73F322978BEB5BE85591F0178CF5EDC876255044FB7B98DD8EEF6C7ED61BB139"
+  },
+  {
+    "Path": "Assets/Tests/Enemy/Editor/DroneVisionEditor.cs",
+    "Hash": "68CF3A478B6ADB17A872111C7C70628BEF467C043FCE63A6889F9B864D6EBBDD"
+  }
+]

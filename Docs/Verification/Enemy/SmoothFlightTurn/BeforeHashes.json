@@ -1,0 +1,50 @@
+[
+  {
+    "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs",
+    "sha256": "8224740B59DFC48395199A8F5C10EC0BAA6272225B5D1FC8C768001D38E42F54"
+  },
+  {
+    "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs.meta",
+    "sha256": "E20128ABB1EAD818FC20A49DD9120C7C5B97A4ADB7D028FFA7A251E45E32AEEB"
+  },
+  {
+    "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs",
+    "sha256": "1927AE4559AA70221FDDE8F69FE0D073A3DECD3D2D57023186368E58B43FADCB"
+  },
+  {
+    "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneFlightVisual.cs.meta",
+    "sha256": "B0F129DCC8127D55CBD574D65A8A3BB8BA5100184661184FF46C3CA076905C43"
+  },
+  {
+    "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs",
+    "sha256": "7A74295E351F1C23E9A445ABD0454C11800DF72C5769866140586855EA18A1E9"
+  },
+  {
+    "path": "Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneVision.cs.meta",
+    "sha256": "8C684DB24C4693A940C4525A27CD10F27CB7BF7836BC05C9BE30488F7684873C"
+  },
+  {
+    "path": "Assets/Prefabs/Enemy/Drone/Drone.prefab",
+    "sha256": "288D74DFB30779C63674211D7CCC970BFE956E43665B313B46C8BC3713A72AFA"
+  },
+  {
+    "path": "Assets/Prefabs/Enemy/Drone/Drone.prefab.meta",
+    "sha256": "7373C79FC9230FA996B140D761A8E06DE02E78D0803E5FA2FDAF064B771E4603"
+  },
+  {
+    "path": "Assets/Tests/Enemy/PlayMode/DroneBehaviourTests.cs",
+    "sha256": "82289CCB5D9AC6028DB1B87BE388A27186AFB515F8EE3B33A2F907C00DA1008C"
+  },
+  {
+    "path": "Assets/Tests/Enemy/PlayMode/DroneBehaviourTests.cs.meta",
+    "sha256": "48698F9B8E57A7BD8E61E9D44B0012BB154AEAF03F097323A0F154DAB48E2D84"
+  },
+  {
+    "path": "Assets/Tests/Enemy/EditMode/DroneVisionGeometryTests.cs",
+    "sha256": "3D25AF60A6AECAE907E9283987D9797BC7E389A335CCBEA16C6A7B78B1C6CAF9"
+  },
+  {
+    "path": "Assets/Tests/Enemy/EditMode/DroneVisionGeometryTests.cs.meta",
+    "sha256": "739DFDAAE76211B462048B1BD9ED638FAB972E546CB46AE9A9C24156D7AB50DB"
+  }
+]

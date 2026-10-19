@@ -1,0 +1,63 @@
+Shelter 昏暗氛围与后处理交接
+日期：2026-10-19（America/New_York）；项目 E:/DD451
+状态：IMPLEMENTED / VISUALLY_VERIFIED / EDITOR_RELEASED
+
+1. 结果与范围
+Shelter启用专属后处理，曝光轻降、对比略增，保留蓝色集装箱、黄色仓库箱、角色轮廓和局部灯光。采用已有Volume和原Profile/GUID，无新产品脚本或新Volume。
+先读取009 NIGHT DEFAULT EXPLICIT RELEASE TO SHELTER POSTPROCESS，再接管。009此前完成黑夜天空盒与旧环境探针刷新；本次使用刷新后的实际Game作为新基线，不把009的去灰修复计为本次结果。
+
+实际只修改两个生产文件：
+- Assets/Scenes/Shelter.unity：既有PlayerCamera实例新增m_RenderPostProcessing=1覆盖，精确4行。源组件fileID 6648020794282633460，Prefab GUID 3cf4a390a92e98447ada0654fb991c91。
+- Assets/Scenes/Shelter/Global Volume Profile.asset：原位增三项效果并明确Bloom阈值；GUID仍76ef7695bb051d746bed768237e73e75，原root及Bloom fileID保留。
+
+最终参数（相关参数Override均开启）：
+Color Adjustments：Post Exposure=-0.2 EV；Contrast=8；Saturation=0；Hue Shift=0；Color Filter=白色。
+Tonemapping：None。Vignette：Intensity=0。这两个组件保持active=true，通过值覆盖质量默认Profile中的Neutral与.2暗角。
+Bloom：保留原Intensity=.1、原Tint及其余设置；Threshold从未覆盖的5.68改为显式1，等于之前实际继承的阈值。打开PP后产生局部灯泡光晕，不是全屏灰色滤镜。
+Volume仍为原Global Volume、Default layer、Priority0、Weight1、原根层级。
+共享PlayerCamera、Ruins/其它场景、全局URP/默认Profile、Linear颜色空间、天空盒材质、用户灯光、LightFlicker、物体位置、箱子内容/ID、巡逻路线与Cinemachine均未改。
+
+2. 实际画面对比
+证据根目录：Docs/Verification/Rendering/ShelterPostProcessing/
+Runtime-91fbe323为运行时副本预览；正式保存前比较-.35/+12和-.2/+8，采用后者以保留木箱暗面。
+前3张自由运行截图存在原LightFlicker灯光相位差，不作为严格同照明对照。补拍：
+- Runtime-91fbe323/06-FixedPhase-Before-1920x1080.png
+- Runtime-91fbe323/07-FixedPhase-After-1920x1080.png
+两张均来自实际ScreenCapture Game framebuffer，非Scene View/临时Camera.Render；1920×1080。同玩家/机位/镜头/环境，5盏灯的id/intensity/enabled及gameTime一致。临时timeScale=0冻结原闪烁相位，未修改灯光或闪烁参数；拍完恢复1。
+目视确认角色边沿/高光、黄箱边沿、蓝箱条纹、货架和地面仍可辨，未新增全屏灰幕。木箱仍是较暗装饰物，上缘和轮廓可辨。近灯Bloom局部可见；UI未被整体压暗。
+独立只读审图及像素近似：指定右地板ROI平均sRGB亮度34.686→28.900（约-16.7%）；玩家含少量背景ROI47.383→40.943，全黑像素0%。这些是截图区域近似值，非真实光度或所有显示器可读性保证。
+完整相位、机位、参数和区域定义见FixedPhase.json、FixedPhaseAfter.json、对应metadata及FinalIntegrity.json/.txt。
+
+3. 保存后正式流程
+SavedReload.json确认重新加载Shelter后PP=true、曝光-.2、对比8。
+从正式Bootstrap普通Play重新进入Shelter，使用同一个正式玩家，经真实Trigger/遮挡检查、PlayerInteraction.RefreshTarget/TryInteract执行出发与撤离。定位使用公开PlayerController.RelocateWithinRun；没有绕过交互范围/直接强制流程状态。
+Runtime-8ed49e61/00-Begin.json、Interactions.jsonl、FlowReturn.json和各截图metadata记录流程：Bootstrap→Shelter→Ruins→Shelter；当前/结算/玩家轮次均1，玩家实例未更换，旧Ruins已卸载。Ruins期间正常受伤3→2，返回仍2，未改AI、血量、路线、伤害规则或敌人配置。
+实际相机结果：Shelter PP=true/曝光-.2/对比8；Ruins PP=false/曝光0/对比0且无Shelter Volume；回到Shelter恢复PP=true及同一Profile参数。没有后处理跨图残留。
+渲染参数在目标正式Camera.endCameraRendering内读取当帧VolumeManager.stack，避免把任意Editor tick的共享stack误认为相机结果。每张PNG再次验证完整IEND与1920×1080。
+
+已目视关键保存后证据（Runtime-8ed49e61/）：
+- 02-Departure-Prompt-1920x1080.png：角色、梯子/出发标记与E提示可读。
+- 03-Ruins-1920x1080.png：原夜空/玩家/UI，后处理保持关闭。
+- 04-Shelter-Returned-1920x1080.png：返回后暗调配置正确恢复。
+- 05-Saved-Storage-UI-1920x1080.png：真实背包+仓库打开，文字/格子清楚。
+运行时副本预览另有04-Storage-Prompt、05-Storage-UI截图，区分于上述正式保存后证据。
+RuntimeChecks.json：GameFlowSceneBindings.Validate=true，MissingScripts=0，唯一activeCamera=1，仓库/背包均打开成功；随后正常关闭。
+
+4. 基线与完整性
+修改前保存642项真实SHA256基线以及Shelter/Profile及各meta原件，见BeforeHashes.json和Before/。
+FinalIntegrity.json/.txt复核：640项未变；仅上述2项授权变化；370份meta全部一致；无非授权漂移。将Shelter新增4行移除后，与Before逐字节相同，因此原灯光/位置/交互ID/镜头等全部保留。Profile四个子资产引用唯一且可解析，相关脚本GUID与本机URP包匹配。
+本次未添加Assets测试或进行无关大规模TestRunner。5个Docs验证方法体做过离线C#6编译，只有Newtonsoft兼容引用提示。最终实际验证为普通Play/API辅助与磁盘/图像检查，不把静态检查当Unity测试通过数。
+
+5. 工具过程与限制
+一次工具内存编译直接读取内部TestRunnerApi.IsRunActive被拒绝，没有修改生产代码；最终用反射只读核对false。
+保存后出现一次Shelter dirty标记。先保留DirtyAfterSave-Shelter.unity副本，证实与已保存文件逐字相同，再保存/重载；未用旧副本覆盖。一次受该guard拒绝的重载后启动到了Shelter，已立即退出，不计入正式Bootstrap流程。
+两个截图入口的Editor tick分辨率预检查拒绝。改为在目标相机实际endCameraRendering及完整PNG上双重检查1920×1080，最终截图全部通过。未缩小图片或放宽PNG尺寸要求。
+API定位/真实交互验证不是实体键盘鼠标试玩；本次不声明原生键鼠全流程、Windows构建或全部玩法回归已完成。无跨聊天回信。
+
+6. 后续调参
+在Shelter的Global Volume打开原Profile，主要调整Color Adjustments的Post Exposure与Contrast。当前环境已经按009修复使用正确夜间探针，应小幅调整；饱和度/Color Filter保持中性可避免整体灰浊或过强染色。
+只改Shelter实例PP开关可停用这组效果。不要为此修改共享PlayerCamera Prefab或PC_RPAsset，否则会扩大影响范围。
+
+7. Editor释放
+所有Assets写入、普通Play、截图/观察回调已结束。ReleaseState.json最终观察2026-10-19T08:22:26.9608799Z：唯一Bootstrap clean/Edit，Play/changing/paused/compiling/updating=false，无PrefabStage，真实TestRunner活动false，CaptureRunning=false，timeScale1，Application与PlayerSettings.runInBackground=false，原DisableDomainReload保留，Direct3D11沿用。
+FinalConsole.json：0 errors / 0 warnings。最后一次完整性复核仍仅2项授权变化。共享Editor已在EditorCoordination.txt明确释放，后续可fresh检查接管。

@@ -1,0 +1,53 @@
+{
+  "baseline": [
+    {
+      "Path": "E:\\DD451\\ProjectSettings\\ProjectSettings.asset",
+      "Hash": "883568C7519C8C83808FEE8A39259427D8E2127D7CBF10ADE97CA42903711F1D"
+    },
+    {
+      "Path": "E:\\DD451\\ProjectSettings\\EditorSettings.asset",
+      "Hash": "32D6A9BE4C9AA9795A96BD951820A2D9BE1BFEFAB82ED05A5DB111AF0863938F"
+    },
+    {
+      "Path": "E:\\DD451\\ProjectSettings\\EditorBuildSettings.asset",
+      "Hash": "348BA1ECA4B0698957F264F877F76227B78583ACD3138FD5FC85BE92F158E261"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Input\\GameInputActions.inputactions",
+      "Hash": "483A802C6FEAD9F249F70B169277EBD5729D6B14A44B40030ADC8108EBC43DCB"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Prefabs\\Bootstrap\\GameBootstrap.prefab",
+      "Hash": "DCD6755E7A8A4A572AE20FFEF8C860CBFE3492708FE3E9F1C4E118B12980D7ED"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Scenes\\Tests\\Loot\\LootTest.unity",
+      "Hash": "03966E7B297FF7D0D1966A90B7EAB6B46D6789090BF923A17903601B009AD635"
+    },
+    {
+      "Path": "E:\\DD451\\Assets\\Scenes\\Tests\\Backpack\\BackpackTest.unity",
+      "Hash": "89853E983A38AD861B2DA6A0B77098C6C2F2F3B22B87AA707E0BD537557D33CC"
+    }
+  ],
+  "note": "All 7 protected file SHA256 hashes matched the actual handover baseline after verification; no restore write was necessary. Does not compare to pre-04 snapshots.",
+  "layout800": {
+    "success": true,
+    "message": "Code executed successfully.",
+    "data": {
+      "result": {
+        "width": 800,
+        "height": 600,
+        "columns": 20,
+        "rows": 24,
+        "cell": 42.65,
+        "viewportWidth": 926,
+        "viewportHeight": 692,
+        "gridWidth": 926,
+        "gridHeight": 1108.6001,
+        "scrollX": 0,
+        "horizontal": false
+      },
+      "compiler": "codedom"
+    }
+  }
+}

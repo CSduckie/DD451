@@ -1,0 +1,225 @@
+09H supplement for the current DroneTurningVisionTests class. Not run; no Assets changes.
+Add these usings; no new fields are required:
+
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
+
+Paste the following members into DroneTurningVisionTests. Reuses its CreateDrone(int), CreatePlayer(Vector3), PlaceCenter and Own helpers.
+
+    [UnityTest]
+    public IEnumerator QueuedStandingAndCrouchingMovementEntersBothNaturalTurns()
+    {
+        InputSettings originalSettings = InputSystem.settings;
+        bool originalBackground = Application.runInBackground;
+        InputSettings settings = null;
+        Keyboard keyboard = null;
+        var disabledKeyboards = new List<InputDevice>();
+        try
+        {
+            settings = Object.Instantiate(originalSettings);
+            settings.hideFlags = HideFlags.HideAndDontSave;
+            settings.editorInputBehaviorInPlayMode = InputSettings.EditorInputBehaviorInPlayMode.AllDeviceInputAlwaysGoesToGameView;
+            settings.backgroundBehavior = InputSettings.BackgroundBehavior.IgnoreFocus;
+            InputSystem.settings = settings;
+            Application.runInBackground = true;
+            foreach (InputDevice device in new List<InputDevice>(InputSystem.devices))
+            {
+                if (!(device is Keyboard) || !device.enabled) { continue; }
+                disabledKeyboards.Add(device);
+                InputSystem.DisableDevice(device);
+            }
+            keyboard = InputSystem.AddDevice<Keyboard>();
+
+            for (int variant = 0; variant < 4; variant++)
+            {
+                bool crouching = variant >= 2;
+                int initialFacing = variant % 2 == 0 ? 1 : -1;
+                string label = "crouching=" + crouching + "; initialFacing=" + initialFacing;
+                DroneController drone = CreateDrone(initialFacing);
+                drone.turnSmoothTime = 1f; // Runtime fixture only; keep the authored .5-second discovery delay.
+                Transform[] turningRoute = drone.patrolPoints;
+                drone.patrolPoints = new[] { drone.transform }; // Prepare the grounded pose before starting the turn.
+                PlayerController player = CreatePlayer(origin + Vector3.up * 12f);
+                CapsuleCollider capsule = player.GetComponent<CapsuleCollider>();
+                float standingHeight = capsule.height;
+                Vector3 standingCenter = capsule.center;
+                float expectedHeight = crouching
+                    ? Mathf.Max(capsule.radius * 2f, standingHeight * player.config.crouchVisualHeight)
+                    : standingHeight;
+                float expectedCenterY = standingCenter.y + (expectedHeight - standingHeight) * 0.5f;
+                Assert.That(standingHeight, Is.EqualTo(2f).Within(0.001f));
+                Assert.That(standingCenter.y, Is.EqualTo(1f).Within(0.001f));
+                Assert.That(capsule.radius, Is.EqualTo(0.4f).Within(0.001f));
+                Assert.That(player.transform.lossyScale, Is.EqualTo(Vector3.one));
+                Assert.That(player.config.crouchVisualHeight, Is.EqualTo(0.65f).Within(0.001f));
+
+                // The player walks OUTWARD across the upper fan edge, never towards the drone's physical body.
+                // Both postures use the same desired current body center; floor height follows the real capsule.
+                Vector3 desiredCenter = new Vector3(origin.x + initialFacing * 0.78f,
+                    drone.vision.visionOrigin.position.y + 0.55f, origin.z);
+                float floorTop = desiredCenter.y - expectedHeight * 0.5f;
+                GameObject floor = Own(new GameObject("Turning movement floor " + variant));
+                floor.transform.position = new Vector3(origin.x + initialFacing * 6.55f, floorTop - 0.25f, origin.z);
+                floor.AddComponent<BoxCollider>().size = new Vector3(12f, 0.5f, 4f);
+                Assert.That((player.config.groundLayers.value & (1 << floor.layer)) != 0, Is.True);
+                PlaceCenter(player, new Vector3(desiredCenter.x, floorTop + standingHeight * 0.5f + 0.025f, desiredCenter.z));
+                player.Body.isKinematic = false; // Existing PlaceCenter is a static fixture helper; restore real movement.
+                player.Body.useGravity = true;
+                Physics.SyncTransforms();
+                QueueMovingKeys(keyboard, crouching, 0);
+                yield return WaitForMovingCondition(() => player.IsGrounded && player.IsCrouching == crouching
+                    && Mathf.Abs(player.Body.linearVelocity.y) < 0.1f, 2f, "Player must settle naturally: " + label);
+                Assert.That(capsule.height, Is.EqualTo(expectedHeight).Within(0.001f));
+                Assert.That(capsule.center.y, Is.EqualTo(expectedCenterY).Within(0.001f));
+                Assert.That(capsule.bounds.min.y, Is.EqualTo(floorTop).Within(0.03f));
+                Assert.That(CoverArea.IsHidden(player), Is.False);
+                Assert.That(MovingRangeDistance(drone, player), Is.GreaterThan(0.03f), "Start outside the actual cone: " + label);
+                Assert.That(drone.CurrentState, Is.EqualTo(DroneState.Patrol));
+                AssertMovingBodyClear(drone, player);
+
+                Quaternion initial = drone.FacingRotation;
+                Quaternion finalHeading = Quaternion.Euler(0f, initialFacing > 0 ? 180f : 0f, 0f);
+                drone.patrolPoints = turningRoute;
+                yield return WaitForMovingCondition(() => Quaternion.Angle(initial, drone.FacingRotation) >= 10f,
+                    2f, "Natural patrol FixedUpdate must initiate the turn: " + label);
+                Assert.That(Quaternion.Angle(initial, drone.FacingRotation), Is.LessThan(35f));
+                Assert.That(MovingRangeDistance(drone, player), Is.GreaterThan(0.01f));
+                Assert.That(drone.CurrentState, Is.EqualTo(DroneState.Patrol));
+                float startX = player.Body.position.x;
+                int health = player.health.CurrentHealth;
+                QueueMovingKeys(keyboard, crouching, initialFacing); // A/D, or C+A/C+D, through the real reader.
+                bool sawMovingOutside = false;
+                bool entered = false;
+                float deadline = Time.realtimeSinceStartup + 2f;
+                while (!entered && Time.realtimeSinceStartup < deadline)
+                {
+                    yield return null;
+                    AssertMovingBodyClear(drone, player);
+                    Assert.That(player.IsCrouching, Is.EqualTo(crouching));
+                    float moved = (player.Body.position.x - startX) * initialFacing;
+                    entered = MovingRangeDistance(drone, player) <= 0.001f;
+                    if (!entered)
+                    {
+                        sawMovingOutside |= moved > 0.01f;
+                        Assert.That(drone.CurrentState, Is.EqualTo(DroneState.Patrol));
+                    }
+                    else
+                    {
+                        Assert.That(moved, Is.GreaterThan(0.05f), "Entry must follow real walking: " + label);
+                        Assert.That(Quaternion.Angle(initial, drone.FacingRotation), Is.GreaterThan(10f));
+                        Assert.That(Quaternion.Angle(finalHeading, drone.FacingRotation), Is.GreaterThan(15f),
+                            "The turn must still be unfinished at physical entry: " + label);
+                    }
+                }
+                Assert.That(entered && sawMovingOutside, Is.True, "Observe outside -> walking -> real cone entry: " + label);
+                QueueMovingKeys(keyboard, crouching, 0); // Release direction; keep C held for the crouching variants.
+                yield return WaitForMovingCondition(() => drone.CurrentState == DroneState.Alert,
+                    0.25f, "Natural Update must discover the entering player: " + label);
+                Assert.That(drone.IsCoverAlert, Is.False);
+                Assert.That(drone.Target, Is.SameAs(player));
+                Assert.That(drone.AlertSecondsRemaining, Is.GreaterThan(0.35f));
+                float alertObservedAt = Time.time;
+                float remainingAtObservation = drone.AlertSecondsRemaining;
+                deadline = Time.realtimeSinceStartup + drone.config.discoveryAlertSeconds + 1f;
+                while (drone.CurrentState == DroneState.Alert && Time.realtimeSinceStartup < deadline)
+                {
+                    AssertMovingBodyClear(drone, player);
+                    AssertMovingViewPose(drone);
+                    Assert.That(drone.Target, Is.SameAs(player));
+                    Assert.That(drone.vision.GetComponent<MeshRenderer>().enabled, Is.True);
+                    Assert.That(MovingRangeDistance(drone, player), Is.LessThanOrEqualTo(0.001f));
+                    yield return null;
+                }
+                Assert.That(drone.CurrentState, Is.EqualTo(DroneState.Chase), "Do not drop into Search during the old turn: " + label);
+                Assert.That(Time.time - alertObservedAt,
+                    Is.InRange(remainingAtObservation - 0.06f, remainingAtObservation + 0.15f));
+                yield return WaitForMovingCondition(() => Mathf.Abs(player.Body.linearVelocity.x) < 0.05f,
+                    1f, "Releasing the movement keys must naturally stop the player.");
+                AssertMovingBodyClear(drone, player);
+                AssertMovingViewPose(drone);
+                Assert.That(drone.CurrentState, Is.EqualTo(DroneState.Chase));
+                Assert.That(drone.Target, Is.SameAs(player));
+                Assert.That(drone.vision.GetComponent<MeshRenderer>().enabled, Is.False);
+                Assert.That(drone.vision.CanSee(player), Is.True); // Postcondition only; never drives discovery above.
+                Assert.That(capsule.height, Is.EqualTo(expectedHeight).Within(0.001f));
+                Assert.That(capsule.center.y, Is.EqualTo(expectedCenterY).Within(0.001f));
+                Assert.That(player.health.CurrentHealth, Is.EqualTo(health));
+                TestContext.WriteLine(label + "; stopped center=" + capsule.bounds.center);
+                drone.gameObject.SetActive(false);
+                player.gameObject.SetActive(false);
+                floor.SetActive(false);
+                QueueMovingKeys(keyboard, false, 0);
+                yield return null;
+            }
+        }
+        finally
+        {
+            if (keyboard != null && keyboard.added) { InputSystem.RemoveDevice(keyboard); }
+            InputSystem.settings = originalSettings;
+            Application.runInBackground = originalBackground;
+            if (settings != null) { Object.Destroy(settings); }
+            foreach (InputDevice device in disabledKeyboards)
+            {
+                if (device.added && !device.enabled) { InputSystem.EnableDevice(device); }
+            }
+        }
+    }
+
+    private static void QueueMovingKeys(Keyboard keyboard, bool crouching, int direction)
+    {
+        if (direction == 0)
+        {
+            InputSystem.QueueStateEvent(keyboard, crouching ? new KeyboardState(Key.C) : new KeyboardState());
+            return;
+        }
+        Key move = direction > 0 ? Key.D : Key.A;
+        InputSystem.QueueStateEvent(keyboard, crouching ? new KeyboardState(Key.C, move) : new KeyboardState(move));
+    }
+
+    private static IEnumerator WaitForMovingCondition(System.Func<bool> condition, float seconds, string message)
+    {
+        float deadline = Time.realtimeSinceStartup + seconds;
+        while (!condition() && Time.realtimeSinceStartup < deadline) { yield return null; }
+        Assert.That(condition(), Is.True, message);
+    }
+
+    private static float MovingRangeDistance(DroneController drone, PlayerController player)
+    {
+        Vector3 center = player.GetComponent<CapsuleCollider>().bounds.center;
+        return Vector3.Distance(drone.vision.RangeCollider.ClosestPoint(center), center);
+    }
+
+    private static void AssertMovingBodyClear(DroneController drone, PlayerController player)
+    {
+        SphereCollider sphere = drone.GetComponent<SphereCollider>();
+        Vector3 center = sphere.transform.TransformPoint(sphere.center);
+        Vector3 scale = sphere.transform.lossyScale;
+        float radius = sphere.radius * Mathf.Max(Mathf.Abs(scale.x), Mathf.Abs(scale.y), Mathf.Abs(scale.z));
+        Assert.That(radius, Is.EqualTo(0.25f).Within(0.001f));
+        Assert.That(Vector3.Distance(player.GetComponent<CapsuleCollider>().ClosestPoint(center), center),
+            Is.GreaterThan(radius + 0.1f), "Vision fixture must maintain real body clearance.");
+        Assert.That(sphere.enabled && !sphere.isTrigger, Is.True);
+        Assert.That(drone.HasExploded, Is.False);
+    }
+
+    private static void AssertMovingViewPose(DroneController drone)
+    {
+        DroneVision vision = drone.vision;
+        Quaternion expected = drone.transform.rotation * drone.FacingRotation * Quaternion.Euler(0f, 0f, vision.directionDegrees);
+        Assert.That(Quaternion.Angle(vision.transform.rotation, expected), Is.LessThan(0.1f));
+        Assert.That(vision.enabled && vision.gameObject.activeInHierarchy && vision.RangeCollider.enabled, Is.True);
+        Assert.That(vision.RangeCollider.isTrigger, Is.True);
+        Assert.That(vision.RangeCollider.sharedMesh, Is.Not.Null);
+        Assert.That(vision.GetComponent<MeshFilter>().sharedMesh, Is.Not.Null);
+        Assert.That(Mathf.Abs(vision.transform.right.y), Is.LessThan(0.001f));
+    }
+
+Fixture notes (read before insertion):
+- Uses the current formal prefab radius=5, angle=90, thickness=2 and origin anchor; no vision angle/radius/thickness/mask changes. Runtime turnSmoothTime=1 is the sole turn-speed adjustment; CreateDrone already clones config and sets both movement speeds to zero while real FixedUpdate still chooses FacingDirection. Player speeds remain authored 5/2.
+- The floor is a side platform beginning .55 m from the drone root, so the crouching variant's higher floor does not intersect the drone. Its top is computed from the effective stance height. Standing center=1 / height=2 and crouching center=.65 / height=1.3 are asserted, not repaired. Both centers begin .55 m above the actual vision origin and .78 m horizontally from the drone root; the player walks away across the upper fan edge during the early/intermediate yaw window. This avoids the finite-thickness problem at a full 90-degree yaw on the XY plane.
+- This is a proposed layout from static inspection, not a Unity-validated result. If runtime interpolation/frame ordering needs a modest adjustment, tune only fixture start horizontal offset (.78), vertical offset (.55), or turnSmoothTime (1); retain the proved outside sample, real outward displacement, unfinished-turn requirement, .25+.1 clearance, .5 discovery duration and actual crouch size. Do not loosen those acceptance checks or teleport the player into the cone.
+- Existing CreatePlayer returns kinematic, so this test explicitly restores a dynamic body only after PlaceCenter. Existing generic TearDown destroys owned objects; the iterator finally always removes the keyboard and restores input settings, device states and runInBackground even when an assertion fails.
+- No added polling query calls CanSee/FindVisiblePlayer before natural Alert -> Chase; raw Collider.ClosestPoint measurements cannot assign the target or advance state. CanSee is used once after the complete observed sequence as a detection/display postcondition.
+
+Actual C-input cover control recommendation (separate small follow-up, not silently included among the four variants):
+Use the same real floor/player and temporary keyboard. Place a real CoverArea Trigger box around the player's feet with enough vertical extent for both stances, queue C and wait for IsCrouching plus height=1.3/centerY=.65 and CoverArea.IsHidden=true. Let the true patrol turn and C+A/C+D motion bring the current body center into the actual range; retain the clearance assertion, and verify no target/Alert while Hidden. Release only A/D to stay hidden. For standing rediscovery, release C, wait for !IsCrouching and restored 2/1, then prove the new current center is still inside the actual range before expecting natural Alert. Use a new fixture for this initially-hidden case. For the already-Chase -> cover case, enter via queued C, retain existing two-second cover timer and natural rediscovery assertions; no manual SetCrouching or enemy ChangeState is needed.

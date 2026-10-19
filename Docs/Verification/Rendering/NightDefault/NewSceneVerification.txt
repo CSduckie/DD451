@@ -1,0 +1,6 @@
+EmptyScene sky=True oldSceneDirty=False oldSceneActiveImmediatelyAfterCreation=False
+Reload EmptyScene sky=True
+DefaultGameObjects sky=True oldSceneDirty=False oldSceneActiveImmediatelyAfterCreation=False
+Reload DefaultGameObjects sky=True
+BasicURP sky=True oldSceneDirty=False oldSceneActiveImmediatelyAfterCreation=True
+Reload BasicURP sky=True

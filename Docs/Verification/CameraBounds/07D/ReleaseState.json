@@ -1,0 +1,51 @@
+{
+  "utc": "2026-10-19T02:04:07.7235491Z",
+  "play": false,
+  "changing": false,
+  "compiling": false,
+  "updating": false,
+  "graphics": "Direct3D11",
+  "scenes": [
+    {
+      "path": "Assets/Scenes/Bootstrap.unity",
+      "dirty": false,
+      "loaded": true
+    }
+  ],
+  "prefabStage": null,
+  "applicationRunInBackground": false,
+  "playerRunInBackground": false,
+  "enterPlayModeOptionsEnabled": true,
+  "enterPlayModeOptions": "DisableDomainReload",
+  "devices": [
+    {
+      "name": "Keyboard",
+      "enabled": true,
+      "native": true,
+      "interfaceName": "RawInput"
+    },
+    {
+      "name": "Mouse",
+      "enabled": true,
+      "native": true,
+      "interfaceName": "RawInput"
+    }
+  ],
+  "inputSettings": [
+    {
+      "name": "",
+      "id": -884,
+      "flags": "HideAndDontSave",
+      "current": true,
+      "behavior": "PointersAndKeyboardsRespectGameViewFocus",
+      "background": "ResetAndDisableNonBackgroundDevices"
+    }
+  ],
+  "nonCurrentHiddenInputSettings": 0,
+  "recoveryScriptExists": false,
+  "testRunnerArtifacts": [],
+  "finalObservedUtc": "2026-10-19T02:06:20.4809702Z",
+  "paused": false,
+  "activeScene": "Assets/Scenes/Bootstrap.unity",
+  "activeSceneDirty": false
+}

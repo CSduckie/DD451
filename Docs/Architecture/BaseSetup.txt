@@ -1,0 +1,68 @@
+MyPrecious P0 基础接入说明
+版本：2026-10-18 / Dispatch v5 / Lean 00
+本文替代旧00的全量契约与模块注册指南。路径均相对项目根目录。
+
+打开基础场景
+1. 使用Unity 6000.2.12f1打开项目，等待编译结束。
+2. 打开Assets/Scenes/Tests/Base/BaseTest.unity，再进入Play。
+3. 场景放置Assets/Prefabs/Bootstrap/GameBootstrap.prefab；运行时只有一个有效入口，位于DontDestroyOnLoad场景。
+4. 该场景用于检查基础入口，没有可操作角色、玩法UI或完整游戏流程。相机和灯光只是临时验证配置。
+
+GameBootstrap目前做什么
+脚本：Assets/Scripts/Bootstrap/MonoBehaviour/GameBootstrap.cs。
+GameBootstrap.Instance用于取得本次运行的唯一入口；它不是物品、语言或流程服务集合。
+Awake发现已有入口时先禁用重复组件，再销毁重复物体并返回，防止重复入口继续工作。
+第一个入口记录Instance；必要时脱离父物体，再调用DontDestroyOnLoad，使其不随普通场景卸载。
+OnDestroy只在Instance指向自己时清空它，销毁重复物体不会清掉仍有效的入口。
+SubsystemRegistration阶段清空静态引用，避免下一次进入Play沿用上次的入口引用。
+当前没有模块注册、初始化顺序框架、场景服务集合或事件订阅，也没有空的业务服务。
+Prefab不需要填写业务模块列表。后续需要初始化某个真实功能时，再增加明确引用和直接调用。
+不要把物品、敌人、背包或游戏阶段的业务堆进这个组件。
+
+输入资源与默认绑定
+继续使用Assets/Input/GameInputActions.inputactions，不新建平行输入资源。
+原GUID保留：052faaac586de48259a63d0c4782560b。所需业务动作位于Player动作表。
+Move：A/D或左右箭头；现有动作是Vector2，角色横移只取X分量。
+Jump：Space；后续角色在Y轴跳跃。
+Crouch：C；按键状态的具体处理由后续角色功能实现。
+Interact：E。
+ToggleBackpack：Tab。
+RotateItem：R。
+UseItem：鼠标右键。
+ToggleLanguage：F10。
+以上五个操作型动作使用按下即触发的Press设置；00没有实现它们的业务响应。
+Move原模板的W/S、上下箭头可以保留，不能解释为玩家沿Z轴移动，也不增加攀爬或飞行。
+UI动作表和正常导航绑定保留。模板中的其他设备绑定不代表P0新增手柄或其他平台支持。
+后续整合时只设置一个F10业务处理者；不要让入口、语言组件和UI分别监听一次。
+鼠标右键也有UI指针用途，物品使用只走一条明确业务入口，避免一次点击使用两次。
+
+3D横版技术约定
+项目使用Unity 3D场景与3D模型制作横版玩法，P0仅Windows桌面版、键盘和鼠标。
+玩家逻辑根节点：X轴左右移动；Y轴跳跃、重力和高度变化；Z轴固定，不能前后移动。
+后续角色实现必须在移动、碰撞、受击、重生及实际使用的击退或动画Root Motion中保持固定Z。
+00没有角色控制器，固定Z当前是开发约束，尚未进行角色运动验证。
+场景模型、前后景、相机和Collider厚度可以有纵深，不要求所有物体Z相同。
+玩家固定Z不自动限定敌人的完整运动规则。
+世界碰撞、触发、交互和视线遮挡使用Collider、Physics；若用刚体则使用Rigidbody。
+世界玩法不使用Collider2D、Rigidbody2D或Physics2D。
+背包、仓库、UI和输入的二维数据仍可使用Vector2/Vector2Int，与3D世界坐标分开。
+正式相机的正交或透视、倾角与构图尚未确认；BaseTest相机不代表正式镜头方案。
+
+后续模块如何接入
+继续沿用现有入口Prefab和输入资源及其GUID；正式场景与整体接线由09集中处理。
+功能使用普通组件、简单类和明确方法，实际调用双方需要共享类型时再共同确定接口。
+本阶段未建立业务公共接口。Assets/Scripts/Utilities/Contracts/仍是以后确有需要时的指定位置，不要求填满目录。
+物品模块统一管理身份、使用状态和归属；背包与仓库各自实现格子；流程模块协调阶段顺序。
+这些职责继续有效，但当前没有预建结果码、事务协议、服务定位器或通用生命周期框架。
+后续跨容器转移仍须完整成功或失败恢复；具体实现随真实物品与容器功能确定。
+新增自有C#不写namespace，默认4空格缩进、类和方法大括号另起一行。
+功能按所属模块目录放置；共享文件先核对真实消费者和修改范围，不改需求文本迁就实现。
+
+验证与尚未实现的能力
+基础运行测试位于Assets/Tests/Base/PlayMode/GameBootstrapTests.cs；可在Test Runner的PlayMode中运行。
+测试所需的Bootstrap与PlayMode测试程序集保留，rootNamespace为空；它们仅让测试引用真实入口组件。
+编译、自动测试、场景检查分别以本次Docs/Handoffs/00_Handoff.txt和Docs/Architecture/00_ValidationResults.json为准，不沿用旧版成绩。
+未实现：玩家跑跳/固定Z、物品与效果、背包/仓库、搜刮、敌人、流程、正式UI及实际中英切换。
+语言目标仍为启动中文、F10切换中英；00仅准备输入动作。
+未完成整套P0玩法验收或Windows试玩构建；由对应业务任务及回归任务完成。
+最新玩法与技术规则见Docs/AgentPrompts/ProjectRules.txt；本说明不修改该需求文件。

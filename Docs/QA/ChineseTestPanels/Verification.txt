@@ -1,0 +1,23 @@
+测试面板中文显示检查
+日期：2026-10-18
+范围：本次仅修改玩家和物品测试面板显示文字，不实现03双语系统。
+
+修改文件：
+Assets/Tests/Player/TestDoubles/PlayerTestDriver.cs
+Assets/Tests/Items/TestDoubles/ItemsTestDriver.cs
+
+实际验证：
+1. 修改后请求Unity脚本编译；首次完成时Console无错误和警告。
+2. PlayerTest进入Play，Game截图检查中文标题、说明、状态、按钮与布局。
+3. 调用真实测试驱动PrepareNextRound后UseMedkit，返回“医疗包：生命值已满”，真实生命为3。
+4. 单独加载ItemsTest运行，Game截图检查中文标题、状态、物品归属、按钮与说明。
+5. 初始测试生命为2，DamageOne后UseFirstFood，返回“食物A：使用成功”，生命回到2。
+6. 本次结束时停止Play，临时用于截图的Application.runInBackground恢复为false。
+7. 文字修改未新增namespace，git diff --check无空白错误；未重新执行完整自动化测试套件。
+
+已实际查看的成功截图：
+Docs/QA/ChineseTestPanels/PlayerTest_zh.png
+Docs/QA/ChineseTestPanels/ItemsTest_zh-1.png
+
+其他同目录截图属于中间过程，不作为成功验收证据。
+最终复查时工作区出现并行玩家跳跃改动，Console曾报告PlayerJumpGraceTests引用CanJump、coyoteTimeSeconds等成员未匹配。该检查不作为整个工程最终编译状态保证；本次未修改这些玩家实现或测试文件。后续开发应以最新工程编译结果为准。

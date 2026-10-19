@@ -1,0 +1,467 @@
+{
+  "scope": "Read-only screenshots/metadata; onlyNormalPpPixelAudit.txt/json written. No Unity/Assets/original image changes.",
+  "sourceDirectory": "E:\\DD451\\Docs\\Verification\\Enemy\\StealthVignette\\OrdinaryPlay-20261019T171129",
+  "captureMethod": "ScreenCapture.CaptureScreenshot, supersize1, ordinary Play Game framebuffer",
+  "methodNote": "Ordinary Bootstrap->Shelter->Ruins. Runtime-only drones disabled and LightFlicker components disabled for stable normal PP comparison; no scene saves; timeScale remains1 throughout. Public API flow/position assistance; no native keyboard claim. All later scenes reload original authored actors/lights.",
+  "gameTimeBefore": 61.0709076,
+  "gameTimeAfter": 71.7767,
+  "elapsedGameSeconds": 10.705792400000007,
+  "sameTime": false,
+  "postProcessingBefore": false,
+  "postProcessingAfter": true,
+  "metadataMatches": {
+    "settledRound": true,
+    "stage": true,
+    "scene": true,
+    "player": true,
+    "cameraExceptPostProcessing": true,
+    "effectiveStack": true,
+    "lights": true,
+    "volumes": true,
+    "environment": true,
+    "screen": true,
+    "round": true,
+    "playerBounds": true
+  },
+  "recordedLightCount": 2,
+  "neutralSampledStack": true,
+  "effectiveStack": {
+    "color": {
+      "active": false,
+      "exposure": 0.0,
+      "contrast": 0.0,
+      "saturation": 0.0,
+      "hue": 0.0,
+      "filter": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "bloom": {
+      "active": false,
+      "intensity": 0.0,
+      "threshold": 1.0
+    },
+    "tone": {
+      "active": false,
+      "mode": "None"
+    },
+    "vignette": {
+      "active": false,
+      "intensity": 0.0
+    },
+    "whiteBalance": {
+      "active": false,
+      "temperature": 0.0,
+      "tint": 0.0
+    }
+  },
+  "roiMethod": "Rectangles[left,top,right,bottom) in PNG coordinates. Player corners transformed y=1080-screenY, floor minima/ceil maxima. UI interior proxy uses most frequent RGB among top140px with all channels>=180; this excludes antialiased glyph edges but is not an alpha readback.",
+  "statistics": [
+    {
+      "roi": {
+        "name": "fullFrame",
+        "rect": [
+          0,
+          0,
+          1920,
+          1080
+        ],
+        "modeGlyphOnly": false
+      },
+      "pixels": 2073600.0,
+      "changedPixels": 1838932.0,
+      "changedPercent": 88.68306327160494,
+      "over1Pixels": 16408.0,
+      "over2Pixels": 0.0,
+      "over4Pixels": 0.0,
+      "over8Pixels": 0.0,
+      "meanAbsRgb8Bit": 0.6080679333847737,
+      "meanSignedRgb8Bit": [
+        -0.545606674382716,
+        -0.6292578125,
+        -0.5889573688271605
+      ],
+      "meanEncodedLumaBefore": 39.38897330260787,
+      "meanEncodedLumaAfter": 38.78040941393974,
+      "meanAbsLuma8Bit": 0.6174904741487948,
+      "maxChannelDifference8Bit": 2.0,
+      "maxChannelDifferencePercentiles": {
+        "p50": 1.0,
+        "p90": 1.0,
+        "p95": 1.0,
+        "p99": 1.0,
+        "p99_9": 2.0
+      },
+      "opaqueUiProxyModeRgb": [
+        237.0,
+        247.0,
+        255.0
+      ],
+      "opaqueUiProxyTotal": 923.0,
+      "exactPixels": 234668.0,
+      "maxDelta1Pixels": 1822524.0
+    },
+    {
+      "roi": {
+        "name": "playerBounds",
+        "rect": [
+          817,
+          586,
+          916,
+          790
+        ],
+        "modeGlyphOnly": false
+      },
+      "pixels": 20196.0,
+      "changedPixels": 16469.0,
+      "changedPercent": 81.54585066349772,
+      "over1Pixels": 143.0,
+      "over2Pixels": 0.0,
+      "over4Pixels": 0.0,
+      "over8Pixels": 0.0,
+      "meanAbsRgb8Bit": 0.4101967386281112,
+      "meanSignedRgb8Bit": [
+        -0.5942265795206971,
+        -0.21311150722915428,
+        -0.28520499108734404
+      ],
+      "meanEncodedLumaBefore": 103.65712712418467,
+      "meanEncodedLumaAfter": 103.35778540305324,
+      "meanAbsLuma8Bit": 0.3516170627847043,
+      "maxChannelDifference8Bit": 2.0,
+      "maxChannelDifferencePercentiles": {
+        "p50": 1.0,
+        "p90": 1.0,
+        "p95": 1.0,
+        "p99": 1.0,
+        "p99_9": 2.0
+      },
+      "opaqueUiProxyModeRgb": [
+        237.0,
+        247.0,
+        255.0
+      ],
+      "opaqueUiProxyTotal": 923.0,
+      "exactPixels": 3727.0,
+      "maxDelta1Pixels": 16326.0
+    },
+    {
+      "roi": {
+        "name": "center",
+        "rect": [
+          480,
+          270,
+          1440,
+          810
+        ],
+        "modeGlyphOnly": false
+      },
+      "pixels": 518400.0,
+      "changedPixels": 460114.0,
+      "changedPercent": 88.7565586419753,
+      "over1Pixels": 8117.0,
+      "over2Pixels": 0.0,
+      "over4Pixels": 0.0,
+      "over8Pixels": 0.0,
+      "meanAbsRgb8Bit": 0.6235976080246913,
+      "meanSignedRgb8Bit": [
+        -0.5773476080246913,
+        -0.6365297067901234,
+        -0.5063753858024691
+      ],
+      "meanEncodedLumaBefore": 45.58968943035383,
+      "meanEncodedLumaAfter": 44.9751389797792,
+      "meanAbsLuma8Bit": 0.6473824861121793,
+      "maxChannelDifference8Bit": 2.0,
+      "maxChannelDifferencePercentiles": {
+        "p50": 1.0,
+        "p90": 1.0,
+        "p95": 1.0,
+        "p99": 2.0,
+        "p99_9": 2.0
+      },
+      "opaqueUiProxyModeRgb": [
+        237.0,
+        247.0,
+        255.0
+      ],
+      "opaqueUiProxyTotal": 923.0,
+      "exactPixels": 58286.0,
+      "maxDelta1Pixels": 451997.0
+    },
+    {
+      "roi": {
+        "name": "topUiAndBackground",
+        "rect": [
+          0,
+          0,
+          1920,
+          140
+        ],
+        "modeGlyphOnly": false
+      },
+      "pixels": 268800.0,
+      "changedPixels": 233358.0,
+      "changedPercent": 86.81473214285714,
+      "over1Pixels": 1.0,
+      "over2Pixels": 0.0,
+      "over4Pixels": 0.0,
+      "over8Pixels": 0.0,
+      "meanAbsRgb8Bit": 0.48795510912698414,
+      "meanSignedRgb8Bit": [
+        -0.42580357142857145,
+        -0.5106994047619048,
+        -0.5273623511904761
+      ],
+      "meanEncodedLumaBefore": 34.35139149107003,
+      "meanEncodedLumaAfter": 33.85753787576495,
+      "meanAbsLuma8Bit": 0.49385361532728494,
+      "maxChannelDifference8Bit": 2.0,
+      "maxChannelDifferencePercentiles": {
+        "p50": 1.0,
+        "p90": 1.0,
+        "p95": 1.0,
+        "p99": 1.0,
+        "p99_9": 1.0
+      },
+      "opaqueUiProxyModeRgb": [
+        237.0,
+        247.0,
+        255.0
+      ],
+      "opaqueUiProxyTotal": 923.0,
+      "exactPixels": 35442.0,
+      "maxDelta1Pixels": 233357.0
+    },
+    {
+      "roi": {
+        "name": "topUiGlyphInteriorProxy",
+        "rect": [
+          0,
+          0,
+          1920,
+          140
+        ],
+        "modeGlyphOnly": true
+      },
+      "pixels": 923.0,
+      "changedPixels": 0.0,
+      "changedPercent": 0.0,
+      "over1Pixels": 0.0,
+      "over2Pixels": 0.0,
+      "over4Pixels": 0.0,
+      "over8Pixels": 0.0,
+      "meanAbsRgb8Bit": 0.0,
+      "meanSignedRgb8Bit": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "meanEncodedLumaBefore": 245.4516000000003,
+      "meanEncodedLumaAfter": 245.4516000000003,
+      "meanAbsLuma8Bit": 0.0,
+      "maxChannelDifference8Bit": 0.0,
+      "maxChannelDifferencePercentiles": {
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "p99_9": 0.0
+      },
+      "opaqueUiProxyModeRgb": [
+        237.0,
+        247.0,
+        255.0
+      ],
+      "opaqueUiProxyTotal": 923.0,
+      "exactPixels": 923.0,
+      "maxDelta1Pixels": 0.0
+    },
+    {
+      "roi": {
+        "name": "leftStaticEdge",
+        "rect": [
+          0,
+          160,
+          160,
+          1000
+        ],
+        "modeGlyphOnly": false
+      },
+      "pixels": 134400.0,
+      "changedPixels": 120661.0,
+      "changedPercent": 89.77752976190476,
+      "over1Pixels": 936.0,
+      "over2Pixels": 0.0,
+      "over4Pixels": 0.0,
+      "over8Pixels": 0.0,
+      "meanAbsRgb8Bit": 0.6264484126984127,
+      "meanSignedRgb8Bit": [
+        -0.5723511904761904,
+        -0.6251934523809524,
+        -0.649375
+      ],
+      "meanEncodedLumaBefore": 33.76600692410971,
+      "meanEncodedLumaAfter": 33.15030182887527,
+      "meanAbsLuma8Bit": 0.6161058482145567,
+      "maxChannelDifference8Bit": 2.0,
+      "maxChannelDifferencePercentiles": {
+        "p50": 1.0,
+        "p90": 1.0,
+        "p95": 1.0,
+        "p99": 1.0,
+        "p99_9": 2.0
+      },
+      "opaqueUiProxyModeRgb": [
+        237.0,
+        247.0,
+        255.0
+      ],
+      "opaqueUiProxyTotal": 923.0,
+      "exactPixels": 13739.0,
+      "maxDelta1Pixels": 119725.0
+    },
+    {
+      "roi": {
+        "name": "rightStaticEdge",
+        "rect": [
+          1760,
+          160,
+          1920,
+          1000
+        ],
+        "modeGlyphOnly": false
+      },
+      "pixels": 134400.0,
+      "changedPixels": 120859.0,
+      "changedPercent": 89.92485119047619,
+      "over1Pixels": 1954.0,
+      "over2Pixels": 0.0,
+      "over4Pixels": 0.0,
+      "over8Pixels": 0.0,
+      "meanAbsRgb8Bit": 0.6559350198412699,
+      "meanSignedRgb8Bit": [
+        -0.538251488095238,
+        -0.7073883928571428,
+        -0.6347842261904761
+      ],
+      "meanEncodedLumaBefore": 41.05256023514205,
+      "meanEncodedLumaAfter": 40.38637236908003,
+      "meanAbsLuma8Bit": 0.6685766845237846,
+      "maxChannelDifference8Bit": 2.0,
+      "maxChannelDifferencePercentiles": {
+        "p50": 1.0,
+        "p90": 1.0,
+        "p95": 1.0,
+        "p99": 2.0,
+        "p99_9": 2.0
+      },
+      "opaqueUiProxyModeRgb": [
+        237.0,
+        247.0,
+        255.0
+      ],
+      "opaqueUiProxyTotal": 923.0,
+      "exactPixels": 13541.0,
+      "maxDelta1Pixels": 118905.0
+    },
+    {
+      "roi": {
+        "name": "bottomStaticEdge",
+        "rect": [
+          0,
+          960,
+          1920,
+          1080
+        ],
+        "modeGlyphOnly": false
+      },
+      "pixels": 230400.0,
+      "changedPixels": 174425.0,
+      "changedPercent": 75.70529513888889,
+      "over1Pixels": 0.0,
+      "over2Pixels": 0.0,
+      "over4Pixels": 0.0,
+      "over8Pixels": 0.0,
+      "meanAbsRgb8Bit": 0.5747280092592593,
+      "meanSignedRgb8Bit": [
+        -0.5419270833333333,
+        -0.5802821180555555,
+        -0.6019748263888889
+      ],
+      "meanEncodedLumaBefore": 30.931786939347038,
+      "meanEncodedLumaAfter": 30.358092888113376,
+      "meanAbsLuma8Bit": 0.5736940512151998,
+      "maxChannelDifference8Bit": 1.0,
+      "maxChannelDifferencePercentiles": {
+        "p50": 1.0,
+        "p90": 1.0,
+        "p95": 1.0,
+        "p99": 1.0,
+        "p99_9": 1.0
+      },
+      "opaqueUiProxyModeRgb": [
+        237.0,
+        247.0,
+        255.0
+      ],
+      "opaqueUiProxyTotal": 923.0,
+      "exactPixels": 55975.0,
+      "maxDelta1Pixels": 174425.0
+    },
+    {
+      "roi": {
+        "name": "staticSky",
+        "rect": [
+          800,
+          150,
+          1520,
+          320
+        ],
+        "modeGlyphOnly": false
+      },
+      "pixels": 122400.0,
+      "changedPixels": 117359.0,
+      "changedPercent": 95.88153594771242,
+      "over1Pixels": 0.0,
+      "over2Pixels": 0.0,
+      "over4Pixels": 0.0,
+      "over8Pixels": 0.0,
+      "meanAbsRgb8Bit": 0.653390522875817,
+      "meanSignedRgb8Bit": [
+        -0.5156045751633986,
+        -0.6196895424836601,
+        -0.8248774509803921
+      ],
+      "meanEncodedLumaBefore": 33.49238448689988,
+      "meanEncodedLumaAfter": 32.88000884145874,
+      "meanAbsLuma8Bit": 0.6123756454252076,
+      "maxChannelDifference8Bit": 1.0,
+      "maxChannelDifferencePercentiles": {
+        "p50": 1.0,
+        "p90": 1.0,
+        "p95": 1.0,
+        "p99": 1.0,
+        "p99_9": 1.0
+      },
+      "opaqueUiProxyModeRgb": [
+        237.0,
+        247.0,
+        255.0
+      ],
+      "opaqueUiProxyTotal": 923.0,
+      "exactPixels": 5041.0,
+      "maxDelta1Pixels": 117359.0
+    }
+  ],
+  "visualFinding": "Both original1920x1080 images inspected: no obvious hue shift or atmospheric/contrast change visible.",
+  "limitations": [
+    "Captures are at different game times with timeScale1 perMethod.txt; do not call them same-time/frozen comparison.",
+    "Drones/LightFlicker runtime disable is documented by009 inMethod.txt,not independently inspected through Unity.",
+    "PNG bytes measure encodedRGB differences; low-amplitude differences cannot alone prove their exact rendering/quantization source.",
+    "No performance,interaction,native-input,scene save,or broadAssets audit performed."
+  ]
+}

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="6" result="Passed" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-19 17:23:49Z" end-time="2026-10-19 17:23:54Z" duration="4.9867144">
+  <test-suite type="TestSuite" id="1242" name="DD451Demo" fullname="DD451Demo" runstate="Runnable" testcasecount="203" result="Passed" start-time="2026-10-19 17:23:49Z" end-time="2026-10-19 17:23:54Z" duration="4.986714" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1090" name="MyPrecious.Enemy.PlayModeTests.dll" fullname="E:/DD451/Library/ScriptAssemblies/MyPrecious.Enemy.PlayModeTests.dll" runstate="Runnable" testcasecount="56" result="Passed" start-time="2026-10-19 17:23:49Z" end-time="2026-10-19 17:23:54Z" duration="4.957346" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="85336" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestFixture" id="1083" name="PlayerStealthVignetteTests" fullname="PlayerStealthVignetteTests" classname="PlayerStealthVignetteTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-19 17:23:49Z" end-time="2026-10-19 17:23:54Z" duration="4.951886" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1088" name="MovingTheBoundPlayerToAnotherSceneClearsBeforeTheNextBindingRefresh" fullname="PlayerStealthVignetteTests.MovingTheBoundPlayerToAnotherSceneClearsBeforeTheNextBindingRefresh" methodname="MovingTheBoundPlayerToAnotherSceneClearsBeforeTheNextBindingRefresh" classname="PlayerStealthVignetteTests" runstate="Runnable" seed="1222421150" result="Passed" start-time="2026-10-19 17:23:49Z" end-time="2026-10-19 17:23:50Z" duration="0.463227" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1084" name="OnlyActualCrouchingCoverFadesInAndStandingOrLeavingFadesOut" fullname="PlayerStealthVignetteTests.OnlyActualCrouchingCoverFadesInAndStandingOrLeavingFadesOut" methodname="OnlyActualCrouchingCoverFadesInAndStandingOrLeavingFadesOut" classname="PlayerStealthVignetteTests" runstate="Runnable" seed="700567408" result="Passed" start-time="2026-10-19 17:23:50Z" end-time="2026-10-19 17:23:51Z" duration="1.673244" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1085" name="OverlappingCoversAndBackpackDoNotInterruptAnExistingVignette" fullname="PlayerStealthVignetteTests.OverlappingCoversAndBackpackDoNotInterruptAnExistingVignette" methodname="OverlappingCoversAndBackpackDoNotInterruptAnExistingVignette" classname="PlayerStealthVignetteTests" runstate="Runnable" seed="1269330453" result="Passed" start-time="2026-10-19 17:23:51Z" end-time="2026-10-19 17:23:52Z" duration="0.460358" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1089" name="ReenableReusesOneOwnedProfileAndDestroyCleansItWithoutChangingOtherVolumes" fullname="PlayerStealthVignetteTests.ReenableReusesOneOwnedProfileAndDestroyCleansItWithoutChangingOtherVolumes" methodname="ReenableReusesOneOwnedProfileAndDestroyCleansItWithoutChangingOtherVolumes" classname="PlayerStealthVignetteTests" runstate="Runnable" seed="1875331063" result="Passed" start-time="2026-10-19 17:23:52Z" end-time="2026-10-19 17:23:52Z" duration="0.647483" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1086" name="TransitionAndDeathClearImmediatelyAndANewRoundCanHideAgain" fullname="PlayerStealthVignetteTests.TransitionAndDeathClearImmediatelyAndANewRoundCanHideAgain" methodname="TransitionAndDeathClearImmediatelyAndANewRoundCanHideAgain" classname="PlayerStealthVignetteTests" runstate="Runnable" seed="1640067933" result="Passed" start-time="2026-10-19 17:23:52Z" end-time="2026-10-19 17:23:53Z" duration="0.638783" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1087" name="UnpreparedUnboundOrDisabledBindingCannotLeaveAStaleWeight" fullname="PlayerStealthVignetteTests.UnpreparedUnboundOrDisabledBindingCannotLeaveAStaleWeight" methodname="UnpreparedUnboundOrDisabledBindingCannotLeaveAStaleWeight" classname="PlayerStealthVignetteTests" runstate="Runnable" seed="871941419" result="Passed" start-time="2026-10-19 17:23:53Z" end-time="2026-10-19 17:23:54Z" duration="1.041782" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/cs200/AppData/LocalLow/DefaultCompany/DD451Demo\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

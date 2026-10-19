@@ -1,0 +1,80 @@
+MyPrecious P0 — 06交接记录
+版本：2026-10-18 / Dispatch v12
+状态：06已交付；后续04按用户新要求替换背包丢弃语义。最新行为与125项EditMode、两尺寸各31项PlayMode记录见下节；旧70/19项属于历史版本。原生OS鼠标拖拽仍无通过声明，不是完整游戏或全部输入验收完成声明。
+
+最新规则覆盖（04实现；2026-10-18，纽约时间15:52—15:58完成自动化验证）
+06已核对04聊天中的用户原始要求及答复：“丢弃时直接销毁该物品”“下一轮探索时再出现，同时丢弃时会提示玩家”。此规则覆盖本文历史版本的“背包丢到地面后本轮再拾回”。
+当前TryDiscardFromBackpack静默移除背包占格，最后调用01.RecordLoss(instanceId,BackpackDiscard)；失败恢复原坐标/朝向。普通物品变Lost，唯一物品变PendingRecovery，下一轮从OriginalSpawnPointId领取同一身份；不创建可再拾取的GroundItem。01保留身份账本，丢弃会清IsRetained并刷新EV；这不是普通转仓或返箱。
+TryDropFromBackpack仅为兼容入口，转调TryDiscardFromBackpack，不再代表地面丢放。既有地图GroundItem拾取及背包↔箱子双向转移保留。
+UI执行前显示普通/唯一物品各自的双语提示并确认，确认使用单调编号；DiscardConfirmationButton记录按下时的请求，避免旧PointerDown→受击→新提示→迟到PointerUp误确认或误取消。关闭、受击、选择/绑定/权限失效等会取消旧请求。
+04同时修复共享Bootstrap新增内嵌模块后LootTest重复初始化的问题，统一场景引用；LootTestSceneBuilder先复用已有ItemManager/LocalizationManager，缺少才实例化对应模块。
+06只读核对Docs/Verification/BackpackDiscard下官方XML：EditMode 125/125（Items 44 + Loot 81）；1280×720、800×600各31/31（Backpack 10 + Loot 21），全部0失败、0跳过，分别结束于纽约时间15:52:31、15:57:39、15:58:57。含原真实双向转移/受击回归及新丢弃确认、迟到松手防护。
+上述成绩由04重新执行，06本次未重跑测试、未操作Editor或Assets。详细交付见04_Handoff.txt新版补充和BackpackDiscard证据目录；本节通过数以已核对的官方XML为据。
+本节之后的06初次交付与BackpackLoot独立联测记录保留历史事实，不能用旧丢地拾回成绩证明新丢弃行为。Editor继续由05使用。
+
+工程现状
+开工读取真实E:/DD451工程、ProjectRules、六份Setup及00—04 Handoff。
+开工未找到05_Handoff.txt；WarehouseShelterSetup明确其布局调整后验收仍在进行。
+协作期间05_Handoff已落地并重新全文核对：05保留28项EditMode与新版纵滚7项PlayMode历史结果，末次排版小修后的复验及原生输入尚有证据缺口。06不沿用这些成绩宣称联合验收。
+Unity 6000.2.12f1；Input System 1.14.2、Cinemachine 3.1.7、UGUI 2.0.0、URP 17.2.0、Test Framework 1.6.0。
+没有发现适用AGENTS.md。工程有大量既有未跟踪00—05资源和既有Packages/场景修改，本任务不清理或回退它们。
+用户授权04/05/06串行协调共享Unity，并补充授权与007协调。06完成后交05末次检查，再交04独立联验。
+04最终已释放Editor并重新核对Handoff；06新增接口包含在其最终排队指针回归中，但这不代替06联验。
+并行任务007随后新增GameFlow并修改PlayerController/PlayerHealth以增加庇护所准备/定位入口。06未编辑或回退这两个文件；82项开工基线中其余80项保持一致。验证以同一共享工程当前版本为准，不能将其他任务改动归为06交付。
+
+实现文件
+具体责任、资源、Prefab和接线入口见Docs/Architecture/TransfersLootSetup.txt。
+新增生产代码在Assets/Scripts/Loot与Assets/Scripts/Items/Transfers；新增测试在Assets/Tests/Loot。
+现有接入修改限定04/05 UI与PlayerInteraction只读空间查询，未修改01身份核心、02运动、03语言核心或两个格子核心。
+protected具体提交点用于故障测试，使用真实ItemManager和真实Backpack/Warehouse布局，无假容器替代。
+用户在04聊天补充“需要双向，包含放回搜刮容器”，已核对原始回复并纳入06：背包可拖入当前箱子列表，原箱复用taken条目，外来物追加已揭示条目；原点、身份、次数、保有和其他条目搜索不变。初次版本的明确丢放按钮后被04替换为上节的提示确认丢弃流程。
+
+参考源码和核实版本
+CardGame https://github.com/CSduckie/CardGame，本机E:/Portfolio-Card-Clone，HEAD 57eabac0f946f21ef00b489e83c1c133905ea673。
+- Assets/Scripts/Cards/MonoBehaviour/CardDragHandler.cs：UGUI Begin/Drag/End生命周期；改用RectTransform、稳定token和确认前保留来源，移除DOTween/卡牌/全局手牌业务。
+- Assets/Scripts/Card Effects/LastColumnChangeValueEffect.cs：Random.value与概率比较；每个候选独立判断，删除棋盘/UI数值解析与卡牌效果。
+- Assets/Scripts/Items/MonoBehaviour/ItemTemplet.cs：引用配置、明确刷新TMP的形式，改为03稳定文本键与语言通知。
+LiDarProject https://github.com/CSduckie/LiDarProject，本机E:/Portfolio-LiDar，HEAD 7d691ab14ff69a85cf6be7b91cc910139205507f。
+- Assets/Script/LevelScripts/TeleportLevels/KeyController.cs：3D交互和明确方法形式；删除独立F监听与先销毁再确认流程，接02 Interactable。
+2DArpg-Portfolio https://github.com/CSduckie/2DArpg-Portfolio，本机E:/Portfolio-Clone，HEAD c601c36f95efdd4d67327489f9edb58412aa54b4。
+- Assets/Scripts/Enemy/Elites/Shielder/States/ShielderIdleState.cs：配置概率表达；未复制每帧抽取与命中即跳过后项逻辑。
+版本通过实际.git/HEAD和refs/heads/main只读核实，参考仓库没有改动。三个仓库均没有被冒称为完整跨容器/搜刮系统。
+
+验证记录
+编译：2026-10-18统一刷新后Console无编译错误，Editor实际isCompiling/isUpdating=false。
+EditMode：70/70通过、0失败、0跳过，2026-10-18 19:06:10 UTC，0.4964765秒。原始XML和MCP结果见Docs/Verification/Loot/EditMode-70.xml、EditMode-70.json。
+覆盖真实仓库双向转移和返箱、三个提交步骤故障、真实01忙时拒绝归属、完整通知/重入、独立概率、唯一找回、权限/可达性及地面失败恢复。
+显示监听者抛异常测试使用LogAssert.Expect验证成功提交不误报失败；日志中对应预期异常不属于编译/运行缺陷。
+扩展前历史结果55项EditMode、两尺寸各13项PlayMode保留，但不能代替扩展后的18项PlayMode验收。
+扩展后首次1280x720为17/18通过：新建遮挡Image尚未经过Canvas帧，depth=-1，Unity射线器会跳过未绘制图形。测试增加一帧和明确depth/覆盖范围断言，未放宽遮挡断言、未修改生产代码。失败原始记录保留PlayMode-Return-InitialFailure.xml。
+修正后1280x720：18/18通过、0失败、0跳过，19:07:26—19:07:36 UTC，10.0932525秒；见PlayMode-18-1280x720.xml及.json。
+800x600：18/18通过、0失败、0跳过，19:08:05—19:08:16 UTC，10.3420303秒；见PlayMode-18-800x600.xml。MCP此次丢失完成回调，但官方XML新时间戳/18个用例全部通过，实际TestRunnerApi.IsRunActive=false且Editor停止，因此只清理MCP遗留任务，不重跑或虚构成功JSON。
+PlayMode使用排队的Mouse/Keyboard状态经过真实InputAction、InputSystemUIInputModule与UGUI；覆盖双向仓库、双向箱子、空箱接收、R/F10、内部重排/右键使用、两方向非致死伤害取消、旧token/新拖拽、关闭再开会话、地面拾放及重载/唯一找回。不是业务方法直调冒充指针，也不是原生OS鼠标。
+最终补充滚轮回归后：1280x720为19/19通过，0失败/0跳过，19:13:26—19:13:38 UTC，11.8978294秒；800x600为19/19通过，0失败/0跳过，19:14:18—19:14:30 UTC，12.114629秒。两份最终官方XML与MCP结果为PlayMode-19-1280x720.xml/.json及PlayMode-19-800x600.xml/.json；以最终19项记录为准。
+新增滚轮用例从真实裁剪列表滚到末项，经UGUI拖入背包；随后滚动真实05仓库，检查内容坐标/滚动位置变化及全部身份与双方布局不变。800x600首次启动MCP断线，核对实际无运行任务且旧XML未变后才重试，未并发开启两个测试运行。
+
+原生OS输入与画面
+普通Play中使用computer-use/Sky原生点击、拖拽、Tab和F10。800x600点击曾成功进入庇护所，但后续未获得成功拖放证据：读回活动DragToken=0、SelectedInstanceId为空、归属和位置未变；原生F10也未得到切换结果。完整拖拽结束后活动DragToken=0也可能是正常清理，不能只凭此值推断拖拽是否开始。不能宣称原生跨界面拖放/R通过。
+调查时原生Keyboard/Mouse各一、无测试虚拟设备，鼠标状态停留在先前按钮点位，工具切换前台焦点不稳定。临时开启本次Play后台更新、克隆InputSettings允许后台设备输入仍未取得可靠拖放证据；已恢复默认焦点策略/后台更新，未保存到工程设置。确切原因未定，需04/05独立原生输入复验或人工Game验收。
+画面检查与输入证据分开：1280x720、800x600中英来源列表/反馈，以及两尺寸中文仓库均已截图检查。为检查画面使用真实驱动/语言公开方法安排初态，不把它们算作原生操作成功。
+截图：Docs/Verification/Loot/Loot-1280x720-search-zh.png、Loot-1280x720-search-en.png、Loot-800x600-search-zh.png、Loot-800x600-search-en.png、Loot-1280x720-zh.png、Loot-800x600-zh.png。
+修正测试CanvasScaler按1280参考宽缩放，使800x600仍保留全部工具栏、20列仓库和两边操作区。来源长描述由动态高度及ScrollRect承载，未截断到固定三行；底部条目可滚动查看。
+
+结束状态与后续
+已停止Play，打开干净的LootTest.unity，恢复原Game视图预设7及非最大化布局；Enter Play Mode Options为false/None，无自动刷新暂停留存。最终Console读取0错误、0警告。
+06代码/资源冻结。首轮释放顺序为05短检→04独立全链联验；04现已完成并再次释放给05继续原生验收。原生鼠标缺口继续保留，不能用排队指针或截图替代通过声明。
+在06初次交付时，82项保护文件核对仅PlayerController/PlayerHealth两项属于007的已协调变化，其余80项与开工哈希一致；06没有重写01身份核心、02运动、03语言核心或两个格子核心。此历史哈希结论不覆盖04后来获授权追加ItemLossReason.BackpackDiscard等改动。
+未创建提交、PR或独立构建；保留共享工程既有改动。
+
+04独立联测补充（2026-10-18，纽约时间15:22—15:24）
+06已只读核对Docs/Verification/BackpackLoot/Report.txt及三份官方XML：独立EditMode为70/70，两尺寸PlayMode各19/19，均0失败、0跳过。该目录的成绩来自04重新执行，不沿用06结果。
+04仅加强LootReturnTests.cs两个既有用例：合法目标中R旋转后非致死受击；新token成功后重复结束/释放；同一对象、实例数量、唯一有效持有与占格终态。没有修改生产代码或资源；其ProtectedAfter.json记录353项保护文件Changed=0。
+原生800x600单击电池可以选中，但双尺寸拖拽仍无成功证据。04进一步读回nextDragToken前后均为0，结合归属/布局和反馈判断，修正了仅看活动DragToken的诊断不足。Native-800x600.json、Native-1280x720.json保留读数；F10也仍未验收通过。
+当前Editor使用权属于05；06此次仅核对文件并更新本文，未操作Editor或重跑测试。05继续其已获用户授权的原生输入排查。
+
+范围边界
+本交付记录不构成08正式撤离/死亡损失与09正式地图接线完成声明；LootTestDriver的明确模拟不代表完整游戏联测。
+不包含存档、商店、堆叠、自动整理、完整敌人玩法或Windows独立试玩构建。
+
+2026-10-18 04增补接入说明：
+用户已明确覆盖旧临时丢地规则，普通背包丢弃销毁、唯一下轮原点同身份找回，并预先提示确认。当前TryDropFromBackpack已兼容转调TryDiscardFromBackpack，旧地面拾回结果仅作为历史记录。04修改及125 Edit/两尺寸各31 Play实际证据见Docs/Verification/BackpackDiscard/Report.txt、04_Handoff第十二节。本輪同时修复共享Bootstrap内嵌模块后LootTest的重复Items/Localization接线；真实地图原生GroundItem拾取保留。

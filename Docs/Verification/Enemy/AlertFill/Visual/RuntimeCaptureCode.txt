@@ -1,0 +1,81 @@
+if (!UnityEditor.EditorApplication.isPlaying || Camera.main == null) return "Requires live EnemyTest camera.";
+var runtimeWall = UnityEngine.Object.Instantiate(GameObject.Find("SolidSightWall"));
+runtimeWall.name = "AlertFillRuntimeWall";
+runtimeWall.transform.position = new Vector3(-2f, 1f, 0f);
+var drone = GameObject.Find("Drone_A").GetComponent<DroneController>();
+var other = GameObject.Find("Drone_B").GetComponent<DroneController>();
+drone.initialFacing = 1;
+drone.BeginRound(drone.CurrentRound + 1);
+drone.enabled = false;
+other.enabled = false;
+drone.Body.position = new Vector3(-7f, 1.5f, 0f);
+drone.transform.position = drone.Body.position;
+drone.vision.Rebuild();
+other.vision.Rebuild();
+Color orange = new Color(1f, 0.67f, 0.1f, 0.2f);
+drone.vision.SetTint(orange);
+other.vision.SetTint(orange);
+other.vision.SetAlertProgress(0.6f);
+Physics.SyncTransforms();
+var renderer = drone.vision.GetComponent<MeshRenderer>();
+var otherRenderer = other.vision.GetComponent<MeshRenderer>();
+var mesh = drone.vision.GetComponent<MeshFilter>().sharedMesh;
+var collider = drone.vision.RangeCollider;
+var material = renderer.sharedMaterial;
+var wall = runtimeWall.GetComponent<Collider>();
+var folder = "E:/DD451/Docs/Verification/Enemy/AlertFill/Visual";
+var culture = System.Globalization.CultureInfo.InvariantCulture;
+var samples = new System.Collections.Generic.List<string>();
+samples.Add("seconds,progress,mpbProgress,otherProgress,meshId,colliderId,centerHeightDirection,originX,originY,originZ");
+var captures = new System.Collections.Generic.List<string>();
+var names = new [] { "Fill-000.png", "Fill-050.png", "Fill-100.png", "Retreat-025.png", "Retreat-000.png" };
+var times = new [] { 0.5, 3.5, 6.5, 9.5, 11.5 };
+bool oldBackground = Application.runInBackground;
+Application.runInBackground = true;
+double start = UnityEditor.EditorApplication.timeSinceStartup;
+int lastFrame = -1;
+int captureIndex = 0;
+UnityEditor.EditorApplication.CallbackFunction callback = null;
+callback = () =>
+{
+    double elapsed = UnityEditor.EditorApplication.timeSinceStartup - start;
+    if (!UnityEditor.EditorApplication.isPlaying || drone == null || elapsed > 12.2)
+    {
+        UnityEditor.EditorApplication.update -= callback;
+        Application.runInBackground = oldBackground;
+        captures.Add("Complete=" + (captureIndex == names.Length));
+        captures.Add("Duration=" + elapsed.ToString("F4",culture));
+        captures.Add("CameraUnmodified=True;RuntimeOnly=True;AIAlertNotIntegrated=True");
+        System.IO.File.WriteAllLines(folder + "/RuntimeSamples.csv", samples.ToArray());
+        System.IO.File.WriteAllLines(folder + "/CaptureResult.txt", captures.ToArray());
+        return;
+    }
+    if (Time.frameCount == lastFrame) return;
+    lastFrame = Time.frameCount;
+    float progress = elapsed < 1 ? 0f : elapsed < 3 ? (float)(elapsed - 1) * 0.25f
+        : elapsed < 4 ? 0.5f : elapsed < 6 ? 0.5f + (float)(elapsed - 4) * 0.25f
+        : elapsed < 7 ? 1f : elapsed < 9 ? 1f - (float)(elapsed - 7) * 0.375f
+        : elapsed < 10 ? 0.25f : elapsed < 11 ? 0.25f * (float)(11 - elapsed) : 0f;
+    drone.vision.SetAlertProgress(progress);
+    var block = new MaterialPropertyBlock();
+    var otherBlock = new MaterialPropertyBlock();
+    renderer.GetPropertyBlock(block);
+    otherRenderer.GetPropertyBlock(otherBlock);
+    var origin = drone.vision.transform.position;
+    samples.Add(string.Join(",",new [] { elapsed.ToString("F5",culture), progress.ToString("F5",culture),
+        block.GetFloat("_FillProgress").ToString("F5",culture), otherBlock.GetFloat("_FillProgress").ToString("F5",culture),
+        mesh.GetInstanceID().ToString(), collider.GetInstanceID().ToString(), drone.vision.transform.right.y.ToString("F6",culture),
+        origin.x.ToString("F5",culture), origin.y.ToString("F5",culture), origin.z.ToString("F5",culture) }));
+    if (captureIndex < names.Length && elapsed >= times[captureIndex])
+    {
+        ScreenCapture.CaptureScreenshot(folder + "/" + names[captureIndex]);
+        captures.Add(names[captureIndex] + ";progress=" + progress.ToString("F5",culture)
+            + ";time=" + elapsed.ToString("F5",culture) + ";resolution=" + Screen.width + "x" + Screen.height);
+        captureIndex++;
+    }
+};
+UnityEditor.EditorApplication.update += callback;
+return new { started = true, camera = Camera.main.name, cameraPosition = Camera.main.transform.position.ToString(),
+    shader = material.shader.name, materialProgress = material.GetFloat("_FillProgress"), cull = material.GetFloat("_Cull"),
+    nose = drone.vision.transform.position.ToString(), wall = wall.bounds.ToString(), meshId = mesh.GetInstanceID(),
+    colliderId = collider.GetInstanceID(), previousRunInBackground = oldBackground, runtimeOnly = true };

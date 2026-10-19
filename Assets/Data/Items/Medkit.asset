@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8552858fffd26694eb40799537746bfe, type: 3}
+  m_Name: Medkit
+  m_EditorClassIdentifier: MyPrecious.Items::ItemDataSO
+  definitionId: medkit
+  nameZh: "\u533B\u7597\u5305"
+  nameEn: Medkit
+  descriptionZh: "\u653E\u5728\u80CC\u5305\u4E2D\u4F7F\u7528\u53EF\u56DE\u6EE1\u751F\u547D\u3002\u6BCF\u8F6E\u4E00\u6B21\uFF0C\u4F7F\u7528\u540E\u4FDD\u7559\uFF1B\u6EE1\u8840\u65F6\u4E0D\u53EF\u4F7F\u7528\u3002"
+  descriptionEn: Use from the backpack to restore full health once per round. Kept
+    after use; cannot be used at full health.
+  nameKey: items.medkit.name
+  descriptionKey: items.medkit.description
+  width: 2
+  height: 2
+  canRotate: 1
+  ev: 2
+  defaultSpawnProbability: 0.35
+  searchSeconds: 2
+  isUnique: 1
+  uniqueId: story.medkit
+  canUse: 1
+  consumedOnUse: 0
+  usesPerRound: 1
+  effects:
+  - {fileID: 11400000, guid: cbf0310d77b6edd42b09f6b94a652a9a, type: 2}

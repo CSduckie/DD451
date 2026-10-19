@@ -1,0 +1,3 @@
+Natural Bootstrap->Shelter; sky=ShelterNightSkybox; probe00=0.00553075; PP=False; camera=(-8.40, 2.50, -12.00); resolution=1920x1080
+Natural Shelter->Ruins; sky=ShelterNightSkybox; probe00=0.00553075; camera=(-11.00, 2.50, -12.00); resolution=1920x1080
+Natural Ruins->Shelter; sky=ShelterNightSkybox; probe00=0.00553075; PP=False

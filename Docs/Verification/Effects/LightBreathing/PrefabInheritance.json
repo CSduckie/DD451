@@ -1,0 +1,41 @@
+{
+  "success": true,
+  "message": "Code executed successfully.",
+  "data": {
+    "result": {
+      "scene": "Assets/Scenes/Shelter.unity",
+      "dirty": false,
+      "playing": false,
+      "compiling": false,
+      "screenWidth": 1920,
+      "screenHeight": 1080,
+      "effects": [
+        {
+          "name": "灯光 (1)",
+          "sourceMatches": true,
+          "target": "光照",
+          "intensity": 50,
+          "enableBreathing": true,
+          "duration": 4,
+          "minMultiplier": 0.65,
+          "enableOverride": false,
+          "durationOverride": false,
+          "minOverride": false
+        },
+        {
+          "name": "灯光",
+          "sourceMatches": true,
+          "target": "光照",
+          "intensity": 50,
+          "enableBreathing": true,
+          "duration": 4,
+          "minMultiplier": 0.65,
+          "enableOverride": false,
+          "durationOverride": false,
+          "minOverride": false
+        }
+      ]
+    },
+    "compiler": "codedom"
+  }
+}

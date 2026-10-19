@@ -1,0 +1,221 @@
+{
+  "kind": "API-assisted ordinary Play visual check, not physical keyboard/mouse evidence",
+  "resolution": [
+    1920,
+    1080
+  ],
+  "scene": "Assets/Scenes/Tests/Loot/LootTest.unity",
+  "imagesInspected": [
+    "ChineseUnknown6x4-API.png",
+    "ChinesePartial6x4-API.png",
+    "EnglishPartial6x4-API.png",
+    "EnglishComplete6x4-API.png",
+    "ChineseEmpty4x3-API.png",
+    "EnglishEmpty3x4-API.png"
+  ],
+  "setup": "Runtime-only cloned item definitions and real bound LootBox instances. 6x4 sample: 1x1,1x2,2x2,2x3 with 30/90/20/15 seconds. Independent empty 4x3 and 3x4 boxes. No saved item data edits.",
+  "actions": "TryOpenSource API; partial AdvanceSearch(30f), complete AdvanceSearch(1000f), NotifySourceChanged; language SetLanguage API. Actual Update continues at timeScale 1; the readout precedes the screenshot frame.",
+  "unknown": "{ opened = True, screen = System.Int32[], grid = System.Int32[], cells = 24, rect = (428.00, 288.00), scale = 1, entries = <>__AnonType0`8[System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.Boolean][] }",
+  "partial": {
+    "screen": [
+      1920,
+      1080
+    ],
+    "grid": [
+      6,
+      4
+    ],
+    "cells": 24,
+    "content": [
+      428,
+      288
+    ],
+    "SearchEntryId": "visual-1",
+    "SearchElapsed": 9.356016,
+    "entries": [
+      {
+        "EntryId": "visual-0",
+        "InstanceId": "8c28955ff7ef405e82f6807796f3ca85",
+        "LayoutX": 0,
+        "LayoutY": 0,
+        "LayoutWidth": 1,
+        "LayoutHeight": 1,
+        "Revealed": true,
+        "Taken": false
+      },
+      {
+        "EntryId": "visual-1",
+        "InstanceId": "800a2d14a5cc4ef6ba25a25eb6b87d59",
+        "LayoutX": 1,
+        "LayoutY": 0,
+        "LayoutWidth": 1,
+        "LayoutHeight": 2,
+        "Revealed": false,
+        "Taken": false
+      },
+      {
+        "EntryId": "visual-2",
+        "InstanceId": "c8baf9a45ebb4a6196ca7c0ee4de6284",
+        "LayoutX": 2,
+        "LayoutY": 0,
+        "LayoutWidth": 2,
+        "LayoutHeight": 2,
+        "Revealed": false,
+        "Taken": false
+      },
+      {
+        "EntryId": "visual-3",
+        "InstanceId": "895504f8969446a4b799b85c73efa73d",
+        "LayoutX": 4,
+        "LayoutY": 0,
+        "LayoutWidth": 2,
+        "LayoutHeight": 3,
+        "Revealed": false,
+        "Taken": false
+      }
+    ]
+  },
+  "englishPartial": {
+    "screen": [
+      1920,
+      1080
+    ],
+    "SearchEntryId": "visual-1",
+    "SearchElapsed": 19.9236755,
+    "texts": [
+      {
+        "name": "Title",
+        "text": "Loot source",
+        "overflow": false,
+        "height": 40,
+        "preferred": 39.1
+      },
+      {
+        "name": "Label",
+        "text": "Close source",
+        "overflow": false,
+        "height": 32,
+        "preferred": 24.62
+      },
+      {
+        "name": "Status",
+        "text": "Searching",
+        "overflow": false,
+        "height": 56,
+        "preferred": 26.07
+      },
+      {
+        "name": "Name",
+        "text": "Battery",
+        "overflow": false,
+        "height": 54,
+        "preferred": 22.74
+      },
+      {
+        "name": "Countdown",
+        "text": "70.1 s",
+        "overflow": false,
+        "height": 32,
+        "preferred": 31.86
+      },
+      {
+        "name": "Feedback",
+        "text": "Drag revealed items to your backpack; return items to this grid.",
+        "overflow": false,
+        "height": 56,
+        "preferred": 49.24
+      }
+    ]
+  },
+  "complete": {
+    "screen": [
+      1920,
+      1080
+    ],
+    "grid": [
+      6,
+      4
+    ],
+    "cells": 24,
+    "SearchEntryId": "",
+    "SearchElapsed": 0,
+    "entries": [
+      {
+        "EntryId": "visual-0",
+        "InstanceId": "8c28955ff7ef405e82f6807796f3ca85",
+        "LayoutX": 0,
+        "LayoutY": 0,
+        "LayoutWidth": 1,
+        "LayoutHeight": 1,
+        "Revealed": true,
+        "Taken": false
+      },
+      {
+        "EntryId": "visual-1",
+        "InstanceId": "800a2d14a5cc4ef6ba25a25eb6b87d59",
+        "LayoutX": 1,
+        "LayoutY": 0,
+        "LayoutWidth": 1,
+        "LayoutHeight": 2,
+        "Revealed": true,
+        "Taken": false
+      },
+      {
+        "EntryId": "visual-2",
+        "InstanceId": "c8baf9a45ebb4a6196ca7c0ee4de6284",
+        "LayoutX": 2,
+        "LayoutY": 0,
+        "LayoutWidth": 2,
+        "LayoutHeight": 2,
+        "Revealed": true,
+        "Taken": false
+      },
+      {
+        "EntryId": "visual-3",
+        "InstanceId": "895504f8969446a4b799b85c73efa73d",
+        "LayoutX": 4,
+        "LayoutY": 0,
+        "LayoutWidth": 2,
+        "LayoutHeight": 3,
+        "Revealed": true,
+        "Taken": false
+      }
+    ],
+    "textOverflow": []
+  },
+  "empty4x3": {
+    "opened": true,
+    "grid": [
+      4,
+      3
+    ],
+    "cells": 12,
+    "entries": 0,
+    "content": [
+      288,
+      218
+    ],
+    "screen": [
+      1920,
+      1080
+    ]
+  },
+  "empty3x4": {
+    "opened": true,
+    "grid": [
+      3,
+      4
+    ],
+    "cells": 12,
+    "entries": 0,
+    "content": [
+      218,
+      288
+    ],
+    "screen": [
+      1920,
+      1080
+    ]
+  },
+  "note": "Unknown readout fell back to string because its anonymous object included a Unity Vector2; screenshots and later primitive readouts verify dimensions. No physical input or formal scene acceptance claimed."
+}

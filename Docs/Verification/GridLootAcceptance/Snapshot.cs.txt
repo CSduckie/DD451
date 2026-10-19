@@ -1,0 +1,95 @@
+// 主程只读验收脚本，由 Unity MCP execute_code 执行；不加入 Assets，不参与游戏运行。
+// 调用前可在 AppDomain 的 RootGridAudit.Step 中设置证据文件名前缀。
+var flow = UnityEngine.Object.FindFirstObjectByType<GameFlowManager>();
+UnityEngine.Canvas.ForceUpdateCanvases();
+System.Func<UnityEngine.RectTransform, float[]> screenRect = rect =>
+{
+    if (rect == null) { return null; }
+    var corners = new UnityEngine.Vector3[4];
+    rect.GetWorldCorners(corners);
+    var a = UnityEngine.RectTransformUtility.WorldToScreenPoint(null, corners[0]);
+    var b = UnityEngine.RectTransformUtility.WorldToScreenPoint(null, corners[2]);
+    return new float[] { a.x, a.y, b.x - a.x, b.y - a.y };
+};
+System.Func<UnityEngine.RectTransform, object> grid = root =>
+{
+    if (root == null) { return null; }
+    var first = root.Find("Cell_0_0") as UnityEngine.RectTransform;
+    var next = root.Find("Cell_1_0") as UnityEngine.RectTransform;
+    var cells = new System.Collections.Generic.List<object>();
+    foreach (UnityEngine.Transform child in root)
+    {
+        if (!child.name.StartsWith("Cell_") || !child.gameObject.activeSelf) { continue; }
+        var image = child.GetComponent<UnityEngine.UI.Image>();
+        cells.Add(new { name = child.name, rect = screenRect(child as UnityEngine.RectTransform),
+            raycast = image != null && image.raycastTarget });
+    }
+    return new { active = root.gameObject.activeInHierarchy, rect = screenRect(root),
+        scale = new float[] { root.lossyScale.x, root.lossyScale.y }, count = cells.Count,
+        first = screenRect(first), next = screenRect(next), cells = cells };
+};
+var backpacks = new System.Collections.Generic.List<object>();
+foreach (var view in UnityEngine.Object.FindObjectsByType<BackpackView>(UnityEngine.FindObjectsInactive.Include, UnityEngine.FindObjectsSortMode.None))
+{
+    backpacks.Add(new { scene = view.gameObject.scene.path, view.cellSize, view.gap, view.padding,
+        grid = grid(view.gridRoot), preview = screenRect(view.preview != null ? view.preview.rectTransform : null) });
+}
+var warehouses = new System.Collections.Generic.List<object>();
+foreach (var view in UnityEngine.Object.FindObjectsByType<WarehouseView>(UnityEngine.FindObjectsInactive.Include, UnityEngine.FindObjectsSortMode.None))
+{
+    warehouses.Add(new { scene = view.gameObject.scene.path, view.cellSize, view.gap, view.padding,
+        effective = view.EffectiveCellSize, viewport = screenRect(view.viewport), grid = grid(view.gridRoot) });
+}
+var loot = new System.Collections.Generic.List<object>();
+foreach (var ui in UnityEngine.Object.FindObjectsByType<LootUIController>(UnityEngine.FindObjectsSortMode.None))
+{
+    if (ui.view == null) { continue; }
+    var rows = new System.Collections.Generic.List<object>();
+    if (ui.Source != null)
+    {
+        foreach (var entry in ui.Source.Entries)
+        {
+            LootItemView itemView = null;
+            foreach (var candidate in ui.view.GetComponentsInChildren<LootItemView>(true))
+            {
+                if (candidate.EntryId == entry.EntryId) { itemView = candidate; break; }
+            }
+            rows.Add(new { entry.EntryId, entry.InstanceId, entry.Revealed, entry.Taken,
+                entry.LayoutX, entry.LayoutY, entry.LayoutWidth, entry.LayoutHeight,
+                rect = screenRect(itemView != null ? itemView.transform as UnityEngine.RectTransform : null),
+                name = itemView != null && itemView.nameText != null ? itemView.nameText.text : null,
+                description = itemView != null && itemView.descriptionText != null ? itemView.descriptionText.text : null,
+                status = itemView != null && itemView.statusText != null ? itemView.statusText.text : null,
+                icon = itemView != null && itemView.icon != null && itemView.icon.gameObject.activeInHierarchy,
+                itemActive = itemView != null && itemView.gameObject.activeInHierarchy,
+                countdownAlignment = itemView != null && itemView.countdownText != null ? itemView.countdownText.alignment.ToString() : null,
+                countdownActive = itemView != null && itemView.countdownText != null && itemView.countdownText.gameObject.activeInHierarchy,
+                countdown = itemView != null && itemView.countdownText != null ? itemView.countdownText.text : null,
+                countdownRect = screenRect(itemView != null && itemView.countdownText != null ? itemView.countdownText.rectTransform : null) });
+        }
+    }
+    loot.Add(new { scene = ui.gameObject.scene.path, ui.IsOpen, ui.SessionToken, ui.FeedbackKey,
+        source = ui.Source != null ? ui.Source.SourceId : null,
+        search = ui.Source != null ? ui.Source.SearchEntryId : null,
+        elapsed = ui.Source != null ? ui.Source.SearchElapsed : 0f,
+        columns = ui.Source != null ? ui.Source.GridWidth : 0,
+        rows = ui.Source != null ? ui.Source.GridHeight : 0,
+        ui.view.cellSize, ui.view.gap, ui.view.padding, grid = grid(ui.view.gridRoot), entries = rows });
+}
+var cameras = new System.Collections.Generic.List<object>();
+foreach (var camera in UnityEngine.Camera.allCameras)
+{
+    cameras.Add(new { camera.name, scene = camera.gameObject.scene.path, camera.enabled });
+}
+var result = new { utc = System.DateTime.UtcNow.ToString("o"), frame = UnityEngine.Time.frameCount,
+    width = UnityEngine.Screen.width, height = UnityEngine.Screen.height, timeScale = UnityEngine.Time.timeScale,
+    stage = flow != null ? flow.Stage.ToString() : null, round = flow != null ? flow.CurrentRound : 0,
+    error = flow != null ? flow.LastError : null, backpacks = backpacks, warehouses = warehouses,
+    loot = loot, cameras = cameras };
+string json = Newtonsoft.Json.JsonConvert.SerializeObject(result, Newtonsoft.Json.Formatting.Indented);
+string step = System.AppDomain.CurrentDomain.GetData("RootGridAudit.Step") as string;
+if (!string.IsNullOrEmpty(step))
+{
+    System.IO.File.WriteAllText("E:/DD451/Docs/Verification/GridLootAcceptance/" + step + ".json", json);
+}
+return json;

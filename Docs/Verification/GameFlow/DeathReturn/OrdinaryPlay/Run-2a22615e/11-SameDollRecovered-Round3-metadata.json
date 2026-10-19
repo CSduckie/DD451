@@ -1,0 +1,101 @@
+{
+  "status": "PASS",
+  "reason": "Complete PNG1920x1080 with target-camera stack snapshot; visual review still required.",
+  "captureMethod": "ScreenCapture.CaptureScreenshot, supersize1, ordinary Play Game framebuffer",
+  "png": "E:/DD451/Docs/Verification/GameFlow/DeathReturn/OrdinaryPlay/Run-2a22615e\\11-SameDollRecovered-Round3-1920x1080.png",
+  "requestedFrame": 12333,
+  "utc": "2026-10-19T08:53:56.4805311Z",
+  "callbacksRemoved": true,
+  "restoredRunInBackground": false,
+  "sample": {
+    "samplePoint": "Target formal camera endCameraRendering, after URP UpdateVolumeFramework; read-only stack",
+    "frame": 12333,
+    "stage": "Exploring",
+    "round": 3,
+    "settledRound": 2,
+    "scene": "Assets/Scenes/Ruins.unity",
+    "screen": [
+      1920,
+      1080
+    ],
+    "player": {
+      "id": -4276422,
+      "scene": "Assets/Scenes/Ruins.unity",
+      "position": [
+        -12.0158939,
+        0.0,
+        0.0
+      ],
+      "health": 2
+    },
+    "camera": {
+      "id": -4296746,
+      "name": "OutputCamera",
+      "scene": "Assets/Scenes/Ruins.unity",
+      "pixelWidth": 1920,
+      "pixelHeight": 1080,
+      "position": [
+        -11.0,
+        2.5,
+        -12.0
+      ],
+      "rotation": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "fov": 50.0,
+      "orthographic": false,
+      "orthographicSize": 6.0,
+      "clearFlags": "Skybox",
+      "postProcessing": false,
+      "volumeMask": 1,
+      "volumeUpdate": "UsePipelineSettings",
+      "perFrameVolumeUpdate": true,
+      "cameraVolumeStackIsNull": true,
+      "binderError": null
+    },
+    "environment": {
+      "skybox": "Assets/Art/Materials/Environment/ShelterNightSkybox.mat",
+      "skyboxGuid": "8ea61fa5552419d4fbbc16241b881895",
+      "fog": false,
+      "ambientIntensity": 1.0,
+      "reflectionIntensity": 1.0
+    },
+    "effectiveStack": {
+      "color": {
+        "active": false,
+        "exposure": 0.0,
+        "contrast": 0.0,
+        "saturation": 0.0,
+        "hue": 0.0,
+        "filter": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "bloom": {
+        "active": true,
+        "intensity": 0.25,
+        "threshold": 1.0
+      },
+      "tone": {
+        "active": true,
+        "mode": "Neutral"
+      },
+      "vignette": {
+        "active": true,
+        "intensity": 0.2
+      },
+      "whiteBalance": {
+        "active": false,
+        "temperature": 0.0,
+        "tint": 0.0
+      }
+    },
+    "volumes": []
+  }
+}

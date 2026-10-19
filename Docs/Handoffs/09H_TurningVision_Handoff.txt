@@ -1,0 +1,36 @@
+MyPrecious 09H — 转身发现保持与真实视野回归
+项目：E:/DD451；日期：2026-10-19
+状态：09H_CODE_AND_ACCEPTANCE_COMPLETE。Editor 仍由主程继续处理用户新任务“相机发灰、全场景新建默认黑夜”；本交接不代表全局释放。
+证据目录：Docs/Verification/Enemy/TurningVision/。
+
+一、已证实问题与修复
+原 DroneController 在进入 Alert 后仍向旧巡逻 FacingDirection 平滑转动。玩家已经进入真实视锥并被发现，却随这一残留转向被转出有限厚度范围，导致 Alert 未计满就进入 Search。Turn-1-20261019T075109319.csv 中 yaw16.051→23.696 时 rangeDistance=0、CanSee/candidate/Target 均为 true；yaw26.698 时 rangeDistance=.07832、candidate 仍为 true，但 CanSee=false、Search、Target=false。此时玩家静止、机身不移动且无墙/掩体，因而不是单凭屏幕重合推断的漏检。
+现在进入 Alert 清 turnVelocity，并在整个 Alert 期间保持发现当帧的 facingYaw；仍每帧执行 UpdatePose、Vision.SetHeading 与真实观察。玩家真正离开、实体墙遮挡或有效草丛蹲伏仍照常触发 Search 或2秒掩体警戒，不锁死目标、不拓宽视野。Patrol/Search/Chase 保留原平滑转向，BeginRound/禁用原有清理仍在，模型停止后平滑回正、四桨动画不受影响。
+
+二、代码与接入
+生产修改：Assets/Scripts/Enemy/Drone/MonoBehaviour/DroneController.cs。
+新增回归：Assets/Tests/Enemy/PlayMode/DroneTurningVisionTests.cs，共9个 UnityTest；新 meta GUID=35fc528bc09b1b948b205b653e304f7b。
+无新增公开 API、配置字段、状态或序列化迁移；现有 FacingRotation、turnSmoothTime、AlertSecondsRemaining、IsCoverAlert、BeginRound、TryExplode 接口不变。既有 Controller meta/GUID 保留。
+原 discoveryAlertSeconds=.5、coverAlertSeconds=2、turnSmoothTime=.18；视野保持有限厚度3D体、方向/遮挡/玩家掩码与真实 Collider 不变。VisionOrigin提供机头位置，水平视野不继承模型前倾。09G 半径.25、所有存活状态实体接触爆炸一次（含隐藏玩家）、视锥 Trigger 不爆炸继续有效；09F定时规则继续有效，无旧填条/退条。
+保留02C玩家真实胶囊：站立 height2/centerY1/radius.4，蹲伏 height1.3/centerY.65/radius.4。不得用旧“不改变胶囊”的历史说明覆盖当前玩家实现。本轮未改玩家代码或 Prefab。
+
+三、自动化证据与计数
+当前44个不同 PlayMode 用例最近一次结果均 Passed，来源为 AfterFix-9-First.xml 中8个通过项，加 Related-36.xml 的36个通过项；两组通过 fullname 无重叠。原始共45次执行，含首批 MidTurnDiscoveryStillRespondsToRealLossAndCoverTimeout 的1次夹具失败：前一轮临时墙没有关闭而影响下一轮；修正每轮结束的 blocker.SetActive(false) 清理后在 Related-36.xml 同名通过。两批均无跳过。不能写成“单轮44/44”或全工程重跑；逐项来源、时间、SHA和历史失败映射见 PlayMode-FinalCoverage.json。
+9个专项涵盖左右转身真实发现、静止玩家在有效中段/结束附近被扫入、发现后保持 yaw/同一目标至自然.5秒 Chase并跨物理帧、真实离开/墙/掩体负对照。站立/蹲伏×左右方向4个输入变体使用 InputSystem 排队键盘事件，并由真实玩家输入链驱动；它们属于同一个 UnityTest，不额外计4项，也不等于操作系统原生键鼠。
+专项为稳定采样仅在运行时使用 turnSmoothTime=.6（排队输入例为1），部分克隆配置移动速度为0；没有把目标旋转到另一深度面，没有扩大视野或强制 AI 状态。保存的 Prefab/配置仍为原值，原.18另有实际游戏捕捉。
+Related-36.xml 另含11 Alert、18 Behaviour、4 StatusLight、2 VisionAlignment及上述1个复验专项，覆盖接触/轮次、草丛定时、巡逻配置、平滑飞行、灯光和视野同步。EditMode-4.json 中 DroneRoundTests 4/4通过、0失败/0跳过。历史09F/09G完整批次仍保留，不冒称本轮重新执行。
+修复前双向失败证据 BeforeFix-2.xml、BeforeFix-Left.xml 留存。InterruptedAttempt-StalePreviousResult.xml 不是被中断尝试的新结果；BeforeFix-Left-FixtureOvershoot.xml 是夹具角度越界，均不算产品通过证据。细节见 Diagnosis.txt、SessionNotes.txt。
+
+四、原场景与画面
+GameCapture-20261019T080740712/Attempt-1/ 下三张1920×1080 PNG 已由主程逐张目视：01-Turn-Initial-1920.png 为巡逻蓝扇形；02-Turn-Discovered-Alert-1920.png 为自然发现橙扇形；03-Turn-Chase-1920.png 为追击时隐藏扇形且UI显示追击。未见视觉破损。
+实际 EnemyTest 使用原 Cinemachine、原配置、原.18转向和原路线；通过 API 跟随/定位玩家进入真实范围，未强制 Alert/Chase/Target。Trace.csv 共264行：Patrol168、Alert91、Chase5，无Search；Alert采样 yaw恒为195.0166、rangeDistance=0且Target始终有效，自然Alert游戏时间约.501268秒。
+截图短暂 timeScale=0 保帧，每次约.06秒墙钟时间不计入 Time.time。回调注销，玩家/body/timeScale/background恢复；另一无人机只在临时Play禁用，随后停止Play还原。原相机未改。原始捕捉 Result.txt 保留，不改成事后结论；本交接记录主程后续目视结果。
+这是API辅助原场景验证；未新增原生键鼠、完整两轮操作或Windows构建验收。历史原生F10/Tab无响应现象没有在此宣称解决。
+
+五、资产保护与Editor边界
+FinalProtectionAudit.json/.txt 于08:10:08 UTC记录19/19既有meta一致、17/19文件与原清单一致。差异为预期 Controller 修改与已记录的 Shelter 后续保存；将最新 Shelter 保存副本纳入保护参照后，除有意修改的 Controller 外18项均匹配，无其他差异。Drone/Player Prefab、DroneConfig、Vision/Flight、02C玩家源码、既有相关测试、Ruins/Bootstrap/EnemyTest均匹配适用基线。
+Shelter 在约08:06 clean后因一次场景切换代码错误，短暂在该场景进出Play，停止时dirty；主程于08:07:21先保存副本再保存原场景。dirty原因未确定，不归因为外部修改。最新场景SHA256为D1DD18A573846182F45BDD2E8A802A6F0FFC8E044D3C1ED3F9EE1B71A7CAF46F，与Before/LatestPreserved-20261019T080721120.unity一致，保留不回滚。
+08:06:18中间版本仅留hash、无可用完整字节副本；08:01较早副本对比有5个YAML值变化，不能据此断定分别发生于哪次保存。初次快照保留在 InitialCapturedHashes-20261019T080703.json。
+09H测试和捕捉已经结束。Editor继续由主程用于后续相机/黑夜新任务；TemporaryReleaseState.json与旧交接中的释放都是历史快照，不代表此刻全局释放。后续渲染/场景修改不属于上述测试时间点，本记录不冒称对其做过回归。
+
+2026-10-19 08:15 UTC 状态补充：后续Rendering任务完成，009现已明确释放Editor给“Shelter 昏暗氛围与后处理”聊天。09H早前的“仍占用”描述为交接生成当时状态；最新协调以EditorCoordination.txt为准。无人机源码未在Rendering阶段继续改动。

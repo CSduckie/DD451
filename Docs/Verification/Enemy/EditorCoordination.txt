@@ -1,0 +1,229 @@
+Editor coordination — root assignment, 2026-10-18
+Project: E:/DD451
+
+Current priority: 02A all-world TriggerBox interaction + 02B per-scene Cinemachine bounds + 06D Loot adaptation, followed by 07C/07D serial integration.
+Root readiness update: final 02A_TriggerInteraction_Handoff.txt, 02B_CameraBounds_Handoff.txt and 06D_TriggerLoot_Handoff.txt have all been read and each is READY_FOR_INTEGRATION. 06 explicitly reports source writes stopped. 07C/07D may proceed with its planned serialized asset migration, compilation and validation after confirming writer release/live editor state. This is the beginning of the integration phase, NOT an Editor release to 009 or an acceptance result.
+02/06 prepare their assigned source and necessary tests. Only 07 operates shared Unity scenes/Play/test runs after ALL three handoffs are READY and source writers have released their changes.
+07 must re-read live editor state and preserve any unsaved user changes. Prior observations differ (root saw dirty Shelter; later 009 reported clean), so neither snapshot substitutes for the live check.
+
+009 Enemy AI: continue read-only and Docs/Verification/Enemy/Staging preparation; do not write to Assets or trigger Editor compilation/Play/scene-building yet. No new enemy-development approval is required after the queue is released, but the shared Editor must first be free.
+07C/07D owner must append an explicit release record here after asset work/test activity ends, with actual scene, dirty/Play/compilation state and any unresolved blocker. If user edits prevent final integration, record the state and decide a non-conflicting handoff rather than leaving 009 waiting on an unrecorded assumption.
+After release, 009 may write its own Assets, compile and build/validate EnemyTest; it must re-check live editor and source-writer state, preserve user scenes, and reuse delivered camera/interaction contracts without altering shared PlayerCamera prefab or formal scenes.
+
+Latest 009 report (reported by its developer chat, not root-verified design evidence): user confirmed XY drone flight at spawn Z, immediate chase, last-seen-position brief search then patrol; Visual bob/tilt, four rotating propellers and visible wall-clipped FOV. 009 should record that direct user confirmation in its handoff. These notes do not mean implementation/acceptance is complete.
+
+007 EXPLICIT EDITOR RELEASE — 2026-10-19 02:06 UTC (2026-10-18 local)
+07C/07D asset/source/test/visual activity has ended. All 007 Assets writers have stopped; no further Editor operation is queued. 009 may now take over its own Assets/Editor work after re-checking current live state and preserving user edits. No extra development approval is required by this queue record.
+Observed final state: unique Assets/Scenes/Bootstrap.unity, clean; Play=false, changing=false, paused=false, compiling=false, updating=false, PrefabStage=null. Console final read0 errors/0 warnings. Application and PlayerSettings runInBackground=false; Enter Play Mode options enabled / DisableDomainReload restored. Only original enabled native RawInput Keyboard and Mouse remain. Temporary recovery script/meta and abandoned generated TestRunner scene/meta removed after verification/backup. No non-current hidden InputSettings remain; the current default InputSystem settings object is intentionally retained.
+Unity remains open as PID85336 with temporary command-line -force-d3d11 after DX12 fence Assert instability. Project graphics API configuration was not changed. Do not switch back to DX12 merely as cleanup; that backend problem is not claimed resolved.
+Delivered: every current world target explicitly wired to its TriggerBox; five gameplay/module scene cameras own independent native CinemachineConfiner3D volumes; formal width tuning saved as Shelter16.8 and Ruins15.8 with lens/model/material/other geometry preserved. Other module boundaries remain16.1/8.1/24.1. Reuse these contracts in EnemyTest without altering shared PlayerCamera or formal scenes.
+Evidence: EditMode149/149; full repaired DX11 PlayMode85/85; subsequent formal width-only change revalidated by affected GameFlow8/8. Saved-scene ordinary queued movement has4316 rendered samples plus six1920x1080 edge/jump captures, actual Brain centers constrained within floating-point tolerance. Source/asset release hash audit:56 assets/318 source entries, no unexpected drift after reviewed changes.
+Open acceptance items remain explicit: full two-round native keyboard/mouse play is NOT COMPLETED because injected Tab/F10 still did not reach gameplay actions despite GameView focus; API/queued results are not native acceptance. Prior07B/04 mixed Ctrl/mouse test failure remains open and was outside the85-case set. No standalone Windows build claimed. These limitations do not reserve the shared Editor indefinitely.
+Final handoffs: Docs/Handoffs/07C_TriggerInteractionIntegration_Handoff.txt and Docs/Handoffs/07D_CameraBoundsIntegration_Handoff.txt. Evidence: Docs/Verification/CameraBounds/07D/ReleaseState.json, FinalVerification.json, VisualReport.txt, MovementAnalysis.json and GameFlow-8-VisualTune-Final.xml; Docs/Verification/TriggerInteraction/07C/PlayMode-85-Final.xml. ReleaseState records exact final observation time. This release supersedes the earlier integration-in-progress reservation above.
+
+009 EXPLICIT EDITOR RELEASE — 2026-10-19 02:20 UTC (2026-10-18 local)
+009 implementation, Assets writes, compilation, test runs and Editor/Play QA have ended. No further 009 Assets writer or Editor operation is queued. Only Docs handoff completion remains; the shared Editor is released.
+Fresh final observation 2026-10-19T02:19:26.4017352Z: unique Assets/Scenes/Tests/Enemy/EnemyTest.unity, clean; Play=false, paused=false, compiling=false, updating=false, PrefabStage=null. Time.timeScale=1 and Application.runInBackground=false restored. Scene and both new Enemy prefabs have 0 Missing Scripts; required driver/drone references are present. Final Console read has 0 errors / 0 warnings. Editor remains in inherited Direct3D11; no project graphics configuration change.
+Delivery: standalone EnemyTest, original-FBX Drone/Cover prefabs, shared-StateMachine patrol/chase/last-seen-search/contact explosion, wall-clipped visible Collider FOV, crouch-cover, Visual bob/tilt and four spinning rotors. Unity EditMode25/25 and PlayMode14/14 passed (no failures/skips), including real Backpack/Loot/Transfer damage integration. Existing deployment baseline 309/309 files unchanged; formal Bootstrap/Shelter/Ruins, shared prefabs and original FBX/meta preserved. EnemyTest is left open for direct user use; Bootstrap had been restored after build and its asset is unchanged.
+Limitations: native injected F10/Tab did not trigger actions after confirmed GameView focus, so native keyboard acceptance remains incomplete. User briefly played and confirmed finished, but provided no itemized result; full native two-round play and Windows build are not claimed. One MCP screenshot-helper PlayerLoop recursion error is preserved in CaptureToolError.json; subsequent screenshots use Unity asynchronous end-of-frame capture and final Console is clear. English/wall captures and real-scene geometry checks are explicitly API-assisted. 007's earlier unrelated native-input/DX12/07B issues are not claimed resolved.
+Evidence: Docs/Handoffs/09_Handoff.txt; Docs/Verification/Enemy/FinalVerification.json, ReleaseState.json, FinalConsole.json, ExistingAssetIntegrity.json, RealSceneChecks.json, EditMode-25-Final.xml, PlayMode-14-Final.xml, EnemyTest-CN-Initial.png, EnemyTest-EN-GameView-Final.png, EnemyTest-Wall-API.png.
+
+009 FLIGHT VISUAL FOLLOW-UP RELEASE — 2026-10-19 02:28 UTC (2026-10-18 local)
+User requested simple flight sway and faster rotors, and explicitly allowed stopping their active play session for this update. Other project chats were idle. Updated only DroneFlightVisual.cs and Drone.prefab after backing up actual contents plus meta. Added 4-degree speed-scaled periodic model sway, bob .07 at1.4Hz, rotors2400deg/s instead of900; physical root/vision/AI unchanged. Two relevant existing PlayMode tests passed2/2; no additional full-suite/native acceptance claim.
+Latest fresh state: Shelter only, Play=false, compiling=false, updating=false, timeScale=1, runInBackground=false. Shelter is dirty after tests (source undetermined); its unsaved state is preserved in the Editor. Do not overwrite or silently reload it. 009 did not save or overwrite any formal scene. Final Console read0 errors/0 warnings. No further009 Assets writer or Editor operation queued. Evidence: Docs/Verification/Enemy/FlightVisualTune/Result.txt, PlayMode-2.xml, ReleaseState.json; latest handoff section12.
+
+009 SMOOTH FLIGHT / TURN FOLLOW-UP RELEASE — 2026-10-19 03:20 UTC (2026-10-18 local)
+Latest user design supersedes periodic sway: no bob/sway, gradual movement lean and stop leveling; smooth Y-axis turn shared by Visual and actual Vision collider/mesh. Production and prefab updates saved; current rotor speed2400deg/s retained. Own assets backed up with meta/GUID preserved. Full Enemy EditMode27/27 and PlayMode16/16 passed (original39 plus4 new cases), Console0 error/warning. Tool-side stale PlayMode job cleared after official XML completion and stopped Editor; no additional test run.
+All009 Assets writes and Editor operations have ended. Latest live state03:19:07Z: single Shelter, dirty=true, Play=false, compiling=false, updating=false, PrefabStage=null, timeScale1, runInBackground=false. The attempt to switch scenes was rejected due to unsaved Shelter changes; its current unsaved state was preserved without save/discard/reload. Next owner must preserve it. No actual Game animation recording or new native keyboard acceptance claimed.
+Evidence: Docs/Verification/Enemy/SmoothFlightTurn/Result.txt, ReleaseState.json, Console.json, EditMode-27-Final.xml, PlayMode-16-Final.xml, Before/ and ChangedFiles.json. Latest handoff section13 supersedes section12's sway design.
+
+ROOT VISION / STATUS LIGHT UPDATE IN PROGRESS — user authorized Unity takeover 2026-10-19
+Owner: main programmer chat. Updating DroneController / DroneFlightVisual / DroneVision / DroneStatusLight and Drone.prefab; do not change Enemy assets or operate Editor concurrently until release below. User confirmed Search=orange breathing and Chase=red breathing. Original blue Point Light/range preserved.
+Shelter had unsaved changes at takeover; disk snapshot and SaveScene(saveAsCopy) retained under Docs/Verification/Enemy/VisionLightUpdate/BeforeApply. Runtime probe finished successfully. Editor subsequently observed stopped and Shelter clean with a changed disk hash, not saved by root; keep latest external scene changes, never restore the older snapshots over them.
+
+ROOT VISION / STATUS LIGHT UPDATE RELEASE — 2026-10-19 04:48 UTC
+All Assets writes, runtime sampling and Unity TestRunner runs have ended. Editor released.
+Final observed04:47:58Z: Shelter only, clean, Play=false/changing=false/compiling=false/updating=false, PrefabStage=null, timeScale1, runInBackgroundfalse. Console0 errors/0 warnings. Latest externally saved Shelter disk content matches its before-TestRunner snapshot; root did not overwrite it with earlier dirty snapshots. EnemyTest/Ruins scene files and Drone.prefab GUID preserved.
+Delivered model-linked VisionOrigin and existing point light breathing:original blue / Search orange / Chase red. Enemy EditMode27/27 and PlayMode22/22,0 failed/0 skipped; actualPrefab3357 frame runtime evidence. No new AI state or broader framework. See Docs/Verification/Enemy/VisionLightUpdate/Result.txt and Docs/Handoffs/09_Handoff.txt section14.
+
+ROOT LEVEL VISION / CHASE-ONLY EXPLOSION IN PROGRESS — 2026-10-19
+User request supersedes full-model-tilt vision: share smooth heading, exclude flight lean; self-explosion only during Chase. Main programmer owns Enemy source/test updates and Editor QA until explicit release. Takeover:EnemyTest/Edit/clean; no other scene/prefab saving planned. Baseline:Docs/Verification/Enemy/LevelVisionChaseOnly/BeforeHashes.json.
+
+ROOT LEVEL VISION / CHASE-ONLY EXPLOSION RELEASE — 2026-10-19 05:01 UTC
+All writers and Editor QA ended. User's latest two rules implemented. Final05:01:06Z:EnemyTest/Edit/clean, not compiling/updating/changing, no PrefabStage, timeScale1/runInBackgroundfalse; Console0 errors/warnings. Enemy EditMode27/27 and PlayMode24/24 passed without skips. Actual1920x1080 scene check recorded206 frames with19.991-degree model lean and level sight. Temporary runtime-only visual test settings discarded on normal Play exit. Drone prefab/meta and EnemyTest/Shelter/Ruins file hashes unchanged. Shared Editor released. See Docs/Verification/Enemy/LevelVisionChaseOnly/Result.txt and09_Handoff section15.
+
+ALERT FILL DISPATCH — 2026-10-19
+User requested existing chat dispatch. Main programmer has made NO Alert Assets changes; internal review agents are read-only and finished. Shared plan:Docs/AgentPrompts/09_AlertFill_Dispatch.txt.
+First owner:小任务（负责各种视觉效果） /01a15241-944a-7b71-9766-266f0b50c337 for DroneVision+shader/material and focused visual tests. 任务009 Ai潜行 /01a151a2-d283-75d3-baa5-d80104c12d10 may prepare AI edits under Docs only until visual owner's explicit Assets/Editor release is written. Then009 owns integration and full tests. Main programmer releases Editor to this sequence; fresh state must be rechecked by owner. No other module dispatch.
+
+VISUAL ALERT FILL EXPLICIT RELEASE — 2026-10-19 05:36:50 UTC observation
+视觉Assets和Editor已释放，009可以接入。
+Owner01a15241-944a-7b71-9766-266f0b50c337 and its agents have stopped all Assets writes and Editor work; no queued tests, Play sampling or screenshot callbacks remain. Main programmer/009 may proceed in the dispatched sequence after fresh live-state checks.
+Delivered: DroneVision.SetAlertProgress(float), radialUV0..1 at wall-clipped outer edge, MyPrecious/DroneVision transparent shader, original material GUID preserved, MPB isolation and SetTint/Clear reset. Handoff:Docs/Handoffs/Effects_DroneAlertFill.txt.
+Actual tests:Fill EditMode7/7 + Geometry11/11, Alignment/SmoothYaw PlayMode3/3. Actual1920x1080 screenshots0/50/100/retreat25/retreat0 and2220 runtime frames. Controlled visual API probe only; AlertAI/timing/gameplay and independent main-programmer acceptance remain for009/root. First strictColor roundtrip assertions failed and were corrected to1e-5 tolerance; official finalXML passed, initial failures preserved.
+Final observed Editor:Shelter only, clean/Edit, Play/changing/compiling/updatingfalse, noPrefabStage, timeScale1, runInBackground and PlayerSettings.runInBackgroundfalse, originalDisableDomainReload setting retained. Console0 errors/0 warnings. Runtime wall clone removed with Play exit. Active scene after exit wasShelter; visual owner did not save/overwrite scenes or force a scene switch.77 existing asset hashes show only3 allowed existing-file changes; Drone.prefab/meta, EnemyTest/Shelter/Ruins, otherEnemy sources/tests unchanged. Evidence:Docs/Verification/Enemy/AlertFill/Visual/Result.txt and ReleaseState.json.
+
+009 ALERT / PATROL INTEGRATION IN PROGRESS — 2026-10-19 05:38 UTC
+Read both explicit visual release records; visual owner and its agents have ended Assets/Editor work. Main programmer previously released Editor to this sequence and will validate after009 releases.009 now owns deployment, compilation, Enemy regression and controlled visual QA; do not write Enemy Assets or use sharedEditor until release below. Fresh05:38:14Z:Shelter only, clean/Edit, not compiling/updating/changing, noPrefabStage,1920x1080,timeScale1,runInBackgroundfalse. All009 internal agents are Docs-only/finished. Preserve the actual currentAssets and scene content; only reviewed own files will deploy with meta backups. User additional patrol Inspector/Gizmos requirement included; no scene/prefab rebuild.
+
+009 ALERT / PATROL INTEGRATION EXPLICIT RELEASE — 2026-10-19 05:41:26 UTC final observation
+009所有Assets和Editor操作已结束并释放，主程可以接管验收。所有内部agents已完成Docs-only准备；无排队写入、测试、截图/Editor回调或自动刷新锁。后续仅交接文档收尾，不操作Unity。
+Deployed14 owned files after actual-content/meta backups; visual files left untouched. IndependentAlert on realPatrol/Search discovery,2s fill/decay config, hover/residual/decay0 resume same route index, Chase-only damage, orangeAlert/Search breathing, localization/F10 and patrol Inspector/Gizmos delivered. FullEnemy EditMode34/34 + PlayMode37/37 =71 passed,0failed/0skipped, normal completedMCP jobs. NaturalAI1920x1080 four-frame API-assisted sequence0/~50/wall-decay~25/Chase full-red reviewed;550samples, health3, visionY0, progress/MPBerror0. Temporary camera/input/config/wall restored and disposablePlay stopped. NativeOS input and independent main-programmer acceptance not claimed.
+FinalEditor:uniqueEnemyTest/clean/Edit,Play/paused/changing/compiling/updatingfalse,noPrefabStage,timeScale1,Application/PlayerSettings.runInBackgroundfalse,1920x1080,scene/prefabMissingScript0,4rotors and requiredrefs valid. FinalConsole0error/0warning; earlierMCP transport warning and3expected empty-route test warnings retained in evidence.12protected files and12existing.metas unchanged, all14deployed files match reviewed staging; originalDrone light/scene overrides retained.
+Evidence:Docs/Verification/Enemy/AlertFill/Integration/Result.txt,ReleaseState.json,FinalConsole.json,Integrity.json,EditMode-Full.json,PlayMode-Full.json,ActualAlert-20261019T054033401Z/. UpdatedDocs/Handoffs/09_Handoff.txt section16 and current patrol configuration steps.
+ROOT ALERT/PATROL INDEPENDENT ACCEPTANCE — 2026-10-19
+Both user chats completed and released Assets/Editor. Root now owns the Editor for a runtime-only EnemyTest acceptance probe at1920x1080. No production Assets edits planned; no other writers or Editor operations until explicit release. Evidence:Docs/Verification/Enemy/AlertFill/RootAcceptance/.
+
+ROOT ALERT/PATROL INDEPENDENT ACCEPTANCE EXPLICIT RELEASE — 2026-10-19 05:44:44 UTC
+Root runtime-only acceptance completed. All callbacks and Play work ended; no Assets writers, queued tests or Editor operations remain. Editor released.
+RealEnemyTest/1920x1080/authored2s timing:2551 samples, Alert drift0, wall decay/residual refill,0-to-original-second-waypoint Patrol, actual waypoint-position/order edits, Alert contact no damage, naturalChase after2.002514s, contact explosion once3→2HP and cleanup passed. Five root screenshots visually reviewed. No forced AI state/progress, no runtime speed or camera changes; fixture player placement/freeze, temporary wall and other-drone isolation explicitly API-assisted.
+Final uniqueEnemyTest/clean/Edit, noPrefabStage/compilation/update, timeScale1/backgroundfalse, Console0error/0warning;8protected asset hashes unchanged. No new native keyboard or build claim. Evidence:Docs/Verification/Enemy/AlertFill/RootAcceptance/Result.txt.
+
+07E RUINS ENEMY INTEGRATION DISPATCH — 2026-10-19
+User authorized formal Ruins enemy integration and root acceptance through Shelter. Owner:任务007串联游戏流程 /01a15055-8e2c-7320-bd46-7e6b95d60ece. Root releases Assets/Editor to007 until explicit handoff;009/visual idle, internal root agents read-only/Docs. Plan:Docs/AgentPrompts/07E_RuinsEnemyIntegration_Dispatch.txt. Preserve current user Ruins Drone and patrol point scene configuration; baseline underDocs/Verification/Enemy/RuinsIntegration/. Fresh state last observedRuins/Edit/clean, not an authorization to overwrite later edits.
+
+07E RUINS ENEMY INTEGRATION EXPLICIT RELEASE — 2026-10-19 06:16 UTC
+007 Assets和Editor已释放，主程可以验收。
+All007 Assets writes, TestRunner jobs, ordinary Play, screenshots and sampling callbacks have ended. No further Editor operation is queued; subsequent work is Docs-only. Main programmer may take over after fresh live-state checks.
+Final observed06:16:05.8652239Z: uniqueAssets/Scenes/Bootstrap.unity,clean/loaded,Play/changing/paused/compiling/updatingfalse,noPrefabStage,timeScale1,Application/PlayerSettings.runInBackgroundfalse; originalDisableDomainReload option retained; only original enabled nativeKeyboard/Mouse; observer/patrolCapturefalse; TestRunner artifacts0. FinalConsole0 errors/0 warnings. Direct3D11 session retained,project graphics configuration unchanged.
+Delivered target-Scene-only explicit enemy startup after successful unload/preparation and before unlocking; enabled authored drones share GameFlow round, same-round/exploded actors untouched, next actual departure reloads original spawn/route. Two-pass config/round preflight; same-active-Scene retry guard fixed. No Enemy production/prefab changes. User explicitly authorized saving currentdirtyRuins platform edit at06:09; latest protected baselineAuthorizedSceneBaseline.json, never overwrite from olderBefore.
+Validation: finalPlayMode50/50(Enemy37+GameFlow13),GameFlowEditMode officialXML11/11 despiteMCP initialization-timeout status. OrdinaryBootstrap→Shelter→Ruins→Shelter→Ruins→Shelter API-assisted run with11072 samples; naturalPatrol/Alert/Chase/explosion eachround,actualsearch/transfer/store2items/EV7/preservedIDs; round2originalspawn and0.5999981 movement in~0.4s. Four1920x1080 screenshots reviewed. No nativeOS orWindowsbuild claim,010deathbranch excluded.
+Handoff:Docs/Handoffs/07E_RuinsEnemyIntegration_Handoff.txt. Evidence:Docs/Verification/Enemy/RuinsIntegration/Integration/ includingReleaseState.json,Integrity.json,PlayMode-50-Final.xml,EditMode-11-Final.xml,OrdinaryPlay/. Main programmer independent acceptance remains next.
+
+ROOT 07E INDEPENDENT ACCEPTANCE IN PROGRESS — 2026-10-19
+007 explicit release received. Root owns shared Editor for runtime-only Bootstrap/Shelter/Ruins acceptance. No Assets writes or tests from other chats until root release. Preserve latest AuthorizedSceneBaseline.json.
+
+
+ROOT 07E INDEPENDENT ACCEPTANCE EXPLICIT RELEASE — 2026-10-19 06:19 UTC
+Root ordinary Bootstrap/Shelter/Ruins two-round acceptance passed at1920x1080. Actual natural patrol/Alert/Chase/contact explosion; same-round formal retry remained exploded; real search/extract/storage roundtrip retained item identity; next real departure shared round2 and resumed patrol. API-assisted positioning/interaction, no native keyboard claim. All callbacks and Play ended; no Assets writes or pending Editor work. UniqueBootstrap/clean/Edit, no compile/update/PrefabStage, timeScale1/backgroundfalse, Console0 error/warning. Eight protected files and latest user-authorized Ruins/config baseline preserved. Editor released. Evidence:Docs/Verification/Enemy/RuinsIntegration/RootAcceptance/Result.txt.
+
+
+09F TIMED ALERT DISPATCH — 2026-10-19
+User explicitly authorized sending this task to009 and saving latestdirtyRuins before testing. Root saved copies and currentRuins, baselineDocs/Verification/Enemy/TimedAlert/Before/AuthorizedHashes.json. Owner任务009 Ai潜行/01a151a2-d283-75d3-baa5-d80104c12d10 exclusively owns Assets/Editor until explicit release. Root/agents only Docs or read-only. PlanDocs/AgentPrompts/09_TimedAlert_Dispatch.txt; fixed0.5s detection, Chase hides only cone renderer, cover loss waits2s and rediscovery immediatelyChase. Preserve latest scene/route.
+
+
+009 09F TIMED ALERT EXPLICIT RELEASE — 2026-10-19 06:52 UTC
+009 Assets和Editor已释放，主程可以验收
+009所有Assets写入、Unity/TestRunner/普通Play/回调/临时输入工作已结束，无后续Editor操作排队。内部agents仅检查已落盘证据并收尾Docs，不使用Unity、不写Assets。主程可fresh检查接管，009释放后不再Unity操作。
+最后现场06:50:37.7536674Z：唯一Ruins/clean/Edit；Play/paused/changing/compiling/updating=false，无PrefabStage，1920x1080，timeScale1，Application/PlayerSettings.runInBackgroundfalse，DisableDomainReload原设置保留。ProbeRunning与自动刷新持有false，仅原nativeKeyboard/Mouse；测试资源is_running=false、current_job_id=null。自建TestRunner窗口已关闭；Scene/Prefab missing scripts0，4桨引用有效。FinalConsole0errors/0warnings。
+09F源码交付：首次真实发现0.5秒原地橙色；Chase红灯且只隐藏Renderer；真实草丛蹲伏立即原地2秒橙色、实际重发现立即Chase、持续隐藏到期回原巡逻。FixedUpdate接触前及各伤害路径真实Hidden保护。旧填条玩法已移除，原水平yaw/前倾/转子/正式共享轮次保留。
+证据严格区分：EditMode45/45完整结果；首次混合PlayMode53完成的10个失败均GameFlow重复sourceId，Enemy40无失败条目但没有逐项XML/result（GUI缓存恢复0条不能当通过XML）；最终授权修正后GameFlow官方XML13/13通过。已通过项未重跑。
+用户最新Ruins三无人机与全部路线/布局保留。按明确授权仅新箱sourceId=supplies-box-2、lootTable改独立Food50%表；原箱Doll/Medkit唯一原点及原表不变。授权哈希6/6、其余保护8/8、15部署与15meta均核对通过。
+主程请求接手时009立即取消当前采样并Stop；Run-a8f4c7af在取消生效前自然完成PASS，CSV/TXT及6张1920截图已落盘，发现/草丛悬停漂移均0；无AI状态/计时/route/config/camera改写。Run-16ed070b边缘丢失触发Search的FAIL保留。普通Play使用公开玩家定位/临时Rigidbody与排队C，非原生键鼠。主程独立验收另记，009不再重复。
+交接Docs/Handoffs/09F_TimedAlert_Handoff.txt；证据Docs/Verification/Enemy/TimedAlert/Integration/。09_Handoff顶部已标明09F覆盖旧规则。剩余仅落盘截图审阅说明等Docs收尾。
+
+ROOT09F INDEPENDENT ACCEPTANCE IN PROGRESS — 2026-10-19
+009 explicitly handed the cleanRuins/Edit Editor to root in chat after its ordinaryPlay finished. Root owns runtime-only final acceptance; no productionAssets edits.009 may finish Docs only. Preserve latest user-approved three-drone Ruins and sourceId/loot fix, not earlier baseline.
+
+
+ROOT09F INDEPENDENT ACCEPTANCE EXPLICIT RELEASE — 2026-10-19 06:55 UTC
+Root complete; no pending Assets writers, callbacks, tests or Editor operation. Final singleRuins/clean/Edit, no compile/update/PrefabStage, timeScale1/backgroundfalse, Console0error/warning.735 naturalAI samples plus3 inspected1920 screenshots:0.50236s discovery,2.01256s cover wait,0.00513s rediscovery,realChase collision once3to2HP,sameRound formal initialization did not revive. Runtime-only temporaryCover and other-drone isolation removed on normalPlay exit. User routes and layout preserved. Newly duplicatedSuppliesBox(2) repaired by the already-confirmed new-food-only-box rule:onlysourceId=supplies-box-3 andlootTable=RuinsExtraSuppliesLoot; beforecopy and2-fielddiff retained. Latest scene baselineRootAcceptance/ThirdBoxFixHash.json supersedesearlier009hash. EvidenceDocs/Verification/Enemy/TimedAlert/RootAcceptance/Result.txt.
+
+
+009 COLLISION SIZE TUNE IN PROGRESS — 2026-10-19
+User directly requested a smaller drone collider to reduce low-flight blocking. Main/other chats idle and ROOT09F explicit release read. FreshRuins/Edit/clean, no compilation/update.009 owns short prefab/builder radius tune and focused checks; retain latest user scene (third drone moved since09F), routes and configs. Backup/evidence Docs/Verification/Enemy/CollisionSize/. No other Assets/Editor operations until release.
+
+009 09G CONTACT EXPLOSION EXPLICIT RELEASE — 2026-10-19 07:21 UTC
+009 Assets和Editor已释放，主程可以验收
+用户追加小碰撞与直接触碰爆炸已完成：机身半径0.45->0.25；所有存活状态实际碰玩家都只爆一次（包括草丛隐藏），视锥Trigger不引爆。原动画、视野、警戒/草丛计时、轮次和用户路线保留。当前源码EditMode4/4；46个PlayMode用例最终各自最近一次均通过，首次44通过、另2项测试夹具修正后定向复验，原失败证据保留。
+最终唯一Bootstrap/clean/Edit，Play/paused/changing/compiling/updating=false，无PrefabStage或活动TestRunner，窗口检查无TestRunner窗口，timeScale1/backgroundfalse，原DisableDomainReload保留。Console0错误/1条MCP WebSocket连接警告。所有Assets写入、Unity/TestRunner/Play操作已结束；没有排队操作、临时回调或后续Unity工作。子agent均只读/Docs审计结束。
+7项变更及7/7meta审计齐全，8/8最新保护文件一致；Ruins/Shelter保留用户07:08保存内容。证据Docs/Verification/Enemy/CollisionSize/Result.txt，交接Docs/Handoffs/09G_ContactExplosion_Handoff.txt，主交接09_Handoff第18节。
+
+ROOT PLAYER CROUCH COLLIDER IN PROGRESS — 2026-10-19 07:22 UTC
+009 09G explicit release read. Root owns shared Editor for focused player crouch collider implementation/tests. Source staging under Docs/Verification/Player/Crouch. Preserve latest scene layout and enemy changes. No other Editor or Assets writers until release.
+
+ROOT PLAYER CROUCH COLLIDER EXPLICIT RELEASE — 2026-10-19 07:23 UTC
+Root completed lower CapsuleCollider/center sync and safe stand-up. Player PlayMode18/18 passed (5 new +13 regressions), no failures/skips. Bootstrap clean/Edit; no pending Assets/Editor work or callbacks; Console0errors/0warnings. PlayerPrefab and Shelter/Ruins/Bootstrap unchanged. Handoff Docs/Handoffs/02C_CrouchCollider_Handoff.txt. Editor released.
+009 09H TURNING VISION IN PROGRESS — 2026-10-19 07:49 UTC. Root07:23 explicit release read; fresh latestRuins/clean/Edit checked.009 exclusively owns Editor/Assets for minimal turning-detection diagnosis, fix and focused verification. Preserve current scene saves,09G contact and02C crouch collider. Child agents read-only/Docs, no Unity. No other Assets/Editor operations until explicit release.
+
+009 09H TEMPORARY EXPLICIT RELEASE FOR SHELTER SKYBOX — 2026-10-19 07:55 UTC
+009暂停Assets/Editor操作，主程可接管Shelter夜间天空盒。09H仍在进行，待主程明确释放后再恢复；没有待启动测试、Play、Unity回调或Assets写入任务。
+最后fresh现场07:55:03Z：唯一当前Shelter/clean/Edit，dirty=false，Play/paused/changing/compiling/updating=false，TestRunnerApi.IsRunActive=false，timeScale1/backgroundfalse。无测试正在运行；当前新测试脚本已完成编译。临时状态证据Docs/Verification/Enemy/TurningVision/TemporaryReleaseState.json。
+已证实原实现自然发现后继续旧巡逻yaw导致Alert在几帧内转Search，原值0.18轨迹与BeforeFix-2.xml已保留。仅新建Assets/Tests/Enemy/PlayMode/DroneTurningVisionTests.cs及meta；产品源码/Prefab未改。最新待跑的左向基线夹具仅放慢运行时turnSmoothTime至0.6，以避免帧跳过入口，尚未运行，不冒称通过。
+用户先前编辑的Shelter dirty已在07:52备份并保存；之后用户又切换场景中断一次测试，已明确将Editor暂交009，清理确认无实际测试后的MCP残留并常规域重载。主程和用户的最新Shelter/Ruins改动保留，不用早期基线还原。后续只做Docs与只读工作。
+
+ROOT SHELTER NIGHT SKYBOX EXPLICIT RELEASE — 2026-10-19
+Shelter night skybox is completed and saved. Only scene skybox reference and OutputCamera clearFlags override changed, plus independent Assets/Art/Materials/Environment/ShelterNightSkybox.mat. Actual1920 scene render and sky-only preview inspected. No game scripts/sharedCamera/Ruins edits, no callbacks/Play/test work pending. FinalShelter clean/Edit, temporary cameras removed, Console0errors/warnings.009 may resume09H after fresh state check and must preserve this latestShelter baseline:Docs/Verification/ShelterNight/DeliveredHashes.json.
+Shelter release audit clarification: final diff also includes an external directional-light color edit observed during preview (white ->0.7169812,0.32128873,0.32128873). Root did not write Light properties; preserved the current edit on save. DeliveredHashes already includes it. Do not revert this user edit.
+009 09H RESUMED AFTER SHELTER NIGHT — 2026-10-19. Root explicit release read and latestShelter night/background/light user edits preserved.009 resumes exclusive Assets/Editor for remaining09H minimal fix and focused checks. Latest scene hashes renewed; no old scene restoration.
+
+009 NIGHT DEFAULT EXPLICIT RELEASE TO SHELTER POSTPROCESS — 2026-10-19 08:15 UTC
+009 Assets和Editor已释放，Shelter后处理小任务可以接管。指定聊天“Shelter 昏暗氛围与后处理”01a15334-7b5a-7560-8640-548971112548，继续用户已授权的Shelter专属昏暗后处理。
+009 09H转身修复和Rendering夜空/发灰任务均完成。无排队Unity/测试/Play操作，无临时Editor回调/截图任务，子agent全部只读或Docs工作结束。释放前最新现场08:15:17Z：唯一Bootstrap clean/Edit，Play/changing/paused/compiling/updating=false，真实TestRunnerApi.IsRunActive=false，captureRunning=false，无PrefabStage，timeScale1，backgroundfalse；Console0错误/0警告。证据Docs/Verification/Rendering/NightDefault/ReleaseState.json。
+关键新状态：所有12场景同一ShelterNightSkybox，11场景仅sky引用+4世界相机clearFlags，三个Builder单行及新场景默认Editor脚本；Shelter文件仍D1DD18A573846182F45BDD2E8A802A6F0FFC8E044D3C1ED3F9EE1B71A7CAF46F，共享PlayerCamera与night材质未改。新增SceneEnvironmentRefresh.cs运行时首场景/activeSceneChanged刷新环境光，修复sky已黑夜但ambientProbe仍旧日间.180283785的问题，最终正式往返三阶段均.00553075。Shelter现在更暗且局部灯光明暗已正确；请用Shelter-Refreshed-1920.png作为后处理新基线，不要再按旧灰亮截图过度压曝光。
+交接Docs/Handoffs/NightDefault_Rendering_Handoff.txt，证据Docs/Verification/Rendering/NightDefault/RuntimeFinal.txt、ChangeAudit.txt/json及最终1920截图。09H另见09H_TurningVision_Handoff.txt：44个不同Play用例最近通过(8+36)，Edit4，原.18实际自然转身三图通过。后续若有独立验收须重新确认现场，保留最新用户配置和GUID，禁止用旧Before回滚。
+
+SHELTER POSTPROCESS IN PROGRESS — 2026-10-19 08:16 UTC
+009 NIGHT DEFAULT explicit release read. Chat 01a15334-7b5a-7560-8640-548971112548 now owns Editor for Shelter-only post-processing preview/configuration/1920 Game validation. Other chats must not write Assets or operate Editor until release. Fresh Bootstrap/Edit and final baseline642 files captured under Docs/Verification/Rendering/ShelterPostProcessing. Planned production scope: Shelter.unity and its existing Global Volume Profile.asset only. Preserve current night environment refresh, skybox, lights, user objects and all shared configuration.
+
+
+SHELTER POSTPROCESS EXPLICIT EDITOR RELEASE — 2026-10-19
+Shelter后处理小任务已完成，所有Assets写入/Unity/普通Play/截图与观察回调结束，无排队操作。子agent只读审计与Docs工作均结束。共享Editor释放，后续操作者请fresh检查。
+最后观察2026-10-19T08:22:26.9608799Z：唯一Bootstrap clean/Edit，Play/changing/paused/compiling/updating=false，PrefabStage=false，真实TestRunnerApi活动false，CaptureRunning=false，timeScale1，Application/PlayerSettings.runInBackgroundfalse，原DisableDomainReload和Direct3D11保留。FinalConsole0errors/0warnings。
+仅Shelter.unity增加相机实例PP=1四行、既有Global Volume Profile.asset加入ColorAdjustments曝光-.2/对比8/中性颜色、None tone/vignette0并明确Bloom threshold1；原Bloom.1/tint和GUID保留。642文件最后审计640不变/2授权变化，370meta全一致；共享相机、URP、Skybox、Ruins/测试场景、灯光/LightFlicker、用户位置/箱子ID/内容/巡逻/Cinemachine不变。
+已检查实际1920x1080同机位同灯相位前后帧，以及保存重载后的Bootstrap→Shelter→Ruins→Shelter和仓库UI。真实相机/stack确认Shelter PP on、Ruins off且曝光0、返回恢复；同玩家round/settled1。使用公开定位及真实PlayerInteraction/Trigger/遮挡入口，是API辅助，不宣称原生键鼠或Windows构建。无新增产品脚本和无关大规模测试。
+交接Docs/Handoffs/ShelterPostProcessing_Handoff.txt；证据Docs/Verification/Rendering/ShelterPostProcessing/，严格对照Runtime-91fbe323/06-FixedPhase-Before与07-FixedPhase-After，保存后流程Runtime-8ed49e61/，FinalIntegrity.json/.txt与ReleaseState.json。未向其它聊天发消息。
+
+
+ROOT SCENE CAMERA PREVIEW IN PROGRESS — 2026-10-19
+ShelterPostProcessing explicit release read; all related chats idle. Root owns Editor for existing scene camera edit preview setup and focused flow regression. Reuse original per-scene cameras/postprocessing; preserve latest user scene edits, no shared camera or Volume tuning. Other Editor/Assets writers wait until root release.
+
+SHELTER SCREEN DUST IN PROGRESS — 2026-10-19
+User requested Particle System screen dust prefab in Assets/Prefabs/Shelter. This chat owns Editor for prefab/material authoring and runtime-only actualGame preview. Fresh Ruins/Edit/clean, no compile/update/PrefabStage. Preserve latest user scenes and previous post-processing; no shared camera or saved scene changes planned. Other chats must not operate Editor until explicit release.
+
+
+ROOT SCENE CAMERA PREVIEW WORK RELEASED — 2026-10-19
+Root Assets edits and Unity tests completed; no pending Play/test/Editor callbacks. Source changes and 3/3 final PlayMode checks documented in Docs/Handoffs/SceneCameraPreview_Handoff.txt. Keep latest Shelter/Ruins presentation active in Edit, BusinessUI/HUD/EventSystem inactive; GameFlowSceneBindings.Awake disables presentation before runtime activation, Activate enables HUD/EventSystem after binding. Shared camera/profile/sky/URP and other10scenes unchanged. Do not revert to earlier scene baseline.
+IMPORTANT: This releases ROOT work only. SHELTER SCREEN DUST IN PROGRESS remains the current Editor owner. 007 death-return task waits for explicit dust-task release before Editor/Assets operations. No permission to overlap is granted here. Root no longer accesses Editor during dust work.
+
+SHELTER SCREEN DUST EXPLICIT EDITOR RELEASE — 2026-10-19
+Screen dust prefab/material authoring and ordinary Play Game preview are complete. This chat releases Editor and Assets operations now; no pending Unity/Play/test/capture/motion callbacks. Only final Docs audit formatting remains. Other owners may fresh-check before continuing.
+Latest observed 2026-10-19T08:39:10Z: unique Ruins clean/Edit; playing/changing/paused/compiling/updating=false; PrefabStage=false; actual TestRunnerApi.IsRunActive=false; captureRunning/motionRunning=false; timeScale=1; Application.runInBackground=false. Final Console 0 errors/0 warnings. Finished prefab selected in Project.
+New assets only: Assets/Prefabs/Shelter/ShelterScreenDust.prefab (c3548963c97a33e49a6aca789a4f6d22), Assets/Art/Materials/Environment/ShelterScreenDust.mat (f647fdf3948e83f4f97c9c3426d78e2a), plus metas. Two native PS layers, no product scripts. Preview was runtime-only under OutputCamera local(0,0,4); no dust instance saved to any scene. Do not assume automatic scene integration.
+Preserved latest root camera-preview scene changes: Shelter/Ruins match SceneCameraPreview/DeliveredHashes.json; other eight protected files match original dust baseline. No old scene restoration. Actual1920x1080 before/after/motion/camera-move/storage checks, fresh prefab autoplay and asset reload passed. API-assisted placement/interaction; no claim of native keyboard or Windows build.
+Handoff Docs/Handoffs/ShelterScreenDust_Handoff.txt; evidence Docs/Verification/Rendering/ShelterDust/. No messages sent to other chats.
+
+07F DEATH RETURN IN PROGRESS — 2026-10-19
+007 read ROOT camera preview work release and SHELTER SCREEN DUST EXPLICIT EDITOR RELEASE. 007 now owns Assets/Editor for scoped death-return implementation, focused tests and ordinary1920 acceptance. Preserve latest scenes/cameras/PP/dust/09G-H/02C; no scene rebuild. Other writers and Editor users wait for explicit release.
+
+Dust final Docs audit completed: 10/10 protected file checks passed; natural motion149/149 matched particles moved with decreasing lifetimes. Same-view image differences occupy0.5285% pixels. No pending subagent/Docs/Unity operations. Editor release above remains in effect.
+
+PLAYER FILL LIGHT QUEUED AFTER 07F — 2026-10-19
+User authorized delegation to Shelter 昏暗氛围与后处理 (01a15334-7b5a-7560-8640-548971112548). Task sent: player-attached light isolated by Rendering Layers, Inspector-first/minimal code; full scope Docs/AgentPrompts/Shelter_PlayerFillLight_Dispatch.txt. This is a queue entry, NOT an Editor claim or release. 007 retains current ownership; lighting task waits for 07F explicit release and then fresh-checks state before Assets/Editor work.
+
+07F DEATH RETURN EXPLICIT EDITOR RELEASE — 2026-10-19
+007死亡返回已完成，所有Assets写入、Unity/Play/TestRunner、截图/搜索/观察回调均结束，没有排队Unity操作。子agent只读审计已完成。现在明确释放Editor与Assets；已排队的玩家补光任务可fresh检查后接管，保留本次及最新用户场景内容，不恢复旧基线。
+最后现场2026-10-19T08:58:19Z：唯一Bootstrap clean/Edit，Play/paused/changing/compiling/updating=false，无PrefabStage，真实TestRunner活动=false，observer/acquire/capture=false，timeScale1/backgroundfalse，原DisableDomainReload、Direct3D11、Game1920x1080保留。退出Play后Console0errors/0warnings。证据Docs/Verification/GameFlow/DeathReturn/ReleaseState.json、FinalConsole.json。
+最终64/64PlayMode+161/161EditMode通过，官方XML保留；普通Game三轮API辅助验证EV7→2→7、死亡先清算后Shelter、同玩家复活轮次不加、仓库位置旋转/20x24扩容保留、同布娃娃ID下一轮恢复、4机刷新。明确不是原生键鼠或Windows构建声明。
+707基线699不变/8预期修改，另新test+meta2项，无意外变更；12scene/31prefab/25ProjectSettings均保留。未运行Builder，未改场景/相机/后处理/天空/敌人生产行为。交接Docs/Handoffs/07F_DeathReturn_Handoff.txt；完整证据Docs/Verification/GameFlow/DeathReturn/。后续本聊天无Unity/Assets工作。
+
+PLAYER FILL LIGHT IN PROGRESS — 2026-10-19
+07F DEATH RETURN EXPLICIT EDITOR RELEASE read. Fresh uniqueBootstrap clean/Edit, noPlay/test/PrefabStage/compile/update. This lighting chat now owns Assets/Editor for isolated player PointLight runtime tuning, minimal Player.prefab/TagManager changes, actual1920 Game and related lifecycle verification. Preserve newest07F/scenes/PP/dust. Other writers wait for explicit release. No scene rebuild or new product script planned.
+PLAYER FILL LIGHT EXPLICIT EDITOR RELEASE — 2026-10-19
+玩家专属补光已完成。所有Assets写入、Unity/普通Play/截图/动作/日志观察回调结束，合成输入设备已移除；全部子agent审计/Docs工作结束，无排队操作。现在明确释放共享Editor与Assets，后续操作者fresh检查并保留最新实现。
+最后现场2026-10-19T09:19:40.2291206Z：唯一Bootstrap clean/Edit，Play/paused/changing/compiling/updating/PrefabStage=false，真实TestRunnerApi=false，capture/action/held/normalWatch=false，deviceId=-1且无PlayerFill残留设备，timeScale1，Application及PlayerSettings.runInBackground=false，DisableDomainReload/Direct3D11/PC管线保留。Player.prefab已选中。证据Docs/Verification/Rendering/PlayerFillLight/ReleaseState.json。
+仅Assets/Prefabs/Player/Player.prefab增加根下PlayerFillLight：Realtime白色Point、local(0,1.1,-2)、intensity1.2/range4.5、无阴影/bounce0、Light/URP mask2；两玩家Renderer mask1→3保留Default。ProjectSettings/TagManager.asset将Rendering Layer index1命名PlayerLighting，并保留官方API保存的version2→3/尾部24空名称省略。无产品脚本、场景、共享管线、物理/AI或材质修改。末次743基线审计741不变/2预期变化、432meta全同、39checks通过。
+实际1920Game同相位开关对照确认Shelter/Ruins玩家外侧像素完全一致（含邻近无人机/视锥），Default层正对照证明确有照到邻物的能力。合成Keyboard输入驱动左右/跳/蹲，实际Trigger/PlayerInteraction往返及PlayerHealth API死亡回家，均同一玩家/唯一灯，无重复生成。保存重载通过。无原生键鼠/Windows构建或重复完整007业务测试声明。
+真实失败保留：冻结Ruins为timeScale0时，既有DroneController95-96/DroneFlightVisual41-44的SmoothDampAngle产生NaN，RuntimeConsoleObserved.json有6 Assert+1 Error条目；本任务未改敌人。独立标量复现支持零delta原因。重新Bootstrap全程scale1普通往返观察46.217秒、Ruins43采样，所有机体数值有限、新日志0；FinalConsole最终0错误/警告，但不抹去冻结期记录。主程可自行安排独立暂停容错修复。
+交接Docs/Handoffs/PlayerFillLight_Handoff.txt；完整证据Docs/Verification/Rendering/PlayerFillLight/。屏幕灰尘Prefab、场景相机预览、Shelter后处理及007最新死亡流程均保持。未向其它聊天发消息。
+
+09I STEALTH VIGNETTE DISPATCHED / TWO-WAY COMMUNICATION AUTHORIZED — 2026-10-19
+Human user explicitly requested delegation to009 and allowed communication between009 andShelter atmosphere chat for this work. 009 (01a151a2-d283-75d3-baa5-d80104c12d10) leads implementation and final acceptance; Shelter 昏暗氛围与后处理 (01a15334-7b5a-7560-8640-548971112548) assists URP/Volume compatibility and visual review. They may message each other directly about this task's design, file ownership, Editor handoffs, issues and validation. This is task/communication authorization, not a claim that Editor is currently idle or a shared-edit permission.
+Full scope: Docs/AgentPrompts/09I_StealthVignette_Dispatch.txt and Shelter_StealthVignette_Collaboration.txt. Reuse CoverArea.IsHidden, isolated Vignette with smooth transitions, clean on death/scene change, preserve latest07F/player fill light/user atmosphere settings. One Editor/Assets writer at a time; agree ownership and fresh-check before mutation, then record explicit release. Root only dispatched/read files; no current Editor claim or pending Unity action.
+
+009 09I STEALTH VIGNETTE IN PROGRESS — 2026-10-19 17:06 UTC
+Human communication authorization and PLAYER FILL LIGHT release read. Fresh Shelter clean/Edit, PPon/mask1, no Play/changing/compilation or actual TestRunner. 009 now exclusively owns all Editor/Assets writes for09I. Shelter atmosphere chat explicitly agrees to read-only URP/configuration and screenshot review; no parallel implementation or Editor use. Child agents only read/Docs. Preserve latest user settings and PlayerFill/07F/preview/dust; source baseline Docs/Verification/Enemy/StealthVignette/BeforeHashes.json and real Before copies. Planned files: new PlayerStealthVignette.cs under Enemy/Stealth/MonoBehaviour, only necessary Enemy/test URP references, Ruins local effect/PP baseline, focused Play tests and Docs. No shared camera/Player/Shelter modification planned. Await explicit release before other Editor/Assets work.
+
+009 09I STEALTH VIGNETTE EXPLICIT EDITOR RELEASE — 2026-10-19 17:27 UTC
+09I已完成，009与全部协作agent无待执行Assets/Unity/Play/TestRunner/截图/输入/探针操作或回调。现在明确释放共享Editor与Assets。Shelter氛围聊天仅只读审图/Docs工作，已完成，无并行实现。其他操作者可fresh检查接手。
+末次现场2026-10-19T17:24:59.293646Z：唯一Bootstrap clean/Edit；Play/changing/paused/compiling/updating/PrefabStage/实际TestRunner=false；capture/probe=false，辅助对象与运行时Stealth Profile0；唯一原生Keyboard id1启用、无合成Keyboard；timeScale1、Application/PlayerSettings.runInBackground=false，Direct3D11/DisableDomainReload保持。随后无Unity/Assets操作。FinalConsole0errors/0warnings，SavedReload验证Ruins唯一效果、参数、PPmask和引用正确、MissingScript0。
+最终6/6专项PlayMode通过；初次及中间测试失败如实保留，最后修正只影响测试输入/固定刚体插值夹具。实际1920Game10阶段1307帧、重叠/背包、死亡回家/撤离/再出发检查通过，无残留或重复组件/Profile/相机；API辅助与合成输入，非原生键鼠/构建声明。
+仅新增小组件、Ruins中性基底Profile与测试/必要asmdef引用，Ruins局部接入。保留最新Shelter/玩家补光/dust/07F/既有AI与场景摆放。审计单列Drone.prefab在17:08:58的3个朝向字段差异，非本任务写入、作者不确定，原样保留不回滚。完整交接Docs/Handoffs/09I_StealthVignette_Handoff.txt，证据Docs/Verification/Enemy/StealthVignette/。接手不要恢复旧baseline覆盖最新场景或Prefab。
+
+ROOT VIGNETTE INTENSITY04 IN PROGRESS — 2026-10-19
+00909I release read. Root owns Editor for one Ruins intensity change .22->.4, retaining smoothness.45/transition.2, then focused1920 Game visual acceptance. No production scripts changed; other Editor/Assets writers wait for release.
+
+
+ROOT VIGNETTE INTENSITY04 EXPLICIT EDITOR RELEASE — 2026-10-19
+Ruins intensity .22->.4 saved and reloaded; smoothness.45/transition.2 unchanged. Only one production YAML line changed. Actual1920 Game4captures/826frames passed (API-assisted/synthetic C), center and UI readable, exit restores normal image identically. Runtime input/background/drones/callbacks restored, Play stopped, no pending Unity/Assets work. Handoff Docs/Handoffs/09I_Intensity04_Handoff.txt; evidence Docs/Verification/Enemy/StealthVignette/Intensity04/. Latest Ruins edit scene selected StealthVignette. Shared Editor released; fresh-check before other work.
+
